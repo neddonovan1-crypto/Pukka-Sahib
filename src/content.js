@@ -16,6 +16,7 @@ var events = []
   .concat(load("events-district.json"))
   .concat(load("events-personal.json"))
   .concat(load("events-kipling.json"))
+  .concat(load("events-kipling-2.json"))
   .concat(load("interludes.json"));
 
 module.exports = { config: base.config, endings: base.endings, events: events };

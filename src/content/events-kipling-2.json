@@ -1,0 +1,814 @@
+[
+  {
+    "id": "tomb-ancestors",
+    "tag": "ON TOUR",
+    "season": [
+      "cold"
+    ],
+    "kind": "tour",
+    "once": true,
+    "title": "The Tomb of His Ancestors",
+    "body": "In the Satpura hills the Bhils will do nothing the Forest Officer or the vaccinator asks of them, but they have quietly decided that young Chinn of the Police is the living ghost of his grandfather &mdash; old &lsquo;Jan Chinn&rsquo; who ruled them a lifetime ago and lies in a whitewashed tomb on the ridge. Word reaches your camp that Chinn is being asked to ride out and, being his grandfather, command the hill-folk to bare their arms to the vaccinator&rsquo;s needle against the smallpox now loose in the valleys.",
+    "choices": [
+      {
+        "label": "Let Chinn <b>play the ancestor</b> and get the Bhils vaccinated.",
+        "effects": {
+          "contentment": 6,
+          "order": 2,
+          "prestige": -3
+        },
+        "outcome": "The needle goes into a thousand arms because a dead man is thought to wish it, the smallpox passes the hills by, and you enter in the tour diary a triumph of medical administration you dare not explain. Modern science has been carried into the Satpuras on the back of a ghost, and you decide, on the whole, not to look the gift too hard in the mouth."
+      },
+      {
+        "label": "<b>Forbid it.</b> Government does not pretend its officers are reborn gods.",
+        "effects": {
+          "prestige": 2,
+          "contentment": -6,
+          "health": -1
+        },
+        "outcome": "You will not have the Service conjuring with dead men, and you tell Chinn so plainly. The vaccinator is sent up alone with his lancet and his authority, and comes down again with neither used; the smallpox, unimpressed by the regulations, does as it likes among the unmarked arms."
+      },
+      {
+        "label": "Say nothing official and <b>let Chinn manage it</b> as he sees fit.",
+        "effects": {
+          "contentment": 3,
+          "order": 1,
+          "prestige": -1,
+          "health": -2
+        },
+        "outcome": "You give no order, which is its own order, and look pointedly out of the tent-flap while a district officer becomes a hill-god for a fortnight. The arms are vaccinated, the paper stays silent, and you have discovered the oldest instrument of rule out here: the thing everyone did and no one wrote down."
+      }
+    ]
+  },
+  {
+    "id": "moti-guj",
+    "tag": "FROM THE MOFUSSIL",
+    "season": [
+      "cold"
+    ],
+    "kind": "tour",
+    "once": false,
+    "title": "Moti Guj, Mutineer",
+    "body": "The road-clearing at Panth Piploda has stopped dead. Moti Guj, the great working elephant who drags the felled timber, will not stir a foot: his mahout Deesa wangled ten days&rsquo; leave to go and drink it, swore the beast would obey any man until he returned, and the beast has formed his own view of the arrangement. The contractor is frantic, the estimate is bleeding by the day, and an elephant the size of a bungalow is enjoying a holiday on a point of principle.",
+    "choices": [
+      {
+        "label": "Send the police to <b>fetch Deesa back</b> from his debauch.",
+        "effects": {
+          "order": 2,
+          "revenue": 2,
+          "prestige": -1,
+          "health": -1
+        },
+        "outcome": "You have a drunk man hauled forty miles back to his elephant, and the moment Deesa lurches into the clearing and abuses him affectionately, Moti Guj puts his shoulder to the timber as though nothing had happened. The work resumes. You have learned that a corner of your district answers only to men you would not trust to guard a hen-roost."
+      },
+      {
+        "label": "Order the contractor to <b>master the beast with other men</b>.",
+        "effects": {
+          "order": 1,
+          "revenue": -2,
+          "contentment": -1,
+          "health": -2
+        },
+        "outcome": "The substitute drivers prod and shout and are, one after another, picked up gently by the trunk and set down at a distance to reconsider their lives. The elephant wins, the timber sits, the estimate goes on bleeding, and you have affirmed the principle that a sahib&rsquo;s order outranks an elephant&rsquo;s loyalty. It does not."
+      },
+      {
+        "label": "Grant the work a fortnight&rsquo;s grace and <b>let the elephant have his holiday</b>.",
+        "effects": {
+          "contentment": 3,
+          "health": 2,
+          "revenue": -3,
+          "order": -1
+        },
+        "outcome": "You endorse a delay in the name of the inevitable, and the clearing dozes in the sun until Deesa reels home, sobered and sentimental, and his elephant forgives him at once. The road is a fortnight late and nobody is bruised, which the tour diary is not designed to record as a success."
+      }
+    ]
+  },
+  {
+    "id": "dungara",
+    "tag": "DEPUTATION",
+    "season": [
+      "cold"
+    ],
+    "kind": "tour",
+    "once": true,
+    "title": "The Judgment of Dungara",
+    "body": "The Reverend Justus, who has laboured years among the Buria Kol and won a shy handful of converts, sends word in triumph: he will parade his new Christians in fine European cloth at the great feast, in the very sight of Dungara, the god of the hills, to prove the old terror broken at last. Athon Daz&eacute;, the priest of Dungara, has said nothing whatever, and smiled, and helpfully supplied the cloth. You know these hills; you have a bad feeling about the cloth.",
+    "choices": [
+      {
+        "label": "Send a private <b>word of warning</b> to the missionary.",
+        "effects": {
+          "contentment": 3,
+          "health": -2,
+          "prestige": -1
+        },
+        "outcome": "You send word that Athon Daz&eacute; does nothing for nothing and the cloth should be tested before it is worn. Justus, wounded in his faith, thanks you stiffly and parades his flock regardless &mdash; but a few, quietly warned, stay home, and are spared what the others are not when the fire-nettle woven through the cloth does its work in the noon heat."
+      },
+      {
+        "label": "Stay <b>strictly neutral</b> &mdash; the Raj takes no side between a god and a chaplain.",
+        "effects": {
+          "prestige": 2,
+          "contentment": -3,
+          "order": -1
+        },
+        "outcome": "You decline to come between the mission and the hill-god, and at the feast the new cloth, woven of the stinging bichhua, turns the converts into a screaming, tearing, naked rout that stampedes straight back to Dungara and his smiling priest. The Kol are lost to the Church for a generation, Government is unembarrassed, and you have proved that neutrality, too, is a judgment."
+      },
+      {
+        "label": "<b>Forbid the parade</b> as a provocation to the peace.",
+        "effects": {
+          "order": 2,
+          "contentment": 1,
+          "prestige": -2,
+          "health": -1
+        },
+        "outcome": "You forbid the whole display in the name of public order, and rob Athon Daz&eacute; of his revenge and Justus of his humiliation at a single stroke. The mission calls it persecution and the priest calls it wisdom; you call it a fortnight without a riot and enter it, without elaboration, as such."
+      }
+    ]
+  },
+  {
+    "id": "false-dawn",
+    "tag": "PRIVATE",
+    "season": [
+      "cold"
+    ],
+    "kind": "club",
+    "once": false,
+    "title": "False Dawn",
+    "body": "At Saumarez&rsquo;s moonlight riding-picnic a dust-storm comes up out of nowhere, blots out the whole world, and scatters the party across the plain in blind couples. Saumarez, who has meant all year to propose to the younger Miss Copleigh, proposes in the roaring dark to the elder by mistake; and now, the storm past and the moon out again, three white-faced people stand before you &mdash; the senior civil officer present &mdash; to be told quietly what on earth is to be done.",
+    "choices": [
+      {
+        "label": "Quietly <b>straighten it out</b> &mdash; the right sister, no scandal.",
+        "effects": {
+          "contentment": 3,
+          "prestige": 1,
+          "health": -3
+        },
+        "outcome": "You take the wretched man aside, establish which sister he actually meant, and see the correction gently made before the dust has settled on the tiffin-baskets &mdash; so gently that the station never quite learns there was anything to correct. It is delicate, exhausting work, and precisely the sort no one thanks you for, because they never knew it was needed."
+      },
+      {
+        "label": "Rule that he must <b>stand by the words he actually said</b>.",
+        "effects": {
+          "order": 2,
+          "prestige": 1,
+          "contentment": -4,
+          "health": -1
+        },
+        "outcome": "You rule, straight-faced, that a proposal is a proposal and a gentleman&rsquo;s word binds him even in a dust-storm, and thereby arrange a marriage between two people who did not mean each other in the least. It is very correct. Whether it is very kind is a question the elder Miss Copleigh will have a long married lifetime to consider."
+      },
+      {
+        "label": "<b>Refuse to meddle</b> in the affairs of the heart.",
+        "effects": {
+          "prestige": -2,
+          "health": 2,
+          "contentment": -1
+        },
+        "outcome": "You tell them, reasonably, that whom a man marries is no business of the District Magistrate, and withdraw to your horse. The three of them sort it out themselves, badly and loudly, and the tale is all over the station by Tuesday with your fine impartiality nowhere in it."
+      }
+    ],
+    "art": "scene-club"
+  },
+  {
+    "id": "bronckhorst",
+    "tag": "CUTCHERRY",
+    "season": [
+      "cold"
+    ],
+    "kind": "desk",
+    "once": false,
+    "title": "The Bronckhorst Divorce-Case",
+    "body": "Bronckhorst &mdash; a man who ill-treats his wife in private and defends her honour in public with equal enthusiasm &mdash; has brought a suit against her for misconduct with a junior officer, backed by a suspiciously fluent chorus of paid witnesses. The evidence is filthy and complete. It is also, an inner voice and a certain police friend both suggest, entirely manufactured. The court, and the woman&rsquo;s good name, are yours to dispose of.",
+    "choices": [
+      {
+        "label": "Let a <b>quiet hand test the witnesses</b> before you rule.",
+        "effects": {
+          "order": 1,
+          "prestige": 1,
+          "contentment": 2,
+          "health": -2
+        },
+        "outcome": "You adjourn on a technicality and let a certain police officer take the bought witnesses apart in a back room, where their fluent story falls to pieces in an afternoon. The suit collapses, Bronckhorst is exposed as the author of his own dishonour, and the innocent are spared. You have reached a clean result by a friend&rsquo;s dubious methods, and try not to dwell on the order of those two facts."
+      },
+      {
+        "label": "Try it <b>strictly on the evidence</b> as it is presented.",
+        "effects": {
+          "prestige": 2,
+          "contentment": -5,
+          "order": -1,
+          "health": -2
+        },
+        "outcome": "You weigh only what is put before you, and what is put before you is a wall of sworn perjury that no cross-examination quite topples. You grant the decree. A woman is ruined by her husband&rsquo;s spite dressed up as the law, and your judgment is impeccable in every particular except the one that mattered."
+      },
+      {
+        "label": "<b>Throw the case out</b> and let the parties settle it privately.",
+        "effects": {
+          "order": -2,
+          "contentment": 2,
+          "prestige": -1,
+          "health": 1
+        },
+        "outcome": "You dismiss the whole squalid business for want of credible proof, and decline to make your court the instrument of a man&rsquo;s revenge upon his wife. Bronckhorst rages up and down about the impotence of British justice; the wife is spared; and the file is closed on a matter the law was never going to render clean."
+      }
+    ],
+    "art": "scene-cutcherry"
+  },
+  {
+    "id": "pig-contract",
+    "tag": "D.O.",
+    "season": [
+      "cold"
+    ],
+    "kind": "desk",
+    "once": false,
+    "title": "The Question of Pig",
+    "body": "Two of your neighbours in the Service, Nafferton and Pinecoffin, are conducting a private war by correspondence over a contract for the supply of pig to the commissariat, and it has swollen into a file the thickness of a hymn-book: minutes on the anatomy of the pig, on the correct feeding of the pig, on the moral character of the pig&rsquo;s late owner. Both now write to you, as a disinterested third party, begging you to endorse the manifest rightness of their cause.",
+    "choices": [
+      {
+        "label": "<b>Read the whole monstrous file</b> and adjudicate it properly.",
+        "effects": {
+          "order": 2,
+          "prestige": 1,
+          "health": -5
+        },
+        "outcome": "You wade through four hundred pages upon the pig and emerge, days later, with a reasoned finding that satisfies neither man and costs you a week you will never recover. You have brought the full weight of your intellect to bear upon the hindquarters of a hog, which is, some evenings, a fair summary of the Service entire."
+      },
+      {
+        "label": "<b>Refuse to be drawn</b> and send both files back unread.",
+        "effects": {
+          "health": 3,
+          "prestige": -2,
+          "order": -1
+        },
+        "outcome": "You decline, with cold courtesy, to enlist in a war about pigs, and post the whole correspondence back to its authors. They unite, briefly, in resenting you, and then resume hostilities with fresh vigour. You have saved your afternoon and made two enemies, which is a rate of exchange the district offers with some regularity."
+      },
+      {
+        "label": "Quietly <b>lose the file</b> and let the feud die of neglect.",
+        "effects": {
+          "contentment": 1,
+          "health": 2,
+          "prestige": -1,
+          "order": -1
+        },
+        "outcome": "You confide the entire matter to the bottom of a deed-box and to the healing power of official forgetfulness. Within three months neither man can quite remember which point of pig-supply he was defending, and the great question sinks, unresolved and unmourned, into the archive where the Empire buries most of its passions."
+      }
+    ],
+    "art": "scene-cutcherry"
+  },
+  {
+    "id": "end-of-passage",
+    "tag": "PRIVATE",
+    "season": [
+      "hot"
+    ],
+    "kind": "personal",
+    "once": true,
+    "title": "At the End of the Passage",
+    "body": "Hummil, who holds the lonely canal station out beyond the sands, is thirty miles from another white face and has not slept in weeks. When you ride over you find him gaunt, over-driven, and speaking a shade too lightly of the figure he says he meets in the empty bungalow at night. He begs you, laughing, to stay; and swears, in the same breath, that there is nothing whatever the matter and that he cannot possibly be spared from his post.",
+    "choices": [
+      {
+        "label": "Order him on <b>sick leave to the hills</b> and take his work yourself.",
+        "condition": {
+          "meter": "health",
+          "op": ">",
+          "value": 40
+        },
+        "ifTrue": {
+          "effects": {
+            "contentment": 2,
+            "health": -4,
+            "revenue": -2,
+            "prestige": -1
+          },
+          "outcome": "You override his protests, sign him off to the hills, and shoulder his district on top of your own for the season. It half-kills you and it saves his life, and when the Service asks why the canal returns are late you will not be able to give the only honest answer, which is that a man was going quietly mad in the dark."
+        },
+        "ifFalse": {
+          "effects": {
+            "contentment": 1,
+            "health": -8,
+            "revenue": -3,
+            "order": -2
+          },
+          "outcome": "You try to carry two districts on a constitution already worn thin, and for a while you carry both of them badly. Hummil steadies; but the strain goes looking for the cracks the hot weather has been widening in you all season, and finds them. You have saved a man by spending a reserve you did not have, and that bill is not yet presented."
+        }
+      },
+      {
+        "label": "Take his <b>word that he is well</b> and ride back to your own work.",
+        "effects": {
+          "revenue": 1,
+          "prestige": 1,
+          "health": -6,
+          "contentment": -3
+        },
+        "outcome": "You accept the brave lie because it is convenient to accept it, and you ride away, and the thing that visits the bungalow finishes its work before the cold weather comes. The Civil Surgeon writes &lsquo;heart failure&rsquo;; the station says the heat; and you carry, in a locked part of yourself, the memory of a man who asked you to stay."
+      },
+      {
+        "label": "Send the <b>Civil Surgeon and a junior</b> to share the solitude a while.",
+        "effects": {
+          "contentment": 1,
+          "revenue": -3,
+          "health": -2,
+          "order": -1
+        },
+        "outcome": "You do the middling, sensible thing: a doctor and a subordinate sent out to break the loneliness and keep an eye on him. It is not enough and it is not nothing; Hummil steadies, greyly, and holds his post, and you tell yourself that a man kept just this side of breaking is a man the Service can still contrive to use."
+      }
+    ]
+  },
+  {
+    "id": "bisara",
+    "tag": "PRIVATE",
+    "season": [
+      "hot"
+    ],
+    "kind": "personal",
+    "once": false,
+    "title": "The Bisara of Pooree",
+    "body": "A little silver box comes into your hands in the settlement of a dead officer&rsquo;s effects &mdash; the Bisara of Pooree, the station will tell you in lowered voices, the love-charm that brings its holder his heart&rsquo;s desire if it is stolen or found, and certain ruin if it is ever bought or given. Half of you knows this is bazaar nonsense of the rankest sort. The other half cannot help noticing how very carefully everyone declines to touch it.",
+    "choices": [
+      {
+        "label": "<b>Keep the thing</b> and see whether the luck is real.",
+        "effects": {
+          "prestige": 3,
+          "health": -4,
+          "contentment": -1
+        },
+        "outcome": "You pocket the charm in the name of rationalism, and find over the weeks that doors do open and rivals do stumble and your name does rise &mdash; and that you have begun, absurdly, to guard a silver box as though your whole fortune lived inside it. That is how the superstition works: not by magic, but by the grip a hope takes on a lonely mind."
+      },
+      {
+        "label": "<b>Return it</b>, correctly, to the dead man&rsquo;s people.",
+        "effects": {
+          "health": 3,
+          "prestige": -1,
+          "contentment": 1
+        },
+        "outcome": "You post the box back to the officer&rsquo;s family with a formal note and a clear conscience, and decline to let a piece of chased silver govern a British magistrate. The station decides you are either very brave or very foolish, and watches the next month of your career with an interest you find you cannot quite laugh off."
+      },
+      {
+        "label": "Have it <b>quietly lost</b> in the bazaar and be rid of it.",
+        "effects": {
+          "health": 2,
+          "prestige": -2,
+          "order": -1,
+          "contentment": 1
+        },
+        "outcome": "You hand it to a chaprassi to lose in the city, thereby &mdash; if the tale holds &mdash; passing the ruin along with the box, which is a shabby thing to do to a chaprassi and you know it. Nothing happens to anyone, probably. You sleep the better for it, which tells you rather more about yourself than about the charm."
+      }
+    ]
+  },
+  {
+    "id": "mcgoggin",
+    "tag": "PRIVATE",
+    "season": [
+      "hot"
+    ],
+    "kind": "club",
+    "once": true,
+    "title": "The Conversion of Aurelian McGoggin",
+    "body": "Young Aurelian McGoggin, the cleverest man in the province and the most exhausting, has taken to lecturing the Club right through the hot weather on his creed &mdash; no God, no soul, no free will, the whole apparatus of the universe reduced to a tidy pamphlet he has read twice and understood once. The older men grunt and endure it. Then, mid-sentence one stifling evening, the words simply desert him: the brain, over-driven in the heat, stops finding them at all.",
+    "choices": [
+      {
+        "label": "Pack him off on <b>immediate leave</b> before it is talked about.",
+        "effects": {
+          "contentment": 2,
+          "prestige": 1,
+          "health": -2,
+          "revenue": -1
+        },
+        "outcome": "You bundle the frightened young man up to the hills before the station can make a story of it, and rest and cool air give him back his speech and, mercifully, a portion of his humility. He returns a quieter creature who has met a limit he could not argue with, which is the only conversion the hot weather reliably performs."
+      },
+      {
+        "label": "<b>Let the lesson land</b> &mdash; say nothing, do nothing.",
+        "effects": {
+          "contentment": 1,
+          "prestige": -2,
+          "health": -1
+        },
+        "outcome": "You decline to rescue a bore from the workings of his own machinery, and the Club watches the great intellect grope, appalled and a little satisfied, after words the heat has confiscated. He recovers, chastened; the story follows him for years; and you reflect that cruelty and justice, out here, are frequently the same act seen from different chairs."
+      },
+      {
+        "label": "<b>Sit up with him</b> and talk him gently back to himself.",
+        "effects": {
+          "contentment": 2,
+          "health": -3,
+          "prestige": -1
+        },
+        "outcome": "You spend a bad night keeping a terrified young man company while his mind slowly refills, saying the small nothing-things that hold a person together and asking nothing of his celebrated philosophy, which has just been shown the door by a change in the weather. He never quite forgives you for seeing him so, and never quite forgets it either."
+      }
+    ],
+    "art": "scene-club"
+  },
+  {
+    "id": "wayside-comedy",
+    "tag": "PRIVATE",
+    "season": [
+      "hot"
+    ],
+    "kind": "club",
+    "once": true,
+    "title": "A Wayside Comedy",
+    "body": "Out at Kashima, walled in on every side by the Dosehri hills, five bored English people have been shut up together through the hot weather until the inevitable has happened: an entanglement, a jealousy, a wife and a husband and a friend who can none of them leave, and none of them any longer look one another in the eye. It threatens to become a scandal that will outlast the season, and the little station, having no one else, has appealed to you.",
+    "choices": [
+      {
+        "label": "Contrive an <b>official reason to transfer one</b> of them out.",
+        "effects": {
+          "order": 2,
+          "prestige": 1,
+          "health": -2,
+          "contentment": -1
+        },
+        "outcome": "You invent a posting, a survey, a suddenly indispensable duty forty miles off, and break the deadly little circle by removing one point of it. The scandal loses its shape for want of a stage; the transferred party understands exactly what has been done and why; and Kashima settles back into the merely unbearable."
+      },
+      {
+        "label": "Summon the parties and <b>demand that they behave</b>.",
+        "effects": {
+          "prestige": 1,
+          "order": 1,
+          "contentment": -3,
+          "health": -3
+        },
+        "outcome": "You call them in and read them, collectively, the riot act on discretion and duty, which they receive with the burning resentment of adults told to be sensible about the one thing sense cannot touch. They behave, outwardly, for a fortnight. The hot weather has months still to run, and the hills are not going anywhere."
+      },
+      {
+        "label": "<b>Leave them to it</b> &mdash; grown people, their own affair.",
+        "effects": {
+          "health": 2,
+          "prestige": -2,
+          "order": -2,
+          "contentment": -1
+        },
+        "outcome": "You decline to police the boredom of five marooned adults, and Kashima cooks its own small tragedy to a finish without your assistance. A marriage does not survive the season; the survivors never mention it again; and you are left wondering whether a word from you in July would have been meddling, or mercy."
+      }
+    ],
+    "art": "scene-club"
+  },
+  {
+    "id": "georgie-porgie",
+    "tag": "PRIVATE",
+    "season": [
+      "hot"
+    ],
+    "kind": "personal",
+    "once": true,
+    "title": "Georgie Porgie",
+    "body": "Young Gaythorne of the Settlement, posted alone up-country, took a Burmese girl into his house by the easy custom of the country, lived quietly and not unkindly with her for two contented years &mdash; and has now come back from his Home leave with an English bride who knows nothing whatever of any of it. The Burmese girl has walked three hundred miles to find him again. She is standing at his gate. The matter, being awkward, has been brought up to you.",
+    "choices": [
+      {
+        "label": "See the woman <b>decently provided for</b> and sent home with means.",
+        "effects": {
+          "contentment": 3,
+          "prestige": -2,
+          "health": -2,
+          "revenue": -1
+        },
+        "outcome": "You cannot give her back the two years or the man, but you can see that she goes home with money in her hand and her dignity uninsulted, and that Gaythorne pays for it whether it suits him or not. It is a poor, late, partial justice &mdash; the only kind the situation admits &mdash; and she takes it without one word, which is worse than any reproach."
+      },
+      {
+        "label": "Tell Gaythorne it is a <b>private matter</b> and withdraw.",
+        "effects": {
+          "prestige": 1,
+          "health": -3,
+          "contentment": -3
+        },
+        "outcome": "You decline to involve the district in a man&rsquo;s domestic arrangements and leave him to settle it himself, which he does in the meanest way available: a few rupees, a closed gate, an averted face. She stands outside it a long while, then walks back the way she came, and you have kept the rules and mislaid something you will not find a form for."
+      },
+      {
+        "label": "<b>Compel him to face her</b> before you and answer for it.",
+        "effects": {
+          "contentment": 2,
+          "prestige": -3,
+          "order": -1,
+          "health": -2
+        },
+        "outcome": "You make the wretched young man stand in your presence and account for himself to the woman he used, which mortifies everyone and mends nothing and is, you tell yourself, at least a refusal to let the thing pass in comfortable silence. The English bride learns more of her husband in ten minutes than the marriage will easily hold. Justice, of a raw kind, is done."
+      }
+    ]
+  },
+  {
+    "id": "william-famine",
+    "tag": "IMMEDIATE",
+    "season": [
+      "monsoon"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "William the Conqueror",
+    "body": "The relief camp on the southern border is feeding thousands whom the failed rains have driven north, and the little brown babies too young for grain are dying by the day for want of milk. Miss Martyn &mdash; a subaltern&rsquo;s sister, come up on no authority but her own nerve &mdash; has raised a goat-herd and a milk-kitchen and is saving the infants by the score, entirely outside the regulations and quite without anyone&rsquo;s permission. The Sanitary Commissioner has noticed, and disapproves.",
+    "choices": [
+      {
+        "label": "<b>Back her openly</b> and give the milk-kitchen every goat you can find.",
+        "effects": {
+          "contentment": 6,
+          "prestige": -3,
+          "health": -3
+        },
+        "econ": {
+          "treasury": -20000
+        },
+        "outcome": "You throw the district&rsquo;s whole weight behind an irregular young woman and her goats, and the babies live who would otherwise have filled a line in the mortality return. The Sanitary Commissioner writes a stiff note about untrained persons and unsanctioned expenditure; you file it under the sound of children not dying, which drowns it out entirely."
+      },
+      {
+        "label": "<b>Regularise her out of it</b> &mdash; proper staff, proper rules.",
+        "effects": {
+          "order": 2,
+          "prestige": 1,
+          "contentment": -4,
+          "health": -1
+        },
+        "outcome": "You thank Miss Martyn warmly for her spirit and replace her arrangement with a sanctioned one that arrives a fortnight later and works rather worse, because the rules were drafted by men who never once held a starving infant. The forms are now correct. The milk, for a fortnight, is not, and that week&rsquo;s return is longer than it needed to be."
+      },
+      {
+        "label": "Let her <b>carry on unofficially</b> and see nothing.",
+        "effects": {
+          "contentment": 4,
+          "prestige": -1,
+          "health": -2
+        },
+        "outcome": "You grant her the most valuable thing a magistrate owns &mdash; his studied blindness &mdash; and let the milk-kitchen run on nerve and goats and no paper at all. The babies live, the credit is hers and unrecorded, and if it ever goes wrong it will be you, not she, who cannot produce the sanction. You decide the babies are worth the exposure."
+      }
+    ]
+  },
+  {
+    "id": "imray",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "monsoon"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Return of Imray",
+    "body": "Imray, a competent and unremarkable officer, walked out of his bungalow one evening four months ago and was never seen again &mdash; gone Home, the station assumed, or gone mad, or gone up-country on a whim. Now, with the rains loosening the ceiling-cloth of the empty bungalow, a smell and then a certainty have brought the matter to your desk. Imray never left. His own servant killed him &mdash; because the sahib had idly admired the man&rsquo;s child, who sickened three days later and died, and a father&rsquo;s grief made its own terrible arithmetic.",
+    "choices": [
+      {
+        "label": "Try the servant by the <b>full process of the law</b>.",
+        "effects": {
+          "order": 3,
+          "prestige": 2,
+          "contentment": -2,
+          "health": -4
+        },
+        "outcome": "You give the thing its whole solemn machinery &mdash; charge, evidence, trial, the drop at dawn &mdash; for a man who murdered out of a love and a dread the court keeps no column for. The law is satisfied and the file is closed, and you are left with the servant&rsquo;s bewildered dignity in the dock, which does not close half so easily."
+      },
+      {
+        "label": "Have it <b>recorded quietly</b> and the man dealt with out of the glare.",
+        "effects": {
+          "order": 1,
+          "health": -3,
+          "prestige": -1,
+          "contentment": 1
+        },
+        "outcome": "You keep the horror out of the papers and the servant out of the public dock, and settle the matter by the older, quieter methods the district keeps for things it cannot afford to explain. Justice, of a sort, is done in the shadow where the Raj does much of its real work; and no memsahib in the station need learn how thin the wall is between the sahib and the man who brings his tea."
+      },
+      {
+        "label": "Sit a long while with <b>why the man did it</b> before you do anything.",
+        "effects": {
+          "health": -5,
+          "contentment": 2,
+          "prestige": -1
+        },
+        "outcome": "You send everyone away and read the thing slowly &mdash; the admired child, the fever, the servant&rsquo;s certainty that the sahib&rsquo;s praise was an evil eye &mdash; until you understand it, which helps no one and is perhaps the only tribute left to a murdered man and his murderer both. Then you rise, stiff and older, and set the machinery going regardless, because understanding is not a verdict the code accepts."
+      }
+    ]
+  },
+  {
+    "id": "muhammad-din",
+    "tag": "PRIVATE",
+    "season": [
+      "monsoon"
+    ],
+    "kind": "personal",
+    "once": true,
+    "title": "The Story of Muhammad Din",
+    "body": "Muhammad Din, the four-year-old son of your <i>khitmatgar</i>, has spent the whole season building his small kingdoms in the dust at the end of the garden &mdash; ramparts of pebbles and dead flowers about a broken soap-dish you once threw away and he received as treasure. He salaams to you gravely each evening. Now the rains have brought up the fever that takes the small ones first, and the Civil Surgeon, sent for at once, only shakes his head.",
+    "choices": [
+      {
+        "label": "Send your <b>own doctor</b> and whatever the household can do.",
+        "effects": {
+          "contentment": 2,
+          "health": -3,
+          "revenue": -1
+        },
+        "outcome": "You do everything a magistrate&rsquo;s house can do for a servant&rsquo;s child, which is more than most and not nearly enough, and for a few days the little architect of the garden seems to rally. Then the autumn takes him, as it takes so many, quietly, between one dawn and the next. His father is back at work the following week; neither of you finds anything to say; and the <i>mali</i> smooths the small ruined ramparts flat."
+      },
+      {
+        "label": "Leave it to <b>his own people</b> and their own remedies.",
+        "effects": {
+          "prestige": 1,
+          "health": -4,
+          "contentment": -2
+        },
+        "outcome": "You tell yourself it is not a sahib&rsquo;s place to interfere between a servant and his grief, and you keep to the office while the fever does its work down the garden. It is correct, and distant, and you find you cannot quite forgive yourself the correctness. The dust at the end of the garden is trodden smooth by the first man to cross it who does not know what it was."
+      },
+      {
+        "label": "Go yourself and <b>sit with the child and his father</b>.",
+        "effects": {
+          "contentment": 3,
+          "prestige": -2,
+          "health": -4
+        },
+        "outcome": "You cross the line every manual draws between the sahib and the servants&rsquo; quarters, and sit, useless and human, with a dying child and a breaking man, because there is nothing else to be done and it should not be done alone. It mends nothing; Muhammad Din dies before the rains end. But his father will carry all his life that the sahib came &mdash; and so, differently, will you."
+      }
+    ]
+  },
+  {
+    "id": "purun-bhagat",
+    "tag": "URGENT",
+    "season": [
+      "monsoon"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Warning of Purun Bhagat",
+    "body": "Above the hill village of Kotgarh a holy man &mdash; who was, before he took the begging-bowl, a Prime Minister of a Native State and no fool &mdash; sends down word in the third week of rain that the mountain itself is about to move, that the whole saturated slope will come down in the night, and that the village must climb to the shrine at once. The village looks to you. The Forest Officer says the old man is a mystic, and the slope has stood a thousand years.",
+    "choices": [
+      {
+        "label": "Order the village <b>up the hill on the hermit&rsquo;s word</b>.",
+        "condition": {
+          "meter": "prestige",
+          "op": ">=",
+          "value": 45
+        },
+        "ifTrue": {
+          "effects": {
+            "contentment": 5,
+            "order": 2,
+            "prestige": -3,
+            "health": -2
+          },
+          "outcome": "You back a naked ascetic against a trained forester and move a whole village uphill in the rain to sleep in a shrine on a rumour. In the black of the night the mountain comes down exactly where the houses stood, and the village lives because a former Prime Minister remembered how to read a hillside. Simla will note that you evacuated on the advice of a mendicant; the village will note that you listened."
+        },
+        "ifFalse": {
+          "effects": {
+            "contentment": 2,
+            "order": -1,
+            "prestige": -2,
+            "health": -4
+          },
+          "outcome": "Your order goes out, but a magistrate the hills do not much fear cannot shift a whole village uphill on the word of a naked ascetic, and half of them keep to their hearths out of doubt or stubbornness. The mountain comes down in the night and sorts the obedient from the sceptical with a terrible efficiency, and you learn that authority you have not banked cannot be drawn upon in the dark."
+        }
+      },
+      {
+        "label": "Trust the <b>Forest Officer</b> and leave the village where it stands.",
+        "effects": {
+          "prestige": 1,
+          "order": -1,
+          "contentment": -6,
+          "health": -5
+        },
+        "outcome": "You take the trained expert&rsquo;s view over the holy man&rsquo;s, as a rational administrator should, and the rational administrator is buried with the village he did not move. What comes down in the night takes the lower houses whole; the survivors climb to the shrine over ground you swore was safe; and the enquiry will find that you followed the proper advice, which will be true, and no comfort to anyone at all."
+      },
+      {
+        "label": "Move <b>what you can uphill</b> and hope for the best between.",
+        "effects": {
+          "contentment": 1,
+          "order": 1,
+          "health": -3,
+          "prestige": -1
+        },
+        "outcome": "You hedge: the low houses cleared, the upper ones left, a compromise struck with a mountain that does not deal in compromises. Some of the village sleeps safe and some does not, and the slip, when it comes, sorts them by an inch or two of geography and the exact line you happened to draw. You will redraw that line a thousand times in memory and never once know where it should have gone."
+      }
+    ]
+  },
+  {
+    "id": "suddhoo",
+    "tag": "CUTCHERRY",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": false,
+    "title": "In the House of Suddhoo",
+    "body": "Old Suddhoo, frantic for a son who lies sick in a distant city, is being emptied of his savings by the seal-cutter in the room below &mdash; a plausible rogue who performs nightly conjuring-tricks with a wax head and a brazier and sells the terrified old man &lsquo;magic&rsquo; to cure the boy. The fraud is transparent. It is also, maddeningly, no crime the code quite names: a man may sell superstition as freely as he sells sweets.",
+    "choices": [
+      {
+        "label": "<b>Frighten the seal-cutter out</b> with the law he has not quite broken.",
+        "effects": {
+          "order": 2,
+          "contentment": 2,
+          "prestige": 1,
+          "health": -2
+        },
+        "outcome": "You cannot charge the man with sorcery, so you charge him with the corner of the code he has genuinely soiled &mdash; intimidation, extortion, a hinted threat of poison &mdash; and make the district too warm to hold him. Suddhoo keeps what savings remain and none of his faith in you, for you have taken away the magic he had paid for and left him only the truth, which cures nothing."
+      },
+      {
+        "label": "Rule that <b>no offence is made out</b> and dismiss it.",
+        "effects": {
+          "prestige": 1,
+          "order": -1,
+          "contentment": -4,
+          "health": -2
+        },
+        "outcome": "You follow the law exactly to the edge of its competence and not one step further, and the edge falls well short of a broken old man being robbed by inches. The seal-cutter, vindicated, raises his prices. You have upheld the principle that the Raj does not legislate against folly, and watched it cost a man everything he had, which the principle does not mind in the least."
+      },
+      {
+        "label": "Wire the boy&rsquo;s <b>doctor in the other city</b> instead.",
+        "effects": {
+          "contentment": 3,
+          "health": -3,
+          "revenue": -1
+        },
+        "outcome": "You leave the seal-cutter to his tricks and attack the real disease from the far end, wiring a competent surgeon to see the son in fact rather than in wax. It is sideways, unofficial, and strictly no business of yours; and if the boy recovers, old Suddhoo will thank the magic and the seal-cutter and never you, which is exactly the right price for doing a decent thing quietly."
+      }
+    ],
+    "art": "scene-cutcherry"
+  },
+  {
+    "id": "his-chance",
+    "tag": "TELEGRAM",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "His Chance in Life",
+    "body": "The wire brings news from Tibasu, the little sub-station where no covenanted officer sits: a religious riot boiled up in the bazaar, and in the absence of any sahib it was Michele D&rsquo;Cruze &mdash; the mixed-race telegraph signaller, on half a clerk&rsquo;s pay and with no standing whatever &mdash; who put on nerve like a coat, called out the handful of police, faced down the mob, and held the town until it cooled. He stands now in your office, shaking a little, having discovered in one hour that he could rule. What is to be done with him is yours to decide.",
+    "choices": [
+      {
+        "label": "<b>Recommend him for real promotion</b> and say plainly what he did.",
+        "condition": {
+          "meter": "prestige",
+          "op": ">=",
+          "value": 55
+        },
+        "ifTrue": {
+          "effects": {
+            "contentment": 4,
+            "prestige": 1,
+            "order": 1,
+            "health": -1
+          },
+          "outcome": "You write him up, and your name at present carries just enough weight to push the thing past the Secretariat&rsquo;s quiet resistance. D&rsquo;Cruze is advanced &mdash; modestly, grudgingly, genuinely &mdash; and for once a man&rsquo;s single hour is entered in the record instead of buried under it. It is a small crack in a very large wall, and you made it."
+        },
+        "ifFalse": {
+          "effects": {
+            "contentment": 3,
+            "prestige": -2,
+            "order": 1,
+            "health": -1
+          },
+          "outcome": "You write the recommendation as strongly as you know how, and it goes up, and it dies the quiet death the Service keeps for inconvenient merit &mdash; noted, praised, and shelved. D&rsquo;Cruze never hears why; you have spent a little of your own standing on him and have only a filed minute to show for it; and the wall stands exactly as high as it did before."
+        }
+      },
+      {
+        "label": "Give him a <b>small reward</b> and return him to his key.",
+        "effects": {
+          "order": 1,
+          "prestige": 1,
+          "contentment": -3,
+          "health": -1
+        },
+        "outcome": "You commend him warmly, press a little money on him, and send him back to the telegraph office and the exact size of life the system keeps for men of his colour. He salutes and goes, and the nerve drains slowly out of him over the weeks until he is a signaller again, and the district learns nothing from the fact that for one afternoon its peace hung on a man it will not promote."
+      },
+      {
+        "label": "Post a <b>covenanted officer to Tibasu</b> and close the matter.",
+        "effects": {
+          "order": 2,
+          "prestige": 1,
+          "contentment": -2,
+          "health": -1
+        },
+        "outcome": "You treat the riot as a gap in the establishment rather than a fact about a man, and fill Tibasu with a proper sahib so the awkwardness cannot recur. It is sound administration and a small quiet burial: D&rsquo;Cruze&rsquo;s hour is entered nowhere, and the Service is spared the inconvenience of having been saved by the wrong sort of person."
+      }
+    ],
+    "art": "scene-city"
+  },
+  {
+    "id": "naboth",
+    "tag": "MINUTE",
+    "season": [
+      "any"
+    ],
+    "kind": "personal",
+    "once": false,
+    "title": "Naboth",
+    "body": "A beggar you once, in an idle moment of charity, allowed to sell sweetmeats at the foot of your garden has, over the months, put up a stall, then a shed, then a hut with a cooking-fire, then a second hut for a cousin, and now runs a small thriving establishment that occupies a whole corner of the compound as if by ancient and unquestionable right. He is grateful, respectful, and entirely immovable. It is a very small matter. It is also, you are beginning to see, a parable you are living inside.",
+    "choices": [
+      {
+        "label": "<b>Clear him out now</b>, firmly, before it grows any further.",
+        "effects": {
+          "order": 3,
+          "contentment": -3,
+          "prestige": -1,
+          "health": -1
+        },
+        "outcome": "You have the whole accretion swept away in a morning &mdash; stall, sheds, cooking-fire, and cousin &mdash; and the man goes without protest and with an air of gentle reproach that follows you about for weeks. You were entirely within your rights. You feel, unaccountably, like the villain of a story you did not mean to be in, which is the usual sensation of enforcing a perfectly just eviction."
+      },
+      {
+        "label": "<b>Let him stay</b> &mdash; it harms no one, and he is grateful.",
+        "effects": {
+          "contentment": 2,
+          "order": -2,
+          "prestige": -2,
+          "health": 1
+        },
+        "outcome": "You permit the little kingdom to stand, and it grows, quietly and inexorably, by the exact law that governs every tolerated encroachment from a garden-stall to an Empire. In a year it is a fixture no one recalls granting; in five it will have a claim at law; and you have learned, from a beggar and a sweetmeat-tray, precisely how the thing you serve was built."
+      },
+      {
+        "label": "Charge a <b>nominal rent</b> and make the arrangement official.",
+        "effects": {
+          "revenue": 1,
+          "order": 1,
+          "contentment": -1,
+          "health": -1
+        },
+        "outcome": "You regularise the encroachment into a tenancy, which is the administrator&rsquo;s reflex before every accomplished fact: if a thing cannot be removed, tax it and call it policy. The man pays his few annas gladly, having got a corner of the compound for the price of a formality, and you have converted a charity into a revenue and a weakness into a system, which is either statesmanship or surrender and is, on the whole, probably both."
+      }
+    ]
+  }
+]

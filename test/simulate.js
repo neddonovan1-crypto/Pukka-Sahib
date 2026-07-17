@@ -13,8 +13,16 @@ var COLLAPSE = ["breakdown", "riot", "scandal", "bankrupt"];
 /* ---- policies ---- */
 function scoreChoice(ch, s) {
   var e = ch.effects || {};
-  var sc = (e.prestige || 0) + (e.contentment || 0) * 0.55 + (e.revenue || 0) * 0.5 + (e.order || 0) * 0.5;
+  // Prestige is the honours currency, so an honours-hunter values it above all;
+  // contentment is chased only until it stops earning (past ~60 it merely risks
+  // the "gone native" trap), and any meter near the floor is defended hard.
+  var contWeight = s.meters.contentment > 60 ? 0.15 : 0.4;
+  var sc = (e.prestige || 0) * 1.25 + (e.contentment || 0) * contWeight +
+    (e.revenue || 0) * 0.5 + (e.order || 0) * 0.45;
   if (s.meters.health < 45) sc += (e.health || 0) * 2;
+  ["order", "revenue", "prestige"].forEach(function (m) {
+    if (s.meters[m] < 35) sc += (e[m] || 0) * 1.5; // shore up whatever is about to collapse
+  });
   if (ch.econ && ch.econ.debt) sc -= ch.econ.debt / 40000;
   return sc;
 }
