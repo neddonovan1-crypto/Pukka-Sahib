@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pukka Sahib — a district-management vertical slice</title>
+<style>
+  :root{
+    --ink:#2b241a; --paper:#efe6d2; --paper2:#e4d8bd; --line:#c9b78d;
+    --accent:#7a2e26; --gold:#8a6d2f; --good:#3f6b47; --bad:#8a3227;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    color:var(--ink); background:var(--paper);
+    background-image:radial-gradient(rgba(120,90,40,.06) 1px,transparent 1px);
+    background-size:4px 4px;
+    display:flex; min-height:100vh; align-items:flex-start; justify-content:center;
+    padding:24px 14px 60px;
+  }
+  .frame{width:100%; max-width:720px}
+  header{text-align:center; margin-bottom:18px}
+  h1{font-size:2.1rem; margin:0; letter-spacing:.04em}
+  .sub{font-style:italic; color:#6b5a3c; margin-top:4px; font-size:.95rem}
+  .meters{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:18px 0;
+  }
+  .meter{background:var(--paper2); border:1px solid var(--line); border-radius:6px;
+    padding:8px 6px; text-align:center}
+  .meter .name{font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; color:#6b5a3c}
+  .meter .bar{height:7px; background:#d4c39a; border-radius:4px; margin:6px 0 4px; overflow:hidden}
+  .meter .fill{height:100%; width:50%; background:var(--gold); transition:width .4s ease}
+  .meter .val{font-size:.82rem; font-weight:bold}
+  .meter.pulse{animation:pulse .5s}
+  @keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+  .card{
+    background:var(--paper2); border:1px solid var(--line);
+    border-radius:8px; padding:22px 22px 18px; box-shadow:0 2px 0 rgba(120,90,40,.15);
+  }
+  .turnline{display:flex; justify-content:space-between; font-size:.8rem;
+    color:#6b5a3c; margin-bottom:12px; letter-spacing:.03em}
+  .cardtitle{font-size:1.25rem; margin:0 0 10px; color:var(--accent)}
+  .body{font-size:1rem; line-height:1.55; margin-bottom:18px}
+  .choices{display:flex; flex-direction:column; gap:10px}
+  button.choice{
+    text-align:left; font-family:inherit; font-size:.98rem; color:var(--ink);
+    background:var(--paper); border:1px solid var(--line); border-radius:6px;
+    padding:12px 14px; cursor:pointer; transition:.15s; line-height:1.4;
+  }
+  button.choice:hover{background:#fff; border-color:var(--gold); transform:translateX(2px)}
+  .outcome{font-style:italic; margin:14px 0 6px; line-height:1.5; color:#4a3d29}
+  .deltas{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+  .delta{font-size:.78rem; padding:2px 8px; border-radius:10px; background:var(--paper)}
+  .delta.up{color:var(--good); border:1px solid var(--good)}
+  .delta.down{color:var(--bad); border:1px solid var(--bad)}
+  .next{margin-top:16px; text-align:right}
+  button.primary{
+    font-family:inherit; font-size:.95rem; background:var(--accent); color:var(--paper);
+    border:none; border-radius:6px; padding:10px 20px; cursor:pointer; letter-spacing:.03em;
+  }
+  button.primary:hover{background:#912f26}
+  .ending{text-align:center}
+  .ending h2{color:var(--accent); font-size:1.6rem; margin-bottom:6px}
+  .ending .verdict{font-style:italic; line-height:1.6; margin:14px 0}
+  footer{text-align:center; font-size:.72rem; color:#8a785a; margin-top:26px}
+</style>
+</head>
+<body>
+<div class="frame">
+  <header>
+    <h1>Pukka Sahib</h1>
+    <div class="sub">District Magistrate &amp; Collector, Chhota Nagra &mdash; being a vertical slice</div>
+  </header>
+
+  <div class="meters" id="meters"></div>
+
+  <div class="card" id="card"></div>
+
+  <footer>Prototype build &middot; one fortnight per turn &middot; survive the posting</footer>
+</div>
+
+<script>
+/* ---------- state ---------- */
+const METERS = [
+  {key:"revenue",     name:"Revenue"},
+  {key:"order",       name:"Order"},
+  {key:"prestige",    name:"Prestige"},
+  {key:"contentment", name:"Contentment"},
+  {key:"composure",   name:"Composure"},
+];
+const MAX_TURNS = 24;
+let S, deck, turn, current;
+
+function init(){
+  S = {revenue:50, order:55, prestige:50, contentment:45, composure:60, flags:{}};
+  turn = 1;
+  deck = shuffle(EVENTS.filter(e=>!e.once)).concat(EVENTS.filter(e=>e.once));
+  drawNext();
+}
+
+/* Fisher–Yates without Date/Math.random dependence on time */
+function shuffle(a){
+  a = a.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+/* ---------- meter rendering ---------- */
+function renderMeters(pulseKeys){
+  const el = document.getElementById("meters");
+  el.innerHTML = "";
+  METERS.forEach(m=>{
+    const v = clamp(S[m.key]);
+    const col = v<25 ? "var(--bad)" : v>70 ? "var(--good)" : "var(--gold)";
+    const d = document.createElement("div");
+    d.className = "meter" + (pulseKeys && pulseKeys.includes(m.key) ? " pulse":"");
+    d.innerHTML =
+      `<div class="name">${m.name}</div>
+       <div class="bar"><div class="fill" style="width:${v}%;background:${col}"></div></div>
+       <div class="val">${v}</div>`;
+    el.appendChild(d);
+  });
+}
+function clamp(v){return Math.max(0,Math.min(100,Math.round(v)));}
+
+/* ---------- turn flow ---------- */
+function drawNext(){
+  // check collapse first
+  const dead = collapseCheck();
+  if(dead){ return showEnding(dead); }
+  if(turn > MAX_TURNS){ return showEnding(finalVerdict()); }
+
+  // find next eligible card
+  let idx = deck.findIndex(e => eligible(e));
+  if(idx === -1){ // reshuffle repeatables if we run dry
+    deck = shuffle(EVENTS.filter(e=>!e.once && eligible(e)));
+    idx = 0;
+  }
+  current = deck.splice(idx,1)[0];
+  renderMeters();
+  renderCard(current);
+}
+
+function eligible(e){
+  if(e.once && S.flags[e.id]) return false;
+  if(e.requires && !e.requires(S)) return false;
+  return true;
+}
+
+function renderCard(e){
+  const c = document.getElementById("card");
+  c.innerHTML =
+    `<div class="turnline"><span>Fortnight ${turn} of ${MAX_TURNS}</span><span>${e.tag||"District business"}</span></div>
+     <h3 class="cardtitle">${e.title}</h3>
+     <div class="body">${e.body}</div>
+     <div class="choices"></div>`;
+  const box = c.querySelector(".choices");
+  e.choices.forEach((ch,i)=>{
+    const b = document.createElement("button");
+    b.className="choice";
+    b.innerHTML = ch.label;
+    b.onclick = ()=>resolve(e,ch);
+    box.appendChild(b);
+  });
+}
+
+function resolve(e,ch){
+  if(e.once) S.flags[e.id]=true;
+  const eff = typeof ch.effects === "function" ? ch.effects(S) : ch.effects;
+  const pulsed = [];
+  for(const k in eff){ S[k]=clamp(S[k]+eff[k]); pulsed.push(k); }
+  if(ch.setFlags) ch.setFlags.forEach(f=>S.flags[f]=true);
+  renderMeters(pulsed);
+
+  const c = document.getElementById("card");
+  const deltas = Object.entries(eff).map(([k,v])=>{
+    const nm = METERS.find(m=>m.key===k).name;
+    const cls = v>=0?"up":"down";
+    return `<span class="delta ${cls}">${nm} ${v>0?"+":""}${v}</span>`;
+  }).join("");
+  c.innerHTML +=
+    `<div class="outcome">${typeof ch.outcome==="function"?ch.outcome(S):ch.outcome}</div>
+     <div class="deltas">${deltas}</div>
+     <div class="next"><button class="primary" id="cont">Continue &rarr;</button></div>`;
+  c.querySelectorAll(".choice").forEach(b=>{b.disabled=true;b.style.opacity=.5;b.onclick=null;});
+  document.getElementById("cont").onclick = ()=>{ turn++; drawNext(); };
+}
+
+/* ---------- endings ---------- */
+function collapseCheck(){
+  if(S.composure<=0) return ENDINGS.breakdown;
+  if(S.order<=0)     return ENDINGS.riot;
+  if(S.prestige<=0)  return ENDINGS.scandal;
+  if(S.revenue<=0)   return ENDINGS.bankrupt;
+  return null;
+}
+function finalVerdict(){
+  const {revenue,order,prestige,contentment,composure}=S;
+  if(contentment>=65 && prestige<45) return ENDINGS.gonenative;
+  if(prestige>=65 && revenue>=60)    return ENDINGS.honours;
+  if(prestige<40 || order<40)        return ENDINGS.scandal;
+  return ENDINGS.transfer;
+}
+function showEnding(end){
+  renderMeters();
+  const c = document.getElementById("card");
+  c.className="card ending";
+  c.innerHTML =
+    `<div class="turnline"><span>The posting ends &mdash; fortnight ${Math.min(turn,MAX_TURNS)}</span><span>Despatch to Simla</span></div>
+     <h2>${end.title}</h2>
+     <div class="verdict">${end.text}</div>
+     <div class="next" style="text-align:center">
+       <button class="primary" onclick="location.reload()">Take up a new posting</button>
+     </div>`;
+}
+
+/* ---------- content ---------- */
+const ENDINGS = {
+  honours:{title:"The K.C.I.E.",
+    text:"You are promoted to Commissioner, mentioned in despatches, and permitted to add letters to your name. You have learned nothing, and you will go far. Chhota Nagra is already forgetting you, which is the highest compliment it knows how to pay."},
+  transfer:{title:"The Quiet Transfer",
+    text:"You are moved to a district even smaller and hotter than this one. No enquiry, no honours, no explanation. This is the Service's way of forgetting a man without the paperwork of dismissing him."},
+  scandal:{title:"The Scandal",
+    text:"A question is asked in the wrong quarter, a file is opened, and your name travels to London faster than you ever will. You are recalled. At the Club, the subscription list quietly loses your name between one week and the next."},
+  breakdown:{title:"Invalided Home",
+    text:"You are put aboard a P&amp;O steamer &lsquo;on grounds of health,&rsquo; which is true in the way that all the best official lies are true. The heat, they will say. It is always the heat. You will not come back."},
+  riot:{title:"A Commission of Enquiry",
+    text:"The lathi-charge does not go as the sub-inspector promised. A crowd becomes a headline; a headline becomes a Commission. You spend your last weeks in Chhota Nagra composing a version of events that no one, including you, believes."},
+  bankrupt:{title:"The Empty Treasury",
+    text:"The revenue does not come in, and an Empire runs on revenue coming in. Lala Hukum Chand holds the district's debts and, it emerges, a good deal of yours. You are relieved of a post you could no longer afford to hold."},
+  gonenative:{title:"Gone Native",
+    text:"You resign, in terms the Commissioner calls &lsquo;intemperate&rsquo; and Pandit Girdhari calls &lsquo;a beginning.&rsquo; You are henceforth spoken of as a man who let the side down. It is the only ending this district will remember with anything like affection."},
+};
+
+const EVENTS = [
+  {id:"bull", once:false, tag:"A petition", title:"The Matter of the Sacred Bull",
+   body:"Sub-Inspector Diwan Chand petitions, with immense dignity, that a Brahminy bull &mdash; holy, enormous, and wholly above the law &mdash; has for the third time eaten the marigolds he had grown for the flower show. He requests that the bull be, in his words, &lsquo;officially discouraged.&rsquo;",
+   choices:[
+     {label:"Solemnly issue a written order that the bull be <b>kept off official flowerbeds</b>.",
+      effects:{prestige:-1,contentment:+3,composure:-2},
+      outcome:"The order is framed and hung in the police lines. The bull cannot read it. Everyone is nonetheless satisfied that Something Has Been Done."},
+     {label:"Have the bull quietly <b>relocated</b> to a distant village.",
+      effects:{order:-4,contentment:-6,composure:+1},
+      outcome:"The village it is relocated to takes the arrival of a holy bull as an omen, and a deputation arrives within the week to ask what they have done to deserve it."},
+     {label:"Refuse to involve the district administration in <b>bovine theology</b>.",
+      effects:{prestige:+2,contentment:-3,composure:+2},
+      outcome:"Correct, dignified, and entirely useless. Diwan Chand's marigolds are eaten a fourth time. He does not forgive you, but he does respect you, which is worse."}]},
+
+  {id:"club", once:false, tag:"The Club", title:"The Billiards Subscription",
+   body:"An extraordinary meeting of the Chhota Nagra Club is convened over a proposal to raise the billiards subscription by four annas. Mrs. Fortescue-Vane is <i>for</i>. Major Collector Prewitt is violently <i>against</i>. Both look to you, the new Magistrate, to settle a question that has already ended two friendships.",
+   choices:[
+     {label:"Side with <b>Mrs. Fortescue-Vane</b>. One does not cross her.",
+      effects:{prestige:+4,contentment:-1,composure:-3},
+      outcome:"You are now, invisibly and permanently, Mrs. Fortescue-Vane's man. This is worth more than a knighthood and costs roughly the same in dignity."},
+     {label:"Side with <b>Major Prewitt</b> and the principle of the thing.",
+      effects:{prestige:-4,composure:+1},
+      outcome:"The Major shakes your hand as though you have relieved Mafeking. Mrs. Fortescue-Vane says nothing at all, which is how you know."},
+     {label:"Propose a <b>sub-committee</b> to study the matter.",
+      effects:{prestige:+1,composure:-2},
+      outcome:"You have discovered the single most powerful instrument of British administration: the postponement of a decision until everyone has forgotten why they cared."}]},
+
+  {id:"revenue-settle", once:false, tag:"Telegram from Simla", title:"The Revenue Is Short",
+   body:"A telegram from Commissioner Blyth-Curram, who communicates exclusively in telegrams and disappointment: REVENUE RETURNS CHHOTA NAGRA UNSATISFACTORY STOP EXPECT IMPROVEMENT STOP NO EXCUSES REGARDING RAINFALL WILL BE ENTERTAINED STOP. The rains, it should be said, have failed.",
+   choices:[
+     {label:"<b>Press the collection</b> hard. Simla wants numbers.",
+      effects:{revenue:+10,contentment:-9,order:-4},
+      outcome:"The numbers improve. So does the queue outside Lala Hukum Chand's door, as cultivators borrow at ruinous interest to pay a revenue the fields did not grow."},
+     {label:"Quietly grant <b>remissions</b> and massage the paperwork.",
+      effects:{revenue:-4,contentment:+7,prestige:-3},
+      outcome:"You have committed the administrator's original sin: mercy off the books. If it is never discovered you are a good officer. If it is, you are a bad one. The difference is entirely a matter of discovery."},
+     {label:"Send Simla a <b>magnificent report</b> explaining the rainfall.",
+      effects:{prestige:-5,composure:+3},
+      outcome:"Blyth-Curram replies: RAINFALL NOTED STOP REVENUE STILL SHORT STOP. You have learned that a telegram is not a conversation."}]},
+
+  {id:"congress", once:false, tag:"Intelligence report", title:"Pandit Girdhari Holds a Meeting",
+   body:"Pandit Girdhari Lal, pleader and Congress man, proposes to address a public meeting on the subject of the salt tax, self-rule, and &mdash; the intelligence report notes with alarm &mdash; &lsquo;the general condition of things.&rsquo; It is entirely peaceful. It is also entirely legal. Both facts are considered a nuisance.",
+   choices:[
+     {label:"<b>Ban the meeting</b> under Section 144. Order is order.",
+      effects:{order:+3,contentment:-8,prestige:+2,composure:-3},
+      outcome:"The meeting does not happen. The <i>reason</i> it did not happen is now a far more effective piece of Congress propaganda than the meeting could ever have been. The Pandit sends you a note of thanks. You suspect he is not joking."},
+     {label:"<b>Permit it</b>, and send a clerk to take dull notes.",
+      effects:{order:-2,contentment:+5,prestige:-3},
+      outcome:"Nothing happens. Speeches are made, the crowd disperses for tea, and the whole apparatus of sedition proves to run, like everything else here, on the assumption that it will be tolerated."},
+     {label:"<b>Attend personally</b> and sit in the front row.",
+      effects:{prestige:-2,contentment:+4,composure:-4,order:+1},
+      outcome:"Your presence is so unexpected that the Pandit revises his speech on the spot to be scrupulously polite. You understand perhaps one word in five, and both of you leave convinced you have won."}]},
+
+  {id:"moneylender", once:false, tag:"A social call", title:"Lala Hukum Chand Pays a Call",
+   body:"Lala Hukum Chand &mdash; moneylender, landholder, and the man to whom most of the district is quietly mortgaged &mdash; calls to pay his respects. He brings a basket of remarkable mangoes and mentions, in passing and with great delicacy, that a certain land dispute might be settled &lsquo;to everyone's satisfaction&rsquo; with a word from your court.",
+   choices:[
+     {label:"Accept the mangoes; <b>ignore the hint</b>.",
+      effects:{prestige:+1,composure:-1,contentment:+1},
+      outcome:"You have eaten the mangoes and taken none of the meaning, which the Lala finds both admirable and slightly stupid. He will try again, better, later."},
+     {label:"<b>Decline the mangoes</b> and the man, coldly.",
+      effects:{prestige:+3,revenue:-3,composure:-2},
+      outcome:"Incorruptible and lonely. The Lala's money oils every wheel in the district, and you have just introduced a little sand. Things will run slower now, and you will not know why."},
+     {label:"Have the mangoes; drop a <b>helpful word</b> in court.",
+      effects:{revenue:+6,contentment:-5,prestige:-4,composure:-3,order:+1},setFlags:["indebted"],
+      outcome:"The dispute is settled to the Lala's satisfaction. You are now, in a small and deniable way, his. It is astonishing how light the first thread feels."}]},
+
+  {id:"mukherjee", once:false, tag:"The office", title:"Deputy Collector Mukherjee Is Right Again",
+   body:"Sub-Deputy Collector Mukherjee &mdash; your Indian deputy, Cambridge-educated, visibly cleverer than you, and far too well-mannered to say so &mdash; points out, very gently, that the drainage scheme you approved yesterday will flood the very quarter it was meant to protect. He is, of course, correct.",
+   choices:[
+     {label:"<b>Thank him</b> publicly and change the scheme.",
+      effects:{contentment:+5,prestige:-3,composure:+2},
+      outcome:"The scheme is fixed. The clerks note that the Magistrate takes correction from an Indian officer, and file the observation somewhere it may one day be useful to somebody."},
+     {label:"Change the scheme; <b>take the credit</b> yourself.",
+      effects:{prestige:+2,composure:-4,contentment:+3},
+      outcome:"The quarter stays dry and your reputation stays high. Mukherjee says nothing, and remembers everything, and remains more competent than you, which is the one thing you cannot fix."},
+     {label:"<b>Overrule him</b>. A sahib does not reverse himself before the office.",
+      effects:{prestige:+1,contentment:-8,order:-3,composure:-2},
+      outcome:"The quarter floods on schedule. You were right about appearances and wrong about drainage, and the water does not care which."}]},
+
+  {id:"tiger", once:false, tag:"A deputation", title:"The Tiger of Rampur",
+   body:"Villagers from Rampur report a tiger that has taken two goats and a good deal of sleep. They ask the Magistrate-sahib, as tradition demands, to shoot it. You have fired a rifle four times in your life, twice by accident. The whole district is, however, watching to see whether the new sahib is a <i>shikari</i> or a clerk.",
+   choices:[
+     {label:"<b>Go out and shoot it</b> yourself. It is expected.",
+      effects:(S)=> (S.composure>40 ? {prestige:+8,contentment:+5,composure:-6} : {prestige:-6,order:-3,composure:-8}),
+      outcome:(S)=> (S.composure>34 ? "By a miracle compounded of luck and a very close range, the tiger falls. You are, from this fortnight, a <i>pukka</i> sahib in the fullest sense. You are also never going to do that again." : "Your nerves, already frayed, betray you. The tiger escapes; the story does not. A magistrate who cannot shoot straight is a magistrate the district has quietly stopped fearing."),},
+     {label:"Send for a <b>professional shikari</b> from the next district.",
+      effects:{revenue:-3,contentment:+2,prestige:-4},
+      outcome:"The tiger is dealt with, efficiently and by somebody else. Rampur is grateful and faintly disappointed. A sahib who sends for help is a useful sort of man, but not a legend."},
+     {label:"Declare it a matter for the <b>Forest Department</b>.",
+      effects:{prestige:-5,contentment:-6,composure:+2,order:-2},
+      outcome:"Correct procedure. The Forest Department will attend to the tiger in the fullness of time, by which the tiger and everyone in Rampur understand: never."}]},
+
+  {id:"whisky", once:false, tag:"The bungalow", title:"The Long Evening",
+   body:"It is nine o'clock, the punkah has stopped because the punkah-wallah has fallen asleep, and you are alone in a bungalow the size of a barn with a bottle of Scotch and eleven hundred miles between you and anyone who knew you before India. The bottle, at least, is company.",
+   choices:[
+     {label:"Pour a <b>large one</b>. And another. It is that or the silence.",
+      effects:{composure:+8,prestige:-2,order:-1},
+      outcome:"The evening softens. So, over the months, does something else. This is how the district's more famous ruins began &mdash; not with a scandal, but with a nightcap that grew steadily larger and started earlier."},
+     {label:"Pour a <b>small one</b> and write letters home you won't post.",
+      effects:{composure:+3,contentment:+1},
+      outcome:"You describe a India that does not exist to people who would not understand the one that does. It helps. The unsent letters go in the drawer with the others."},
+     {label:"<b>Go to bed sober</b> and lie awake in the heat.",
+      effects:{composure:-3,prestige:+1},
+      outcome:"Virtue, and the ceiling, keep you company until two. In the morning you are correct, upright, and hollow-eyed, which the office takes for dedication."}]},
+
+  {id:"famine", once:true, tag:"CRISIS", title:"The Rains Have Failed",
+   body:"There is no rain, and there will be no rain, and the district knows what that word means better than any word in the revenue code. Grain prices climb; the first families sell their cooking pots; a relief works could be opened, but relief works cost money the treasury does not have and Simla did not budget for.",
+   choices:[
+     {label:"<b>Open relief works</b> at once and account for it later.",
+      effects:{contentment:+12,revenue:-14,order:+4,composure:-4},setFlags:["relief"],
+      outcome:"Grain-for-labour on the roads and tanks. People do not starve, which no one will thank you for, because averted disasters leave no monument. The treasury, however, remembers."},
+     {label:"Wait for <b>sanction from Simla</b> before spending a rupee.",
+      effects:{contentment:-16,order:-8,prestige:+2,composure:-6},
+      outcome:"You follow procedure exactly. Sanction arrives in six weeks, which is four weeks after it would have mattered. The files are impeccable. The district is not."},
+     {label:"Lean on <b>Lala Hukum Chand</b> to release grain on credit.",
+      effects:{contentment:+6,revenue:-2,prestige:-3,order:+2},setFlags:["indebted"],
+      outcome:"The grain flows, at the Lala's interest and on the Lala's terms, and the district's debt to him deepens by a generation. You have solved this famine with a promise the next one will have to keep."}]},
+
+  {id:"inspection", once:true, tag:"RECKONING", title:"The Commissioner Inspects",
+   body:"Commissioner Blyth-Curram descends upon Chhota Nagra in person, walrus-moustached and radiating grievance, to inspect the district, the treasury, the lock-up, and you. He will form an opinion in the first ten minutes and spend the visit confirming it. The whole station has been whitewashed, including, it is rumoured, several things that were not walls.",
+   choices:[
+     {label:"Show him a <b>flawless, rehearsed</b> district.",
+      effects:{prestige:+7,composure:-6,contentment:-2},
+      outcome:"Every ledger balances, every prisoner is suspiciously cheerful, every road has been mended along precisely the stretch he will drive. He leaves satisfied. The performance has cost you a fortnight and a small piece of your soul, both of which the Service considers a fair price."},
+     {label:"Show him the <b>real district</b>, warts and all.",
+      effects:{prestige:-5,contentment:+3,composure:+2,revenue:+2},
+      outcome:"You show him the flooded quarter, the short revenue, the honest mess of the thing. He is appalled by your candour and, in a corner of his walrus heart he will never admit to, faintly impressed. It will not help your career. It may help you sleep."},
+     {label:"Ply him with the Club's <b>best brandy</b> and change the subject.",
+      effects:{prestige:+3,composure:-3,revenue:-2,order:-1},
+      outcome:"By the second brandy he is telling you about his own first district; by the third, the inspection is effectively over. You have learned that the Empire, at its highest levels, runs substantially on the avoidance of awkwardness."}]},
+
+  {id:"plague", once:true, tag:"CRISIS", title:"Fever in the Bazaar",
+   body:"A fever &mdash; the Civil Surgeon says cholera, the bazaar says worse &mdash; appears in the crowded lanes behind the grain market. The Surgeon wants the quarter cordoned and the wells closed. The traders want the market open. The pilgrims want to keep moving. Everyone wants you to choose, so that there will be someone to blame.",
+   choices:[
+     {label:"<b>Cordon the quarter</b> and close the wells. Public health first.",
+      effects:{order:-5,contentment:-6,composure:-3,prestige:+3},
+      outcome:"The fever is contained; the trade is throttled; the traders write to Simla about the high-handed young Magistrate. You saved lives and made enemies, and only one of those two things generates correspondence."},
+     {label:"<b>Keep the market open</b> and hope the Surgeon is exaggerating.",
+      effects:{revenue:+4,contentment:+2,order:-8,composure:-6},
+      outcome:"The market thrives for eleven days. On the twelfth, the Surgeon is proved right in the way that surgeons are proved right, and the cordon you refused to order becomes a cordon you cannot make wide enough."},
+     {label:"Split the difference: <b>cordon quietly</b>, keep up appearances.",
+      effects:{order:-3,contentment:-2,composure:-4,prestige:+1},
+      outcome:"You do half of what the Surgeon asked and claim to have done all of it and none of it, depending on the audience. The fever, indifferent to your positioning, does slightly less than its worst."}]},
+
+  {id:"memsahib", once:false, tag:"The Club", title:"A Question of Precedence",
+   body:"At the Club's cold-weather ball, a furious dispute erupts over the order of precedence at dinner &mdash; specifically, whether the Executive Engineer's wife outranks the Forest Officer's wife. It is, everyone agrees, a trivial matter. It is also, everyone understands, a matter that could poison the entire station for a season.",
+   choices:[
+     {label:"Rule <b>strictly by the Warrant of Precedence</b>.",
+      effects:{prestige:+3,composure:-1},
+      outcome:"You produce the actual Warrant of Precedence, an object roughly as sacred here as scripture, and settle the matter by the book. Both wives are furious, but at the book, which cannot be invited to dinner or snubbed at it."},
+     {label:"<b>Seat them apart</b> and pretend it was always so.",
+      effects:{prestige:+1,composure:-3,contentment:+1},
+      outcome:"A little diplomatic fiction, gracefully deployed. The ball proceeds. You have discovered that the skills of a District Magistrate and the skills of a nervous head waiter are, at the Club, precisely identical."},
+     {label:"Declare you <b>will not adjudicate</b> the seating of a dinner.",
+      effects:{prestige:-4,composure:+3},
+      outcome:"Principled, and a grave misreading of the room. At a frontier station the seating of a dinner <i>is</i> the government. By declining to rule, you have not risen above the station's politics; you have merely lost them."}]},
+
+  {id:"prisoner", once:false, tag:"The court", title:"The Case of the Stolen Buffalo",
+   body:"A cultivator stands accused of stealing his neighbour's buffalo. The evidence is a tangle of perjury on both sides, the village is split, and the truth &mdash; that the buffalo wandered and both men are lying about the rest &mdash; is not available in any form the law can use. Both families are watching your face for the verdict.",
+   choices:[
+     {label:"Convict on the <b>letter of the evidence</b>.",
+      effects:{order:+3,contentment:-4,composure:-2},
+      outcome:"You convict the man the paperwork points to, who is probably guilty of something, if not this. The law is served. Justice files no return and is not consulted."},
+     {label:"<b>Acquit</b> for reasonable doubt and return the buffalo.",
+      effects:{contentment:+3,order:-2,composure:+1},
+      outcome:"You cut the knot: doubt to the accused, buffalo to its likely owner, a small homily to both families. Nobody is fully satisfied, which in a village dispute is the surest sign of a fair result."},
+     {label:"<b>Bind both parties over</b> and make them share the beast.",
+      effects:{contentment:+4,prestige:-2,composure:-1,order:+1},
+      outcome:"Solomon in a solar topi. The two families are bound to joint custody of one bad-tempered buffalo, an arrangement so mutually inconvenient that they are reconciled by the shared grievance within the year."}]},
+
+  {id:"telegram2", once:false, tag:"Telegram from Simla", title:"A New Form Is Required",
+   body:"Simla, in its wisdom, introduces Form XIV-B, to be completed in quintuplicate, recording the caste, occupation, and &lsquo;general disposition&rsquo; of every petitioner appearing before the court. Ram Autar, your head clerk, lays it before you with the particular stillness he reserves for orders that are both compulsory and insane.",
+   choices:[
+     {label:"<b>Implement it fully.</b> An order is an order.",
+      effects:{prestige:+3,contentment:-4,composure:-5},
+      outcome:"The office vanishes beneath quintuplicate. Justice slows to the speed of carbon paper. Simla, receiving its forms on time, concludes that Chhota Nagra is a model of efficiency, which is the exact opposite of the truth and precisely what the forms were designed to produce."},
+     {label:"Have Ram Autar <b>fill them in plausibly</b> and file the rest.",
+      effects:{composure:+4,contentment:+2,prestige:-1},setFlags:["ramautar_trust"],
+      outcome:"Ram Autar's face does not move, but something in the office relaxes. A quiet compact is formed: he will manufacture the paperwork the Empire requires, and you will not ask how. It is the most useful alliance you will make in India."},
+     {label:"Write to Simla <b>objecting</b> to Form XIV-B on principle.",
+      effects:{prestige:-4,composure:-2},
+      outcome:"You receive Form XIV-B-1, a supplementary form on which to record objections to Form XIV-B. The machine has met your resistance and grown a new part to digest it."}]},
+
+  {id:"ramautar", once:true, tag:"The office", title:"Ram Autar Has a Nephew",
+   requires:(S)=>S.flags.ramautar_trust,
+   body:"Ram Autar, your invaluable head clerk, mentions with exquisite indirection that his sister's son is a promising young man in want of a clerkship, and that a vacancy happens to exist in the tahsil office. Everything Ram Autar does for you depends on a web of exactly such small arrangements. So, you are beginning to realise, does everything.",
+   choices:[
+     {label:"<b>Appoint the nephew.</b> Ram Autar has earned it.",
+      effects:{composure:+3,contentment:+1,prestige:-2,order:+1},
+      outcome:"The nephew is appointed and turns out to be perfectly competent, which is not the point. The point is that you now understand how the district is actually staffed, and that the answer has nothing to do with the rules and everything to do with Ram Autar."},
+     {label:"<b>Insist on open competition</b> for the post.",
+      effects:{prestige:+2,composure:-4,order:-2},
+      outcome:"You hold a fair examination, which the nephew wins anyway, having been the only serious candidate Ram Autar permitted to apply. You have upheld a principle and changed nothing, at some cost to a friendship you could not afford to spend."}]},
+];
+
+/* ---------- go ---------- */
+init();
+</script>
+</body>
+</html>
