@@ -191,12 +191,25 @@
     font-family:"Courier New",Courier,monospace; font-size:.62rem; letter-spacing:.09em;
     text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; text-align:center;
   }
-  .ending .record ul{list-style:none; margin:0; padding:0}
-  .ending .record li{margin:0 0 12px; padding-left:12px; border-left:2px solid var(--line)}
-  .ending .record li:last-child{margin:0}
+  
+  .rec{border-top:1px dotted var(--line)}
+  .rec:first-of-type{border-top:none}
+  .rec > summary{
+    list-style:none; cursor:pointer; padding:10px 4px 10px 22px; position:relative;
+  }
+  .rec > summary::-webkit-details-marker{display:none}
+  .rec > summary::before{
+    content:"\25B8"; position:absolute; left:4px; top:10px; color:var(--seal);
+    transition:transform .15s; font-size:.8rem;
+  }
+  .rec[open] > summary::before{transform:rotate(90deg)}
+  .rec > summary:focus-visible{outline:2px solid var(--indigo); outline-offset:2px; border-radius:3px}
+  .rec > summary:hover .rec-what{color:var(--seal)}
   .rec-when{display:block; font-family:"Courier New",Courier,monospace; font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
-  .rec-what{display:block; font-weight:600; color:var(--seal-ink); font-size:.95rem; margin:1px 0}
-  .rec-did{display:block; font-style:italic; font-size:.9rem; color:var(--ink)}
+  .rec-what{display:block; font-weight:600; color:var(--seal-ink); font-size:.98rem; margin-top:1px}
+  .rec-body{padding:0 4px 12px 22px}
+  .rec-did{font-weight:600; font-size:.9rem; color:var(--ink)}
+  .rec-out{font-style:italic; font-size:.9rem; color:var(--ink-soft); margin-top:5px}
   
   .start-actions{display:flex; flex-direction:column; align-items:center; gap:10px}
   button.ghost{
@@ -546,7 +559,7 @@
         S.flags[rdef.flag] = true;
         var reff = rdef.effects || {};
         var rpulsed = applyMeters(reff);
-        logDecision(rdef.title, rdef.label, reff, null, 1);
+        logDecision(rdef.title, rdef.label, rdef.outcome, reff, null, 1);
         current = { id: rdef.key, tag: rdef.tag, title: rdef.title, body: rdef.body, interlude: true, art: rdef.art };
         lastResult = { outcome: rdef.outcome || "", effects: reff, econ: null };
         ended = collapseCheck();
@@ -580,12 +593,12 @@
       return pulsed;
     }
 
-    function logDecision(title, label, effects, econ, flagCount) {
+    function logDecision(title, label, outcome, effects, econ, flagCount) {
       var w = 0;
       Object.keys(effects || {}).forEach(function (k) { w += Math.abs(effects[k]); });
       if (econ) w += Math.min(8, Math.round((Math.abs(econ.treasury || 0) + Math.abs(econ.debt || 0)) / 4000));
       w += (flagCount || 0) * 6;
-      S.log.push({ turn: S.turn, month: monthOf(S.turn), title: title, label: label, weight: w });
+      S.log.push({ turn: S.turn, month: monthOf(S.turn), title: title, label: label, outcome: outcome || "", weight: w });
     }
 
     function chooseOption(i) {
@@ -596,7 +609,7 @@
       var pulsed = applyMeters(r.effects);
       r.setFlags.forEach(function (f) { S.flags[f] = true; });
       applyEcon(r.econ);
-      logDecision(current.title, ch.label, r.effects, r.econ, r.setFlags.length);
+      logDecision(current.title, ch.label, r.outcome, r.effects, r.econ, r.setFlags.length);
       lastResult = { outcome: r.outcome, effects: r.effects, econ: r.econ };
       ended = collapseCheck();
       phase = ended ? "ended" : "resolved";
@@ -897,12 +910,15 @@
     var recordHtml = "";
     if (s.record && s.record.length) {
       recordHtml =
-        '<div class="record"><div class="record-head">Confidential character report</div><ul>' +
+        '<div class="record"><div class="record-head">Confidential character report</div>' +
         s.record.map(function (r) {
-          return '<li><span class="rec-when">Fortnight ' + r.turn + " &middot; " + r.month + "</span>" +
-            '<span class="rec-what">' + r.title + "</span>" +
-            '<span class="rec-did">' + r.label + "</span></li>";
-        }).join("") + "</ul></div>";
+          return '<details class="rec"><summary>' +
+            '<span class="rec-when">Fortnight ' + r.turn + " &middot; " + r.month + "</span>" +
+            '<span class="rec-what">' + r.title + "</span></summary>" +
+            '<div class="rec-body"><div class="rec-did">' + r.label + "</div>" +
+            (r.outcome ? '<div class="rec-out">' + r.outcome + "</div>" : "") +
+            "</div></details>";
+        }).join("") + "</div>";
     }
     c.innerHTML =
       '<div class="turnline"><span class="fortnight">The posting ends &mdash; fortnight ' +
@@ -998,6 +1014,8 @@
     if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
     var g = el("game"); if (!g || g.hidden) return;
     var card = el("card"); if (!card) return;
+
+    if (ev.target && ev.target.tagName === "SUMMARY") return;
     var cont = el("cont") || el("again");
     if (cont && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); cont.click(); return; }
     if (/^[1-9]$/.test(ev.key)) {

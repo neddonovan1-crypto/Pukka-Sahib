@@ -318,7 +318,7 @@
         S.flags[rdef.flag] = true;
         var reff = rdef.effects || {};
         var rpulsed = applyMeters(reff);
-        logDecision(rdef.title, rdef.label, reff, null, 1);
+        logDecision(rdef.title, rdef.label, rdef.outcome, reff, null, 1);
         current = { id: rdef.key, tag: rdef.tag, title: rdef.title, body: rdef.body, interlude: true, art: rdef.art };
         lastResult = { outcome: rdef.outcome || "", effects: reff, econ: null };
         ended = collapseCheck();
@@ -356,12 +356,12 @@
     // points: the sum of meter movement, a little for money moved, and a heavy
     // bonus for a choice that set an arc flag (those define the year even when
     // their numbers are small).
-    function logDecision(title, label, effects, econ, flagCount) {
+    function logDecision(title, label, outcome, effects, econ, flagCount) {
       var w = 0;
       Object.keys(effects || {}).forEach(function (k) { w += Math.abs(effects[k]); });
       if (econ) w += Math.min(8, Math.round((Math.abs(econ.treasury || 0) + Math.abs(econ.debt || 0)) / 4000));
       w += (flagCount || 0) * 6;
-      S.log.push({ turn: S.turn, month: monthOf(S.turn), title: title, label: label, weight: w });
+      S.log.push({ turn: S.turn, month: monthOf(S.turn), title: title, label: label, outcome: outcome || "", weight: w });
     }
 
     function chooseOption(i) {
@@ -372,7 +372,7 @@
       var pulsed = applyMeters(r.effects);
       r.setFlags.forEach(function (f) { S.flags[f] = true; });
       applyEcon(r.econ);
-      logDecision(current.title, ch.label, r.effects, r.econ, r.setFlags.length);
+      logDecision(current.title, ch.label, r.outcome, r.effects, r.econ, r.setFlags.length);
       lastResult = { outcome: r.outcome, effects: r.effects, econ: r.econ };
       ended = collapseCheck();
       phase = ended ? "ended" : "resolved";

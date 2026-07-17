@@ -153,12 +153,15 @@
     var recordHtml = "";
     if (s.record && s.record.length) {
       recordHtml =
-        '<div class="record"><div class="record-head">Confidential character report</div><ul>' +
+        '<div class="record"><div class="record-head">Confidential character report</div>' +
         s.record.map(function (r) {
-          return '<li><span class="rec-when">Fortnight ' + r.turn + " &middot; " + r.month + "</span>" +
-            '<span class="rec-what">' + r.title + "</span>" +
-            '<span class="rec-did">' + r.label + "</span></li>";
-        }).join("") + "</ul></div>";
+          return '<details class="rec"><summary>' +
+            '<span class="rec-when">Fortnight ' + r.turn + " &middot; " + r.month + "</span>" +
+            '<span class="rec-what">' + r.title + "</span></summary>" +
+            '<div class="rec-body"><div class="rec-did">' + r.label + "</div>" +
+            (r.outcome ? '<div class="rec-out">' + r.outcome + "</div>" : "") +
+            "</div></details>";
+        }).join("") + "</div>";
     }
     c.innerHTML =
       '<div class="turnline"><span class="fortnight">The posting ends &mdash; fortnight ' +
@@ -268,6 +271,8 @@
     if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
     var g = el("game"); if (!g || g.hidden) return;
     var card = el("card"); if (!card) return;
+    // Let a focused report row toggle itself — don't steal its Enter/Space.
+    if (ev.target && ev.target.tagName === "SUMMARY") return;
     var cont = el("cont") || el("again");
     if (cont && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); cont.click(); return; }
     if (/^[1-9]$/.test(ev.key)) {
