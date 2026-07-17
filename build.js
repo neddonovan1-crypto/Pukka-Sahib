@@ -22,8 +22,16 @@ function stripJs(src) {
     .trim();
 }
 
+// CSS block comments in the shell's <style> are authoring notes; strip them
+// from shipped output the same way JS comments are.
+function stripCss(html) {
+  return html.replace(/<style>[\s\S]*?<\/style>/, function (block) {
+    return block.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\n{3,}/g, "\n\n");
+  });
+}
+
 function build() {
-  var shell = read(path.join(SRC, "shell.html"));
+  var shell = stripCss(read(path.join(SRC, "shell.html")));
   // Content is authored across themed files under src/content/ and merged here.
   delete require.cache[require.resolve("./src/content.js")];
   var content = JSON.stringify(require("./src/content.js"));

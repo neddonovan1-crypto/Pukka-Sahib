@@ -106,8 +106,7 @@
     transform:rotate(2.5deg); opacity:.88; white-space:nowrap;
   }
   .stamp--secret{background:var(--stamp); color:var(--surface); border-color:var(--stamp); opacity:.92}
-  /* The season marker is not a classification: an indigo tab, flat and unrotated,
-     so it never reads as another oxblood rubber stamp beside the tag/secrecy ones. */
+  
   .seasontag{
     flex:0 0 auto; font-family:"Courier New",Courier,monospace; font-size:.62rem;
     letter-spacing:.08em; text-transform:uppercase; color:var(--surface);
@@ -153,9 +152,7 @@
   .ending .verdict{font-style:italic; margin:14px auto; max-width:52ch}
 
   footer{text-align:center; font-family:"Courier New",Courier,monospace; font-size:.64rem; letter-spacing:.08em; color:var(--ink-soft); text-transform:uppercase; margin-top:24px}
-  /* Wide screens: two columns — the situation (scene + stats) on the left, the
-     decision on the right — so a fortnight reads without scrolling. Below the
-     break it collapses back to the single stacked column. */
+  
   @media (min-width:960px){
     .frame{max-width:1040px}
     #game:not([hidden]){display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:start}
