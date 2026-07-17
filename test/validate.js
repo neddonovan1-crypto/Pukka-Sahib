@@ -268,7 +268,9 @@ var occTurns = {};
 /* ---- codas: arc-conditional sentences appended to the verdict ---- */
 (content.codas || []).forEach(function (cd, i) {
   var w = "coda[" + i + "]";
+  check(typeof cd.head === "string" && cd.head.length > 0, w + ": head (bold headline) missing");
   check(typeof cd.text === "string" && cd.text.length > 0, w + ": text missing");
+  if (cd.head) scanText(cd.head, w);
   if (cd.text) scanText(cd.text, w);
   check(cd.requires, w + ": coda needs a requires condition");
   if (cd.requires) checkCondition(cd.requires, w + ".requires"); // flags cross-referenced below

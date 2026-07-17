@@ -461,7 +461,7 @@
       return CODAS.filter(function (cd) {
         if (cd.endings && cd.endings.indexOf(key) === -1) return false;
         return evalCondition(cd.requires);
-      }).map(function (cd) { return cd.text; });
+      }).map(function (cd) { return { head: cd.head, text: cd.text }; });
     }
 
     // The service record: the year's most consequential decisions, ranked by

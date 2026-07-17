@@ -148,7 +148,11 @@
     var medalSrc = ART[MEDAL[s.ended.title]];
     var medalHtml = medalSrc ? '<img class="medal" src="' + medalSrc + '" alt="' + s.ended.title + ' insignia">' : "";
     var codasHtml = (s.codas && s.codas.length)
-      ? '<div class="codas">' + s.codas.map(function (t) { return "<p>" + t + "</p>"; }).join("") + "</div>"
+      ? '<div class="record"><div class="record-head">The year, off the record</div>' +
+        s.codas.map(function (c) {
+          return '<details class="rec"><summary><span class="rec-what">' + c.head + "</span></summary>" +
+            '<div class="rec-body"><div class="rec-out">' + c.text + "</div></div></details>";
+        }).join("") + "</div>"
       : "";
     var recordHtml = "";
     if (s.record && s.record.length) {
