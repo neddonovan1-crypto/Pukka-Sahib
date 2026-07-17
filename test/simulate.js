@@ -76,7 +76,8 @@ function play(policy, seed) {
       if (prev === s.event.id) backToBack = true;
       prev = s.event.id; events.push(s.event.id);
       s = game.chooseOption(policy.option(s, game, rng));
-    } else if (s.phase === "resolved") s = game.next();
+    } else if (s.phase === "interlude") s = game.next();
+    else if (s.phase === "resolved") s = game.next();
     if (typeof s.treasury !== "number" || isNaN(s.treasury) || isNaN(s.debt)) throw new Error("NaN economy at turn " + s.turn);
   }
   if (s.phase !== "ended") throw new Error("did not terminate (guard hit)");

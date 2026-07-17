@@ -145,6 +145,22 @@
     }
   }
 
+  // A no-choice occurrence: flavour, any small effect already applied, and Continue.
+  function renderInterlude(s) {
+    var e = s.event, c = el("card"); c.className = "card";
+    var tag = e.tag || "District business";
+    var stampCls = "stamp" + (L.isSecrecyTag(tag) ? " stamp--secret" : "");
+    var deltas = deltaChips(s.result.effects, s.result.econ);
+    c.innerHTML =
+      turnline(s, '<span class="' + stampCls + '">' + tag + "</span>") +
+      '<h3 class="cardtitle">' + e.title + "</h3>" +
+      '<div class="body">' + e.body + "</div>" +
+      (s.result.outcome ? '<div class="outcome">' + s.result.outcome + "</div>" : "") +
+      (deltas ? '<div class="deltas">' + deltas + "</div>" : "") +
+      '<div class="next"><button class="primary" id="cont">Continue &rarr;</button></div>';
+    el("cont").onclick = function () { paint(game.next()); };
+  }
+
   function paint(s) {
     renderScene(s);
     renderMeters(s.meters, s.pulsed);
@@ -152,6 +168,7 @@
     renderNotice(s);
     if (s.phase === "posture") renderPosture(s);
     else if (s.phase === "event") renderEvent(s);
+    else if (s.phase === "interlude") renderInterlude(s);
     else if (s.phase === "resolved") renderResolved(s);
     else if (s.phase === "ended") renderEnding(s);
   }

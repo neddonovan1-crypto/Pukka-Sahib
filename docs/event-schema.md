@@ -76,6 +76,29 @@ of two sub-results. Used e.g. for the tiger shoot, which depends on Composure.
 named change; a delta may be positive or negative. Every named delta is shown to
 the player as a coloured chip, so keep them meaningful.
 
+## Interludes (no-choice occurrences)
+
+An **interlude** is an atmospheric card with no decision — the rains breaking,
+the *loo* wind, the English mail. Set `"interlude": true` and `"kind":
+"interlude"`, give it **no `choices`**, and optionally a small event-level
+`effects` and/or `econ` that applies automatically, plus an optional `outcome`
+line. Keep them `"once": true` — they're rare punctuation, not filler.
+
+```json
+{
+  "id": "rains-break", "tag": "THE RAINS", "season": ["monsoon"],
+  "kind": "interlude", "interlude": true, "once": true,
+  "title": "The Rains Break",
+  "body": "After the long white weeks of waiting…",
+  "effects": { "composure": 3, "contentment": 2 }
+}
+```
+
+The engine draws an interlude with a small independent chance
+(`config.interludeChance`, default 0.16) instead of ordinary business, so they
+never starve the event pool. The card shows the body, any effect chips, and a
+single **Continue**.
+
 ## Conditions
 
 Used by `requires` (event-level) and `condition` (choice-level). Recursive.

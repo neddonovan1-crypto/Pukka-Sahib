@@ -108,7 +108,8 @@
       "interestRate": 0.18,
       "debtCeiling": 200000,
       "debtWarn": 120000
-    }
+    },
+    "interludeChance": 0.16
   },
   "endings": {
     "kcie": {
@@ -1899,6 +1900,263 @@
             "treasury": -25000
           },
           "outcome": "You halve the district between the bridge and the villages, and thereby ask the flood to be reasonable, which floods are not. The bridge is damaged but stands; some villages are reached in time and some are not; and you spend the night learning that the refusal to choose is itself a choice, and usually the worst one."
+        }
+      ]
+    },
+    {
+      "id": "rains-break",
+      "tag": "THE RAINS",
+      "season": [
+        "monsoon"
+      ],
+      "kind": "interlude",
+      "interlude": true,
+      "once": true,
+      "title": "The Rains Break",
+      "body": "After the long white weeks of waiting, the sky goes green-black at noon and the first fat drops raise the smell of wet dust that is the finest smell in India; and the whole district &mdash; man, beast, and magistrate &mdash; stands out in it with its face turned up. For one evening nobody is anybody's ruler. There is only the rain.",
+      "effects": {
+        "composure": 3,
+        "contentment": 2
+      }
+    },
+    {
+      "id": "the-loo",
+      "tag": "THE HEAT",
+      "season": [
+        "hot"
+      ],
+      "kind": "interlude",
+      "interlude": true,
+      "once": true,
+      "title": "The Loo Blows",
+      "body": "The <i>loo</i> comes off the plains like the breath of an open oven, and for a week the district shutters itself against a wind that can kill a man who walks in it at noon. You work in the dark behind wetted <i>chik</i> screens; the punkah never stops; and the nights are worse than the days.",
+      "effects": {
+        "composure": -3
+      }
+    },
+    {
+      "id": "cold-weather-opens",
+      "tag": "THE COLD WEATHER",
+      "season": [
+        "cold"
+      ],
+      "kind": "interlude",
+      "interlude": true,
+      "once": true,
+      "title": "The Cold Weather Opens",
+      "body": "The heat breaks at last: the mornings come sharp and blue, the camp-fires smell of woodsmoke, and the whole exhausted country sits up and takes an interest in living again. It is the season of tents and touring and the year at its kindest. It will not last, and everyone knows it, and no one says so.",
+      "effects": {
+        "composure": 2,
+        "contentment": 1
+      }
+    },
+    {
+      "id": "the-mail",
+      "tag": "THE DAK",
+      "season": [
+        "any"
+      ],
+      "kind": "interlude",
+      "interlude": true,
+      "once": true,
+      "title": "The English Mail",
+      "body": "The dak brings the English mail &mdash; a month old, tied in string, smelling faintly of the sea &mdash; and for an hour the cutcherry empties as every sahib retreats with his letters to a world eleven thousand miles and one lifetime away. Then the hour ends; the letters go into the drawer; and the district asks again to be governed.",
+      "effects": {
+        "composure": 2
+      }
+    },
+    {
+      "id": "copybook",
+      "tag": "PROVERB",
+      "season": [
+        "any"
+      ],
+      "kind": "interlude",
+      "interlude": true,
+      "once": true,
+      "title": "The Gods of the Copybook Headings",
+      "body": "Ram Autar, filing the year's follies, observes that the same lessons come round with the seasons and are never learned: that the flood drowns the man who built on the sand-bar, that the borrowed rupee wants repaying, that the district remembers. He does not say it unkindly. He does not, you notice, say it hopefully either."
+    },
+    {
+      "id": "grand-trunk",
+      "tag": "THE ROAD",
+      "season": [
+        "cold"
+      ],
+      "kind": "interlude",
+      "interlude": true,
+      "once": true,
+      "title": "The Grand Trunk Road",
+      "body": "Your tour crosses the great Road for a mile &mdash; the river of all India, running white from the passes to the sea, and on it every soul the country owns: the pilgrim and the banker, the bullock-train and the barefoot regiment, the holy man and the horse-thief, all moving, all talking, all magnificently indifferent to the sahib and his files. It is the most crowded loneliness in the world."
+    },
+    {
+      "id": "mark-of-beast",
+      "tag": "CONFIDENTIAL",
+      "season": [
+        "any"
+      ],
+      "kind": "desk",
+      "once": false,
+      "title": "The Mark of the Beast",
+      "body": "On a night of drunken celebration, Fleete &mdash; a newcomer who holds his liquor worse than his tongue &mdash; grinds his cigar-butt into the forehead of the god Hanuman in the little temple by the bazaar. By morning the bazaar is silent in the particular way that precedes trouble, a leper has been seen at Fleete's gate, and the Civil Surgeon is using the word &lsquo;fever&rsquo; for something he cannot name.",
+      "choices": [
+        {
+          "label": "Get Fleete <b>out of the district</b> quietly and say nothing.",
+          "effects": {
+            "order": 2,
+            "prestige": 1,
+            "composure": -4
+          },
+          "outcome": "You have him carried off on the night train, cured by means no report will ever mention, and you spend the small hours learning things about your own certainties that you will spend years unlearning. The temple is quiet by morning. You are not."
+        },
+        {
+          "label": "Post <b>police at the temple</b> and let the law be seen to stand.",
+          "effects": {
+            "order": 3,
+            "contentment": -3,
+            "composure": -2
+          },
+          "outcome": "You answer an old darkness with constables and a firm hand, which is the only answer the Service issues you. The trouble does not come, this time; whether your constables prevented it, or something else decided to let it lie, is not a question the district office is equipped to file."
+        },
+        {
+          "label": "Make a <b>formal apology</b> and reparation to the temple.",
+          "effects": {
+            "contentment": 5,
+            "prestige": -3,
+            "composure": -1
+          },
+          "outcome": "You go, hat in hand and against every instinct of your rank, and make amends for the sahib's insult. The bazaar exhales; the priests are grave and satisfied; and the Club decides, over its brandy, that the young magistrate has knelt to superstition and will bear watching."
+        }
+      ]
+    },
+    {
+      "id": "clergy",
+      "tag": "PRIVATE",
+      "season": [
+        "hot"
+      ],
+      "kind": "personal",
+      "once": true,
+      "title": "Without Benefit of Clergy",
+      "body": "Holden of the Canals is dead of the fever, and in settling his affairs you find what the station never knew he had: a small shuttered house in the city, and in it a grave the size of a cradle, and a young woman with a grief that has no official standing whatever. She has no claim the law will hear, and nowhere the station will let her be. Holden's secret is now yours.",
+      "choices": [
+        {
+          "label": "See her <b>quietly provided for</b>, and say nothing.",
+          "effects": {
+            "composure": -2,
+            "contentment": 3,
+            "prestige": -2
+          },
+          "setFlags": [
+            "kept_faith"
+          ],
+          "outcome": "You settle a pension no ledger will explain and a silence no one will thank you for, and you carry Holden's happiness and his grief out of the reach of the station that would only have tidied them away. It is the least official and most human thing you do all year."
+        },
+        {
+          "label": "Do the <b>correct thing</b> &mdash; hand it to a charity, close the file.",
+          "effects": {
+            "prestige": 2,
+            "composure": -5
+          },
+          "outcome": "You process the matter as the regulations intend: the woman to a mission, the house to the estate, the grave to whatever grows over graves no one is left to tend. Everything is in order. You have done nothing wrong, precisely, and you cannot for the life of you feel clean."
+        },
+        {
+          "label": "Pay to <b>keep the child's grave</b>, and send her home to her people.",
+          "effects": {
+            "composure": 1,
+            "contentment": 2,
+            "prestige": -1
+          },
+          "outcome": "You cannot mend it, but you can keep one small grave from vanishing and send one woman back to her own with something in her hand and her dignity intact. It is a district officer's whole art, in the end: not to set things right, which is beyond you, but to make them a little less wrong."
+        }
+      ]
+    },
+    {
+      "id": "city-wall",
+      "tag": "MOST SECRET",
+      "season": [
+        "any"
+      ],
+      "kind": "desk",
+      "once": false,
+      "title": "On the City Wall",
+      "body": "Lalun's house on the old city wall is the pleasantest in the district and the most dangerous &mdash; poets, wits, and the men Government watches all take their tobacco there. Tonight, in the confusion of a festival, you are given quietly to understand that an old rebel the Police have wanted for thirty years could be walked out of the city under cover of the crowd, and that no one need ever know your part in it, or in stopping it.",
+      "choices": [
+        {
+          "label": "Tighten the <b>cordon</b> and take the old man.",
+          "effects": {
+            "order": 4,
+            "contentment": -4,
+            "prestige": 2,
+            "composure": -2
+          },
+          "outcome": "You spring the trap the festival was meant to spoil, and the old rebel &mdash; frail, courteous, forty years a legend &mdash; is taken quietly in the crowd. Government is pleased. The city, which had made him a story, will now make him a martyr, which is the one promotion the Police can always be relied upon to arrange."
+        },
+        {
+          "label": "Let the festival <b>carry him out</b>, and see nothing.",
+          "effects": {
+            "contentment": 3,
+            "order": -3,
+            "prestige": -2,
+            "composure": -1
+          },
+          "setFlags": [
+            "looked_away"
+          ],
+          "outcome": "You find urgent business on the far side of the city for the crucial hour, and an old man vanishes into the country he loves to die in his own time. You have failed in your plain duty and you sleep, irritatingly, rather well on it."
+        },
+        {
+          "label": "Go <b>yourself to Lalun's</b> and learn who is using whom.",
+          "effects": {
+            "composure": -3,
+            "order": 1,
+            "prestige": 1,
+            "contentment": 1
+          },
+          "outcome": "You spend a strange evening among the poets and the plotters and come away understanding, for once, the true shape of the game &mdash; who is loyal, who is bought, who merely lonely &mdash; which is worth more than any arrest and can be entered in no return. Strickland would approve. The Commissioner must never know."
+        }
+      ]
+    },
+    {
+      "id": "great-game",
+      "tag": "CYPHER",
+      "season": [
+        "cold"
+      ],
+      "kind": "desk",
+      "once": true,
+      "title": "A Turn at the Great Game",
+      "body": "A cypher telegram from the Residency: a man will come to you carrying half a torn banknote; you are to match it against the half enclosed, ask him nothing, and pass him north with horses and silence. It is the Great Game &mdash; the quiet war of the passes that appears in no budget and no honours list &mdash; and you have been handed a small, deniable piece of it.",
+      "choices": [
+        {
+          "label": "Play your part <b>exactly</b>, and ask nothing.",
+          "effects": {
+            "prestige": 3,
+            "composure": -3,
+            "order": -1
+          },
+          "setFlags": [
+            "played_game"
+          ],
+          "outcome": "You match the note, mount the stranger, and watch him ride into the dark toward whatever the frontier is buying or selling this season. You will never know his name or his errand or whether either was worth a life; only that a great quiet machine turned once, in your district, on your word, and moved on."
+        },
+        {
+          "label": "Help him, but quietly <b>learn who he is</b>.",
+          "effects": {
+            "prestige": 1,
+            "composure": -4,
+            "order": 1
+          },
+          "outcome": "You do as bidden and, being a curious man in a dangerous trade, you also find out a little more than you were meant to. The knowledge is a weight and not a shield. In the Great Game, the men who know the most tend to be the men found face-down in the snow of a pass no map admits exists."
+        },
+        {
+          "label": "Wire back that your district is <b>not a corridor</b> for the Residency's spies.",
+          "effects": {
+            "prestige": -4,
+            "composure": 2,
+            "order": 1
+          },
+          "outcome": "You decline, on paper, to play, and the cypher traffic goes cold and finds another, more obliging magistrate up the line. You have kept your hands out of a filthy business and marked yourself, in a quarter that never forgets, as a man who would not be useful. Both were entirely predictable."
         }
       ]
     }

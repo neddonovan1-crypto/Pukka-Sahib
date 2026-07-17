@@ -33,7 +33,7 @@
     var MAX_TURNS = CFG.maxTurns;
     rng = rng || Math.random;
 
-    var S, phase, current, lastResult, recent, ended, notice;
+    var S, phase, current, lastResult, recent, ended, notice, lastEventId;
 
     function pick(arr) { return arr[Math.floor(rng() * arr.length)]; }
 
@@ -155,22 +155,35 @@
         var ss = e.season || ["any"];
         return ss.indexOf("any") !== -1 || ss.indexOf(sk) !== -1;
       };
+      // A small independent chance the fortnight brings only an atmospheric
+      // occurrence. Kept out of the posture-weighted draw so it can't starve the
+      // business pool or force a repeat.
+      var interludes = EVENTS.filter(function (e) { return e.interlude && eligible(e) && inSeason(e); });
+      if (interludes.length && rng() < (CFG.interludeChance || 0.16)) {
+        current = pick(interludes);
+        recent.push(current.id); if (recent.length > 4) recent.shift();
+        return;
+      }
+      // Ordinary district business, weighted by posture. Bias only when it offers
+      // real variety; otherwise draw the whole in-season pool so nothing repeats.
       var prefer = S.posture === "tour" ? ["tour", "crisis"] : ["desk", "club", "personal", "crisis"];
-      var pool = EVENTS.filter(function (e) { return eligible(e) && inSeason(e); });
+      var pool = EVENTS.filter(function (e) { return !e.interlude && eligible(e) && inSeason(e); });
       var biased = pool.filter(function (e) { return prefer.indexOf(e.kind) !== -1 || e.kind === "crisis"; });
-      // Keep the posture bias only when it offers real variety; otherwise draw
-      // from the whole in-season pool so nothing is forced to repeat.
       var cand = biased.length >= 2 ? biased : pool;
-      if (!cand.length) cand = EVENTS.filter(eligible);
+      if (!cand.length) cand = EVENTS.filter(function (e) { return !e.interlude && eligible(e); });
       var fresh = cand.filter(function (e) { return recent.indexOf(e.id) === -1; });
       if (fresh.length) cand = fresh;
       else if (cand.length > 1) {
         var last = recent[recent.length - 1];
-        cand = cand.filter(function (e) { return e.id !== last; }); // never the same event twice running
+        cand = cand.filter(function (e) { return e.id !== last; });
+      }
+      if (cand.length > 1 && lastEventId) { // never the same business twice running, even across an interlude
+        var c2 = cand.filter(function (e) { return e.id !== lastEventId; });
+        if (c2.length) cand = c2;
       }
       current = pick(cand);
-      recent.push(current.id);
-      if (recent.length > 4) recent.shift();
+      recent.push(current.id); if (recent.length > 4) recent.shift();
+      lastEventId = current.id;
     }
 
     /* ---------- public transitions ---------- */
@@ -178,7 +191,7 @@
     function init() {
       S = { flags: {}, posture: null, turn: 1, treasury: ECON.startTreasury, debt: 0 };
       METERS.forEach(function (k) { S[k] = CFG.start[k]; });
-      recent = []; ended = null; current = null; lastResult = null;
+      recent = []; ended = null; current = null; lastResult = null; lastEventId = null;
       enterTurn();
       phase = "posture";
       return snapshot();
@@ -206,6 +219,16 @@
       ended = collapseCheck();
       if (ended) { phase = "ended"; return snapshot({ pulsed: pulsed }); }
       drawEvent();
+      if (current.interlude) {
+        // A no-choice occurrence: apply its own small effect and offer only Continue.
+        var ieff = current.effects || {};
+        var ipulsed = applyMeters(ieff);
+        applyEcon(current.econ);
+        lastResult = { outcome: current.outcome || "", effects: ieff, econ: current.econ || null };
+        ended = collapseCheck();
+        phase = ended ? "ended" : "interlude";
+        return snapshot({ pulsed: pulsed.concat(ipulsed) });
+      }
       phase = "event";
       return snapshot({ pulsed: pulsed });
     }
@@ -233,7 +256,7 @@
     }
 
     function next() {
-      if (phase !== "resolved") return snapshot();
+      if (phase !== "resolved" && phase !== "interlude") return snapshot();
       S.turn += 1;
       if (S.turn > MAX_TURNS) { ended = finalVerdict(); phase = "ended"; return snapshot(); }
       enterTurn();
@@ -251,8 +274,8 @@
         season: seasonOf(S.turn), month: monthOf(S.turn),
         meters: meters, treasury: S.treasury, debt: S.debt,
         posture: S.posture, notice: notice,
-        event: phase === "event" ? current : null,
-        result: (phase === "resolved" || phase === "ended") ? lastResult : null,
+        event: (phase === "event" || phase === "interlude") ? current : null,
+        result: (phase === "resolved" || phase === "ended" || phase === "interlude") ? lastResult : null,
         ended: ended, honours: honoursStanding()
       };
       if (extra) Object.assign(snap, extra);
