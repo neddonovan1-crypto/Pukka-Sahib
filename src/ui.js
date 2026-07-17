@@ -74,7 +74,9 @@
     game.postureOptions().forEach(function (o) {
       var b = document.createElement("button");
       b.className = "choice";
-      b.innerHTML = o.label + '<span class="cue">' + o.note + "</span>";
+      var chips = deltaChips(o.effects, null);
+      b.innerHTML = o.label + '<span class="cue">' + o.note + "</span>" +
+        (chips ? '<span class="fore">' + chips + "</span>" : "");
       b.onclick = function () { paint(game.choosePosture(o.kind)); };
       box.appendChild(b);
     });

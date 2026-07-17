@@ -94,6 +94,13 @@ function build() {
   console.log("Built index.html:", (out.length / 1024).toFixed(0) + " KB (single-file / Artifact)");
   console.log("  logic:", logic.length, "b · ui:", ui.length, "b · content:", content.length, "b · art embedded:", artKb.toFixed(0) + " KB (" + Object.keys(embeddedArt).length + ")");
   console.log("Built dist/ for Pages:", "index.html + logic.js + ui.js" + (copied ? " + " + copied + " asset(s)" : ""));
+
+  // Page-weight budget: the single-file build is what the Artifact loads in one
+  // go, so growth is a decision, not a drift. Raise these only deliberately
+  // (and re-optimize first — scripts/optimize-art.js).
+  var ART_BUDGET_KB = 2100, PAGE_BUDGET_KB = 3000;
+  if (artKb > ART_BUDGET_KB) throw new Error("art budget blown: " + artKb.toFixed(0) + " KB embedded > " + ART_BUDGET_KB + " KB");
+  if (out.length / 1024 > PAGE_BUDGET_KB) throw new Error("page budget blown: " + (out.length / 1024).toFixed(0) + " KB > " + PAGE_BUDGET_KB + " KB");
   return out;
 }
 

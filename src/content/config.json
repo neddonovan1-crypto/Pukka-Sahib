@@ -160,7 +160,25 @@
       "debtCeiling": 180000,
       "debtWarn": 120000
     },
-    "interludeChance": 0.16
+    "interludeChance": 0.16,
+    "review": {
+      "from": "The wire from the Division, en clair: <b>",
+      "close": "</b>",
+      "weakBelow": 38,
+      "bands": [
+        { "min": 64, "text": "SEASON&rsquo;S WORKING GIVES SATISFACTION STOP CONTINUE" },
+        { "min": 54, "text": "SEASON&rsquo;S WORKING NOTED STOP CONTINUE" },
+        { "min": 44, "text": "SEASON&rsquo;S WORKING NOTED WITH CONCERN STOP ATTEND TO IT" },
+        { "min": 0, "text": "SEASON&rsquo;S WORKING NOTED WITH DISPLEASURE STOP EXPLAIN BY POST" }
+      ],
+      "weak": {
+        "prestige": "YOUR STANDING IS SPOKEN OF STOP",
+        "order": "POLICE COLUMN READS UNEASILY STOP",
+        "revenue": "THE DEMAND LAGS STOP",
+        "contentment": "DISTRICT&rsquo;S TEMPER REMARKED STOP",
+        "health": "CIVIL SURGEON&rsquo;S NOTE ATTACHED STOP"
+      }
+    }
   },
   "endings": {
     "kcie": {

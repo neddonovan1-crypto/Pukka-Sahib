@@ -67,7 +67,21 @@ async function playSession(browser, label, viewport) {
   }
 
   assert(ended, label + ": session did not reach an ending within 200 steps");
-  if (ended) await page.screenshot({ path: path.join(SHOT_DIR, "e2e-" + label + "-ending.png") });
+  if (ended) {
+    await page.screenshot({ path: path.join(SHOT_DIR, "e2e-" + label + "-ending.png") });
+    // Restart flow: "Take up a new posting" must paint a fresh session —
+    // fortnight 1, treasury back at the start figure, a live posture choice.
+    var again = await page.$("#again");
+    assert(again, label + ": ending screen has no restart button");
+    if (again) {
+      await again.click();
+      await page.waitForSelector("#card .choice", { timeout: 5000 });
+      var fortnight = (await page.textContent("#card .fortnight")) || "";
+      assert(/Fortnight 1 of /.test(fortnight), label + ": restart did not reset to fortnight 1 (\"" + fortnight.trim() + "\")");
+      var econ2 = (await page.textContent("#economy")) || "";
+      assert(econ2.indexOf("1,20,000") !== -1, label + ": restart did not reset the treasury (\"" + econ2.trim() + "\")");
+    }
+  }
   assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
   assert(maxOverflow <= 1, label + ": horizontal overflow of " + maxOverflow + "px");
 

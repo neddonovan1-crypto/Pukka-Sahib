@@ -57,6 +57,26 @@ Object.keys(retreats).forEach(function (sk) {
   });
 });
 
+// The Division's seasonal wire: banded one-liners keyed to the honours blend,
+// plus a clause per weak meter. All text lives here, none in code.
+if (cfg.review) {
+  var rv = cfg.review;
+  check(typeof rv.from === "string" && rv.from.length > 0, "review.from missing");
+  check(Array.isArray(rv.bands) && rv.bands.length >= 2, "review.bands needs >=2 bands");
+  var lastMin = Infinity;
+  (rv.bands || []).forEach(function (b, i) {
+    check(typeof b.min === "number" && typeof b.text === "string" && b.text.length > 0, "review.bands[" + i + "] malformed");
+    check(b.min < lastMin, "review.bands must descend by min (band " + i + ")");
+    lastMin = b.min;
+    scanText(b.text, "review.bands[" + i + "]");
+  });
+  check((rv.bands || []).length && rv.bands[rv.bands.length - 1].min === 0, "review.bands must end at min 0 (no silent gap)");
+  Object.keys(rv.weak || {}).forEach(function (m) {
+    check(METERS.indexOf(m) !== -1, "review.weak key not a meter: " + m);
+    scanText(rv.weak[m], "review.weak." + m);
+  });
+}
+
 var ec = cfg.economy;
 ["startTreasury", "settlementTurns", "settlementBase", "interestRate", "debtCeiling", "debtWarn"].forEach(function (k) {
   check(ec && ec[k] !== undefined, "economy." + k + " missing");

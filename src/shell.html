@@ -140,6 +140,10 @@
   button.choice:hover{border-color:var(--seal); transform:translateX(3px)}
   button.choice:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
   .choice .cue{display:block; margin-top:4px; font-size:.82rem; font-style:italic; color:var(--ink-soft)}
+  /* Forecast chips on posture buttons: the fortnight's net swing, shown before
+     committing. Same chip language as outcomes, slightly quieter. */
+  .choice .fore{display:flex; flex-wrap:wrap; gap:6px; margin-top:7px}
+  .choice .fore .delta{font-size:.66rem; padding:1px 6px; opacity:.85}
   .outcome{font-style:italic; margin:15px 0 6px; color:var(--ink-soft)}
   .deltas{display:flex; flex-wrap:wrap; gap:7px; margin-top:9px}
   .delta{font-family:"Courier New",Courier,monospace; font-size:.72rem; padding:2px 8px; border-radius:2px; background:var(--surface2); font-variant-numeric:tabular-nums}
@@ -202,7 +206,7 @@
 
   <div id="game" hidden>
     <div class="col col-left">
-      <img class="scene" id="scene" alt="" hidden>
+      <img class="scene" id="scene" decoding="async" alt="" hidden>
       <div class="seasonband" id="seasonband"></div>
       <div class="meters" id="meters"></div>
       <div class="honours" id="honours"></div>

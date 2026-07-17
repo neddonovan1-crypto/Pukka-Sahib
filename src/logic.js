@@ -126,11 +126,24 @@
       if (econ.debt) { S.debt += econ.debt; if (S.debt < 0) S.debt = 0; } // arcs can forgive debt
     }
 
-    // Fires on entering a turn: season-boundary interest, then any settlement.
+    // Fires on entering a turn: the Division's seasonal wire, season-boundary
+    // interest, then any settlement.
     function enterTurn() {
       notice = null;
       var parts = [];
-      if (S.turn > 1 && seasonOf(S.turn).key !== seasonOf(S.turn - 1).key && S.debt > 0) {
+      var boundary = S.turn > 1 && seasonOf(S.turn).key !== seasonOf(S.turn - 1).key;
+      if (boundary && CFG.review) {
+        // One line from the next man up the chain, telegraphic and unsigned:
+        // tone by the honours blend, plus the weakest column if it reads badly.
+        var rv = CFG.review, h = honoursScore();
+        var band = rv.bands.filter(function (b) { return h >= b.min; })[0] || rv.bands[rv.bands.length - 1];
+        var worst = null;
+        METERS.forEach(function (m) {
+          if (S[m] < (rv.weakBelow || 0) && rv.weak[m] && (!worst || S[m] < S[worst])) worst = m;
+        });
+        parts.push(rv.from + (worst ? rv.weak[worst] + " " : "") + band.text + (rv.close || ""));
+      }
+      if (boundary && S.debt > 0) {
         var interest = Math.round(S.debt * ECON.interestRate);
         S.debt += interest;
         if (interest > 0) parts.push("The Lala's interest falls due: debt grows by " + rupees(interest) + ".");
@@ -162,18 +175,33 @@
       return null;
     }
 
+    // The List reads the whole year — but not evenly. Prestige is nearly half
+    // the weight (appearances are the job); revenue and order are what Simla
+    // audits; contentment counts least, and is still worth more than the
+    // district suspects.
+    var HONOURS_W = { prestige: 0.45, revenue: 0.2, order: 0.2, contentment: 0.15 };
+    function honoursScore() {
+      return Math.round(
+        S.prestige * HONOURS_W.prestige + S.revenue * HONOURS_W.revenue +
+        S.order * HONOURS_W.order + S.contentment * HONOURS_W.contentment
+      );
+    }
+    // Each tier wants a showing (the blended score) AND a name (a prestige
+    // floor) — the Service will not gazette a knighthood for a man it cannot
+    // picture at the durbar, however sound his figures.
+    var TIERS = { kcsi: { score: 70, prestige: 75 }, kcie: { score: 65, prestige: 70 }, cie: { score: 55, prestige: 52 } };
+
     function finalVerdict() {
-      var p = S.prestige, r = S.revenue, o = S.order, c = S.contentment;
+      var p = S.prestige, o = S.order, c = S.contentment, h = honoursScore();
       var end;
-      // Ladder ascends CIE -> KCIE -> KCSI. The K.C.S.I. (senior star) is the
-      // pinnacle: eminent standing, a solvent district, and a contented one.
-      // Gone-native outranks scandal: a magistrate the district loves and Simla
-      // has written off resigns his own way — that is not a disgrace story.
+      // Ladder ascends CIE -> KCIE -> KCSI. Gone-native outranks scandal: a
+      // magistrate the district loves and Simla has written off resigns his
+      // own way — that is not a disgrace story.
       if (c >= 65 && p < 50) end = ENDINGS.gonenative;
       else if (p < 40 || o < 40) end = ENDINGS.scandal;
-      else if (p >= 78 && r >= 58 && c >= 54) end = ENDINGS.kcsi;
-      else if (p >= 74 && r >= 56) end = ENDINGS.kcie;
-      else if (p >= 58) end = ENDINGS.cie;
+      else if (h >= TIERS.kcsi.score && p >= TIERS.kcsi.prestige) end = ENDINGS.kcsi;
+      else if (h >= TIERS.kcie.score && p >= TIERS.kcie.prestige) end = ENDINGS.kcie;
+      else if (h >= TIERS.cie.score && p >= TIERS.cie.prestige) end = ENDINGS.cie;
       else end = ENDINGS.transfer;
       // A magistrate who beggared the district into the Lala's books is not knighted.
       if (S.debt > ECON.debtWarn && (end === ENDINGS.kcsi || end === ENDINGS.kcie)) end = ENDINGS.cie;
@@ -248,16 +276,27 @@
       return snapshot({ pulsed: pulsed });
     }
 
+    // Net meter swing of a posture for the current season (base + season mods).
+    function postureEffects(kind) {
+      var p = POSTURES[kind];
+      var sk = seasonOf(S.turn).key;
+      var eff = Object.assign({}, p.base);
+      var se = (p.season && p.season[sk]) || {};
+      Object.keys(se).forEach(function (k) { eff[k] = (eff[k] || 0) + se[k]; });
+      Object.keys(eff).forEach(function (k) { if (!eff[k]) delete eff[k]; }); // drop zeroed-out nets
+      return eff;
+    }
+
     function postureOptions() {
       var opts = ["tour", "desk"].map(function (kind) {
         var p = POSTURES[kind];
         var note = p.note;
         if (kind === "tour" && seasonOf(S.turn).key === "monsoon")
           note = "The roads are rivers — to tour now is to risk it.";
-        return { kind: kind, label: p.label, note: note };
+        return { kind: kind, label: p.label, note: note, effects: postureEffects(kind) };
       });
       var rdef = retreatFor(seasonOf(S.turn).key);
-      if (rdef) opts.push({ kind: rdef.key, label: rdef.label, note: rdef.note, retreat: true });
+      if (rdef) opts.push({ kind: rdef.key, label: rdef.label, note: rdef.note, retreat: true, effects: rdef.effects || {} });
       return opts;
     }
 
@@ -278,12 +317,7 @@
         return snapshot({ pulsed: rpulsed });
       }
       S.posture = kind;
-      var p = POSTURES[kind];
-      var sk = seasonOf(S.turn).key;
-      var eff = Object.assign({}, p.base);
-      var se = (p.season && p.season[sk]) || {};
-      Object.keys(se).forEach(function (k) { eff[k] = (eff[k] || 0) + se[k]; });
-      var pulsed = applyMeters(eff);
+      var pulsed = applyMeters(postureEffects(kind)); // same net the preview showed
       ended = collapseCheck();
       if (ended) { phase = "ended"; return snapshot({ pulsed: pulsed }); }
       drawEvent();
@@ -352,31 +386,37 @@
     }
 
     // The standing line is the player's honours tutor: it names the tier in
-    // reach and — because the List reads prestige before anything the district
-    // would call good government — says plainly which meter is binding.
+    // reach and says plainly what binds. The List reads the whole year —
+    // prestige heaviest — so the hint distinguishes a thin showing (raise the
+    // blend: order, revenue, contentment all count) from a thin name (only
+    // prestige will do).
     function honoursStanding() {
-      var p = S.prestige, c = S.contentment, r = S.revenue;
+      var p = S.prestige, c = S.contentment, h = honoursScore();
       var lead = "Honours List &mdash; ";
       var debtBar = S.debt > ECON.debtWarn;
-      if (p >= 78 && r >= 58 && c >= 54)
+      function reach(tier) { return h >= TIERS[tier].score && p >= TIERS[tier].prestige; }
+      // what the NEXT rung wants: its score (any of the four meters) or its name (prestige)
+      function want(tier) {
+        var needsScore = h < TIERS[tier].score, needsName = p < TIERS[tier].prestige;
+        if (needsScore && needsName) return "a stronger year all round, and a name to hang it on";
+        if (needsScore) return "a stronger showing &mdash; order, revenue and contentment all count";
+        return "more prestige; the Service must be able to picture you at the durbar";
+      }
+      if (reach("kcsi"))
         return lead + (debtBar
           ? "the star is earned and the Lala holds your paper; <b>no knighthood</b> until the debt is down"
           : "a <b>K.C.S.I.</b> (a knighthood of the star) is within reach");
-      if (p >= 74 && r >= 56) {
+      if (reach("kcie")) {
         if (debtBar) return lead + "a <b>C.I.E.</b> at most; no knighthood while the Lala holds your paper";
-        var want = p < 78 ? "still more prestige" : (r < 58 ? "the revenue brought up" : "the district better contented");
-        return lead + "a <b>K.C.I.E.</b> (a knighthood) is within reach; the senior star would want " + want;
+        return lead + "a <b>K.C.I.E.</b> (a knighthood) is within reach; the senior star wants " + want("kcsi");
       }
-      if (p >= 58) {
-        var wants = [];
-        if (p < 74) wants.push("prestige");
-        if (r < 56) wants.push("revenue");
-        return lead + "a <b>C.I.E.</b> is within reach; a knighthood would want " + wants.join(" and ") +
-          (debtBar ? ", and the Lala paid off" : "");
-      }
-      if (p >= 48) return lead + "not yet on anyone's list; the List reads prestige before all else";
-      if (c >= 65) return lead + "the district is content and Simla is not; the List rewards the seen, not the good";
-      if (p >= 40) return lead + "unlikely on present form; prestige is the coin the List counts, and you are poor in it";
+      if (reach("cie"))
+        return lead + "a <b>C.I.E.</b> is within reach; a knighthood wants " + want("kcie") +
+          (debtBar ? " &mdash; and the Lala paid off" : "");
+      if (h >= 48 || p >= 48)
+        return lead + "not yet on anyone's list; it wants " + want("cie");
+      if (c >= 65 && p < 50) return lead + "the district is content and Simla is not; the List rewards the seen, not the good";
+      if (p >= 40) return lead + "unlikely on present form; the year reads thin in every column Simla audits";
       return lead + "your name appears only in the complaints";
     }
 
