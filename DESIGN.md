@@ -198,9 +198,24 @@ build direction is set:
    recurring personal events feeding Composure — so the *pukka sahib* mask costs
    something real.
 
-**Sequencing:** JSON refactor (done) → seasonal + tour/desk spine → light
-economy + personal thread → write content into the new structure →
+**Sequencing:** JSON refactor (done) → seasonal + tour/desk spine (done) →
+light economy + personal thread → write content into the new structure →
 presentation.
+
+**The seasonal + tour/desk spine (built).** The year runs on a calendar —
+**cold weather** (touring season, F1–8), **hot weather** (the station bakes,
+F9–16), **the monsoon** (crisis, F17–24) — shown in a season band under the
+masthead, with the month on each card. Every fortnight has two beats: first a
+**posture** choice — *go out on tour* or *hold the cutcherry* — then a
+seasonally-weighted event. Tour builds the **district** (Contentment/Order) at
+the cost of **career and health** (Prestige/Composure); desk builds **career**
+(Prestige/Revenue) while the district **decays** (Contentment/Order). Neither
+can be spammed: touring-only burns you out (Breakdown), desk-only ferments
+unrest (Scandal). Season modifies the trade-off — touring is cheap in the cold
+weather, brutal in the heat, dangerous in the monsoon. Balance verified by
+simulating pure and seasonal strategies. Four season events were added
+(the touring camp, the letter from the hills, the hot weather, the flood),
+seeding the light **personal thread** (wife, children sent Home, the heat).
 
 ## 10. Data model — *the JSON refactor (done)*
 

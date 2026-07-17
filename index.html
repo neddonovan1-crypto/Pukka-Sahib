@@ -127,6 +127,14 @@
   }
   .honours b{color:var(--seal); font-weight:700}
   @media (max-width:520px){ .cover-stamp{display:none} }
+  .seasonband{
+    display:flex; align-items:center; justify-content:center; gap:7px; flex-wrap:wrap;
+    font-family:"Courier New",Courier,monospace; font-size:.64rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft); margin:0 0 16px;
+  }
+  .seasonband .glyph{font-size:.95rem; opacity:.85}
+  .seasonband b{color:var(--ink); font-weight:700}
+  .choice .cue{display:block; margin-top:4px; font-size:.82rem; font-style:italic; color:var(--ink-soft)}
   .cardtitle{font-size:1.32rem; margin:0 0 11px; color:var(--seal-ink); font-weight:600; text-wrap:balance}
   .body{font-size:1.02rem; margin-bottom:18px}
   .choices{display:flex; flex-direction:column; gap:10px}
@@ -187,6 +195,7 @@
     </div>
   </header>
   <hr class="rule">
+  <div class="seasonband" id="seasonband"></div>
 
   <div class="meters" id="meters"></div>
   <div class="honours" id="honours"></div>
@@ -205,6 +214,96 @@
       "prestige": 50,
       "contentment": 45,
       "composure": 60
+    },
+    "calendar": {
+      "months": [
+        "November",
+        "December",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October"
+      ],
+      "seasons": [
+        {
+          "key": "cold",
+          "name": "Cold weather",
+          "tagline": "the touring season",
+          "glyph": "❄",
+          "from": 1,
+          "to": 8,
+          "intro": "The cold weather is the touring season &mdash; the district expects to see the sahib on the road, not behind a desk."
+        },
+        {
+          "key": "hot",
+          "name": "Hot weather",
+          "tagline": "the plains bake",
+          "glyph": "☀",
+          "from": 9,
+          "to": 16,
+          "intro": "The plains bake. Those who can have fled to the hills; the work shrinks to headquarters and the long, solitary evenings."
+        },
+        {
+          "key": "monsoon",
+          "name": "The monsoon",
+          "tagline": "the district turns dangerous",
+          "glyph": "☂",
+          "from": 17,
+          "to": 24,
+          "intro": "The rains have come. The roads are turning to rivers, the river is rising, and the whole district holds its breath."
+        }
+      ]
+    },
+    "postures": {
+      "tour": {
+        "label": "Go out on tour",
+        "note": "Among the people &mdash; the district steadies; your files and your health do not.",
+        "base": {
+          "contentment": 1,
+          "order": 1,
+          "prestige": -1,
+          "composure": -1
+        },
+        "season": {
+          "cold": {
+            "composure": 1
+          },
+          "hot": {
+            "composure": -1
+          },
+          "monsoon": {
+            "composure": -1,
+            "order": -1
+          }
+        }
+      },
+      "desk": {
+        "label": "Hold the cutcherry",
+        "note": "Simla’s files clear &mdash; but out in the district, unheard, things fester.",
+        "base": {
+          "prestige": 1,
+          "revenue": 1,
+          "contentment": -1,
+          "order": -1,
+          "composure": 1
+        },
+        "season": {
+          "cold": {
+            "prestige": -1,
+            "contentment": -1
+          },
+          "hot": {},
+          "monsoon": {
+            "order": 1
+          }
+        }
+      }
     }
   },
   "endings": {
@@ -874,6 +973,167 @@
           "outcome": "You hold a fair examination, which the nephew wins anyway, having been the only serious candidate Ram Autar permitted to apply. You have upheld a principle and changed nothing, at some cost to a friendship you could not afford to spend."
         }
       ]
+    },
+    {
+      "id": "touring-camp",
+      "tag": "ON TOUR",
+      "season": [
+        "cold",
+        "hot"
+      ],
+      "kind": "tour",
+      "once": false,
+      "title": "The Camp at Rampur",
+      "body": "Your tents are pitched under a mango tope outside Rampur; the <i>patwari</i>’s land-records are spread on the camp table, the headman is anxious, and a queue of cultivators has formed to lay grievances before the sahib in person. This is the district as it actually is, not as the files describe it.",
+      "choices": [
+        {
+          "label": "Go through the <b>land records</b> line by line with the patwari.",
+          "effects": {
+            "revenue": 4,
+            "order": 2,
+            "composure": -3
+          },
+          "outcome": "You find three fields recorded to men who died in the last famine and one to a man who never existed. The patwari is either a rogue or an artist; either way the records are truer tonight than they were this morning."
+        },
+        {
+          "label": "Hear the <b>cultivators’ grievances</b> under the mango tree.",
+          "effects": {
+            "contentment": 6,
+            "composure": -2,
+            "prestige": -1
+          },
+          "outcome": "You sit until dark hearing of a bad well, a hard landlord, a boundary that has walked in the night. You can mend perhaps one grievance in five, but being heard by the sahib is itself a kind of remedy, and the village knows it."
+        },
+        {
+          "label": "Keep it brief &mdash; <b>show the flag</b> and move on.",
+          "effects": {
+            "order": 2,
+            "contentment": -2,
+            "composure": 1
+          },
+          "outcome": "You are seen, saluted, and gone by noon. The tour register records a village inspected. What the village records is that the sahib did not stay to listen."
+        }
+      ]
+    },
+    {
+      "id": "hill-station",
+      "tag": "PRIVATE",
+      "season": [
+        "hot"
+      ],
+      "kind": "personal",
+      "once": false,
+      "title": "A Letter from the Hills",
+      "body": "The hot weather is on, the plains are an oven, and a letter comes down from the hill station where your wife has taken the children for the season. She asks, not for the first time, when you will come up for your local leave &mdash; and whether it is not time the boy was sent Home to school in England, as everyone’s children are.",
+      "choices": [
+        {
+          "label": "Take your <b>local leave</b> and go up to the hills.",
+          "effects": {
+            "composure": 8,
+            "prestige": -3,
+            "revenue": -2
+          },
+          "outcome": "A fortnight of cool air and your own family, and of pretending you are not thinking about the district. You come down restored and faintly guilty. The work waited; it always waits; that is the one dependable thing about it."
+        },
+        {
+          "label": "Stay at your post; <b>agree the boy goes Home</b>.",
+          "effects": {
+            "composure": -6,
+            "prestige": 2
+          },
+          "outcome": "You sign the letter that sends your son across an ocean to be raised by a school and an aunt, for his health and his accent and his prospects. It is what the Service does to its families. You tell yourself it is for the best, and go back to the files."
+        },
+        {
+          "label": "Stay, and <b>put the decision off</b> another year.",
+          "effects": {
+            "composure": -2,
+            "contentment": 1
+          },
+          "outcome": "You write a warm, evasive letter and post it up the hill. Nothing is decided, which is its own kind of decision. The heat presses on the bungalow like a hand."
+        }
+      ]
+    },
+    {
+      "id": "the-heat",
+      "tag": "PRIVATE",
+      "season": [
+        "hot"
+      ],
+      "kind": "personal",
+      "once": false,
+      "title": "The Hot Weather",
+      "body": "By May the thermometer stands at a hundred and ten in the shade, the station has half-emptied for the hills, the punkahs never stop, and the nights are worse than the days. This is the season that breaks men quietly &mdash; the <i>loo</i> wind, the glare, and the long solitary evenings with nothing between you and the silence but a bottle and the ceiling.",
+      "choices": [
+        {
+          "label": "Keep to a <b>rigid routine</b> &mdash; dawn rides, cold baths, work.",
+          "effects": {
+            "composure": 3,
+            "order": 1
+          },
+          "outcome": "Discipline is the sahib’s armour against the heat. You ride at dawn, work through the shuttered day, and hold yourself together by the timetable. It is joyless, and it works."
+        },
+        {
+          "label": "Let the <b>Club and the bottle</b> carry you through.",
+          "effects": {
+            "composure": 5,
+            "prestige": -2,
+            "order": -1
+          },
+          "outcome": "The little society of the half-empty station closes ranks around its bar. The evenings pass more easily; the mornings less so. It is the well-worn road, and you can see from here where it leads."
+        },
+        {
+          "label": "<b>Drive yourself</b> at the work to fill the emptiness.",
+          "effects": {
+            "revenue": 3,
+            "prestige": 1,
+            "composure": -4
+          },
+          "outcome": "You bury the silence under files and clear a backlog two years deep. Simla is pleased. Something in you is being spent that no honours list will ever repay."
+        }
+      ]
+    },
+    {
+      "id": "flood",
+      "tag": "IMMEDIATE",
+      "season": [
+        "monsoon"
+      ],
+      "kind": "crisis",
+      "once": true,
+      "title": "The River Comes Up",
+      "body": "Three days of rain and the river is over its banks; the low villages are islands, the rail embankment is the only high ground for miles, and a crowd of the flooded-out is gathering on it with their cattle and their cooking pots. Boats are few, the night is coming on, and the water is still rising.",
+      "choices": [
+        {
+          "label": "Take <b>personal charge</b> of the rescue from a boat.",
+          "effects": {
+            "contentment": 10,
+            "order": 4,
+            "composure": -6,
+            "prestige": 2
+          },
+          "outcome": "You spend two nights on the water pulling families off rooftops, soaked and sleepless and more use than you have felt in months. The district will long remember that the sahib came himself. So, unfortunately, will your constitution."
+        },
+        {
+          "label": "<b>Organise from the embankment</b> &mdash; relief camp, grain, order.",
+          "effects": {
+            "contentment": 6,
+            "order": 3,
+            "revenue": -4,
+            "composure": -3
+          },
+          "outcome": "You set up the relief camp, commandeer the grain, and keep a frightened crowd from becoming a mob. Unglamorous, competent, and precisely the job. Nobody drowns who can be reached; some cannot be reached."
+        },
+        {
+          "label": "Wire for <b>military help</b> and hold the line till it comes.",
+          "effects": {
+            "order": 2,
+            "prestige": -3,
+            "contentment": -4,
+            "composure": -2
+          },
+          "outcome": "The sappers arrive with boats on the second day and do the work you could not. It is the sensible call, and the district notes that in its worst hour the sahib sent a telegram and waited. Sense is rarely forgiven."
+        }
+      ]
     }
   ]
 }
@@ -882,14 +1142,16 @@
 <script>
 /* ---------- Pukka Sahib engine ----------
    Content lives as pure JSON in <script id="game-data">. This file is logic
-   only: it interprets the data. Events, choices, effects, conditions, and
-   endings are all declarative — no code in the content layer, so the data can
-   be authored by hand (or a tool) and later moved to an external file. */
+   only. The fortnight now has two beats: a POSTURE choice (tour vs. desk),
+   then a seasonally-weighted EVENT. The year runs on a calendar — cold-weather
+   touring, hot-weather station, monsoon crisis — read from config. */
 
 const DATA = JSON.parse(document.getElementById("game-data").textContent);
 const CFG = DATA.config;
 const ENDINGS = DATA.endings;
 const EVENTS = DATA.events;
+const CAL = CFG.calendar;
+const POSTURES = CFG.postures;
 
 const METERS = [
   {key:"revenue",     name:"Revenue"},
@@ -901,25 +1163,23 @@ const METERS = [
 const MAX_TURNS = CFG.maxTurns;
 const SECRECY = ["MOST SECRET","SECRET","CONFIDENTIAL","CYPHER"];
 
-let S, deck, turn, current;
+let S, turn, current, recent;
 
 function init(){
-  S = Object.assign({flags:{}}, CFG.start);
+  S = Object.assign({flags:{}, posture:null}, CFG.start);
   turn = 1;
-  deck = shuffle(EVENTS.filter(e=>!e.once)).concat(EVENTS.filter(e=>e.once));
+  recent = [];
   document.getElementById("card").className = "card";
-  drawNext();
+  beginFortnight();
 }
 
-function shuffle(a){
-  a = a.slice();
-  for(let i=a.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-  return a;
-}
 function clamp(v){return Math.max(0,Math.min(100,Math.round(v)));}
+
+/* ---------- calendar ---------- */
+function seasonOf(t){
+  return CAL.seasons.find(s => t>=s.from && t<=s.to) || CAL.seasons[CAL.seasons.length-1];
+}
+function monthOf(t){ return CAL.months[Math.min(CAL.months.length-1, Math.floor((t-1)/2))]; }
 
 /* ---------- declarative condition evaluator ---------- */
 function evalCondition(c){
@@ -942,9 +1202,6 @@ function evalCondition(c){
   if(c.not)   return !evalCondition(c.not);
   return true;
 }
-
-/* A choice is either flat {effects, outcome} or branching
-   {condition, ifTrue:{...}, ifFalse:{...}}. Resolve to a concrete result. */
 function resolveChoice(ch){
   const branch = ch.condition
     ? (evalCondition(ch.condition) ? ch.ifTrue : ch.ifFalse)
@@ -956,7 +1213,7 @@ function resolveChoice(ch){
   };
 }
 
-/* ---------- meters & honours ---------- */
+/* ---------- meters, honours, season band ---------- */
 function renderMeters(pulseKeys){
   const el = document.getElementById("meters");
   el.innerHTML = "";
@@ -986,27 +1243,95 @@ function renderHonours(){
   const el = document.getElementById("honours");
   if(el) el.innerHTML = honoursStanding();
 }
+function renderSeasonBand(){
+  const el = document.getElementById("seasonband");
+  if(!el) return;
+  const s = seasonOf(turn);
+  el.innerHTML = `<span class="glyph">${s.glyph}</span> <b>${s.name}</b> &middot; ${monthOf(turn)} &mdash; ${s.tagline}`;
+}
 
-/* ---------- turn flow ---------- */
-function drawNext(){
+/* ---------- the fortnight: posture, then event ---------- */
+function beginFortnight(){
   const dead = collapseCheck();
   if(dead){ return showEnding(dead); }
   if(turn > MAX_TURNS){ return showEnding(finalVerdict()); }
-
-  let idx = deck.findIndex(e => eligible(e));
-  if(idx === -1){
-    deck = shuffle(EVENTS.filter(e=>!e.once && eligible(e)));
-    idx = 0;
-  }
-  current = deck.splice(idx,1)[0];
+  renderSeasonBand();
   renderMeters();
-  renderCard(current);
+  renderPostureCard();
+}
+
+function postureNote(kind){
+  const p = POSTURES[kind];
+  let note = p.note;
+  if(kind==="tour" && seasonOf(turn).key==="monsoon")
+    note = "The roads are rivers &mdash; to tour now is to risk it.";
+  return note;
+}
+
+function renderPostureCard(){
+  const c = document.getElementById("card");
+  c.className = "card";
+  const s = seasonOf(turn);
+  c.innerHTML =
+    `<div class="turnline">
+       <span class="fortnight">Fortnight ${turn} of ${MAX_TURNS} &middot; ${monthOf(turn)}</span>
+       <span class="stamp">${s.glyph} ${s.name}</span>
+     </div>
+     <h3 class="cardtitle">How will you spend the fortnight?</h3>
+     <div class="body">${s.intro}</div>
+     <div class="choices"></div>`;
+  const box = c.querySelector(".choices");
+  ["tour","desk"].forEach(kind=>{
+    const p = POSTURES[kind];
+    const b = document.createElement("button");
+    b.className = "choice";
+    b.innerHTML = `${p.label}<span class="cue">${postureNote(kind)}</span>`;
+    b.onclick = ()=>choosePosture(kind);
+    box.appendChild(b);
+  });
+}
+
+function choosePosture(kind){
+  S.posture = kind;
+  const p = POSTURES[kind];
+  const sk = seasonOf(turn).key;
+  const eff = Object.assign({}, p.base);
+  const seasonEff = (p.season && p.season[sk]) || {};
+  for(const k in seasonEff){ eff[k] = (eff[k]||0) + seasonEff[k]; }
+  const pulsed = [];
+  for(const k in eff){ if(eff[k]){ S[k]=clamp(S[k]+eff[k]); pulsed.push(k); } }
+  renderMeters(pulsed);
+  const dead = collapseCheck();
+  if(dead){ return showEnding(dead); }
+  drawEvent();
 }
 
 function eligible(e){
   if(e.once && S.flags[e.id]) return false;
   if(e.requires && !evalCondition(e.requires)) return false;
   return true;
+}
+
+/* Seasonally- and posture-weighted draw. Crises fire regardless of posture in
+   their season; otherwise the posture biases toward tour vs. desk material. */
+function drawEvent(){
+  const sk = seasonOf(turn).key;
+  const inSeason = e => (e.season || ["any"]).includes("any") || (e.season || []).includes(sk);
+  const prefer = S.posture==="tour"
+    ? ["tour","crisis"]
+    : ["desk","club","personal","crisis"];
+
+  let pool = EVENTS.filter(e => eligible(e) && inSeason(e));
+  let biased = pool.filter(e => prefer.includes(e.kind) || e.kind==="crisis");
+  let cand = biased.length ? biased : pool;
+  const fresh = cand.filter(e => !recent.includes(e.id));
+  if(fresh.length) cand = fresh;
+  if(!cand.length) cand = EVENTS.filter(e => eligible(e)); // last resort
+
+  current = cand[Math.floor(Math.random()*cand.length)];
+  recent.push(current.id);
+  if(recent.length > 4) recent.shift();
+  renderCard(current);
 }
 
 function renderCard(e){
@@ -1016,7 +1341,7 @@ function renderCard(e){
   const stampCls = "stamp" + (SECRECY.includes(tag.toUpperCase()) ? " stamp--secret" : "");
   c.innerHTML =
     `<div class="turnline">
-       <span class="fortnight">Fortnight ${turn} of ${MAX_TURNS}</span>
+       <span class="fortnight">Fortnight ${turn} of ${MAX_TURNS} &middot; ${monthOf(turn)}</span>
        <span class="${stampCls}">${tag}</span>
      </div>
      <h3 class="cardtitle">${e.title}</h3>
@@ -1051,7 +1376,7 @@ function resolve(e,ch){
      <div class="deltas">${deltas}</div>
      <div class="next"><button class="primary" id="cont">Continue &rarr;</button></div>`;
   c.querySelectorAll(".choice").forEach(b=>{b.disabled=true;b.style.opacity=.5;b.onclick=null;});
-  document.getElementById("cont").onclick = ()=>{ turn++; drawNext(); };
+  document.getElementById("cont").onclick = ()=>{ turn++; beginFortnight(); };
 }
 
 /* ---------- endings ---------- */
