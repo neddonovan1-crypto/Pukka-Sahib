@@ -145,6 +145,16 @@
   .ending .verdict{font-style:italic; margin:14px auto; max-width:52ch}
 
   footer{text-align:center; font-family:"Courier New",Courier,monospace; font-size:.64rem; letter-spacing:.08em; color:var(--ink-soft); text-transform:uppercase; margin-top:24px}
+  /* Wide screens: two columns — the situation (scene + stats) on the left, the
+     decision on the right — so a fortnight reads without scrolling. Below the
+     break it collapses back to the single stacked column. */
+  @media (min-width:960px){
+    .frame{max-width:1040px}
+    #game{display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:start}
+    .col{min-width:0}
+    .col-left .economy{border-bottom:none; padding-bottom:0; margin-bottom:0}
+    .start{max-width:660px; margin-left:auto; margin-right:auto}
+  }
   @media (max-width:440px){ .meter .name{font-size:.5rem} .card{padding:18px 16px} }
   @media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} button.choice:hover{transform:none} }
 </style>
@@ -175,13 +185,17 @@
   <div class="start" id="start" hidden></div>
 
   <div id="game" hidden>
-    <img class="scene" id="scene" alt="" hidden>
-    <div class="seasonband" id="seasonband"></div>
-    <div class="meters" id="meters"></div>
-    <div class="honours" id="honours"></div>
-    <div class="economy" id="economy"></div>
-    <div class="notice" id="notice" hidden></div>
-    <div class="card" id="card"></div>
+    <div class="col col-left">
+      <img class="scene" id="scene" alt="" hidden>
+      <div class="seasonband" id="seasonband"></div>
+      <div class="meters" id="meters"></div>
+      <div class="honours" id="honours"></div>
+      <div class="economy" id="economy"></div>
+    </div>
+    <div class="col col-right">
+      <div class="notice" id="notice" hidden></div>
+      <div class="card" id="card"></div>
+    </div>
   </div>
 
   <footer>One fortnight per turn &middot; survive the posting</footer>

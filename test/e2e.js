@@ -79,7 +79,7 @@ async function playSession(browser, label, viewport) {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
   try {
-    var d = await playSession(browser, "desktop", { width: 900, height: 820 });
+    var d = await playSession(browser, "desktop", { width: 1120, height: 920 });
     console.log("desktop:", JSON.stringify(d));
     var m = await playSession(browser, "mobile", { width: 375, height: 667 });
     console.log("mobile: ", JSON.stringify(m));
