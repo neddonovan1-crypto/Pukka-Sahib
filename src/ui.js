@@ -207,6 +207,14 @@
     el("begin").onclick = function () { showGame(); paint(game.init()); };
   }
 
+  // The masthead crest: the engraved raster seal when the build carries it,
+  // else the inline SVG fallback.
+  if (ART.seal) {
+    var crest = el("crest"), sealFallback = el("seal-fallback");
+    if (crest) { crest.src = ART.seal; crest.hidden = false; }
+    if (sealFallback) sealFallback.setAttribute("hidden", "hidden");
+  }
+
   if (ART.cover) showStart();
   else { showGame(); paint(game.init()); }
 })();

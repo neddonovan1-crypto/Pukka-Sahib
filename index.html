@@ -47,6 +47,11 @@
 
   .masthead{display:flex; gap:16px; align-items:center; margin-bottom:4px}
   .seal-svg{flex:0 0 auto; width:62px; height:62px; transform:rotate(-4deg); opacity:.92}
+  
+  .crest{flex:0 0 auto; width:66px; height:66px; object-fit:contain; transform:rotate(-4deg); opacity:.94}
+  @media (prefers-color-scheme:dark){ .crest{filter:brightness(1.85) saturate(.85)} }
+  :root[data-theme="dark"] .crest{filter:brightness(1.85) saturate(.85)}
+  :root[data-theme="light"] .crest{filter:none}
   .mast-text{flex:1 1 auto}
   .dept{
     font-family:"Courier New",Courier,monospace; font-size:.62rem;
@@ -168,7 +173,8 @@
 <div class="frame">
   <header class="masthead">
     <div class="cover-stamp" aria-hidden="true">Most Secret</div>
-    <svg class="seal-svg" viewBox="0 0 100 100" role="img" aria-label="Indian Civil Service seal" xmlns="http://www.w3.org/2000/svg">
+    <img class="crest" id="crest" hidden alt="Indian Civil Service seal">
+    <svg class="seal-svg" id="seal-fallback" viewBox="0 0 100 100" role="img" aria-label="Indian Civil Service seal" xmlns="http://www.w3.org/2000/svg">
       <circle cx="50" cy="50" r="47.5" fill="none" stroke="var(--seal)" stroke-width="1.6"/>
       <circle cx="50" cy="50" r="43.2" fill="none" stroke="var(--seal)" stroke-width="0.9"/>
       <circle cx="50" cy="50" r="45.3" fill="none" stroke="var(--seal)" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="0 6.469"/>
@@ -755,6 +761,12 @@
       'Keep the peace, the revenue, and &mdash; above all &mdash; up appearances, for a year at least.</div>' +
       '<button class="primary" id="begin">Take up your posting &rarr;</button>';
     el("begin").onclick = function () { showGame(); paint(game.init()); };
+  }
+
+  if (ART.seal) {
+    var crest = el("crest"), sealFallback = el("seal-fallback");
+    if (crest) { crest.src = ART.seal; crest.hidden = false; }
+    if (sealFallback) sealFallback.setAttribute("hidden", "hidden");
   }
 
   if (ART.cover) showStart();

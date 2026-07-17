@@ -34,7 +34,11 @@ var JOBS = [
   // the Indian Empire badge (CIE/KCIE) is a scan whose cream paper is flood-
   // filled away from the borders (see cutout:true).
   { in: "medal-kcsi-src.png", out: "medal-kcsi.png", w: 560 },
-  { in: "medal-cie-src.jpg", out: "medal-cie.png", w: 420, cutout: true }
+  { in: "medal-cie-src.jpg", out: "medal-cie.png", w: 420, cutout: true },
+  // The masthead crest: engraved line-work on white. inkAlpha (not cutout) —
+  // every pixel's whiteness becomes transparency, so the paper shows through
+  // the hatching like a genuine ink stamp, with no enclosed white disc.
+  { in: "seal.png", out: "seal.png", w: 264, inkAlpha: true }
 ];
 
 // Remove the flat paper background from a scanned badge: 4-connected flood-fill
@@ -67,6 +71,19 @@ async function cutoutBadge(src, tol) {
   return sharp(data, { raw: { width: W, height: H, channels: 4 } });
 }
 
+// Ink-on-paper conversion: alpha from inkiness (255 − dimmest channel), RGB
+// kept. White vanishes; the coloured inks stay near-opaque (oxblood's dimmest
+// channel is ~34 → alpha ~221); anti-aliased edges become partial alpha.
+async function inkAlpha(src) {
+  var raw = await sharp(src).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  var data = raw.data, n = raw.info.width * raw.info.height;
+  for (var i = 0; i < n; i++) {
+    var o = i * 4;
+    data[o + 3] = 255 - Math.min(data[o], data[o + 1], data[o + 2]);
+  }
+  return sharp(data, { raw: { width: raw.info.width, height: raw.info.height, channels: 4 } });
+}
+
 (async function () {
   var total = 0;
   for (var i = 0; i < JOBS.length; i++) {
@@ -74,7 +91,8 @@ async function cutoutBadge(src, tol) {
     var src = path.join(ART, j.in);
     if (!fs.existsSync(src)) { console.log("skip (missing):", j.in); continue; }
     var pipe;
-    if (j.cutout) pipe = (await cutoutBadge(src, 46)).resize({ width: j.w }).png({ compressionLevel: 9, palette: true, quality: 68, colours: 64 });
+    if (j.inkAlpha) pipe = (await inkAlpha(src)).resize({ width: j.w }).png({ compressionLevel: 9, palette: true, quality: 80, colours: 128 });
+    else if (j.cutout) pipe = (await cutoutBadge(src, 46)).resize({ width: j.w }).png({ compressionLevel: 9, palette: true, quality: 68, colours: 64 });
     else if (/\.png$/i.test(j.out)) pipe = sharp(src).resize({ width: j.w }).png({ compressionLevel: 9, palette: true, quality: 90 });
     else pipe = sharp(src).resize({ width: j.w }).jpeg({ quality: j.q, mozjpeg: true });
     await pipe.toFile(path.join(OUT, j.out));
