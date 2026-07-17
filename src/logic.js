@@ -132,7 +132,7 @@
       if (p < 40 || o < 40) end = ENDINGS.scandal;
       else if (c >= 65 && p < 50) end = ENDINGS.gonenative;
       else if (p >= 82 && r >= 60 && c >= 55) end = ENDINGS.kcsi;
-      else if (p >= 72 && r >= 56) end = ENDINGS.kcie;
+      else if (p >= 74 && r >= 56) end = ENDINGS.kcie;
       else if (p >= 58) end = ENDINGS.cie;
       else end = ENDINGS.transfer;
       // A magistrate who beggared the district into the Lala's books is not knighted.
@@ -287,7 +287,7 @@
       if (S.debt > ECON.debtWarn) return "Honours List &mdash; the district's debts have ruined your name";
       if (p < 40) return "Honours List &mdash; your name appears only in the complaints";
       if (p >= 82 && r >= 60 && c >= 55) return "Honours List &mdash; a <b>K.C.S.I.</b> (a knighthood of the star) is within reach";
-      if (p >= 72 && r >= 56) return "Honours List &mdash; a <b>K.C.I.E.</b> (a knighthood) is within reach";
+      if (p >= 74 && r >= 56) return "Honours List &mdash; a <b>K.C.I.E.</b> (a knighthood) is within reach";
       if (p >= 58) return "Honours List &mdash; a <b>C.I.E.</b> is within reach";
       if (p >= 48) return "Honours List &mdash; not yet on anyone's list";
       return "Honours List &mdash; unlikely, on present form";

@@ -24,8 +24,9 @@ function stripJs(src) {
 
 function build() {
   var shell = read(path.join(SRC, "shell.html"));
-  var contentRaw = read(path.join(SRC, "content.json"));
-  var content = JSON.stringify(JSON.parse(contentRaw)); // minify + validate JSON
+  // Content is authored across themed files under src/content/ and merged here.
+  delete require.cache[require.resolve("./src/content.js")];
+  var content = JSON.stringify(require("./src/content.js"));
   var logic = stripJs(read(path.join(SRC, "logic.js")));
   var ui = stripJs(read(path.join(SRC, "ui.js")));
 

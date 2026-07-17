@@ -3,7 +3,7 @@
    sim asserts it. Exits non-zero if any band is missed. Run: node test/simulate.js */
 "use strict";
 var L = require("../src/logic.js");
-var content = require("../src/content.json");
+var content = require("../src/content.js");
 
 var titleToKey = {};
 Object.keys(content.endings).forEach(function (k) { titleToKey[content.endings[k].title] = k; });

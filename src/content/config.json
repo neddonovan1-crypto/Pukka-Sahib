@@ -1,0 +1,152 @@
+{
+  "config": {
+    "maxTurns": 24,
+    "start": {
+      "revenue": 50,
+      "order": 55,
+      "prestige": 50,
+      "contentment": 45,
+      "composure": 60
+    },
+    "calendar": {
+      "months": [
+        "November",
+        "December",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October"
+      ],
+      "seasons": [
+        {
+          "key": "cold",
+          "name": "Cold weather",
+          "tagline": "the touring season",
+          "glyph": "❄",
+          "from": 1,
+          "to": 8,
+          "intro": "The cold weather is the touring season &mdash; the district expects to see the sahib on the road, not behind a desk."
+        },
+        {
+          "key": "hot",
+          "name": "Hot weather",
+          "tagline": "the plains bake",
+          "glyph": "☀",
+          "from": 9,
+          "to": 16,
+          "intro": "The plains bake. Those who can have fled to the hills; the work shrinks to headquarters and the long, solitary evenings."
+        },
+        {
+          "key": "monsoon",
+          "name": "The monsoon",
+          "tagline": "the district turns dangerous",
+          "glyph": "☂",
+          "from": 17,
+          "to": 24,
+          "intro": "The rains have come. The roads are turning to rivers, the river is rising, and the whole district holds its breath."
+        }
+      ]
+    },
+    "postures": {
+      "tour": {
+        "label": "Go out on tour",
+        "note": "Among the people &mdash; the district steadies; your files and your health do not.",
+        "base": {
+          "contentment": 1,
+          "order": 1,
+          "prestige": -1,
+          "composure": -1
+        },
+        "season": {
+          "cold": {
+            "composure": 1
+          },
+          "hot": {
+            "composure": -1
+          },
+          "monsoon": {
+            "composure": -1,
+            "order": -1
+          }
+        }
+      },
+      "desk": {
+        "label": "Hold the cutcherry",
+        "note": "Simla’s files clear &mdash; but out in the district, unheard, things fester.",
+        "base": {
+          "prestige": 1,
+          "revenue": 1,
+          "contentment": -1,
+          "order": -1,
+          "composure": 1
+        },
+        "season": {
+          "cold": {
+            "prestige": -1,
+            "contentment": -1
+          },
+          "hot": {},
+          "monsoon": {
+            "order": 1
+          }
+        }
+      }
+    },
+    "economy": {
+      "startTreasury": 120000,
+      "settlementTurns": [
+        11,
+        21
+      ],
+      "settlementBase": 140000,
+      "interestRate": 0.18,
+      "debtCeiling": 200000,
+      "debtWarn": 120000
+    },
+    "interludeChance": 0.16
+  },
+  "endings": {
+    "kcie": {
+      "title": "The K.C.I.E.",
+      "text": "You are gazetted a <b>Knight Commander of the Order of the Indian Empire</b> and rise, a plain magistrate of thirty-odd, to &lsquo;Sir.&rsquo; Promoted to Commissioner, mentioned in despatches, permitted to add letters to your name. You have learned little and will go far. Chhota Nagra is already forgetting you, which is the highest compliment it knows how to pay."
+    },
+    "cie": {
+      "title": "The C.I.E.",
+      "text": "The Gazette records you a <b>Companion of the Order of the Indian Empire</b> &mdash; the honest workhorse ribbon of a district man who kept the show on the road. No knighthood, no legend: a competent posting, decently done. In the Service, that is quietly understood to be the whole of the job."
+    },
+    "transfer": {
+      "title": "The Quiet Transfer",
+      "text": "You are moved to a district even smaller and hotter than this one. No enquiry, no honours, no explanation. This is the Service's way of forgetting a man without the paperwork of dismissing him."
+    },
+    "scandal": {
+      "title": "The Scandal",
+      "text": "A question is asked in the wrong quarter, a file is opened, and your name travels to London faster than you ever will. You are recalled. At the Club, the subscription list quietly loses your name between one week and the next."
+    },
+    "breakdown": {
+      "title": "Invalided Home",
+      "text": "You are put aboard a P&amp;O steamer &lsquo;on grounds of health,&rsquo; which is true in the way that all the best official lies are true. The heat, they will say. It is always the heat. You will not come back."
+    },
+    "riot": {
+      "title": "A Commission of Enquiry",
+      "text": "The lathi-charge does not go as the sub-inspector promised. A crowd becomes a headline; a headline becomes a Commission. You spend your last weeks in Chhota Nagra composing a version of events that no one, including you, believes."
+    },
+    "bankrupt": {
+      "title": "The Empty Treasury",
+      "text": "The revenue does not come in, and an Empire runs on revenue coming in. Lala Hukum Chand holds the district's debts and, it emerges, a good deal of yours. You are relieved of a post you could no longer afford to hold."
+    },
+    "gonenative": {
+      "title": "Gone Native",
+      "text": "You resign, in terms the Commissioner calls &lsquo;intemperate&rsquo; and Pandit Girdhari calls &lsquo;a beginning.&rsquo; You are henceforth spoken of as a man who let the side down. It is the only ending this district will remember with anything like affection."
+    },
+    "kcsi": {
+      "title": "The K.C.S.I.",
+      "text": "You are made a <b>Knight Commander of the Most Exalted Order of the Star of India</b> &mdash; <i>Heaven&rsquo;s Light Our Guide</i> &mdash; and kneel a district officer to rise a knight of the senior star. It is given for a district ruled with a firmness that impressed Simla and a decency that, against every expectation, impressed the district too. You have reached the top of the only ladder the Service acknowledges. The view from it is smaller than you were promised."
+    }
+  }
+}

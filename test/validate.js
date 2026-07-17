@@ -1,7 +1,7 @@
 /* Content validator — every content rule as an executable check, not a
    convention. Exits non-zero on any violation. Run: node test/validate.js */
 "use strict";
-var content = require("../src/content.json");
+var content = require("../src/content.js");
 
 var METERS = ["revenue", "order", "prestige", "contentment", "composure"];
 var SEASON_KEYS = ["cold", "hot", "monsoon"];
