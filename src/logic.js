@@ -287,15 +287,21 @@
       return eff;
     }
 
+    // Rotate through authored variants deterministically by fortnight — the
+    // render layer never consumes rng, and consecutive turns never repeat.
+    function variantOf(arr) {
+      if (!arr || !arr.length) return "";
+      return arr[(S.turn - 1) % arr.length];
+    }
+
     function postureOptions() {
+      var sk = seasonOf(S.turn).key;
       var opts = ["tour", "desk"].map(function (kind) {
         var p = POSTURES[kind];
-        var note = p.note;
-        if (kind === "tour" && seasonOf(S.turn).key === "monsoon")
-          note = "The roads are rivers — to tour now is to risk it.";
+        var note = p.notes ? variantOf(p.notes[sk]) : (p.note || "");
         return { kind: kind, label: p.label, note: note, effects: postureEffects(kind) };
       });
-      var rdef = retreatFor(seasonOf(S.turn).key);
+      var rdef = retreatFor(sk);
       if (rdef) opts.push({ kind: rdef.key, label: rdef.label, note: rdef.note, retreat: true, effects: rdef.effects || {} });
       return opts;
     }
@@ -371,9 +377,11 @@
     function snapshot(extra) {
       var meters = {};
       METERS.forEach(function (k) { meters[k] = S[k]; });
+      var season = seasonOf(S.turn);
       var snap = {
         phase: phase, turn: S.turn, maxTurns: MAX_TURNS,
-        season: seasonOf(S.turn), month: monthOf(S.turn),
+        season: season, month: monthOf(S.turn),
+        seasonIntro: variantOf(season.intros) || season.intro || "",
         meters: meters, treasury: S.treasury, debt: S.debt,
         posture: S.posture, notice: notice,
         retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,

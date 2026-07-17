@@ -28,7 +28,14 @@ check(Array.isArray(cal.seasons) && cal.seasons.length >= 1, "calendar.seasons m
 var covered = [];
 cal.seasons.forEach(function (s) {
   check(SEASON_KEYS.indexOf(s.key) !== -1, "season key invalid: " + s.key);
-  check(s.glyph && s.name && s.tagline && s.intro, "season " + s.key + " missing display fields");
+  check(s.glyph && s.name && s.tagline, "season " + s.key + " missing display fields");
+  // intro variants rotate by fortnight; each season needs at least two so the
+  // posture card never reads identical twice running
+  check(Array.isArray(s.intros) && s.intros.length >= 2, "season " + s.key + " needs >=2 intro variants");
+  (s.intros || []).forEach(function (t, i) {
+    check(typeof t === "string" && t.length > 0, "season " + s.key + " intros[" + i + "] empty");
+    scanText(t, "season " + s.key + " intros[" + i + "]");
+  });
   for (var t = s.from; t <= s.to; t++) covered[t] = (covered[t] || 0) + 1;
 });
 for (var t = 1; t <= cfg.maxTurns; t++) check(covered[t] === 1, "turn " + t + " covered by " + (covered[t] || 0) + " seasons (want exactly 1)");
@@ -37,6 +44,18 @@ for (var t = 1; t <= cfg.maxTurns; t++) check(covered[t] === 1, "turn " + t + " 
   check(cfg.postures && cfg.postures[k] && cfg.postures[k].base, "posture " + k + " missing base");
   if (cfg.postures[k]) {
     Object.keys(cfg.postures[k].base).forEach(function (mk) { check(METERS.indexOf(mk) !== -1, "posture " + k + " base has non-meter key " + mk); });
+    // per-season note variants, rotated by fortnight — every season covered,
+    // at least two variants each so the cue never reads identical twice running
+    var notes = cfg.postures[k].notes;
+    check(notes && typeof notes === "object", "posture " + k + " missing notes");
+    SEASON_KEYS.forEach(function (sk) {
+      var arr = notes && notes[sk];
+      check(Array.isArray(arr) && arr.length >= 2, "posture " + k + " needs >=2 note variants for season " + sk);
+      (arr || []).forEach(function (t, i) {
+        check(typeof t === "string" && t.length > 0, "posture " + k + " notes." + sk + "[" + i + "] empty");
+        scanText(t, "posture " + k + " notes." + sk + "[" + i + "]");
+      });
+    });
   }
 });
 

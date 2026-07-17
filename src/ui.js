@@ -68,7 +68,7 @@
     c.innerHTML =
       turnline(s, '<span class="seasontag">' + s.season.glyph + " " + s.season.name + "</span>") +
       '<h3 class="cardtitle">How will you spend the fortnight?</h3>' +
-      '<div class="body">' + s.season.intro + "</div>" +
+      '<div class="body">' + s.seasonIntro + "</div>" +
       '<div class="choices"></div>';
     var box = c.querySelector(".choices");
     game.postureOptions().forEach(function (o) {
@@ -204,7 +204,8 @@
     st.innerHTML =
       '<img src="' + ART.cover + '" alt="A district officer looks out over the plains of his district">' +
       '<div class="tagline">You are the newly-gazetted District Magistrate &amp; Collector of Chhota Nagra. ' +
-      'Keep the peace, the revenue, and &mdash; above all &mdash; up appearances, for a year at least.</div>' +
+      'The peace must be kept, the revenue must come in, and appearances &mdash; above all &mdash; must be kept up. ' +
+      'You have a year. Survive the posting.</div>' +
       '<button class="primary" id="begin">Take up your posting &rarr;</button>';
     el("begin").onclick = function () { showGame(); paint(game.init()); };
   }

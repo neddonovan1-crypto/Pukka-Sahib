@@ -31,7 +31,12 @@
           "glyph": "❄",
           "from": 1,
           "to": 8,
-          "intro": "The cold weather is the touring season &mdash; the district expects to see the sahib on the road, not behind a desk."
+          "intros": [
+            "The cold weather is the touring season &mdash; the district expects to see the sahib on the road, not behind a desk.",
+            "The mornings come sharp and blue, the roads are open, and every village knows to a day how long it is since a sahib last rode through it.",
+            "Camp weather: tents aired, files boxed, horses shod. Whatever you mean to see of this district, you will see it before March.",
+            "A short season, and the whole year is settled in it &mdash; the assessments, the friendships, the grudges."
+          ]
         },
         {
           "key": "hot",
@@ -40,7 +45,12 @@
           "glyph": "☀",
           "from": 9,
           "to": 16,
-          "intro": "The plains bake. Those who can have fled to the hills; the work shrinks to headquarters and the long, solitary evenings."
+          "intros": [
+            "The plains bake. Those who can have fled to the hills; the work shrinks to headquarters and the long, solitary evenings.",
+            "The thermometer owns the district now. Work happens before nine and after five; between them the station lies still as a shut shop.",
+            "Everyone who matters is in the hills. Everyone who remains is your problem.",
+            "The hot weather sorts men quietly: those who keep at it behind the chiks, and those the chiks stop hiding."
+          ]
         },
         {
           "key": "monsoon",
@@ -49,14 +59,17 @@
           "glyph": "☂",
           "from": 17,
           "to": 24,
-          "intro": "The rains have come. The roads are turning to rivers, the river is rising, and the whole district holds its breath."
+          "intros": [
+            "The rains have come. The roads are turning to rivers, the river is rising, and the whole district holds its breath.",
+            "Everything is wet, growing, or breaking. The year&rsquo;s whole account &mdash; harvest, revenue, fever &mdash; is being decided overhead.",
+            "The river is the only officer on duty all twenty-four hours, and it keeps no regulations."
+          ]
         }
       ]
     },
     "postures": {
       "tour": {
         "label": "Go out on tour",
-        "note": "Among the people &mdash; the district steadies; your files and your health do not.",
         "base": {
           "contentment": 1,
           "order": 1,
@@ -72,11 +85,27 @@
             "health": -1,
             "order": -1
           }
+        },
+        "notes": {
+          "cold": [
+            "Among the people &mdash; the district steadies; your files and your health do not.",
+            "The camp table under the mango tope: petitions at dawn, boundaries at noon, the district seen with your own eyes.",
+            "Ride the circle &mdash; the villages remember a sahib who comes to them, and forget one who does not."
+          ],
+          "hot": [
+            "Touring in this heat is duty done at a price; the district notices, and so will your constitution.",
+            "The wells are low and the roads shimmer &mdash; but a sahib seen in May is worth three seen in January.",
+            "Out under canvas in the furnace months: admirable, visible, and paid for in your own skin."
+          ],
+          "monsoon": [
+            "The roads are rivers &mdash; to tour now is to risk it.",
+            "Mud to the axle and fever in the air; but the flooded villages will remember who came.",
+            "A wet saddle and a rising river: where the danger is, the district looks for you."
+          ]
         }
       },
       "desk": {
         "label": "Hold the cutcherry",
-        "note": "Simla’s files clear &mdash; but out in the district, unheard, things fester.",
         "base": {
           "prestige": 1,
           "revenue": 1,
@@ -97,6 +126,23 @@
             "order": 1,
             "health": -1
           }
+        },
+        "notes": {
+          "cold": [
+            "The arrears melt and Simla is pleased &mdash; but the district wonders where the sahib rides this season, and answers itself.",
+            "A warm office in the touring season: the paperwork prospers while the camping weeks slip away.",
+            "Every file answered on time &mdash; and every village left to draw its own conclusions."
+          ],
+          "hot": [
+            "Behind the chiks with the punkah going: the sensible place, and the returns show it.",
+            "Headquarters keeps you cool and current; the district, out in the glare, keeps its own counsel.",
+            "The desk is where the hot weather is survived &mdash; and where nothing else much happens."
+          ],
+          "monsoon": [
+            "High ground and dry paper: the office holds while the district swims.",
+            "The registers stay dry and the reports go out on time; the rest is in the river&rsquo;s hands.",
+            "A sound roof, a full inkwell, and the flood on the far side of the window."
+          ]
         }
       }
     },
@@ -166,10 +212,22 @@
       "close": "</b>",
       "weakBelow": 38,
       "bands": [
-        { "min": 64, "text": "SEASON&rsquo;S WORKING GIVES SATISFACTION STOP CONTINUE" },
-        { "min": 54, "text": "SEASON&rsquo;S WORKING NOTED STOP CONTINUE" },
-        { "min": 44, "text": "SEASON&rsquo;S WORKING NOTED WITH CONCERN STOP ATTEND TO IT" },
-        { "min": 0, "text": "SEASON&rsquo;S WORKING NOTED WITH DISPLEASURE STOP EXPLAIN BY POST" }
+        {
+          "min": 64,
+          "text": "SEASON&rsquo;S WORKING GIVES SATISFACTION STOP CONTINUE"
+        },
+        {
+          "min": 54,
+          "text": "SEASON&rsquo;S WORKING NOTED STOP CONTINUE"
+        },
+        {
+          "min": 44,
+          "text": "SEASON&rsquo;S WORKING NOTED WITH CONCERN STOP ATTEND TO IT"
+        },
+        {
+          "min": 0,
+          "text": "SEASON&rsquo;S WORKING NOTED WITH DISPLEASURE STOP EXPLAIN BY POST"
+        }
       ],
       "weak": {
         "prestige": "YOUR STANDING IS SPOKEN OF STOP",
