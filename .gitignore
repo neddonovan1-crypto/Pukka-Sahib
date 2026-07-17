@@ -4,3 +4,4 @@ dist/
 art/*.png
 *.log
 .DS_Store
+art/*-src.*

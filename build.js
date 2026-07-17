@@ -34,12 +34,14 @@ function build() {
   // so the same UI code works for both and art stays optional (absent → no art).
   var artWeb = path.join(ROOT, "art", "web");
   function artNames() {
-    return fs.existsSync(artWeb) ? fs.readdirSync(artWeb).filter(function (f) { return /\.jpe?g$/i.test(f); }) : [];
+    return fs.existsSync(artWeb) ? fs.readdirSync(artWeb).filter(function (f) { return /\.(jpe?g|png)$/i.test(f); }) : [];
   }
+  function artKey(f) { return f.replace(/\.(jpe?g|png)$/i, ""); }
+  function artMime(f) { return /\.png$/i.test(f) ? "image/png" : "image/jpeg"; }
   var embeddedArt = {}, artKb = 0;
   artNames().forEach(function (f) {
     var buf = fs.readFileSync(path.join(artWeb, f));
-    embeddedArt[f.replace(/\.jpe?g$/i, "")] = "data:image/jpeg;base64," + buf.toString("base64");
+    embeddedArt[artKey(f)] = "data:" + artMime(f) + ";base64," + buf.toString("base64");
     artKb += buf.length / 1024;
   });
   var artBlockSingle = "<script>window.PUKKA_ART=" + JSON.stringify(embeddedArt) + ";</script>";
@@ -69,7 +71,7 @@ function build() {
   var distArt = {};
   artNames().forEach(function (f) {
     fs.copyFileSync(path.join(artWeb, f), path.join(assets, f));
-    distArt[f.replace(/\.jpe?g$/i, "")] = "assets/" + f;
+    distArt[artKey(f)] = "assets/" + f;
   });
   var artBlockDist = "<script>window.PUKKA_ART=" + JSON.stringify(distArt) + ";</script>";
   var distHtml = shell.replace("<!--GAME_SCRIPTS-->",

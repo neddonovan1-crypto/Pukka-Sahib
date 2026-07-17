@@ -110,11 +110,18 @@
     el("cont").onclick = function () { paint(game.next()); };
   }
 
+  // The honours endings show their real insignia (KCIE is the knight grade of
+  // the same order as CIE, so it shares the Indian Empire badge).
+  var MEDAL = { "The C.S.I.": "medal-csi", "The C.I.E.": "medal-cie", "The K.C.I.E.": "medal-cie" };
+
   function renderEnding(s) {
     var c = el("card"); c.className = "card ending";
+    var medalSrc = ART[MEDAL[s.ended.title]];
+    var medalHtml = medalSrc ? '<img class="medal" src="' + medalSrc + '" alt="' + s.ended.title + ' insignia">' : "";
     c.innerHTML =
       '<div class="turnline"><span class="fortnight">The posting ends &mdash; fortnight ' +
       Math.min(s.turn, s.maxTurns) + '</span><span class="stamp">Closed</span></div>' +
+      medalHtml +
       '<h2 class="cardtitle">' + s.ended.title + "</h2>" +
       '<div class="verdict">' + s.ended.text + "</div>" +
       '<div class="next" style="text-align:center"><button class="primary" id="again">Take up a new posting</button></div>';

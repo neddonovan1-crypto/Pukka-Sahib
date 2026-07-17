@@ -18,7 +18,11 @@ var JOBS = [
   { in: "season-cold.png", out: "season-cold.jpg", w: 1200, q: 74 },
   { in: "season-hot.png", out: "season-hot.jpg", w: 1200, q: 74 },
   { in: "season-monsoon.png", out: "season-monsoon.jpg", w: 1200, q: 74 },
-  { in: "cover.png", out: "cover.jpg", w: 1400, q: 78 }
+  { in: "cover.png", out: "cover.jpg", w: 1400, q: 78 },
+  // Honours medals for the ending screens. The Star of India keeps its alpha
+  // (PNG) so it sits on the buff; the Indian Empire badge is a scan (JPEG).
+  { in: "medal-csi-src.png", out: "medal-csi.png", w: 560 },
+  { in: "medal-cie-src.jpg", out: "medal-cie.jpg", w: 460, q: 84 }
 ];
 
 (async function () {
@@ -27,7 +31,10 @@ var JOBS = [
     var j = JOBS[i];
     var src = path.join(ART, j.in);
     if (!fs.existsSync(src)) { console.log("skip (missing):", j.in); continue; }
-    await sharp(src).resize({ width: j.w }).jpeg({ quality: j.q, mozjpeg: true }).toFile(path.join(OUT, j.out));
+    var pipe = sharp(src).resize({ width: j.w });
+    if (/\.png$/i.test(j.out)) pipe = pipe.png({ compressionLevel: 9, palette: true, quality: 90 });
+    else pipe = pipe.jpeg({ quality: j.q, mozjpeg: true });
+    await pipe.toFile(path.join(OUT, j.out));
     var kb = fs.statSync(path.join(OUT, j.out)).size / 1024;
     total += kb;
     console.log(j.out.padEnd(22), kb.toFixed(0) + " KB");
