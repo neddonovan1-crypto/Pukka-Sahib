@@ -23,7 +23,14 @@ function scoreChoice(ch, s) {
   ["order", "revenue", "prestige"].forEach(function (m) {
     if (s.meters[m] < 35) sc += (e[m] || 0) * 1.5; // shore up whatever is about to collapse
   });
-  if (ch.econ && ch.econ.debt) sc -= ch.econ.debt / 40000;
+  if (ch.econ && ch.econ.debt) {
+    sc -= ch.econ.debt / 40000;
+    if (s.debt + ch.econ.debt > 160000) sc -= 50; // a second big borrow is how collectors end
+  }
+  if (ch.econ && ch.econ.treasury < 0) {
+    var shortfall = Math.max(0, -ch.econ.treasury - s.treasury); // spend beyond the chest is a borrow
+    sc -= shortfall / 25000;
+  }
   return sc;
 }
 var POLICIES = {
@@ -53,24 +60,82 @@ var POLICIES = {
       return best;
     }
   },
+  // The pinnacle probe: plays for the K.C.S.I. constraints specifically
+  // (prestige ≥80, revenue ≥60, contentment ≥54, debt clear), proving the top
+  // honour is winnable play and not a dead branch.
+  paragon: {
+    posture: function (s) {
+      if (s.retreat && s.season.key === "hot" && s.meters.health < 42) return s.retreat.key;
+      if (s.season.key === "cold") return "tour";
+      if (s.meters.contentment < 56 || s.meters.order < 50) return "tour";
+      return "desk";
+    },
+    option: function (s) {
+      var best = 0, bs = -1e9;
+      s.event.choices.forEach(function (ch, i) {
+        var e = ch.effects || {};
+        var m = s.meters;
+        var sc = (e.prestige || 0) * 2 +
+          (e.contentment || 0) * (m.contentment < 58 ? 0.9 : 0.1) +
+          (e.revenue || 0) * (m.revenue < 62 ? 0.8 : 0.2) +
+          (e.order || 0) * (m.order < 50 ? 0.8 : 0.2) +
+          (e.health || 0) * (m.health < 40 ? 1.6 : 0);
+        if (ch.econ && ch.econ.debt && s.debt + ch.econ.debt > 100000) sc -= 50; // the warn line kills the star
+        if (ch.econ && ch.econ.treasury < 0) sc -= Math.max(0, -ch.econ.treasury - s.treasury) / 25000;
+        if (sc > bs) { bs = sc; best = i; }
+      });
+      return best;
+    }
+  },
   // Adversarial reachability probes: engineered to drive a specific collapse,
   // proving that tail ending is live content and not unreachable.
   wrecker: {
-    posture: function () { return "desk"; }, // desk bleeds Order every fortnight
+    // Desk bleeds Order every fortnight; the seasonal leaves bleed it faster
+    // (a sahib absent in the flood is how riots start), so take every one.
+    posture: function (s) { return s.retreat ? s.retreat.key : "desk"; },
     option: function (s) {
+      // Most Order-negative choice, counting a branching choice at its worst
+      // branch — the nastiest outcomes hide in ifFalse.
+      var worstOrder = function (ch) {
+        if (ch.effects) return ch.effects.order || 0;
+        var a = (ch.ifTrue && ch.ifTrue.effects && ch.ifTrue.effects.order) || 0;
+        var b = (ch.ifFalse && ch.ifFalse.effects && ch.ifFalse.effects.order) || 0;
+        return Math.min(a, b);
+      };
       var bi = 0, bo = 1e9;
-      s.event.choices.forEach(function (ch, i) { var o = (ch.effects && ch.effects.order) || 0; if (o < bo) { bo = o; bi = i; } });
-      return bi; // always the most Order-negative choice → riot
+      s.event.choices.forEach(function (ch, i) { var o = worstOrder(ch); if (o < bo) { bo = o; bi = i; } });
+      return bi; // → riot
     }
   },
   reckless: {
-    posture: function () { return "desk"; },
+    // Desk keeps prestige off the floor while the borrowing does its work;
+    // the leaves are taken too (each costs revenue and standing).
+    posture: function (s) { return s.retreat ? s.retreat.key : "desk"; },
     option: function (s) {
-      var idx = -1;
-      s.event.choices.forEach(function (ch, i) {
-        if (ch.econ && (ch.econ.debt || (ch.econ.treasury && ch.econ.treasury < 0))) idx = i;
-      });
-      return idx >= 0 ? idx : 0; // pile on debt wherever offered → bankruptcy
+      // Deepest spend/borrow on offer (branch econ counts); failing that, the
+      // most Revenue-negative choice — both roads lead to the empty treasury.
+      var econOf = function (ch) {
+        var es = [ch.econ, ch.ifTrue && ch.ifTrue.econ, ch.ifFalse && ch.ifFalse.econ];
+        var worst = 0;
+        es.forEach(function (e) {
+          if (!e) return;
+          var v = (e.debt || 0) - Math.min(0, e.treasury || 0);
+          if (v > worst) worst = v;
+        });
+        return worst;
+      };
+      var worstRev = function (ch) {
+        if (ch.effects) return ch.effects.revenue || 0;
+        var a = (ch.ifTrue && ch.ifTrue.effects && ch.ifTrue.effects.revenue) || 0;
+        var b = (ch.ifFalse && ch.ifFalse.effects && ch.ifFalse.effects.revenue) || 0;
+        return Math.min(a, b);
+      };
+      var bi = -1, best = 0;
+      s.event.choices.forEach(function (ch, i) { var v = econOf(ch); if (v > best) { best = v; bi = i; } });
+      if (bi >= 0) return bi;
+      var ri = 0, rv = 1e9;
+      s.event.choices.forEach(function (ch, i) { var r = worstRev(ch); if (r < rv) { rv = r; ri = i; } });
+      return ri;
     }
   }
 };
@@ -113,7 +178,8 @@ function pct(dist, keys, n) {
 var N = 500;
 var R = {};
 ["random", "tourOnly", "deskOnly", "skilled"].forEach(function (p) { R[p] = runBatch(p, N, p.length * 100003); });
-// smaller adversarial batches for tail-ending reachability
+// smaller engineered batches for tail- and pinnacle-reachability
+R.paragon = runBatch("paragon", 200, 777001);
 R.wrecker = runBatch("wrecker", 200, 424242);
 R.reckless = runBatch("reckless", 200, 133337);
 
@@ -154,6 +220,8 @@ HONOURS.concat(["breakdown", "scandal", "transfer", "gonenative"]).forEach(funct
 // the two tail collapses must be reachable via their adversarial probe
 assert((R.wrecker.dist.riot || 0) > 0, "riot unreachable — wrecker policy never triggered it");
 assert((R.reckless.dist.bankrupt || 0) > 0, "bankrupt unreachable — reckless policy never triggered it");
+// and the senior star must be winnable by play engineered for it
+assert((R.paragon.dist.kcsi || 0) > 0, "kcsi unreachable — paragon policy never earned it");
 
 if (fails.length) {
   console.error("\nSIMULATION FAILED — " + fails.length + " band(s) missed:");

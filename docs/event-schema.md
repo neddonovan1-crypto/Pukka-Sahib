@@ -99,6 +99,34 @@ The engine draws an interlude with a small independent chance
 never starve the event pool. The card shows the body, any effect chips, and a
 single **Continue**.
 
+## Occasions (the fixed calendar of the year)
+
+An **occasion** is a set-piece keyed to a specific fortnight — Christmas Week,
+the Commissioner's inspection, the Breach in the Bund. Occasions live in
+`src/content/occasions.json` (own top-level array, **outside** the drawn deck)
+and claim their whole fortnight: **no posture choice that turn**. Two forms:
+
+- **With `choices` (2–4):** plays exactly like an event (branching, `econ`,
+  `setFlags` all work) — a decision the calendar forces on you.
+- **Without choices:** a fait accompli — optional `effects`/`econ` apply
+  automatically and the card offers only Continue, like an interlude. Use for
+  results that cannot be changed (the fever week, the Gazette without your
+  name in it).
+
+```json
+{ "id": "christmas-week", "turn": 4, "tag": "PROGRAMME",
+  "title": "Christmas Week", "body": "…", "outcome": "…",
+  "effects": { "health": 3, "contentment": 2 } }
+```
+
+Rules (enforced by the validator): unique `id` (shared namespace with events),
+`turn` in `2..maxTurns` (never 1 — the game opens by teaching the posture
+loop), at most one occasion per turn, `tag`/`title`/`body` required, optional
+`art`. No `season` field — the turn *is* the season. Because the fortnight is
+forced, occasions are where guaranteed beats live: the year's fixed fiscal
+crisis (the bund) is an occasion so the bankruptcy tail never depends on draw
+luck.
+
 ## Scene art
 
 The banner above the meters shows the season. Seasons rotate through any variant

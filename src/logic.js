@@ -27,6 +27,7 @@
     var CFG = content.config;
     var ENDINGS = content.endings;
     var EVENTS = content.events;
+    var OCCASIONS = content.occasions || [];
     var CAL = CFG.calendar;
     var POSTURES = CFG.postures;
     var ECON = CFG.economy;
@@ -58,6 +59,29 @@
       var rs = CFG.retreats || {};
       for (var k in rs) if (rs.hasOwnProperty(k) && rs[k].key === key) return rs[k];
       return null;
+    }
+
+    function occasionFor(t) {
+      for (var i = 0; i < OCCASIONS.length; i++) if (OCCASIONS[i].turn === t) return OCCASIONS[i];
+      return null;
+    }
+
+    // Open a fortnight: an occasion (the fixed calendar of the year) claims the
+    // whole fortnight — no posture choice. With choices it plays as an event;
+    // without, it is a fait accompli that resolves like an interlude.
+    function beginFortnight() {
+      var occ = occasionFor(S.turn);
+      if (!occ) { phase = "posture"; return []; }
+      S.posture = null; // the fortnight is spoken for; banner falls back to season
+      current = occ;
+      if (occ.choices && occ.choices.length) { phase = "event"; return []; }
+      var eff = occ.effects || {};
+      var pulsed = applyMeters(eff);
+      applyEcon(occ.econ);
+      lastResult = { outcome: occ.outcome || "", effects: eff, econ: occ.econ || null };
+      ended = collapseCheck();
+      phase = ended ? "ended" : "interlude";
+      return pulsed;
     }
 
     function evalCondition(c) {
@@ -145,7 +169,7 @@
       // pinnacle: eminent standing, a solvent district, and a contented one.
       if (p < 40 || o < 40) end = ENDINGS.scandal;
       else if (c >= 65 && p < 50) end = ENDINGS.gonenative;
-      else if (p >= 80 && r >= 60 && c >= 54) end = ENDINGS.kcsi;
+      else if (p >= 78 && r >= 58 && c >= 54) end = ENDINGS.kcsi;
       else if (p >= 74 && r >= 56) end = ENDINGS.kcie;
       else if (p >= 58) end = ENDINGS.cie;
       else end = ENDINGS.transfer;
@@ -207,8 +231,8 @@
       METERS.forEach(function (k) { S[k] = CFG.start[k]; });
       recent = []; ended = null; current = null; lastResult = null; lastEventId = null;
       enterTurn();
-      phase = "posture";
-      return snapshot();
+      var pulsed = beginFortnight();
+      return snapshot({ pulsed: pulsed });
     }
 
     function postureOptions() {
@@ -293,8 +317,8 @@
       enterTurn();
       ended = collapseCheck();
       if (ended) { phase = "ended"; return snapshot(); }
-      phase = "posture";
-      return snapshot();
+      var pulsed = beginFortnight();
+      return snapshot({ pulsed: pulsed });
     }
 
     function snapshot(extra) {
@@ -318,7 +342,7 @@
       var p = S.prestige, c = S.contentment, r = S.revenue;
       if (S.debt > ECON.debtWarn) return "Honours List &mdash; the district's debts have ruined your name";
       if (p < 40) return "Honours List &mdash; your name appears only in the complaints";
-      if (p >= 80 && r >= 60 && c >= 54) return "Honours List &mdash; a <b>K.C.S.I.</b> (a knighthood of the star) is within reach";
+      if (p >= 78 && r >= 58 && c >= 54) return "Honours List &mdash; a <b>K.C.S.I.</b> (a knighthood of the star) is within reach";
       if (p >= 74 && r >= 56) return "Honours List &mdash; a <b>K.C.I.E.</b> (a knighthood) is within reach";
       if (p >= 58) return "Honours List &mdash; a <b>C.I.E.</b> is within reach";
       if (p >= 48) return "Honours List &mdash; not yet on anyone's list";

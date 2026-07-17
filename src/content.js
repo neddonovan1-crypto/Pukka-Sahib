@@ -19,4 +19,8 @@ var events = []
   .concat(load("events-kipling-2.json"))
   .concat(load("interludes.json"));
 
-module.exports = { config: base.config, endings: base.endings, events: events };
+// Occasions: the fixed calendar of the year — set-piece fortnights keyed to a
+// specific turn, outside the drawn deck (see docs/event-schema.md).
+var occasions = load("occasions.json");
+
+module.exports = { config: base.config, endings: base.endings, events: events, occasions: occasions };

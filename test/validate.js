@@ -157,6 +157,46 @@ content.events.forEach(function (e) {
   });
 });
 
+/* ---- occasions: the fixed calendar of the year ---- */
+// Keyed to a specific turn, outside the drawn deck. With choices they play as
+// events; without, as unalterable results. One per turn at most; never turn 1
+// (the game must open by teaching the posture loop).
+var occTurns = {};
+(content.occasions || []).forEach(function (o) {
+  var w = "occasion[" + o.id + "]";
+  check(o.id && !ids[o.id], w + ": duplicate or missing id (also vs events)");
+  ids[o.id] = true;
+  check(typeof o.turn === "number" && o.turn >= 2 && o.turn <= cfg.maxTurns, w + ": turn must be 2.." + cfg.maxTurns);
+  check(!occTurns[o.turn], w + ": turn " + o.turn + " already has an occasion");
+  occTurns[o.turn] = true;
+  check(typeof o.tag === "string" && o.tag.length > 0, w + ": tag missing");
+  check(o.title && o.body, w + ": title/body missing");
+  scanText(o.title + " " + o.body, w);
+  if (o.art !== undefined) check(typeof o.art === "string" && o.art.length > 0, w + ": art must be a non-empty banner key");
+  if (o.choices && o.choices.length) {
+    check(o.choices.length >= 2 && o.choices.length <= 4, w + ": needs 2–4 choices");
+    o.choices.forEach(function (ch, i) {
+      var cw = w + ".choice[" + i + "]";
+      check(ch.label && ch.label.length > 0, cw + ": label missing");
+      (ch.setFlags || []).forEach(function (f) { flagsProduced[f] = true; });
+      if (ch.condition) {
+        checkCondition(ch.condition, cw);
+        check(ch.ifTrue && ch.ifFalse, cw + ": branching choice needs ifTrue and ifFalse");
+        if (ch.ifTrue) checkBranch(ch.ifTrue, cw + ".ifTrue");
+        if (ch.ifFalse) checkBranch(ch.ifFalse, cw + ".ifFalse");
+        (ch.ifTrue && ch.ifTrue.setFlags || []).forEach(function (f) { flagsProduced[f] = true; });
+        (ch.ifFalse && ch.ifFalse.setFlags || []).forEach(function (f) { flagsProduced[f] = true; });
+      } else {
+        checkBranch(ch, cw);
+      }
+    });
+  } else {
+    checkEffects(o.effects, w);
+    checkEcon(o.econ, w);
+    if (o.outcome) scanText(o.outcome, w);
+  }
+});
+
 /* ---- cross-references: every required flag is produced somewhere ---- */
 flagsRequired.forEach(function (r) {
   check(flagsProduced[r.flag], r.where + ": requires flag '" + r.flag + "' that nothing sets");
