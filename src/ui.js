@@ -8,7 +8,7 @@
   var METERS = [
     { key: "revenue", name: "Revenue" }, { key: "order", name: "Order" },
     { key: "prestige", name: "Prestige" }, { key: "contentment", name: "Contentment" },
-    { key: "composure", name: "Composure" }
+    { key: "health", name: "Health" }
   ];
   var game = L.createGame(content, Math.random);
 
@@ -66,7 +66,7 @@
   function renderPosture(s) {
     var c = el("card"); c.className = "card";
     c.innerHTML =
-      turnline(s, '<span class="stamp">' + s.season.glyph + " " + s.season.name + "</span>") +
+      turnline(s, '<span class="seasontag">' + s.season.glyph + " " + s.season.name + "</span>") +
       '<h3 class="cardtitle">How will you spend the fortnight?</h3>' +
       '<div class="body">' + s.season.intro + "</div>" +
       '<div class="choices"></div>';
@@ -132,11 +132,22 @@
   // no art). The UI degrades cleanly to no imagery when a key is missing.
   var ART = (typeof window !== "undefined" && window.PUKKA_ART) || {};
 
-  // Pick the banner: an event's explicit `art` wins; otherwise the season's
-  // banner, rotating between variants (season-cold, season-cold-2, …) by the
-  // fortnight so the backdrop changes through a run.
+  // Station backdrops shown when the sahib holds the cutcherry (desk posture).
+  var DESK_SCENES = ["scene-cutcherry", "scene-club", "scene-city"];
+
+  // Pick the banner: an event's explicit `art` wins. Otherwise the backdrop
+  // follows where you are for the fortnight — out in camp on tour (the season
+  // banners: camp, station, flood), or about the station on desk (cutcherry,
+  // club, city). The posture-choice screen keeps the season view. Each set
+  // rotates by the fortnight so the scene changes through a run; unknown keys
+  // fall back to the season banner (or no image).
   function bannerKey(s) {
     if (s.event && s.event.art && ART[s.event.art]) return s.event.art;
+    var chosen = (s.phase === "event" || s.phase === "interlude" || s.phase === "resolved");
+    if (chosen && s.posture === "desk") {
+      var desk = DESK_SCENES.filter(function (k) { return ART[k]; });
+      if (desk.length) return desk[(s.turn - 1) % desk.length];
+    }
     var base = "season-" + s.season.key;
     var variants = Object.keys(ART).filter(function (k) { return k === base || k.indexOf(base + "-") === 0; }).sort();
     if (!variants.length) return base;

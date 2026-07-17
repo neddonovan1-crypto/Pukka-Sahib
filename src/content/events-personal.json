@@ -16,7 +16,7 @@
           "order": 3,
           "contentment": -8,
           "prestige": 2,
-          "composure": -3
+          "health": -3
         },
         "outcome": "The meeting does not happen. The <i>reason</i> it did not happen is now a far more effective piece of Congress propaganda than the meeting could ever have been. The Pandit sends you a note of thanks. You suspect he is not joking.",
         "setFlags": [
@@ -37,7 +37,7 @@
         "effects": {
           "prestige": -2,
           "contentment": 4,
-          "composure": -4,
+          "health": -4,
           "order": 1
         },
         "outcome": "Your presence is so unexpected that the Pandit revises his speech on the spot to be scrupulously polite. You understand perhaps one word in five, and both of you leave convinced you have won."
@@ -59,7 +59,7 @@
         "label": "Accept the mangoes; <b>ignore the hint</b>.",
         "effects": {
           "prestige": 1,
-          "composure": -1,
+          "health": -1,
           "contentment": 1
         },
         "outcome": "You have eaten the mangoes and taken none of the meaning, which the Lala finds both admirable and slightly stupid. He will try again, better, later."
@@ -69,7 +69,7 @@
         "effects": {
           "prestige": 3,
           "revenue": -3,
-          "composure": -2
+          "health": -2
         },
         "outcome": "Incorruptible and lonely. The Lala's money oils every wheel in the district, and you have just introduced a little sand. Things will run slower now, and you will not know why."
       },
@@ -79,7 +79,7 @@
           "revenue": 6,
           "contentment": -5,
           "prestige": -4,
-          "composure": -3,
+          "health": -3,
           "order": 1
         },
         "outcome": "The dispute is settled to the Lala's satisfaction. You are now, in a small and deniable way, his. It is astonishing how light the first thread feels.",
@@ -108,7 +108,7 @@
         "effects": {
           "contentment": 5,
           "prestige": -3,
-          "composure": 2
+          "health": 2
         },
         "outcome": "The scheme is fixed. The clerks note that the Magistrate takes correction from an Indian officer, and file the observation somewhere it may one day be useful to somebody."
       },
@@ -116,7 +116,7 @@
         "label": "Change the scheme; <b>take the credit</b> yourself.",
         "effects": {
           "prestige": 2,
-          "composure": -4,
+          "health": -4,
           "contentment": 3
         },
         "outcome": "The quarter stays dry and your reputation stays high. Mukherjee says nothing, and remembers everything, and remains more competent than you, which is the one thing you cannot fix."
@@ -127,7 +127,7 @@
           "prestige": 1,
           "contentment": -8,
           "order": -3,
-          "composure": -2
+          "health": -2
         },
         "outcome": "The quarter floods on schedule. You were right about appearances and wrong about drainage, and the water does not care which."
       }
@@ -147,7 +147,7 @@
       {
         "label": "Pour a <b>large one</b>. And another. It is that or the silence.",
         "effects": {
-          "composure": 8,
+          "health": 8,
           "prestige": -2,
           "order": -1
         },
@@ -156,7 +156,7 @@
       {
         "label": "Pour a <b>small one</b> and write letters home you won't post.",
         "effects": {
-          "composure": 3,
+          "health": 3,
           "contentment": 1
         },
         "outcome": "You describe an India that does not exist to people who would not understand the one that does. It helps. The unsent letters go in the drawer with the others."
@@ -164,7 +164,7 @@
       {
         "label": "<b>Go to bed sober</b> and lie awake in the heat.",
         "effects": {
-          "composure": -3,
+          "health": -3,
           "prestige": 1
         },
         "outcome": "Virtue, and the ceiling, keep you company until two. In the morning you are correct, upright, and hollow-eyed, which the office takes for dedication."
@@ -187,14 +187,14 @@
         "effects": {
           "prestige": 3,
           "contentment": -4,
-          "composure": -5
+          "health": -5
         },
         "outcome": "The office vanishes beneath quintuplicate. Justice slows to the speed of carbon paper. Simla, receiving its forms on time, concludes that Chhota Nagra is a model of efficiency, which is the exact opposite of the truth and precisely what the forms were designed to produce."
       },
       {
         "label": "Have Ram Autar <b>fill them in plausibly</b> and file the rest.",
         "effects": {
-          "composure": 4,
+          "health": 4,
           "contentment": 2,
           "prestige": -1
         },
@@ -207,7 +207,7 @@
         "label": "Write to Simla <b>objecting</b> to Form XIV-B on principle.",
         "effects": {
           "prestige": -4,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You receive Form XIV-B-1, a supplementary form on which to record objections to Form XIV-B. The machine has met your resistance and grown a new part to digest it."
       }
@@ -230,7 +230,7 @@
       {
         "label": "<b>Appoint the nephew.</b> Ram Autar has earned it.",
         "effects": {
-          "composure": 3,
+          "health": 3,
           "contentment": 1,
           "prestige": -2,
           "order": 1
@@ -241,7 +241,7 @@
         "label": "<b>Insist on open competition</b> for the post.",
         "effects": {
           "prestige": 2,
-          "composure": -4,
+          "health": -4,
           "order": -2
         },
         "outcome": "You hold a fair examination, which the nephew wins anyway, having been the only serious candidate Ram Autar permitted to apply. You have upheld a principle and changed nothing, at some cost to a friendship you could not afford to spend."
@@ -262,7 +262,7 @@
       {
         "label": "Take your <b>local leave</b> and go up to the hills.",
         "effects": {
-          "composure": 8,
+          "health": 8,
           "prestige": -3,
           "revenue": -2
         },
@@ -271,7 +271,7 @@
       {
         "label": "Stay at your post; <b>agree the boy goes Home</b>.",
         "effects": {
-          "composure": -6,
+          "health": -6,
           "prestige": 2
         },
         "outcome": "You sign the letter that sends your son across an ocean to be raised by a school and an aunt, for his health and his accent and his prospects. It is what the Service does to its families. You tell yourself it is for the best, and go back to the files.",
@@ -282,7 +282,7 @@
       {
         "label": "Stay, and <b>put the decision off</b> another year.",
         "effects": {
-          "composure": -2,
+          "health": -2,
           "contentment": 1
         },
         "outcome": "You write a warm, evasive letter and post it up the hill. Nothing is decided, which is its own kind of decision. The heat presses on the bungalow like a hand."
@@ -303,7 +303,7 @@
       {
         "label": "Keep to a <b>rigid routine</b> &mdash; dawn rides, cold baths, work.",
         "effects": {
-          "composure": 3,
+          "health": 3,
           "order": 1
         },
         "outcome": "Discipline is the sahib’s armour against the heat. You ride at dawn, work through the shuttered day, and hold yourself together by the timetable. It is joyless, and it works."
@@ -311,7 +311,7 @@
       {
         "label": "Let the <b>Club and the bottle</b> carry you through.",
         "effects": {
-          "composure": 5,
+          "health": 5,
           "prestige": -2,
           "order": -1
         },
@@ -322,7 +322,7 @@
         "effects": {
           "revenue": 3,
           "prestige": 1,
-          "composure": -4
+          "health": -4
         },
         "outcome": "You bury the silence under files and clear a backlog two years deep. Simla is pleased. Something in you is being spent that no honours list will ever repay."
       }
@@ -348,7 +348,7 @@
           "order": 1,
           "contentment": -5,
           "prestige": -4,
-          "composure": -3
+          "health": -3
         },
         "setFlags": [
           "lala_owned"
@@ -362,7 +362,7 @@
         "label": "<b>Refuse him</b>, and let the debt stand.",
         "effects": {
           "prestige": 4,
-          "composure": -3,
+          "health": -3,
           "order": -2
         },
         "econ": {
@@ -377,7 +377,7 @@
         "label": "<b>Repay him in full</b> from the chest and be free.",
         "effects": {
           "prestige": 2,
-          "composure": 2
+          "health": 2
         },
         "econ": {
           "treasury": -90000
@@ -409,7 +409,7 @@
           "order": 5,
           "contentment": -10,
           "prestige": 2,
-          "composure": -4
+          "health": -4
         },
         "setFlags": [
           "crackdown"
@@ -422,7 +422,7 @@
           "contentment": 2,
           "order": -6,
           "prestige": -4,
-          "composure": -3
+          "health": -3
         },
         "outcome": "You do nothing, magnificently, for eleven days, while Simla's telegrams grow shriller. The strike ends of its own weight, having proved its point precisely by your inability to prevent it. Blyth-Curram will remember that you sat on your hands. So will the Pandit."
       },
@@ -432,7 +432,7 @@
           "contentment": 6,
           "prestige": -5,
           "order": 2,
-          "composure": -2
+          "health": -2
         },
         "setFlags": [
           "pandit_pact"
@@ -458,7 +458,7 @@
       {
         "label": "<b>Bury the petition.</b> He has earned that much.",
         "effects": {
-          "composure": 2,
+          "health": 2,
           "contentment": 2,
           "prestige": -4,
           "order": 1
@@ -472,7 +472,7 @@
         "label": "<b>Confront him</b> privately and demand it stop.",
         "effects": {
           "prestige": 1,
-          "composure": -3,
+          "health": -3,
           "order": -1,
           "contentment": 1
         },
@@ -482,7 +482,7 @@
         "label": "<b>Report him.</b> The law is the law.",
         "effects": {
           "prestige": 4,
-          "composure": -6,
+          "health": -6,
           "order": -4,
           "contentment": -3
         },
@@ -510,7 +510,7 @@
       {
         "label": "Write back at once, warmly, and <b>promise a visit</b>.",
         "effects": {
-          "composure": 5,
+          "health": 5,
           "prestige": -2
         },
         "outcome": "You fill a page with a leave you cannot yet take and a green English field he half-remembers. It costs nothing to promise and steadies you to imagine it. Whether the promise survives contact with the Secretariat's leave-sanction is another year's grief."
@@ -518,7 +518,7 @@
       {
         "label": "Send money and a stiff word of <b>encouragement</b>.",
         "effects": {
-          "composure": -4,
+          "health": -4,
           "prestige": 1
         },
         "outcome": "You do what your own father did, in the same climate, for the same reasons, and tell yourself it made a man of you. The letter is correct and cold, and you know it even as you seal it, and you seal it anyway. The heat presses on the bungalow like a hand."
@@ -526,7 +526,7 @@
       {
         "label": "Pour a drink and <b>leave it unanswered</b>.",
         "effects": {
-          "composure": -3,
+          "health": -3,
           "order": -1
         },
         "setFlags": [

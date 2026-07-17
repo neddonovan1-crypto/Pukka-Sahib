@@ -11,7 +11,7 @@
     "title": "The Rains Break",
     "body": "After the long white weeks of waiting, the sky goes green-black at noon and the first fat drops raise the smell of wet dust that is the finest smell in India; and the whole district &mdash; man, beast, and magistrate &mdash; stands out in it with its face turned up. For one evening nobody is anybody's ruler. There is only the rain.",
     "effects": {
-      "composure": 3,
+      "health": 3,
       "contentment": 2
     }
   },
@@ -27,7 +27,7 @@
     "title": "The Loo Blows",
     "body": "The <i>loo</i> comes off the plains like the breath of an open oven, and for a week the district shutters itself against a wind that can kill a man who walks in it at noon. You work in the dark behind wetted <i>chik</i> screens; the punkah never stops; and the nights are worse than the days.",
     "effects": {
-      "composure": -3
+      "health": -3
     }
   },
   {
@@ -42,7 +42,7 @@
     "title": "The Cold Weather Opens",
     "body": "The heat breaks at last: the mornings come sharp and blue, the camp-fires smell of woodsmoke, and the whole exhausted country sits up and takes an interest in living again. It is the season of tents and touring and the year at its kindest. It will not last, and everyone knows it, and no one says so.",
     "effects": {
-      "composure": 2,
+      "health": 2,
       "contentment": 1
     }
   },
@@ -58,7 +58,7 @@
     "title": "The English Mail",
     "body": "The dak brings the English mail &mdash; a month old, tied in string, smelling faintly of the sea &mdash; and for an hour the cutcherry empties as every sahib retreats with his letters to a world eleven thousand miles and one lifetime away. Then the hour ends; the letters go into the drawer; and the district asks again to be governed.",
     "effects": {
-      "composure": 2
+      "health": 2
     }
   },
   {

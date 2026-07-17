@@ -14,7 +14,7 @@ var COLLAPSE = ["breakdown", "riot", "scandal", "bankrupt"];
 function scoreChoice(ch, s) {
   var e = ch.effects || {};
   var sc = (e.prestige || 0) + (e.contentment || 0) * 0.55 + (e.revenue || 0) * 0.5 + (e.order || 0) * 0.5;
-  if (s.meters.composure < 45) sc += (e.composure || 0) * 2;
+  if (s.meters.health < 45) sc += (e.health || 0) * 2;
   if (ch.econ && ch.econ.debt) sc -= ch.econ.debt / 40000;
   return sc;
 }
@@ -33,6 +33,8 @@ var POLICIES = {
   },
   skilled: {
     posture: function (s) {
+      // Spend the once-per-season hill leave when the hot weather has worn health thin.
+      if (s.retreat && s.season.key === "hot" && s.meters.health < 40) return s.retreat.key;
       if (s.season.key === "cold") return "tour";
       if (s.meters.contentment < 45 || s.meters.order < 45) return "tour";
       return "desk";

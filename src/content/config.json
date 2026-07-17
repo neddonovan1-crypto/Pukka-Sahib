@@ -6,7 +6,7 @@
       "order": 55,
       "prestige": 50,
       "contentment": 45,
-      "composure": 60
+      "health": 66
     },
     "calendar": {
       "months": [
@@ -61,17 +61,15 @@
           "contentment": 1,
           "order": 1,
           "prestige": -1,
-          "composure": -1
+          "health": -1
         },
         "season": {
-          "cold": {
-            "composure": 1
-          },
+          "cold": {},
           "hot": {
-            "composure": -1
+            "health": -3
           },
           "monsoon": {
-            "composure": -1,
+            "health": -1,
             "order": -1
           }
         }
@@ -84,17 +82,70 @@
           "revenue": 1,
           "contentment": -1,
           "order": -1,
-          "composure": 1
+          "health": 1
         },
         "season": {
           "cold": {
             "prestige": -1,
-            "contentment": -1
+            "contentment": -1,
+            "health": 1
           },
-          "hot": {},
+          "hot": {
+            "health": -2
+          },
           "monsoon": {
-            "order": 1
+            "order": 1,
+            "health": -1
           }
+        }
+      }
+    },
+    "retreats": {
+      "cold": {
+        "key": "retreat-cold",
+        "flag": "leave_cold",
+        "tag": "LOCAL LEAVE",
+        "label": "Take Christmas in camp",
+        "note": "A fortnight's shooting in the Terai &mdash; you come back a new man; the district's business does not wait so kindly.",
+        "title": "The Cold-Weather Shoot",
+        "body": "You take the Christmas leave every district man promises himself and few take: a fortnight under canvas in the Terai grass with a rifle, a shikari, and no red tape within forty miles. You come back brown, rested, and human again &mdash; to a cutcherry table two feet deep in the fortnight you were not there to govern.",
+        "effects": {
+          "health": 12,
+          "contentment": 4,
+          "prestige": -4,
+          "revenue": -3,
+          "order": -2
+        }
+      },
+      "hot": {
+        "key": "retreat-hot",
+        "flag": "leave_hot",
+        "tag": "LOCAL LEAVE",
+        "art": "scene-hills",
+        "label": "Take local leave in the hills",
+        "note": "Simla and the deodars mend a man &mdash; but the plains do not forgive a sahib who runs from the heat.",
+        "title": "Local Leave in the Hills",
+        "body": "You put in for local leave and take the train and the tonga up to the hills, where the air is like cold water and the pines smell of England and no one dies of the heat. For three weeks you are a man again. Down on the baking plain, meanwhile, the district notes precisely who was here for the hot weather and who was not; and the note is not in your favour.",
+        "effects": {
+          "health": 14,
+          "prestige": -4,
+          "contentment": -4,
+          "order": -3
+        }
+      },
+      "monsoon": {
+        "key": "retreat-monsoon",
+        "flag": "leave_monsoon",
+        "tag": "PRIVATE",
+        "label": "Keep to the bungalow",
+        "note": "Quinine, the long-chair, and the rain &mdash; you save your own skin while the district drowns unwatched.",
+        "title": "The Fever Fortnight",
+        "body": "The fever season is on the district like a wet cloth, and the sensible thing &mdash; the thing the doctor and every instinct of self-preservation urge &mdash; is to keep to the bungalow, dose yourself with quinine, and let the rains do their worst at a distance. You do the sensible thing. Your health holds; but a district left to drown unwatched remembers, in the way districts do, that when the water rose the sahib was indoors.",
+        "effects": {
+          "health": 10,
+          "order": -5,
+          "prestige": -3,
+          "contentment": -3
         }
       }
     },

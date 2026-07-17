@@ -3,7 +3,7 @@
 "use strict";
 var content = require("../src/content.js");
 
-var METERS = ["revenue", "order", "prestige", "contentment", "composure"];
+var METERS = ["revenue", "order", "prestige", "contentment", "health"];
 var SEASON_KEYS = ["cold", "hot", "monsoon"];
 var KINDS = ["desk", "tour", "club", "personal", "crisis", "interlude"];
 var OPS = [">", ">=", "<", "<=", "==", "!="];
@@ -38,6 +38,23 @@ for (var t = 1; t <= cfg.maxTurns; t++) check(covered[t] === 1, "turn " + t + " 
   if (cfg.postures[k]) {
     Object.keys(cfg.postures[k].base).forEach(function (mk) { check(METERS.indexOf(mk) !== -1, "posture " + k + " base has non-meter key " + mk); });
   }
+});
+
+// Seasonal retreats: a once-per-season recovery posture. Each references a
+// season, carries a flag + display fields, and effects within the meter band.
+var retreats = cfg.retreats || {};
+Object.keys(retreats).forEach(function (sk) {
+  var rt = retreats[sk];
+  var w = "retreat[" + sk + "]";
+  check(SEASON_KEYS.indexOf(sk) !== -1, w + ": bad season key");
+  check(rt.key && rt.flag && rt.label && rt.note && rt.title && rt.body, w + ": missing display/flag fields");
+  if (rt.art !== undefined) check(typeof rt.art === "string" && rt.art.length > 0, w + ": art must be a non-empty banner key");
+  check(rt.effects && Object.keys(rt.effects).length > 0, w + ": retreat needs effects");
+  Object.keys(rt.effects || {}).forEach(function (mk) {
+    check(METERS.indexOf(mk) !== -1, w + ": effect key not a meter: " + mk);
+    check(typeof rt.effects[mk] === "number" && rt.effects[mk] !== 0, w + ": effect " + mk + " must be non-zero");
+    check(Math.abs(rt.effects[mk]) <= MAX_METER_DELTA, w + ": effect " + mk + " exceeds ±" + MAX_METER_DELTA);
+  });
 });
 
 var ec = cfg.economy;

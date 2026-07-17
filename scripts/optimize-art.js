@@ -17,9 +17,18 @@ fs.mkdirSync(OUT, { recursive: true });
 var JOBS = [
   { in: "season-cold.png", out: "season-cold.jpg", w: 1200, q: 74 },
   { in: "season-cold-alt.png", out: "season-cold-2.jpg", w: 1200, q: 74 }, // second cold-season backdrop, rotated in
+  { in: "season-cold-3.png", out: "season-cold-3.jpg", w: 1200, q: 74 },    // third: inspecting an out-station
   { in: "season-hot.png", out: "season-hot.jpg", w: 1200, q: 74 },
+  { in: "season-hot-2.png", out: "season-hot-2.jpg", w: 1200, q: 74 },       // second hot-season backdrop
   { in: "season-monsoon.png", out: "season-monsoon.jpg", w: 1200, q: 74 },
+  { in: "season-monsoon-2.png", out: "season-monsoon-2.jpg", w: 1200, q: 74 }, // second monsoon backdrop
   { in: "cover.png", out: "cover.jpg", w: 1400, q: 78 },
+  // Station backdrops (desk posture) and event scenes, keyed by `art`/posture.
+  { in: "scene-cutcherry.png", out: "scene-cutcherry.jpg", w: 1200, q: 73 },
+  { in: "scene-club.png", out: "scene-club.jpg", w: 1200, q: 73 },
+  { in: "scene-city.png", out: "scene-city.jpg", w: 1200, q: 73 },
+  { in: "scene-hills.png", out: "scene-hills.jpg", w: 1200, q: 73 },
+  { in: "scene-durbar.png", out: "scene-durbar.jpg", w: 1200, q: 73 },
   // Honours medals for the ending screens. Both end up transparent PNGs so they
   // sit consistently on the buff. The Star of India (KCSI) already has alpha;
   // the Indian Empire badge (CIE/KCIE) is a scan whose cream paper is flood-

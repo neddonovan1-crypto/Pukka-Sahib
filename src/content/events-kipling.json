@@ -15,7 +15,7 @@
         "effects": {
           "contentment": 6,
           "prestige": -2,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You draft a note embodying, in the language of the Secretariat, what a six-year-old learned from a groom. The clause is amended. Somewhere a Legal Member pencils &lsquo;Tods' Amendment&rsquo; in the margin and never knows he was corrected by a child, and by a district that no one thought to ask."
       },
@@ -32,7 +32,7 @@
         "label": "Quietly <b>send a man to the bazaar</b> to check the child's tale.",
         "effects": {
           "contentment": 3,
-          "composure": -3,
+          "health": -3,
           "prestige": -1
         },
         "outcome": "You have the thing looked into, discreetly, and it is every word true. You mend what you can without confessing where the intelligence came from. It is humbling to govern a district worse than a six-year-old understands it, and wiser not to say so aloud."
@@ -54,7 +54,7 @@
         "label": "Show him the <b>real, fractured district</b> &mdash; caste, creed, and the cultivator who has never heard of Congress.",
         "effects": {
           "prestige": 3,
-          "composure": -3
+          "health": -3
         },
         "outcome": "You walk him through a country that refuses to fit his pamphlet: the tenant who fears his headman more than any Viceroy, two faiths who will not share a well, the peasant to whom Simla and London are the same distant rumour. Pagett's certainties wilt in the dust. He goes home wiser, and writes, alas, the same articles."
       },
@@ -62,7 +62,7 @@
         "label": "Flatter his views, feed him well, and <b>pack him off content</b>.",
         "effects": {
           "prestige": -2,
-          "composure": 2,
+          "health": 2,
           "contentment": -1
         },
         "outcome": "You give him the tour he came to have, agree with everything, and put him on the train still glowing. He will report that the local officials are sound fellows who quite understand the national aspiration. It costs you nothing and teaches him less, which suits you both."
@@ -71,7 +71,7 @@
         "label": "Let a <b>day of touring in the heat</b> do the arguing.",
         "effects": {
           "contentment": 2,
-          "composure": -1,
+          "health": -1,
           "prestige": 1
         },
         "outcome": "You say little and let the sun, the flies, the twelve-hour march and the sheer unanswerable size of the thing work on him. By evening the Member has stopped lecturing and started listening, which is the nearest to enlightenment a fortnight allows."
@@ -95,7 +95,7 @@
           "order": -4,
           "prestige": 3,
           "contentment": -2,
-          "composure": -3
+          "health": -3
         },
         "outcome": "You put Banerjee in his chair and stand behind it with the police. He is competent and unbowed; the tract seethes, tests him, and subsides only because the force behind him never blinks. You have upheld a principle at the point of a bayonet, which is the usual price of principle out here."
       },
@@ -105,7 +105,7 @@
           "order": 3,
           "prestige": -3,
           "contentment": -1,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You spare Banerjee the Karara and the Karara its rising, and in doing so concede that a good man may not rule where his face is wrong. He understands exactly what has happened, thanks you with a dignity that shames you, and files it with the other lessons the Service teaches its ablest sons."
       },
@@ -114,7 +114,7 @@
         "effects": {
           "prestige": -2,
           "order": 2,
-          "composure": -1,
+          "health": -1,
           "contentment": 1
         },
         "outcome": "You put your objection on paper, over your signature, and let the Secretariat own its choice. The appointment is quietly reconsidered; you are quietly marked as an officer who tells his betters what they do not wish to hear. Both outcomes were entirely foreseeable, which is why so few men risk the second."
@@ -135,7 +135,7 @@
       {
         "label": "Give them a <b>drink, a warning</b>, and let them go.",
         "effects": {
-          "composure": 3,
+          "health": 3,
           "order": -1,
           "contentment": 1
         },
@@ -146,7 +146,7 @@
         "effects": {
           "order": 4,
           "prestige": 1,
-          "composure": -1
+          "health": -1
         },
         "outcome": "You are not in the business of speeding lunatics toward an international incident, and you have them escorted firmly to the railhead. Correct, dull, and a small theft from the world's stock of glorious catastrophe. They curse your name, which from men bound for a throne is nearly a distinction."
       },
@@ -156,7 +156,7 @@
           "contentment": 1,
           "prestige": -3,
           "order": -2,
-          "composure": 1
+          "health": 1
         },
         "setFlags": [
           "helped_loafers"
@@ -181,7 +181,7 @@
         "effects": {
           "contentment": 2,
           "prestige": -2,
-          "composure": -4
+          "health": -4
         },
         "setFlags": [
           "boy_covered"
@@ -192,7 +192,7 @@
         "label": "Record the <b>truth</b>, coldly and completely.",
         "effects": {
           "prestige": 2,
-          "composure": -6,
+          "health": -6,
           "contentment": -3
         },
         "outcome": "You will not begin your rule with a lie, however kind, and you write the thing as it was. The paper is impeccable; the mother's letter, when it comes, is not answerable by any paper; and the station marks you as a man without the ordinary human mercy, which out here is filed as a want of soundness."
@@ -202,7 +202,7 @@
         "effects": {
           "prestige": -4,
           "contentment": 1,
-          "composure": -3
+          "health": -3
         },
         "setFlags": [
           "said_too_much"
@@ -228,7 +228,7 @@
           "order": 6,
           "prestige": 2,
           "contentment": -4,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You use what Strickland got by deceit, and the trouble that was brewing never brews. The district is safer and does not know why, and a dozen men are watched or worse on the strength of a policeman who pretended to be their servant. It works. Most of the ugly things do."
       },
@@ -237,7 +237,7 @@
         "effects": {
           "prestige": -2,
           "contentment": 3,
-          "composure": 2,
+          "health": 2,
           "order": -2
         },
         "outcome": "You tell Strickland his methods are more than you can put your name to, and let the intelligence lie. He looks at you with the weary patience of a man who has seen squeamishness cost lives, salutes, and goes back to the lanes to learn things you will again decline to hear."
@@ -246,7 +246,7 @@
         "label": "Take the knowledge but <b>keep it in reserve</b>.",
         "effects": {
           "order": 2,
-          "composure": -1,
+          "health": -1,
           "prestige": 1
         },
         "setFlags": [
@@ -271,7 +271,7 @@
         "label": "<b>Cultivate her</b> &mdash; call, charm, be useful.",
         "effects": {
           "prestige": 5,
-          "composure": -3,
+          "health": -3,
           "revenue": -2
         },
         "setFlags": [
@@ -283,7 +283,7 @@
         "label": "Keep a <b>cautious distance</b> from Simla's intrigues.",
         "effects": {
           "prestige": -3,
-          "composure": 2
+          "health": 2
         },
         "outcome": "You decline to make your career in a hill-station drawing-room, and Mrs Hauksbee, who mistakes no one, marks you as a dull dog who will go exactly as far as his files carry him and no further. She is very often right about such things."
       },
@@ -291,7 +291,7 @@
         "label": "Amuse her with <b>honest gossip from the plains</b>.",
         "effects": {
           "prestige": 2,
-          "composure": -1,
+          "health": -1,
           "contentment": 1
         },
         "outcome": "You send her, now and then, a genuinely funny and indiscreet account of district life, asking nothing. She adores it, repeats it beautifully, and does you small unseen kindnesses for the pleasure of the correspondence. The surest way to power in Simla, it turns out, is to be entertaining and want nothing &mdash; which almost no one can manage."
@@ -313,7 +313,7 @@
         "label": "<b>Refuse</b>, and make a dangerous enemy.",
         "effects": {
           "prestige": -3,
-          "composure": 3,
+          "health": 3,
           "order": -1
         },
         "outcome": "You find Barrett unfit for Fever Hill and say so, and the soft channels go cold, and a name that matters adds yours to a private ledger of officers who did not oblige. You have kept a man alive and made your own advancement a good deal steeper. You would, you tell yourself, do it again."
@@ -322,7 +322,7 @@
         "label": "<b>Sign the transfer.</b> It is only a posting.",
         "effects": {
           "prestige": 4,
-          "composure": -6,
+          "health": -6,
           "contentment": -2
         },
         "setFlags": [
@@ -333,7 +333,7 @@
       {
         "label": "Quietly <b>warn Barrett</b> to apply for leave.",
         "effects": {
-          "composure": -2,
+          "health": -2,
           "prestige": -1,
           "order": -1
         },
@@ -358,7 +358,7 @@
           "prestige": 4,
           "contentment": -8,
           "order": 2,
-          "composure": -4
+          "health": -4
         },
         "econ": {
           "treasury": -40000
@@ -371,7 +371,7 @@
           "contentment": 9,
           "prestige": -5,
           "order": 1,
-          "composure": -3
+          "health": -3
         },
         "outcome": "You put the people before the pride of the Public Works, and the boats go to the rooftops instead of the piers. Fewer drown. In the grey morning the river has taken a span of Findlayson's bridge and three years of his life with it, and the Department will want to know, in writing, exactly whose orders left it undefended."
       },
@@ -380,7 +380,7 @@
         "effects": {
           "contentment": -2,
           "prestige": -1,
-          "composure": -5,
+          "health": -5,
           "order": -1
         },
         "econ": {
@@ -406,7 +406,7 @@
         "effects": {
           "order": 2,
           "prestige": 1,
-          "composure": -4
+          "health": -4
         },
         "outcome": "You have him carried off on the night train, cured by means no report will ever mention, and you spend the small hours learning things about your own certainties that you will spend years unlearning. The temple is quiet by morning. You are not."
       },
@@ -415,7 +415,7 @@
         "effects": {
           "order": 3,
           "contentment": -3,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You answer an old darkness with constables and a firm hand, which is the only answer the Service issues you. The trouble does not come, this time; whether your constables prevented it, or something else decided to let it lie, is not a question the district office is equipped to file."
       },
@@ -424,7 +424,7 @@
         "effects": {
           "contentment": 5,
           "prestige": -3,
-          "composure": -1
+          "health": -1
         },
         "outcome": "You go, hat in hand and against every instinct of your rank, and make amends for the sahib's insult. The bazaar exhales; the priests are grave and satisfied; and the Club decides, over its brandy, that the young magistrate has knelt to superstition and will bear watching."
       }
@@ -444,7 +444,7 @@
       {
         "label": "See her <b>quietly provided for</b>, and say nothing.",
         "effects": {
-          "composure": -2,
+          "health": -2,
           "contentment": 3,
           "prestige": -2
         },
@@ -457,14 +457,14 @@
         "label": "Do the <b>correct thing</b> &mdash; hand it to a charity, close the file.",
         "effects": {
           "prestige": 2,
-          "composure": -5
+          "health": -5
         },
         "outcome": "You process the matter as the regulations intend: the woman to a mission, the house to the estate, the grave to whatever grows over graves no one is left to tend. Everything is in order. You have done nothing wrong, precisely, and you cannot for the life of you feel clean."
       },
       {
         "label": "Pay to <b>keep the child's grave</b>, and send her home to her people.",
         "effects": {
-          "composure": 1,
+          "health": 1,
           "contentment": 2,
           "prestige": -1
         },
@@ -489,7 +489,7 @@
           "order": 4,
           "contentment": -4,
           "prestige": 2,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You spring the trap the festival was meant to spoil, and the old rebel &mdash; frail, courteous, forty years a legend &mdash; is taken quietly in the crowd. Government is pleased. The city, which had made him a story, will now make him a martyr, which is the one promotion the Police can always be relied upon to arrange."
       },
@@ -499,7 +499,7 @@
           "contentment": 3,
           "order": -3,
           "prestige": -2,
-          "composure": -1
+          "health": -1
         },
         "setFlags": [
           "looked_away"
@@ -509,7 +509,7 @@
       {
         "label": "Go <b>yourself to Lalun's</b> and learn who is using whom.",
         "effects": {
-          "composure": -3,
+          "health": -3,
           "order": 1,
           "prestige": 1,
           "contentment": 1
@@ -533,7 +533,7 @@
         "label": "Play your part <b>exactly</b>, and ask nothing.",
         "effects": {
           "prestige": 3,
-          "composure": -3,
+          "health": -3,
           "order": -1
         },
         "setFlags": [
@@ -545,7 +545,7 @@
         "label": "Help him, but quietly <b>learn who he is</b>.",
         "effects": {
           "prestige": 1,
-          "composure": -4,
+          "health": -4,
           "order": 1
         },
         "outcome": "You do as bidden and, being a curious man in a dangerous trade, you also find out a little more than you were meant to. The knowledge is a weight and not a shield. In the Great Game, the men who know the most tend to be the men found face-down in the snow of a pass no map admits exists."
@@ -554,7 +554,7 @@
         "label": "Wire back that your district is <b>not a corridor</b> for the Residency's spies.",
         "effects": {
           "prestige": -4,
-          "composure": 2,
+          "health": 2,
           "order": 1
         },
         "outcome": "You decline, on paper, to play, and the cypher traffic goes cold and finds another, more obliging magistrate up the line. You have kept your hands out of a filthy business and marked yourself, in a quarter that never forgets, as a man who would not be useful. Both were entirely predictable."

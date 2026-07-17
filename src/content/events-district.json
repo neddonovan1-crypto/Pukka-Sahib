@@ -15,7 +15,7 @@
         "effects": {
           "prestige": -1,
           "contentment": 3,
-          "composure": -2
+          "health": -2
         },
         "outcome": "The order is framed and hung in the police lines. The bull cannot read it. Everyone is nonetheless satisfied that Something Has Been Done."
       },
@@ -24,7 +24,7 @@
         "effects": {
           "order": -4,
           "contentment": -6,
-          "composure": 1
+          "health": 1
         },
         "outcome": "The village it is relocated to takes the arrival of a holy bull as an omen, and a deputation arrives within the week to ask what they have done to deserve it."
       },
@@ -33,7 +33,7 @@
         "effects": {
           "prestige": 2,
           "contentment": -3,
-          "composure": 2
+          "health": 2
         },
         "outcome": "Correct, dignified, and entirely useless. Diwan Chand's marigolds are eaten a fourth time. He does not forgive you, but he does respect you, which is worse."
       }
@@ -55,7 +55,7 @@
         "effects": {
           "prestige": 4,
           "contentment": -1,
-          "composure": -3
+          "health": -3
         },
         "outcome": "You are now, invisibly and permanently, Mrs. Fortescue-Vane's man. This is worth more than a knighthood and costs roughly the same in dignity."
       },
@@ -63,7 +63,7 @@
         "label": "Side with <b>Major Prewitt</b> and the principle of the thing.",
         "effects": {
           "prestige": -4,
-          "composure": 1
+          "health": 1
         },
         "outcome": "The Major shakes your hand as though you have relieved Mafeking. Mrs. Fortescue-Vane says nothing at all, which is how you know."
       },
@@ -71,7 +71,7 @@
         "label": "Propose a <b>sub-committee</b> to study the matter.",
         "effects": {
           "prestige": 1,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You have discovered the single most powerful instrument of British administration: the postponement of a decision until everyone has forgotten why they cared."
       }
@@ -110,7 +110,7 @@
         "label": "Send Simla a <b>magnificent report</b> explaining the rainfall.",
         "effects": {
           "prestige": -5,
-          "composure": 3
+          "health": 3
         },
         "outcome": "Blyth-Curram replies: RAINFALL NOTED STOP REVENUE STILL SHORT STOP. You have learned that a telegram is not a conversation."
       }
@@ -130,7 +130,7 @@
       {
         "label": "<b>Go out and shoot it</b> yourself. It is expected.",
         "condition": {
-          "meter": "composure",
+          "meter": "health",
           "op": ">",
           "value": 40
         },
@@ -138,7 +138,7 @@
           "effects": {
             "prestige": 8,
             "contentment": 5,
-            "composure": -6
+            "health": -6
           },
           "outcome": "By a miracle compounded of luck and a very close range, the tiger falls. You are, from this fortnight, a <i>pukka</i> sahib in the fullest sense. You are also never going to do that again."
         },
@@ -146,7 +146,7 @@
           "effects": {
             "prestige": -6,
             "order": -3,
-            "composure": -8
+            "health": -8
           },
           "outcome": "Your nerves, already frayed, betray you. The tiger escapes; the story does not. A magistrate who cannot shoot straight is a magistrate the district has quietly stopped fearing."
         }
@@ -165,7 +165,7 @@
         "effects": {
           "prestige": -5,
           "contentment": -6,
-          "composure": 2,
+          "health": 2,
           "order": -2
         },
         "outcome": "Correct procedure. The Forest Department will attend to the tiger in the fullness of time, by which the tiger and everyone in Rampur understand: never."
@@ -189,7 +189,7 @@
           "contentment": 12,
           "revenue": -14,
           "order": 4,
-          "composure": -4
+          "health": -4
         },
         "outcome": "Grain-for-labour on the roads and tanks. People do not starve, which no one will thank you for, because averted disasters leave no monument. The treasury, however, remembers.",
         "setFlags": [
@@ -205,7 +205,7 @@
           "contentment": -16,
           "order": -8,
           "prestige": 2,
-          "composure": -6
+          "health": -6
         },
         "outcome": "You follow procedure exactly. Sanction arrives in six weeks, which is four weeks after it would have mattered. The files are impeccable. The district is not."
       },
@@ -242,7 +242,7 @@
         "label": "Show him a <b>flawless, rehearsed</b> district.",
         "effects": {
           "prestige": 7,
-          "composure": -6,
+          "health": -6,
           "contentment": -2
         },
         "outcome": "Every ledger balances, every prisoner is suspiciously cheerful, every road has been mended along precisely the stretch he will drive. He leaves satisfied. The performance has cost you a fortnight and a small piece of your soul, both of which the Service considers a fair price."
@@ -252,7 +252,7 @@
         "effects": {
           "prestige": -5,
           "contentment": 3,
-          "composure": 2,
+          "health": 2,
           "revenue": 2
         },
         "outcome": "You show him the flooded quarter, the short revenue, the honest mess of the thing. He is appalled by your candour and, in a corner of his walrus heart he will never admit to, faintly impressed. It will not help your career. It may help you sleep."
@@ -261,7 +261,7 @@
         "label": "Ply him with the Club's <b>best brandy</b> and change the subject.",
         "effects": {
           "prestige": 3,
-          "composure": -3,
+          "health": -3,
           "revenue": -2,
           "order": -1
         },
@@ -285,7 +285,7 @@
         "effects": {
           "order": -5,
           "contentment": -6,
-          "composure": -3,
+          "health": -3,
           "prestige": 3
         },
         "outcome": "The fever is contained; the trade is throttled; the traders write to Simla about the high-handed young Magistrate. You saved lives and made enemies, and only one of those two things generates correspondence."
@@ -296,7 +296,7 @@
           "revenue": 4,
           "contentment": 2,
           "order": -8,
-          "composure": -6
+          "health": -6
         },
         "outcome": "The market thrives for eleven days. On the twelfth, the Surgeon is proved right in the way that surgeons are proved right, and the cordon you refused to order becomes a cordon you cannot make wide enough."
       },
@@ -305,7 +305,7 @@
         "effects": {
           "order": -3,
           "contentment": -2,
-          "composure": -4,
+          "health": -4,
           "prestige": 1
         },
         "outcome": "You do half of what the Surgeon asked and claim to have done all of it and none of it, depending on the audience. The fever, indifferent to your positioning, does slightly less than its worst."
@@ -327,7 +327,7 @@
         "label": "Rule <b>strictly by the Warrant of Precedence</b>.",
         "effects": {
           "prestige": 3,
-          "composure": -1
+          "health": -1
         },
         "outcome": "You produce the actual Warrant of Precedence, an object roughly as sacred here as scripture, and settle the matter by the book. Both wives are furious, but at the book, which cannot be invited to dinner or snubbed at it."
       },
@@ -335,7 +335,7 @@
         "label": "<b>Seat them apart</b> and pretend it was always so.",
         "effects": {
           "prestige": 1,
-          "composure": -3,
+          "health": -3,
           "contentment": 1
         },
         "outcome": "A little diplomatic fiction, gracefully deployed. The ball proceeds. You have discovered that the skills of a District Magistrate and the skills of a nervous head waiter are, at the Club, precisely identical."
@@ -344,7 +344,7 @@
         "label": "Declare you <b>will not adjudicate</b> the seating of a dinner.",
         "effects": {
           "prestige": -4,
-          "composure": 3
+          "health": 3
         },
         "outcome": "Principled, and a grave misreading of the room. At a frontier station the seating of a dinner <i>is</i> the government. By declining to rule, you have not risen above the station's politics; you have merely lost them."
       }
@@ -366,7 +366,7 @@
         "effects": {
           "order": 3,
           "contentment": -4,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You convict the man the paperwork points to, who is probably guilty of something, if not this. The law is served. Justice files no return and is not consulted."
       },
@@ -375,7 +375,7 @@
         "effects": {
           "contentment": 3,
           "order": -2,
-          "composure": 1
+          "health": 1
         },
         "outcome": "You cut the knot: doubt to the accused, buffalo to its likely owner, a small homily to both families. Nobody is fully satisfied, which in a village dispute is the surest sign of a fair result."
       },
@@ -384,7 +384,7 @@
         "effects": {
           "contentment": 4,
           "prestige": -2,
-          "composure": -1,
+          "health": -1,
           "order": 1
         },
         "outcome": "Solomon in a solar topi. The two families are bound to joint custody of one bad-tempered buffalo, an arrangement so mutually inconvenient that they are reconciled by the shared grievance within the year."
@@ -408,7 +408,7 @@
         "effects": {
           "revenue": 4,
           "order": 2,
-          "composure": -3
+          "health": -3
         },
         "outcome": "You find three fields recorded to men who died in the last famine and one to a man who never existed. The patwari is either a rogue or an artist; either way the records are truer tonight than they were this morning."
       },
@@ -416,7 +416,7 @@
         "label": "Hear the <b>cultivators’ grievances</b> under the mango tree.",
         "effects": {
           "contentment": 6,
-          "composure": -2,
+          "health": -2,
           "prestige": -1
         },
         "outcome": "You sit until dark hearing of a bad well, a hard landlord, a boundary that has walked in the night. You can mend perhaps one grievance in five, but being heard by the sahib is itself a kind of remedy, and the village knows it."
@@ -426,7 +426,7 @@
         "effects": {
           "order": 2,
           "contentment": -2,
-          "composure": 1
+          "health": 1
         },
         "outcome": "You are seen, saluted, and gone by noon. The tour register records a village inspected. What the village records is that the sahib did not stay to listen."
       }
@@ -448,7 +448,7 @@
         "effects": {
           "contentment": 10,
           "order": 4,
-          "composure": -6,
+          "health": -6,
           "prestige": 2
         },
         "outcome": "You spend two nights on the water pulling families off rooftops, soaked and sleepless and more use than you have felt in months. The district will long remember that the sahib came himself. So, unfortunately, will your constitution.",
@@ -462,7 +462,7 @@
           "contentment": 6,
           "order": 3,
           "revenue": -4,
-          "composure": -3
+          "health": -3
         },
         "outcome": "You set up the relief camp, commandeer the grain, and keep a frightened crowd from becoming a mob. Unglamorous, competent, and precisely the job. Nobody drowns who can be reached; some cannot be reached.",
         "econ": {
@@ -475,7 +475,7 @@
           "order": 2,
           "prestige": -3,
           "contentment": -4,
-          "composure": -2
+          "health": -2
         },
         "outcome": "The sappers arrive with boats on the second day and do the work you could not. It is the sensible call, and the district notes that in its worst hour the sahib sent a telegram and waited. Sense is rarely forgiven."
       }
@@ -506,7 +506,7 @@
         "effects": {
           "order": 3,
           "contentment": -4,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You reroute it in the name of peace. One community mutters that the sahib has broken a hundred years of right; the other says nothing, and remembers that the sahib can be moved. You have bought the peace of this year with the authority of the next."
       },
@@ -514,7 +514,7 @@
         "label": "Summon both sides and <b>broker a compromise</b> yourself.",
         "effects": {
           "contentment": 4,
-          "composure": -4,
+          "health": -4,
           "prestige": -1,
           "order": 1
         },
@@ -537,7 +537,7 @@
         "label": "Lead an <b>armed sweep</b> of the ravines in person.",
         "effects": {
           "order": 6,
-          "composure": -5,
+          "health": -5,
           "contentment": 2,
           "prestige": 2
         },
@@ -549,7 +549,7 @@
           "order": 3,
           "contentment": -1,
           "prestige": -1,
-          "composure": -2
+          "health": -2
         },
         "outcome": "Money changes hands in the dark and, in time, so does information. The gang is broken from within &mdash; cheaper and cleverer than a sweep, and winning no one any medals, least of all you."
       },
@@ -558,7 +558,7 @@
         "effects": {
           "order": -3,
           "contentment": -4,
-          "composure": 1
+          "health": 1
         },
         "outcome": "You do the correct, distant thing. The poster is much admired; the dacoits are not caught; the ravine villages draw the obvious conclusion about how far the sahib will actually ride for them."
       }
@@ -639,7 +639,7 @@
           "revenue": 4,
           "order": 2,
           "contentment": -7,
-          "composure": -1
+          "health": -1
         },
         "outcome": "You uphold the letter of the lease. The revenue is secured, the men of property reassured, and forty families learn exactly where they stand in the order of the sahib's concerns. Some will remember it at the next Congress meeting."
       },
@@ -648,7 +648,7 @@
         "effects": {
           "contentment": 2,
           "prestige": 1,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You appoint arbitrators and land on a rent that pinches everyone equally. Neither side is happy, the record is muddied past appeal, and the essential business of the Raj &mdash; the postponement of a reckoning &mdash; is once more served."
       }
@@ -670,7 +670,7 @@
         "effects": {
           "contentment": 6,
           "prestige": -1,
-          "composure": 1
+          "health": 1
         },
         "econ": {
           "treasury": -15000
@@ -690,7 +690,7 @@
         "effects": {
           "prestige": 1,
           "contentment": -4,
-          "composure": -1
+          "health": -1
         },
         "outcome": "You give them a handsome speech about self-reliance and no master. They built a school on the strength of the sahib's justice; they will draw their own conclusions about the strength of the sahib's word."
       }
@@ -713,7 +713,7 @@
           "order": 2,
           "contentment": -6,
           "prestige": 2,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You forbid the burnings and thereby confirm, for anyone who doubted it, that the Government of India regards the burning of a man's own shirt as a threat to the Empire. The box-wallahs are grateful. The nationalist press could not have scripted you better."
       },
@@ -731,7 +731,7 @@
         "effects": {
           "contentment": 3,
           "prestige": -2,
-          "composure": 1
+          "health": 1
         },
         "setFlags": [
           "gone_soft"
@@ -755,7 +755,7 @@
         "label": "<b>Hush it up</b> and send Pemberton on sudden leave.",
         "effects": {
           "prestige": 3,
-          "composure": -3,
+          "health": -3,
           "order": -1
         },
         "outcome": "You engineer a discreet transfer and a story about his health, and the station agrees, as stations do, to have seen nothing. The appearances are saved. Somewhere under them, everyone knows exactly what happened, which is the ordinary condition of station life."
@@ -765,14 +765,14 @@
         "effects": {
           "prestige": -2,
           "order": 1,
-          "composure": -2
+          "health": -2
         },
         "outcome": "You do the honest thing and put it on paper. Pemberton's career ends; the wronged husband is not mollified; and the station marks you down as a man who cannot be trusted to keep a thing quiet &mdash; the one unforgivable sin at a small mess."
       },
       {
         "label": "Bang heads together and <b>settle it over brandy</b>.",
         "effects": {
-          "composure": -4,
+          "health": -4,
           "prestige": 1,
           "contentment": 1
         },
@@ -796,7 +796,7 @@
         "effects": {
           "prestige": 5,
           "contentment": 1,
-          "composure": -4
+          "health": -4
         },
         "outcome": "Every notable is seated to the inch of his dignity, every robe bestowed on cue, and the durbar unfolds like clockwork wound by a nervous man. The Commissioner is pleased; the notables placated; you have spent a week of your life on a seating plan and would, appallingly, do it again."
       },
@@ -806,7 +806,7 @@
           "order": 3,
           "prestige": 2,
           "contentment": -3,
-          "composure": -3
+          "health": -3
         },
         "outcome": "You quietly promote the friends of Government up the rows and let the difficult men feel the draught from the back. It is deftly done and widely understood, and you have turned an afternoon of pageantry into a small, sharp instrument of rule. The Pandit, uninvited, is said to have laughed."
       },
@@ -815,7 +815,7 @@
         "effects": {
           "contentment": 5,
           "prestige": -4,
-          "composure": 1
+          "health": 1
         },
         "econ": {
           "treasury": -10000

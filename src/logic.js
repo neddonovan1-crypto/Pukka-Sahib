@@ -7,7 +7,7 @@
 (function (global) {
   "use strict";
 
-  var METERS = ["revenue", "order", "prestige", "contentment", "composure"];
+  var METERS = ["revenue", "order", "prestige", "contentment", "health"];
   var SECRECY = ["MOST SECRET", "SECRET", "CONFIDENTIAL", "CYPHER"];
 
   function clamp(v) { return Math.max(0, Math.min(100, Math.round(v))); }
@@ -45,6 +45,20 @@
       return CAL.seasons[CAL.seasons.length - 1];
     }
     function monthOf(t) { return CAL.months[Math.min(CAL.months.length - 1, Math.floor((t - 1) / 2))]; }
+
+    // A once-per-season "retreat": a deliberate fortnight spent recovering health
+    // at the cost of the district's standing. Offered as a third posture while
+    // its season is on and its flag is unspent.
+    function retreatFor(sk) {
+      var def = (CFG.retreats || {})[sk];
+      if (!def || S.flags[def.flag]) return null;
+      return def;
+    }
+    function retreatByKey(key) {
+      var rs = CFG.retreats || {};
+      for (var k in rs) if (rs.hasOwnProperty(k) && rs[k].key === key) return rs[k];
+      return null;
+    }
 
     function evalCondition(c) {
       if (!c) return true;
@@ -116,7 +130,7 @@
     }
 
     function collapseCheck() {
-      if (S.composure <= 0) return ENDINGS.breakdown;
+      if (S.health <= 0) return ENDINGS.breakdown;
       if (S.order <= 0) return ENDINGS.riot;
       if (S.prestige <= 0) return ENDINGS.scandal;
       if (S.revenue <= 0) return ENDINGS.bankrupt;
@@ -131,7 +145,7 @@
       // pinnacle: eminent standing, a solvent district, and a contented one.
       if (p < 40 || o < 40) end = ENDINGS.scandal;
       else if (c >= 65 && p < 50) end = ENDINGS.gonenative;
-      else if (p >= 82 && r >= 60 && c >= 55) end = ENDINGS.kcsi;
+      else if (p >= 80 && r >= 60 && c >= 54) end = ENDINGS.kcsi;
       else if (p >= 74 && r >= 56) end = ENDINGS.kcie;
       else if (p >= 58) end = ENDINGS.cie;
       else end = ENDINGS.transfer;
@@ -198,17 +212,34 @@
     }
 
     function postureOptions() {
-      return ["tour", "desk"].map(function (kind) {
+      var opts = ["tour", "desk"].map(function (kind) {
         var p = POSTURES[kind];
         var note = p.note;
         if (kind === "tour" && seasonOf(S.turn).key === "monsoon")
           note = "The roads are rivers — to tour now is to risk it.";
         return { kind: kind, label: p.label, note: note };
       });
+      var rdef = retreatFor(seasonOf(S.turn).key);
+      if (rdef) opts.push({ kind: rdef.key, label: rdef.label, note: rdef.note, retreat: true });
+      return opts;
     }
 
     function choosePosture(kind) {
       if (phase !== "posture") return snapshot();
+      // A seasonal retreat: consumes the fortnight as a no-choice recovery, sets
+      // its once-per-season flag, and resolves straight to Continue (no event).
+      var rdef = retreatByKey(kind);
+      if (rdef) {
+        if (retreatFor(seasonOf(S.turn).key) !== rdef) return snapshot(); // not on offer
+        S.flags[rdef.flag] = true;
+        var reff = rdef.effects || {};
+        var rpulsed = applyMeters(reff);
+        current = { id: rdef.key, tag: rdef.tag, title: rdef.title, body: rdef.body, interlude: true, art: rdef.art };
+        lastResult = { outcome: rdef.outcome || "", effects: reff, econ: null };
+        ended = collapseCheck();
+        phase = ended ? "ended" : "interlude";
+        return snapshot({ pulsed: rpulsed });
+      }
       S.posture = kind;
       var p = POSTURES[kind];
       var sk = seasonOf(S.turn).key;
@@ -274,6 +305,7 @@
         season: seasonOf(S.turn), month: monthOf(S.turn),
         meters: meters, treasury: S.treasury, debt: S.debt,
         posture: S.posture, notice: notice,
+        retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,
         event: (phase === "event" || phase === "interlude") ? current : null,
         result: (phase === "resolved" || phase === "ended" || phase === "interlude") ? lastResult : null,
         ended: ended, honours: honoursStanding()
@@ -286,7 +318,7 @@
       var p = S.prestige, c = S.contentment, r = S.revenue;
       if (S.debt > ECON.debtWarn) return "Honours List &mdash; the district's debts have ruined your name";
       if (p < 40) return "Honours List &mdash; your name appears only in the complaints";
-      if (p >= 82 && r >= 60 && c >= 55) return "Honours List &mdash; a <b>K.C.S.I.</b> (a knighthood of the star) is within reach";
+      if (p >= 80 && r >= 60 && c >= 54) return "Honours List &mdash; a <b>K.C.S.I.</b> (a knighthood of the star) is within reach";
       if (p >= 74 && r >= 56) return "Honours List &mdash; a <b>K.C.I.E.</b> (a knighthood) is within reach";
       if (p >= 58) return "Honours List &mdash; a <b>C.I.E.</b> is within reach";
       if (p >= 48) return "Honours List &mdash; not yet on anyone's list";
