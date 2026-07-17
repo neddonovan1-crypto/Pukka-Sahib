@@ -285,7 +285,10 @@
             "prestige": 2,
             "composure": -3
           },
-          "outcome": "The meeting does not happen. The <i>reason</i> it did not happen is now a far more effective piece of Congress propaganda than the meeting could ever have been. The Pandit sends you a note of thanks. You suspect he is not joking."
+          "outcome": "The meeting does not happen. The <i>reason</i> it did not happen is now a far more effective piece of Congress propaganda than the meeting could ever have been. The Pandit sends you a note of thanks. You suspect he is not joking.",
+          "setFlags": [
+            "unrest_stir"
+          ]
         },
         {
           "label": "<b>Permit it</b>, and send a clerk to take dull notes.",
@@ -854,7 +857,10 @@
             "composure": -6,
             "prestige": 2
           },
-          "outcome": "You sign the letter that sends your son across an ocean to be raised by a school and an aunt, for his health and his accent and his prospects. It is what the Service does to its families. You tell yourself it is for the best, and go back to the files."
+          "outcome": "You sign the letter that sends your son across an ocean to be raised by a school and an aunt, for his health and his accent and his prospects. It is what the Service does to its families. You tell yourself it is for the best, and go back to the files.",
+          "setFlags": [
+            "boy_sent_home"
+          ]
         },
         {
           "label": "Stay, and <b>put the decision off</b> another year.",
@@ -951,6 +957,557 @@
             "composure": -2
           },
           "outcome": "The sappers arrive with boats on the second day and do the work you could not. It is the sensible call, and the district notes that in its worst hour the sahib sent a telegram and waited. Sense is rarely forgiven."
+        }
+      ]
+    },
+    {
+      "id": "festival",
+      "tag": "SECRET",
+      "season": [
+        "cold"
+      ],
+      "kind": "desk",
+      "once": false,
+      "title": "The Procession and the Mosque",
+      "body": "The great autumn procession of one community is due to pass, as it has for a century, down the lane that runs past the other community's chief mosque at the hour of prayer. Both parties have come to your cutcherry &mdash; one citing custom, one citing insult &mdash; and both have brought enough young men to make plain that this is no longer only a question of a route.",
+      "choices": [
+        {
+          "label": "Order the procession to <b>keep its ancient route</b>.",
+          "effects": {
+            "order": -4,
+            "contentment": -3,
+            "prestige": 2
+          },
+          "outcome": "You uphold custom and brace for it. The procession passes; there is shoving, a thrown brick, a lathi-charge that stops just short of a headline. Custom is preserved, and everyone is now quite certain that next year will be worse."
+        },
+        {
+          "label": "<b>Divert the procession</b> by a longer, quieter road.",
+          "effects": {
+            "order": 3,
+            "contentment": -4,
+            "composure": -2
+          },
+          "outcome": "You reroute it in the name of peace. One community mutters that the sahib has broken a hundred years of right; the other says nothing, and remembers that the sahib can be moved. You have bought the peace of this year with the authority of the next."
+        },
+        {
+          "label": "Summon both sides and <b>broker a compromise</b> yourself.",
+          "effects": {
+            "contentment": 4,
+            "composure": -4,
+            "prestige": -1,
+            "order": 1
+          },
+          "outcome": "You spend three exhausting days hammering out a route, a timing, and a face-saving fiction for each side. It holds. It is the hardest and least visible work there is, and the only kind that leaves a district quieter than you found it."
+        }
+      ]
+    },
+    {
+      "id": "dacoits",
+      "tag": "TELEGRAM",
+      "season": [
+        "cold"
+      ],
+      "kind": "tour",
+      "once": false,
+      "title": "The Dacoits of the Ravines",
+      "body": "A gang has come up out of the ravine country &mdash; three villages robbed, a moneylender's house burned, and a growing suspicion among the cultivators that the sahib's writ stops where the good roads do. The Superintendent wants a sweep; the villages want protection; the dacoits, by all accounts, want to become a legend.",
+      "choices": [
+        {
+          "label": "Lead an <b>armed sweep</b> of the ravines in person.",
+          "effects": {
+            "order": 6,
+            "composure": -5,
+            "contentment": 2,
+            "prestige": 2
+          },
+          "outcome": "You spend a fortnight in the saddle in bad country and the gang scatters &mdash; two taken, one shot, the rest gone across the border. The ravines are quiet, your constitution less so, and the legend, annoyingly, only grows."
+        },
+        {
+          "label": "Work quietly through <b>informers and moneylenders</b>.",
+          "effects": {
+            "order": 3,
+            "contentment": -1,
+            "prestige": -1,
+            "composure": -2
+          },
+          "outcome": "Money changes hands in the dark and, in time, so does information. The gang is broken from within &mdash; cheaper and cleverer than a sweep, and winning no one any medals, least of all you."
+        },
+        {
+          "label": "Post a <b>reward</b> and leave it to the police.",
+          "effects": {
+            "order": -3,
+            "contentment": -4,
+            "composure": 1
+          },
+          "outcome": "You do the correct, distant thing. The poster is much admired; the dacoits are not caught; the ravine villages draw the obvious conclusion about how far the sahib will actually ride for them."
+        }
+      ]
+    },
+    {
+      "id": "budget",
+      "tag": "MEMORANDUM",
+      "season": [
+        "cold"
+      ],
+      "kind": "desk",
+      "once": true,
+      "title": "The District Budget",
+      "body": "The annual estimates are due at the Secretariat, and the district's slender purse must be divided between the things that keep people alive, the things that keep people quiet, and the things that keep Simla content. Ram Autar lays three drafts before you, each balanced, each a small betrayal of the other two.",
+      "choices": [
+        {
+          "label": "Fund <b>public works</b> &mdash; wells, roads, a dispensary.",
+          "effects": {
+            "contentment": 7,
+            "prestige": -2
+          },
+          "econ": {
+            "treasury": -40000
+          },
+          "outcome": "You spend on the unglamorous things a district actually needs. The wells get dug, the people are quietly better off, and the Secretariat notes that your establishment charges creep above the provincial average. One of these facts will follow you; guess which."
+        },
+        {
+          "label": "<b>Economise</b> and return a surplus to the province.",
+          "effects": {
+            "prestige": 4,
+            "contentment": -6,
+            "order": -2
+          },
+          "econ": {
+            "treasury": 30000
+          },
+          "outcome": "You hand Simla a tidy surplus and your district a leaking tank and a shut dispensary. The Financial Secretary is delighted. Delight, in the Finance Department, is the highest form of life."
+        },
+        {
+          "label": "Quietly <b>strengthen the police</b> lines.",
+          "effects": {
+            "order": 5,
+            "contentment": -3,
+            "prestige": 1
+          },
+          "econ": {
+            "treasury": -20000
+          },
+          "outcome": "You put the money where it buys quiet rather than gratitude. The lock-up is mended, the constables paid on time, and the district grows a little safer and a little more watched. You tell yourself these are the same thing."
+        }
+      ]
+    },
+    {
+      "id": "landrecord",
+      "tag": "CUTCHERRY",
+      "season": [
+        "any"
+      ],
+      "kind": "desk",
+      "once": false,
+      "title": "The Zamindar and the Tenants",
+      "body": "The zamindar of Pipariya has enhanced his tenants' rents to a figure the land cannot bear, and the tenants &mdash; forty families, and the record on their side for once &mdash; have brought it to your court. The zamindar has brought his pleader, his account books, and a pointed reminder that men of property are the natural friends of Government.",
+      "choices": [
+        {
+          "label": "Rule <b>for the tenants</b> and roll back the rents.",
+          "effects": {
+            "contentment": 8,
+            "prestige": -3,
+            "order": -1,
+            "revenue": -2
+          },
+          "outcome": "You cut the rents to what the fields will yield. Forty families bless the sahib; the zamindar writes to the Commissioner about the dangerous radicalism of the young magistrate, and encloses, he regrets, a list of his loyal services to the Crown."
+        },
+        {
+          "label": "Rule <b>for the zamindar</b> &mdash; a contract is a contract.",
+          "effects": {
+            "revenue": 4,
+            "order": 2,
+            "contentment": -7,
+            "composure": -1
+          },
+          "outcome": "You uphold the letter of the lease. The revenue is secured, the men of property reassured, and forty families learn exactly where they stand in the order of the sahib's concerns. Some will remember it at the next Congress meeting."
+        },
+        {
+          "label": "Send it to <b>arbitration</b> and split the difference.",
+          "effects": {
+            "contentment": 2,
+            "prestige": 1,
+            "composure": -2
+          },
+          "outcome": "You appoint arbitrators and land on a rent that pinches everyone equally. Neither side is happy, the record is muddied past appeal, and the essential business of the Raj &mdash; the postponement of a reckoning &mdash; is once more served."
+        }
+      ]
+    },
+    {
+      "id": "school",
+      "tag": "DEPUTATION",
+      "season": [
+        "cold"
+      ],
+      "kind": "tour",
+      "once": false,
+      "title": "A School for Sonpur",
+      "body": "On tour you are met at Sonpur by villagers who have, astonishingly, built a schoolhouse with their own hands and their own rupees, and now ask only that Government supply a master and his salary. It is precisely the self-help the annual report always praises, and precisely the recurring charge the Finance Department exists to prevent.",
+      "choices": [
+        {
+          "label": "<b>Sanction the master</b> and the salary at once.",
+          "effects": {
+            "contentment": 6,
+            "prestige": -1,
+            "composure": 1
+          },
+          "econ": {
+            "treasury": -15000
+          },
+          "outcome": "You sign the sanction on the spot, to the frank astonishment of the deputation, who had budgeted a year of petitions for it. Sonpur gets its school. It is the rarest official pleasure: a small good done quickly, before anyone can explain why it can't be."
+        },
+        {
+          "label": "<b>Forward it through channels</b> with a warm note.",
+          "effects": {
+            "contentment": 1,
+            "prestige": 1
+          },
+          "outcome": "You do it properly, which is to say slowly. The file begins its long pilgrimage through the Education Department. The schoolhouse waits, empty and swept, a small monument to the distance between a village and the Secretariat."
+        },
+        {
+          "label": "Praise their spirit and <b>make no promises</b>.",
+          "effects": {
+            "prestige": 1,
+            "contentment": -4,
+            "composure": -1
+          },
+          "outcome": "You give them a handsome speech about self-reliance and no master. They built a school on the strength of the sahib's justice; they will draw their own conclusions about the strength of the sahib's word."
+        }
+      ]
+    },
+    {
+      "id": "swadeshi",
+      "tag": "CONFIDENTIAL",
+      "season": [
+        "any"
+      ],
+      "kind": "desk",
+      "once": false,
+      "title": "The Boycott of Foreign Cloth",
+      "body": "Bonfires of Manchester cloth are being lit in the bazaar, and the mill-agents and box-wallahs &mdash; loyal men, taxpayers, the backbone of the revenue &mdash; demand that you stop this seditious burning of perfectly good imported goods. The cloth is, inconveniently, the burners' own property.",
+      "choices": [
+        {
+          "label": "<b>Ban the bonfires</b> as a breach of the peace.",
+          "effects": {
+            "order": 2,
+            "contentment": -6,
+            "prestige": 2,
+            "composure": -2
+          },
+          "outcome": "You forbid the burnings and thereby confirm, for anyone who doubted it, that the Government of India regards the burning of a man's own shirt as a threat to the Empire. The box-wallahs are grateful. The nationalist press could not have scripted you better."
+        },
+        {
+          "label": "<b>Permit it</b> &mdash; a man may burn his own cloth.",
+          "effects": {
+            "contentment": 5,
+            "prestige": -3,
+            "order": -1
+          },
+          "outcome": "You decline to defend Manchester from the citizens of Chhota Nagra. The bonfires burn out on their own, as bonfires do, and the mill-agents write to the Chamber of Commerce about the alarming sympathies of the local magistrate."
+        },
+        {
+          "label": "Look the other way and <b>buy some khadi</b> yourself.",
+          "effects": {
+            "contentment": 3,
+            "prestige": -2,
+            "composure": 1
+          },
+          "setFlags": [
+            "gone_soft"
+          ],
+          "outcome": "You have a homespun coat quietly made and wear it on tour. It is comfortable, it is a small treason, and Ram Autar's face when he sees it is the nearest thing to open emotion he has shown all year."
+        }
+      ]
+    },
+    {
+      "id": "clubscandal",
+      "tag": "PRIVATE",
+      "season": [
+        "hot"
+      ],
+      "kind": "club",
+      "once": false,
+      "title": "A Scandal at the Club",
+      "body": "In the dead of the hot weather, with tempers and thermometers both past bearing, young Pemberton of the Police has been discovered in a compromising arrangement involving another man's wife, a great deal of the Club's whisky, and a challenge shouted across the billiard room. As the senior civil officer present, the mess of it lands, inevitably, on you.",
+      "choices": [
+        {
+          "label": "<b>Hush it up</b> and send Pemberton on sudden leave.",
+          "effects": {
+            "prestige": 3,
+            "composure": -3,
+            "order": -1
+          },
+          "outcome": "You engineer a discreet transfer and a story about his health, and the station agrees, as stations do, to have seen nothing. The appearances are saved. Somewhere under them, everyone knows exactly what happened, which is the ordinary condition of station life."
+        },
+        {
+          "label": "<b>Report it</b> properly up the chain.",
+          "effects": {
+            "prestige": -2,
+            "order": 1,
+            "composure": -2
+          },
+          "outcome": "You do the honest thing and put it on paper. Pemberton's career ends; the wronged husband is not mollified; and the station marks you down as a man who cannot be trusted to keep a thing quiet &mdash; the one unforgivable sin at a small mess."
+        },
+        {
+          "label": "Bang heads together and <b>settle it over brandy</b>.",
+          "effects": {
+            "composure": -4,
+            "prestige": 1,
+            "contentment": 1
+          },
+          "outcome": "You lock the three of them in the card-room and do not let them out until there is an apology, a handshake, and a shared understanding that the alternative is you. It works, at some cost to your evening and to your faith in the ruling race."
+        }
+      ]
+    },
+    {
+      "id": "lala-favour",
+      "tag": "CONFIDENTIAL",
+      "season": [
+        "any"
+      ],
+      "kind": "desk",
+      "once": true,
+      "requires": {
+        "flag": "indebted"
+      },
+      "title": "Lala Hukum Chand Calls It In",
+      "body": "The mangoes are long eaten, and the Lala has come to collect on the goodwill he so carefully planted. Nothing so crude as the money, he assures you &mdash; merely a small matter: a rival trader whose licence might be found irregular, a word in the right ledger. He smiles. Outside, the district you both govern goes about its business, not knowing which of you it belongs to.",
+      "choices": [
+        {
+          "label": "Do the small thing he asks. It <b>is</b> small.",
+          "effects": {
+            "order": 1,
+            "contentment": -5,
+            "prestige": -4,
+            "composure": -3
+          },
+          "setFlags": [
+            "lala_owned"
+          ],
+          "econ": {
+            "debt": -40000
+          },
+          "outcome": "The rival's licence is found wanting; the Lala's ledger is squared; a little of your debt is quietly forgiven. It was small, exactly as he said, and that is how it is done &mdash; never one large sin, always a series of small ones, each easier than the last."
+        },
+        {
+          "label": "<b>Refuse him</b>, and let the debt stand.",
+          "effects": {
+            "prestige": 4,
+            "composure": -3,
+            "order": -2
+          },
+          "econ": {
+            "debt": 20000
+          },
+          "setFlags": [
+            "lala_defied"
+          ],
+          "outcome": "You decline, politely, and watch the warmth leave the room. The debt is called to its full figure, and his money leaves the wheels of your district un-oiled overnight. You have kept your honour. It will prove a more expensive possession than you imagined."
+        },
+        {
+          "label": "<b>Repay him in full</b> from the chest and be free.",
+          "effects": {
+            "prestige": 2,
+            "composure": 2
+          },
+          "econ": {
+            "treasury": -90000
+          },
+          "setFlags": [
+            "lala_defied"
+          ],
+          "outcome": "You empty a dangerous share of the treasury to buy back your own hands. The Lala takes his money with a bow that conveys precisely how much more useful the debt would have been to him than the cash. You are poorer, and free, and those turn out to be connected."
+        }
+      ]
+    },
+    {
+      "id": "noncooperation",
+      "tag": "MOST SECRET",
+      "season": [
+        "any"
+      ],
+      "kind": "crisis",
+      "once": true,
+      "requires": {
+        "flag": "unrest_stir"
+      },
+      "title": "The District Stops Work",
+      "body": "What began with Pandit Girdhari's banned meeting has become a <i>hartal</i> &mdash; the shops shuttered, the courts empty, the very peons of your own cutcherry finding urgent reasons to be elsewhere. It is disciplined, it is peaceful, and it frightens the Secretariat far more than a riot would, because a riot can at least be charged.",
+      "choices": [
+        {
+          "label": "<b>Break the strike</b> under the emergency powers.",
+          "effects": {
+            "order": 5,
+            "contentment": -10,
+            "prestige": 2,
+            "composure": -4
+          },
+          "setFlags": [
+            "crackdown"
+          ],
+          "outcome": "You invoke the ordinances, arrest the organisers, and reopen the shops at the point of persuasion. Order returns to the surface of things. Underneath, something has changed no ordinance addresses: the district has learned it can stop, all together, whenever it chooses."
+        },
+        {
+          "label": "<b>Wait it out</b> and let the hartal exhaust itself.",
+          "effects": {
+            "contentment": 2,
+            "order": -6,
+            "prestige": -4,
+            "composure": -3
+          },
+          "outcome": "You do nothing, magnificently, for eleven days, while Simla's telegrams grow shriller. The strike ends of its own weight, having proved its point precisely by your inability to prevent it. Blyth-Curram will remember that you sat on your hands. So will the Pandit."
+        },
+        {
+          "label": "<b>Meet the Pandit</b> and offer a real concession.",
+          "effects": {
+            "contentment": 6,
+            "prestige": -5,
+            "order": 2,
+            "composure": -2
+          },
+          "setFlags": [
+            "pandit_pact"
+          ],
+          "outcome": "You do the thing no one in Simla forgives: you treat with him as a man with a case. You give a little &mdash; a committee, a hearing, a grievance actually addressed &mdash; and the shutters go up. You have kept your district and quite possibly ended your career, and you are no longer sure those are different things."
+        }
+      ]
+    },
+    {
+      "id": "ramautar-reckoning",
+      "tag": "CONFIDENTIAL",
+      "season": [
+        "any"
+      ],
+      "kind": "desk",
+      "once": true,
+      "requires": {
+        "flag": "ramautar_trust"
+      },
+      "title": "What Ram Autar Knew",
+      "body": "An anonymous petition, in a clerk's careful hand, lays out how the head clerk's small arrangements have grown over the years into something the audit would call embezzlement and the district calls simply how things are done. Ram Autar has run your office, saved your reputation a dozen times, and, it seems, taken his tithe of all that passed through it. He awaits your decision with the stillness he shows a compulsory order.",
+      "choices": [
+        {
+          "label": "<b>Bury the petition.</b> He has earned that much.",
+          "effects": {
+            "composure": 2,
+            "contentment": 2,
+            "prestige": -4,
+            "order": 1
+          },
+          "setFlags": [
+            "complicit"
+          ],
+          "outcome": "You feed the petition to the brazier and say nothing. The office runs on as before, and you understand at last that you did not buy Ram Autar's loyalty &mdash; you rented it, and this is the rent. He pours your tea next morning exactly as always. You cannot meet his eye; he does not require you to."
+        },
+        {
+          "label": "<b>Confront him</b> privately and demand it stop.",
+          "effects": {
+            "prestige": 1,
+            "composure": -3,
+            "order": -1,
+            "contentment": 1
+          },
+          "outcome": "You put it to him quietly and he neither denies nor apologises; he simply, gravely, agrees. The skimming stops. So does a great deal of the frictionless magic by which your office used to work, for it turns out the two ran through the same quiet pipes."
+        },
+        {
+          "label": "<b>Report him.</b> The law is the law.",
+          "effects": {
+            "prestige": 4,
+            "composure": -6,
+            "order": -4,
+            "contentment": -3
+          },
+          "setFlags": [
+            "ramautar_gone"
+          ],
+          "outcome": "You do the clean, correct, ruinous thing. Ram Autar is suspended pending enquiry, and within a fortnight you discover how much of the district lived in his head and nowhere else. You have upheld the law and lost the man who made your rule possible. The files are honest now. They are also three weeks behind."
+        }
+      ]
+    },
+    {
+      "id": "children-home",
+      "tag": "PRIVATE",
+      "season": [
+        "hot"
+      ],
+      "kind": "personal",
+      "once": true,
+      "requires": {
+        "flag": "boy_sent_home"
+      },
+      "title": "A Letter from the School",
+      "body": "A letter comes, months old, in a round schoolboy hand already becoming a stranger's. Your son is well, is learning Latin, has been caned once (unjustly), and asks &mdash; without quite asking &mdash; when you are coming Home. Between the lines a housemaster has added that the boy is settling, which is the word the English use for a wound that has stopped bleeding.",
+      "choices": [
+        {
+          "label": "Write back at once, warmly, and <b>promise a visit</b>.",
+          "effects": {
+            "composure": 5,
+            "prestige": -2
+          },
+          "outcome": "You fill a page with a leave you cannot yet take and a green English field he half-remembers. It costs nothing to promise and steadies you to imagine it. Whether the promise survives contact with the Secretariat's leave-sanction is another year's grief."
+        },
+        {
+          "label": "Send money and a stiff word of <b>encouragement</b>.",
+          "effects": {
+            "composure": -4,
+            "prestige": 1
+          },
+          "outcome": "You do what your own father did, in the same climate, for the same reasons, and tell yourself it made a man of you. The letter is correct and cold, and you know it even as you seal it, and you seal it anyway. The heat presses on the bungalow like a hand."
+        },
+        {
+          "label": "Pour a drink and <b>leave it unanswered</b>.",
+          "effects": {
+            "composure": -3,
+            "order": -1
+          },
+          "setFlags": [
+            "adrift"
+          ],
+          "outcome": "You mean to answer it tomorrow. Tomorrow the district has a fresh demand, and the letter migrates to the drawer with the others you mean to answer, and something between you and the boy lengthens by another silence. This, too, is how it is done."
+        }
+      ]
+    },
+    {
+      "id": "durbar",
+      "tag": "GAZETTE",
+      "season": [
+        "cold"
+      ],
+      "kind": "desk",
+      "once": true,
+      "title": "The Commissioner's Durbar",
+      "body": "A grand <i>durbar</i> is to be held &mdash; the Commissioner presiding, the district's notables assembled by rank, robes of honour distributed, loyalty affirmed, and the whole elaborate theatre of the Raj staged for an afternoon in the maidan. Your task is the seating: a chair too high or too low, a name called out of order, and a feud is born that will outlive you.",
+      "choices": [
+        {
+          "label": "Stage it <b>flawlessly</b> by the Warrant and the old lists.",
+          "effects": {
+            "prestige": 5,
+            "contentment": 1,
+            "composure": -4
+          },
+          "outcome": "Every notable is seated to the inch of his dignity, every robe bestowed on cue, and the durbar unfolds like clockwork wound by a nervous man. The Commissioner is pleased; the notables placated; you have spent a week of your life on a seating plan and would, appallingly, do it again."
+        },
+        {
+          "label": "Use the seating to <b>reward the loyal</b>, cool the awkward.",
+          "effects": {
+            "order": 3,
+            "prestige": 2,
+            "contentment": -3,
+            "composure": -3
+          },
+          "outcome": "You quietly promote the friends of Government up the rows and let the difficult men feel the draught from the back. It is deftly done and widely understood, and you have turned an afternoon of pageantry into a small, sharp instrument of rule. The Pandit, uninvited, is said to have laughed."
+        },
+        {
+          "label": "Keep it <b>plain</b> and spend the saving on the district.",
+          "effects": {
+            "contentment": 5,
+            "prestige": -4,
+            "composure": 1
+          },
+          "econ": {
+            "treasury": -10000
+          },
+          "outcome": "You stage a modest durbar and divert the saved expense to a relief fund. The notables are faintly insulted to be honoured on a budget; the district notices that the sahib would rather feed it than flatter it. Only one of those constituencies writes the confidential reports."
         }
       ]
     }

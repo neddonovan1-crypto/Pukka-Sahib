@@ -85,7 +85,7 @@
         S.treasury += econ.treasury;
         if (S.treasury < 0) { S.debt += -S.treasury; S.treasury = 0; }
       }
-      if (econ.debt) S.debt += econ.debt;
+      if (econ.debt) { S.debt += econ.debt; if (S.debt < 0) S.debt = 0; } // arcs can forgive debt
     }
 
     // Fires on entering a turn: season-boundary interest, then any settlement.
