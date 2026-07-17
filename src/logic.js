@@ -299,7 +299,8 @@
       var opts = ["tour", "desk"].map(function (kind) {
         var p = POSTURES[kind];
         var note = p.notes ? variantOf(p.notes[sk]) : (p.note || "");
-        return { kind: kind, label: p.label, note: note, effects: postureEffects(kind) };
+        var label = p.labels ? p.labels[sk] : p.label; // labels are seasonal: the action reads like the season
+        return { kind: kind, label: label, note: note, effects: postureEffects(kind) };
       });
       var rdef = retreatFor(sk);
       if (rdef) opts.push({ kind: rdef.key, label: rdef.label, note: rdef.note, retreat: true, effects: rdef.effects || {} });

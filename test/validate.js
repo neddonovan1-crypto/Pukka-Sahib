@@ -44,6 +44,13 @@ for (var t = 1; t <= cfg.maxTurns; t++) check(covered[t] === 1, "turn " + t + " 
   check(cfg.postures && cfg.postures[k] && cfg.postures[k].base, "posture " + k + " missing base");
   if (cfg.postures[k]) {
     Object.keys(cfg.postures[k].base).forEach(function (mk) { check(METERS.indexOf(mk) !== -1, "posture " + k + " base has non-meter key " + mk); });
+    // seasonal action labels — one per season, plain enough to need no context
+    var labels = cfg.postures[k].labels;
+    check(labels && typeof labels === "object", "posture " + k + " missing labels");
+    SEASON_KEYS.forEach(function (sk) {
+      check(labels && typeof labels[sk] === "string" && labels[sk].length > 0, "posture " + k + " missing label for season " + sk);
+      if (labels && labels[sk]) scanText(labels[sk], "posture " + k + " labels." + sk);
+    });
     // per-season note variants, rotated by fortnight — every season covered,
     // at least two variants each so the cue never reads identical twice running
     var notes = cfg.postures[k].notes;
