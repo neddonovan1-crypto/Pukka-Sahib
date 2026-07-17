@@ -8,7 +8,7 @@ var SEASON_KEYS = ["cold", "hot", "monsoon"];
 var KINDS = ["desk", "tour", "club", "personal", "crisis"];
 var OPS = [">", ">=", "<", "<=", "==", "!="];
 var ECON_KEYS = ["treasury", "debt"];
-var REQUIRED_ENDINGS = ["breakdown", "riot", "scandal", "bankrupt", "gonenative", "kcie", "csi", "cie", "transfer"];
+var REQUIRED_ENDINGS = ["breakdown", "riot", "scandal", "bankrupt", "gonenative", "kcsi", "kcie", "cie", "transfer"];
 var SEASON_FLOOR = 6;      // eligible events per season must not drop below this
 var MAX_METER_DELTA = 25;  // sanity band on a single effect
 var FORBIDDEN = [/\bTODO\b/, /\blorem\b/i, /claude-[a-z0-9-]*\d/i];

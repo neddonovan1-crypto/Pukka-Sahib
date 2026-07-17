@@ -7,7 +7,7 @@ var content = require("../src/content.json");
 
 var titleToKey = {};
 Object.keys(content.endings).forEach(function (k) { titleToKey[content.endings[k].title] = k; });
-var HONOURS = ["kcie", "csi", "cie"];
+var HONOURS = ["kcsi", "kcie", "cie"];
 var COLLAPSE = ["breakdown", "riot", "scandal", "bankrupt"];
 
 /* ---- policies ---- */

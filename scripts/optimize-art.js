@@ -19,11 +19,43 @@ var JOBS = [
   { in: "season-hot.png", out: "season-hot.jpg", w: 1200, q: 74 },
   { in: "season-monsoon.png", out: "season-monsoon.jpg", w: 1200, q: 74 },
   { in: "cover.png", out: "cover.jpg", w: 1400, q: 78 },
-  // Honours medals for the ending screens. The Star of India keeps its alpha
-  // (PNG) so it sits on the buff; the Indian Empire badge is a scan (JPEG).
-  { in: "medal-csi-src.png", out: "medal-csi.png", w: 560 },
-  { in: "medal-cie-src.jpg", out: "medal-cie.jpg", w: 460, q: 84 }
+  // Honours medals for the ending screens. Both end up transparent PNGs so they
+  // sit consistently on the buff. The Star of India (KCSI) already has alpha;
+  // the Indian Empire badge (CIE/KCIE) is a scan whose cream paper is flood-
+  // filled away from the borders (see cutout:true).
+  { in: "medal-kcsi-src.png", out: "medal-kcsi.png", w: 560 },
+  { in: "medal-cie-src.jpg", out: "medal-cie.png", w: 420, cutout: true }
 ];
+
+// Remove the flat paper background from a scanned badge: 4-connected flood-fill
+// from every border pixel, clearing pixels within `tol` of the corner colour
+// and stopping at the badge's dark outline. Interior colours are never reached,
+// so the gilding survives. Returns a sharp instance with alpha.
+async function cutoutBadge(src, tol) {
+  var raw = await sharp(src).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  var data = raw.data, W = raw.info.width, H = raw.info.height;
+  var bg = [data[0], data[1], data[2]];
+  function isBg(i) {
+    var o = i * 4;
+    return Math.abs(data[o] - bg[0]) <= tol && Math.abs(data[o + 1] - bg[1]) <= tol && Math.abs(data[o + 2] - bg[2]) <= tol;
+  }
+  var seen = new Uint8Array(W * H);
+  var stack = [];
+  for (var x = 0; x < W; x++) { stack.push(x); stack.push((H - 1) * W + x); }
+  for (var y = 0; y < H; y++) { stack.push(y * W); stack.push(y * W + W - 1); }
+  while (stack.length) {
+    var i = stack.pop();
+    if (seen[i]) continue; seen[i] = 1;
+    if (!isBg(i)) continue;
+    data[i * 4 + 3] = 0;
+    var px = i % W, py = (i / W) | 0;
+    if (px > 0) stack.push(i - 1);
+    if (px < W - 1) stack.push(i + 1);
+    if (py > 0) stack.push(i - W);
+    if (py < H - 1) stack.push(i + W);
+  }
+  return sharp(data, { raw: { width: W, height: H, channels: 4 } });
+}
 
 (async function () {
   var total = 0;
@@ -31,9 +63,10 @@ var JOBS = [
     var j = JOBS[i];
     var src = path.join(ART, j.in);
     if (!fs.existsSync(src)) { console.log("skip (missing):", j.in); continue; }
-    var pipe = sharp(src).resize({ width: j.w });
-    if (/\.png$/i.test(j.out)) pipe = pipe.png({ compressionLevel: 9, palette: true, quality: 90 });
-    else pipe = pipe.jpeg({ quality: j.q, mozjpeg: true });
+    var pipe;
+    if (j.cutout) pipe = (await cutoutBadge(src, 46)).resize({ width: j.w }).png({ compressionLevel: 9, palette: true, quality: 68, colours: 64 });
+    else if (/\.png$/i.test(j.out)) pipe = sharp(src).resize({ width: j.w }).png({ compressionLevel: 9, palette: true, quality: 90 });
+    else pipe = sharp(src).resize({ width: j.w }).jpeg({ quality: j.q, mozjpeg: true });
     await pipe.toFile(path.join(OUT, j.out));
     var kb = fs.statSync(path.join(OUT, j.out)).size / 1024;
     total += kb;

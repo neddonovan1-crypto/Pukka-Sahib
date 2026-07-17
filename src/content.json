@@ -113,11 +113,7 @@
   "endings": {
     "kcie": {
       "title": "The K.C.I.E.",
-      "text": "You are gazetted a <b>Knight Commander of the Order of the Indian Empire</b> and become, at thirty-odd, &lsquo;Sir.&rsquo; Promoted to Commissioner, mentioned in despatches, permitted to add letters to your name. You have learned nothing, and you will go far. Chhota Nagra is already forgetting you, which is the highest compliment it knows how to pay."
-    },
-    "csi": {
-      "title": "The C.S.I.",
-      "text": "The New Year Honours make you a <b>Companion of the Most Exalted Order of the Star of India</b> &mdash; <i>Heaven's Light Our Guide.</i> It is the rarer ribbon, given for a district governed firmly and, against the odds, decently. The Commissioner is faintly puzzled that a man so liked by the governed should be so rewarded. You decide not to explain."
+      "text": "You are gazetted a <b>Knight Commander of the Order of the Indian Empire</b> and rise, a plain magistrate of thirty-odd, to &lsquo;Sir.&rsquo; Promoted to Commissioner, mentioned in despatches, permitted to add letters to your name. You have learned little and will go far. Chhota Nagra is already forgetting you, which is the highest compliment it knows how to pay."
     },
     "cie": {
       "title": "The C.I.E.",
@@ -146,6 +142,10 @@
     "gonenative": {
       "title": "Gone Native",
       "text": "You resign, in terms the Commissioner calls &lsquo;intemperate&rsquo; and Pandit Girdhari calls &lsquo;a beginning.&rsquo; You are henceforth spoken of as a man who let the side down. It is the only ending this district will remember with anything like affection."
+    },
+    "kcsi": {
+      "title": "The K.C.S.I.",
+      "text": "You are made a <b>Knight Commander of the Most Exalted Order of the Star of India</b> &mdash; <i>Heaven&rsquo;s Light Our Guide</i> &mdash; and kneel a district officer to rise a knight of the senior star. It is given for a district ruled with a firmness that impressed Simla and a decency that, against every expectation, impressed the district too. You have reached the top of the only ladder the Service acknowledges. The view from it is smaller than you were promised."
     }
   },
   "events": [

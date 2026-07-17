@@ -110,9 +110,9 @@
     el("cont").onclick = function () { paint(game.next()); };
   }
 
-  // The honours endings show their real insignia (KCIE is the knight grade of
-  // the same order as CIE, so it shares the Indian Empire badge).
-  var MEDAL = { "The C.S.I.": "medal-csi", "The C.I.E.": "medal-cie", "The K.C.I.E.": "medal-cie" };
+  // The honours endings show their real insignia. CIE and KCIE are grades of
+  // the Order of the Indian Empire (same badge); KCSI is the senior Star of India.
+  var MEDAL = { "The C.I.E.": "medal-cie", "The K.C.I.E.": "medal-cie", "The K.C.S.I.": "medal-kcsi" };
 
   function renderEnding(s) {
     var c = el("card"); c.className = "card ending";
