@@ -13,12 +13,23 @@ var COLLAPSE = ["breakdown", "riot", "scandal", "bankrupt"];
 // order of magnitude).
 var DEBT_GUARDS = { hi: 140000, lo: 100000 };
 
-// Per-chapter band overrides. Every chapter shares the core bands; the
-// tour-spam signature failure differs — the district year breaks men down,
-// the probation writes them off.
+// Per-chapter band overrides. Every chapter shares the core bands; what
+// differs is the tour-spam signature failure, which endings must appear in
+// ordinary pooled play, and which collapses get a dedicated probe. The AC
+// year exempts riot — a probationer's disorder ends as Asked to Resign long
+// before a sub-division burns — and proves breakdown via the burnout probe
+// (a first-year boy CAN be invalided, but not by casual play in six months).
 var CHAPTER_BANDS = {
-  dm: { spamFail: { keys: ["breakdown"], min: 0.30, label: "tour-only should mostly break down (want ≥30% Invalided Home)" } },
-  ac: { spamFail: { keys: ["transfer", "gonenative", "breakdown", "scandal"], min: 0.40, label: "tour-only should mostly fail the probation (want ≥40% extended/gone-native/collapse)" } }
+  dm: {
+    spamFail: { keys: ["breakdown"], min: 0.30, label: "tour-only should mostly break down (want ≥30% Invalided Home)" },
+    pooledReachable: ["breakdown", "scandal", "transfer", "gonenative"],
+    probes: { riot: true, bankrupt: true, burnout: false }
+  },
+  ac: {
+    spamFail: { keys: ["transfer", "gonenative", "breakdown", "scandal"], min: 0.40, label: "tour-only should mostly fail the probation (want ≥40% extended/gone-native/collapse)" },
+    pooledReachable: ["scandal", "transfer", "gonenative"],
+    probes: { riot: false, bankrupt: true, burnout: true }
+  }
 };
 
 /* ---- policies ---- */
@@ -118,6 +129,23 @@ var POLICIES = {
       return bi; // → riot
     }
   },
+  burnout: {
+    // The health-collapse probe: tours through every season and picks the most
+    // Health-punishing choice each fortnight (worst branch counted) — the boy
+    // who will not be told, driven to the steamer.
+    posture: function () { return "tour"; },
+    option: function (s) {
+      var worstHealth = function (ch) {
+        if (ch.effects) return ch.effects.health || 0;
+        var a = (ch.ifTrue && ch.ifTrue.effects && ch.ifTrue.effects.health) || 0;
+        var b = (ch.ifFalse && ch.ifFalse.effects && ch.ifFalse.effects.health) || 0;
+        return Math.min(a, b);
+      };
+      var bi = 0, bh = 1e9;
+      s.event.choices.forEach(function (ch, i) { var h = worstHealth(ch); if (h < bh) { bh = h; bi = i; } });
+      return bi; // → invalided
+    }
+  },
   reckless: {
     // Desk keeps prestige off the floor while the borrowing does its work;
     // the leaves are taken too (each costs revenue and standing).
@@ -206,8 +234,9 @@ function simulateChapter(chapterKey, content) {
   ["random", "tourOnly", "deskOnly", "skilled"].forEach(function (p) { R[p] = runBatch(p, N, p.length * 100003); });
   // smaller engineered batches for tail- and pinnacle-reachability
   R.paragon = runBatch("paragon", 200, 777001);
-  R.wrecker = runBatch("wrecker", 200, 424242);
-  R.reckless = runBatch("reckless", 200, 133337);
+  if (bands.probes.riot) R.wrecker = runBatch("wrecker", 200, 424242);
+  if (bands.probes.bankrupt) R.reckless = runBatch("reckless", 200, 133337);
+  if (bands.probes.burnout) R.burnout = runBatch("burnout", 200, 555000);
 
   console.log("\n=== [" + chapterKey + "] Balance report (n=" + N + " per policy; probes 200) ===");
   Object.keys(R).forEach(function (p) {
@@ -234,15 +263,16 @@ function simulateChapter(chapterKey, content) {
   var rnd = pct(R.random.dist, LADDER, N);
   assert(rnd >= 0.02 && rnd <= 0.50, "random honour-rate out of band [2%,50%]: " + (rnd * 100).toFixed(0) + "%");
 
-  // every ladder tier + the common collapses are reachable across the pooled runs
+  // every ladder tier + the chapter's ordinary endings reachable in pooled play
   var all = {};
   Object.keys(R).forEach(function (p) { Object.keys(R[p].dist).forEach(function (k) { all[k] = (all[k] || 0) + R[p].dist[k]; }); });
-  LADDER.concat(["breakdown", "scandal", "transfer", "gonenative"]).forEach(function (k) {
+  LADDER.concat(bands.pooledReachable).forEach(function (k) {
     assert(all[k] > 0, "ending '" + k + "' never occurred in any policy");
   });
-  // the two tail collapses must be reachable via their adversarial probe
-  assert((R.wrecker.dist.riot || 0) > 0, "riot unreachable — wrecker policy never triggered it");
-  assert((R.reckless.dist.bankrupt || 0) > 0, "bankrupt unreachable — reckless policy never triggered it");
+  // the chapter's tail collapses must be reachable via their dedicated probes
+  if (bands.probes.riot) assert((R.wrecker.dist.riot || 0) > 0, "riot unreachable — wrecker policy never triggered it");
+  if (bands.probes.bankrupt) assert((R.reckless.dist.bankrupt || 0) > 0, "bankrupt unreachable — reckless policy never triggered it");
+  if (bands.probes.burnout) assert((R.burnout.dist.breakdown || 0) > 0, "breakdown unreachable — burnout policy never triggered it");
   // and the top rung must be winnable by play engineered for it
   assert((R.paragon.dist[TOP] || 0) > 0, "'" + TOP + "' unreachable — paragon policy never earned it");
 }

@@ -1,1 +1,991 @@
-[]
+[
+  {
+    "id": "ac-first-sitting",
+    "tag": "CUTCHERRY",
+    "season": [
+      "cold"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The First Sitting",
+    "body": "Your first day on the bench as a magistrate of the third class: two cattle-trespass cases, one affray, and the court reader, Bishan Lal &mdash; silken, indispensable, twenty years at the elbow of boys like you &mdash; murmuring at each turn which section applies, which witness to call, and which case would benefit from adjournment. His guidance is fluent, kindly, and, in the matter of the adjournment, not entirely disinterested.",
+    "choices": [
+      {
+        "label": "Follow the reader&rsquo;s <b>murmured guidance</b> in everything.",
+        "effects": {
+          "order": 2,
+          "contentment": -3,
+          "prestige": -1
+        },
+        "outcome": "The day runs like oil. It is a fortnight before you learn that the adjourned case touched the reader&rsquo;s cousin&rsquo;s creditor, and that the bazaar has already fixed the price of the sahib&rsquo;s ear &mdash; payable, naturally, to Bishan Lal."
+      },
+      {
+        "label": "Halt the court and <b>look up every section yourself</b>.",
+        "effects": {
+          "prestige": 2,
+          "order": -1,
+          "health": -2,
+          "contentment": 1
+        },
+        "outcome": "The morning&rsquo;s work takes until dark, and the pleaders exchange glances of exquisite patience. But the bazaar reports by evening that the new sahib reads the Code with his own eyes, which does more for justice in Kotra than the judgments themselves."
+      },
+      {
+        "label": "Adjourn the doubtful case and <b>sleep on it</b>.",
+        "effects": {
+          "health": 1,
+          "prestige": -2,
+          "order": -1
+        },
+        "outcome": "Caution is a virtue, and like most virtues it is billed for. The parties walk home forty miles and back again, and the reader observes, silkily, that the sahib is wise &mdash; by which he means slow, and biddable."
+      }
+    ]
+  },
+  {
+    "id": "ac-tahsildar-test",
+    "tag": "DEPUTATION",
+    "season": [
+      "cold"
+    ],
+    "kind": "tour",
+    "once": true,
+    "title": "The Tahsildar&rsquo;s Examination",
+    "body": "Tahsildar Ganga Ram has served under nine Collectors and trained, by his own count, twenty assistant sahibs, of whom &lsquo;several became almost useful.&rsquo; Today he lays before you the season&rsquo;s remission papers, correct to the last anna &mdash; except for one entry, resting quietly in the middle like a stone in dal, in which a field that does not exist has suffered a crop failure that never happened. He waits, grave as a mountain, to see what you do.",
+    "choices": [
+      {
+        "label": "Check every entry <b>against the village register</b> before signing.",
+        "effects": {
+          "prestige": 3,
+          "revenue": 2,
+          "health": -3
+        },
+        "setFlags": [
+          "tahsildar_respect"
+        ],
+        "outcome": "Two hours with the patwari&rsquo;s register turn up the phantom field. Ganga Ram receives the correction without a flicker, as one receives change that was never in doubt. But the papers that reach your table thereafter are honest ones, which in a tahsil is the highest known form of applause."
+      },
+      {
+        "label": "Sign where the tahsildar indicates. <b>Twenty boys before you did.</b>",
+        "effects": {
+          "health": 2,
+          "prestige": -3,
+          "revenue": -2
+        },
+        "outcome": "You sign. Three weeks later the Collector&rsquo;s red ink finds the phantom field in a single pass, and his note asks &mdash; politely, which is worse &mdash; whether you read what you sign. Ganga Ram, questioned, is desolated by the error. He had prepared it for you personally."
+      },
+      {
+        "label": "Ask him, directly, <b>whether this is a test</b>.",
+        "effects": {
+          "prestige": 1,
+          "contentment": 1,
+          "health": -1
+        },
+        "setFlags": [
+          "tahsildar_respect"
+        ],
+        "outcome": "The old man permits himself the eighth of a smile. &lsquo;The tahsil is always a test, sahib. This one, however, I wrote myself.&rsquo; He withdraws the phantom field and, with it, one layer of the twenty years of politeness he keeps for boys who will not last."
+      }
+    ]
+  },
+  {
+    "id": "ac-munshi",
+    "tag": "PRIVATE",
+    "season": [
+      "cold"
+    ],
+    "kind": "personal",
+    "once": true,
+    "title": "Munshi Sujan Rai&rsquo;s Hour",
+    "body": "Munshi Sujan Rai attends daily at dawn to teach you the vernacular, armed with a grammar, a copybook, and the settled melancholy of a man who has taught the optative mood to Englishmen before. Without the higher standard you cannot be confirmed; without the living tongue you cannot rule a bazaar. The two, he regrets to say, are not the same language.",
+    "choices": [
+      {
+        "label": "Grind at the <b>grammar, one hour before daylight</b>, every day.",
+        "effects": {
+          "prestige": 2,
+          "health": -2
+        },
+        "setFlags": [
+          "vernacular_grind"
+        ],
+        "outcome": "You learn the honorific verb and the seventeen words for land tenure, mispronouncing all of them in a manner the munshi describes as &lsquo;bold.&rsquo; It is joyless, it is freezing, and it is the exact shape of the examination paper. Sujan Rai begins, cautiously, to hope."
+      },
+      {
+        "label": "Learn it in the <b>lines and the bazaar</b> &mdash; from the syce, the petitioners, the constables.",
+        "effects": {
+          "contentment": 3,
+          "prestige": -1,
+          "health": -1
+        },
+        "outcome": "In a month you can be sworn at, bargained with, and blessed, and understand all three. The bazaar is delighted with you. The examination, unfortunately, is set from the grammar, and the grammar contains no oaths whatever.",
+        "setFlags": [
+          "ac_vernacular"
+        ]
+      },
+      {
+        "label": "Postpone the lessons. <b>The cold weather is for touring.</b>",
+        "effects": {
+          "health": 2,
+          "prestige": -2
+        },
+        "outcome": "The munshi bows, pockets his fee, and enters your name in the private ledger he keeps of sahibs who will be sitting the same examination this time next year. It is a long ledger, and rarely wrong."
+      }
+    ]
+  },
+  {
+    "id": "ac-first-horse",
+    "tag": "PRIVATE",
+    "season": [
+      "cold"
+    ],
+    "kind": "personal",
+    "once": true,
+    "title": "A Question of a Horse",
+    "body": "An assistant sahib must be mounted &mdash; the tour demands it, the Service assumes it, and the Club inspects it. Wickham of the Police, transferred up-country, is selling his grey Waler: a gentleman&rsquo;s horse at a gentleman&rsquo;s price, which is to say three months&rsquo; pay you have not got. The bania, Sohan Lal, mentions &mdash; merely in passing &mdash; that such sums present no difficulty to him whatever.",
+    "choices": [
+      {
+        "label": "Buy the Waler <b>on the bania&rsquo;s convenient terms</b>.",
+        "effects": {
+          "prestige": 4,
+          "health": 2
+        },
+        "econ": {
+          "debt": 2500
+        },
+        "setFlags": [
+          "horse_debt"
+        ],
+        "outcome": "The grey carries you like a rumour of promotion, and the Club approves of you from the saddle down. Sohan Lal&rsquo;s book records the principal, the interest, and &mdash; though no column shows it &mdash; the fact that the sahib now banks where his petitioners do."
+      },
+      {
+        "label": "Buy a <b>country-bred pony</b> at the fair, cash down.",
+        "effects": {
+          "prestige": -2,
+          "health": 1
+        },
+        "econ": {
+          "treasury": -300
+        },
+        "outcome": "The pony is thirteen hands of opinion and endurance, and goes all day on gram and spite. The Club christens it the Kotra Tat and is very witty about it; the villages, noticing that the sahib rides what they ride, are not witty about it at all."
+      },
+      {
+        "label": "Borrow Ganga Ram&rsquo;s spare mare <b>until pay accumulates</b>.",
+        "effects": {
+          "prestige": -3,
+          "contentment": 1,
+          "health": 1
+        },
+        "outcome": "The mare is sound, the arrangement sensible, and the obligation total. You now tour on the tahsildar&rsquo;s goodwill, and every soul in the tahsil knows it. Ganga Ram would never presume upon the fact. That is what makes it a debt."
+      }
+    ]
+  },
+  {
+    "id": "ac-gift-horse",
+    "tag": "DEPUTATION",
+    "season": [
+      "cold"
+    ],
+    "kind": "tour",
+    "once": false,
+    "title": "The Thakur&rsquo;s Mare",
+    "body": "On tour at Bijni the Thakur, splendid in his welcome, has a chestnut mare led out under a ceremonial saddle: a trifle, he says, for the young sahib&rsquo;s use &mdash; the roads of Kotra being unworthy of the sahib&rsquo;s present mount. The mare is worth six hundred rupees. The Thakur&rsquo;s boundary appeal is worth a great deal more, and comes on before you next month.",
+    "choices": [
+      {
+        "label": "Decline, <b>with every compliment</b>, and admire her at length.",
+        "effects": {
+          "prestige": 2,
+          "contentment": -2
+        },
+        "outcome": "You praise her knees, her paces, and her master&rsquo;s house, and leave without her. The Thakur&rsquo;s regret is beautifully performed. Word travels the tahsil in the usual week: the new sahib does not take. Some men are relieved. The Thakur is not among them."
+      },
+      {
+        "label": "Accept her. <b>Refusal would insult the house.</b>",
+        "effects": {
+          "contentment": 1,
+          "prestige": -4,
+          "order": -1
+        },
+        "setFlags": [
+          "thakur_obliged"
+        ],
+        "outcome": "She is a lovely creature, and every furlong she carries you is entered somewhere in the Thakur&rsquo;s reckoning. When his appeal is called, both pleaders study your face with a new interest. Whatever you decide now, one party has already paid a fee."
+      },
+      {
+        "label": "Buy her outright, <b>at the full bazaar price</b>.",
+        "effects": {
+          "prestige": 1,
+          "contentment": 1
+        },
+        "econ": {
+          "treasury": -700
+        },
+        "outcome": "Six hundred rupees you can ill spare converts a gift into a sale, an obligation into a receipt. The Thakur signs it with the expression of a chess player whose gambit has been declined correctly. The mare, indifferent to jurisprudence, turns out a bargain."
+      }
+    ]
+  },
+  {
+    "id": "ac-eager-order",
+    "tag": "MEMORANDUM",
+    "season": [
+      "cold"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "In Excess of Powers",
+    "body": "The grain-dealers of Kotra bazaar are holding stocks against the spring hunger, and prices climb pleasantly for everyone who does not eat. In a warm hour after court you issue a written order fixing a maximum price &mdash; decisive, humane, and, as the senior pleader points out with real enjoyment, some distance beyond the powers of an assistant on probation. The order is now public, and so is the question of what the Collector will do with it, and with you.",
+    "choices": [
+      {
+        "label": "Stand by the order and <b>report yourself to the Collector</b> by the next dak.",
+        "condition": {
+          "meter": "prestige",
+          "op": ">=",
+          "value": 50
+        },
+        "ifTrue": {
+          "effects": {
+            "prestige": 4,
+            "order": 2,
+            "health": -2
+          },
+          "outcome": "The Collector&rsquo;s reply covers one side of one sheet: the order is cancelled as beyond your powers, and reissued over his own signature, unaltered, effective from your date. The rebuke is in the first paragraph and the backing is in the second, and it is a fortnight before you understand you have been paid a compliment."
+        },
+        "ifFalse": {
+          "effects": {
+            "prestige": -5,
+            "order": -3,
+            "health": -3
+          },
+          "outcome": "The cancellation is read out in open cutcherry, as the law requires and as you will remember. The dealers reopen at their own prices with the particular cheerfulness of vindicated men. The Collector&rsquo;s covering note is one line: &lsquo;Zeal is capital. Do not spend it before it is banked.&rsquo;"
+        }
+      },
+      {
+        "label": "Withdraw the order <b>quietly, before it travels</b>.",
+        "effects": {
+          "prestige": -2,
+          "order": -2,
+          "health": 1
+        },
+        "outcome": "You cancel it yourself within the day, which limits the damage and cancels something else besides. The bazaar concludes the sahib can be turned; the pleaders enter the fact in the common stock of useful knowledge. Nothing is said at headquarters. Nothing needs to be."
+      },
+      {
+        "label": "Have the reader find <b>retrospective cover in the Code</b>.",
+        "effects": {
+          "order": 1,
+          "prestige": -1,
+          "contentment": -2,
+          "health": -1
+        },
+        "setFlags": [
+          "readers_man"
+        ],
+        "outcome": "Bishan Lal, given a free hand, discovers that your order can shelter under a scarcity clause if nobody reads the clause closely. The order stands, the dealers grumble, and the reader now holds the paper on which your rescue is written. He will never mention it. He will never need to."
+      }
+    ]
+  },
+  {
+    "id": "ac-boundary",
+    "tag": "PETITION",
+    "season": [
+      "cold"
+    ],
+    "kind": "tour",
+    "once": false,
+    "title": "The Boundary Pillar of Amraoti",
+    "body": "The boundary between Amraoti and Piparia has moved in the night, as boundaries in a good wheat year will, and forty men a side stand in the disputed strip with the crop between them and their lathis grounded &mdash; for the moment. The patwari&rsquo;s map is in your saddle-bag; the survey chain is with the camp. A case in court will take two years. The field is here, and so are you.",
+    "choices": [
+      {
+        "label": "Take the <b>chain and the map</b> and settle it where it stands.",
+        "condition": {
+          "meter": "prestige",
+          "op": ">=",
+          "value": 50
+        },
+        "ifTrue": {
+          "effects": {
+            "contentment": 5,
+            "order": 2,
+            "prestige": 2,
+            "health": -2
+          },
+          "outcome": "You measure it out in the sight of both villages and set the pillar with your own hands, and when Piparia&rsquo;s zamindar appeals, the Collector upholds your line without calling for you &mdash; which is how you learn he has upheld it. A boundary settled in the field by a boy is a story the tahsil tells for a season."
+        },
+        "ifFalse": {
+          "effects": {
+            "contentment": -2,
+            "prestige": -3,
+            "order": -5,
+            "health": -2
+          },
+          "outcome": "You measure honestly and set the pillar fairly, and the zamindar&rsquo;s pleader carries the whole performance to appeal, where the Collector varies your line by eleven feet &mdash; enough to be retold, in every version the tahsil hears, as the young sahib being wrong by a field. The eleven feet were nothing. The appeal was everything."
+        }
+      },
+      {
+        "label": "Refer it to the <b>Survey Department</b> in proper form.",
+        "effects": {
+          "order": -2,
+          "contentment": -4,
+          "prestige": 1
+        },
+        "outcome": "Unimpeachable. The Survey promises an officer after the rains, the crop is cut under police guard, and both villages settle down to two years of litigation and remembering. Your file is faultless, and the strip has already been named, in both dialects, the Field of the Case."
+      },
+      {
+        "label": "Set the maps aside and <b>talk the headmen into halving the strip</b>.",
+        "effects": {
+          "contentment": 3,
+          "order": 1,
+          "health": -3,
+          "prestige": -1
+        },
+        "outcome": "Four hours under a sun with opinions, and the strip is divided by consent &mdash; unsurveyed, unsanctioned, and observed by both sides because both sides made it. Headquarters would call it no settlement at all. Headquarters is forty miles away, and the wheat is in."
+      }
+    ]
+  },
+  {
+    "id": "ac-club-dues",
+    "tag": "D.O.",
+    "season": [
+      "cold"
+    ],
+    "kind": "club",
+    "once": false,
+    "title": "The Hon. Secretary Presents His Compliments",
+    "body": "A chit from the Honorary Secretary of the Club, beautifully phrased and perfectly clear: your account &mdash; mess bill, bar book, subscription and the ball fund &mdash; stands at a figure that assumes a private income you do not possess. The horse eats; the munshi&rsquo;s fee falls due; pay is what it is. Gentlemen settle at the month&rsquo;s end. The word &lsquo;gentlemen&rsquo; is doing a great deal of quiet work in that sentence.",
+    "choices": [
+      {
+        "label": "<b>Pay in full</b> and live on dal and office tea till March.",
+        "effects": {
+          "prestige": 2,
+          "health": -2
+        },
+        "econ": {
+          "treasury": -900
+        },
+        "outcome": "Settled by return, and the Secretary&rsquo;s nod at the bar that evening is a decoration in its own right. Your khansama serves economy in seven disguises for nine weeks. The Club never learns what the settlement cost, which is precisely the point of the Club."
+      },
+      {
+        "label": "Cover it through <b>Sohan Lal&rsquo;s accommodating book</b>.",
+        "effects": {
+          "prestige": 1,
+          "contentment": -1,
+          "health": -1
+        },
+        "econ": {
+          "debt": 1000
+        },
+        "setFlags": [
+          "banias_books"
+        ],
+        "outcome": "The bania advances the sum with a readiness that should frighten you more than it does. Your name is now good at the Club and mortgaged in the bazaar, and of the two ledgers, the one that will matter to your work is not the one bound in morocco."
+      },
+      {
+        "label": "Ask the Secretary, man to man, <b>for time</b>.",
+        "effects": {
+          "prestige": -3,
+          "health": 1
+        },
+        "outcome": "Time is granted with perfect courtesy, and by six o&rsquo;clock the bar knows, and by Sunday the Collector&rsquo;s lady knows. Nobody thinks the worse of a boy in debt &mdash; half the Service was &mdash; but the district has learned your balance before it has learned your work, and the district remembers the order in which it learns things."
+      }
+    ]
+  },
+  {
+    "id": "ac-collector-camp",
+    "tag": "TELEGRAM",
+    "season": [
+      "cold"
+    ],
+    "kind": "tour",
+    "once": true,
+    "title": "The Collector Rides Over",
+    "body": "A telegram from headquarters: COLLECTORS CAMP JOINS YOURS THURSDAY STOP TWO DAYS STOP NO CEREMONY STOP. No ceremony, from Mr. Cardew, means that he will sit at the back of your morning office with his pipe and his silence and watch you hear petitions for two days, and that nothing whatever will escape him, and that you will not be told what he concludes until it appears, months hence, in ink you never see.",
+    "choices": [
+      {
+        "label": "Carry on <b>exactly as on any other morning</b>.",
+        "condition": {
+          "meter": "prestige",
+          "op": ">=",
+          "value": 50
+        },
+        "ifTrue": {
+          "effects": {
+            "prestige": 5,
+            "contentment": 1,
+            "health": -1
+          },
+          "outcome": "Two days of your ordinary work, with the back of your neck aware of the pipe-smoke. At his going the Collector says only, &lsquo;You let the old woman from Barwa finish her story. Most of them don&rsquo;t.&rsquo; You will receive handsomer praise in your service. You will not receive much that you value more."
+        },
+        "ifFalse": {
+          "effects": {
+            "prestige": -4,
+            "health": -2,
+            "contentment": 2
+          },
+          "outcome": "By the second petition of the second day he has begun, very gently, to ask the questions you should have asked, and the cutcherry turns to him like a field turning to the sun, and you spend the rest of the morning as a spectator at your own table. He is kind about it afterwards, which is the part you cannot forgive yourself."
+        }
+      },
+      {
+        "label": "<b>Rehearse the tahsil</b> &mdash; best cases forward, the difficult files resting.",
+        "effects": {
+          "prestige": 2,
+          "contentment": -2,
+          "health": -3
+        },
+        "outcome": "The two days run like a durbar, smooth and false, and the Collector smokes through them without comment. At parting he observes that your camp is remarkably well arranged, &lsquo;as the twenty-first such camp I have inspected.&rsquo; You are left to work out at leisure which word in that sentence was the verdict."
+      },
+      {
+        "label": "Ask him outright to <b>take the difficult cases himself</b> while you watch.",
+        "effects": {
+          "prestige": -2,
+          "contentment": 2,
+          "order": 1
+        },
+        "outcome": "He takes the tangled Barwa pre-emption suit and unpicks it in forty minutes, thinking aloud the while for your benefit, and it is the best lesson in judicial work you will ever be given. It is also, as you both know without saying it, a lesson you asked for instead of a test you sat."
+      }
+    ]
+  },
+  {
+    "id": "ac-first-camp",
+    "tag": "MEMORANDUM",
+    "season": [
+      "cold"
+    ],
+    "kind": "tour",
+    "once": true,
+    "title": "The First Camp",
+    "body": "Your first cold-weather tour: eleven camels, four tents, the khansama, the office box, and a programme of villages drawn up by Ganga Ram with the tenderness of a man routing a beloved regiment. How an assistant tours is held, in the Service, to predict the officer entire: there are marching men and sitting men, and the confidential rolls have a column for the difference.",
+    "choices": [
+      {
+        "label": "<b>March hard</b> &mdash; twenty villages before the moon turns.",
+        "effects": {
+          "prestige": 2,
+          "order": 2,
+          "health": -5
+        },
+        "econ": {
+          "treasury": -400
+        },
+        "outcome": "Twenty villages, four hundred petitions, three boundary quarrels and one alleged ghost, disposed of from the saddle at a pace the camels come to hate. The tahsil is impressed. The work is an inch deep, and the inch is noted &mdash; but a boy who marches is forgiven much, and you sleep like the honest dead."
+      },
+      {
+        "label": "Camp <b>a week at a time</b> and go to the bottom of each place.",
+        "effects": {
+          "contentment": 4,
+          "revenue": 2,
+          "prestige": -1,
+          "health": -1
+        },
+        "outcome": "A week at Barwa turns up a false register, a bad well, and a headman&rsquo;s feud that explains four years of petitions. It is real work, truly done. The programme falls a fortnight behind, and headquarters measures programmes, not bottoms &mdash; a fact Ganga Ram conveys by respectfully saying nothing."
+      },
+      {
+        "label": "Tour by the <b>dak bungalows</b>, where the bath water is hot.",
+        "effects": {
+          "health": 3,
+          "prestige": -2,
+          "contentment": -2
+        },
+        "outcome": "A civilised progress along the metalled road, from verandah to verandah. The villages more than four miles from a bungalow &mdash; which is to say the villages &mdash; see the dust of the sahib&rsquo;s cart and draw the conclusion villages have always drawn. The tour diary reads beautifully. It is the only thing about the tour that does."
+      }
+    ]
+  },
+  {
+    "id": "ac-paper-chase",
+    "tag": "PRIVATE",
+    "season": [
+      "cold"
+    ],
+    "kind": "club",
+    "once": false,
+    "title": "The Kotra Paper-Chase",
+    "body": "The station&rsquo;s cold-weather paper-chase: every rideable horse within thirty miles, the Police contingent loud with confidence, and a line of cut fences that the doctor, who lays the course, calls &lsquo;instructive.&rsquo; A junior who rides well is forgiven his file-work; a junior who rides badly is forgiven nothing; a junior who does not ride is a clerk. These are the rules, and they are nowhere written down.",
+    "choices": [
+      {
+        "label": "<b>Ride for a place</b>, hang the fences.",
+        "effects": {
+          "prestige": 3,
+          "health": -2
+        },
+        "econ": {
+          "debt": 500
+        },
+        "outcome": "You finish third behind two policemen who ride like the bills they never pay, and the doctor gets a fall he speaks of afterwards as a triumph of course design. Entry, sweep and one rash wager cost more than a place is worth in money. In any other currency, it is the cheapest reputation in the station."
+      },
+      {
+        "label": "Ride <b>steadily, mid-field</b>, and bring the horse home sound.",
+        "effects": {
+          "health": 1,
+          "contentment": 1,
+          "prestige": -1
+        },
+        "outcome": "A sensible round, no falls, the horse sound for Monday&rsquo;s tour &mdash; the horse being, unlike the paper-chase, a thing you must ride all year. The Police call it a revenue-department performance. You are content to be solvent in the one bank they are not."
+      },
+      {
+        "label": "Volunteer to <b>lay the paper</b> and judge the finish.",
+        "effects": {
+          "prestige": -2,
+          "health": 2,
+          "contentment": 1
+        },
+        "outcome": "You spend a pleasant day at a gallop with two sacks of torn Government forms &mdash; their first useful employment, the doctor observes &mdash; and give no one cause to remember you at the finish. The subalterns mark you down as a careful man. At twenty-four, in this country, it is not meant as a compliment."
+      }
+    ]
+  },
+  {
+    "id": "ac-punkah-nights",
+    "tag": "PRIVATE",
+    "season": [
+      "hot"
+    ],
+    "kind": "personal",
+    "once": false,
+    "title": "The Punkah Nights",
+    "body": "Your first hot weather has arrived like a verdict. The thermometer on the verandah reads 112 at four o&rsquo;clock; the punkah-wallah sleeps at his rope like the dead; the prickly heat has drawn its red map across your shoulders; and sleep has become a rumour put about by the cold weather. The old hands each have a doctrine for surviving May. The old hands, you notice, are the ones who survived.",
+    "choices": [
+      {
+        "label": "<b>Work through the nights</b> &mdash; the files at least are cool company.",
+        "effects": {
+          "prestige": 2,
+          "order": 1,
+          "health": -6
+        },
+        "outcome": "The office has never been so current: every file disposed, every return in early, minutes of a lucidity that surprises their author. You are also beginning to hear the punkah when the punkah has stopped, which is a sound the doctor asks about twice, in a voice too carefully casual to be casual."
+      },
+      {
+        "label": "Adopt the old hands&rsquo; regimen &mdash; <b>bed on the roof, ride at dawn, siesta kept like scripture</b>.",
+        "effects": {
+          "health": 3,
+          "order": -1,
+          "prestige": -1
+        },
+        "outcome": "The regimen holds. You sleep under the enormous stars, ride while the world is briefly merciful, and learn why the Service is run, between April and October, by men lying very still behind wet chiks. The office box waits those hours. It was always going to win the year; the question was only your margin."
+      },
+      {
+        "label": "Take the shortcut through the <b>whisky peg and the long chair</b>.",
+        "effects": {
+          "health": -3,
+          "prestige": -2,
+          "contentment": -1
+        },
+        "outcome": "It answers, for a fortnight: the evenings blur agreeably and the nights matter less. Then you notice the peg has moved from sundown to tiffin without consulting you, and you understand at last why the Civil Surgeon&rsquo;s April lecture to juniors is called, in the mess, the Sermon on the Descent."
+      }
+    ]
+  },
+  {
+    "id": "ac-exam",
+    "tag": "MEMORANDUM",
+    "season": [
+      "hot"
+    ],
+    "kind": "personal",
+    "once": true,
+    "title": "The Departmental Examination",
+    "body": "The departmental examinations fall, with the Service&rsquo;s usual mercy, in the first week of the real heat: law, procedure, and the vernacular by the higher standard, sat in the district office under a punkah with a committee watching. Confirmation waits on a pass. The grammar, the Code and the treasury manual wait on your table like three creditors, and the hot weather has not made any of them shorter.",
+    "choices": [
+      {
+        "label": "<b>Sit the examination</b> and take what comes.",
+        "condition": {
+          "flag": "vernacular_grind"
+        },
+        "ifTrue": {
+          "effects": {
+            "prestige": 5,
+            "health": -2
+          },
+          "outcome": "The dawn hours with Sujan Rai pay their dividend: the optative mood surrenders, the revenue paper is almost a pleasure, and the committee&rsquo;s dictation holds no terrors for a man who has suffered the munshi&rsquo;s. Passed, higher standard, first attempt. The Collector&rsquo;s congratulation is four words long, and you keep it for years."
+        },
+        "ifFalse": {
+          "effects": {
+            "prestige": -4,
+            "health": -3
+          },
+          "outcome": "The bazaar taught you to talk and the examination asks you to parse, and between the two the grammar paper takes its revenge for every dawn lesson missed. Ploughed, with a note recommending &lsquo;closer study.&rsquo; Sujan Rai receives the news without surprise, and reopens the copybook at the page where you left it in December."
+        }
+      },
+      {
+        "label": "Apply for <b>postponement</b> on grounds of pressure of work.",
+        "effects": {
+          "prestige": -3,
+          "health": 1
+        },
+        "outcome": "Granted, in the fullness of form. The examination retreats to October and settles there, larger than before, and the Collector&rsquo;s office copy of your application carries in the margin one small tick that somehow contrives to be an entire opinion about pressure, work, and boys."
+      },
+      {
+        "label": "<b>Cram a fortnight</b> with the munshi&rsquo;s crammer cousin, and chance it.",
+        "effects": {
+          "prestige": 1,
+          "health": -5
+        },
+        "econ": {
+          "debt": 600
+        },
+        "outcome": "Fourteen days of mnemonics, model answers, and the cousin&rsquo;s infallible list of what the committee has asked these nine years. You scrape a pass by the lower standard, which counts, and confirms, and carries a faint but permanent smell of the crammer &mdash; a smell examiners know, and remember, and put nothing on paper about."
+      }
+    ]
+  },
+  {
+    "id": "ac-mango-basket",
+    "tag": "PETITION",
+    "season": [
+      "hot"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The First Basket of Mangoes",
+    "body": "Seth Dwarka Das, whose grain suit comes on before you Thursday, sends his compliments on the season and a basket of the first Langra mangoes &mdash; and beneath the mangoes, folded in a cloth with great delicacy, five hundred rupees in notes. It is the oldest instrument in the district&rsquo;s orchestra, played with perfect courtesy, and every clerk in the office knows the basket has arrived. What they do not yet know is what came back.",
+    "choices": [
+      {
+        "label": "Return <b>basket, cloth and notes entire</b>, with thanks for the thought.",
+        "effects": {
+          "prestige": 2,
+          "contentment": -2
+        },
+        "outcome": "The Seth&rsquo;s servant carries it all home under the eyes of the bazaar, which draws the intended conclusion: the sahib&rsquo;s price is not five hundred, and may not be discoverable at all. Dwarka Das bears the reverse philosophically. He has watered young trees before; some take years."
+      },
+      {
+        "label": "Keep the mangoes; <b>return the notes before witnesses</b>, the Seth&rsquo;s own servant watching.",
+        "effects": {
+          "prestige": 1,
+          "contentment": 2,
+          "health": 1
+        },
+        "outcome": "A small theatre, correctly staged: the fruit accepted as the season&rsquo;s courtesy, the cloth and its contents restored without one word said or needed. The bazaar, a connoisseur of these performances, awards it full marks. Even the Seth is heard to say the boy has been well brought up &mdash; by whom, he would give a good deal to know."
+      },
+      {
+        "label": "<b>Report the whole affair</b> to the Collector in writing.",
+        "effects": {
+          "prestige": 2,
+          "order": 1,
+          "contentment": -3
+        },
+        "outcome": "Correct to the letter, and the letter is what it costs. The prosecution that follows ruins a man for practising a custom older than the settlement records, and the bazaar closes over the matter smoothly &mdash; baskets will still be sent, only not to you, and the district&rsquo;s business will be done a little further from your eyes. The Collector&rsquo;s acknowledgment reads, in full: &lsquo;Noted. Your first basket. There will be others.&rsquo;"
+      },
+      {
+        "label": "Say nothing, and <b>keep it</b>.",
+        "effects": {
+          "prestige": -3,
+          "health": -2
+        },
+        "econ": {
+          "treasury": 500
+        },
+        "setFlags": [
+          "took_the_basket"
+        ],
+        "outcome": "Nothing happens. The mangoes are excellent, the notes are spent, the Thursday judgment is &mdash; you would swear it &mdash; the one you would have given anyhow. Nothing happens at all, except that the bazaar enters one small figure in its oldest ledger, and the next basket, when it comes, will not bother with mangoes."
+      }
+    ]
+  },
+  {
+    "id": "ac-cholera-fair",
+    "tag": "URGENT",
+    "season": [
+      "hot"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "Cholera at the Jeth Fair",
+    "body": "Thirty thousand pilgrims are camped at the Sitala shrine for the Jeth fair, and the hospital assistant has ridden in through the noon heat with word of eleven dead by the tank since morning &mdash; and the word he uses is the one the bazaar is already using. The Collector is two days away in the hills; the wire to headquarters has gone unanswered since ten; the priests say the fair has never once been closed. Whatever is done in the next twelve hours will be done on your order or not at all.",
+    "choices": [
+      {
+        "label": "<b>Close the fair</b> on your own authority &mdash; wells picketed, the tank fenced, the roads home marshalled.",
+        "condition": {
+          "flag": "tahsildar_respect"
+        },
+        "ifTrue": {
+          "effects": {
+            "order": 3,
+            "prestige": 4,
+            "contentment": -3,
+            "health": -5
+          },
+          "outcome": "Ganga Ram hears the order, looks at you for one long second, and throws the whole weight of the tahsil behind it &mdash; and where the tahsildar goes, the priests discover precedent, and thirty thousand people go home down watered roads in thirty-six hours. The wire from the hills arrives when it is over: CONFIRM YOUR ACTION STOP. It is the first time the machine has confirmed you at anything, and it will bear the weight you put on it."
+        },
+        "ifFalse": {
+          "effects": {
+            "order": -14,
+            "prestige": -2,
+            "contentment": -6,
+            "health": -5
+          },
+          "outcome": "The order is lawful, necessary, and yours, and it lands in the fair like a stone in a pond &mdash; obeyed at the edges, defied at the shrine, argued everywhere. The tahsil executes it at the pace owed to a sahib it does not yet know, which is the pace of treacle, and the sickness uses every hour of the delay. It ends, eventually, because such things end. The lesson does not: authority on paper is what you had. Authority is what you had not had time to grow."
+        }
+      },
+      {
+        "label": "<b>Hold the wells and the tank</b>, and wire the hills for orders before touching the fair itself.",
+        "effects": {
+          "prestige": -3,
+          "order": -6,
+          "contentment": -2,
+          "health": -3
+        },
+        "outcome": "You do the defensible half and ask leave for the whole, and the answer comes back in eighteen hours, which the cholera does not observe: USE YOUR JUDGMENT STOP. You have been given the entire lesson of the Service in three words, at the price of a day, and the burning-ghats keep the account of the exchange rate."
+      },
+      {
+        "label": "Let the fair run; throw everything into the <b>Surgeon&rsquo;s camp</b> &mdash; segregation, boiled water, the sick tent.",
+        "effects": {
+          "contentment": 2,
+          "order": 1,
+          "prestige": -2,
+          "health": -6
+        },
+        "econ": {
+          "treasury": -500
+        },
+        "outcome": "You choose the fight you can certainly win over the one you might lose, and the camp holds: the count climbs for four days, hangs, and breaks. Perhaps closing would have halved it; perhaps doubled it in the panic; the one certainty is that no report can say. The Sitala priests, distributing credit where it will do them good, give it to the goddess. Headquarters, reading the figures, is silently of the same school."
+      }
+    ]
+  },
+  {
+    "id": "ac-empty-station",
+    "tag": "PRIVATE",
+    "season": [
+      "hot"
+    ],
+    "kind": "club",
+    "once": false,
+    "title": "The Empty Station",
+    "body": "By mid-May the station has gone to the hills: the Collector on inspection in the pleasant places, the wives long since, the Police assistant on leave. There remain the heat, the office, Dr. Peploe of the dispensary, and you &mdash; the entire European society of Kotra, population two, and the Club with its sixty chairs and its punkah creaking over nobody. The old hands call this the testing season, and do not say what it tests.",
+    "choices": [
+      {
+        "label": "Keep the Club&rsquo;s rites alive &mdash; <b>dinner with Peploe nightly</b>, jackets and all, two men strong.",
+        "effects": {
+          "health": 2,
+          "contentment": 1,
+          "order": -1
+        },
+        "outcome": "Two men in boiled shirts at a table laid for twenty, observing the forms with entire solemnity, because the forms are the rope-bridge and neither of you looks down. Peploe talks fever statistics and Norfolk; you talk boundary law; and between you the evenings are got over, which in May is the whole art of the thing."
+      },
+      {
+        "label": "Bury yourself in <b>work and the language</b>, and let the silence pay rent.",
+        "effects": {
+          "prestige": 2,
+          "order": 1,
+          "health": -6
+        },
+        "outcome": "The files have never been so thoroughly mastered, and by August you can read a revenue register like a bania. But the silence begins keeping its own hours in the bungalow, and one evening you catch yourself reading a settlement report aloud &mdash; for the company &mdash; and stop, and hear the punkah, and understand certain paragraphs in the Civil Surgeon&rsquo;s manual that had seemed, in the cold weather, overwrought."
+      },
+      {
+        "label": "Ride out to the <b>villages at all hours</b> &mdash; anywhere but the bungalow.",
+        "effects": {
+          "contentment": 3,
+          "health": -3,
+          "prestige": -1
+        },
+        "outcome": "The tahsil grows used to the sahib appearing at strange hours &mdash; at a well-head at dawn, at a threshing floor at dusk &mdash; and decides, correctly, that he is lonely, and is kind about it in a hundred unmentioned ways. You learn more of Kotra in that empty season than from the whole touring programme. What headquarters would make of the diary of a boy riding his charge at midnight, you take some care headquarters never learns."
+      }
+    ]
+  },
+  {
+    "id": "ac-death-certificate",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "hot"
+    ],
+    "kind": "personal",
+    "once": true,
+    "title": "A Death in the Lock-Up",
+    "body": "Ramdin, cattle-thief, awaiting trial, has died in the sub-jail in the night &mdash; heat apoplexy, says the hospital assistant, in a lock-up that stood at 118 degrees with the water-pots empty since noon. The register wants your signature; it will be the first death you have certified. The warders are respectfully assembled, the assistant&rsquo;s report is respectfully complete, and everything is entirely in order except that a man in your charge is dead of a temperature and an empty pot.",
+    "choices": [
+      {
+        "label": "Sign as the report stands: <b>heat apoplexy, no negligence disclosed</b>.",
+        "effects": {
+          "order": 1,
+          "prestige": 1,
+          "contentment": -2,
+          "health": -3
+        },
+        "outcome": "The file closes in a day, as such files are built to do. The village of Ramdin, cattle-thief, does not close; it draws the conclusion villages draw about a man who walked into the sahib&rsquo;s keeping and came out feet first with a Latin cause. Your signature dries. It is the ease of it that stays with you."
+      },
+      {
+        "label": "Hold a <b>proper inquiry</b> &mdash; the warders, the water register, the assistant on oath.",
+        "effects": {
+          "contentment": 3,
+          "order": 1,
+          "prestige": -1,
+          "health": -3
+        },
+        "outcome": "Two days of sweated testimony establish what everyone knew at the first question: the pots were empty because filling them was nobody&rsquo;s precise duty after four o&rsquo;clock. A warder is broken, a standing order is written, and the pots of the Kotra lock-up are filled at sundown to this day. Headquarters notes a fuss over a cattle-thief. The village notes the other thing."
+      },
+      {
+        "label": "Send the papers to the <b>Collector, unsigned</b>, for orders.",
+        "effects": {
+          "prestige": -2,
+          "health": 1
+        },
+        "outcome": "The file comes back by return dak, signed by no one, with a half-sheet in the Collector&rsquo;s own hand: &lsquo;A magistrate who cannot certify a death cannot sign a warrant of arrest, and you signed three on Monday. Decide, and be answerable. That is the whole appointment.&rsquo; You sign. It costs more the second time of asking, as he intended it should."
+      }
+    ]
+  },
+  {
+    "id": "ac-water-turn",
+    "tag": "PETITION",
+    "season": [
+      "hot"
+    ],
+    "kind": "tour",
+    "once": false,
+    "title": "The Night Water of Barwa",
+    "body": "The petition is in Ganga Ram&rsquo;s neatest office hand and the matter is as old as thirst: the upstream village of Nandgaon has been taking Barwa&rsquo;s night turn from the canal distributary, the standing cane is dying by daylight, and last night there were lathis at the sluice-gate and one broken head. The Canal Department&rsquo;s officer is at Simla. The water-turn register is here, and the thermometer reads 114.",
+    "choices": [
+      {
+        "label": "Ride out <b>tonight and take them at the cut</b>.",
+        "effects": {
+          "order": 3,
+          "contentment": 2,
+          "prestige": 1,
+          "health": -3
+        },
+        "outcome": "At two in the morning, by a hurricane lamp, you find four Nandgaon men shoulder-deep in the distributary with the breach half dug, and the affair ends there &mdash; not because of the two constables, but because the sahib himself rose from his bed for Barwa&rsquo;s water, and by noon every village on the channel knows it. The register was never the deterrent. The lamp was."
+      },
+      {
+        "label": "Post a <b>chaprassi at the sluice</b> and require weekly reports.",
+        "effects": {
+          "order": -1,
+          "contentment": -2,
+          "prestige": -1
+        },
+        "outcome": "The chaprassi&rsquo;s reports arrive weekly, punctual and serene, reporting nothing. The water continues to travel by night in the accustomed direction, the chaprassi&rsquo;s household visibly prospers, and Barwa, which knows to the anna what serenity costs at a sluice-gate, adds the sahib&rsquo;s sentry to the list of things it pays for and does not get."
+      },
+      {
+        "label": "Summon both headmen to the gate and <b>recast the water-turn roster</b> under both their seals.",
+        "effects": {
+          "contentment": 3,
+          "order": 2,
+          "health": -3
+        },
+        "outcome": "A full day at the gate in the sun with the register, the two headmen, and every argument since the canal was cut, ending in a roster both seals accept because both watched it made. It will hold about three seasons, which for water on this channel is immortality. The Canal Department, informed in October, replies that the arrangement is irregular, and keeps it."
+      }
+    ]
+  },
+  {
+    "id": "ac-office-box",
+    "tag": "MEMORANDUM",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": false,
+    "title": "The Office Box",
+    "body": "The box is brought in at daybreak with the quiet ceremony of a sacrament: forty papers a day, every day &mdash; returns, references, reminders, a circular on the moulting of Government camels, and, buried ninth from the top, one paper that actually matters. The Service&rsquo;s single unforgiving measure of a junior is what comes out of his box, and how soon, and whether he found the ninth paper.",
+    "choices": [
+      {
+        "label": "<b>Empty it daily</b>, every paper minuted, nothing carried over.",
+        "effects": {
+          "order": 2,
+          "prestige": 2,
+          "health": -3
+        },
+        "outcome": "The Kotra box becomes known at headquarters for coming back clean, which is the sincerest fame the Service issues to the young. The cost is the first two hours of every day of your life, and a creeping fluency in official prose that you notice, one evening, has begun to appear in your letters Home."
+      },
+      {
+        "label": "Let the reader <b>sort it, and sign his sortings</b>.",
+        "effects": {
+          "health": 2,
+          "order": -1,
+          "prestige": -1,
+          "contentment": -1
+        },
+        "outcome": "Bishan Lal sorts beautifully; the routine flows; the mornings are yours again. It is a month before you grasp the constitutional position: what you sign, you own, and the reader now drafts the opinions of the Assistant Commissioner of Kotra, who reads them aloud in court believing them, on the whole, to be his."
+      },
+      {
+        "label": "Deal with the <b>ninth paper</b> and let the camels moult unminuted.",
+        "effects": {
+          "order": -2,
+          "prestige": -2,
+          "contentment": 2,
+          "health": 1
+        },
+        "outcome": "You develop an eye for the paper that matters and a blindness for the rest, and the villages of Kotra do rather well out of the arrangement. But files, unanswered, do not die; they breed reminders, and the reminders breed a Secretariat reference, and one day the box brings a printed slip asking why the return of the return has not been returned. The machine has noticed you. The machine never notices anything good."
+      }
+    ]
+  },
+  {
+    "id": "ac-precis",
+    "tag": "MINUTE",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Settlement Pr&eacute;cis",
+    "body": "The Collector hands you the Barwa settlement file &mdash; eleven years, four hundred pages, three dead patwaris &mdash; and asks for a pr&eacute;cis by Monday. You give it your nights for a week, and it is, you permit yourself to think, good. A month later the Commissioner&rsquo;s office circulates a note on the Barwa settlement, warmly commended at Simla, drawn word for word from your pr&eacute;cis, over the Collector&rsquo;s signature. Yours appears nowhere. This, you are given to understand, is how it is done.",
+    "choices": [
+      {
+        "label": "Say nothing. <b>That is the Service.</b>",
+        "effects": {
+          "prestige": 3,
+          "health": -1
+        },
+        "setFlags": [
+          "precis_swallowed"
+        ],
+        "outcome": "You file your feelings under the settlement papers and go on with the season&rsquo;s work. Nothing is ever said. But your next file from the Collector comes with the difficult parts marked in his own hand &mdash; not corrected, <i>entrusted</i> &mdash; and you understand that in the only ledger he keeps, the pr&eacute;cis was signed after all."
+      },
+      {
+        "label": "Let the authorship be known, <b>delicately, at the Club</b>.",
+        "effects": {
+          "prestige": -4,
+          "health": 1
+        },
+        "outcome": "The delicacy is admired and the substance travels, as you meant it to, and reaches the Collector inside the week, as you somehow did not think it would. He never mentions it. He merely begins initialling your drafts before they leave the office &mdash; a small change of procedure, correct in every particular, that tells you precisely what you sold at the Club bar, and for how little."
+      },
+      {
+        "label": "Ask him, <b>directly and in private</b>, whether the work was satisfactory.",
+        "effects": {
+          "prestige": 1,
+          "health": 1
+        },
+        "outcome": "He looks at you for a moment over the file. &lsquo;Simla thought so.&rsquo; A pause, measured to the drop. &lsquo;So did I, which is rarer.&rsquo; And then, because the question deserved it: &lsquo;Your work will go up under my name until you are confirmed. After that, other men&rsquo;s will go up under yours. The Service is not fair. It is, occasionally, even.&rsquo;"
+      }
+    ]
+  },
+  {
+    "id": "ac-overruled",
+    "tag": "CUTCHERRY",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "Reversed on Appeal",
+    "body": "Your first considered judgment &mdash; the Piparia pre-emption suit, three weeks of evidence, a decision you built like masonry and were quietly proud of &mdash; has come back from the District Magistrate&rsquo;s appellate file: reversed. The law, it appears, contains a ruling of the Chief Court that the law omitted to mention to you. The pleaders already know, the office already knows, and the manner of your taking it is now the most closely watched proceeding in Kotra.",
+    "choices": [
+      {
+        "label": "Go to headquarters and <b>ask him to walk you through the reversal</b>.",
+        "condition": {
+          "meter": "prestige",
+          "op": ">=",
+          "value": 50
+        },
+        "ifTrue": {
+          "effects": {
+            "prestige": 3,
+            "order": 1,
+            "health": -1
+          },
+          "outcome": "He clears an hour, sends for tea, and takes your judgment apart clause by clause &mdash; not unkindly, but completely, the way a gunsmith strips a rifle &mdash; then shows you the Chief Court ruling and, unexpectedly, two of his own early judgments, reversed, which he has kept. &lsquo;Masonry is the right instinct,&rsquo; he says at the door. &lsquo;Check the foundations against the reports first.&rsquo; You walk out poorer by a judgment and richer by a trade."
+        },
+        "ifFalse": {
+          "effects": {
+            "prestige": -3,
+            "health": -2
+          },
+          "outcome": "He receives you standing, with the door open and the office within earshot, and disposes of your judgment in four sentences of which the kindest is &lsquo;industrious.&rsquo; The interview is over in five minutes and around the district by five o&rsquo;clock. The reversal was law, and impersonal. The five minutes were an assessment, and were not."
+        }
+      },
+      {
+        "label": "Take it <b>in silence</b> and send to Calcutta for the Chief Court reports.",
+        "effects": {
+          "prestige": 1,
+          "order": 1,
+          "health": -2
+        },
+        "outcome": "You say nothing, buy the reports out of your own pocket, and read case-law by lamplight for a month. Your next four judgments are upheld without comment, which is how the appellate file expresses affection. The office, which watched you take the blow, enters the silence on the credit side of an account you did not know was being kept."
+      },
+      {
+        "label": "Note your <b>respectful dissent</b> on the returned file.",
+        "effects": {
+          "prestige": -4,
+          "health": 2
+        },
+        "outcome": "You set out, in three paragraphs of your best masonry, why the Chief Court&rsquo;s ruling should not govern the facts of Piparia. The file goes up. The file comes back. In the margin, in red, in full: &lsquo;Noted. Argue it before the Chief Court when you are forty. Until then, apply it.&rsquo; It is years before you learn he showed the dissent to the Judicial Commissioner &mdash; as a promising sign."
+      }
+    ]
+  }
+]

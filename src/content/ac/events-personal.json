@@ -2,7 +2,9 @@
   {
     "id": "ac-letters-home",
     "tag": "PRIVATE",
-    "season": ["cold"],
+    "season": [
+      "cold"
+    ],
     "kind": "personal",
     "once": true,
     "title": "The First Mail from Home",
@@ -10,19 +12,31 @@
     "choices": [
       {
         "label": "Give them the whole evening: four pages, honestly.",
-        "effects": { "health": 3, "contentment": 1 },
-        "setFlags": ["ac_wrote_home"],
+        "effects": {
+          "health": 3,
+          "contentment": 1
+        },
+        "setFlags": [
+          "ac_wrote_home"
+        ],
         "outcome": "You tell them nearly all of it &mdash; the camp at dawn, the tahsildar&rsquo;s patience, the size of the sky, the smallness of yourself &mdash; and something unknots between your shoulders as you write. The letters will take a month to arrive and be read aloud twice at Home, and you will keep this habit, mail by mail, and it will quietly help to save you."
       },
       {
         "label": "A cheerful page each, and back to the petitions.",
-        "effects": { "prestige": 1, "health": -1 },
+        "effects": {
+          "prestige": 1,
+          "health": -1
+        },
         "outcome": "Three bright, dutiful pages that read like a boy doing his correspondence, because they are. The petitions get their evening; the Service approves of men who clear their tables. Your mother reads between every line, as mothers do, and begins a letter about eating properly."
       },
       {
         "label": "Put them in the drawer to answer properly &lsquo;when there is time.&rsquo;",
-        "effects": { "health": -2 },
-        "setFlags": ["ac_drawer"],
+        "effects": {
+          "health": -2
+        },
+        "setFlags": [
+          "ac_drawer"
+        ],
         "outcome": "There is never time; there is only the choosing of it, which nobody has taught you yet. The bundle goes into the drawer with its string uncut, and the next mail&rsquo;s bundle goes in on top of it, and something eleven thousand miles long begins, very slowly, to fray."
       }
     ]
@@ -30,7 +44,9 @@
   {
     "id": "ac-christmas-girl",
     "tag": "PRIVATE",
-    "season": ["cold"],
+    "season": [
+      "cold"
+    ],
     "kind": "club",
     "once": true,
     "title": "The Girl at the Christmas Camp",
@@ -38,109 +54,41 @@
     "choices": [
       {
         "label": "Ask leave to write to her.",
-        "effects": { "contentment": 2, "health": 2, "prestige": -1 },
-        "setFlags": ["ac_sweetheart"],
+        "effects": {
+          "contentment": 2,
+          "health": 2,
+          "prestige": -1
+        },
+        "setFlags": [
+          "ac_sweetheart"
+        ],
         "outcome": "She says yes before you have finished the sentence, which teaches you something about how the week looked from her side of it. The station smiles behind its hands for a fortnight; the Collector&rsquo;s wife begins, visibly, to plan. A probationer with an understanding at Home is reckoned half-steadied already &mdash; and the mail, from March, will matter more than it has ever mattered."
       },
       {
         "label": "Say nothing; a probationer has no business with an understanding.",
-        "effects": { "prestige": 1, "health": -2 },
+        "effects": {
+          "prestige": 1,
+          "health": -2
+        },
         "outcome": "It is the correct, careful, Service answer, and you give it to yourself in the shaving-glass on the morning she leaves for the railway. She looks back once from the tonga. You will be confirmed, in due course, in the Service and in the habit that answer began &mdash; and of the two confirmations, the second will cost you more."
       },
       {
         "label": "Say too much, too soon, on the last evening.",
-        "effects": { "contentment": -1, "prestige": -2, "health": 1 },
+        "effects": {
+          "contentment": -1,
+          "prestige": -2,
+          "health": 1
+        },
         "outcome": "Moonlight, the band, six days of it behind you, and you make the speech a man should make after six months, not six days. She is kinder about it than you deserve, and the story is round the station by the following tiffin, told gently, at your expense. The Collector&rsquo;s wife says only that young men out from Home are all the same, which is the first entirely true thing anyone has said all Week."
-      }
-    ]
-  },
-  {
-    "id": "ac-the-munshi",
-    "tag": "MINUTE",
-    "season": ["any"],
-    "kind": "personal",
-    "once": true,
-    "title": "The Munshi's Fee",
-    "body": "Munshi Fazl Din comes three evenings a week to carry you past your examination vernacular and into the real thing: the tenses the peasants actually use, the proverbs the courts turn on, the seventeen words for land. Lately the lessons have run long, unpaid, into talk &mdash; his sons, your Home, the Mutiny his father saw from a rooftop as a boy. Tonight he sets down the primer and says: sahib, you now speak too well for the examination. The question is what you wish to speak well <i>for</i>. He can teach the language of the files, or the language of the villages. They are not, he says, the same tongue.",
-    "choices": [
-      {
-        "label": "The language of the villages; teach me what the district actually says.",
-        "effects": { "contentment": 3, "prestige": -1, "health": 1 },
-        "setFlags": ["ac_vernacular"],
-        "outcome": "So begin the true lessons: abuse and endearment, the grain-dealer&rsquo;s doubletalk, the songs at the well, what a village says when it says nothing. Within a month you hear Kotra with new ears, and Kotra notices itself heard &mdash; there is no hiding it. Neither, at the Club, is there any hiding it; and &lsquo;fluent&rsquo; is a word the Service uses with two intonations."
-      },
-      {
-        "label": "The language of the files; the examination is what confirms me.",
-        "effects": { "prestige": 2, "contentment": -1 },
-        "outcome": "Sensible, and Fazl Din teaches it faithfully: the court formulae, the revenue vocabulary, the high style of the petition-writers. You will pass anything they set you. Some evenings he still drifts into the other tongue for a sentence or two, like a man leaving a door open in case the weather changes."
-      },
-      {
-        "label": "End the lessons; you can no longer afford his fee.",
-        "effects": { "health": -1, "contentment": -2 },
-        "econ": { "treasury": 300 },
-        "outcome": "He takes the dismissal with a courtesy that is its own reproach, blesses your examination, and leaves the primer &lsquo;against your honour&rsquo;s later convenience.&rsquo; The three evenings fill up with files at once, the way water fills a hole. Years on, you will still reach for the seventeen words for land and find you own only four of them."
-      }
-    ]
-  },
-  {
-    "id": "ac-first-death",
-    "tag": "MEMORANDUM",
-    "season": ["hot"],
-    "kind": "personal",
-    "once": true,
-    "title": "The First Certificate",
-    "body": "A coolie on the road-gang, a stroke of the sun, and by the time they carry him to the verandah of your cutcherry there is nothing for anyone to do but the paperwork &mdash; and the paperwork is yours. Cause of death, in the space provided. Your pen has signed a hundred forms this month. It stops over this one. He was about your age. The gang waits in the road with the bier, patient as the country itself, to see how the new sahib does the thing that is done.",
-    "choices": [
-      {
-        "label": "Do it properly: the certificate, the wage owed, and stand with the gang while they lift him.",
-        "effects": { "contentment": 3, "health": -2 },
-        "outcome": "You write the words, count out the eleven annas owed to the man&rsquo;s name, and stand bare-headed in the sun the regulation minute while the bier goes up. It is nothing; it is everything; the gang will tell it in their village tonight. You go back to the files and find your hand not quite steady for an hour, and you do not mention that to anyone for thirty years."
-      },
-      {
-        "label": "Sign, and add a minute recommending the gang&rsquo;s water allowance be doubled.",
-        "effects": { "prestige": 1, "contentment": 1, "health": -1 },
-        "econ": { "treasury": -300 },
-        "outcome": "The administrator&rsquo;s grief: turn the man into a reform before sundown. The minute goes up, the allowance is sanctioned, and some number of coolies you will never hear of do not die in Aprils you will never see. It is the right use of a death and it does not help at all with the space on the form where his age went."
-      },
-      {
-        "label": "Sign it quickly and get indoors; the heat is a lesson too.",
-        "effects": { "health": 1, "contentment": -2 },
-        "outcome": "Form completed, file closed, sahib withdrawn behind the chiks. It is what half the Service would do and defensible in every particular, and the gang lifts the bier in a silence you can hear through the shutters. The first one, an old Deputy Commissioner once told you at Home, is the one you choose. He did not say what you choose it for."
-      }
-    ]
-  },
-  {
-    "id": "ac-tahsildar-test",
-    "tag": "CUTCHERRY",
-    "season": ["cold"],
-    "kind": "desk",
-    "once": true,
-    "title": "The Error in the Rent-Roll",
-    "body": "The tahsildar lays the Piparia rent-roll before you for counter-signature, correct to the last anna as his rolls have been correct for twenty-two years &mdash; except that it is not. Deep in the third schedule, one holding is entered twice and one remission misplaced, and the error is too tidy to be an error. He has trained twenty probationers. This is how he weighs the twenty-first: the roll on the desk, the pen in your hand, and his face as smooth as the paper.",
-    "choices": [
-      {
-        "label": "Work the whole roll yourself tonight, and find it.",
-        "effects": { "prestige": 3, "health": -3 },
-        "setFlags": ["ac_tahsildar_respect"],
-        "outcome": "Four hours by lamplight with the schedules and the abstract, and there it is, small and deliberate as a tuning-fork. In the morning you point to the entry and say nothing else, and neither does he; he corrects it with one stroke and bows a quarter-inch lower than usual. Word crosses the cutcherry by tiffin: the new sahib reads what he signs. It is worth a season of orders."
-      },
-      {
-        "label": "Ask him straight out whether the roll is sound.",
-        "effects": { "prestige": 1, "contentment": 1 },
-        "setFlags": ["ac_tahsildar_respect"],
-        "outcome": "He looks at you for a moment, decides something, and says: there is one matter in the third schedule the sahib may wish to see. You go through it together, master and pupil, and the lesson lands both ways &mdash; you have learned where errors hide, and he has learned that this one asks before he signs, which in his long experience of sahibs is the rarer virtue."
-      },
-      {
-        "label": "Sign it; twenty-two years of correct rolls is its own audit.",
-        "effects": { "health": 1, "prestige": -2 },
-        "outcome": "The pen scratches, the roll goes up, and the error goes up inside it, to be found &mdash; naturally &mdash; by the district office, with your counter-signature under it. The Collector&rsquo;s red ink is brief. The tahsildar receives the correction with regret and files what he has learned about the twenty-first probationer, which is that he signs what he is given."
       }
     ]
   },
   {
     "id": "ac-parcel-home",
     "tag": "THE DAK",
-    "season": ["cold"],
+    "season": [
+      "cold"
+    ],
     "kind": "interlude",
     "interlude": true,
     "once": true,
@@ -154,14 +102,16 @@
   {
     "id": "ac-first-loo",
     "tag": "THE HEAT",
-    "season": ["hot"],
+    "season": [
+      "hot"
+    ],
     "kind": "interlude",
     "interlude": true,
     "once": true,
     "title": "The First Loo",
     "body": "You had been told about the <i>loo</i> the way you had been told about everything &mdash; at Home, at dinner, by men leaning back from the table &mdash; and none of it is the thing itself: a wind out of a kiln at ten in the morning, the sky gone white, the birds silent, a heat that leans on the shutters like a creditor. You work in the brown dark behind wetted screens and understand, for the first time and permanently, that this country is not exaggerated. The old men at Home were not telling stories. They were leaving things out.",
     "effects": {
-      "health": -2
+      "health": -3
     }
   }
 ]

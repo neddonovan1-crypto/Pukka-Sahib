@@ -3,13 +3,42 @@
     "id": "ac-christmas",
     "turn": 4,
     "tag": "PROGRAMME",
-    "title": "Christmas Week, Very Junior",
-    "body": "The Week at district headquarters: the races, the ball, the amateur theatricals &mdash; and you at the foot of every table, the most junior covenanted officer in forty miles. You are lent for the week like a spare horse: to make up numbers at dinner, to hold Mrs. Commissioner&rsquo;s wool, to stand wicket-keeper in the scratch match, to be told by every man over forty exactly how much harder the Service was in his day. It is your first Christmas eleven thousand miles from Home, and the Week is loud enough that you nearly do not notice.",
-    "outcome": "On the last night there are fireworks over the maidan, and a colonel&rsquo;s lady, who has buried three of her own Christmases out here, puts a glass in your hand and says, not unkindly: the first one is the worst, child. Drink up. By Twelfth Night you are back at Kotra, obscurely fortified.",
-    "effects": {
-      "health": 3,
-      "contentment": 1
-    }
+    "title": "Christmas Week at Headquarters",
+    "body": "The district gathers at Chhota Nagra for Christmas Week: races, a gymkhana, the Club ball, and the pleasant fiction that four hundred miles of dust is a county in England. A junior is expected to appear, subscribe, dance with the plainest partners uncomplainingly, and be seen by the Collector&rsquo;s lady. The week costs a month&rsquo;s pay at a conservative gallop. You have not got a month&rsquo;s pay.",
+    "choices": [
+      {
+        "label": "Do the week <b>properly</b> &mdash; subscriptions, wagers and all &mdash; on credit.",
+        "effects": {
+          "prestige": 3,
+          "health": 2,
+          "contentment": -1
+        },
+        "econ": {
+          "debt": 2500
+        },
+        "outcome": "You subscribe to the races, the ball, the servants&rsquo; boxes and the Padre&rsquo;s fund, and are pronounced a pleasant addition to the district. Sohan Lal&rsquo;s book acquires a new page, headed, in beautiful Nagari, &lsquo;Christmas.&rsquo; It is the most expensive good opinion you will ever buy, and the cheapest it will ever be."
+      },
+      {
+        "label": "Plead <b>pressure of work</b> and keep Christmas alone in Kotra.",
+        "effects": {
+          "prestige": -3,
+          "health": -2,
+          "contentment": 2
+        },
+        "outcome": "You dine alone on the khansama&rsquo;s heroic idea of plum pudding, and the English mail arrives two days late with a smell of Home that undoes you rather. Kotra notes with approval that its sahib did not leave. The district notes, with a different kind of attention, that the new boy does not show."
+      },
+      {
+        "label": "Attend <b>modestly</b> &mdash; three days, no wagers, early trains.",
+        "effects": {
+          "prestige": -1,
+          "health": 1
+        },
+        "econ": {
+          "treasury": -300
+        },
+        "outcome": "You are present, correct, and gone before the bills mature. It is the prudent course, and prudence at twenty-four has a way of being marked down as dullness. The Collector&rsquo;s lady, who keeps the district&rsquo;s true confidential rolls, enters you as &lsquo;sensible&rsquo; &mdash; a word from which some careers never recover."
+      }
+    ]
   },
   {
     "id": "ac-collector-rides",
@@ -20,25 +49,44 @@
     "choices": [
       {
         "label": "Show him everything, worst first, and say what you would do about it.",
-        "condition": { "meter": "prestige", "op": ">=", "value": 46 },
+        "condition": {
+          "meter": "prestige",
+          "op": ">=",
+          "value": 46
+        },
         "ifTrue": {
-          "effects": { "prestige": 5, "contentment": 1 },
+          "effects": {
+            "prestige": 5,
+            "contentment": 1
+          },
           "outcome": "You take him straight to the silted tank you cannot get sanctioned and the thana ledger that will not reconcile, and tell him what you would do with a free hand. He grunts &mdash; the grunt, you will learn, is the Service&rsquo;s highest audible praise &mdash; corrects your drainage scheme in three words, and writes in the notebook for some time. At dinner he tells a story against himself as a probationer, which is how a Collector says the boy will do."
         },
         "ifFalse": {
-          "effects": { "prestige": -3, "health": -1 },
+          "effects": {
+            "prestige": -3,
+            "health": -1
+          },
           "outcome": "Honesty from a probationer whose season has not earned it reads as carelessness rather than candour. The pencil moves at the tank, at the thana, at the unreconciled ledger; and the phrase that reaches the confidential report is &lsquo;frank as to his difficulties&rsquo; &mdash; which sounds well, and is not."
         }
       },
       {
         "label": "Show him a sub-division polished for the occasion.",
-        "effects": { "prestige": 2, "contentment": -2, "health": -2 },
-        "econ": { "treasury": -800 },
+        "effects": {
+          "prestige": 2,
+          "contentment": -2,
+          "health": -2
+        },
+        "econ": {
+          "treasury": -800
+        },
         "outcome": "Whitewash on the thana, the best rent-rolls on top, tea under the one decent tree with the headmen coached to contentment. The Collector, who has inspected sub-divisions since before you were born, sees precisely what has been done and awards it precisely the marks that effort earns: a probationer who takes trouble. What lies under the whitewash he will find out in his own time, which is the gamble."
       },
       {
         "label": "Let the sub-division speak for itself; you have work to be doing.",
-        "effects": { "prestige": -2, "contentment": 1 },
+        "effects": {
+          "prestige": -2,
+          "contentment": 1
+        },
         "outcome": "There is a school of thought that says a man&rsquo;s work is his inspection. It is a school the Service admires in memoirs and marks down in confidential reports. The Collector finds his own way round Kotra, forms his own view, and writes &mdash; you will learn years later &mdash; &lsquo;does not yet understand what an inspection is for&rsquo;: which is not the work, but the man."
       }
     ]

@@ -398,6 +398,12 @@
     };
   }
 
+  // The masthead subtitle follows the chapter: whose despatches these are.
+  (function () {
+    var sub = el("mastsub"), meta = content.config.chapter;
+    if (sub && meta && meta.rank) sub.innerHTML = "Private despatches of the " + meta.rank + ", " + (meta.posting || "");
+  })();
+
   // The masthead crest: the engraved raster seal when the build carries it,
   // else the inline SVG fallback.
   if (ART.seal) {

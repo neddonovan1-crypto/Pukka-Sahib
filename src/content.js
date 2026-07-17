@@ -47,6 +47,5 @@ var ac = {
 };
 
 // The career ladder, in playing order: the probation, then the district.
-// The ac chapter is staged (validated, inert) until its drawn deck is full —
-// enable by prepending "ac" to order. Chapters III/IV join when written.
-module.exports = { chapters: { ac: ac, dm: dm }, order: ["dm"] };
+// Chapters III (the Division) and IV (the province) join when written.
+module.exports = { chapters: { ac: ac, dm: dm }, order: ["ac", "dm"] };
