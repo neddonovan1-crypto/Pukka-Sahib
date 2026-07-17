@@ -6,78 +6,176 @@
 <title>Pukka Sahib — a district-management vertical slice</title>
 <style>
   :root{
-    --ink:#2b241a; --paper:#efe6d2; --paper2:#e4d8bd; --line:#c9b78d;
-    --accent:#7a2e26; --gold:#8a6d2f; --good:#3f6b47; --bad:#8a3227;
+    --bg:#ddd0af; --surface:#ece3c9; --surface2:#e3d8ba;
+    --ink:#231f17; --ink-soft:#5b5340; --line:#b9a373; --line-soft:#c9b585;
+    --seal:#8f2f22; --seal-ink:#8f2f22; --indigo:#2f3d5c;
+    --good:#4a6b3f; --warn:#977326; --bad:#8f2f22;
+    --stamp:#8f2f22;
+    --shadow:rgba(90,70,30,.18);
   }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#181510; --surface:#241f18; --surface2:#2b2519;
+      --ink:#e9ddc0; --ink-soft:#a89c7f; --line:#4a4130; --line-soft:#574c37;
+      --seal:#cf5a45; --seal-ink:#d8654f; --indigo:#93a7cd;
+      --good:#82a86f; --warn:#c9a752;
+      --bad:#cf5a45; --stamp:#cf5a45; --shadow:rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#ddd0af; --surface:#ece3c9; --surface2:#e3d8ba;
+    --ink:#231f17; --ink-soft:#5b5340; --line:#b9a373; --line-soft:#c9b585;
+    --seal:#8f2f22; --seal-ink:#8f2f22; --indigo:#2f3d5c;
+    --good:#4a6b3f; --warn:#977326; --bad:#8f2f22; --stamp:#8f2f22;
+    --shadow:rgba(90,70,30,.18);
+  }
+  :root[data-theme="dark"]{
+    --bg:#181510; --surface:#241f18; --surface2:#2b2519;
+    --ink:#e9ddc0; --ink-soft:#a89c7f; --line:#4a4130; --line-soft:#574c37;
+    --seal:#cf5a45; --seal-ink:#d8654f; --indigo:#93a7cd;
+    --good:#82a86f; --warn:#c9a752; --bad:#cf5a45; --stamp:#cf5a45;
+    --shadow:rgba(0,0,0,.4);
+  }
+
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
-    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-    color:var(--ink); background:var(--paper);
-    background-image:radial-gradient(rgba(120,90,40,.06) 1px,transparent 1px);
-    background-size:4px 4px;
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    color:var(--ink); background:var(--bg);
+    background-image:radial-gradient(rgba(120,95,45,.05) 1px,transparent 1.4px);
+    background-size:5px 5px;
     display:flex; min-height:100vh; align-items:flex-start; justify-content:center;
-    padding:24px 14px 60px;
+    padding:26px 14px 64px; line-height:1.6;
   }
-  .frame{width:100%; max-width:720px}
-  header{text-align:center; margin-bottom:18px}
-  h1{font-size:2.1rem; margin:0; letter-spacing:.04em}
-  .sub{font-style:italic; color:#6b5a3c; margin-top:4px; font-size:.95rem}
-  .meters{
-    display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:18px 0;
+  .frame{width:100%; max-width:680px}
+
+  /* ---- masthead: a Government of India file cover ---- */
+  .masthead{
+    display:flex; gap:16px; align-items:center; margin-bottom:4px;
   }
-  .meter{background:var(--paper2); border:1px solid var(--line); border-radius:6px;
-    padding:8px 6px; text-align:center}
-  .meter .name{font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; color:#6b5a3c}
-  .meter .bar{height:7px; background:#d4c39a; border-radius:4px; margin:6px 0 4px; overflow:hidden}
-  .meter .fill{height:100%; width:50%; background:var(--gold); transition:width .4s ease}
-  .meter .val{font-size:.82rem; font-weight:bold}
+  .seal{
+    flex:0 0 auto; width:58px; height:58px; border-radius:50%;
+    border:2px double var(--seal); color:var(--seal);
+    display:grid; place-items:center; font-family:"Courier New",Courier,monospace;
+    font-weight:700; font-size:.82rem; letter-spacing:.05em;
+    box-shadow:inset 0 0 0 4px var(--surface);
+    transform:rotate(-6deg); opacity:.9;
+  }
+  .mast-text{flex:1 1 auto}
+  .dept{
+    font-family:"Courier New",Courier,monospace; font-size:.62rem;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft);
+  }
+  h1{
+    font-size:clamp(1.9rem,6vw,2.5rem); margin:1px 0 2px; letter-spacing:.02em;
+    font-weight:600; text-wrap:balance;
+  }
+  .sub{font-style:italic; color:var(--ink-soft); font-size:.86rem; text-wrap:balance}
+  .rule{
+    height:0; border:0; border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line); margin:14px 0 16px; padding-top:2px;
+  }
+
+  /* ---- the ledger gauge-line ---- */
+  .meters{display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:0 0 18px}
+  .meter{
+    background:var(--surface2); border:1px solid var(--line); border-radius:3px;
+    padding:8px 5px 7px; text-align:center;
+  }
+  .meter .name{
+    font-family:"Courier New",Courier,monospace; font-size:.58rem;
+    text-transform:uppercase; letter-spacing:.07em; color:var(--ink-soft);
+  }
+  .meter .bar{height:6px; background:rgba(120,95,45,.22); border-radius:2px; margin:7px 0 5px; overflow:hidden}
+  .meter .fill{height:100%; width:50%; background:var(--warn); transition:width .45s ease, background .45s ease}
+  .meter .val{font-size:.9rem; font-weight:700; font-variant-numeric:tabular-nums}
   .meter.pulse{animation:pulse .5s}
-  @keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+  @keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.07)}100%{transform:scale(1)}}
+
+  /* ---- the filed document ---- */
   .card{
-    background:var(--paper2); border:1px solid var(--line);
-    border-radius:8px; padding:22px 22px 18px; box-shadow:0 2px 0 rgba(120,90,40,.15);
+    position:relative; background:var(--surface); border:1px solid var(--line);
+    border-radius:5px; padding:22px 22px 18px;
+    box-shadow:0 1px 0 var(--line), 0 6px 18px -12px var(--shadow);
   }
-  .turnline{display:flex; justify-content:space-between; font-size:.8rem;
-    color:#6b5a3c; margin-bottom:12px; letter-spacing:.03em}
-  .cardtitle{font-size:1.25rem; margin:0 0 10px; color:var(--accent)}
-  .body{font-size:1rem; line-height:1.55; margin-bottom:18px}
+  .turnline{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+    margin-bottom:12px;
+  }
+  .fortnight{
+    font-family:"Courier New",Courier,monospace; font-size:.68rem;
+    letter-spacing:.06em; color:var(--ink-soft); text-transform:uppercase; padding-top:4px;
+  }
+  .stamp{
+    flex:0 0 auto; font-family:"Courier New",Courier,monospace; font-size:.62rem;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--stamp);
+    border:1.5px solid var(--stamp); border-radius:3px; padding:3px 8px;
+    transform:rotate(2.5deg); opacity:.88; white-space:nowrap;
+  }
+  .cardtitle{font-size:1.32rem; margin:0 0 11px; color:var(--seal-ink); font-weight:600; text-wrap:balance}
+  .body{font-size:1.02rem; margin-bottom:18px}
   .choices{display:flex; flex-direction:column; gap:10px}
   button.choice{
     text-align:left; font-family:inherit; font-size:.98rem; color:var(--ink);
-    background:var(--paper); border:1px solid var(--line); border-radius:6px;
-    padding:12px 14px; cursor:pointer; transition:.15s; line-height:1.4;
+    background:var(--surface2); border:1px solid var(--line); border-radius:4px;
+    padding:12px 14px; cursor:pointer; transition:.15s; line-height:1.45;
   }
-  button.choice:hover{background:#fff; border-color:var(--gold); transform:translateX(2px)}
-  .outcome{font-style:italic; margin:14px 0 6px; line-height:1.5; color:#4a3d29}
-  .deltas{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
-  .delta{font-size:.78rem; padding:2px 8px; border-radius:10px; background:var(--paper)}
+  button.choice:hover{border-color:var(--seal); transform:translateX(3px)}
+  button.choice:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
+  .outcome{font-style:italic; margin:15px 0 6px; color:var(--ink-soft)}
+  .deltas{display:flex; flex-wrap:wrap; gap:7px; margin-top:9px}
+  .delta{
+    font-family:"Courier New",Courier,monospace; font-size:.72rem;
+    padding:2px 8px; border-radius:2px; background:var(--surface2);
+    font-variant-numeric:tabular-nums;
+  }
   .delta.up{color:var(--good); border:1px solid var(--good)}
   .delta.down{color:var(--bad); border:1px solid var(--bad)}
   .next{margin-top:16px; text-align:right}
   button.primary{
-    font-family:inherit; font-size:.95rem; background:var(--accent); color:var(--paper);
-    border:none; border-radius:6px; padding:10px 20px; cursor:pointer; letter-spacing:.03em;
+    font-family:"Courier New",Courier,monospace; font-size:.82rem; letter-spacing:.06em;
+    text-transform:uppercase; background:var(--seal); color:var(--surface);
+    border:none; border-radius:4px; padding:11px 20px; cursor:pointer;
   }
-  button.primary:hover{background:#912f26}
+  button.primary:hover{filter:brightness(1.08)}
+  button.primary:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
+
+  /* ---- endings ---- */
   .ending{text-align:center}
-  .ending h2{color:var(--accent); font-size:1.6rem; margin-bottom:6px}
-  .ending .verdict{font-style:italic; line-height:1.6; margin:14px 0}
-  footer{text-align:center; font-size:.72rem; color:#8a785a; margin-top:26px}
+  .ending .cardtitle{font-size:1.7rem; margin-top:4px}
+  .ending .verdict{font-style:italic; margin:14px auto; max-width:52ch}
+
+  footer{
+    text-align:center; font-family:"Courier New",Courier,monospace;
+    font-size:.64rem; letter-spacing:.08em; color:var(--ink-soft);
+    text-transform:uppercase; margin-top:24px;
+  }
+  @media (max-width:440px){
+    .meter .name{font-size:.5rem}
+    .card{padding:18px 16px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important}
+    button.choice:hover{transform:none}
+  }
 </style>
 </head>
 <body>
 <div class="frame">
-  <header>
-    <h1>Pukka Sahib</h1>
-    <div class="sub">District Magistrate &amp; Collector, Chhota Nagra &mdash; being a vertical slice</div>
+  <header class="masthead">
+    <div class="seal" aria-hidden="true">I.C.S.</div>
+    <div class="mast-text">
+      <div class="dept">Government of India &middot; Political Department</div>
+      <h1>Pukka Sahib</h1>
+      <div class="sub">Private despatches of the District Magistrate &amp; Collector, Chhota Nagra</div>
+    </div>
   </header>
+  <hr class="rule">
 
   <div class="meters" id="meters"></div>
-
   <div class="card" id="card"></div>
 
-  <footer>Prototype build &middot; one fortnight per turn &middot; survive the posting</footer>
+  <footer>One fortnight per turn &middot; survive the posting</footer>
 </div>
 
 <script>
@@ -96,10 +194,10 @@ function init(){
   S = {revenue:50, order:55, prestige:50, contentment:45, composure:60, flags:{}};
   turn = 1;
   deck = shuffle(EVENTS.filter(e=>!e.once)).concat(EVENTS.filter(e=>e.once));
+  document.getElementById("card").className = "card";
   drawNext();
 }
 
-/* Fisher–Yates without Date/Math.random dependence on time */
 function shuffle(a){
   a = a.slice();
   for(let i=a.length-1;i>0;i--){
@@ -115,7 +213,7 @@ function renderMeters(pulseKeys){
   el.innerHTML = "";
   METERS.forEach(m=>{
     const v = clamp(S[m.key]);
-    const col = v<25 ? "var(--bad)" : v>70 ? "var(--good)" : "var(--gold)";
+    const col = v<25 ? "var(--bad)" : v>70 ? "var(--good)" : "var(--warn)";
     const d = document.createElement("div");
     d.className = "meter" + (pulseKeys && pulseKeys.includes(m.key) ? " pulse":"");
     d.innerHTML =
@@ -129,14 +227,12 @@ function clamp(v){return Math.max(0,Math.min(100,Math.round(v)));}
 
 /* ---------- turn flow ---------- */
 function drawNext(){
-  // check collapse first
   const dead = collapseCheck();
   if(dead){ return showEnding(dead); }
   if(turn > MAX_TURNS){ return showEnding(finalVerdict()); }
 
-  // find next eligible card
   let idx = deck.findIndex(e => eligible(e));
-  if(idx === -1){ // reshuffle repeatables if we run dry
+  if(idx === -1){
     deck = shuffle(EVENTS.filter(e=>!e.once && eligible(e)));
     idx = 0;
   }
@@ -153,13 +249,17 @@ function eligible(e){
 
 function renderCard(e){
   const c = document.getElementById("card");
+  c.className = "card";
   c.innerHTML =
-    `<div class="turnline"><span>Fortnight ${turn} of ${MAX_TURNS}</span><span>${e.tag||"District business"}</span></div>
+    `<div class="turnline">
+       <span class="fortnight">Fortnight ${turn} of ${MAX_TURNS}</span>
+       <span class="stamp">${e.tag||"District business"}</span>
+     </div>
      <h3 class="cardtitle">${e.title}</h3>
      <div class="body">${e.body}</div>
      <div class="choices"></div>`;
   const box = c.querySelector(".choices");
-  e.choices.forEach((ch,i)=>{
+  e.choices.forEach((ch)=>{
     const b = document.createElement("button");
     b.className="choice";
     b.innerHTML = ch.label;
@@ -199,7 +299,7 @@ function collapseCheck(){
   return null;
 }
 function finalVerdict(){
-  const {revenue,order,prestige,contentment,composure}=S;
+  const {revenue,order,prestige,contentment}=S;
   if(contentment>=65 && prestige<45) return ENDINGS.gonenative;
   if(prestige>=65 && revenue>=60)    return ENDINGS.honours;
   if(prestige<40 || order<40)        return ENDINGS.scandal;
@@ -210,8 +310,11 @@ function showEnding(end){
   const c = document.getElementById("card");
   c.className="card ending";
   c.innerHTML =
-    `<div class="turnline"><span>The posting ends &mdash; fortnight ${Math.min(turn,MAX_TURNS)}</span><span>Despatch to Simla</span></div>
-     <h2>${end.title}</h2>
+    `<div class="turnline">
+       <span class="fortnight">The posting ends &mdash; fortnight ${Math.min(turn,MAX_TURNS)}</span>
+       <span class="stamp">Closed</span>
+     </div>
+     <h2 class="cardtitle">${end.title}</h2>
      <div class="verdict">${end.text}</div>
      <div class="next" style="text-align:center">
        <button class="primary" onclick="location.reload()">Take up a new posting</button>
@@ -251,7 +354,7 @@ const EVENTS = [
       outcome:"Correct, dignified, and entirely useless. Diwan Chand's marigolds are eaten a fourth time. He does not forgive you, but he does respect you, which is worse."}]},
 
   {id:"club", once:false, tag:"The Club", title:"The Billiards Subscription",
-   body:"An extraordinary meeting of the Chhota Nagra Club is convened over a proposal to raise the billiards subscription by four annas. Mrs. Fortescue-Vane is <i>for</i>. Major Collector Prewitt is violently <i>against</i>. Both look to you, the new Magistrate, to settle a question that has already ended two friendships.",
+   body:"An extraordinary meeting of the Chhota Nagra Club is convened over a proposal to raise the billiards subscription by four annas. Mrs. Fortescue-Vane is <i>for</i>. Major Prewitt is violently <i>against</i>. Both look to you, the new Magistrate, to settle a question that has already ended two friendships.",
    choices:[
      {label:"Side with <b>Mrs. Fortescue-Vane</b>. One does not cross her.",
       effects:{prestige:+4,contentment:-1,composure:-3},
@@ -263,7 +366,7 @@ const EVENTS = [
       effects:{prestige:+1,composure:-2},
       outcome:"You have discovered the single most powerful instrument of British administration: the postponement of a decision until everyone has forgotten why they cared."}]},
 
-  {id:"revenue-settle", once:false, tag:"Telegram from Simla", title:"The Revenue Is Short",
+  {id:"revenue-settle", once:false, tag:"Telegram", title:"The Revenue Is Short",
    body:"A telegram from Commissioner Blyth-Curram, who communicates exclusively in telegrams and disappointment: REVENUE RETURNS CHHOTA NAGRA UNSATISFACTORY STOP EXPECT IMPROVEMENT STOP NO EXCUSES REGARDING RAINFALL WILL BE ENTERTAINED STOP. The rains, it should be said, have failed.",
    choices:[
      {label:"<b>Press the collection</b> hard. Simla wants numbers.",
@@ -276,7 +379,7 @@ const EVENTS = [
       effects:{prestige:-5,composure:+3},
       outcome:"Blyth-Curram replies: RAINFALL NOTED STOP REVENUE STILL SHORT STOP. You have learned that a telegram is not a conversation."}]},
 
-  {id:"congress", once:false, tag:"Intelligence report", title:"Pandit Girdhari Holds a Meeting",
+  {id:"congress", once:false, tag:"Intelligence", title:"Pandit Girdhari Holds a Meeting",
    body:"Pandit Girdhari Lal, pleader and Congress man, proposes to address a public meeting on the subject of the salt tax, self-rule, and &mdash; the intelligence report notes with alarm &mdash; &lsquo;the general condition of things.&rsquo; It is entirely peaceful. It is also entirely legal. Both facts are considered a nuisance.",
    choices:[
      {label:"<b>Ban the meeting</b> under Section 144. Order is order.",
@@ -320,7 +423,7 @@ const EVENTS = [
    choices:[
      {label:"<b>Go out and shoot it</b> yourself. It is expected.",
       effects:(S)=> (S.composure>40 ? {prestige:+8,contentment:+5,composure:-6} : {prestige:-6,order:-3,composure:-8}),
-      outcome:(S)=> (S.composure>34 ? "By a miracle compounded of luck and a very close range, the tiger falls. You are, from this fortnight, a <i>pukka</i> sahib in the fullest sense. You are also never going to do that again." : "Your nerves, already frayed, betray you. The tiger escapes; the story does not. A magistrate who cannot shoot straight is a magistrate the district has quietly stopped fearing."),},
+      outcome:(S)=> (S.composure>34 ? "By a miracle compounded of luck and a very close range, the tiger falls. You are, from this fortnight, a <i>pukka</i> sahib in the fullest sense. You are also never going to do that again." : "Your nerves, already frayed, betray you. The tiger escapes; the story does not. A magistrate who cannot shoot straight is a magistrate the district has quietly stopped fearing.")},
      {label:"Send for a <b>professional shikari</b> from the next district.",
       effects:{revenue:-3,contentment:+2,prestige:-4},
       outcome:"The tiger is dealt with, efficiently and by somebody else. Rampur is grateful and faintly disappointed. A sahib who sends for help is a useful sort of man, but not a legend."},
@@ -336,7 +439,7 @@ const EVENTS = [
       outcome:"The evening softens. So, over the months, does something else. This is how the district's more famous ruins began &mdash; not with a scandal, but with a nightcap that grew steadily larger and started earlier."},
      {label:"Pour a <b>small one</b> and write letters home you won't post.",
       effects:{composure:+3,contentment:+1},
-      outcome:"You describe a India that does not exist to people who would not understand the one that does. It helps. The unsent letters go in the drawer with the others."},
+      outcome:"You describe an India that does not exist to people who would not understand the one that does. It helps. The unsent letters go in the drawer with the others."},
      {label:"<b>Go to bed sober</b> and lie awake in the heat.",
       effects:{composure:-3,prestige:+1},
       outcome:"Virtue, and the ceiling, keep you company until two. In the morning you are correct, upright, and hollow-eyed, which the office takes for dedication."}]},
@@ -406,7 +509,7 @@ const EVENTS = [
       effects:{contentment:+4,prestige:-2,composure:-1,order:+1},
       outcome:"Solomon in a solar topi. The two families are bound to joint custody of one bad-tempered buffalo, an arrangement so mutually inconvenient that they are reconciled by the shared grievance within the year."}]},
 
-  {id:"telegram2", once:false, tag:"Telegram from Simla", title:"A New Form Is Required",
+  {id:"telegram2", once:false, tag:"Telegram", title:"A New Form Is Required",
    body:"Simla, in its wisdom, introduces Form XIV-B, to be completed in quintuplicate, recording the caste, occupation, and &lsquo;general disposition&rsquo; of every petitioner appearing before the court. Ram Autar, your head clerk, lays it before you with the particular stillness he reserves for orders that are both compulsory and insane.",
    choices:[
      {label:"<b>Implement it fully.</b> An order is an order.",
