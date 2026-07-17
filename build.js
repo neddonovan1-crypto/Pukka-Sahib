@@ -44,8 +44,29 @@ function build() {
   var artifactDir = process.env.PUKKA_ARTIFACT_DIR;
   if (artifactDir) fs.writeFileSync(path.join(artifactDir, "pukka-sahib.html"), style + "\n" + body + "\n");
 
-  console.log("Built index.html:", out.length, "bytes");
+  // Multi-file dist for GitHub Pages (external fetch allowed there, unlike the
+  // Artifact). Code split from markup so a content change doesn't bust the code
+  // bundle; art lives as real files under assets/ rather than data URIs.
+  var dist = path.join(ROOT, "dist");
+  var assets = path.join(dist, "assets");
+  fs.mkdirSync(assets, { recursive: true });
+  var distHtml = shell.replace("<!--GAME_SCRIPTS-->",
+    dataBlock + '\n<script src="logic.js"></script>\n<script src="ui.js"></script>');
+  fs.writeFileSync(path.join(dist, "index.html"), distHtml);
+  fs.writeFileSync(path.join(dist, "logic.js"), logic);
+  fs.writeFileSync(path.join(dist, "ui.js"), ui);
+  // carry any generated art into the Pages build
+  var artDir = path.join(ROOT, "art");
+  var copied = 0;
+  if (fs.existsSync(artDir)) {
+    fs.readdirSync(artDir).forEach(function (f) {
+      if (/\.(png|jpe?g|svg|webp)$/i.test(f)) { fs.copyFileSync(path.join(artDir, f), path.join(assets, f)); copied++; }
+    });
+  }
+
+  console.log("Built index.html:", out.length, "bytes (single-file / Artifact)");
   console.log("  logic:", logic.length, "b · ui:", ui.length, "b · content:", content.length, "b");
+  console.log("Built dist/ for Pages:", "index.html + logic.js + ui.js" + (copied ? " + " + copied + " asset(s)" : ""));
   return out;
 }
 

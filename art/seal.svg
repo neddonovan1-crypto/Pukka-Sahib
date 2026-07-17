@@ -1,0 +1,11 @@
+<svg class="seal-svg" viewBox="0 0 100 100" role="img" aria-label="Indian Civil Service seal" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="47.5" fill="none" stroke="var(--seal)" stroke-width="1.6"/>
+  <circle cx="50" cy="50" r="43.2" fill="none" stroke="var(--seal)" stroke-width="0.9"/>
+  <circle cx="50" cy="50" r="45.3" fill="none" stroke="var(--seal)" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="0 6.469"/>
+  <polygon points="50.00,11.00 54.14,34.55 69.50,16.23 61.31,38.69 83.77,30.50 65.45,45.86 89.00,50.00 65.45,54.14 83.77,69.50 61.31,61.31 69.50,83.77 54.14,65.45 50.00,89.00 45.86,65.45 30.50,83.77 38.69,61.31 16.23,69.50 34.55,54.14 11.00,50.00 34.55,45.86 16.23,30.50 38.69,38.69 30.50,16.23 45.86,34.55" fill="none" stroke="var(--seal)" stroke-width="1.15" stroke-linejoin="round"/>
+  <polygon points="57.76,21.02 56.50,38.74 71.21,28.79 61.26,43.50 78.98,42.24 63.00,50.00 78.98,57.76 61.26,56.50 71.21,71.21 56.50,61.26 57.76,78.98 50.00,63.00 42.24,78.98 43.50,61.26 28.79,71.21 38.74,56.50 21.02,57.76 37.00,50.00 21.02,42.24 38.74,43.50 28.79,28.79 43.50,38.74 42.24,21.02 50.00,37.00" fill="none" stroke="var(--indigo)" stroke-width="0.7" stroke-linejoin="round" opacity="0.85"/>
+  <circle cx="50" cy="50" r="12.4" fill="var(--indigo)"/>
+  <circle cx="50" cy="50" r="12.4" fill="none" stroke="var(--seal)" stroke-width="1"/>
+  <path d="M50 57.4 C45.6 53.4 46.6 48.6 50 43.2 C53.4 48.6 54.4 53.4 50 57.4 Z" fill="var(--surface)"/>
+  <path d="M50 55 C47.8 52.6 48.4 49.7 50 46.4 C51.6 49.7 52.2 52.6 50 55 Z" fill="var(--seal)" opacity="0.85"/>
+</svg>

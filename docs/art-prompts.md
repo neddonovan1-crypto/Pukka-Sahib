@@ -37,18 +37,14 @@ caricature, text, watermark, oversaturated colours.
 
 ## Priority set (highest impact — 5 images)
 
-### 1. `seal.png` — the I.C.S. crest *(square, transparent bg)*
-> [STYLE BLOCK]
-> SUBJECT: A single circular official administrative **seal**, centred, filling
-> ~80% of the frame with clear margins. A beaded **double-ring roundel**
-> enclosing a radiant many-pointed **star**; at its centre a small **antique oil
-> lamp** giving off rays of light (evoking the motto "Heaven's Light Our
-> Guide"). Symmetrical, heraldic, emblematic. **Leave the ring band empty — no
-> text.** Printed in oxblood on buff with indigo shadow accents.
-> COMPOSITION: square 1:1, emblem isolated so it can be cut out; plain flat or
-> transparent background.
+### 1. ~~`seal.png` — the I.C.S. crest~~ — DONE as inline SVG (skip)
 
-*Use:* replaces the CSS "I.C.S." roundel in the masthead.
+The seal is a **logo**, not an illustration, so it's built in-house as inline
+SVG (`art/seal.svg`, wired into `src/shell.html`): exact palette tokens, crisp
+at any size, theme-aware, no background to remove. **No need to generate this
+one.** The old raster brief (kept for reference): a beaded double-ring roundel
+around a radiant star with a central oil lamp/flame, muted oxblood + indigo on
+buff, isolated on transparent — but the vector version is what we ship.
 
 ### 2. `cover.png` — title banner *(wide)*
 > [STYLE BLOCK]
