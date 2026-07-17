@@ -1,0 +1,37 @@
+[
+  {
+    "requires": { "meter": "prestige", "op": ">=", "value": 62 },
+    "head": "The word in red ink",
+    "text": "Somewhere in a confidential file that you will never be shown, in a hand you would know anywhere, a Collector who praises twice a decade has written a sentence about you that will open doors for fifteen years. You will spend some part of those fifteen years trying to deserve it retrospectively, which is precisely what such sentences are for."
+  },
+  {
+    "requires": { "flag": "ac_sweetheart" },
+    "head": "The mail that mattered",
+    "text": "Her letters came every mail from March, sensible and quick and better company than the Club, and yours went back by the same boats; and the probation was easier to carry for being reported, fortnight by fortnight, to somebody who asked the right questions. What happens next is another posting&rsquo;s story. But it has begun."
+  },
+  {
+    "requires": { "flag": "ac_wrote_home" },
+    "head": "Four pages, every mail",
+    "text": "The letters went Home all season, honest ones, and your mother read them aloud twice and slept the better; and the writing of them, though you did not notice it happening, kept a door open in you that this country quietly closes in men who let it. It was the cheapest thing you did all year and among the wisest."
+  },
+  {
+    "requires": { "flag": "ac_drawer" },
+    "head": "The bundle with the string uncut",
+    "text": "The letters from Home went into the drawer to be answered when there was time, and lay there gathering their month&rsquo;s silences, and your mother stopped asking questions in hers, which is how mothers grieve by post. It is a small thing to have failed at. It does not feel small at two in the morning, and it will not mend by Gazette."
+  },
+  {
+    "requires": { "meter": "debt", "op": ">", "value": 0 },
+    "head": "Sohan Lal keeps your paper",
+    "text": "You leave Kotra owing the bania still, and a first debt is like a first fever: the amount matters less than the acquaintance. Sohan Lal wishes you well at the tonga with entire sincerity &mdash; his money is on your career now, in the exact sense &mdash; and somewhere in the brotherhood of his trade, a man in your next posting already knows your name."
+  },
+  {
+    "requires": { "flag": "ac_tahsildar_respect" },
+    "head": "The tahsildar's verdict",
+    "text": "On your last morning the tahsildar, who has trained twenty probationers and buried his opinion of most of them, presents the office&rsquo;s farewell &mdash; and adds, in the vernacular, four words of his own that no one translates for you because you no longer need it: <i>this one saw us.</i> You will value it above the despatch, and you will be right to."
+  },
+  {
+    "requires": { "flag": "ac_vernacular" },
+    "head": "The tongue you learned",
+    "text": "You leave Kotra speaking the language under the language &mdash; the well-songs, the grain-dealer&rsquo;s doubletalk, the seventeen words for land &mdash; and it will make you, all your service, the officer the villages talk to and the Club talks about. Fazl Din&rsquo;s fee, it turns out, was never the rupees. It was what you would do with the hearing."
+  }
+]

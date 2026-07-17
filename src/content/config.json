@@ -239,7 +239,8 @@
       "settlementBase": 140000,
       "interestRate": 0.18,
       "debtCeiling": 180000,
-      "debtWarn": 120000
+      "debtWarn": 120000,
+      "creditor": "the Lala"
     },
     "interludeChance": 0.16,
     "audio": {

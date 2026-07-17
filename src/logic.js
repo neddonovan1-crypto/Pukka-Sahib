@@ -33,6 +33,7 @@
     var POSTURES = CFG.postures;
     var ECON = CFG.economy;
     var MAX_TURNS = CFG.maxTurns;
+    var CREDITOR = ECON.creditor || "the Lala"; // who holds the district's paper
     // Meter keys come from the chapter's config so a rank can re-skin its five
     // columns; the default list keeps older bundles working.
     var METERS = (CFG.meters && CFG.meters.length)
@@ -152,7 +153,7 @@
       if (boundary && S.debt > 0) {
         var interest = Math.round(S.debt * ECON.interestRate);
         S.debt += interest;
-        if (interest > 0) parts.push("The Lala's interest falls due: debt grows by " + rupees(interest) + ".");
+        if (interest > 0) parts.push(CREDITOR + "'s interest falls due: debt grows by " + rupees(interest) + ".");
       }
       if (ECON.settlementTurns.indexOf(S.turn) !== -1) {
         var collected = Math.round(
@@ -167,7 +168,7 @@
         var repaid = 0;
         if (S.debt > 0) { repaid = Math.min(S.treasury, S.debt, Math.round(collected * 0.5)); S.treasury -= repaid; S.debt -= repaid; }
         parts.push("The revenue settlement: " + rupees(collected) + " collected" +
-          (repaid > 0 ? ", " + rupees(repaid) + " paid to the Lala" : "") + ".");
+          (repaid > 0 ? ", " + rupees(repaid) + " paid to " + CREDITOR : "") + ".");
       }
       if (parts.length) notice = parts.join(" ");
     }
@@ -428,7 +429,7 @@
     // (only prestige will do) — plus the Lala's bar while it applies.
     function honoursStanding() {
       var p = S.prestige, c = S.contentment, h = honoursScore();
-      var lead = "Honours List &mdash; ";
+      var lead = HONOURS.lead || "Honours List &mdash; ";
       var debtBar = S.debt > ECON.debtWarn;
       function want(t) {
         var needsScore = h < t.score, needsName = p < t.prestige;
@@ -440,14 +441,14 @@
       if (tier) {
         var idx = HONOURS.ladder.indexOf(tier);
         if (debtBar && tier.barredByDebt)
-          return lead + "the year has earned it and the Lala holds your paper; <b>nothing above a plain ribbon</b> until the debt is down";
+          return lead + "the year has earned it and " + CREDITOR + " holds your paper; <b>nothing above a plain ribbon</b> until the debt is down";
         var line = lead + tier.reach;
         if (idx > 0) {
           var above = HONOURS.ladder[idx - 1];
           line += (debtBar && above.barredByDebt)
-            ? "; nothing higher while the Lala holds your paper"
+            ? "; nothing higher while " + CREDITOR + " holds your paper"
             : "; the next rung wants " + want(above);
-        } else if (debtBar) line += " &mdash; with the Lala paid off";
+        } else if (debtBar) line += " &mdash; with " + CREDITOR + " paid off";
         return line;
       }
       var bottom = HONOURS.ladder[HONOURS.ladder.length - 1];

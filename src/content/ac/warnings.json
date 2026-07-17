@@ -1,0 +1,118 @@
+[
+  {
+    "id": "ac-warn-health",
+    "tag": "MEDICAL",
+    "season": ["any"],
+    "kind": "personal",
+    "once": true,
+    "priority": true,
+    "requires": { "meter": "health", "op": "<", "value": 30 },
+    "title": "The Civil Surgeon Takes Your Wrist",
+    "body": "He does it at the Club, between one soda and the next, with the casualness that is a doctor&rsquo;s way of not frightening the young: two fingers on your wrist, a look under your eyes, a question about your sleep that you answer too quickly. Then he sets the glass down and is suddenly not casual at all. First-year men, he says, come in two kinds: the ones who tell me in March, and the ones I ship Home in June. He waits to hear which kind you propose to be.",
+    "choices": [
+      {
+        "label": "Tell him everything and do as you are told.",
+        "effects": { "health": 8, "prestige": -1 },
+        "outcome": "Quinine on a schedule, meat once a day, no work after dinner for a fortnight, and a standing order to appear before him weekly looking better. It is faintly humiliating and entirely effective. The Collector, who hears everything, notes only that the boy had the sense to be looked after &mdash; which is, in the Service&rsquo;s ledger, a point in favour."
+      },
+      {
+        "label": "Admit to being a little pulled down; accept half his regimen.",
+        "effects": { "health": 4 },
+        "outcome": "You negotiate with him as you would with a headman, and he lets you win the unimportant points. The tonic is vile and the early nights are dull and both do their work, roughly. He watches you across the Club for the rest of the season with the expression of a man keeping a file open."
+      },
+      {
+        "label": "Laugh it off; the batch at Home would never let you hear the end of it.",
+        "effects": { "prestige": 1, "health": -2 },
+        "outcome": "You are three-and-twenty and immortal, and you tell him so in the nicest way. He nods slowly, writes nothing, and orders you a soda instead of a peg, which is his answer. The climate makes a note of the conversation and bides its season."
+      }
+    ]
+  },
+  {
+    "id": "ac-warn-order",
+    "tag": "URGENT",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": { "meter": "order", "op": "<", "value": 35 },
+    "title": "The Tahsildar Shuts the Door",
+    "body": "Twenty-two years in this cutcherry, and the tahsildar has never once shut the door before speaking. He shuts it now. The talk at the Tuesday market has changed, he says; the cattle-pound was rushed on Friday and the pound-keeper did not report it; and there is a man moving between the villages whose business no one will name to him, which is itself the worst news he has brought you. A sub-division does not warn its probationer twice, sahib. He has seen what comes when boys wait to be sure.",
+    "choices": [
+      {
+        "label": "Ride the bad villages yourself this week, with the sub-inspector.",
+        "effects": { "order": 6, "prestige": 1, "health": -3 },
+        "outcome": "Four days in the saddle showing the sub-division its sahib: the pound-keeper examined, the market walked at its busiest hour, the unnameable man called upon at his lodging and invited, courteously, to need to be elsewhere. It is your first taste of governing by being seen, and it works, and it costs you a week of the health the season keeps its own books on."
+      },
+      {
+        "label": "Ask the district for a half-company of armed police, to be safe.",
+        "effects": { "order": 5, "contentment": -3, "prestige": -2 },
+        "econ": { "treasury": -600 },
+        "outcome": "The police come down, and Kotra goes quiet in the particular way a place goes quiet when it has decided you are afraid of it. The Collector sanctions the deployment without comment, which is a comment. The tahsildar says nothing at all, which is a louder one."
+      },
+      {
+        "label": "Thank him gravely and watch another fortnight.",
+        "effects": { "order": -2, "health": 1 },
+        "outcome": "You choose patience, which at your age is indistinguishable from hoping. The tahsildar bows and reopens the door, and doubles the chaprassi&rsquo;s rounds on his own authority, entering it under an old head no one audits, because one of the two of you must."
+      }
+    ]
+  },
+  {
+    "id": "ac-warn-prestige",
+    "tag": "D.O.",
+    "season": ["any"],
+    "kind": "personal",
+    "once": true,
+    "priority": true,
+    "requires": { "meter": "prestige", "op": "<", "value": 32 },
+    "title": "A Demi-Official from the Collector",
+    "body": "It comes in his own hand, which is the warning: three sentences, no heading, the initials in red. <i>Dear R&mdash;. I am asked from time to time how you are shaping, and I find I have less to say than I should like. Come in on Thursday and give me something to say.</i> The tahsildar, bringing it, contrives to be elsewhere in the room while you read it twice. A probationer is not sacked, you have learned by now. He is simply, gradually, not mentioned &mdash; and then one day the Gazette is at the bottom of the mail and his name is not in it.",
+    "choices": [
+      {
+        "label": "Go in Thursday with your whole case: the work, the plans, the mistakes owned.",
+        "effects": { "prestige": 6, "health": -2 },
+        "outcome": "You give him an hour he does not interrupt: what you have done, what you botched and how you know it, and what Kotra needs that you have not yet managed. He hears you out, initials nothing, and walks you to your horse &mdash; and the next wire from the district carries, for the first time, a sentence about you that could be read aloud. You have learned the Service&rsquo;s first trick: it cannot value a man it cannot see."
+      },
+      {
+        "label": "Go in Thursday and say the work should speak for itself.",
+        "effects": { "contentment": 1, "prestige": -2 },
+        "outcome": "It is honestly meant and truly felt and it is the wrong answer, and you watch him decide not to explain why &mdash; which is the worst thing a teacher can decide about a pupil. The interview lasts eleven minutes. The work goes on speaking for itself, in an empty room, to nobody."
+      },
+      {
+        "label": "Write a long memorandum instead; paper is safer than Thursdays.",
+        "effects": { "prestige": 2, "health": -2 },
+        "outcome": "Six pages, four drafts, every achievement of your six months marshalled with footnotes. It is competent and complete and it misses the point of a demi-official letter, which was an open door. He acknowledges it in two lines, kindly. The door is not mentioned again."
+      }
+    ]
+  },
+  {
+    "id": "ac-warn-debt",
+    "tag": "PRIVATE",
+    "season": ["any"],
+    "kind": "personal",
+    "once": true,
+    "priority": true,
+    "requires": { "meter": "debt", "op": ">", "value": 7000 },
+    "title": "Sohan Lal Presents His Book",
+    "body": "The Kotra bania has been all deference since November &mdash; the horse, the mess account, the small conveniences of a gentleman&rsquo;s credit &mdash; and now he calls at the bungalow with his book, and the deference has a new floor under it. He names your figure to the anna, gently, the way a man names an illness. He mentions &mdash; as one mentions the weather &mdash; that the Collector-sahib takes a close interest in the accounts of young officers; that nothing need ever reach him; that between gentlemen there are always arrangements. A probationer&rsquo;s debts, sahib, are such a small thing. Until they are the only thing.",
+    "choices": [
+      {
+        "label": "Sell the horse and clear what you can, this week.",
+        "effects": { "prestige": -1, "contentment": -1 },
+        "econ": { "treasury": -2500, "debt": -4500 },
+        "outcome": "The horse goes to a subaltern at the cantonment for less than he cost, and most of the book is cleared, and the station notes the sale and prices your judgment accordingly. It stings for a fortnight. It would have stung for a career. Sohan Lal receives the money with real regret &mdash; a paying debtor is a client lost &mdash; and his salaams return to their old depth."
+      },
+      {
+        "label": "Go to the Collector yourself, before the bania can.",
+        "effects": { "prestige": 2, "health": -2 },
+        "econ": { "debt": -2000 },
+        "outcome": "The hardest walk of your first year: into the office, the figure on a slip of paper, no excuses offered. He looks at it, and at you, for a long moment &mdash; then advances you two thousand against your pay at no interest, remarks that he did the same walk in &rsquo;98, and terminates the interview. The debt that is known is survivable. You will not understand for years what you were spared."
+      },
+      {
+        "label": "Accept the arrangements; gentlemen understand these things.",
+        "effects": { "health": 1, "contentment": 1 },
+        "econ": { "debt": 1500 },
+        "outcome": "The terms ease, the book closes softly, and nothing whatever reaches the Collector, and you tell yourself the matter is managed. It is. You are. Sohan Lal&rsquo;s salaam acquires the particular warmth a banker keeps for his best security, and somewhere in the sub-division&rsquo;s long memory you are entered under a heading you will not read for years."
+      }
+    ]
+  }
+]

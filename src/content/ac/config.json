@@ -1,0 +1,316 @@
+{
+  "config": {
+    "maxTurns": 12,
+    "seasonFloor": 6,
+    "start": {
+      "revenue": 48,
+      "order": 52,
+      "prestige": 42,
+      "contentment": 48,
+      "health": 78
+    },
+    "chapter": {
+      "key": "ac",
+      "rank": "Assistant Commissioner",
+      "posting": "Kotra sub-division",
+      "promotionTiers": [
+        "distinction",
+        "confirmed"
+      ],
+      "promotesTo": "dm",
+      "tagline": "You are three-and-twenty, five months out from Home, and Assistant Commissioner of Kotra on probation. Learn the work. Mind the Collector. Survive your first hot weather. In six months the Service decides whether you are to be trusted with a district."
+    },
+    "honours": {
+      "lead": "Probation &mdash; ",
+      "weights": {
+        "prestige": 0.45,
+        "revenue": 0.2,
+        "order": 0.2,
+        "contentment": 0.15
+      },
+      "ladder": [
+        {
+          "key": "distinction",
+          "score": 60,
+          "prestige": 62,
+          "barredByDebt": true,
+          "reach": "confirmation <b>with a despatch</b> is within reach &mdash; the Collector is writing well of you"
+        },
+        {
+          "key": "confirmed",
+          "score": 48,
+          "prestige": 45,
+          "reach": "<b>confirmation</b> is within reach &mdash; the probation is passing"
+        }
+      ]
+    },
+    "meters": [
+      {
+        "key": "revenue",
+        "name": "Revenue",
+        "desc": "The sub-division&rsquo;s collections &mdash; your first ledger. Small figures, watched closely."
+      },
+      {
+        "key": "order",
+        "name": "Order",
+        "desc": "The peace of Kotra: the thana, the bazaar, the fair. A sub-division that boils under a probationer ends two careers."
+      },
+      {
+        "key": "prestige",
+        "name": "Prestige",
+        "desc": "What the Collector &mdash; and through him the Service &mdash; thinks of you. The probation is decided in this column."
+      },
+      {
+        "key": "contentment",
+        "name": "Contentment",
+        "desc": "Whether Kotra&rsquo;s villages take to their new young sahib or wait him out."
+      },
+      {
+        "key": "health",
+        "name": "Health",
+        "desc": "A young constitution, still unspent. Your first hot weather will open an account against it."
+      }
+    ],
+    "calendar": {
+      "months": [
+        "November",
+        "December",
+        "January",
+        "February",
+        "March",
+        "April"
+      ],
+      "seasons": [
+        {
+          "key": "cold",
+          "name": "Cold weather",
+          "tagline": "the learning season",
+          "glyph": "❄",
+          "from": 1,
+          "to": 8,
+          "intros": [
+            "Your first cold weather in charge of anything: tents, files, and a sub-division that knows more about you than you know about it.",
+            "The mornings are sharp and blue and everything is still possible &mdash; which is, the tahsildar&rsquo;s face suggests, exactly the problem.",
+            "Camp weather. The Collector says a young man learns his work under canvas or not at all.",
+            "Kotra watches its new sahib the way a village watches a new bullock: with patience, and a private book on how long he will last."
+          ]
+        },
+        {
+          "key": "hot",
+          "name": "Hot weather",
+          "tagline": "your first",
+          "glyph": "☀",
+          "from": 9,
+          "to": 12,
+          "intros": [
+            "Your first hot weather. Every man in the Service remembers his first hot weather; very few will talk about it.",
+            "The thermometer climbs and the station empties, and you begin to understand what the older men&rsquo;s silences were about.",
+            "The punkah, the glare, the empty bungalow: the examination nobody sets and everybody sits."
+          ]
+        }
+      ]
+    },
+    "postures": {
+      "tour": {
+        "base": {
+          "contentment": 1,
+          "order": 1,
+          "prestige": -1,
+          "health": -1
+        },
+        "season": {
+          "cold": {},
+          "hot": {
+            "health": -2
+          }
+        },
+        "labels": {
+          "cold": "Go out into the sub-division",
+          "hot": "Tour on through the heat"
+        },
+        "notes": {
+          "cold": [
+            "Learn Kotra with your own eyes &mdash; though the Collector&rsquo;s office wonders where his probationer has got to.",
+            "The camp table under the trees: petitions, boundaries, and a sub-division deciding whether it likes you.",
+            "The villages remember a young sahib who comes to them. So does the fever."
+          ],
+          "hot": [
+            "Touring in your first hot weather is admired, noticed, and paid for out of your own hide.",
+            "The wells are low and the roads shimmer; a probationer seen in April is remembered in the confirmation papers."
+          ]
+        }
+      },
+      "desk": {
+        "base": {
+          "prestige": 1,
+          "revenue": 1,
+          "contentment": -1,
+          "order": -1,
+          "health": 1
+        },
+        "season": {
+          "cold": {
+            "health": 1
+          },
+          "hot": {
+            "health": -2
+          }
+        },
+        "labels": {
+          "cold": "Work at the cutcherry",
+          "hot": "Keep to the office indoors"
+        },
+        "notes": {
+          "cold": [
+            "The files answered, the returns in on time, the Collector&rsquo;s red ink growing scarcer &mdash; and Kotra unseen.",
+            "A probationer at his desk is a probationer the Collector can find. That cuts both ways.",
+            "The ledger prospers; the sub-division draws its own conclusions about a sahib it never meets."
+          ],
+          "hot": [
+            "Behind the chiks with the punkah going: the sensible place, as the empty station keeps telling you.",
+            "The office is where the first hot weather is survived. It is also where it is felt most."
+          ]
+        }
+      }
+    },
+    "retreats": {
+      "cold": {
+        "key": "ac-retreat-cold",
+        "flag": "ac_leave_cold",
+        "tag": "LOCAL LEAVE",
+        "label": "Take a week with the snipe",
+        "note": "A borrowed gun and the jheels at dawn &mdash; you come back a boy again; the files do not shoot themselves.",
+        "title": "A Week with the Snipe",
+        "body": "The Collector, unprompted, signs you a week&rsquo;s local leave and lends you a gun, observing that a probationer who never leaves his files makes a Collector who never leaves his files, and that he has met that man and buried him. A week on the jheels at dawn: snipe, mud, woodsmoke, and not one petition. You come back sunburnt and human. The work waited, and says so.",
+        "effects": {
+          "health": 8,
+          "contentment": 2,
+          "prestige": -2,
+          "revenue": -2,
+          "order": -1
+        }
+      },
+      "hot": {
+        "key": "ac-retreat-hot",
+        "flag": "ac_leave_hot",
+        "tag": "MEDICAL",
+        "label": "Ten days in the hills on a certificate",
+        "note": "The Civil Surgeon will sign it &mdash; first hot weathers break boys who are too proud to ask.",
+        "title": "Ten Days on a Certificate",
+        "body": "The Civil Surgeon looks at you across his desk, writes &lsquo;debility&rsquo; on a form with the fluency of long practice, and tells you that the hills in April have saved more young careers than all the confidential reports ever written. Ten days of deodars and cold air and sleep. Below, the plain bakes on without you, and notes &mdash; without malice, in its ledger &mdash; that the new sahib went up.",
+        "effects": {
+          "health": 10,
+          "prestige": -3,
+          "contentment": -2,
+          "order": -1
+        }
+      }
+    },
+    "economy": {
+      "startTreasury": 6000,
+      "settlementTurns": [
+        7
+      ],
+      "settlementBase": 9000,
+      "interestRate": 0.2,
+      "debtCeiling": 15000,
+      "debtWarn": 9000,
+      "creditor": "Sohan Lal"
+    },
+    "interludeChance": 0.16,
+    "review": {
+      "from": "The Collector&rsquo;s note on the season, initialled in red: <b>",
+      "close": "</b>",
+      "weakBelow": 35,
+      "bands": [
+        {
+          "min": 60,
+          "text": "SHAPING WELL STOP CARRY ON"
+        },
+        {
+          "min": 50,
+          "text": "SHAPING STOP CARRY ON"
+        },
+        {
+          "min": 42,
+          "text": "SHAPING SLOWLY STOP SEE ME"
+        },
+        {
+          "min": 0,
+          "text": "NOT YET SHAPING STOP SEE ME AT ONCE"
+        }
+      ],
+      "weak": {
+        "prestige": "I AM ASKED ABOUT YOU STOP",
+        "order": "YOUR THANA READS UNEASY STOP",
+        "revenue": "YOUR ARREARS GROW STOP",
+        "contentment": "YOUR VILLAGES COMPLAIN STOP",
+        "health": "YOU LOOK ILL STOP"
+      }
+    },
+    "audio": {
+      "tonic": 220.0,
+      "master": 0.16,
+      "ragas": {
+        "cold": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          8,
+          11
+        ],
+        "hot": [
+          0,
+          2,
+          5,
+          7,
+          10
+        ],
+        "monsoon": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          10
+        ]
+      }
+    }
+  },
+  "endings": {
+    "distinction": {
+      "title": "Confirmed &mdash; with a Despatch",
+      "text": "The probation ends in the best way the Service knows: quietly, with a despatch. The Collector&rsquo;s confidential report goes up with the word <b>&lsquo;exceptional&rsquo;</b> in it &mdash; a word he is reputed to have used twice in twenty years &mdash; and the Gazette does the rest. You are confirmed in the Indian Civil Service and posted, not in two years but now, to a district of your own: <b>Chhota Nagra</b>, whose outgoing Collector you have six months to thank and a career to justify. You are four-and-twenty. Half a million people are about to call you the sirkar."
+    },
+    "confirmed": {
+      "title": "Confirmed in the Service",
+      "text": "The probation passes, as most probations pass: without fireworks, on the strength of a season&rsquo;s honest work and a confidential report that says <b>&lsquo;will shape&rsquo;</b> &mdash; the Service&rsquo;s highest praise for a man it has decided to keep. You are confirmed, and in due course the posting comes down: a district of your own. It is everything you came out for, and it frightens you exactly as much as it should."
+    },
+    "transfer": {
+      "title": "Probation Extended",
+      "text": "The confidential report is a masterpiece of the unsaid: <i>industrious &hellip; well-meaning &hellip; requires a further period of supervision.</i> Your probation is extended and you are posted to another sub-division, smaller than Kotra, to be looked at for another year by another Collector. It is not disgrace. It is the Service saying, with perfect courtesy, that it has not yet made up its mind about you &mdash; and you have a tonga-ride and a new bungalow in which to reflect that you had six months to make it up, and did not."
+    },
+    "scandal": {
+      "title": "Asked to Resign",
+      "text": "It is done kindly, which makes it worse: a walk in the Collector&rsquo;s garden, a hand on your shoulder, and the observation that not every man is suited to this work, and that a young man of your parts would do famously in an office at Home. You sail before the rains. The Service closes over the place where you were like water over a stone, and the open competition fills it by Christmas."
+    },
+    "breakdown": {
+      "title": "Invalided in Your First Year",
+      "text": "The first hot weather finds the crack in you, as it finds the crack in a certain number of every year&rsquo;s batch. The Civil Surgeon&rsquo;s certificate is compassionate and final; the P&amp;O berth is booked by the Collector&rsquo;s own hand. They will say at Home that India did not agree with you. India agreed with you entirely; it simply asked a price you could not pay at three-and-twenty."
+    },
+    "riot": {
+      "title": "A Commission, at Your Age",
+      "text": "The fair boils over on your watch, the lathi-charge you sanctioned goes wrong in the particular way lathi-charges go wrong, and a Commission of Enquiry sits on a probationer of six months&rsquo; standing. The findings are merciful to you personally, which everyone understands to be the end of you professionally. The Service does not forgive a Commission; it merely stops mentioning it in your hearing."
+    },
+    "bankrupt": {
+      "title": "Sent Home Over Debts",
+      "text": "The horse, the mess bill, the bania&rsquo;s convenient terms: none of it was much, and all of it together was everything, and a probationer whose debts reach the Collector&rsquo;s ears has made the one mistake the Service will not carry. You are sent Home &lsquo;on private grounds,&rsquo; which deceives nobody, least of all the bania, who attends your auction and buys the horse back at half what you paid him for it."
+    },
+    "gonenative": {
+      "title": "Gone Native Young",
+      "text": "It happens faster at three-and-twenty. The vernacular came too easily; the villages came to mean more than the Club; and the confidential report, when it goes up, uses the phrase <i>&lsquo;more at home across the river than at the station,&rsquo;</i> which in the Service&rsquo;s dialect is not a compliment. You are quietly counselled toward the Political line, or the door. Kotra, which liked you enormously, never hears why you went."
+    }
+  }
+}

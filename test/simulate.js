@@ -8,6 +8,19 @@ var registry = require("../src/content.js");
 
 var COLLAPSE = ["breakdown", "riot", "scandal", "bankrupt"];
 
+// Debt guards used by the skilled/paragon scorers, scaled per chapter from the
+// economy's debtWarn (the district's 1,20,000 and Kotra's 9,000 differ by an
+// order of magnitude).
+var DEBT_GUARDS = { hi: 140000, lo: 100000 };
+
+// Per-chapter band overrides. Every chapter shares the core bands; the
+// tour-spam signature failure differs — the district year breaks men down,
+// the probation writes them off.
+var CHAPTER_BANDS = {
+  dm: { spamFail: { keys: ["breakdown"], min: 0.30, label: "tour-only should mostly break down (want ≥30% Invalided Home)" } },
+  ac: { spamFail: { keys: ["transfer", "gonenative", "breakdown", "scandal"], min: 0.40, label: "tour-only should mostly fail the probation (want ≥40% extended/gone-native/collapse)" } }
+};
+
 /* ---- policies ---- */
 function scoreChoice(ch, s) {
   var e = ch.effects || {};
@@ -23,7 +36,7 @@ function scoreChoice(ch, s) {
   });
   if (ch.econ && ch.econ.debt) {
     sc -= ch.econ.debt / 40000;
-    if (s.debt + ch.econ.debt > 140000) sc -= 50; // a second big borrow is how collectors end
+    if (s.debt + ch.econ.debt > DEBT_GUARDS.hi) sc -= 50; // a second big borrow is how collectors end
   }
   if (ch.econ && ch.econ.treasury < 0) {
     var shortfall = Math.max(0, -ch.econ.treasury - s.treasury); // spend beyond the chest is a borrow
@@ -78,7 +91,7 @@ var POLICIES = {
           (e.revenue || 0) * (m.revenue < 62 ? 0.8 : 0.2) +
           (e.order || 0) * (m.order < 50 ? 0.8 : 0.2) +
           (e.health || 0) * (m.health < 40 ? 1.6 : 0);
-        if (ch.econ && ch.econ.debt && s.debt + ch.econ.debt > 100000) sc -= 50; // the warn line kills the star
+        if (ch.econ && ch.econ.debt && s.debt + ch.econ.debt > DEBT_GUARDS.lo) sc -= 50; // the warn line kills the top rung
         if (ch.econ && ch.econ.treasury < 0) sc -= Math.max(0, -ch.econ.treasury - s.treasury) / 25000;
         if (sc > bs) { bs = sc; best = i; }
       });
@@ -150,6 +163,10 @@ function simulateChapter(chapterKey, content) {
   // The honours tiers come from the chapter's ladder (highest first).
   var LADDER = content.config.honours.ladder.map(function (t) { return t.key; });
   var TOP = LADDER[0];
+  var warn = content.config.economy.debtWarn;
+  DEBT_GUARDS.hi = Math.round(warn * 1.15);
+  DEBT_GUARDS.lo = Math.round(warn * 0.85);
+  var bands = CHAPTER_BANDS[chapterKey] || CHAPTER_BANDS.dm;
 
   function assert(cond, msg) { if (!cond) fails.push("[" + chapterKey + "] " + msg); }
 
@@ -210,7 +227,7 @@ function simulateChapter(chapterKey, content) {
   // neither pure posture can be spammed to victory
   assert(pct(R.tourOnly.dist, LADDER, N) <= 0.10, "tour-only earns honours too often (" + (pct(R.tourOnly.dist, LADDER, N) * 100).toFixed(0) + "%, want ≤10%)");
   assert(pct(R.deskOnly.dist, [TOP], N) <= 0.12, "desk-only reaches the top tier too often (want ≤12%)");
-  assert(pct(R.tourOnly.dist, ["breakdown"], N) >= 0.30, "tour-only should mostly break down (want ≥30% Invalided Home)");
+  assert(pct(R.tourOnly.dist, bands.spamFail.keys, N) >= bands.spamFail.min, bands.spamFail.label + " — got " + (pct(R.tourOnly.dist, bands.spamFail.keys, N) * 100).toFixed(0) + "%");
 
   // skill is rewarded; careless play mostly fails but isn't impossible
   assert(pct(R.skilled.dist, LADDER, N) >= 0.50, "skilled play should earn honours ≥50% (" + (pct(R.skilled.dist, LADDER, N) * 100).toFixed(0) + "%)");

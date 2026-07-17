@@ -32,6 +32,21 @@ var dm = {
   codas: load("codas.json")
 };
 
-// The career ladder, in playing order. Chapter I (Assistant Commissioner)
-// joins ahead of dm when its bundle lands; III and IV after.
-module.exports = { chapters: { dm: dm }, order: ["dm"] };
+/* ---- Chapter I: Assistant Commissioner, Kotra sub-division ---- */
+var acBase = load("ac/config.json"); // { config, endings }
+var ac = {
+  key: "ac",
+  config: acBase.config,
+  endings: acBase.endings,
+  events: []
+    .concat(load("ac/events-apprentice.json"))
+    .concat(load("ac/events-personal.json"))
+    .concat(load("ac/warnings.json")),
+  occasions: load("ac/occasions.json"),
+  codas: load("ac/codas.json")
+};
+
+// The career ladder, in playing order: the probation, then the district.
+// The ac chapter is staged (validated, inert) until its drawn deck is full —
+// enable by prepending "ac" to order. Chapters III/IV join when written.
+module.exports = { chapters: { ac: ac, dm: dm }, order: ["dm"] };

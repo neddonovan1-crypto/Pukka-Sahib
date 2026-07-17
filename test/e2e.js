@@ -25,12 +25,18 @@ function findChrome() {
 var fails = [];
 function assert(cond, msg) { if (!cond) fails.push(msg); }
 
-async function playSession(browser, label, viewport) {
+async function playSession(browser, label, viewport, opts) {
   var ctx = await browser.newContext({ viewport: viewport });
   var page = await ctx.newPage();
   var errors = [];
   page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
   page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+
+  // Optionally seed a career record before load (e.g. a completed apprentice
+  // year, so the session exercises the district chapter).
+  if (opts && opts.career) {
+    await ctx.addInitScript(function (c) { window.localStorage.setItem("pukka-sahib-career", JSON.stringify(c)); }, opts.career);
+  }
 
   await page.goto(INDEX, { waitUntil: "load" });
   var begin = await page.$("#begin");           // dismiss the cover start screen if present
@@ -41,6 +47,7 @@ async function playSession(browser, label, viewport) {
   assert(await page.$("#seasonband"), label + ": no season band");
   var econ = (await page.textContent("#economy")) || "";
   assert(/₹/.test(econ), label + ": economy line missing rupee figure (\"" + econ.trim() + "\")");
+  var startEcon = econ.trim(); // whatever the chapter starts with — restart must return here
 
   var maxOverflow = 0;
   var ended = false, midShotTaken = false;
@@ -69,17 +76,27 @@ async function playSession(browser, label, viewport) {
   assert(ended, label + ": session did not reach an ending within 200 steps");
   if (ended) {
     await page.screenshot({ path: path.join(SHOT_DIR, "e2e-" + label + "-ending.png") });
-    // Restart flow: "Take up a new posting" must paint a fresh session —
-    // fortnight 1, treasury back at the start figure, a live posture choice.
+    // Restart flow. A promoting verdict reloads into the NEXT chapter's start
+    // screen; otherwise "Take up a new posting" repaints the same chapter at
+    // fortnight 1 with the treasury back at its start figure.
     var again = await page.$("#again");
     assert(again, label + ": ending screen has no restart button");
     if (again) {
+      var promo = (((await page.textContent("#again")) || "").indexOf("promotion") !== -1);
       await again.click();
-      await page.waitForSelector("#card .choice", { timeout: 5000 });
-      var fortnight = (await page.textContent("#card .fortnight")) || "";
-      assert(/Fortnight 1 of /.test(fortnight), label + ": restart did not reset to fortnight 1 (\"" + fortnight.trim() + "\")");
-      var econ2 = (await page.textContent("#economy")) || "";
-      assert(econ2.indexOf("1,20,000") !== -1, label + ": restart did not reset the treasury (\"" + econ2.trim() + "\")");
+      if (promo) {
+        await page.waitForSelector("#begin", { timeout: 8000 });
+        await page.click("#begin");
+        await page.waitForSelector("#card .choice", { timeout: 5000 });
+        var fnP = (await page.textContent("#card .fortnight")) || "";
+        assert(/Fortnight 1 of /.test(fnP), label + ": promotion did not open the next chapter at fortnight 1 (\"" + fnP.trim() + "\")");
+      } else {
+        await page.waitForSelector("#card .choice", { timeout: 5000 });
+        var fortnight = (await page.textContent("#card .fortnight")) || "";
+        assert(/Fortnight 1 of /.test(fortnight), label + ": restart did not reset to fortnight 1 (\"" + fortnight.trim() + "\")");
+        var econ2 = ((await page.textContent("#economy")) || "").trim();
+        assert(econ2 === startEcon, label + ": restart did not reset the treasury (\"" + econ2 + "\" vs \"" + startEcon + "\")");
+      }
       // the completed posting must now be in the career record on the start screen
       await page.reload({ waitUntil: "load" });
       var service = await page.$(".service");
@@ -181,9 +198,15 @@ async function resumeSession(browser, viewport) {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
   try {
+    // Desktop plays the career entry (the apprentice year, incl. the promotion
+    // flow); mobile is seeded past it and plays the district chapter.
     var d = await playSession(browser, "desktop", { width: 1120, height: 920 });
     console.log("desktop:", JSON.stringify(d));
-    var m = await playSession(browser, "mobile", { width: 375, height: 667 });
+    var seasoned = {
+      v: 1, completions: { ac: 1 }, honours: [],
+      history: [{ chapter: "ac", ending: "confirmed", title: "Confirmed in the Service", promoted: true }]
+    };
+    var m = await playSession(browser, "mobile", { width: 375, height: 667 }, { career: seasoned });
     console.log("mobile: ", JSON.stringify(m));
     var r = await resumeSession(browser, { width: 1120, height: 920 });
     console.log("resume: ", JSON.stringify(r));

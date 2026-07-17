@@ -99,7 +99,7 @@
   function renderStatus(s) {
     el("honours").innerHTML = s.honours;
     var econ = "Treasury " + L.rupees(s.treasury) +
-      (s.debt > 0 ? ' &middot; <span class="debt">Debt to the Lala ' + L.rupees(s.debt) + "</span>" : "");
+      (s.debt > 0 ? ' &middot; <span class="debt">Debt to ' + ((content.config.economy && content.config.economy.creditor) || "the Lala") + ' ' + L.rupees(s.debt) + "</span>" : "");
     el("economy").innerHTML = econ;
     var se = s.season;
     el("seasonband").innerHTML =
@@ -309,7 +309,7 @@
   }
 
   /* ---------- save / resume (versioned localStorage) ---------- */
-  var SAVE_KEY = "pukka-sahib-save", SAVE_VERSION = 1;
+  var SAVE_KEY = "pukka-sahib-save", SAVE_VERSION = 2; // v2: chapter-tagged (pre-career saves are dropped)
   function store() { try { return window.localStorage; } catch (e) { return null; } }
   function persist() {
     var ls = store(); if (!ls) return;
@@ -376,11 +376,13 @@
         '<button class="ghost" id="fresh">Begin a new posting</button>'
       : '<button class="primary" id="begin">Take up your posting &rarr;</button>';
     if (quickstartAvailable()) resumeBtn += '<button class="ghost" id="quickdm">Begin as a seasoned Collector</button>';
+    var tagline = (content.config.chapter && content.config.chapter.tagline) ||
+      'You are the newly-gazetted District Magistrate &amp; Collector of Chhota Nagra. ' +
+      'Keep the peace. Bring in the revenue. And whatever else is lost, keep up appearances. ' +
+      'You have a year. Survive the posting.';
     st.innerHTML =
       cover +
-      '<div class="tagline">You are the newly-gazetted District Magistrate &amp; Collector of Chhota Nagra. ' +
-      'Keep the peace. Bring in the revenue. And whatever else is lost, keep up appearances. ' +
-      'You have a year. Survive the posting.</div>' +
+      '<div class="tagline">' + tagline + "</div>" +
       serviceRecordHtml() +
       '<div class="start-actions">' + resumeBtn + "</div>";
     if (saved) {
