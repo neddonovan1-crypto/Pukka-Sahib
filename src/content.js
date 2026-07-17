@@ -17,6 +17,7 @@ var events = []
   .concat(load("events-personal.json"))
   .concat(load("events-kipling.json"))
   .concat(load("events-kipling-2.json"))
+  .concat(load("events-monsoon.json"))
   .concat(load("warnings.json"))
   .concat(load("interludes.json"));
 

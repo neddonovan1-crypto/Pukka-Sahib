@@ -1,0 +1,197 @@
+[
+  {
+    "id": "in-flood-time",
+    "tag": "ON TOUR",
+    "season": ["monsoon"],
+    "kind": "tour",
+    "once": true,
+    "title": "In Flood Time",
+    "body": "The ford at Barhwi is under eight feet of brown water and the bridge of boats went down-river on Tuesday, in pieces. You must be across tonight &mdash; the assize papers say so &mdash; and the only man who could take you is the old ferryman who has kept the crossing fifty years, who looks at the race of the current and then at you, and says that he swam this river once in a worse flood than this, for a woman, when he was young; and that he will take the sahib over now, if the sahib is not afraid.",
+    "choices": [
+      {
+        "label": "Cross tonight in the old man&rsquo;s boat.",
+        "condition": { "meter": "health", "op": ">", "value": 40 },
+        "ifTrue": {
+          "effects": { "prestige": 4, "contentment": 2, "health": -3 },
+          "outcome": "An hour of black water, the boat quartering the race like a nervous horse, the old man talking the whole way &mdash; of his river, his flood, his woman, fifty years gone. You land two miles down and soaked to the collarbone, and the assizes open on time. The crossing enters district legend by the week&rsquo;s end, growing an extra yard of floodwater in every telling."
+        },
+        "ifFalse": {
+          "effects": { "prestige": 1, "health": -7 },
+          "outcome": "You are not the man you were in October, and the river finds it out at once. Halfway over, the cold and the fear get into you together; you land grey-faced and shaking, and the old ferryman, saying nothing, walks you up the bank like a groom walking a foundered horse. The assizes open on time. The fever that follows keeps its own calendar."
+        }
+      },
+      {
+        "label": "Wait for the water to fall; the assizes can sit two days late.",
+        "effects": { "prestige": -2, "health": 2 },
+        "outcome": "You camp on the bank and let the river have its way, which every soul in the district but the High Court would call wisdom. The water falls on the third morning and you cross dry-shod. The assize register records the delay in red ink; the old ferryman, obscurely disappointed, does not offer his story again."
+      },
+      {
+        "label": "Commandeer the police boat and a crew and force the crossing.",
+        "effects": { "prestige": 2, "order": -2, "health": -2 },
+        "outcome": "Six constables who cannot refuse you row you over a river none of them would cross for their own mothers. It is done, and briskly &mdash; and every man of the crew has a family, and every family hears of it, and the lines&rsquo; opinion of a sahib who spends other men&rsquo;s nerve on his own timetable is entered where you will never read it and never escape it."
+      }
+    ]
+  },
+  {
+    "id": "the-mugger",
+    "tag": "PETITION",
+    "season": ["monsoon"],
+    "kind": "tour",
+    "once": true,
+    "title": "The Mugger of Kasauli Ghat",
+    "body": "The flood has brought the mugger up from the deep river to the village crossing &mdash; a crocodile the length of a country cart, old enough that the ghat is named for him. Last week he took a goat; on Sunday he took the potter&rsquo;s son, at the women&rsquo;s bathing steps, in front of the women. The village wants him shot. The priest observes that the mugger has been fed and garlanded at that ghat since before the Company, and that certain misfortunes follow the killing of what a village has honoured.",
+    "choices": [
+      {
+        "label": "Sit up over the ghat tonight and shoot him yourself.",
+        "condition": { "meter": "health", "op": ">", "value": 35 },
+        "ifTrue": {
+          "effects": { "prestige": 5, "contentment": 4, "order": 1, "health": -3 },
+          "outcome": "A wet night flat on a grain platform with the rifle sweating in your hands, and at grey dawn the log by the far bank grows legs. One shot, taken slow. The village hauls him out with rope and drum-beating, twelve feet of him, and finds two anklets and a copper ring in what the drying-out reveals. The priest garlands the carcase, covering all positions; the women use the steps by Thursday."
+        },
+        "ifFalse": {
+          "effects": { "prestige": -3, "contentment": -2, "health": -4 },
+          "outcome": "The night watch takes more out of you than the season has left to give. When the log moves at dawn your hands are not to be trusted, and the shot goes into the water a foot wide; the mugger goes under and downstream, educated now, and does not offer the chance again. The village draws its water upstream and its conclusions everywhere."
+        }
+      },
+      {
+        "label": "Send for Ibrahim the shikari and pay his fee.",
+        "effects": { "contentment": 3, "order": 1 },
+        "econ": { "treasury": -3000 },
+        "outcome": "Ibrahim arrives in two days with a buffalo-calf, a rope of hide, and the patience of the profession, and on the fourth morning the mugger is on the bank with a charge of buckshot behind the smile. The fee goes down under &lsquo;destruction of dangerous animals,&rsquo; a head Government maintains with more enthusiasm than most of its charities. The village is satisfied; the credit is Ibrahim&rsquo;s, and correctly."
+      },
+      {
+        "label": "Post a warning notice and let the ghat be moved upstream.",
+        "effects": { "prestige": -3, "contentment": -3, "order": -1 },
+        "outcome": "A board is painted, in two languages, cautioning the public against an animal the public has known intimately for forty years. The bathing moves a furlong up, where the bank is bad; the mugger, unhurried, moves with it inside the month. The district files the whole proceeding under what a sahib&rsquo;s protection is worth in the rains, and the potter does not salaam you again."
+      }
+    ]
+  },
+  {
+    "id": "relief-works",
+    "tag": "CONFIDENTIAL",
+    "season": ["monsoon"],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Relief Works Ledger",
+    "body": "The flood relief works &mdash; the raising of the Kasauli road, one anna a day and grain &mdash; carry eleven hundred names on the muster. Ram Autar, who has been adding the ledger sideways in his own time, lays the sheet before you without comment: perhaps three hundred of the names eat. The rest are the contractor&rsquo;s inventions, and the contractor is Lala Hukum Chand&rsquo;s sister&rsquo;s husband, and the grain for the ghosts is sold back into the bazaar at flood prices to the very people the works were sanctioned to feed.",
+    "choices": [
+      {
+        "label": "Prosecute the contractor in open court, connexions be damned.",
+        "effects": { "order": 3, "contentment": 4, "prestige": 2, "health": -3 },
+        "outcome": "The case is tried in a packed cutcherry with the rain loud on the roof, and the muster-roll read aloud &mdash; name after name that no village owns &mdash; does more for Government&rsquo;s credit than a season of durbars. The contractor gets two years; the Lala, who attended the hearing with the composure of a man watching someone else&rsquo;s house burn, sends his compliments. You have made the district cleaner and an accountant-general of an enemy."
+      },
+      {
+        "label": "Break the contract quietly and run the works direct from the cutcherry.",
+        "effects": { "order": 1, "contentment": 2, "health": -4, "revenue": -1 },
+        "econ": { "treasury": -15000 },
+        "outcome": "No prosecution, no scandal: the contract is annulled on a technicality and you take the works into your own office, which means the muster, the grain, the weighments, and the rain are all now personally yours, on top of a district. The ghosts vanish from the roll; the real names eat. Simla notes the cost overrun without noting the reason, that being how the ledger is designed."
+      },
+      {
+        "label": "File Ram Autar&rsquo;s sheet; the works are feeding somebody, and the season is long.",
+        "effects": { "prestige": -2, "contentment": -4, "order": -2, "health": 1 },
+        "outcome": "You put the sheet where sheets go, and the works grind on, three parts fraud and one part food. Ram Autar receives the decision with a bow of precisely calibrated depth and enters something in the private ledger he keeps behind his eyes, where your account has stood in credit until now. The bazaar knows the arithmetic to the last seer, and adjusts its opinion of the sirkar accordingly."
+      }
+    ]
+  },
+  {
+    "id": "white-ants",
+    "tag": "CUTCHERRY",
+    "season": ["monsoon"],
+    "kind": "desk",
+    "once": true,
+    "title": "The White Ants",
+    "body": "The monsoon damp has got into the record-room, and the white ants have got in after it, and between them they have eaten the settlement papers of mauza Piparia &mdash; the originals, the maps, the whole bundle &mdash; leaving a lace of mud and paper that comes apart at a breath. The boundary those papers fixed is the one the Lala and the Piparia headman have been fighting over for nine years. Both parties will be at the cutcherry within the week, and the record now says whatever anyone can prove it said.",
+    "choices": [
+      {
+        "label": "Reconstruct the record: Ram Autar&rsquo;s memory, the field measurements, three weeks&rsquo; work.",
+        "effects": { "order": 2, "prestige": 1, "health": -4 },
+        "outcome": "Ram Autar, it emerges, can recite the Piparia settlement the way other men recite scripture, and between his memory, the chain-and-compass men, and three weeks of evenings, the bundle is rebuilt entry by entry. The new record is honester than the old one, which had a thumb on it somewhere back in the eighties. Both parties are equally dissatisfied, which in boundary work is the sound of justice."
+      },
+      {
+        "label": "Accept the Lala&rsquo;s copy; he keeps duplicates of everything, beautifully.",
+        "effects": { "order": 1, "contentment": -3, "prestige": -1, "health": 2 },
+        "setFlags": ["lala_copy"],
+        "outcome": "The Lala produces his copy within the hour, bound in red cloth, immaculate &mdash; a man does not lend money against land for thirty years without keeping better records than Government. It is accepted, attested, and filed, and the boundary it shows has drifted perhaps two fields Lala-ward of anyone&rsquo;s memory. Piparia signs the acknowledgment because Piparia owes him money. Everything is in order. That is precisely the trouble."
+      },
+      {
+        "label": "Report the loss to Simla and ask for a fresh survey next cold weather.",
+        "effects": { "prestige": -2, "order": -2, "contentment": 1 },
+        "outcome": "The honest course: a loss report in triplicate, a requisition for the survey party, and a docket that will circulate for months collecting initials like a subscription list. Meanwhile Piparia and the Lala hold the disputed fields in a truce of glares, and the district learns that the sirkar&rsquo;s memory can be eaten &mdash; a discovery that will be tested, in small ways, at every record-room in the district before the rains are out."
+      }
+    ]
+  },
+  {
+    "id": "dak-stops",
+    "tag": "MOST SECRET",
+    "season": ["monsoon"],
+    "kind": "desk",
+    "once": true,
+    "title": "The Wire Goes Down",
+    "body": "The flood takes the telegraph line on Monday and the road bridge on Wednesday night, and by Thursday morning Chhota Nagra is alone in the world: no wire, no dak, no Simla, no Division &mdash; an Empire of one district, and you its entire Government. On the desk are three matters that in the ordinary way would go up for sanction: a grain seizure, a bond of security from a bad character, and the poplar case you have been forbidden to touch. Nothing can be referred. Nobody can say no.",
+    "choices": [
+      {
+        "label": "Govern: decide all three on your own authority and log it for the record.",
+        "condition": { "meter": "prestige", "op": ">=", "value": 55 },
+        "ifTrue": {
+          "effects": { "prestige": 3, "order": 2, "contentment": 2, "health": -2 },
+          "outcome": "You decide the three of them in a morning &mdash; rightly, as the event proves &mdash; and when the wire is restored your report goes up with the decisions already a week old and working. A man whose name carries weight is called decisive for this; the Commissioner&rsquo;s minute says &lsquo;acted with judgment in isolation,&rsquo; which goes on the record, and the district learns the sahib does not stop when Simla does."
+        },
+        "ifFalse": {
+          "effects": { "prestige": -3, "order": 2, "health": -2 },
+          "outcome": "You decide the three of them in a morning, rightly &mdash; and when the wire is restored the same acts read differently against a name that carries no weight. A Deputy Secretary minutes that the District Magistrate appears to regard the interruption of telegraphic communication as an enlargement of his powers. The decisions stand, being correct. The sentence stands too, being filed."
+        }
+      },
+      {
+        "label": "Hold everything that can be held; the flood will not last for ever.",
+        "effects": { "prestige": -1, "order": -1, "health": 2 },
+        "outcome": "You do the sanctioned nothing, beautifully. The grain moves before the seizure order does; the bad character, unbonded, improves the interval; the poplar case sleeps on. When the line is restored you have nothing to report and nothing to answer for, which the Service regards as a week well spent, and the district regards as a week with no Government at all. Both are exactly right."
+      },
+      {
+        "label": "Use the silence: settle the poplar case your way and let the file catch up later.",
+        "effects": { "prestige": 2, "contentment": 3, "order": -1, "health": -1 },
+        "setFlags": ["poplar_settled"],
+        "outcome": "The case Simla forbade you to touch is touched, disposed of, and planted over before Simla exists again &mdash; settled the way anyone standing in the actual mud would settle it. When the wire hums back to life the thing is done beyond undoing, and the report is a masterpiece of the past tense. It is the best fortnight&rsquo;s work of your year, and it can never, ever be mentioned."
+      }
+    ]
+  },
+  {
+    "id": "snake-season",
+    "tag": "D.O.",
+    "season": ["monsoon"],
+    "kind": "personal",
+    "once": true,
+    "title": "The Krait in the Bath-Room",
+    "body": "The rains flush the snakes out of the earth and into the world&rsquo;s bath-rooms, and the season&rsquo;s returns are already seven dead in the district &mdash; then, this morning, the krait is in yours: a foot of dull slate lying along the cool of the pipe, the small one, the one that kills in the small hours. The sweeper takes its head off with one crack of a lathi as if dispatching a beetle. The same week, his own boy is bitten at the lines and lies swelling; and the Civil Surgeon mentions there is a new serum now, from the hills, that Government does not yet pay for.",
+    "choices": [
+      {
+        "label": "Wire Kasauli for the serum, for the boy and the lines, at your own charge.",
+        "effects": { "contentment": 4, "health": -1, "prestige": -1 },
+        "econ": { "treasury": -4000 },
+        "outcome": "The packet comes down by the mail tonga wrapped like a relic, and the Civil Surgeon does what he does. The boy&rsquo;s leg is bad for a month; the boy lives. The lines know to a man whose money moved and how fast, and the Club, hearing of it, wonders aloud whether one is expected to insure one&rsquo;s whole establishment now. The sweeper says nothing, and thereafter your bath-room is patrolled like a frontier."
+      },
+      {
+        "label": "Leave it with the Civil Surgeon and the old treatments.",
+        "effects": { "prestige": 1, "contentment": -3, "health": -2 },
+        "outcome": "Ligature, lancing, permanganate, prayer: the pharmacopoeia of the last century, applied with this century&rsquo;s kindness. The boy dies before dawn on the third day, as most of them do, and is buried in the rain. It was nobody&rsquo;s fault and there is no file to open. The sweeper is back at work the same week, and something in the compound&rsquo;s greeting of you has gone out and does not come back with the sun."
+      },
+      {
+        "label": "Circulate a district order on snake precautions, and mind your own boots.",
+        "effects": { "order": 1, "contentment": -2, "health": 1 },
+        "outcome": "The order is a sound one &mdash; boots, lanterns, beds away from walls, the usual &mdash; and it is read aloud in every police line and school in the district, where it will save some unknowable number of lives belonging to people who will never connect them to you. The boy at the lines is past the reach of paper by Friday. Administration, you write in the margin of the season, is charity with the faces removed."
+      }
+    ]
+  },
+  {
+    "id": "night-of-frogs",
+    "tag": "THE RAINS",
+    "season": ["monsoon"],
+    "kind": "interlude",
+    "interlude": true,
+    "once": true,
+    "title": "The Night of Frogs",
+    "body": "After the third day&rsquo;s rain the tanks join hands across the fields, and at dusk the frogs begin &mdash; a hundred thousand of them, a sound like the boiling of the whole earth, so vast and so level that by midnight it has become a kind of silence. Nothing in the district can be heard over it, which means that for one night nothing in the district can be asked of you. You sit on the verandah in the dark with the lamp out, unreachable, and let the flood do the talking.",
+    "effects": {
+      "health": 2
+    }
+  }
+]
