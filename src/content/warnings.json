@@ -1,0 +1,290 @@
+[
+  {
+    "id": "warn-health",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "any"
+    ],
+    "kind": "personal",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "meter": "health",
+      "op": "<",
+      "value": 25
+    },
+    "title": "The Civil Surgeon Is Frank",
+    "body": "He comes after dinner, without his bag, which is how a doctor makes a social call that is not one. He has watched you across a month of files and fevers, and he puts it without varnish: you are at the edge of what a European constitution will stand in this climate, and men are invalided Home &mdash; carried aboard the steamer, careers folded like camp furniture &mdash; for less than what he sees across this table. He has written nothing down yet. What he writes next is, for once, partly up to you.",
+    "choices": [
+      {
+        "label": "Take the month&rsquo;s rest cure he prescribes, and let the district hear of it.",
+        "effects": {
+          "health": 10,
+          "prestige": -2,
+          "revenue": -2
+        },
+        "outcome": "You do the unthinkable and rest: a month of early nights, no files after dinner, the verandah and the doctor&rsquo;s vile tonic. The district notes that the sahib is resting and draws its conclusions; the returns slip a little; and your hands, one morning, are steady on the teacup for the first time since the hot weather began."
+      },
+      {
+        "label": "Compromise &mdash; quinine, early nights, and half-days for a fortnight.",
+        "effects": {
+          "health": 5,
+          "order": -1
+        },
+        "outcome": "You bargain with your own body like a bania, and it accepts the instalment. The worst of the edge comes off; the cutcherry learns to decide small things without you, which is not entirely a gain; and the Civil Surgeon, reading your face at the Club, gives you the nod a jailer gives a prisoner behaving sensibly."
+      },
+      {
+        "label": "Thank him, pour him another, and carry on; the district cannot wait.",
+        "effects": {
+          "prestige": 2,
+          "health": -2
+        },
+        "outcome": "It is the answer the Service drinks to and the cemeteries are full of. The Commissioner hears you refused a rest cure and calls you a glutton for work, which goes on a file; the Civil Surgeon hears the same and writes a private line to the steamer agent, which does not. You go on. The climate, which has all the time in the world, goes on too."
+      }
+    ]
+  },
+  {
+    "id": "warn-order",
+    "tag": "URGENT",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "meter": "order",
+      "op": "<",
+      "value": 38
+    },
+    "title": "The Superintendent&rsquo;s Warning",
+    "body": "The District Superintendent of Police asks for an interview, which means bad news; and brings a map, which means worse. He lays it out without drama: the talk in the bazaar has changed key, the constables are jeered where they were saluted, two lathis were &lsquo;lost&rsquo; from the lines on Tuesday. A district at this pitch, he says, wants only a spark and a market-day &mdash; and once a crowd becomes a riot, sahib, it is a Commission of Enquiry with your name in the first paragraph.",
+    "choices": [
+      {
+        "label": "Sanction the punitive police post he asks for, cost and grumbling be damned.",
+        "effects": {
+          "order": 8,
+          "contentment": -4
+        },
+        "econ": {
+          "treasury": -8000
+        },
+        "outcome": "The post goes up in the bad quarter in a week: whitewash, a flagstaff, twenty constables with nothing to do but be visible. The bazaar hates it and minds its manners in front of it, which is the whole of the theory. The Superintendent rolls up his map like a man reprieved; the quarter pays for its own watching, in the way of such arrangements, twice."
+      },
+      {
+        "label": "Call the notables to a durbar and let the grievances be said aloud.",
+        "effects": {
+          "order": 4,
+          "contentment": 2,
+          "prestige": -2,
+          "health": -2
+        },
+        "outcome": "Three hours under a hot shamiana while every headman, pleader, and secretary of a committee says his piece at full length, and you take notes and concede the small points with grave ceremony. It is exhausting, faintly humiliating, and it works: steam let off on a Tuesday does not blow the boiler on market-day. Simla would call it weakness, so Simla is not told."
+      },
+      {
+        "label": "File the report; this district has simmered since the Mutiny and not boiled yet.",
+        "effects": {
+          "order": -2,
+          "health": 1
+        },
+        "outcome": "You sleep soundly, which is one of you. The Superintendent enters your decision in his diary in a copperplate hand that says more than the words do, and doubles the patrols on his own authority, quietly, because one of the two of you has to. The bazaar goes on changing key."
+      }
+    ]
+  },
+  {
+    "id": "warn-prestige",
+    "tag": "PRIVATE",
+    "season": [
+      "any"
+    ],
+    "kind": "club",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "meter": "prestige",
+      "op": "<",
+      "value": 38
+    },
+    "title": "A Word at the Club",
+    "body": "The Judge waits until the billiard-room empties, which is how the Club conducts its serious business, and gives it to you between racks, kindly: your name is being spoken slightingly &mdash; a dinner-table in Simla, a Deputy Secretary&rsquo;s minute, the Commissioner silent when he might have defended you. A man&rsquo;s standing out here is his armour, he says, chalking his cue; below a certain weight of it, any question becomes a scandal, because no one troubles to answer it for you.",
+    "choices": [
+      {
+        "label": "Give the burra khana of the season for precisely the people who matter.",
+        "effects": {
+          "prestige": 7,
+          "contentment": -2
+        },
+        "econ": {
+          "treasury": -12000
+        },
+        "outcome": "Crested menus, iced hock, the Commissioner at your right hand and his lady visibly enjoying herself: forty covers of calculated magnificence, every one of them a despatch in your favour. It is the oldest instrument in the Service and it has never once failed. The district, which paid for the hock in its own fashion, watches the carriages roll up and files the evening under what it already knew."
+      },
+      {
+        "label": "Write the Commissioner a memorandum of your year&rsquo;s works, as unctuous as required.",
+        "effects": {
+          "prestige": 5,
+          "health": -3
+        },
+        "outcome": "Four drafts to get the tone right &mdash; achievement wearing modesty like a buttonhole &mdash; and a night&rsquo;s sleep lost to self-disgust, which is the document&rsquo;s true cost. It lands. Phrases from it reappear, unattributed, in the Commissioner&rsquo;s own review of the district, which is how you know it has entered the bloodstream. You keep the drafts locked up like a guilty thing."
+      },
+      {
+        "label": "Let the record speak for itself.",
+        "effects": {
+          "contentment": 2,
+          "prestige": -1
+        },
+        "outcome": "The record, which has no dinner-table and writes no minutes, says nothing audible to anyone who matters. The district, oddly, hears it &mdash; the ryot has a long memory for a sahib too proud to court his own kind &mdash; and likes you the better. The Judge pockets the red and says, not unkindly, that he once knew another man of your opinions, and that the fellow ended in a District nobody could find on the map."
+      }
+    ]
+  },
+  {
+    "id": "warn-revenue",
+    "tag": "MEMORANDUM",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "meter": "revenue",
+      "op": "<",
+      "value": 25
+    },
+    "title": "The Board Grows Curious",
+    "body": "The Board of Revenue writes in the tone it keeps for Collectors it has begun to watch: the returns of Chhota Nagra are noted with concern; the Member trusts the demand will be realised; a district that cannot pay its way, the letter does not quite say and entirely means, will presently be given a Collector who can make it. An Empire is a business, and you are a branch office showing a loss.",
+    "choices": [
+      {
+        "label": "Press the collections hard before settlement, and let it be felt.",
+        "effects": {
+          "revenue": 8,
+          "contentment": -5,
+          "order": -2
+        },
+        "outcome": "The tahsildars go out with their instructions and the district learns the difference between a Collector and a collector. The demand is realised, the Board&rsquo;s next letter is a purr, and the arrears come in with a bitterness attached that no receipt records. It will be remembered against you in villages you have never seen, at prices not yet named."
+      },
+      {
+        "label": "Tour the defaulting circles yourself and squeeze with courtesy.",
+        "effects": {
+          "revenue": 5,
+          "prestige": 1,
+          "health": -3
+        },
+        "outcome": "A fortnight in the saddle doing arithmetic under village trees: who can pay, who is lying, who is ruined and must not be pushed over. It is slower than coercion and better than it, and it costs you the last of the season&rsquo;s strength. The money comes in decently; the Board is satisfied; the district files you under hard-but-fair, which is the best entry its ledger keeps."
+      },
+      {
+        "label": "Certify hardship, remit the worst, and pray for the harvest.",
+        "effects": {
+          "contentment": 3,
+          "revenue": -1
+        },
+        "outcome": "You write the certificate the villages would bless you for if they ever saw it, and stake the year on the monsoon behaving. The Board notes your remissions &lsquo;with attention,&rsquo; which is one degree colder than concern. If the harvest comes in fat, you were a statesman. If it fails, the Member has already chosen the word for what you were."
+      }
+    ]
+  },
+  {
+    "id": "warn-debt",
+    "tag": "PRIVATE",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "meter": "debt",
+      "op": ">",
+      "value": 110000
+    },
+    "title": "The Lala Calls In Person",
+    "body": "Lala Hukum Chand does not send his man; he comes himself, which is the compliment a creditor pays a debt worth watching. Sherbet, enquiries after your health, a tour of the garden &mdash; and then, gently, the figure, produced like a pearl from a handkerchief. He names what the district owes him to the anna. He mentions, as one mentions the weather, that above a certain figure a district is no longer governed but administered on behalf of its creditors &mdash; and that Government House has always understood this perfectly.",
+    "choices": [
+      {
+        "label": "Pay him down from the chest, whatever it leaves for the rest of the year.",
+        "effects": {
+          "prestige": 1
+        },
+        "econ": {
+          "treasury": -50000,
+          "debt": -50000
+        },
+        "outcome": "You write the order while he watches, which spoils his morning: a debtor who pays is a client lost. The chest rings hollow for months and every scheme in the district goes on half-rations &mdash; but the book against your name grows thin, and the particular smile he keeps for owned men is put away for some other Collector."
+      },
+      {
+        "label": "Renegotiate: easier terms against the haulage contract his nephew wants.",
+        "effects": {
+          "contentment": -3,
+          "order": -1
+        },
+        "econ": {
+          "debt": -25000
+        },
+        "outcome": "The interest softens; the nephew prospers; the bazaar, which can read a contract award like a sacred text, adds it up aloud. Nothing has been done that a Commission could name, which is the precise size of the comfort. The Lala leaves content. He has exchanged a little money for a little of you, and he knows which appreciates."
+      },
+      {
+        "label": "Let him whistle for it; the Raj does not dance to a bania.",
+        "effects": {
+          "prestige": 2,
+          "contentment": -2
+        },
+        "econ": {
+          "debt": 15000
+        },
+        "outcome": "It is superbly said and the Club applauds the sentiment. The Lala bows himself out untroubled &mdash; displeasure is an expense he simply enters in the ledger, and does: fees, renewals, a point on the rate, grain a shade dearer in the bad quarter where his agents set the price. The Raj does not dance to a bania. It borrows from him, which he finds better than dancing."
+      }
+    ]
+  },
+  {
+    "id": "warn-native",
+    "tag": "PRIVATE",
+    "season": [
+      "any"
+    ],
+    "kind": "club",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "allOf": [
+        {
+          "meter": "contentment",
+          "op": ">=",
+          "value": 68
+        },
+        {
+          "meter": "prestige",
+          "op": "<",
+          "value": 48
+        }
+      ]
+    },
+    "title": "The Club Grows Cold",
+    "body": "It is nothing you could put in a file: a chair angled away, a conversation that closes politely at your approach, the Colonel&rsquo;s lady asking after your &lsquo;native friends&rsquo; with a sweetness that would etch glass. The district loves you and the station has noticed, and the station has a word for a man the bazaar blesses and Simla cannot place. Quite the friend of the ryot, someone says into the silence, and does not mean it kindly. Men have resigned over the way that sentence lands.",
+    "choices": [
+      {
+        "label": "Reassert the proper distance, coldly and completely.",
+        "effects": {
+          "prestige": 5,
+          "contentment": -5
+        },
+        "outcome": "You withdraw behind the sahib as behind a shut door: engagements declined, petitions through channels, the vernacular put away like summer clothes. The Club thaws within the month, which tells you what it always was. Out in the district a certain warmth goes quietly out of the salaams, and does not come back, and you feel its absence at odd hours for the rest of the posting."
+      },
+      {
+        "label": "Split the difference &mdash; correct in public, faithful in private.",
+        "effects": {
+          "prestige": 2,
+          "contentment": -2,
+          "health": -2
+        },
+        "outcome": "You learn the amphibian&rsquo;s life: all starch at the station, all patience in camp, two faces and the constant secret bookkeeping of which is showing. It answers, roughly; both worlds keep half their faith in you. But a man who is two men is doing two postings on one constitution, and both of him is tired."
+      },
+      {
+        "label": "Let them talk; the district is better company.",
+        "effects": {
+          "contentment": 3,
+          "prestige": -3
+        },
+        "outcome": "You stop performing for the billiard-room, and the relief is physical, like loosening a collar. The district feels the change the way a horse feels a rider stop fighting him, and gives you more than it has ever given. The station&rsquo;s verdict goes up through the proper channels in the proper tone: a useful officer, gone soft on the native side. Such men, the minute observes, are loved and not promoted."
+      }
+    ]
+  }
+]

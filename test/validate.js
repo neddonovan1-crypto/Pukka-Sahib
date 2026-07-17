@@ -77,11 +77,14 @@ var ids = {};
 var flagsProduced = {};
 var flagsRequired = [];
 
+// Conditions may also read the economy's debt scalar (for the Lala warning).
+var COND_METERS = METERS.concat(["debt"]);
+
 function checkCondition(c, where) {
   if (!c) return;
   if ("flag" in c) { flagsRequired.push({ flag: c.flag, where: where }); return; }
   if ("meter" in c) {
-    check(METERS.indexOf(c.meter) !== -1, where + ": condition meter invalid " + c.meter);
+    check(COND_METERS.indexOf(c.meter) !== -1, where + ": condition meter invalid " + c.meter);
     check(OPS.indexOf(c.op) !== -1, where + ": condition op invalid " + c.op);
     check(typeof c.value === "number", where + ": condition value not numeric");
     return;
@@ -129,6 +132,14 @@ content.events.forEach(function (e) {
   if (e.once) flagsProduced[e.id] = true; // once-events set flags[id]
   if (e.requires) checkCondition(e.requires, w + ".requires");
   if (e.art !== undefined) check(typeof e.art === "string" && e.art.length > 0, w + ": art must be a non-empty banner key");
+  if (e.priority !== undefined) {
+    // A priority event is a crisis warning: it preempts the draw while its
+    // requires holds, so it must be gated and must not repeat.
+    check(e.priority === true, w + ": priority must be true when present");
+    check(e.once === true, w + ": priority events must be once");
+    check(!!e.requires, w + ": priority events need a requires gate");
+    check(!e.interlude, w + ": priority events cannot be interludes");
+  }
   if (e.interlude) {
     // A no-choice occurrence: no choices, optional event-level effect/econ/outcome.
     check(e.kind === "interlude", w + ": interlude events must have kind 'interlude'");

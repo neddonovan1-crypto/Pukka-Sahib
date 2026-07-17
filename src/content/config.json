@@ -66,7 +66,7 @@
         "season": {
           "cold": {},
           "hot": {
-            "health": -3
+            "health": -4
           },
           "monsoon": {
             "health": -1,
@@ -157,7 +157,7 @@
       ],
       "settlementBase": 140000,
       "interestRate": 0.18,
-      "debtCeiling": 200000,
+      "debtCeiling": 180000,
       "debtWarn": 120000
     },
     "interludeChance": 0.16

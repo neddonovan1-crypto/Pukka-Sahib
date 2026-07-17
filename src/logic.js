@@ -195,6 +195,17 @@
         var ss = e.season || ["any"];
         return ss.indexOf("any") !== -1 || ss.indexOf(sk) !== -1;
       };
+      // Crisis warnings preempt everything, atmosphere included: priority
+      // events whose `requires` puts a meter in its danger band fire at the
+      // next drawn fortnight (once each per game), so no collapse arrives
+      // unannounced.
+      var urgent = EVENTS.filter(function (e) { return e.priority && !e.interlude && eligible(e); });
+      if (urgent.length) {
+        current = pick(urgent);
+        recent.push(current.id); if (recent.length > 4) recent.shift();
+        lastEventId = current.id;
+        return;
+      }
       // A small independent chance the fortnight brings only an atmospheric
       // occurrence. Kept out of the posture-weighted draw so it can't starve the
       // business pool or force a repeat.

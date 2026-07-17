@@ -21,26 +21,48 @@
     "choices": [
       {
         "label": "Paint the district for him &mdash; whitewash, garlands, and the contented poor at intervals.",
-        "effects": { "prestige": 4, "contentment": -2, "health": -2 },
-        "econ": { "treasury": -6000 },
+        "effects": {
+          "prestige": 4,
+          "contentment": -2,
+          "health": -2
+        },
+        "econ": {
+          "treasury": -6000
+        },
         "outcome": "The jail is limewashed, the school recites, and a line of the reliably contented is arranged at the roadside with garlands. The Commissioner, who has inspected districts for thirty years and believes none of what he is shown, is nonetheless soothed by the effort of the deception, which is the real tribute. The sentence, this year, is a good one."
       },
       {
         "label": "Show him the district as it is and let the work speak.",
-        "condition": { "meter": "order", "op": ">=", "value": 55 },
+        "condition": {
+          "meter": "order",
+          "op": ">=",
+          "value": 55
+        },
         "ifTrue": {
-          "effects": { "prestige": 2, "contentment": 2 },
+          "effects": {
+            "prestige": 2,
+            "contentment": 2
+          },
           "outcome": "You show him the unwhitewashed jail, the honest arrears, the things half-done and the reasons why. It is a gamble on the man having once been a district officer himself &mdash; and it comes off: he grunts, corrects your canal figures from memory, and writes the word &lsquo;sound,&rsquo; which from him is a garland."
         },
         "ifFalse": {
-          "effects": { "prestige": -4, "health": -2 },
+          "effects": {
+            "prestige": -4,
+            "health": -2
+          },
           "outcome": "Honesty is a fine policy for a district that will bear looking at, and yours, just now, will not. The pencil moves in the notebook at the jail, at the school, at the third unmended culvert; and the sentence Simla reads this year has the word &lsquo;slack&rsquo; in it, which takes precisely one cold weather to earn and three to live down."
         }
       },
       {
         "label": "Give him a durbar to remember &mdash; the whole district by rank on the maidan.",
-        "effects": { "prestige": 3, "order": 1, "contentment": -3 },
-        "econ": { "treasury": -15000 },
+        "effects": {
+          "prestige": 3,
+          "order": 1,
+          "contentment": -3
+        },
+        "econ": {
+          "treasury": -15000
+        },
         "outcome": "A shamiana like a landed cloud, the notables seated to the inch of their precedence, the schoolchildren massed, the police burnished. The Commissioner is received like a minor king and departs purring; the cost is entered under four different heads, none of them called what it was; and the district notes what its magistrate will spend on a carpet who pleaded poverty at the last assessment."
       }
     ]
@@ -54,17 +76,28 @@
     "choices": [
       {
         "label": "Take the whole parade at attention, address and all.",
-        "effects": { "prestige": 2, "health": -4 },
+        "effects": {
+          "prestige": 2,
+          "health": -4
+        },
         "outcome": "You stand through every verse of it, bareheaded for the anthem with the sun like a hand on your skull, and take the salute as though the maidan were the Horse Guards. The district approves of the performance in the way it approves of any penance properly done. That evening your head rings like a struck gong, and the Civil Surgeon uses the word &lsquo;folly&rsquo; conversationally."
       },
       {
         "label": "Cut it mercifully short and get the children into the shade.",
-        "effects": { "contentment": 2, "prestige": -1, "health": -1 },
+        "effects": {
+          "contentment": 2,
+          "prestige": -1,
+          "health": -1
+        },
         "outcome": "You take the address as read, decorate the head boy, and have the schools dismissed to the trees and the water-carriers by half-past eight. The mothers of the district are with you to a woman; the Municipal Committee, robbed of its seventeen minutes, is not; and the Colonel observes at the Club that in his day Empire Day was Empire Day."
       },
       {
         "label": "Let Mukherjee take the salute; you are indisposed.",
-        "effects": { "prestige": -3, "contentment": 1, "health": 2 },
+        "effects": {
+          "prestige": -3,
+          "contentment": 1,
+          "health": 2
+        },
         "outcome": "The Deputy Collector takes the parade faultlessly &mdash; rather better, in fact, than you would have done, which is noted on all sides with varying satisfaction. You spend the morning behind the chiks with the returns. The precedent, once set, will be remembered by everyone: by the district with interest, and by the Club with the particular silence it keeps for a sahib who was not there."
       }
     ]
@@ -86,19 +119,34 @@
     "choices": [
       {
         "label": "Take the Lala's money and rebuild the bund at once, terms be damned.",
-        "effects": { "order": 2, "contentment": 3, "health": -2 },
-        "econ": { "debt": 90000 },
+        "effects": {
+          "order": 2,
+          "contentment": 3,
+          "health": -2
+        },
+        "econ": {
+          "debt": 110000
+        },
         "outcome": "By dawn there are nine hundred men on the embankment and the Lala's brick coming down by the boatload, and in six days of mud and lanterns the bund is a bund again. The villages are saved and know who saved them. The terms, when you read them at leisure, are the terms of a man who also knows &mdash; and who has waited years for the river to deliver you to his book."
       },
       {
         "label": "Patch the worst of it from the treasury and stand the watch yourself.",
-        "effects": { "order": 1, "health": -3 },
-        "econ": { "treasury": -45000 },
+        "effects": {
+          "order": 1,
+          "health": -3
+        },
+        "econ": {
+          "treasury": -45000
+        },
         "outcome": "You spend what the chest will bear, press every Public Works man and district cart into the breach, and take the night watches in a streaming mackintosh with the water a foot from the lip. The bund holds &mdash; barely, this year. The engineer's report calls the repair &lsquo;temporary,&rsquo; which is what the district calls everything Government does, and the treasury will feel it at settlement."
       },
       {
         "label": "The bund has held forty years; hold the money and trust the odds.",
-        "effects": { "order": -5, "contentment": -6, "prestige": -3 },
+        "effects": {
+          "order": -5,
+          "contentment": -6,
+          "prestige": -3
+        },
         "outcome": "The river, which has also been playing the odds for forty years, calls. The breach goes out on the ninth night with a sound the district will describe for a generation, and the water takes the rice, the cattle, and eleven lives the enquiry will call &lsquo;regrettably unavoidable.&rsquo; It also takes &mdash; quietly, completely &mdash; the district&rsquo;s belief that the sahib stands between it and the river, which was most of what the sahib had."
       }
     ]
@@ -124,24 +172,42 @@
     "choices": [
       {
         "label": "Varnish it &mdash; a year of steady progress under review.",
-        "condition": { "meter": "revenue", "op": ">=", "value": 50 },
+        "condition": {
+          "meter": "revenue",
+          "op": ">=",
+          "value": 50
+        },
         "ifTrue": {
-          "effects": { "prestige": 3, "health": -1 },
+          "effects": {
+            "prestige": 3,
+            "health": -1
+          },
           "outcome": "The prose glows, and the figures &mdash; decent enough, this year, to bear it &mdash; do not contradict a word. Government reads of firm and sympathetic administration, notes the collections, and is satisfied. It is not exactly untrue, which is the whole art of the Annual Report; and only you and Ram Autar know which adjectives are load-bearing."
         },
         "ifFalse": {
-          "effects": { "prestige": -3, "health": -1 },
+          "effects": {
+            "prestige": -3,
+            "health": -1
+          },
           "outcome": "The prose glows; the appendices do not. A Deputy Secretary with a taste for arithmetic sets the adjectives against the arrears and minutes, frostily, that the Collector&rsquo;s satisfaction with his district appears to rest on grounds not disclosed in the tables. A varnished report over bad figures is the one lie the Service never forgives, because it makes the reader do the work."
         }
       },
       {
         "label": "Write it plainly &mdash; the year as it actually went.",
-        "effects": { "contentment": 2, "prestige": -1, "health": 1 },
+        "effects": {
+          "contentment": 2,
+          "prestige": -1,
+          "health": 1
+        },
         "outcome": "You set down the failures with the successes, and the reasons for both, in prose with no varnish in it. Government finds the document &lsquo;candid,&rsquo; which in the official lexicon sits two shelves below &lsquo;brilliant&rsquo;; but it is a report a man can stand behind at an enquiry, and you sleep the sounder for every plain sentence in it."
       },
       {
         "label": "Let Ram Autar draft it in the full ceremonial style.",
-        "effects": { "prestige": 1, "health": 2, "contentment": -1 },
+        "effects": {
+          "prestige": 1,
+          "health": 2,
+          "contentment": -1
+        },
         "outcome": "The head clerk composes forty pages of faultless official prose in which nothing is concealed and nothing can quite be found &mdash; grievances dissolved in the passive voice, arrears distributed among subordinate clauses. Government reads it with the mild pleasure of recognition, for half the province&rsquo;s reports are written by such men in such a style. You sign it. It is, in every sense, the district&rsquo;s own account of itself."
       }
     ]

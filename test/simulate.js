@@ -25,7 +25,7 @@ function scoreChoice(ch, s) {
   });
   if (ch.econ && ch.econ.debt) {
     sc -= ch.econ.debt / 40000;
-    if (s.debt + ch.econ.debt > 160000) sc -= 50; // a second big borrow is how collectors end
+    if (s.debt + ch.econ.debt > 140000) sc -= 50; // a second big borrow is how collectors end
   }
   if (ch.econ && ch.econ.treasury < 0) {
     var shortfall = Math.max(0, -ch.econ.treasury - s.treasury); // spend beyond the chest is a borrow
@@ -67,7 +67,7 @@ var POLICIES = {
     posture: function (s) {
       if (s.retreat && s.season.key === "hot" && s.meters.health < 42) return s.retreat.key;
       if (s.season.key === "cold") return "tour";
-      if (s.meters.contentment < 56 || s.meters.order < 50) return "tour";
+      if (s.meters.contentment < 52 || s.meters.order < 50) return "tour";
       return "desk";
     },
     option: function (s) {
@@ -76,7 +76,7 @@ var POLICIES = {
         var e = ch.effects || {};
         var m = s.meters;
         var sc = (e.prestige || 0) * 2 +
-          (e.contentment || 0) * (m.contentment < 58 ? 0.9 : 0.1) +
+          (e.contentment || 0) * (m.contentment < 56 ? 0.9 : 0.1) +
           (e.revenue || 0) * (m.revenue < 62 ? 0.8 : 0.2) +
           (e.order || 0) * (m.order < 50 ? 0.8 : 0.2) +
           (e.health || 0) * (m.health < 40 ? 1.6 : 0);
@@ -185,10 +185,10 @@ R.reckless = runBatch("reckless", 200, 133337);
 
 console.log("\n=== Balance report (n=" + N + " per policy) ===");
 Object.keys(R).forEach(function (p) {
-  var d = R[p].dist;
-  console.log(p.padEnd(9), "honours=" + (pct(d, HONOURS, N) * 100).toFixed(0) + "%",
-    "kcie=" + (pct(d, ["kcie"], N) * 100).toFixed(0) + "%",
-    "collapse=" + (pct(d, COLLAPSE, N) * 100).toFixed(0) + "%",
+  var d = R[p].dist, n = R[p].n; // probe batches run n=200, not N — report honestly
+  console.log(p.padEnd(9), "honours=" + (pct(d, HONOURS, n) * 100).toFixed(0) + "%",
+    "kcie=" + (pct(d, ["kcie"], n) * 100).toFixed(0) + "%",
+    "collapse=" + (pct(d, COLLAPSE, n) * 100).toFixed(0) + "%",
     "| " + JSON.stringify(d));
 });
 
