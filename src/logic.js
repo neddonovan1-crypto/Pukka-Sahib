@@ -167,8 +167,10 @@
       var end;
       // Ladder ascends CIE -> KCIE -> KCSI. The K.C.S.I. (senior star) is the
       // pinnacle: eminent standing, a solvent district, and a contented one.
-      if (p < 40 || o < 40) end = ENDINGS.scandal;
-      else if (c >= 65 && p < 50) end = ENDINGS.gonenative;
+      // Gone-native outranks scandal: a magistrate the district loves and Simla
+      // has written off resigns his own way — that is not a disgrace story.
+      if (c >= 65 && p < 50) end = ENDINGS.gonenative;
+      else if (p < 40 || o < 40) end = ENDINGS.scandal;
       else if (p >= 78 && r >= 58 && c >= 54) end = ENDINGS.kcsi;
       else if (p >= 74 && r >= 56) end = ENDINGS.kcie;
       else if (p >= 58) end = ENDINGS.cie;
@@ -338,15 +340,33 @@
       return snap;
     }
 
+    // The standing line is the player's honours tutor: it names the tier in
+    // reach and — because the List reads prestige before anything the district
+    // would call good government — says plainly which meter is binding.
     function honoursStanding() {
       var p = S.prestige, c = S.contentment, r = S.revenue;
-      if (S.debt > ECON.debtWarn) return "Honours List &mdash; the district's debts have ruined your name";
-      if (p < 40) return "Honours List &mdash; your name appears only in the complaints";
-      if (p >= 78 && r >= 58 && c >= 54) return "Honours List &mdash; a <b>K.C.S.I.</b> (a knighthood of the star) is within reach";
-      if (p >= 74 && r >= 56) return "Honours List &mdash; a <b>K.C.I.E.</b> (a knighthood) is within reach";
-      if (p >= 58) return "Honours List &mdash; a <b>C.I.E.</b> is within reach";
-      if (p >= 48) return "Honours List &mdash; not yet on anyone's list";
-      return "Honours List &mdash; unlikely, on present form";
+      var lead = "Honours List &mdash; ";
+      var debtBar = S.debt > ECON.debtWarn;
+      if (p >= 78 && r >= 58 && c >= 54)
+        return lead + (debtBar
+          ? "the star is earned and the Lala holds your paper; <b>no knighthood</b> until the debt is down"
+          : "a <b>K.C.S.I.</b> (a knighthood of the star) is within reach");
+      if (p >= 74 && r >= 56) {
+        if (debtBar) return lead + "a <b>C.I.E.</b> at most; no knighthood while the Lala holds your paper";
+        var want = p < 78 ? "still more prestige" : (r < 58 ? "the revenue brought up" : "the district better contented");
+        return lead + "a <b>K.C.I.E.</b> (a knighthood) is within reach; the senior star would want " + want;
+      }
+      if (p >= 58) {
+        var wants = [];
+        if (p < 74) wants.push("prestige");
+        if (r < 56) wants.push("revenue");
+        return lead + "a <b>C.I.E.</b> is within reach; a knighthood would want " + wants.join(" and ") +
+          (debtBar ? ", and the Lala paid off" : "");
+      }
+      if (p >= 48) return lead + "not yet on anyone's list; the List reads prestige before all else";
+      if (c >= 65) return lead + "the district is content and Simla is not; the List rewards the seen, not the good";
+      if (p >= 40) return lead + "unlikely on present form; prestige is the coin the List counts, and you are poor in it";
+      return lead + "your name appears only in the complaints";
     }
 
     return {
