@@ -70,12 +70,21 @@ with a distinct failure ending.
 
 ## 5. Endings
 
-Determined by final meter mix at turn 24 (or early collapse):
+Determined by final meter mix at turn 24 (or early collapse). Success is
+graded on the real **honours ladder** — the player works towards a ribbon, and
+which one they get says what kind of officer they became:
 
-- **The K.C.I.E.** — high Prestige + Revenue. Promoted to Commissioner. You
-  have learned nothing and will go far.
-- **The Quiet Transfer** — middling everything. Shunted to an even smaller
-  district. The Service's way of forgetting you.
+- **The K.C.I.E.** — very high Prestige + Revenue. A *knighthood* (Knight
+  Commander of the Order of the Indian Empire); "Sir" at last. The careerist's
+  pinnacle, and the hardest to reach. Promoted to Commissioner; has learned
+  nothing; will go far.
+- **The C.S.I.** — high Prestige + high Contentment. Companion of the senior
+  Order of the Star of India (*"Heaven's Light Our Guide"*) — the rarer, more
+  distinguished ribbon, for a district governed firmly *and* decently.
+- **The C.I.E.** — solid Prestige. Companion of the Order of the Indian Empire,
+  the honest workhorse honour of a competent district man. The realistic reward.
+- **The Quiet Transfer** — middling everything, no honour. Shunted to an even
+  smaller district. The Service's way of forgetting you.
 - **The Scandal** — Prestige collapses. Recalled. The Club stops writing.
 - **The Breakdown** — Composure hits zero. Invalided home "on grounds of
   health." The heat, they'll say.

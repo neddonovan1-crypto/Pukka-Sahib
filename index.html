@@ -47,7 +47,7 @@
     display:flex; min-height:100vh; align-items:flex-start; justify-content:center;
     padding:26px 14px 64px; line-height:1.6;
   }
-  .frame{width:100%; max-width:680px}
+  .frame{width:100%; max-width:680px; position:relative}
 
   /* ---- masthead: a Government of India file cover ---- */
   .masthead{
@@ -112,6 +112,21 @@
     border:1.5px solid var(--stamp); border-radius:3px; padding:3px 8px;
     transform:rotate(2.5deg); opacity:.88; white-space:nowrap;
   }
+  .stamp--secret{background:var(--stamp); color:var(--surface); border-color:var(--stamp); opacity:.92}
+  .cover-stamp{
+    position:absolute; top:-4px; right:0;
+    font-family:"Courier New",Courier,monospace; font-size:.64rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--seal); border:2px solid var(--seal);
+    border-radius:3px; padding:4px 9px; transform:rotate(7deg); opacity:.58;
+    box-shadow:0 0 0 3px var(--bg); pointer-events:none;
+  }
+  .honours{
+    font-family:"Courier New",Courier,monospace; font-size:.66rem; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--ink-soft); text-align:center;
+    margin:-8px 0 16px; padding-bottom:12px; border-bottom:1px dotted var(--line);
+  }
+  .honours b{color:var(--seal); font-weight:700}
+  @media (max-width:520px){ .cover-stamp{display:none} }
   .cardtitle{font-size:1.32rem; margin:0 0 11px; color:var(--seal-ink); font-weight:600; text-wrap:balance}
   .body{font-size:1.02rem; margin-bottom:18px}
   .choices{display:flex; flex-direction:column; gap:10px}
@@ -163,9 +178,10 @@
 <body>
 <div class="frame">
   <header class="masthead">
+    <div class="cover-stamp" aria-hidden="true">Most Secret</div>
     <div class="seal" aria-hidden="true">I.C.S.</div>
     <div class="mast-text">
-      <div class="dept">Government of India &middot; Political Department</div>
+      <div class="dept">Government of India &middot; Political &amp; Secret Department</div>
       <h1>Pukka Sahib</h1>
       <div class="sub">Private despatches of the District Magistrate &amp; Collector, Chhota Nagra</div>
     </div>
@@ -173,6 +189,7 @@
   <hr class="rule">
 
   <div class="meters" id="meters"></div>
+  <div class="honours" id="honours"></div>
   <div class="card" id="card"></div>
 
   <footer>One fortnight per turn &middot; survive the posting</footer>
@@ -222,6 +239,20 @@ function renderMeters(pulseKeys){
        <div class="val">${v}</div>`;
     el.appendChild(d);
   });
+  renderHonours();
+}
+function honoursStanding(){
+  const p=S.prestige, c=S.contentment, r=S.revenue;
+  if(p<40)                return "Honours List &mdash; your name appears only in the complaints";
+  if(p>=78 && r>=58)      return "Honours List &mdash; a <b>K.C.I.E.</b> (a knighthood) is within reach";
+  if(p>=66 && c>=58)      return "Honours List &mdash; a <b>C.S.I.</b> is being whispered";
+  if(p>=58)               return "Honours List &mdash; a <b>C.I.E.</b> is within reach";
+  if(p>=48)               return "Honours List &mdash; not yet on anyone's list";
+  return "Honours List &mdash; unlikely, on present form";
+}
+function renderHonours(){
+  const el = document.getElementById("honours");
+  if(el) el.innerHTML = honoursStanding();
 }
 function clamp(v){return Math.max(0,Math.min(100,Math.round(v)));}
 
@@ -247,13 +278,16 @@ function eligible(e){
   return true;
 }
 
+const SECRECY = ["MOST SECRET","SECRET","CONFIDENTIAL","CYPHER"];
 function renderCard(e){
   const c = document.getElementById("card");
   c.className = "card";
+  const tag = e.tag || "District business";
+  const stampCls = "stamp" + (SECRECY.includes(tag.toUpperCase()) ? " stamp--secret" : "");
   c.innerHTML =
     `<div class="turnline">
        <span class="fortnight">Fortnight ${turn} of ${MAX_TURNS}</span>
-       <span class="stamp">${e.tag||"District business"}</span>
+       <span class="${stampCls}">${tag}</span>
      </div>
      <h3 class="cardtitle">${e.title}</h3>
      <div class="body">${e.body}</div>
@@ -300,9 +334,11 @@ function collapseCheck(){
 }
 function finalVerdict(){
   const {revenue,order,prestige,contentment}=S;
-  if(contentment>=65 && prestige<45) return ENDINGS.gonenative;
-  if(prestige>=65 && revenue>=60)    return ENDINGS.honours;
-  if(prestige<40 || order<40)        return ENDINGS.scandal;
+  if(prestige<40 || order<40)          return ENDINGS.scandal;
+  if(contentment>=65 && prestige<50)   return ENDINGS.gonenative;
+  if(prestige>=78 && revenue>=58)      return ENDINGS.kcie;
+  if(prestige>=66 && contentment>=58)  return ENDINGS.csi;
+  if(prestige>=58)                     return ENDINGS.cie;
   return ENDINGS.transfer;
 }
 function showEnding(end){
@@ -323,8 +359,12 @@ function showEnding(end){
 
 /* ---------- content ---------- */
 const ENDINGS = {
-  honours:{title:"The K.C.I.E.",
-    text:"You are promoted to Commissioner, mentioned in despatches, and permitted to add letters to your name. You have learned nothing, and you will go far. Chhota Nagra is already forgetting you, which is the highest compliment it knows how to pay."},
+  kcie:{title:"The K.C.I.E.",
+    text:"You are gazetted a <b>Knight Commander of the Order of the Indian Empire</b> and become, at thirty-odd, &lsquo;Sir.&rsquo; Promoted to Commissioner, mentioned in despatches, permitted to add letters to your name. You have learned nothing, and you will go far. Chhota Nagra is already forgetting you, which is the highest compliment it knows how to pay."},
+  csi:{title:"The C.S.I.",
+    text:"The New Year Honours make you a <b>Companion of the Most Exalted Order of the Star of India</b> &mdash; <i>Heaven's Light Our Guide.</i> It is the rarer ribbon, given for a district governed firmly and, against the odds, decently. The Commissioner is faintly puzzled that a man so liked by the governed should be so rewarded. You decide not to explain."},
+  cie:{title:"The C.I.E.",
+    text:"The Gazette records you a <b>Companion of the Order of the Indian Empire</b> &mdash; the honest workhorse ribbon of a district man who kept the show on the road. No knighthood, no legend: a competent posting, decently done. In the Service, that is quietly understood to be the whole of the job."},
   transfer:{title:"The Quiet Transfer",
     text:"You are moved to a district even smaller and hotter than this one. No enquiry, no honours, no explanation. This is the Service's way of forgetting a man without the paperwork of dismissing him."},
   scandal:{title:"The Scandal",
@@ -340,7 +380,7 @@ const ENDINGS = {
 };
 
 const EVENTS = [
-  {id:"bull", once:false, tag:"A petition", title:"The Matter of the Sacred Bull",
+  {id:"bull", once:false, tag:"PETITION", title:"The Matter of the Sacred Bull",
    body:"Sub-Inspector Diwan Chand petitions, with immense dignity, that a Brahminy bull &mdash; holy, enormous, and wholly above the law &mdash; has for the third time eaten the marigolds he had grown for the flower show. He requests that the bull be, in his words, &lsquo;officially discouraged.&rsquo;",
    choices:[
      {label:"Solemnly issue a written order that the bull be <b>kept off official flowerbeds</b>.",
@@ -353,7 +393,7 @@ const EVENTS = [
       effects:{prestige:+2,contentment:-3,composure:+2},
       outcome:"Correct, dignified, and entirely useless. Diwan Chand's marigolds are eaten a fourth time. He does not forgive you, but he does respect you, which is worse."}]},
 
-  {id:"club", once:false, tag:"The Club", title:"The Billiards Subscription",
+  {id:"club", once:false, tag:"D.O.", title:"The Billiards Subscription",
    body:"An extraordinary meeting of the Chhota Nagra Club is convened over a proposal to raise the billiards subscription by four annas. Mrs. Fortescue-Vane is <i>for</i>. Major Prewitt is violently <i>against</i>. Both look to you, the new Magistrate, to settle a question that has already ended two friendships.",
    choices:[
      {label:"Side with <b>Mrs. Fortescue-Vane</b>. One does not cross her.",
@@ -366,7 +406,7 @@ const EVENTS = [
       effects:{prestige:+1,composure:-2},
       outcome:"You have discovered the single most powerful instrument of British administration: the postponement of a decision until everyone has forgotten why they cared."}]},
 
-  {id:"revenue-settle", once:false, tag:"Telegram", title:"The Revenue Is Short",
+  {id:"revenue-settle", once:false, tag:"TELEGRAM", title:"The Revenue Is Short",
    body:"A telegram from Commissioner Blyth-Curram, who communicates exclusively in telegrams and disappointment: REVENUE RETURNS CHHOTA NAGRA UNSATISFACTORY STOP EXPECT IMPROVEMENT STOP NO EXCUSES REGARDING RAINFALL WILL BE ENTERTAINED STOP. The rains, it should be said, have failed.",
    choices:[
      {label:"<b>Press the collection</b> hard. Simla wants numbers.",
@@ -379,7 +419,7 @@ const EVENTS = [
       effects:{prestige:-5,composure:+3},
       outcome:"Blyth-Curram replies: RAINFALL NOTED STOP REVENUE STILL SHORT STOP. You have learned that a telegram is not a conversation."}]},
 
-  {id:"congress", once:false, tag:"Intelligence", title:"Pandit Girdhari Holds a Meeting",
+  {id:"congress", once:false, tag:"MOST SECRET", title:"Pandit Girdhari Holds a Meeting",
    body:"Pandit Girdhari Lal, pleader and Congress man, proposes to address a public meeting on the subject of the salt tax, self-rule, and &mdash; the intelligence report notes with alarm &mdash; &lsquo;the general condition of things.&rsquo; It is entirely peaceful. It is also entirely legal. Both facts are considered a nuisance.",
    choices:[
      {label:"<b>Ban the meeting</b> under Section 144. Order is order.",
@@ -392,7 +432,7 @@ const EVENTS = [
       effects:{prestige:-2,contentment:+4,composure:-4,order:+1},
       outcome:"Your presence is so unexpected that the Pandit revises his speech on the spot to be scrupulously polite. You understand perhaps one word in five, and both of you leave convinced you have won."}]},
 
-  {id:"moneylender", once:false, tag:"A social call", title:"Lala Hukum Chand Pays a Call",
+  {id:"moneylender", once:false, tag:"CONFIDENTIAL", title:"Lala Hukum Chand Pays a Call",
    body:"Lala Hukum Chand &mdash; moneylender, landholder, and the man to whom most of the district is quietly mortgaged &mdash; calls to pay his respects. He brings a basket of remarkable mangoes and mentions, in passing and with great delicacy, that a certain land dispute might be settled &lsquo;to everyone's satisfaction&rsquo; with a word from your court.",
    choices:[
      {label:"Accept the mangoes; <b>ignore the hint</b>.",
@@ -405,7 +445,7 @@ const EVENTS = [
       effects:{revenue:+6,contentment:-5,prestige:-4,composure:-3,order:+1},setFlags:["indebted"],
       outcome:"The dispute is settled to the Lala's satisfaction. You are now, in a small and deniable way, his. It is astonishing how light the first thread feels."}]},
 
-  {id:"mukherjee", once:false, tag:"The office", title:"Deputy Collector Mukherjee Is Right Again",
+  {id:"mukherjee", once:false, tag:"MINUTE", title:"Deputy Collector Mukherjee Is Right Again",
    body:"Sub-Deputy Collector Mukherjee &mdash; your Indian deputy, Cambridge-educated, visibly cleverer than you, and far too well-mannered to say so &mdash; points out, very gently, that the drainage scheme you approved yesterday will flood the very quarter it was meant to protect. He is, of course, correct.",
    choices:[
      {label:"<b>Thank him</b> publicly and change the scheme.",
@@ -418,7 +458,7 @@ const EVENTS = [
       effects:{prestige:+1,contentment:-8,order:-3,composure:-2},
       outcome:"The quarter floods on schedule. You were right about appearances and wrong about drainage, and the water does not care which."}]},
 
-  {id:"tiger", once:false, tag:"A deputation", title:"The Tiger of Rampur",
+  {id:"tiger", once:false, tag:"DEPUTATION", title:"The Tiger of Rampur",
    body:"Villagers from Rampur report a tiger that has taken two goats and a good deal of sleep. They ask the Magistrate-sahib, as tradition demands, to shoot it. You have fired a rifle four times in your life, twice by accident. The whole district is, however, watching to see whether the new sahib is a <i>shikari</i> or a clerk.",
    choices:[
      {label:"<b>Go out and shoot it</b> yourself. It is expected.",
@@ -431,7 +471,7 @@ const EVENTS = [
       effects:{prestige:-5,contentment:-6,composure:+2,order:-2},
       outcome:"Correct procedure. The Forest Department will attend to the tiger in the fullness of time, by which the tiger and everyone in Rampur understand: never."}]},
 
-  {id:"whisky", once:false, tag:"The bungalow", title:"The Long Evening",
+  {id:"whisky", once:false, tag:"PRIVATE", title:"The Long Evening",
    body:"It is nine o'clock, the punkah has stopped because the punkah-wallah has fallen asleep, and you are alone in a bungalow the size of a barn with a bottle of Scotch and eleven hundred miles between you and anyone who knew you before India. The bottle, at least, is company.",
    choices:[
      {label:"Pour a <b>large one</b>. And another. It is that or the silence.",
@@ -444,7 +484,7 @@ const EVENTS = [
       effects:{composure:-3,prestige:+1},
       outcome:"Virtue, and the ceiling, keep you company until two. In the morning you are correct, upright, and hollow-eyed, which the office takes for dedication."}]},
 
-  {id:"famine", once:true, tag:"CRISIS", title:"The Rains Have Failed",
+  {id:"famine", once:true, tag:"IMMEDIATE", title:"The Rains Have Failed",
    body:"There is no rain, and there will be no rain, and the district knows what that word means better than any word in the revenue code. Grain prices climb; the first families sell their cooking pots; a relief works could be opened, but relief works cost money the treasury does not have and Simla did not budget for.",
    choices:[
      {label:"<b>Open relief works</b> at once and account for it later.",
@@ -457,7 +497,7 @@ const EVENTS = [
       effects:{contentment:+6,revenue:-2,prestige:-3,order:+2},setFlags:["indebted"],
       outcome:"The grain flows, at the Lala's interest and on the Lala's terms, and the district's debt to him deepens by a generation. You have solved this famine with a promise the next one will have to keep."}]},
 
-  {id:"inspection", once:true, tag:"RECKONING", title:"The Commissioner Inspects",
+  {id:"inspection", once:true, tag:"CONFIDENTIAL", title:"The Commissioner Inspects",
    body:"Commissioner Blyth-Curram descends upon Chhota Nagra in person, walrus-moustached and radiating grievance, to inspect the district, the treasury, the lock-up, and you. He will form an opinion in the first ten minutes and spend the visit confirming it. The whole station has been whitewashed, including, it is rumoured, several things that were not walls.",
    choices:[
      {label:"Show him a <b>flawless, rehearsed</b> district.",
@@ -470,7 +510,7 @@ const EVENTS = [
       effects:{prestige:+3,composure:-3,revenue:-2,order:-1},
       outcome:"By the second brandy he is telling you about his own first district; by the third, the inspection is effectively over. You have learned that the Empire, at its highest levels, runs substantially on the avoidance of awkwardness."}]},
 
-  {id:"plague", once:true, tag:"CRISIS", title:"Fever in the Bazaar",
+  {id:"plague", once:true, tag:"URGENT", title:"Fever in the Bazaar",
    body:"A fever &mdash; the Civil Surgeon says cholera, the bazaar says worse &mdash; appears in the crowded lanes behind the grain market. The Surgeon wants the quarter cordoned and the wells closed. The traders want the market open. The pilgrims want to keep moving. Everyone wants you to choose, so that there will be someone to blame.",
    choices:[
      {label:"<b>Cordon the quarter</b> and close the wells. Public health first.",
@@ -483,7 +523,7 @@ const EVENTS = [
       effects:{order:-3,contentment:-2,composure:-4,prestige:+1},
       outcome:"You do half of what the Surgeon asked and claim to have done all of it and none of it, depending on the audience. The fever, indifferent to your positioning, does slightly less than its worst."}]},
 
-  {id:"memsahib", once:false, tag:"The Club", title:"A Question of Precedence",
+  {id:"memsahib", once:false, tag:"PRIVATE", title:"A Question of Precedence",
    body:"At the Club's cold-weather ball, a furious dispute erupts over the order of precedence at dinner &mdash; specifically, whether the Executive Engineer's wife outranks the Forest Officer's wife. It is, everyone agrees, a trivial matter. It is also, everyone understands, a matter that could poison the entire station for a season.",
    choices:[
      {label:"Rule <b>strictly by the Warrant of Precedence</b>.",
@@ -496,7 +536,7 @@ const EVENTS = [
       effects:{prestige:-4,composure:+3},
       outcome:"Principled, and a grave misreading of the room. At a frontier station the seating of a dinner <i>is</i> the government. By declining to rule, you have not risen above the station's politics; you have merely lost them."}]},
 
-  {id:"prisoner", once:false, tag:"The court", title:"The Case of the Stolen Buffalo",
+  {id:"prisoner", once:false, tag:"CUTCHERRY", title:"The Case of the Stolen Buffalo",
    body:"A cultivator stands accused of stealing his neighbour's buffalo. The evidence is a tangle of perjury on both sides, the village is split, and the truth &mdash; that the buffalo wandered and both men are lying about the rest &mdash; is not available in any form the law can use. Both families are watching your face for the verdict.",
    choices:[
      {label:"Convict on the <b>letter of the evidence</b>.",
@@ -509,7 +549,7 @@ const EVENTS = [
       effects:{contentment:+4,prestige:-2,composure:-1,order:+1},
       outcome:"Solomon in a solar topi. The two families are bound to joint custody of one bad-tempered buffalo, an arrangement so mutually inconvenient that they are reconciled by the shared grievance within the year."}]},
 
-  {id:"telegram2", once:false, tag:"Telegram", title:"A New Form Is Required",
+  {id:"telegram2", once:false, tag:"MEMORANDUM", title:"A New Form Is Required",
    body:"Simla, in its wisdom, introduces Form XIV-B, to be completed in quintuplicate, recording the caste, occupation, and &lsquo;general disposition&rsquo; of every petitioner appearing before the court. Ram Autar, your head clerk, lays it before you with the particular stillness he reserves for orders that are both compulsory and insane.",
    choices:[
      {label:"<b>Implement it fully.</b> An order is an order.",
@@ -522,7 +562,7 @@ const EVENTS = [
       effects:{prestige:-4,composure:-2},
       outcome:"You receive Form XIV-B-1, a supplementary form on which to record objections to Form XIV-B. The machine has met your resistance and grown a new part to digest it."}]},
 
-  {id:"ramautar", once:true, tag:"The office", title:"Ram Autar Has a Nephew",
+  {id:"ramautar", once:true, tag:"PRIVATE", title:"Ram Autar Has a Nephew",
    requires:(S)=>S.flags.ramautar_trust,
    body:"Ram Autar, your invaluable head clerk, mentions with exquisite indirection that his sister's son is a promising young man in want of a clerkship, and that a vacancy happens to exist in the tahsil office. Everything Ram Autar does for you depends on a web of exactly such small arrangements. So, you are beginning to realise, does everything.",
    choices:[
