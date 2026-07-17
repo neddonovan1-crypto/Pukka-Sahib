@@ -89,6 +89,75 @@ async function playSession(browser, label, viewport) {
   return { errors: errors.length, overflow: maxOverflow, ended: ended };
 }
 
+// Save/resume: play a few fortnights, reload the page (same origin → same
+// localStorage), resume, and assert we land back on the same fortnight; also
+// exercises the meter legend and keyboard choice selection.
+async function resumeSession(browser, viewport) {
+  var label = "resume";
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  var errors = [];
+  page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+
+  await page.goto(INDEX, { waitUntil: "load" });
+  var begin = await page.$("#begin");
+  if (begin) await begin.click();
+  await page.waitForSelector("#card .choice", { timeout: 5000 });
+
+  // legend toggle works
+  var key = await page.$("#meterkey");
+  assert(key, label + ": no meter legend toggle");
+  if (key) {
+    await key.click();
+    var legendVisible = await page.$eval("#legend", function (n) { return !n.hasAttribute("hidden") && n.children.length === 5; });
+    assert(legendVisible, label + ": legend did not open with 5 glosses");
+    await key.click();
+  }
+
+  // advance several fortnights, using the keyboard for at least one choice
+  var usedKey = false;
+  for (var step = 0; step < 6; step++) {
+    if (await page.$("#again")) break;
+    var cont = await page.$("#cont");
+    if (cont) { await cont.click(); }
+    else if (await page.$("#card .choice:not([disabled])")) {
+      if (!usedKey) { await page.keyboard.press("1"); usedKey = true; } // keyboard path
+      else { await (await page.$("#card .choice:not([disabled])")).click(); }
+    }
+    await page.waitForTimeout(70);
+  }
+  assert(usedKey, label + ": never exercised keyboard selection");
+  var beforeFn = (await page.textContent("#card .fortnight")) || (await page.textContent("#seasonband")) || "";
+  var hadSave = await page.evaluate(function () { return !!localStorage.getItem("pukka-sahib-save"); });
+  assert(hadSave, label + ": no save was written mid-run");
+
+  // reload — the start screen should now offer Resume
+  await page.reload({ waitUntil: "load" });
+  var resumeBtn = await page.$("#resume");
+  assert(resumeBtn, label + ": no Resume button after reload with a live save");
+  if (resumeBtn) {
+    await resumeBtn.click();
+    await page.waitForSelector("#card", { timeout: 5000 });
+    var afterFn = (await page.textContent("#card .fortnight")) || (await page.textContent("#seasonband")) || "";
+    assert(afterFn === beforeFn, label + ": resume landed on a different fortnight (\"" + beforeFn.trim() + "\" → \"" + afterFn.trim() + "\")");
+  }
+
+  // "Begin a new posting" clears the save and resets
+  await page.reload({ waitUntil: "load" });
+  var fresh = await page.$("#fresh");
+  if (fresh) {
+    await fresh.click();
+    await page.waitForSelector("#card .choice", { timeout: 5000 });
+    var fn = (await page.textContent("#card .fortnight")) || "";
+    assert(/Fortnight 1 of /.test(fn), label + ": new posting did not reset to fortnight 1");
+  }
+
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  await ctx.close();
+  return { errors: errors.length, resumed: !!resumeBtn };
+}
+
 (async function () {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
@@ -97,6 +166,8 @@ async function playSession(browser, label, viewport) {
     console.log("desktop:", JSON.stringify(d));
     var m = await playSession(browser, "mobile", { width: 375, height: 667 });
     console.log("mobile: ", JSON.stringify(m));
+    var r = await resumeSession(browser, { width: 1120, height: 920 });
+    console.log("resume: ", JSON.stringify(r));
   } finally {
     await browser.close();
   }

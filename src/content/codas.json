@@ -1,0 +1,76 @@
+[
+  {
+    "requires": { "flag": "uriah_sin" },
+    "endings": ["kcsi", "kcie", "cie"],
+    "text": "The file does not record &mdash; the file never records &mdash; that a younger man was posted to a station known to kill him, and did, and that the vacancy suited you. You know it. It is the one entry the ribbon does not cover."
+  },
+  {
+    "requires": { "flag": "uriah_sin" },
+    "endings": ["transfer", "scandal", "breakdown", "riot", "bankrupt", "gonenative"],
+    "text": "Somewhere in the small hours you still hear the name of the boy you sent up-country to the fever, whose place fell conveniently vacant. No enquiry ever touched it. Nothing ever will, except you."
+  },
+  {
+    "requires": { "flag": "boy_covered" },
+    "text": "A young officer who would otherwise have been broken owes you his career and does not know it; you buried his blunder so deep that even he believes he never made it. It is the best thing you did all year, and it can never be told."
+  },
+  {
+    "requires": { "flag": "lala_owned" },
+    "endings": ["kcsi", "kcie"],
+    "text": "Sir now &mdash; and Lala Hukum Chand keeps, in a red-bound ledger, the exact figure at which a knight of the realm was bought on easy terms. He will never call it in. He does not need to. Owning you is the interest."
+  },
+  {
+    "requires": { "flag": "lala_owned" },
+    "endings": ["cie", "transfer", "scandal", "breakdown", "riot", "bankrupt", "gonenative"],
+    "text": "Lala Hukum Chand regards your year with the quiet satisfaction of a man reviewing a sound investment: whatever else you turned out to be, you were, in the end, entirely his."
+  },
+  {
+    "requires": { "flag": "lala_defied" },
+    "text": "The Lala never forgave the morning you refused him to his face, and spent the year proving, in fees and grain-prices, that displeasure is only another line in the ledger. You were the poorer for it, and could look the bazaar in the eye, which is a currency he does not keep."
+  },
+  {
+    "requires": { "flag": "ramautar_trust" },
+    "text": "Old Ram Autar, who has outlasted six Collectors and will outlast you, allowed himself at the year&rsquo;s end a single sentence of approval, in Persian, which you were not quite meant to catch and have not forgotten."
+  },
+  {
+    "requires": { "flag": "ramautar_gone" },
+    "text": "The head clerk asked for his pension in the cold weather and got it, correctly and coldly, and the record-room has never since given up its secrets to you at quite the old speed. You lost more than a clerk, and knew it too late."
+  },
+  {
+    "requires": { "flag": "strickland_kept" },
+    "text": "Strickland, who knows the district in ways the manuals do not admit exist, counts you a friend &mdash; which is worth more than a decoration and appears on no roll of honour."
+  },
+  {
+    "requires": { "flag": "hauksbee_ally" },
+    "text": "Mrs Hauksbee, who has made and unmade more careers over the teacups of Simla than the Secretariat has, decided this year that she liked you; and things went, ever so slightly and quite untraceably, your way."
+  },
+  {
+    "requires": { "flag": "pandit_pact" },
+    "text": "Pandit Girdhari, who calls the whole edifice you serve a passing weather, nonetheless kept his side of a quiet understanding with you all year &mdash; two honest men on opposite sides of a thing neither of them made."
+  },
+  {
+    "requires": { "flag": "poplar_settled" },
+    "text": "The case Simla forbade you to touch stands settled and planted over, correct by every measure but the one that mattered to Simla, and it is the finest fortnight&rsquo;s work of your year. It will appear in no report as long as you both shall live."
+  },
+  {
+    "requires": { "flag": "gone_soft" },
+    "endings": ["gonenative"],
+    "text": "&lsquo;Gone soft on the native side&rsquo; is the verdict of the billiard-room, delivered in the tone reserved for a good horse ruined; the district&rsquo;s verdict, delivered in the tone reserved for the rarest of sahibs, is the exact opposite, and neither will ever reach the other."
+  },
+  {
+    "requires": { "flag": "played_game" },
+    "endings": ["kcsi", "kcie", "cie"],
+    "text": "You learned the year&rsquo;s real lesson early &mdash; that the district is governed for the report, and the report is written for Simla &mdash; and played it faultlessly, and the ribbon is the proof, and you are not certain, on the whole, that you are glad you learned it."
+  },
+  {
+    "requires": { "flag": "helped_loafers" },
+    "text": "A handful of broken-down Europeans, the kind the Service prefers not to see, were quietly kept off the streets and out of the papers on your charity this year. It embarrassed everyone and saved two of them, which is a rate of return the Club would not understand."
+  },
+  {
+    "requires": { "flag": "boy_sent_home" },
+    "text": "Your own boy is on the water to England now, to school and safety and a slow forgetting of your face, as the children of this Service always are; the bungalow is the quieter, and you do not go into the small room at the end."
+  },
+  {
+    "requires": { "allOf": [ { "flag": "kept_faith" }, { "not": { "flag": "played_game" } } ] },
+    "text": "You kept faith, this year, with people who could do nothing for you, at moments when no one was watching and it would have been easier not to. It is recorded nowhere. It is the only part of the year you would defend without flinching."
+  }
+]

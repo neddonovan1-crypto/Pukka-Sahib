@@ -21,6 +21,17 @@ var cfg = content.config;
 check(typeof cfg.maxTurns === "number" && cfg.maxTurns > 0, "config.maxTurns missing/invalid");
 METERS.forEach(function (m) { check(typeof cfg.start[m] === "number", "config.start missing meter " + m); });
 
+// Meter display + legend (names and one-line glosses shown to the player).
+check(Array.isArray(cfg.meters) && cfg.meters.length === METERS.length, "config.meters must list every meter");
+var meterKeys = {};
+(cfg.meters || []).forEach(function (m) {
+  check(METERS.indexOf(m.key) !== -1, "config.meters bad key " + m.key);
+  meterKeys[m.key] = true;
+  check(m.name && m.desc, "config.meters[" + m.key + "] missing name/desc");
+  if (m.name) scanText(m.name + " " + m.desc, "config.meters[" + m.key + "]");
+});
+METERS.forEach(function (m) { check(meterKeys[m], "config.meters missing " + m); });
+
 var cal = cfg.calendar;
 check(Array.isArray(cal.months) && cal.months.length === 12, "calendar.months must be length 12");
 check(Array.isArray(cal.seasons) && cal.seasons.length >= 1, "calendar.seasons missing");
@@ -251,6 +262,19 @@ var occTurns = {};
     checkEffects(o.effects, w);
     checkEcon(o.econ, w);
     if (o.outcome) scanText(o.outcome, w);
+  }
+});
+
+/* ---- codas: arc-conditional sentences appended to the verdict ---- */
+(content.codas || []).forEach(function (cd, i) {
+  var w = "coda[" + i + "]";
+  check(typeof cd.text === "string" && cd.text.length > 0, w + ": text missing");
+  if (cd.text) scanText(cd.text, w);
+  check(cd.requires, w + ": coda needs a requires condition");
+  if (cd.requires) checkCondition(cd.requires, w + ".requires"); // flags cross-referenced below
+  if (cd.endings !== undefined) {
+    check(Array.isArray(cd.endings) && cd.endings.length > 0, w + ": endings must be a non-empty array when present");
+    (cd.endings || []).forEach(function (k) { check(REQUIRED_ENDINGS.indexOf(k) !== -1, w + ": unknown ending scope '" + k + "'"); });
   }
 });
 

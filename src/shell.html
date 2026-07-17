@@ -91,6 +91,21 @@
   .meter.pulse{animation:pulse .5s}
   @keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.07)}100%{transform:scale(1)}}
 
+  /* Meter legend: a quiet toggle under the meters, and the glosses it reveals. */
+  .meterkey{
+    display:block; margin:0 auto 10px; background:none; border:none; cursor:pointer;
+    font-family:"Courier New",Courier,monospace; font-size:.6rem; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--ink-soft); text-decoration:underline dotted;
+  }
+  .meterkey:hover{color:var(--seal)}
+  .meterkey:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
+  .legend{
+    list-style:none; margin:0 0 14px; padding:12px 14px; background:var(--surface2);
+    border:1px solid var(--line); border-radius:4px; font-size:.86rem; line-height:1.5;
+  }
+  .legend li{margin:0 0 7px} .legend li:last-child{margin:0}
+  .legend b{color:var(--seal-ink)}
+
   .honours{
     font-family:"Courier New",Courier,monospace; font-size:.66rem; letter-spacing:.05em;
     text-transform:uppercase; color:var(--ink-soft); text-align:center; margin:0 0 4px;
@@ -168,6 +183,33 @@
   .ending .medal{display:block; width:148px; max-width:48%; height:auto; margin:8px auto 4px; filter:drop-shadow(0 4px 10px rgba(0,0,0,.22))}
   .ending .cardtitle{font-size:1.7rem; margin-top:6px}
   .ending .verdict{font-style:italic; margin:14px auto; max-width:52ch}
+  /* Arc codas: the year remembered, in the verdict's own italic voice. */
+  .ending .codas{max-width:52ch; margin:0 auto}
+  .ending .codas p{font-style:italic; color:var(--ink-soft); margin:12px auto; padding-top:12px; border-top:1px dotted var(--line)}
+  /* Service record: the confidential character report of the year's turning points. */
+  .ending .record{
+    text-align:left; max-width:52ch; margin:22px auto 6px; padding:14px 16px;
+    background:var(--surface2); border:1px solid var(--line); border-radius:4px;
+  }
+  .record-head{
+    font-family:"Courier New",Courier,monospace; font-size:.62rem; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; text-align:center;
+  }
+  .ending .record ul{list-style:none; margin:0; padding:0}
+  .ending .record li{margin:0 0 12px; padding-left:12px; border-left:2px solid var(--line)}
+  .ending .record li:last-child{margin:0}
+  .rec-when{display:block; font-family:"Courier New",Courier,monospace; font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
+  .rec-what{display:block; font-weight:600; color:var(--seal-ink); font-size:.95rem; margin:1px 0}
+  .rec-did{display:block; font-style:italic; font-size:.9rem; color:var(--ink)}
+  /* Start-screen actions: primary + a quiet secondary for New posting. */
+  .start-actions{display:flex; flex-direction:column; align-items:center; gap:10px}
+  button.ghost{
+    font-family:"Courier New",Courier,monospace; font-size:.72rem; letter-spacing:.05em;
+    text-transform:uppercase; background:none; color:var(--ink-soft);
+    border:1px solid var(--line); border-radius:4px; padding:8px 16px; cursor:pointer;
+  }
+  button.ghost:hover{border-color:var(--seal); color:var(--seal)}
+  button.ghost:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
 
   footer{text-align:center; font-family:"Courier New",Courier,monospace; font-size:.64rem; letter-spacing:.08em; color:var(--ink-soft); text-transform:uppercase; margin-top:24px}
   /* Wide screens: two columns — the situation (scene + stats) on the left, the
@@ -215,6 +257,8 @@
       <img class="scene" id="scene" decoding="async" alt="" hidden>
       <div class="seasonband" id="seasonband"></div>
       <div class="meters" id="meters"></div>
+      <button type="button" class="meterkey" id="meterkey" aria-controls="legend">What do these mean?</button>
+      <ul class="legend" id="legend" hidden></ul>
       <div class="honours" id="honours"></div>
       <div class="economy" id="economy"></div>
     </div>

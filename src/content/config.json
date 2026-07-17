@@ -8,6 +8,13 @@
       "contentment": 45,
       "health": 66
     },
+    "meters": [
+      { "key": "revenue", "name": "Revenue", "desc": "The land revenue &mdash; the demand realised. An Empire runs on it, and the Board counts it first." },
+      { "key": "order", "name": "Order", "desc": "The peace of the district &mdash; the quiet bazaar, the saluted constable. Let it fall and a crowd becomes a Commission." },
+      { "key": "prestige", "name": "Prestige", "desc": "Your standing with Simla and the Service. The coin the Honours List counts above all others." },
+      { "key": "contentment", "name": "Contentment", "desc": "The district&rsquo;s temper &mdash; whether the ryot blesses you or curses you. Worth more than the Club suspects." },
+      { "key": "health", "name": "Health", "desc": "Your own constitution against the climate. Spend it freely and you go Home on a stretcher." }
+    ],
     "calendar": {
       "months": [
         "November",

@@ -165,6 +165,31 @@ the honours ladder). To add a *new* ending you add the data here **and** a
 branch in the engine's `finalVerdict`. Editing existing ending text is
 data-only.
 
+## Codas (the year remembered)
+
+Codas are arc-conditional sentences appended to the verdict, in
+`src/content/codas.json`. Each is `{ requires, text, endings? }`: when
+`requires` (a normal condition — usually a `{"flag": …}` an earlier choice
+set) holds, the sentence is added to the ending screen. Optional `endings`
+scopes a coda to specific ending keys, so one flag can read differently under a
+knighthood and a disgrace. Keep them one sentence, in the verdict's dry italic
+voice. The validator cross-references every `requires` flag like any other, so
+a coda can't depend on a flag nothing sets.
+
+## Service record
+
+Automatic — no authoring. Every decision the player makes is logged
+(`logDecision`) with a weight (meter movement + money moved + a heavy bonus for
+setting an arc flag). The ending shows the five heaviest as a "Confidential
+character report," in the order they happened. Write choice `label`s so they
+read as a terse record of *what you did*, not just a verb.
+
+## Meter legend
+
+`config.meters` is `[{key, name, desc}]` for all five meters — the display
+names and the one-line glosses shown in the legend panel and the meter
+tooltips. Data-only; the validator requires a name and desc per meter.
+
 ## Checklist for a new event
 
 1. Unique `id`; a real `tag`; sensible `season` + `kind`.

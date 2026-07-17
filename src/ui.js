@@ -5,16 +5,26 @@
   "use strict";
   var L = (typeof PukkaLogic !== "undefined") ? PukkaLogic : require("./logic.js");
   var content = JSON.parse(document.getElementById("game-data").textContent);
-  var METERS = [
-    { key: "revenue", name: "Revenue" }, { key: "order", name: "Order" },
-    { key: "prestige", name: "Prestige" }, { key: "contentment", name: "Contentment" },
-    { key: "health", name: "Health" }
-  ];
+  // Meter names + legend glosses come from content (config.meters); fall back to
+  // bare names if an older bundle lacks them.
+  var METERS = (content.config.meters && content.config.meters.length)
+    ? content.config.meters.map(function (m) { return { key: m.key, name: m.name, desc: m.desc }; })
+    : [
+        { key: "revenue", name: "Revenue" }, { key: "order", name: "Order" },
+        { key: "prestige", name: "Prestige" }, { key: "contentment", name: "Contentment" },
+        { key: "health", name: "Health" }
+      ];
   var game = L.createGame(content, Math.random);
 
   var el = function (id) { return document.getElementById(id); };
 
   function meterColour(v) { return v < 25 ? "var(--bad)" : v > 70 ? "var(--good)" : "var(--warn)"; }
+
+  function stripTags(s) { return (s || "").replace(/<[^>]*>/g, ""); }
+  function decode(s) {
+    // entities → text for the native title tooltip (which shows raw text)
+    var t = document.createElement("textarea"); t.innerHTML = s || ""; return t.value;
+  }
 
   function renderMeters(meters, pulse) {
     var box = el("meters"); box.innerHTML = "";
@@ -22,12 +32,29 @@
       var v = meters[m.key];
       var d = document.createElement("div");
       d.className = "meter" + (pulse && pulse.indexOf(m.key) !== -1 ? " pulse" : "");
+      if (m.desc) d.title = m.name + " — " + decode(stripTags(m.desc)); // desktop hover
       d.innerHTML =
         '<div class="name">' + m.name + '</div>' +
         '<div class="bar"><div class="fill" style="width:' + v + '%;background:' + meterColour(v) + '"></div></div>' +
         '<div class="val">' + v + '</div>';
       box.appendChild(d);
     });
+  }
+
+  // The legend: a tap/keyboard-reachable panel glossing the five meters, for
+  // players who can't hover. Built once from content, toggled by its button.
+  function buildLegend() {
+    var btn = el("meterkey"), panel = el("legend");
+    if (!btn || !panel) return;
+    panel.innerHTML = METERS.map(function (m) {
+      return '<li><b>' + m.name + '</b> &mdash; ' + (m.desc || "") + '</li>';
+    }).join("");
+    btn.setAttribute("aria-expanded", "false");
+    btn.onclick = function () {
+      var open = panel.hasAttribute("hidden") ? false : true;
+      if (open) { panel.setAttribute("hidden", "hidden"); btn.setAttribute("aria-expanded", "false"); }
+      else { panel.removeAttribute("hidden"); btn.setAttribute("aria-expanded", "true"); }
+    };
   }
 
   function renderStatus(s) {
@@ -120,14 +147,29 @@
     var c = el("card"); c.className = "card ending";
     var medalSrc = ART[MEDAL[s.ended.title]];
     var medalHtml = medalSrc ? '<img class="medal" src="' + medalSrc + '" alt="' + s.ended.title + ' insignia">' : "";
+    var codasHtml = (s.codas && s.codas.length)
+      ? '<div class="codas">' + s.codas.map(function (t) { return "<p>" + t + "</p>"; }).join("") + "</div>"
+      : "";
+    var recordHtml = "";
+    if (s.record && s.record.length) {
+      recordHtml =
+        '<div class="record"><div class="record-head">Confidential character report</div><ul>' +
+        s.record.map(function (r) {
+          return '<li><span class="rec-when">Fortnight ' + r.turn + " &middot; " + r.month + "</span>" +
+            '<span class="rec-what">' + r.title + "</span>" +
+            '<span class="rec-did">' + r.label + "</span></li>";
+        }).join("") + "</ul></div>";
+    }
     c.innerHTML =
       '<div class="turnline"><span class="fortnight">The posting ends &mdash; fortnight ' +
       Math.min(s.turn, s.maxTurns) + '</span><span class="stamp">Closed</span></div>' +
       medalHtml +
       '<h2 class="cardtitle">' + s.ended.title + "</h2>" +
       '<div class="verdict">' + s.ended.text + "</div>" +
+      codasHtml +
+      recordHtml +
       '<div class="next" style="text-align:center"><button class="primary" id="again">Take up a new posting</button></div>';
-    el("again").onclick = function () { paint(game.init()); };
+    el("again").onclick = function () { clearSave(); paint(game.init()); };
   }
 
   // Art manifest (data URIs in the single-file build, paths on Pages, absent if
@@ -194,20 +236,69 @@
     else if (s.phase === "interlude") renderInterlude(s);
     else if (s.phase === "resolved") renderResolved(s);
     else if (s.phase === "ended") renderEnding(s);
+    // Persist at clean, fully-repaintable phases; a finished run clears its save.
+    // "resolved" is skipped (it appends to the event card and can't stand alone
+    // on a cold load), so a save there keeps the pre-choice event to resume to.
+    if (s.phase === "ended") clearSave();
+    else if (s.phase !== "resolved") persist();
   }
+
+  /* ---------- save / resume (versioned localStorage) ---------- */
+  var SAVE_KEY = "pukka-sahib-save", SAVE_VERSION = 1;
+  function store() { try { return window.localStorage; } catch (e) { return null; } }
+  function persist() {
+    var ls = store(); if (!ls) return;
+    try { ls.setItem(SAVE_KEY, JSON.stringify({ v: SAVE_VERSION, data: game.serialize() })); } catch (e) {}
+  }
+  function clearSave() { var ls = store(); if (ls) try { ls.removeItem(SAVE_KEY); } catch (e) {} }
+  function loadSave() {
+    var ls = store(); if (!ls) return null;
+    try {
+      var raw = ls.getItem(SAVE_KEY); if (!raw) return null;
+      var obj = JSON.parse(raw);
+      if (!obj || obj.v !== SAVE_VERSION || !obj.data || !obj.data.S) { ls.removeItem(SAVE_KEY); return null; }
+      if (obj.data.endedKey) { ls.removeItem(SAVE_KEY); return null; } // a finished posting is not resumable
+      return obj.data;
+    } catch (e) { try { ls.removeItem(SAVE_KEY); } catch (e2) {} return null; }
+  }
+
+  // Keyboard: number keys pick the visible choices; Enter/Space advance a
+  // Continue or the ending's "new posting". Ignored on the start screen.
+  document.addEventListener("keydown", function (ev) {
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    var g = el("game"); if (!g || g.hidden) return;
+    var card = el("card"); if (!card) return;
+    var cont = el("cont") || el("again");
+    if (cont && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); cont.click(); return; }
+    if (/^[1-9]$/.test(ev.key)) {
+      var choices = card.querySelectorAll(".choice:not([disabled])");
+      var idx = parseInt(ev.key, 10) - 1;
+      if (choices[idx]) { ev.preventDefault(); choices[idx].click(); }
+    }
+  });
 
   function showGame() { el("start").hidden = true; el("game").hidden = false; }
 
-  function showStart() {
+  function showStart(saved) {
     el("game").hidden = true;
     var st = el("start"); st.hidden = false;
+    var cover = ART.cover ? '<img src="' + ART.cover + '" alt="A district officer looks out over the plains of his district">' : "";
+    var resumeBtn = saved
+      ? '<button class="primary" id="resume">Resume the posting &rarr;</button>' +
+        '<button class="ghost" id="fresh">Begin a new posting</button>'
+      : '<button class="primary" id="begin">Take up your posting &rarr;</button>';
     st.innerHTML =
-      '<img src="' + ART.cover + '" alt="A district officer looks out over the plains of his district">' +
+      cover +
       '<div class="tagline">You are the newly-gazetted District Magistrate &amp; Collector of Chhota Nagra. ' +
       'Keep the peace. Bring in the revenue. And whatever else is lost, keep up appearances. ' +
       'You have a year. Survive the posting.</div>' +
-      '<button class="primary" id="begin">Take up your posting &rarr;</button>';
-    el("begin").onclick = function () { showGame(); paint(game.init()); };
+      '<div class="start-actions">' + resumeBtn + "</div>";
+    if (saved) {
+      el("resume").onclick = function () { showGame(); paint(game.restore(saved)); };
+      el("fresh").onclick = function () { clearSave(); showGame(); paint(game.init()); };
+    } else {
+      el("begin").onclick = function () { showGame(); paint(game.init()); };
+    }
   }
 
   // The masthead crest: the engraved raster seal when the build carries it,
@@ -219,6 +310,11 @@
     if (sealFallback) sealFallback.style.display = "none";
   }
 
-  if (ART.cover) showStart();
+  buildLegend();
+
+  // On load: a resumable save takes you to the start screen with a Resume
+  // button; otherwise the cover screen if there's a cover, else straight in.
+  var saved = loadSave();
+  if (ART.cover || saved) showStart(saved);
   else { showGame(); paint(game.init()); }
 })();

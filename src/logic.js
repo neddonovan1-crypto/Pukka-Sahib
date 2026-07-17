@@ -28,6 +28,7 @@
     var ENDINGS = content.endings;
     var EVENTS = content.events;
     var OCCASIONS = content.occasions || [];
+    var CODAS = content.codas || [];
     var CAL = CFG.calendar;
     var POSTURES = CFG.postures;
     var ECON = CFG.economy;
@@ -268,7 +269,7 @@
     /* ---------- public transitions ---------- */
 
     function init() {
-      S = { flags: {}, posture: null, turn: 1, treasury: ECON.startTreasury, debt: 0 };
+      S = { flags: {}, posture: null, turn: 1, treasury: ECON.startTreasury, debt: 0, log: [] };
       METERS.forEach(function (k) { S[k] = CFG.start[k]; });
       recent = []; ended = null; current = null; lastResult = null; lastEventId = null;
       enterTurn();
@@ -317,6 +318,7 @@
         S.flags[rdef.flag] = true;
         var reff = rdef.effects || {};
         var rpulsed = applyMeters(reff);
+        logDecision(rdef.title, rdef.label, reff, null, 1);
         current = { id: rdef.key, tag: rdef.tag, title: rdef.title, body: rdef.body, interlude: true, art: rdef.art };
         lastResult = { outcome: rdef.outcome || "", effects: reff, econ: null };
         ended = collapseCheck();
@@ -350,6 +352,18 @@
       return pulsed;
     }
 
+    // Record a decision for the year-end service record. Weight ranks turning
+    // points: the sum of meter movement, a little for money moved, and a heavy
+    // bonus for a choice that set an arc flag (those define the year even when
+    // their numbers are small).
+    function logDecision(title, label, effects, econ, flagCount) {
+      var w = 0;
+      Object.keys(effects || {}).forEach(function (k) { w += Math.abs(effects[k]); });
+      if (econ) w += Math.min(8, Math.round((Math.abs(econ.treasury || 0) + Math.abs(econ.debt || 0)) / 4000));
+      w += (flagCount || 0) * 6;
+      S.log.push({ turn: S.turn, month: monthOf(S.turn), title: title, label: label, weight: w });
+    }
+
     function chooseOption(i) {
       if (phase !== "event") return snapshot();
       var ch = current.choices[i];
@@ -358,6 +372,7 @@
       var pulsed = applyMeters(r.effects);
       r.setFlags.forEach(function (f) { S.flags[f] = true; });
       applyEcon(r.econ);
+      logDecision(current.title, ch.label, r.effects, r.econ, r.setFlags.length);
       lastResult = { outcome: r.outcome, effects: r.effects, econ: r.econ };
       ended = collapseCheck();
       phase = ended ? "ended" : "resolved";
@@ -388,7 +403,9 @@
         retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,
         event: (phase === "event" || phase === "interlude") ? current : null,
         result: (phase === "resolved" || phase === "ended" || phase === "interlude") ? lastResult : null,
-        ended: ended, honours: honoursStanding()
+        ended: ended, honours: honoursStanding(),
+        codas: (phase === "ended" && ended) ? endingCodas(ended) : null,
+        record: (phase === "ended") ? serviceRecord(5) : null
       };
       if (extra) Object.assign(snap, extra);
       return snap;
@@ -429,10 +446,71 @@
       return lead + "your name appears only in the complaints";
     }
 
+    function endKeyOf(obj) {
+      var key = null;
+      Object.keys(ENDINGS).forEach(function (k) { if (ENDINGS[k] === obj) key = k; });
+      return key;
+    }
+
+    // Arc codas: data-driven sentences appended to the verdict when their
+    // condition holds — the year, remembered. A coda may be scoped to specific
+    // endings so the same flag reads differently under a knighthood and a
+    // disgrace.
+    function endingCodas(endObj) {
+      var key = endKeyOf(endObj);
+      return CODAS.filter(function (cd) {
+        if (cd.endings && cd.endings.indexOf(key) === -1) return false;
+        return evalCondition(cd.requires);
+      }).map(function (cd) { return cd.text; });
+    }
+
+    // The service record: the year's most consequential decisions, ranked by
+    // weight, then shown in the order they happened.
+    function serviceRecord(limit) {
+      var log = (S.log || []).slice();
+      log.sort(function (a, b) { return b.weight - a.weight || a.turn - b.turn; });
+      var top = log.slice(0, limit || 5);
+      top.sort(function (a, b) { return a.turn - b.turn; });
+      return top;
+    }
+
+    /* ---------- persistence (pure; the UI owns localStorage) ---------- */
+
+    function resolveCurrent(id) {
+      if (!id) return null;
+      for (var i = 0; i < EVENTS.length; i++) if (EVENTS[i].id === id) return EVENTS[i];
+      for (i = 0; i < OCCASIONS.length; i++) if (OCCASIONS[i].id === id) return OCCASIONS[i];
+      var rdef = retreatByKey(id); // synthetic retreat card
+      if (rdef) return { id: rdef.key, tag: rdef.tag, title: rdef.title, body: rdef.body, interlude: true, art: rdef.art };
+      return null;
+    }
+    function serialize() {
+      return {
+        S: JSON.parse(JSON.stringify(S)),
+        phase: phase, currentId: current ? current.id : null,
+        lastResult: lastResult ? JSON.parse(JSON.stringify(lastResult)) : null,
+        recent: recent.slice(), notice: notice, lastEventId: lastEventId,
+        endedKey: endKeyOf(ended)
+      };
+    }
+    function restore(data) {
+      if (!data || !data.S) return init();
+      S = data.S; if (!S.log) S.log = [];
+      phase = data.phase || "posture";
+      recent = data.recent || [];
+      notice = data.notice || null;
+      lastEventId = data.lastEventId || null;
+      lastResult = data.lastResult || null;
+      ended = data.endedKey ? ENDINGS[data.endedKey] : null;
+      current = resolveCurrent(data.currentId);
+      return snapshot();
+    }
+
     return {
       init: init, postureOptions: postureOptions, choosePosture: choosePosture,
       chooseOption: chooseOption, next: next,
       snapshot: function () { return snapshot(); },
+      serialize: serialize, restore: restore,
       seasonOf: seasonOf, monthOf: monthOf,
       isSecrecyTag: function (t) { return SECRECY.indexOf((t || "").toUpperCase()) !== -1; },
       rupees: rupees,
