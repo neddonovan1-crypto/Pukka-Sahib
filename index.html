@@ -10,31 +10,27 @@
     --ink:#231f17; --ink-soft:#5b5340; --line:#b9a373; --line-soft:#c9b585;
     --seal:#8f2f22; --seal-ink:#8f2f22; --indigo:#2f3d5c;
     --good:#4a6b3f; --warn:#977326; --bad:#8f2f22;
-    --stamp:#8f2f22;
-    --shadow:rgba(90,70,30,.18);
+    --stamp:#8f2f22; --shadow:rgba(90,70,30,.18);
   }
   @media (prefers-color-scheme:dark){
     :root{
       --bg:#181510; --surface:#241f18; --surface2:#2b2519;
       --ink:#e9ddc0; --ink-soft:#a89c7f; --line:#4a4130; --line-soft:#574c37;
       --seal:#cf5a45; --seal-ink:#d8654f; --indigo:#93a7cd;
-      --good:#82a86f; --warn:#c9a752;
-      --bad:#cf5a45; --stamp:#cf5a45; --shadow:rgba(0,0,0,.4);
+      --good:#82a86f; --warn:#c9a752; --bad:#cf5a45; --stamp:#cf5a45; --shadow:rgba(0,0,0,.4);
     }
   }
   :root[data-theme="light"]{
     --bg:#ddd0af; --surface:#ece3c9; --surface2:#e3d8ba;
     --ink:#231f17; --ink-soft:#5b5340; --line:#b9a373; --line-soft:#c9b585;
     --seal:#8f2f22; --seal-ink:#8f2f22; --indigo:#2f3d5c;
-    --good:#4a6b3f; --warn:#977326; --bad:#8f2f22; --stamp:#8f2f22;
-    --shadow:rgba(90,70,30,.18);
+    --good:#4a6b3f; --warn:#977326; --bad:#8f2f22; --stamp:#8f2f22; --shadow:rgba(90,70,30,.18);
   }
   :root[data-theme="dark"]{
     --bg:#181510; --surface:#241f18; --surface2:#2b2519;
     --ink:#e9ddc0; --ink-soft:#a89c7f; --line:#4a4130; --line-soft:#574c37;
     --seal:#cf5a45; --seal-ink:#d8654f; --indigo:#93a7cd;
-    --good:#82a86f; --warn:#c9a752; --bad:#cf5a45; --stamp:#cf5a45;
-    --shadow:rgba(0,0,0,.4);
+    --good:#82a86f; --warn:#c9a752; --bad:#cf5a45; --stamp:#cf5a45; --shadow:rgba(0,0,0,.4);
   }
 
   *{box-sizing:border-box}
@@ -49,63 +45,61 @@
   }
   .frame{width:100%; max-width:680px; position:relative}
 
-  /* ---- masthead: a Government of India file cover ---- */
-  .masthead{
-    display:flex; gap:16px; align-items:center; margin-bottom:4px;
-  }
+  .masthead{display:flex; gap:16px; align-items:center; margin-bottom:4px}
   .seal{
     flex:0 0 auto; width:58px; height:58px; border-radius:50%;
     border:2px double var(--seal); color:var(--seal);
     display:grid; place-items:center; font-family:"Courier New",Courier,monospace;
     font-weight:700; font-size:.82rem; letter-spacing:.05em;
-    box-shadow:inset 0 0 0 4px var(--surface);
-    transform:rotate(-6deg); opacity:.9;
+    box-shadow:inset 0 0 0 4px var(--surface); transform:rotate(-6deg); opacity:.9;
   }
   .mast-text{flex:1 1 auto}
   .dept{
     font-family:"Courier New",Courier,monospace; font-size:.62rem;
     letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft);
   }
-  h1{
-    font-size:clamp(1.9rem,6vw,2.5rem); margin:1px 0 2px; letter-spacing:.02em;
-    font-weight:600; text-wrap:balance;
-  }
+  h1{font-size:clamp(1.9rem,6vw,2.5rem); margin:1px 0 2px; letter-spacing:.02em; font-weight:600; text-wrap:balance}
   .sub{font-style:italic; color:var(--ink-soft); font-size:.86rem; text-wrap:balance}
-  .rule{
-    height:0; border:0; border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line); margin:14px 0 16px; padding-top:2px;
-  }
+  .rule{height:0; border:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin:14px 0 16px; padding-top:2px}
 
-  /* ---- the ledger gauge-line ---- */
-  .meters{display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:0 0 18px}
-  .meter{
-    background:var(--surface2); border:1px solid var(--line); border-radius:3px;
-    padding:8px 5px 7px; text-align:center;
+  .seasonband{
+    display:flex; align-items:center; justify-content:center; gap:7px; flex-wrap:wrap;
+    font-family:"Courier New",Courier,monospace; font-size:.64rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft); margin:0 0 14px;
   }
-  .meter .name{
-    font-family:"Courier New",Courier,monospace; font-size:.58rem;
-    text-transform:uppercase; letter-spacing:.07em; color:var(--ink-soft);
-  }
+  .seasonband .glyph{font-size:.95rem; opacity:.85}
+  .seasonband b{color:var(--ink); font-weight:700}
+
+  .meters{display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:0 0 14px}
+  .meter{background:var(--surface2); border:1px solid var(--line); border-radius:3px; padding:8px 5px 7px; text-align:center}
+  .meter .name{font-family:"Courier New",Courier,monospace; font-size:.58rem; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-soft)}
   .meter .bar{height:6px; background:rgba(120,95,45,.22); border-radius:2px; margin:7px 0 5px; overflow:hidden}
   .meter .fill{height:100%; width:50%; background:var(--warn); transition:width .45s ease, background .45s ease}
   .meter .val{font-size:.9rem; font-weight:700; font-variant-numeric:tabular-nums}
   .meter.pulse{animation:pulse .5s}
   @keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.07)}100%{transform:scale(1)}}
 
-  /* ---- the filed document ---- */
-  .card{
-    position:relative; background:var(--surface); border:1px solid var(--line);
-    border-radius:5px; padding:22px 22px 18px;
-    box-shadow:0 1px 0 var(--line), 0 6px 18px -12px var(--shadow);
+  .honours{
+    font-family:"Courier New",Courier,monospace; font-size:.66rem; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--ink-soft); text-align:center; margin:0 0 4px;
   }
-  .turnline{
-    display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
-    margin-bottom:12px;
+  .honours b{color:var(--seal); font-weight:700}
+  .economy{
+    font-family:"Courier New",Courier,monospace; font-size:.66rem; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--ink-soft); text-align:center;
+    margin:0 0 16px; padding-bottom:12px; border-bottom:1px dotted var(--line);
+    font-variant-numeric:tabular-nums;
   }
-  .fortnight{
-    font-family:"Courier New",Courier,monospace; font-size:.68rem;
-    letter-spacing:.06em; color:var(--ink-soft); text-transform:uppercase; padding-top:4px;
+  .economy .debt{color:var(--bad)}
+  .notice{
+    font-family:"Courier New",Courier,monospace; font-size:.72rem; line-height:1.5;
+    color:var(--ink); background:var(--surface2); border:1px solid var(--line);
+    border-left:3px solid var(--seal); border-radius:3px; padding:9px 12px; margin:0 0 14px;
   }
+
+  .card{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:5px; padding:22px 22px 18px; box-shadow:0 1px 0 var(--line), 0 6px 18px -12px var(--shadow)}
+  .turnline{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px}
+  .fortnight{font-family:"Courier New",Courier,monospace; font-size:.68rem; letter-spacing:.06em; color:var(--ink-soft); text-transform:uppercase; padding-top:4px}
   .stamp{
     flex:0 0 auto; font-family:"Courier New",Courier,monospace; font-size:.62rem;
     letter-spacing:.08em; text-transform:uppercase; color:var(--stamp);
@@ -120,21 +114,7 @@
     border-radius:3px; padding:4px 9px; transform:rotate(7deg); opacity:.58;
     box-shadow:0 0 0 3px var(--bg); pointer-events:none;
   }
-  .honours{
-    font-family:"Courier New",Courier,monospace; font-size:.66rem; letter-spacing:.05em;
-    text-transform:uppercase; color:var(--ink-soft); text-align:center;
-    margin:-8px 0 16px; padding-bottom:12px; border-bottom:1px dotted var(--line);
-  }
-  .honours b{color:var(--seal); font-weight:700}
   @media (max-width:520px){ .cover-stamp{display:none} }
-  .seasonband{
-    display:flex; align-items:center; justify-content:center; gap:7px; flex-wrap:wrap;
-    font-family:"Courier New",Courier,monospace; font-size:.64rem; letter-spacing:.08em;
-    text-transform:uppercase; color:var(--ink-soft); margin:0 0 16px;
-  }
-  .seasonband .glyph{font-size:.95rem; opacity:.85}
-  .seasonband b{color:var(--ink); font-weight:700}
-  .choice .cue{display:block; margin-top:4px; font-size:.82rem; font-style:italic; color:var(--ink-soft)}
   .cardtitle{font-size:1.32rem; margin:0 0 11px; color:var(--seal-ink); font-weight:600; text-wrap:balance}
   .body{font-size:1.02rem; margin-bottom:18px}
   .choices{display:flex; flex-direction:column; gap:10px}
@@ -145,13 +125,10 @@
   }
   button.choice:hover{border-color:var(--seal); transform:translateX(3px)}
   button.choice:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
+  .choice .cue{display:block; margin-top:4px; font-size:.82rem; font-style:italic; color:var(--ink-soft)}
   .outcome{font-style:italic; margin:15px 0 6px; color:var(--ink-soft)}
   .deltas{display:flex; flex-wrap:wrap; gap:7px; margin-top:9px}
-  .delta{
-    font-family:"Courier New",Courier,monospace; font-size:.72rem;
-    padding:2px 8px; border-radius:2px; background:var(--surface2);
-    font-variant-numeric:tabular-nums;
-  }
+  .delta{font-family:"Courier New",Courier,monospace; font-size:.72rem; padding:2px 8px; border-radius:2px; background:var(--surface2); font-variant-numeric:tabular-nums}
   .delta.up{color:var(--good); border:1px solid var(--good)}
   .delta.down{color:var(--bad); border:1px solid var(--bad)}
   .next{margin-top:16px; text-align:right}
@@ -163,24 +140,13 @@
   button.primary:hover{filter:brightness(1.08)}
   button.primary:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
 
-  /* ---- endings ---- */
   .ending{text-align:center}
   .ending .cardtitle{font-size:1.7rem; margin-top:4px}
   .ending .verdict{font-style:italic; margin:14px auto; max-width:52ch}
 
-  footer{
-    text-align:center; font-family:"Courier New",Courier,monospace;
-    font-size:.64rem; letter-spacing:.08em; color:var(--ink-soft);
-    text-transform:uppercase; margin-top:24px;
-  }
-  @media (max-width:440px){
-    .meter .name{font-size:.5rem}
-    .card{padding:18px 16px}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none !important; transition:none !important}
-    button.choice:hover{transform:none}
-  }
+  footer{text-align:center; font-family:"Courier New",Courier,monospace; font-size:.64rem; letter-spacing:.08em; color:var(--ink-soft); text-transform:uppercase; margin-top:24px}
+  @media (max-width:440px){ .meter .name{font-size:.5rem} .card{padding:18px 16px} }
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} button.choice:hover{transform:none} }
 </style>
 </head>
 <body>
@@ -196,1223 +162,432 @@
   </header>
   <hr class="rule">
   <div class="seasonband" id="seasonband"></div>
-
   <div class="meters" id="meters"></div>
   <div class="honours" id="honours"></div>
+  <div class="economy" id="economy"></div>
+  <div class="notice" id="notice" hidden></div>
   <div class="card" id="card"></div>
 
   <footer>One fortnight per turn &middot; survive the posting</footer>
 </div>
-
-<script type="application/json" id="game-data">
-{
-  "config": {
-    "maxTurns": 24,
-    "start": {
-      "revenue": 50,
-      "order": 55,
-      "prestige": 50,
-      "contentment": 45,
-      "composure": 60
-    },
-    "calendar": {
-      "months": [
-        "November",
-        "December",
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October"
-      ],
-      "seasons": [
-        {
-          "key": "cold",
-          "name": "Cold weather",
-          "tagline": "the touring season",
-          "glyph": "❄",
-          "from": 1,
-          "to": 8,
-          "intro": "The cold weather is the touring season &mdash; the district expects to see the sahib on the road, not behind a desk."
-        },
-        {
-          "key": "hot",
-          "name": "Hot weather",
-          "tagline": "the plains bake",
-          "glyph": "☀",
-          "from": 9,
-          "to": 16,
-          "intro": "The plains bake. Those who can have fled to the hills; the work shrinks to headquarters and the long, solitary evenings."
-        },
-        {
-          "key": "monsoon",
-          "name": "The monsoon",
-          "tagline": "the district turns dangerous",
-          "glyph": "☂",
-          "from": 17,
-          "to": 24,
-          "intro": "The rains have come. The roads are turning to rivers, the river is rising, and the whole district holds its breath."
-        }
-      ]
-    },
-    "postures": {
-      "tour": {
-        "label": "Go out on tour",
-        "note": "Among the people &mdash; the district steadies; your files and your health do not.",
-        "base": {
-          "contentment": 1,
-          "order": 1,
-          "prestige": -1,
-          "composure": -1
-        },
-        "season": {
-          "cold": {
-            "composure": 1
-          },
-          "hot": {
-            "composure": -1
-          },
-          "monsoon": {
-            "composure": -1,
-            "order": -1
-          }
-        }
-      },
-      "desk": {
-        "label": "Hold the cutcherry",
-        "note": "Simla’s files clear &mdash; but out in the district, unheard, things fester.",
-        "base": {
-          "prestige": 1,
-          "revenue": 1,
-          "contentment": -1,
-          "order": -1,
-          "composure": 1
-        },
-        "season": {
-          "cold": {
-            "prestige": -1,
-            "contentment": -1
-          },
-          "hot": {},
-          "monsoon": {
-            "order": 1
-          }
-        }
-      }
-    }
-  },
-  "endings": {
-    "kcie": {
-      "title": "The K.C.I.E.",
-      "text": "You are gazetted a <b>Knight Commander of the Order of the Indian Empire</b> and become, at thirty-odd, &lsquo;Sir.&rsquo; Promoted to Commissioner, mentioned in despatches, permitted to add letters to your name. You have learned nothing, and you will go far. Chhota Nagra is already forgetting you, which is the highest compliment it knows how to pay."
-    },
-    "csi": {
-      "title": "The C.S.I.",
-      "text": "The New Year Honours make you a <b>Companion of the Most Exalted Order of the Star of India</b> &mdash; <i>Heaven's Light Our Guide.</i> It is the rarer ribbon, given for a district governed firmly and, against the odds, decently. The Commissioner is faintly puzzled that a man so liked by the governed should be so rewarded. You decide not to explain."
-    },
-    "cie": {
-      "title": "The C.I.E.",
-      "text": "The Gazette records you a <b>Companion of the Order of the Indian Empire</b> &mdash; the honest workhorse ribbon of a district man who kept the show on the road. No knighthood, no legend: a competent posting, decently done. In the Service, that is quietly understood to be the whole of the job."
-    },
-    "transfer": {
-      "title": "The Quiet Transfer",
-      "text": "You are moved to a district even smaller and hotter than this one. No enquiry, no honours, no explanation. This is the Service's way of forgetting a man without the paperwork of dismissing him."
-    },
-    "scandal": {
-      "title": "The Scandal",
-      "text": "A question is asked in the wrong quarter, a file is opened, and your name travels to London faster than you ever will. You are recalled. At the Club, the subscription list quietly loses your name between one week and the next."
-    },
-    "breakdown": {
-      "title": "Invalided Home",
-      "text": "You are put aboard a P&amp;O steamer &lsquo;on grounds of health,&rsquo; which is true in the way that all the best official lies are true. The heat, they will say. It is always the heat. You will not come back."
-    },
-    "riot": {
-      "title": "A Commission of Enquiry",
-      "text": "The lathi-charge does not go as the sub-inspector promised. A crowd becomes a headline; a headline becomes a Commission. You spend your last weeks in Chhota Nagra composing a version of events that no one, including you, believes."
-    },
-    "bankrupt": {
-      "title": "The Empty Treasury",
-      "text": "The revenue does not come in, and an Empire runs on revenue coming in. Lala Hukum Chand holds the district's debts and, it emerges, a good deal of yours. You are relieved of a post you could no longer afford to hold."
-    },
-    "gonenative": {
-      "title": "Gone Native",
-      "text": "You resign, in terms the Commissioner calls &lsquo;intemperate&rsquo; and Pandit Girdhari calls &lsquo;a beginning.&rsquo; You are henceforth spoken of as a man who let the side down. It is the only ending this district will remember with anything like affection."
-    }
-  },
-  "events": [
-    {
-      "id": "bull",
-      "tag": "PETITION",
-      "season": [
-        "any"
-      ],
-      "kind": "desk",
-      "once": false,
-      "title": "The Matter of the Sacred Bull",
-      "body": "Sub-Inspector Diwan Chand petitions, with immense dignity, that a Brahminy bull &mdash; holy, enormous, and wholly above the law &mdash; has for the third time eaten the marigolds he had grown for the flower show. He requests that the bull be, in his words, &lsquo;officially discouraged.&rsquo;",
-      "choices": [
-        {
-          "label": "Solemnly issue a written order that the bull be <b>kept off official flowerbeds</b>.",
-          "effects": {
-            "prestige": -1,
-            "contentment": 3,
-            "composure": -2
-          },
-          "outcome": "The order is framed and hung in the police lines. The bull cannot read it. Everyone is nonetheless satisfied that Something Has Been Done."
-        },
-        {
-          "label": "Have the bull quietly <b>relocated</b> to a distant village.",
-          "effects": {
-            "order": -4,
-            "contentment": -6,
-            "composure": 1
-          },
-          "outcome": "The village it is relocated to takes the arrival of a holy bull as an omen, and a deputation arrives within the week to ask what they have done to deserve it."
-        },
-        {
-          "label": "Refuse to involve the district administration in <b>bovine theology</b>.",
-          "effects": {
-            "prestige": 2,
-            "contentment": -3,
-            "composure": 2
-          },
-          "outcome": "Correct, dignified, and entirely useless. Diwan Chand's marigolds are eaten a fourth time. He does not forgive you, but he does respect you, which is worse."
-        }
-      ]
-    },
-    {
-      "id": "club",
-      "tag": "D.O.",
-      "season": [
-        "any"
-      ],
-      "kind": "club",
-      "once": false,
-      "title": "The Billiards Subscription",
-      "body": "An extraordinary meeting of the Chhota Nagra Club is convened over a proposal to raise the billiards subscription by four annas. Mrs. Fortescue-Vane is <i>for</i>. Major Prewitt is violently <i>against</i>. Both look to you, the new Magistrate, to settle a question that has already ended two friendships.",
-      "choices": [
-        {
-          "label": "Side with <b>Mrs. Fortescue-Vane</b>. One does not cross her.",
-          "effects": {
-            "prestige": 4,
-            "contentment": -1,
-            "composure": -3
-          },
-          "outcome": "You are now, invisibly and permanently, Mrs. Fortescue-Vane's man. This is worth more than a knighthood and costs roughly the same in dignity."
-        },
-        {
-          "label": "Side with <b>Major Prewitt</b> and the principle of the thing.",
-          "effects": {
-            "prestige": -4,
-            "composure": 1
-          },
-          "outcome": "The Major shakes your hand as though you have relieved Mafeking. Mrs. Fortescue-Vane says nothing at all, which is how you know."
-        },
-        {
-          "label": "Propose a <b>sub-committee</b> to study the matter.",
-          "effects": {
-            "prestige": 1,
-            "composure": -2
-          },
-          "outcome": "You have discovered the single most powerful instrument of British administration: the postponement of a decision until everyone has forgotten why they cared."
-        }
-      ]
-    },
-    {
-      "id": "revenue-settle",
-      "tag": "TELEGRAM",
-      "season": [
-        "cold"
-      ],
-      "kind": "desk",
-      "once": false,
-      "title": "The Revenue Is Short",
-      "body": "A telegram from Commissioner Blyth-Curram, who communicates exclusively in telegrams and disappointment: REVENUE RETURNS CHHOTA NAGRA UNSATISFACTORY STOP EXPECT IMPROVEMENT STOP NO EXCUSES REGARDING RAINFALL WILL BE ENTERTAINED STOP. The rains, it should be said, have failed.",
-      "choices": [
-        {
-          "label": "<b>Press the collection</b> hard. Simla wants numbers.",
-          "effects": {
-            "revenue": 10,
-            "contentment": -9,
-            "order": -4
-          },
-          "outcome": "The numbers improve. So does the queue outside Lala Hukum Chand's door, as cultivators borrow at ruinous interest to pay a revenue the fields did not grow."
-        },
-        {
-          "label": "Quietly grant <b>remissions</b> and massage the paperwork.",
-          "effects": {
-            "revenue": -4,
-            "contentment": 7,
-            "prestige": -3
-          },
-          "outcome": "You have committed the administrator's original sin: mercy off the books. If it is never discovered you are a good officer. If it is, you are a bad one. The difference is entirely a matter of discovery."
-        },
-        {
-          "label": "Send Simla a <b>magnificent report</b> explaining the rainfall.",
-          "effects": {
-            "prestige": -5,
-            "composure": 3
-          },
-          "outcome": "Blyth-Curram replies: RAINFALL NOTED STOP REVENUE STILL SHORT STOP. You have learned that a telegram is not a conversation."
-        }
-      ]
-    },
-    {
-      "id": "congress",
-      "tag": "MOST SECRET",
-      "season": [
-        "any"
-      ],
-      "kind": "desk",
-      "once": false,
-      "title": "Pandit Girdhari Holds a Meeting",
-      "body": "Pandit Girdhari Lal, pleader and Congress man, proposes to address a public meeting on the subject of the salt tax, self-rule, and &mdash; the intelligence report notes with alarm &mdash; &lsquo;the general condition of things.&rsquo; It is entirely peaceful. It is also entirely legal. Both facts are considered a nuisance.",
-      "choices": [
-        {
-          "label": "<b>Ban the meeting</b> under Section 144. Order is order.",
-          "effects": {
-            "order": 3,
-            "contentment": -8,
-            "prestige": 2,
-            "composure": -3
-          },
-          "outcome": "The meeting does not happen. The <i>reason</i> it did not happen is now a far more effective piece of Congress propaganda than the meeting could ever have been. The Pandit sends you a note of thanks. You suspect he is not joking."
-        },
-        {
-          "label": "<b>Permit it</b>, and send a clerk to take dull notes.",
-          "effects": {
-            "order": -2,
-            "contentment": 5,
-            "prestige": -3
-          },
-          "outcome": "Nothing happens. Speeches are made, the crowd disperses for tea, and the whole apparatus of sedition proves to run, like everything else here, on the assumption that it will be tolerated."
-        },
-        {
-          "label": "<b>Attend personally</b> and sit in the front row.",
-          "effects": {
-            "prestige": -2,
-            "contentment": 4,
-            "composure": -4,
-            "order": 1
-          },
-          "outcome": "Your presence is so unexpected that the Pandit revises his speech on the spot to be scrupulously polite. You understand perhaps one word in five, and both of you leave convinced you have won."
-        }
-      ]
-    },
-    {
-      "id": "moneylender",
-      "tag": "CONFIDENTIAL",
-      "season": [
-        "any"
-      ],
-      "kind": "desk",
-      "once": false,
-      "title": "Lala Hukum Chand Pays a Call",
-      "body": "Lala Hukum Chand &mdash; moneylender, landholder, and the man to whom most of the district is quietly mortgaged &mdash; calls to pay his respects. He brings a basket of remarkable mangoes and mentions, in passing and with great delicacy, that a certain land dispute might be settled &lsquo;to everyone's satisfaction&rsquo; with a word from your court.",
-      "choices": [
-        {
-          "label": "Accept the mangoes; <b>ignore the hint</b>.",
-          "effects": {
-            "prestige": 1,
-            "composure": -1,
-            "contentment": 1
-          },
-          "outcome": "You have eaten the mangoes and taken none of the meaning, which the Lala finds both admirable and slightly stupid. He will try again, better, later."
-        },
-        {
-          "label": "<b>Decline the mangoes</b> and the man, coldly.",
-          "effects": {
-            "prestige": 3,
-            "revenue": -3,
-            "composure": -2
-          },
-          "outcome": "Incorruptible and lonely. The Lala's money oils every wheel in the district, and you have just introduced a little sand. Things will run slower now, and you will not know why."
-        },
-        {
-          "label": "Have the mangoes; drop a <b>helpful word</b> in court.",
-          "effects": {
-            "revenue": 6,
-            "contentment": -5,
-            "prestige": -4,
-            "composure": -3,
-            "order": 1
-          },
-          "outcome": "The dispute is settled to the Lala's satisfaction. You are now, in a small and deniable way, his. It is astonishing how light the first thread feels.",
-          "setFlags": [
-            "indebted"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mukherjee",
-      "tag": "MINUTE",
-      "season": [
-        "any"
-      ],
-      "kind": "desk",
-      "once": false,
-      "title": "Deputy Collector Mukherjee Is Right Again",
-      "body": "Sub-Deputy Collector Mukherjee &mdash; your Indian deputy, Cambridge-educated, visibly cleverer than you, and far too well-mannered to say so &mdash; points out, very gently, that the drainage scheme you approved yesterday will flood the very quarter it was meant to protect. He is, of course, correct.",
-      "choices": [
-        {
-          "label": "<b>Thank him</b> publicly and change the scheme.",
-          "effects": {
-            "contentment": 5,
-            "prestige": -3,
-            "composure": 2
-          },
-          "outcome": "The scheme is fixed. The clerks note that the Magistrate takes correction from an Indian officer, and file the observation somewhere it may one day be useful to somebody."
-        },
-        {
-          "label": "Change the scheme; <b>take the credit</b> yourself.",
-          "effects": {
-            "prestige": 2,
-            "composure": -4,
-            "contentment": 3
-          },
-          "outcome": "The quarter stays dry and your reputation stays high. Mukherjee says nothing, and remembers everything, and remains more competent than you, which is the one thing you cannot fix."
-        },
-        {
-          "label": "<b>Overrule him</b>. A sahib does not reverse himself before the office.",
-          "effects": {
-            "prestige": 1,
-            "contentment": -8,
-            "order": -3,
-            "composure": -2
-          },
-          "outcome": "The quarter floods on schedule. You were right about appearances and wrong about drainage, and the water does not care which."
-        }
-      ]
-    },
-    {
-      "id": "tiger",
-      "tag": "DEPUTATION",
-      "season": [
-        "cold"
-      ],
-      "kind": "tour",
-      "once": false,
-      "title": "The Tiger of Rampur",
-      "body": "Villagers from Rampur report a tiger that has taken two goats and a good deal of sleep. They ask the Magistrate-sahib, as tradition demands, to shoot it. You have fired a rifle four times in your life, twice by accident. The whole district is, however, watching to see whether the new sahib is a <i>shikari</i> or a clerk.",
-      "choices": [
-        {
-          "label": "<b>Go out and shoot it</b> yourself. It is expected.",
-          "condition": {
-            "meter": "composure",
-            "op": ">",
-            "value": 40
-          },
-          "ifTrue": {
-            "effects": {
-              "prestige": 8,
-              "contentment": 5,
-              "composure": -6
-            },
-            "outcome": "By a miracle compounded of luck and a very close range, the tiger falls. You are, from this fortnight, a <i>pukka</i> sahib in the fullest sense. You are also never going to do that again."
-          },
-          "ifFalse": {
-            "effects": {
-              "prestige": -6,
-              "order": -3,
-              "composure": -8
-            },
-            "outcome": "Your nerves, already frayed, betray you. The tiger escapes; the story does not. A magistrate who cannot shoot straight is a magistrate the district has quietly stopped fearing."
-          }
-        },
-        {
-          "label": "Send for a <b>professional shikari</b> from the next district.",
-          "effects": {
-            "revenue": -3,
-            "contentment": 2,
-            "prestige": -4
-          },
-          "outcome": "The tiger is dealt with, efficiently and by somebody else. Rampur is grateful and faintly disappointed. A sahib who sends for help is a useful sort of man, but not a legend."
-        },
-        {
-          "label": "Declare it a matter for the <b>Forest Department</b>.",
-          "effects": {
-            "prestige": -5,
-            "contentment": -6,
-            "composure": 2,
-            "order": -2
-          },
-          "outcome": "Correct procedure. The Forest Department will attend to the tiger in the fullness of time, by which the tiger and everyone in Rampur understand: never."
-        }
-      ]
-    },
-    {
-      "id": "whisky",
-      "tag": "PRIVATE",
-      "season": [
-        "hot"
-      ],
-      "kind": "personal",
-      "once": false,
-      "title": "The Long Evening",
-      "body": "It is nine o'clock, the punkah has stopped because the punkah-wallah has fallen asleep, and you are alone in a bungalow the size of a barn with a bottle of Scotch and eleven hundred miles between you and anyone who knew you before India. The bottle, at least, is company.",
-      "choices": [
-        {
-          "label": "Pour a <b>large one</b>. And another. It is that or the silence.",
-          "effects": {
-            "composure": 8,
-            "prestige": -2,
-            "order": -1
-          },
-          "outcome": "The evening softens. So, over the months, does something else. This is how the district's more famous ruins began &mdash; not with a scandal, but with a nightcap that grew steadily larger and started earlier."
-        },
-        {
-          "label": "Pour a <b>small one</b> and write letters home you won't post.",
-          "effects": {
-            "composure": 3,
-            "contentment": 1
-          },
-          "outcome": "You describe an India that does not exist to people who would not understand the one that does. It helps. The unsent letters go in the drawer with the others."
-        },
-        {
-          "label": "<b>Go to bed sober</b> and lie awake in the heat.",
-          "effects": {
-            "composure": -3,
-            "prestige": 1
-          },
-          "outcome": "Virtue, and the ceiling, keep you company until two. In the morning you are correct, upright, and hollow-eyed, which the office takes for dedication."
-        }
-      ]
-    },
-    {
-      "id": "famine",
-      "tag": "IMMEDIATE",
-      "season": [
-        "monsoon"
-      ],
-      "kind": "crisis",
-      "once": true,
-      "title": "The Rains Have Failed",
-      "body": "There is no rain, and there will be no rain, and the district knows what that word means better than any word in the revenue code. Grain prices climb; the first families sell their cooking pots; a relief works could be opened, but relief works cost money the treasury does not have and Simla did not budget for.",
-      "choices": [
-        {
-          "label": "<b>Open relief works</b> at once and account for it later.",
-          "effects": {
-            "contentment": 12,
-            "revenue": -14,
-            "order": 4,
-            "composure": -4
-          },
-          "outcome": "Grain-for-labour on the roads and tanks. People do not starve, which no one will thank you for, because averted disasters leave no monument. The treasury, however, remembers.",
-          "setFlags": [
-            "relief"
-          ]
-        },
-        {
-          "label": "Wait for <b>sanction from Simla</b> before spending a rupee.",
-          "effects": {
-            "contentment": -16,
-            "order": -8,
-            "prestige": 2,
-            "composure": -6
-          },
-          "outcome": "You follow procedure exactly. Sanction arrives in six weeks, which is four weeks after it would have mattered. The files are impeccable. The district is not."
-        },
-        {
-          "label": "Lean on <b>Lala Hukum Chand</b> to release grain on credit.",
-          "effects": {
-            "contentment": 6,
-            "revenue": -2,
-            "prestige": -3,
-            "order": 2
-          },
-          "outcome": "The grain flows, at the Lala's interest and on the Lala's terms, and the district's debt to him deepens by a generation. You have solved this famine with a promise the next one will have to keep.",
-          "setFlags": [
-            "indebted"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "inspection",
-      "tag": "CONFIDENTIAL",
-      "season": [
-        "cold"
-      ],
-      "kind": "desk",
-      "once": true,
-      "title": "The Commissioner Inspects",
-      "body": "Commissioner Blyth-Curram descends upon Chhota Nagra in person, walrus-moustached and radiating grievance, to inspect the district, the treasury, the lock-up, and you. He will form an opinion in the first ten minutes and spend the visit confirming it. The whole station has been whitewashed, including, it is rumoured, several things that were not walls.",
-      "choices": [
-        {
-          "label": "Show him a <b>flawless, rehearsed</b> district.",
-          "effects": {
-            "prestige": 7,
-            "composure": -6,
-            "contentment": -2
-          },
-          "outcome": "Every ledger balances, every prisoner is suspiciously cheerful, every road has been mended along precisely the stretch he will drive. He leaves satisfied. The performance has cost you a fortnight and a small piece of your soul, both of which the Service considers a fair price."
-        },
-        {
-          "label": "Show him the <b>real district</b>, warts and all.",
-          "effects": {
-            "prestige": -5,
-            "contentment": 3,
-            "composure": 2,
-            "revenue": 2
-          },
-          "outcome": "You show him the flooded quarter, the short revenue, the honest mess of the thing. He is appalled by your candour and, in a corner of his walrus heart he will never admit to, faintly impressed. It will not help your career. It may help you sleep."
-        },
-        {
-          "label": "Ply him with the Club's <b>best brandy</b> and change the subject.",
-          "effects": {
-            "prestige": 3,
-            "composure": -3,
-            "revenue": -2,
-            "order": -1
-          },
-          "outcome": "By the second brandy he is telling you about his own first district; by the third, the inspection is effectively over. You have learned that the Empire, at its highest levels, runs substantially on the avoidance of awkwardness."
-        }
-      ]
-    },
-    {
-      "id": "plague",
-      "tag": "URGENT",
-      "season": [
-        "monsoon"
-      ],
-      "kind": "crisis",
-      "once": true,
-      "title": "Fever in the Bazaar",
-      "body": "A fever &mdash; the Civil Surgeon says cholera, the bazaar says worse &mdash; appears in the crowded lanes behind the grain market. The Surgeon wants the quarter cordoned and the wells closed. The traders want the market open. The pilgrims want to keep moving. Everyone wants you to choose, so that there will be someone to blame.",
-      "choices": [
-        {
-          "label": "<b>Cordon the quarter</b> and close the wells. Public health first.",
-          "effects": {
-            "order": -5,
-            "contentment": -6,
-            "composure": -3,
-            "prestige": 3
-          },
-          "outcome": "The fever is contained; the trade is throttled; the traders write to Simla about the high-handed young Magistrate. You saved lives and made enemies, and only one of those two things generates correspondence."
-        },
-        {
-          "label": "<b>Keep the market open</b> and hope the Surgeon is exaggerating.",
-          "effects": {
-            "revenue": 4,
-            "contentment": 2,
-            "order": -8,
-            "composure": -6
-          },
-          "outcome": "The market thrives for eleven days. On the twelfth, the Surgeon is proved right in the way that surgeons are proved right, and the cordon you refused to order becomes a cordon you cannot make wide enough."
-        },
-        {
-          "label": "Split the difference: <b>cordon quietly</b>, keep up appearances.",
-          "effects": {
-            "order": -3,
-            "contentment": -2,
-            "composure": -4,
-            "prestige": 1
-          },
-          "outcome": "You do half of what the Surgeon asked and claim to have done all of it and none of it, depending on the audience. The fever, indifferent to your positioning, does slightly less than its worst."
-        }
-      ]
-    },
-    {
-      "id": "memsahib",
-      "tag": "PRIVATE",
-      "season": [
-        "cold"
-      ],
-      "kind": "club",
-      "once": false,
-      "title": "A Question of Precedence",
-      "body": "At the Club's cold-weather ball, a furious dispute erupts over the order of precedence at dinner &mdash; specifically, whether the Executive Engineer's wife outranks the Forest Officer's wife. It is, everyone agrees, a trivial matter. It is also, everyone understands, a matter that could poison the entire station for a season.",
-      "choices": [
-        {
-          "label": "Rule <b>strictly by the Warrant of Precedence</b>.",
-          "effects": {
-            "prestige": 3,
-            "composure": -1
-          },
-          "outcome": "You produce the actual Warrant of Precedence, an object roughly as sacred here as scripture, and settle the matter by the book. Both wives are furious, but at the book, which cannot be invited to dinner or snubbed at it."
-        },
-        {
-          "label": "<b>Seat them apart</b> and pretend it was always so.",
-          "effects": {
-            "prestige": 1,
-            "composure": -3,
-            "contentment": 1
-          },
-          "outcome": "A little diplomatic fiction, gracefully deployed. The ball proceeds. You have discovered that the skills of a District Magistrate and the skills of a nervous head waiter are, at the Club, precisely identical."
-        },
-        {
-          "label": "Declare you <b>will not adjudicate</b> the seating of a dinner.",
-          "effects": {
-            "prestige": -4,
-            "composure": 3
-          },
-          "outcome": "Principled, and a grave misreading of the room. At a frontier station the seating of a dinner <i>is</i> the government. By declining to rule, you have not risen above the station's politics; you have merely lost them."
-        }
-      ]
-    },
-    {
-      "id": "prisoner",
-      "tag": "CUTCHERRY",
-      "season": [
-        "any"
-      ],
-      "kind": "desk",
-      "once": false,
-      "title": "The Case of the Stolen Buffalo",
-      "body": "A cultivator stands accused of stealing his neighbour's buffalo. The evidence is a tangle of perjury on both sides, the village is split, and the truth &mdash; that the buffalo wandered and both men are lying about the rest &mdash; is not available in any form the law can use. Both families are watching your face for the verdict.",
-      "choices": [
-        {
-          "label": "Convict on the <b>letter of the evidence</b>.",
-          "effects": {
-            "order": 3,
-            "contentment": -4,
-            "composure": -2
-          },
-          "outcome": "You convict the man the paperwork points to, who is probably guilty of something, if not this. The law is served. Justice files no return and is not consulted."
-        },
-        {
-          "label": "<b>Acquit</b> for reasonable doubt and return the buffalo.",
-          "effects": {
-            "contentment": 3,
-            "order": -2,
-            "composure": 1
-          },
-          "outcome": "You cut the knot: doubt to the accused, buffalo to its likely owner, a small homily to both families. Nobody is fully satisfied, which in a village dispute is the surest sign of a fair result."
-        },
-        {
-          "label": "<b>Bind both parties over</b> and make them share the beast.",
-          "effects": {
-            "contentment": 4,
-            "prestige": -2,
-            "composure": -1,
-            "order": 1
-          },
-          "outcome": "Solomon in a solar topi. The two families are bound to joint custody of one bad-tempered buffalo, an arrangement so mutually inconvenient that they are reconciled by the shared grievance within the year."
-        }
-      ]
-    },
-    {
-      "id": "telegram2",
-      "tag": "MEMORANDUM",
-      "season": [
-        "any"
-      ],
-      "kind": "desk",
-      "once": false,
-      "title": "A New Form Is Required",
-      "body": "Simla, in its wisdom, introduces Form XIV-B, to be completed in quintuplicate, recording the caste, occupation, and &lsquo;general disposition&rsquo; of every petitioner appearing before the court. Ram Autar, your head clerk, lays it before you with the particular stillness he reserves for orders that are both compulsory and insane.",
-      "choices": [
-        {
-          "label": "<b>Implement it fully.</b> An order is an order.",
-          "effects": {
-            "prestige": 3,
-            "contentment": -4,
-            "composure": -5
-          },
-          "outcome": "The office vanishes beneath quintuplicate. Justice slows to the speed of carbon paper. Simla, receiving its forms on time, concludes that Chhota Nagra is a model of efficiency, which is the exact opposite of the truth and precisely what the forms were designed to produce."
-        },
-        {
-          "label": "Have Ram Autar <b>fill them in plausibly</b> and file the rest.",
-          "effects": {
-            "composure": 4,
-            "contentment": 2,
-            "prestige": -1
-          },
-          "outcome": "Ram Autar's face does not move, but something in the office relaxes. A quiet compact is formed: he will manufacture the paperwork the Empire requires, and you will not ask how. It is the most useful alliance you will make in India.",
-          "setFlags": [
-            "ramautar_trust"
-          ]
-        },
-        {
-          "label": "Write to Simla <b>objecting</b> to Form XIV-B on principle.",
-          "effects": {
-            "prestige": -4,
-            "composure": -2
-          },
-          "outcome": "You receive Form XIV-B-1, a supplementary form on which to record objections to Form XIV-B. The machine has met your resistance and grown a new part to digest it."
-        }
-      ]
-    },
-    {
-      "id": "ramautar",
-      "tag": "PRIVATE",
-      "season": [
-        "any"
-      ],
-      "kind": "desk",
-      "once": true,
-      "requires": {
-        "flag": "ramautar_trust"
-      },
-      "title": "Ram Autar Has a Nephew",
-      "body": "Ram Autar, your invaluable head clerk, mentions with exquisite indirection that his sister's son is a promising young man in want of a clerkship, and that a vacancy happens to exist in the tahsil office. Everything Ram Autar does for you depends on a web of exactly such small arrangements. So, you are beginning to realise, does everything.",
-      "choices": [
-        {
-          "label": "<b>Appoint the nephew.</b> Ram Autar has earned it.",
-          "effects": {
-            "composure": 3,
-            "contentment": 1,
-            "prestige": -2,
-            "order": 1
-          },
-          "outcome": "The nephew is appointed and turns out to be perfectly competent, which is not the point. The point is that you now understand how the district is actually staffed, and that the answer has nothing to do with the rules and everything to do with Ram Autar."
-        },
-        {
-          "label": "<b>Insist on open competition</b> for the post.",
-          "effects": {
-            "prestige": 2,
-            "composure": -4,
-            "order": -2
-          },
-          "outcome": "You hold a fair examination, which the nephew wins anyway, having been the only serious candidate Ram Autar permitted to apply. You have upheld a principle and changed nothing, at some cost to a friendship you could not afford to spend."
-        }
-      ]
-    },
-    {
-      "id": "touring-camp",
-      "tag": "ON TOUR",
-      "season": [
-        "cold",
-        "hot"
-      ],
-      "kind": "tour",
-      "once": false,
-      "title": "The Camp at Rampur",
-      "body": "Your tents are pitched under a mango tope outside Rampur; the <i>patwari</i>’s land-records are spread on the camp table, the headman is anxious, and a queue of cultivators has formed to lay grievances before the sahib in person. This is the district as it actually is, not as the files describe it.",
-      "choices": [
-        {
-          "label": "Go through the <b>land records</b> line by line with the patwari.",
-          "effects": {
-            "revenue": 4,
-            "order": 2,
-            "composure": -3
-          },
-          "outcome": "You find three fields recorded to men who died in the last famine and one to a man who never existed. The patwari is either a rogue or an artist; either way the records are truer tonight than they were this morning."
-        },
-        {
-          "label": "Hear the <b>cultivators’ grievances</b> under the mango tree.",
-          "effects": {
-            "contentment": 6,
-            "composure": -2,
-            "prestige": -1
-          },
-          "outcome": "You sit until dark hearing of a bad well, a hard landlord, a boundary that has walked in the night. You can mend perhaps one grievance in five, but being heard by the sahib is itself a kind of remedy, and the village knows it."
-        },
-        {
-          "label": "Keep it brief &mdash; <b>show the flag</b> and move on.",
-          "effects": {
-            "order": 2,
-            "contentment": -2,
-            "composure": 1
-          },
-          "outcome": "You are seen, saluted, and gone by noon. The tour register records a village inspected. What the village records is that the sahib did not stay to listen."
-        }
-      ]
-    },
-    {
-      "id": "hill-station",
-      "tag": "PRIVATE",
-      "season": [
-        "hot"
-      ],
-      "kind": "personal",
-      "once": false,
-      "title": "A Letter from the Hills",
-      "body": "The hot weather is on, the plains are an oven, and a letter comes down from the hill station where your wife has taken the children for the season. She asks, not for the first time, when you will come up for your local leave &mdash; and whether it is not time the boy was sent Home to school in England, as everyone’s children are.",
-      "choices": [
-        {
-          "label": "Take your <b>local leave</b> and go up to the hills.",
-          "effects": {
-            "composure": 8,
-            "prestige": -3,
-            "revenue": -2
-          },
-          "outcome": "A fortnight of cool air and your own family, and of pretending you are not thinking about the district. You come down restored and faintly guilty. The work waited; it always waits; that is the one dependable thing about it."
-        },
-        {
-          "label": "Stay at your post; <b>agree the boy goes Home</b>.",
-          "effects": {
-            "composure": -6,
-            "prestige": 2
-          },
-          "outcome": "You sign the letter that sends your son across an ocean to be raised by a school and an aunt, for his health and his accent and his prospects. It is what the Service does to its families. You tell yourself it is for the best, and go back to the files."
-        },
-        {
-          "label": "Stay, and <b>put the decision off</b> another year.",
-          "effects": {
-            "composure": -2,
-            "contentment": 1
-          },
-          "outcome": "You write a warm, evasive letter and post it up the hill. Nothing is decided, which is its own kind of decision. The heat presses on the bungalow like a hand."
-        }
-      ]
-    },
-    {
-      "id": "the-heat",
-      "tag": "PRIVATE",
-      "season": [
-        "hot"
-      ],
-      "kind": "personal",
-      "once": false,
-      "title": "The Hot Weather",
-      "body": "By May the thermometer stands at a hundred and ten in the shade, the station has half-emptied for the hills, the punkahs never stop, and the nights are worse than the days. This is the season that breaks men quietly &mdash; the <i>loo</i> wind, the glare, and the long solitary evenings with nothing between you and the silence but a bottle and the ceiling.",
-      "choices": [
-        {
-          "label": "Keep to a <b>rigid routine</b> &mdash; dawn rides, cold baths, work.",
-          "effects": {
-            "composure": 3,
-            "order": 1
-          },
-          "outcome": "Discipline is the sahib’s armour against the heat. You ride at dawn, work through the shuttered day, and hold yourself together by the timetable. It is joyless, and it works."
-        },
-        {
-          "label": "Let the <b>Club and the bottle</b> carry you through.",
-          "effects": {
-            "composure": 5,
-            "prestige": -2,
-            "order": -1
-          },
-          "outcome": "The little society of the half-empty station closes ranks around its bar. The evenings pass more easily; the mornings less so. It is the well-worn road, and you can see from here where it leads."
-        },
-        {
-          "label": "<b>Drive yourself</b> at the work to fill the emptiness.",
-          "effects": {
-            "revenue": 3,
-            "prestige": 1,
-            "composure": -4
-          },
-          "outcome": "You bury the silence under files and clear a backlog two years deep. Simla is pleased. Something in you is being spent that no honours list will ever repay."
-        }
-      ]
-    },
-    {
-      "id": "flood",
-      "tag": "IMMEDIATE",
-      "season": [
-        "monsoon"
-      ],
-      "kind": "crisis",
-      "once": true,
-      "title": "The River Comes Up",
-      "body": "Three days of rain and the river is over its banks; the low villages are islands, the rail embankment is the only high ground for miles, and a crowd of the flooded-out is gathering on it with their cattle and their cooking pots. Boats are few, the night is coming on, and the water is still rising.",
-      "choices": [
-        {
-          "label": "Take <b>personal charge</b> of the rescue from a boat.",
-          "effects": {
-            "contentment": 10,
-            "order": 4,
-            "composure": -6,
-            "prestige": 2
-          },
-          "outcome": "You spend two nights on the water pulling families off rooftops, soaked and sleepless and more use than you have felt in months. The district will long remember that the sahib came himself. So, unfortunately, will your constitution."
-        },
-        {
-          "label": "<b>Organise from the embankment</b> &mdash; relief camp, grain, order.",
-          "effects": {
-            "contentment": 6,
-            "order": 3,
-            "revenue": -4,
-            "composure": -3
-          },
-          "outcome": "You set up the relief camp, commandeer the grain, and keep a frightened crowd from becoming a mob. Unglamorous, competent, and precisely the job. Nobody drowns who can be reached; some cannot be reached."
-        },
-        {
-          "label": "Wire for <b>military help</b> and hold the line till it comes.",
-          "effects": {
-            "order": 2,
-            "prestige": -3,
-            "contentment": -4,
-            "composure": -2
-          },
-          "outcome": "The sappers arrive with boats on the second day and do the work you could not. It is the sensible call, and the district notes that in its worst hour the sahib sent a telegram and waited. Sense is rarely forgiven."
-        }
-      ]
-    }
-  ]
-}
-</script>
-
+<script type="application/json" id="game-data">{"config":{"maxTurns":24,"start":{"revenue":50,"order":55,"prestige":50,"contentment":45,"composure":60},"calendar":{"months":["November","December","January","February","March","April","May","June","July","August","September","October"],"seasons":[{"key":"cold","name":"Cold weather","tagline":"the touring season","glyph":"❄","from":1,"to":8,"intro":"The cold weather is the touring season &mdash; the district expects to see the sahib on the road, not behind a desk."},{"key":"hot","name":"Hot weather","tagline":"the plains bake","glyph":"☀","from":9,"to":16,"intro":"The plains bake. Those who can have fled to the hills; the work shrinks to headquarters and the long, solitary evenings."},{"key":"monsoon","name":"The monsoon","tagline":"the district turns dangerous","glyph":"☂","from":17,"to":24,"intro":"The rains have come. The roads are turning to rivers, the river is rising, and the whole district holds its breath."}]},"postures":{"tour":{"label":"Go out on tour","note":"Among the people &mdash; the district steadies; your files and your health do not.","base":{"contentment":1,"order":1,"prestige":-1,"composure":-1},"season":{"cold":{"composure":1},"hot":{"composure":-1},"monsoon":{"composure":-1,"order":-1}}},"desk":{"label":"Hold the cutcherry","note":"Simla’s files clear &mdash; but out in the district, unheard, things fester.","base":{"prestige":1,"revenue":1,"contentment":-1,"order":-1,"composure":1},"season":{"cold":{"prestige":-1,"contentment":-1},"hot":{},"monsoon":{"order":1}}}},"economy":{"startTreasury":120000,"settlementTurns":[11,21],"settlementBase":140000,"interestRate":0.15,"debtCeiling":250000,"debtWarn":120000}},"endings":{"kcie":{"title":"The K.C.I.E.","text":"You are gazetted a <b>Knight Commander of the Order of the Indian Empire</b> and become, at thirty-odd, &lsquo;Sir.&rsquo; Promoted to Commissioner, mentioned in despatches, permitted to add letters to your name. You have learned nothing, and you will go far. Chhota Nagra is already forgetting you, which is the highest compliment it knows how to pay."},"csi":{"title":"The C.S.I.","text":"The New Year Honours make you a <b>Companion of the Most Exalted Order of the Star of India</b> &mdash; <i>Heaven's Light Our Guide.</i> It is the rarer ribbon, given for a district governed firmly and, against the odds, decently. The Commissioner is faintly puzzled that a man so liked by the governed should be so rewarded. You decide not to explain."},"cie":{"title":"The C.I.E.","text":"The Gazette records you a <b>Companion of the Order of the Indian Empire</b> &mdash; the honest workhorse ribbon of a district man who kept the show on the road. No knighthood, no legend: a competent posting, decently done. In the Service, that is quietly understood to be the whole of the job."},"transfer":{"title":"The Quiet Transfer","text":"You are moved to a district even smaller and hotter than this one. No enquiry, no honours, no explanation. This is the Service's way of forgetting a man without the paperwork of dismissing him."},"scandal":{"title":"The Scandal","text":"A question is asked in the wrong quarter, a file is opened, and your name travels to London faster than you ever will. You are recalled. At the Club, the subscription list quietly loses your name between one week and the next."},"breakdown":{"title":"Invalided Home","text":"You are put aboard a P&amp;O steamer &lsquo;on grounds of health,&rsquo; which is true in the way that all the best official lies are true. The heat, they will say. It is always the heat. You will not come back."},"riot":{"title":"A Commission of Enquiry","text":"The lathi-charge does not go as the sub-inspector promised. A crowd becomes a headline; a headline becomes a Commission. You spend your last weeks in Chhota Nagra composing a version of events that no one, including you, believes."},"bankrupt":{"title":"The Empty Treasury","text":"The revenue does not come in, and an Empire runs on revenue coming in. Lala Hukum Chand holds the district's debts and, it emerges, a good deal of yours. You are relieved of a post you could no longer afford to hold."},"gonenative":{"title":"Gone Native","text":"You resign, in terms the Commissioner calls &lsquo;intemperate&rsquo; and Pandit Girdhari calls &lsquo;a beginning.&rsquo; You are henceforth spoken of as a man who let the side down. It is the only ending this district will remember with anything like affection."}},"events":[{"id":"bull","tag":"PETITION","season":["any"],"kind":"desk","once":false,"title":"The Matter of the Sacred Bull","body":"Sub-Inspector Diwan Chand petitions, with immense dignity, that a Brahminy bull &mdash; holy, enormous, and wholly above the law &mdash; has for the third time eaten the marigolds he had grown for the flower show. He requests that the bull be, in his words, &lsquo;officially discouraged.&rsquo;","choices":[{"label":"Solemnly issue a written order that the bull be <b>kept off official flowerbeds</b>.","effects":{"prestige":-1,"contentment":3,"composure":-2},"outcome":"The order is framed and hung in the police lines. The bull cannot read it. Everyone is nonetheless satisfied that Something Has Been Done."},{"label":"Have the bull quietly <b>relocated</b> to a distant village.","effects":{"order":-4,"contentment":-6,"composure":1},"outcome":"The village it is relocated to takes the arrival of a holy bull as an omen, and a deputation arrives within the week to ask what they have done to deserve it."},{"label":"Refuse to involve the district administration in <b>bovine theology</b>.","effects":{"prestige":2,"contentment":-3,"composure":2},"outcome":"Correct, dignified, and entirely useless. Diwan Chand's marigolds are eaten a fourth time. He does not forgive you, but he does respect you, which is worse."}]},{"id":"club","tag":"D.O.","season":["any"],"kind":"club","once":false,"title":"The Billiards Subscription","body":"An extraordinary meeting of the Chhota Nagra Club is convened over a proposal to raise the billiards subscription by four annas. Mrs. Fortescue-Vane is <i>for</i>. Major Prewitt is violently <i>against</i>. Both look to you, the new Magistrate, to settle a question that has already ended two friendships.","choices":[{"label":"Side with <b>Mrs. Fortescue-Vane</b>. One does not cross her.","effects":{"prestige":4,"contentment":-1,"composure":-3},"outcome":"You are now, invisibly and permanently, Mrs. Fortescue-Vane's man. This is worth more than a knighthood and costs roughly the same in dignity."},{"label":"Side with <b>Major Prewitt</b> and the principle of the thing.","effects":{"prestige":-4,"composure":1},"outcome":"The Major shakes your hand as though you have relieved Mafeking. Mrs. Fortescue-Vane says nothing at all, which is how you know."},{"label":"Propose a <b>sub-committee</b> to study the matter.","effects":{"prestige":1,"composure":-2},"outcome":"You have discovered the single most powerful instrument of British administration: the postponement of a decision until everyone has forgotten why they cared."}]},{"id":"revenue-settle","tag":"TELEGRAM","season":["cold"],"kind":"desk","once":false,"title":"The Revenue Is Short","body":"A telegram from Commissioner Blyth-Curram, who communicates exclusively in telegrams and disappointment: REVENUE RETURNS CHHOTA NAGRA UNSATISFACTORY STOP EXPECT IMPROVEMENT STOP NO EXCUSES REGARDING RAINFALL WILL BE ENTERTAINED STOP. The rains, it should be said, have failed.","choices":[{"label":"<b>Press the collection</b> hard. Simla wants numbers.","effects":{"revenue":10,"contentment":-9,"order":-4},"outcome":"The numbers improve. So does the queue outside Lala Hukum Chand's door, as cultivators borrow at ruinous interest to pay a revenue the fields did not grow."},{"label":"Quietly grant <b>remissions</b> and massage the paperwork.","effects":{"revenue":-4,"contentment":7,"prestige":-3},"outcome":"You have committed the administrator's original sin: mercy off the books. If it is never discovered you are a good officer. If it is, you are a bad one. The difference is entirely a matter of discovery."},{"label":"Send Simla a <b>magnificent report</b> explaining the rainfall.","effects":{"prestige":-5,"composure":3},"outcome":"Blyth-Curram replies: RAINFALL NOTED STOP REVENUE STILL SHORT STOP. You have learned that a telegram is not a conversation."}]},{"id":"congress","tag":"MOST SECRET","season":["any"],"kind":"desk","once":false,"title":"Pandit Girdhari Holds a Meeting","body":"Pandit Girdhari Lal, pleader and Congress man, proposes to address a public meeting on the subject of the salt tax, self-rule, and &mdash; the intelligence report notes with alarm &mdash; &lsquo;the general condition of things.&rsquo; It is entirely peaceful. It is also entirely legal. Both facts are considered a nuisance.","choices":[{"label":"<b>Ban the meeting</b> under Section 144. Order is order.","effects":{"order":3,"contentment":-8,"prestige":2,"composure":-3},"outcome":"The meeting does not happen. The <i>reason</i> it did not happen is now a far more effective piece of Congress propaganda than the meeting could ever have been. The Pandit sends you a note of thanks. You suspect he is not joking."},{"label":"<b>Permit it</b>, and send a clerk to take dull notes.","effects":{"order":-2,"contentment":5,"prestige":-3},"outcome":"Nothing happens. Speeches are made, the crowd disperses for tea, and the whole apparatus of sedition proves to run, like everything else here, on the assumption that it will be tolerated."},{"label":"<b>Attend personally</b> and sit in the front row.","effects":{"prestige":-2,"contentment":4,"composure":-4,"order":1},"outcome":"Your presence is so unexpected that the Pandit revises his speech on the spot to be scrupulously polite. You understand perhaps one word in five, and both of you leave convinced you have won."}]},{"id":"moneylender","tag":"CONFIDENTIAL","season":["any"],"kind":"desk","once":false,"title":"Lala Hukum Chand Pays a Call","body":"Lala Hukum Chand &mdash; moneylender, landholder, and the man to whom most of the district is quietly mortgaged &mdash; calls to pay his respects. He brings a basket of remarkable mangoes and mentions, in passing and with great delicacy, that a certain land dispute might be settled &lsquo;to everyone's satisfaction&rsquo; with a word from your court.","choices":[{"label":"Accept the mangoes; <b>ignore the hint</b>.","effects":{"prestige":1,"composure":-1,"contentment":1},"outcome":"You have eaten the mangoes and taken none of the meaning, which the Lala finds both admirable and slightly stupid. He will try again, better, later."},{"label":"<b>Decline the mangoes</b> and the man, coldly.","effects":{"prestige":3,"revenue":-3,"composure":-2},"outcome":"Incorruptible and lonely. The Lala's money oils every wheel in the district, and you have just introduced a little sand. Things will run slower now, and you will not know why."},{"label":"Have the mangoes; drop a <b>helpful word</b> in court.","effects":{"revenue":6,"contentment":-5,"prestige":-4,"composure":-3,"order":1},"outcome":"The dispute is settled to the Lala's satisfaction. You are now, in a small and deniable way, his. It is astonishing how light the first thread feels.","setFlags":["indebted"],"econ":{"debt":50000}}]},{"id":"mukherjee","tag":"MINUTE","season":["any"],"kind":"desk","once":false,"title":"Deputy Collector Mukherjee Is Right Again","body":"Sub-Deputy Collector Mukherjee &mdash; your Indian deputy, Cambridge-educated, visibly cleverer than you, and far too well-mannered to say so &mdash; points out, very gently, that the drainage scheme you approved yesterday will flood the very quarter it was meant to protect. He is, of course, correct.","choices":[{"label":"<b>Thank him</b> publicly and change the scheme.","effects":{"contentment":5,"prestige":-3,"composure":2},"outcome":"The scheme is fixed. The clerks note that the Magistrate takes correction from an Indian officer, and file the observation somewhere it may one day be useful to somebody."},{"label":"Change the scheme; <b>take the credit</b> yourself.","effects":{"prestige":2,"composure":-4,"contentment":3},"outcome":"The quarter stays dry and your reputation stays high. Mukherjee says nothing, and remembers everything, and remains more competent than you, which is the one thing you cannot fix."},{"label":"<b>Overrule him</b>. A sahib does not reverse himself before the office.","effects":{"prestige":1,"contentment":-8,"order":-3,"composure":-2},"outcome":"The quarter floods on schedule. You were right about appearances and wrong about drainage, and the water does not care which."}]},{"id":"tiger","tag":"DEPUTATION","season":["cold"],"kind":"tour","once":false,"title":"The Tiger of Rampur","body":"Villagers from Rampur report a tiger that has taken two goats and a good deal of sleep. They ask the Magistrate-sahib, as tradition demands, to shoot it. You have fired a rifle four times in your life, twice by accident. The whole district is, however, watching to see whether the new sahib is a <i>shikari</i> or a clerk.","choices":[{"label":"<b>Go out and shoot it</b> yourself. It is expected.","condition":{"meter":"composure","op":">","value":40},"ifTrue":{"effects":{"prestige":8,"contentment":5,"composure":-6},"outcome":"By a miracle compounded of luck and a very close range, the tiger falls. You are, from this fortnight, a <i>pukka</i> sahib in the fullest sense. You are also never going to do that again."},"ifFalse":{"effects":{"prestige":-6,"order":-3,"composure":-8},"outcome":"Your nerves, already frayed, betray you. The tiger escapes; the story does not. A magistrate who cannot shoot straight is a magistrate the district has quietly stopped fearing."}},{"label":"Send for a <b>professional shikari</b> from the next district.","effects":{"revenue":-3,"contentment":2,"prestige":-4},"outcome":"The tiger is dealt with, efficiently and by somebody else. Rampur is grateful and faintly disappointed. A sahib who sends for help is a useful sort of man, but not a legend."},{"label":"Declare it a matter for the <b>Forest Department</b>.","effects":{"prestige":-5,"contentment":-6,"composure":2,"order":-2},"outcome":"Correct procedure. The Forest Department will attend to the tiger in the fullness of time, by which the tiger and everyone in Rampur understand: never."}]},{"id":"whisky","tag":"PRIVATE","season":["hot"],"kind":"personal","once":false,"title":"The Long Evening","body":"It is nine o'clock, the punkah has stopped because the punkah-wallah has fallen asleep, and you are alone in a bungalow the size of a barn with a bottle of Scotch and eleven hundred miles between you and anyone who knew you before India. The bottle, at least, is company.","choices":[{"label":"Pour a <b>large one</b>. And another. It is that or the silence.","effects":{"composure":8,"prestige":-2,"order":-1},"outcome":"The evening softens. So, over the months, does something else. This is how the district's more famous ruins began &mdash; not with a scandal, but with a nightcap that grew steadily larger and started earlier."},{"label":"Pour a <b>small one</b> and write letters home you won't post.","effects":{"composure":3,"contentment":1},"outcome":"You describe an India that does not exist to people who would not understand the one that does. It helps. The unsent letters go in the drawer with the others."},{"label":"<b>Go to bed sober</b> and lie awake in the heat.","effects":{"composure":-3,"prestige":1},"outcome":"Virtue, and the ceiling, keep you company until two. In the morning you are correct, upright, and hollow-eyed, which the office takes for dedication."}]},{"id":"famine","tag":"IMMEDIATE","season":["monsoon"],"kind":"crisis","once":true,"title":"The Rains Have Failed","body":"There is no rain, and there will be no rain, and the district knows what that word means better than any word in the revenue code. Grain prices climb; the first families sell their cooking pots; a relief works could be opened, but relief works cost money the treasury does not have and Simla did not budget for.","choices":[{"label":"<b>Open relief works</b> at once and account for it later.","effects":{"contentment":12,"revenue":-14,"order":4,"composure":-4},"outcome":"Grain-for-labour on the roads and tanks. People do not starve, which no one will thank you for, because averted disasters leave no monument. The treasury, however, remembers.","setFlags":["relief"],"econ":{"treasury":-150000}},{"label":"Wait for <b>sanction from Simla</b> before spending a rupee.","effects":{"contentment":-16,"order":-8,"prestige":2,"composure":-6},"outcome":"You follow procedure exactly. Sanction arrives in six weeks, which is four weeks after it would have mattered. The files are impeccable. The district is not."},{"label":"Lean on <b>Lala Hukum Chand</b> to release grain on credit.","effects":{"contentment":6,"revenue":-2,"prestige":-3,"order":2},"outcome":"The grain flows, at the Lala's interest and on the Lala's terms, and the district's debt to him deepens by a generation. You have solved this famine with a promise the next one will have to keep.","setFlags":["indebted"],"econ":{"debt":120000}}]},{"id":"inspection","tag":"CONFIDENTIAL","season":["cold"],"kind":"desk","once":true,"title":"The Commissioner Inspects","body":"Commissioner Blyth-Curram descends upon Chhota Nagra in person, walrus-moustached and radiating grievance, to inspect the district, the treasury, the lock-up, and you. He will form an opinion in the first ten minutes and spend the visit confirming it. The whole station has been whitewashed, including, it is rumoured, several things that were not walls.","choices":[{"label":"Show him a <b>flawless, rehearsed</b> district.","effects":{"prestige":7,"composure":-6,"contentment":-2},"outcome":"Every ledger balances, every prisoner is suspiciously cheerful, every road has been mended along precisely the stretch he will drive. He leaves satisfied. The performance has cost you a fortnight and a small piece of your soul, both of which the Service considers a fair price."},{"label":"Show him the <b>real district</b>, warts and all.","effects":{"prestige":-5,"contentment":3,"composure":2,"revenue":2},"outcome":"You show him the flooded quarter, the short revenue, the honest mess of the thing. He is appalled by your candour and, in a corner of his walrus heart he will never admit to, faintly impressed. It will not help your career. It may help you sleep."},{"label":"Ply him with the Club's <b>best brandy</b> and change the subject.","effects":{"prestige":3,"composure":-3,"revenue":-2,"order":-1},"outcome":"By the second brandy he is telling you about his own first district; by the third, the inspection is effectively over. You have learned that the Empire, at its highest levels, runs substantially on the avoidance of awkwardness."}]},{"id":"plague","tag":"URGENT","season":["monsoon"],"kind":"crisis","once":true,"title":"Fever in the Bazaar","body":"A fever &mdash; the Civil Surgeon says cholera, the bazaar says worse &mdash; appears in the crowded lanes behind the grain market. The Surgeon wants the quarter cordoned and the wells closed. The traders want the market open. The pilgrims want to keep moving. Everyone wants you to choose, so that there will be someone to blame.","choices":[{"label":"<b>Cordon the quarter</b> and close the wells. Public health first.","effects":{"order":-5,"contentment":-6,"composure":-3,"prestige":3},"outcome":"The fever is contained; the trade is throttled; the traders write to Simla about the high-handed young Magistrate. You saved lives and made enemies, and only one of those two things generates correspondence."},{"label":"<b>Keep the market open</b> and hope the Surgeon is exaggerating.","effects":{"revenue":4,"contentment":2,"order":-8,"composure":-6},"outcome":"The market thrives for eleven days. On the twelfth, the Surgeon is proved right in the way that surgeons are proved right, and the cordon you refused to order becomes a cordon you cannot make wide enough."},{"label":"Split the difference: <b>cordon quietly</b>, keep up appearances.","effects":{"order":-3,"contentment":-2,"composure":-4,"prestige":1},"outcome":"You do half of what the Surgeon asked and claim to have done all of it and none of it, depending on the audience. The fever, indifferent to your positioning, does slightly less than its worst."}]},{"id":"memsahib","tag":"PRIVATE","season":["cold"],"kind":"club","once":false,"title":"A Question of Precedence","body":"At the Club's cold-weather ball, a furious dispute erupts over the order of precedence at dinner &mdash; specifically, whether the Executive Engineer's wife outranks the Forest Officer's wife. It is, everyone agrees, a trivial matter. It is also, everyone understands, a matter that could poison the entire station for a season.","choices":[{"label":"Rule <b>strictly by the Warrant of Precedence</b>.","effects":{"prestige":3,"composure":-1},"outcome":"You produce the actual Warrant of Precedence, an object roughly as sacred here as scripture, and settle the matter by the book. Both wives are furious, but at the book, which cannot be invited to dinner or snubbed at it."},{"label":"<b>Seat them apart</b> and pretend it was always so.","effects":{"prestige":1,"composure":-3,"contentment":1},"outcome":"A little diplomatic fiction, gracefully deployed. The ball proceeds. You have discovered that the skills of a District Magistrate and the skills of a nervous head waiter are, at the Club, precisely identical."},{"label":"Declare you <b>will not adjudicate</b> the seating of a dinner.","effects":{"prestige":-4,"composure":3},"outcome":"Principled, and a grave misreading of the room. At a frontier station the seating of a dinner <i>is</i> the government. By declining to rule, you have not risen above the station's politics; you have merely lost them."}]},{"id":"prisoner","tag":"CUTCHERRY","season":["any"],"kind":"desk","once":false,"title":"The Case of the Stolen Buffalo","body":"A cultivator stands accused of stealing his neighbour's buffalo. The evidence is a tangle of perjury on both sides, the village is split, and the truth &mdash; that the buffalo wandered and both men are lying about the rest &mdash; is not available in any form the law can use. Both families are watching your face for the verdict.","choices":[{"label":"Convict on the <b>letter of the evidence</b>.","effects":{"order":3,"contentment":-4,"composure":-2},"outcome":"You convict the man the paperwork points to, who is probably guilty of something, if not this. The law is served. Justice files no return and is not consulted."},{"label":"<b>Acquit</b> for reasonable doubt and return the buffalo.","effects":{"contentment":3,"order":-2,"composure":1},"outcome":"You cut the knot: doubt to the accused, buffalo to its likely owner, a small homily to both families. Nobody is fully satisfied, which in a village dispute is the surest sign of a fair result."},{"label":"<b>Bind both parties over</b> and make them share the beast.","effects":{"contentment":4,"prestige":-2,"composure":-1,"order":1},"outcome":"Solomon in a solar topi. The two families are bound to joint custody of one bad-tempered buffalo, an arrangement so mutually inconvenient that they are reconciled by the shared grievance within the year."}]},{"id":"telegram2","tag":"MEMORANDUM","season":["any"],"kind":"desk","once":false,"title":"A New Form Is Required","body":"Simla, in its wisdom, introduces Form XIV-B, to be completed in quintuplicate, recording the caste, occupation, and &lsquo;general disposition&rsquo; of every petitioner appearing before the court. Ram Autar, your head clerk, lays it before you with the particular stillness he reserves for orders that are both compulsory and insane.","choices":[{"label":"<b>Implement it fully.</b> An order is an order.","effects":{"prestige":3,"contentment":-4,"composure":-5},"outcome":"The office vanishes beneath quintuplicate. Justice slows to the speed of carbon paper. Simla, receiving its forms on time, concludes that Chhota Nagra is a model of efficiency, which is the exact opposite of the truth and precisely what the forms were designed to produce."},{"label":"Have Ram Autar <b>fill them in plausibly</b> and file the rest.","effects":{"composure":4,"contentment":2,"prestige":-1},"outcome":"Ram Autar's face does not move, but something in the office relaxes. A quiet compact is formed: he will manufacture the paperwork the Empire requires, and you will not ask how. It is the most useful alliance you will make in India.","setFlags":["ramautar_trust"]},{"label":"Write to Simla <b>objecting</b> to Form XIV-B on principle.","effects":{"prestige":-4,"composure":-2},"outcome":"You receive Form XIV-B-1, a supplementary form on which to record objections to Form XIV-B. The machine has met your resistance and grown a new part to digest it."}]},{"id":"ramautar","tag":"PRIVATE","season":["any"],"kind":"desk","once":true,"requires":{"flag":"ramautar_trust"},"title":"Ram Autar Has a Nephew","body":"Ram Autar, your invaluable head clerk, mentions with exquisite indirection that his sister's son is a promising young man in want of a clerkship, and that a vacancy happens to exist in the tahsil office. Everything Ram Autar does for you depends on a web of exactly such small arrangements. So, you are beginning to realise, does everything.","choices":[{"label":"<b>Appoint the nephew.</b> Ram Autar has earned it.","effects":{"composure":3,"contentment":1,"prestige":-2,"order":1},"outcome":"The nephew is appointed and turns out to be perfectly competent, which is not the point. The point is that you now understand how the district is actually staffed, and that the answer has nothing to do with the rules and everything to do with Ram Autar."},{"label":"<b>Insist on open competition</b> for the post.","effects":{"prestige":2,"composure":-4,"order":-2},"outcome":"You hold a fair examination, which the nephew wins anyway, having been the only serious candidate Ram Autar permitted to apply. You have upheld a principle and changed nothing, at some cost to a friendship you could not afford to spend."}]},{"id":"touring-camp","tag":"ON TOUR","season":["cold","hot"],"kind":"tour","once":false,"title":"The Camp at Rampur","body":"Your tents are pitched under a mango tope outside Rampur; the <i>patwari</i>’s land-records are spread on the camp table, the headman is anxious, and a queue of cultivators has formed to lay grievances before the sahib in person. This is the district as it actually is, not as the files describe it.","choices":[{"label":"Go through the <b>land records</b> line by line with the patwari.","effects":{"revenue":4,"order":2,"composure":-3},"outcome":"You find three fields recorded to men who died in the last famine and one to a man who never existed. The patwari is either a rogue or an artist; either way the records are truer tonight than they were this morning."},{"label":"Hear the <b>cultivators’ grievances</b> under the mango tree.","effects":{"contentment":6,"composure":-2,"prestige":-1},"outcome":"You sit until dark hearing of a bad well, a hard landlord, a boundary that has walked in the night. You can mend perhaps one grievance in five, but being heard by the sahib is itself a kind of remedy, and the village knows it."},{"label":"Keep it brief &mdash; <b>show the flag</b> and move on.","effects":{"order":2,"contentment":-2,"composure":1},"outcome":"You are seen, saluted, and gone by noon. The tour register records a village inspected. What the village records is that the sahib did not stay to listen."}]},{"id":"hill-station","tag":"PRIVATE","season":["hot"],"kind":"personal","once":false,"title":"A Letter from the Hills","body":"The hot weather is on, the plains are an oven, and a letter comes down from the hill station where your wife has taken the children for the season. She asks, not for the first time, when you will come up for your local leave &mdash; and whether it is not time the boy was sent Home to school in England, as everyone’s children are.","choices":[{"label":"Take your <b>local leave</b> and go up to the hills.","effects":{"composure":8,"prestige":-3,"revenue":-2},"outcome":"A fortnight of cool air and your own family, and of pretending you are not thinking about the district. You come down restored and faintly guilty. The work waited; it always waits; that is the one dependable thing about it."},{"label":"Stay at your post; <b>agree the boy goes Home</b>.","effects":{"composure":-6,"prestige":2},"outcome":"You sign the letter that sends your son across an ocean to be raised by a school and an aunt, for his health and his accent and his prospects. It is what the Service does to its families. You tell yourself it is for the best, and go back to the files."},{"label":"Stay, and <b>put the decision off</b> another year.","effects":{"composure":-2,"contentment":1},"outcome":"You write a warm, evasive letter and post it up the hill. Nothing is decided, which is its own kind of decision. The heat presses on the bungalow like a hand."}]},{"id":"the-heat","tag":"PRIVATE","season":["hot"],"kind":"personal","once":false,"title":"The Hot Weather","body":"By May the thermometer stands at a hundred and ten in the shade, the station has half-emptied for the hills, the punkahs never stop, and the nights are worse than the days. This is the season that breaks men quietly &mdash; the <i>loo</i> wind, the glare, and the long solitary evenings with nothing between you and the silence but a bottle and the ceiling.","choices":[{"label":"Keep to a <b>rigid routine</b> &mdash; dawn rides, cold baths, work.","effects":{"composure":3,"order":1},"outcome":"Discipline is the sahib’s armour against the heat. You ride at dawn, work through the shuttered day, and hold yourself together by the timetable. It is joyless, and it works."},{"label":"Let the <b>Club and the bottle</b> carry you through.","effects":{"composure":5,"prestige":-2,"order":-1},"outcome":"The little society of the half-empty station closes ranks around its bar. The evenings pass more easily; the mornings less so. It is the well-worn road, and you can see from here where it leads."},{"label":"<b>Drive yourself</b> at the work to fill the emptiness.","effects":{"revenue":3,"prestige":1,"composure":-4},"outcome":"You bury the silence under files and clear a backlog two years deep. Simla is pleased. Something in you is being spent that no honours list will ever repay."}]},{"id":"flood","tag":"IMMEDIATE","season":["monsoon"],"kind":"crisis","once":true,"title":"The River Comes Up","body":"Three days of rain and the river is over its banks; the low villages are islands, the rail embankment is the only high ground for miles, and a crowd of the flooded-out is gathering on it with their cattle and their cooking pots. Boats are few, the night is coming on, and the water is still rising.","choices":[{"label":"Take <b>personal charge</b> of the rescue from a boat.","effects":{"contentment":10,"order":4,"composure":-6,"prestige":2},"outcome":"You spend two nights on the water pulling families off rooftops, soaked and sleepless and more use than you have felt in months. The district will long remember that the sahib came himself. So, unfortunately, will your constitution.","econ":{"treasury":-30000}},{"label":"<b>Organise from the embankment</b> &mdash; relief camp, grain, order.","effects":{"contentment":6,"order":3,"revenue":-4,"composure":-3},"outcome":"You set up the relief camp, commandeer the grain, and keep a frightened crowd from becoming a mob. Unglamorous, competent, and precisely the job. Nobody drowns who can be reached; some cannot be reached.","econ":{"treasury":-80000}},{"label":"Wire for <b>military help</b> and hold the line till it comes.","effects":{"order":2,"prestige":-3,"contentment":-4,"composure":-2},"outcome":"The sappers arrive with boats on the second day and do the work you could not. It is the sensible call, and the district notes that in its worst hour the sahib sent a telegram and waited. Sense is rarely forgiven."}]}]}</script>
 <script>
-/* ---------- Pukka Sahib engine ----------
-   Content lives as pure JSON in <script id="game-data">. This file is logic
-   only. The fortnight now has two beats: a POSTURE choice (tour vs. desk),
-   then a seasonally-weighted EVENT. The year runs on a calendar — cold-weather
-   touring, hot-weather station, monsoon crisis — read from config. */
+(function (global) {
+  "use strict";
 
-const DATA = JSON.parse(document.getElementById("game-data").textContent);
-const CFG = DATA.config;
-const ENDINGS = DATA.endings;
-const EVENTS = DATA.events;
-const CAL = CFG.calendar;
-const POSTURES = CFG.postures;
+  var METERS = ["revenue", "order", "prestige", "contentment", "composure"];
+  var SECRECY = ["MOST SECRET", "SECRET", "CONFIDENTIAL", "CYPHER"];
 
-const METERS = [
-  {key:"revenue",     name:"Revenue"},
-  {key:"order",       name:"Order"},
-  {key:"prestige",    name:"Prestige"},
-  {key:"contentment", name:"Contentment"},
-  {key:"composure",   name:"Composure"},
-];
-const MAX_TURNS = CFG.maxTurns;
-const SECRECY = ["MOST SECRET","SECRET","CONFIDENTIAL","CYPHER"];
+  function clamp(v) { return Math.max(0, Math.min(100, Math.round(v))); }
 
-let S, turn, current, recent;
-
-function init(){
-  S = Object.assign({flags:{}, posture:null}, CFG.start);
-  turn = 1;
-  recent = [];
-  document.getElementById("card").className = "card";
-  beginFortnight();
-}
-
-function clamp(v){return Math.max(0,Math.min(100,Math.round(v)));}
-
-/* ---------- calendar ---------- */
-function seasonOf(t){
-  return CAL.seasons.find(s => t>=s.from && t<=s.to) || CAL.seasons[CAL.seasons.length-1];
-}
-function monthOf(t){ return CAL.months[Math.min(CAL.months.length-1, Math.floor((t-1)/2))]; }
-
-/* ---------- declarative condition evaluator ---------- */
-function evalCondition(c){
-  if(!c) return true;
-  if("flag" in c)  return !!S.flags[c.flag];
-  if("meter" in c){
-    const v = S[c.meter];
-    switch(c.op){
-      case ">":  return v >  c.value;
-      case ">=": return v >= c.value;
-      case "<":  return v <  c.value;
-      case "<=": return v <= c.value;
-      case "==": return v === c.value;
-      case "!=": return v !== c.value;
-    }
-    return false;
+  function seededRng(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
   }
-  if(c.allOf) return c.allOf.every(evalCondition);
-  if(c.anyOf) return c.anyOf.some(evalCondition);
-  if(c.not)   return !evalCondition(c.not);
-  return true;
-}
-function resolveChoice(ch){
-  const branch = ch.condition
-    ? (evalCondition(ch.condition) ? ch.ifTrue : ch.ifFalse)
-    : ch;
-  return {
-    effects:  branch.effects  || {},
-    outcome:  branch.outcome  || "",
-    setFlags: branch.setFlags || ch.setFlags || [],
+
+  function createGame(content, rng) {
+    var CFG = content.config;
+    var ENDINGS = content.endings;
+    var EVENTS = content.events;
+    var CAL = CFG.calendar;
+    var POSTURES = CFG.postures;
+    var ECON = CFG.economy;
+    var MAX_TURNS = CFG.maxTurns;
+    rng = rng || Math.random;
+
+    var S, phase, current, lastResult, recent, ended, notice;
+
+    function pick(arr) { return arr[Math.floor(rng() * arr.length)]; }
+
+    function seasonOf(t) {
+      for (var i = 0; i < CAL.seasons.length; i++) {
+        var s = CAL.seasons[i];
+        if (t >= s.from && t <= s.to) return s;
+      }
+      return CAL.seasons[CAL.seasons.length - 1];
+    }
+    function monthOf(t) { return CAL.months[Math.min(CAL.months.length - 1, Math.floor((t - 1) / 2))]; }
+
+    function evalCondition(c) {
+      if (!c) return true;
+      if ("flag" in c) return !!S.flags[c.flag];
+      if ("meter" in c) {
+        var v = S[c.meter];
+        switch (c.op) {
+          case ">": return v > c.value;
+          case ">=": return v >= c.value;
+          case "<": return v < c.value;
+          case "<=": return v <= c.value;
+          case "==": return v === c.value;
+          case "!=": return v !== c.value;
+        }
+        return false;
+      }
+      if (c.allOf) return c.allOf.every(evalCondition);
+      if (c.anyOf) return c.anyOf.some(evalCondition);
+      if (c.not) return !evalCondition(c.not);
+      return true;
+    }
+
+    function resolveChoice(ch) {
+      var b = ch.condition ? (evalCondition(ch.condition) ? ch.ifTrue : ch.ifFalse) : ch;
+      return {
+        effects: b.effects || {},
+        outcome: b.outcome || "",
+        setFlags: b.setFlags || ch.setFlags || [],
+        econ: b.econ || ch.econ || null
+      };
+    }
+
+    function applyEcon(econ) {
+      if (!econ) return;
+      if (econ.treasury) {
+        S.treasury += econ.treasury;
+        if (S.treasury < 0) { S.debt += -S.treasury; S.treasury = 0; }
+      }
+      if (econ.debt) S.debt += econ.debt;
+    }
+
+    function enterTurn() {
+      notice = null;
+      var parts = [];
+      if (S.turn > 1 && seasonOf(S.turn).key !== seasonOf(S.turn - 1).key && S.debt > 0) {
+        var interest = Math.round(S.debt * ECON.interestRate);
+        S.debt += interest;
+        if (interest > 0) parts.push("The Lala's interest falls due: debt grows by " + rupees(interest) + ".");
+      }
+      if (ECON.settlementTurns.indexOf(S.turn) !== -1) {
+        var collected = Math.round(
+          ECON.settlementBase *
+          (0.4 + 0.6 * S.revenue / 100) *
+          (0.7 + 0.3 * ((S.contentment + S.order) / 200))
+        );
+        S.treasury += collected;
+
+        var repaid = 0;
+        if (S.debt > 0) { repaid = Math.min(S.treasury, S.debt, Math.round(collected * 0.5)); S.treasury -= repaid; S.debt -= repaid; }
+        parts.push("The revenue settlement: " + rupees(collected) + " collected" +
+          (repaid > 0 ? ", " + rupees(repaid) + " paid to the Lala" : "") + ".");
+      }
+      if (parts.length) notice = parts.join(" ");
+    }
+
+    function collapseCheck() {
+      if (S.composure <= 0) return ENDINGS.breakdown;
+      if (S.order <= 0) return ENDINGS.riot;
+      if (S.prestige <= 0) return ENDINGS.scandal;
+      if (S.revenue <= 0) return ENDINGS.bankrupt;
+      if (S.debt > ECON.debtCeiling) return ENDINGS.bankrupt;
+      return null;
+    }
+
+    function finalVerdict() {
+      var p = S.prestige, r = S.revenue, o = S.order, c = S.contentment;
+      var end;
+      if (p < 40 || o < 40) end = ENDINGS.scandal;
+      else if (c >= 65 && p < 50) end = ENDINGS.gonenative;
+      else if (p >= 78 && r >= 58) end = ENDINGS.kcie;
+      else if (p >= 66 && c >= 58) end = ENDINGS.csi;
+      else if (p >= 58) end = ENDINGS.cie;
+      else end = ENDINGS.transfer;
+
+      if (S.debt > ECON.debtWarn && (end === ENDINGS.kcie || end === ENDINGS.csi)) end = ENDINGS.cie;
+      return end;
+    }
+
+    function eligible(e) {
+      if (e.once && S.flags[e.id]) return false;
+      if (e.requires && !evalCondition(e.requires)) return false;
+      return true;
+    }
+
+    function drawEvent() {
+      var sk = seasonOf(S.turn).key;
+      var inSeason = function (e) {
+        var ss = e.season || ["any"];
+        return ss.indexOf("any") !== -1 || ss.indexOf(sk) !== -1;
+      };
+      var prefer = S.posture === "tour" ? ["tour", "crisis"] : ["desk", "club", "personal", "crisis"];
+      var pool = EVENTS.filter(function (e) { return eligible(e) && inSeason(e); });
+      var biased = pool.filter(function (e) { return prefer.indexOf(e.kind) !== -1 || e.kind === "crisis"; });
+
+      var cand = biased.length >= 2 ? biased : pool;
+      if (!cand.length) cand = EVENTS.filter(eligible);
+      var fresh = cand.filter(function (e) { return recent.indexOf(e.id) === -1; });
+      if (fresh.length) cand = fresh;
+      else if (cand.length > 1) {
+        var last = recent[recent.length - 1];
+        cand = cand.filter(function (e) { return e.id !== last; }); // never the same event twice running
+      }
+      current = pick(cand);
+      recent.push(current.id);
+      if (recent.length > 4) recent.shift();
+    }
+
+    
+
+    function init() {
+      S = { flags: {}, posture: null, turn: 1, treasury: ECON.startTreasury, debt: 0 };
+      METERS.forEach(function (k) { S[k] = CFG.start[k]; });
+      recent = []; ended = null; current = null; lastResult = null;
+      enterTurn();
+      phase = "posture";
+      return snapshot();
+    }
+
+    function postureOptions() {
+      return ["tour", "desk"].map(function (kind) {
+        var p = POSTURES[kind];
+        var note = p.note;
+        if (kind === "tour" && seasonOf(S.turn).key === "monsoon")
+          note = "The roads are rivers — to tour now is to risk it.";
+        return { kind: kind, label: p.label, note: note };
+      });
+    }
+
+    function choosePosture(kind) {
+      if (phase !== "posture") return snapshot();
+      S.posture = kind;
+      var p = POSTURES[kind];
+      var sk = seasonOf(S.turn).key;
+      var eff = Object.assign({}, p.base);
+      var se = (p.season && p.season[sk]) || {};
+      Object.keys(se).forEach(function (k) { eff[k] = (eff[k] || 0) + se[k]; });
+      var pulsed = applyMeters(eff);
+      ended = collapseCheck();
+      if (ended) { phase = "ended"; return snapshot({ pulsed: pulsed }); }
+      drawEvent();
+      phase = "event";
+      return snapshot({ pulsed: pulsed });
+    }
+
+    function applyMeters(eff) {
+      var pulsed = [];
+      Object.keys(eff).forEach(function (k) {
+        if (eff[k]) { S[k] = clamp(S[k] + eff[k]); pulsed.push(k); }
+      });
+      return pulsed;
+    }
+
+    function chooseOption(i) {
+      if (phase !== "event") return snapshot();
+      var ch = current.choices[i];
+      if (current.once) S.flags[current.id] = true;
+      var r = resolveChoice(ch);
+      var pulsed = applyMeters(r.effects);
+      r.setFlags.forEach(function (f) { S.flags[f] = true; });
+      applyEcon(r.econ);
+      lastResult = { outcome: r.outcome, effects: r.effects, econ: r.econ };
+      ended = collapseCheck();
+      phase = ended ? "ended" : "resolved";
+      return snapshot({ pulsed: pulsed });
+    }
+
+    function next() {
+      if (phase !== "resolved") return snapshot();
+      S.turn += 1;
+      if (S.turn > MAX_TURNS) { ended = finalVerdict(); phase = "ended"; return snapshot(); }
+      enterTurn();
+      ended = collapseCheck();
+      if (ended) { phase = "ended"; return snapshot(); }
+      phase = "posture";
+      return snapshot();
+    }
+
+    function snapshot(extra) {
+      var meters = {};
+      METERS.forEach(function (k) { meters[k] = S[k]; });
+      var snap = {
+        phase: phase, turn: S.turn, maxTurns: MAX_TURNS,
+        season: seasonOf(S.turn), month: monthOf(S.turn),
+        meters: meters, treasury: S.treasury, debt: S.debt,
+        posture: S.posture, notice: notice,
+        event: phase === "event" ? current : null,
+        result: (phase === "resolved" || phase === "ended") ? lastResult : null,
+        ended: ended, honours: honoursStanding()
+      };
+      if (extra) Object.assign(snap, extra);
+      return snap;
+    }
+
+    function honoursStanding() {
+      var p = S.prestige, c = S.contentment, r = S.revenue;
+      if (S.debt > ECON.debtWarn) return "Honours List &mdash; the district's debts have ruined your name";
+      if (p < 40) return "Honours List &mdash; your name appears only in the complaints";
+      if (p >= 78 && r >= 58) return "Honours List &mdash; a <b>K.C.I.E.</b> (a knighthood) is within reach";
+      if (p >= 66 && c >= 58) return "Honours List &mdash; a <b>C.S.I.</b> is being whispered";
+      if (p >= 58) return "Honours List &mdash; a <b>C.I.E.</b> is within reach";
+      if (p >= 48) return "Honours List &mdash; not yet on anyone's list";
+      return "Honours List &mdash; unlikely, on present form";
+    }
+
+    return {
+      init: init, postureOptions: postureOptions, choosePosture: choosePosture,
+      chooseOption: chooseOption, next: next,
+      snapshot: function () { return snapshot(); },
+      seasonOf: seasonOf, monthOf: monthOf,
+      isSecrecyTag: function (t) { return SECRECY.indexOf((t || "").toUpperCase()) !== -1; },
+      rupees: rupees,
+      get raw() { return S; }
+    };
+  }
+
+  function rupees(n) {
+    var neg = n < 0; n = Math.abs(Math.round(n));
+    var s = String(n);
+    if (s.length > 3) {
+      var last3 = s.slice(-3), rest = s.slice(0, -3);
+      rest = rest.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+      s = rest + "," + last3;
+    }
+    return (neg ? "-" : "") + "₹" + s;
+  }
+
+  var SECRECY_TAGS = ["MOST SECRET", "SECRET", "CONFIDENTIAL", "CYPHER"];
+  var API = {
+    createGame: createGame, seededRng: seededRng, rupees: rupees,
+    isSecrecyTag: function (t) { return SECRECY_TAGS.indexOf((t || "").toUpperCase()) !== -1; }
   };
-}
+  if (typeof module !== "undefined" && module.exports) module.exports = API;
+  else global.PukkaLogic = API;
+})(typeof window !== "undefined" ? window : globalThis);
+(function () {
+  "use strict";
+  var L = (typeof PukkaLogic !== "undefined") ? PukkaLogic : require("./logic.js");
+  var content = JSON.parse(document.getElementById("game-data").textContent);
+  var METERS = [
+    { key: "revenue", name: "Revenue" }, { key: "order", name: "Order" },
+    { key: "prestige", name: "Prestige" }, { key: "contentment", name: "Contentment" },
+    { key: "composure", name: "Composure" }
+  ];
+  var game = L.createGame(content, Math.random);
 
-/* ---------- meters, honours, season band ---------- */
-function renderMeters(pulseKeys){
-  const el = document.getElementById("meters");
-  el.innerHTML = "";
-  METERS.forEach(m=>{
-    const v = clamp(S[m.key]);
-    const col = v<25 ? "var(--bad)" : v>70 ? "var(--good)" : "var(--warn)";
-    const d = document.createElement("div");
-    d.className = "meter" + (pulseKeys && pulseKeys.includes(m.key) ? " pulse":"");
-    d.innerHTML =
-      `<div class="name">${m.name}</div>
-       <div class="bar"><div class="fill" style="width:${v}%;background:${col}"></div></div>
-       <div class="val">${v}</div>`;
-    el.appendChild(d);
-  });
-  renderHonours();
-}
-function honoursStanding(){
-  const p=S.prestige, c=S.contentment, r=S.revenue;
-  if(p<40)           return "Honours List &mdash; your name appears only in the complaints";
-  if(p>=78 && r>=58) return "Honours List &mdash; a <b>K.C.I.E.</b> (a knighthood) is within reach";
-  if(p>=66 && c>=58) return "Honours List &mdash; a <b>C.S.I.</b> is being whispered";
-  if(p>=58)          return "Honours List &mdash; a <b>C.I.E.</b> is within reach";
-  if(p>=48)          return "Honours List &mdash; not yet on anyone's list";
-  return "Honours List &mdash; unlikely, on present form";
-}
-function renderHonours(){
-  const el = document.getElementById("honours");
-  if(el) el.innerHTML = honoursStanding();
-}
-function renderSeasonBand(){
-  const el = document.getElementById("seasonband");
-  if(!el) return;
-  const s = seasonOf(turn);
-  el.innerHTML = `<span class="glyph">${s.glyph}</span> <b>${s.name}</b> &middot; ${monthOf(turn)} &mdash; ${s.tagline}`;
-}
+  var el = function (id) { return document.getElementById(id); };
 
-/* ---------- the fortnight: posture, then event ---------- */
-function beginFortnight(){
-  const dead = collapseCheck();
-  if(dead){ return showEnding(dead); }
-  if(turn > MAX_TURNS){ return showEnding(finalVerdict()); }
-  renderSeasonBand();
-  renderMeters();
-  renderPostureCard();
-}
+  function meterColour(v) { return v < 25 ? "var(--bad)" : v > 70 ? "var(--good)" : "var(--warn)"; }
 
-function postureNote(kind){
-  const p = POSTURES[kind];
-  let note = p.note;
-  if(kind==="tour" && seasonOf(turn).key==="monsoon")
-    note = "The roads are rivers &mdash; to tour now is to risk it.";
-  return note;
-}
+  function renderMeters(meters, pulse) {
+    var box = el("meters"); box.innerHTML = "";
+    METERS.forEach(function (m) {
+      var v = meters[m.key];
+      var d = document.createElement("div");
+      d.className = "meter" + (pulse && pulse.indexOf(m.key) !== -1 ? " pulse" : "");
+      d.innerHTML =
+        '<div class="name">' + m.name + '</div>' +
+        '<div class="bar"><div class="fill" style="width:' + v + '%;background:' + meterColour(v) + '"></div></div>' +
+        '<div class="val">' + v + '</div>';
+      box.appendChild(d);
+    });
+  }
 
-function renderPostureCard(){
-  const c = document.getElementById("card");
-  c.className = "card";
-  const s = seasonOf(turn);
-  c.innerHTML =
-    `<div class="turnline">
-       <span class="fortnight">Fortnight ${turn} of ${MAX_TURNS} &middot; ${monthOf(turn)}</span>
-       <span class="stamp">${s.glyph} ${s.name}</span>
-     </div>
-     <h3 class="cardtitle">How will you spend the fortnight?</h3>
-     <div class="body">${s.intro}</div>
-     <div class="choices"></div>`;
-  const box = c.querySelector(".choices");
-  ["tour","desk"].forEach(kind=>{
-    const p = POSTURES[kind];
-    const b = document.createElement("button");
-    b.className = "choice";
-    b.innerHTML = `${p.label}<span class="cue">${postureNote(kind)}</span>`;
-    b.onclick = ()=>choosePosture(kind);
-    box.appendChild(b);
-  });
-}
+  function renderStatus(s) {
+    el("honours").innerHTML = s.honours;
+    var econ = "Treasury " + L.rupees(s.treasury) +
+      (s.debt > 0 ? ' &middot; <span class="debt">Debt to the Lala ' + L.rupees(s.debt) + "</span>" : "");
+    el("economy").innerHTML = econ;
+    var se = s.season;
+    el("seasonband").innerHTML =
+      '<span class="glyph">' + se.glyph + "</span> <b>" + se.name + "</b> &middot; " + s.month + " &mdash; " + se.tagline;
+  }
 
-function choosePosture(kind){
-  S.posture = kind;
-  const p = POSTURES[kind];
-  const sk = seasonOf(turn).key;
-  const eff = Object.assign({}, p.base);
-  const seasonEff = (p.season && p.season[sk]) || {};
-  for(const k in seasonEff){ eff[k] = (eff[k]||0) + seasonEff[k]; }
-  const pulsed = [];
-  for(const k in eff){ if(eff[k]){ S[k]=clamp(S[k]+eff[k]); pulsed.push(k); } }
-  renderMeters(pulsed);
-  const dead = collapseCheck();
-  if(dead){ return showEnding(dead); }
-  drawEvent();
-}
+  function renderNotice(s) {
+    var n = el("notice");
+    if (s.notice) { n.innerHTML = s.notice; n.hidden = false; }
+    else { n.innerHTML = ""; n.hidden = true; }
+  }
 
-function eligible(e){
-  if(e.once && S.flags[e.id]) return false;
-  if(e.requires && !evalCondition(e.requires)) return false;
-  return true;
-}
+  function turnline(s, stampHtml) {
+    return '<div class="turnline">' +
+      '<span class="fortnight">Fortnight ' + s.turn + " of " + s.maxTurns + " &middot; " + s.month + "</span>" +
+      stampHtml + "</div>";
+  }
 
-/* Seasonally- and posture-weighted draw. Crises fire regardless of posture in
-   their season; otherwise the posture biases toward tour vs. desk material. */
-function drawEvent(){
-  const sk = seasonOf(turn).key;
-  const inSeason = e => (e.season || ["any"]).includes("any") || (e.season || []).includes(sk);
-  const prefer = S.posture==="tour"
-    ? ["tour","crisis"]
-    : ["desk","club","personal","crisis"];
+  function deltaChips(effects, econ) {
+    var chips = Object.keys(effects || {}).map(function (k) {
+      var nm = METERS.filter(function (m) { return m.key === k; })[0].name;
+      var v = effects[k];
+      return '<span class="delta ' + (v >= 0 ? "up" : "down") + '">' + nm + " " + (v > 0 ? "+" : "") + v + "</span>";
+    });
+    if (econ && econ.treasury) chips.push('<span class="delta ' + (econ.treasury >= 0 ? "up" : "down") + '">Treasury ' + (econ.treasury > 0 ? "+" : "") + L.rupees(econ.treasury) + "</span>");
+    if (econ && econ.debt) chips.push('<span class="delta down">Debt +' + L.rupees(econ.debt) + "</span>");
+    return chips.join("");
+  }
 
-  let pool = EVENTS.filter(e => eligible(e) && inSeason(e));
-  let biased = pool.filter(e => prefer.includes(e.kind) || e.kind==="crisis");
-  let cand = biased.length ? biased : pool;
-  const fresh = cand.filter(e => !recent.includes(e.id));
-  if(fresh.length) cand = fresh;
-  if(!cand.length) cand = EVENTS.filter(e => eligible(e)); // last resort
+  function renderPosture(s) {
+    var c = el("card"); c.className = "card";
+    c.innerHTML =
+      turnline(s, '<span class="stamp">' + s.season.glyph + " " + s.season.name + "</span>") +
+      '<h3 class="cardtitle">How will you spend the fortnight?</h3>' +
+      '<div class="body">' + s.season.intro + "</div>" +
+      '<div class="choices"></div>';
+    var box = c.querySelector(".choices");
+    game.postureOptions().forEach(function (o) {
+      var b = document.createElement("button");
+      b.className = "choice";
+      b.innerHTML = o.label + '<span class="cue">' + o.note + "</span>";
+      b.onclick = function () { paint(game.choosePosture(o.kind)); };
+      box.appendChild(b);
+    });
+  }
 
-  current = cand[Math.floor(Math.random()*cand.length)];
-  recent.push(current.id);
-  if(recent.length > 4) recent.shift();
-  renderCard(current);
-}
+  function renderEvent(s) {
+    var e = s.event, c = el("card"); c.className = "card";
+    var tag = e.tag || "District business";
+    var stampCls = "stamp" + (L.isSecrecyTag(tag) ? " stamp--secret" : "");
+    c.innerHTML =
+      turnline(s, '<span class="' + stampCls + '">' + tag + "</span>") +
+      '<h3 class="cardtitle">' + e.title + "</h3>" +
+      '<div class="body">' + e.body + "</div>" +
+      '<div class="choices"></div>';
+    var box = c.querySelector(".choices");
+    e.choices.forEach(function (ch, i) {
+      var b = document.createElement("button");
+      b.className = "choice";
+      b.innerHTML = ch.label;
+      b.onclick = function () { paint(game.chooseOption(i)); };
+      box.appendChild(b);
+    });
+  }
 
-function renderCard(e){
-  const c = document.getElementById("card");
-  c.className = "card";
-  const tag = e.tag || "District business";
-  const stampCls = "stamp" + (SECRECY.includes(tag.toUpperCase()) ? " stamp--secret" : "");
-  c.innerHTML =
-    `<div class="turnline">
-       <span class="fortnight">Fortnight ${turn} of ${MAX_TURNS} &middot; ${monthOf(turn)}</span>
-       <span class="${stampCls}">${tag}</span>
-     </div>
-     <h3 class="cardtitle">${e.title}</h3>
-     <div class="body">${e.body}</div>
-     <div class="choices"></div>`;
-  const box = c.querySelector(".choices");
-  e.choices.forEach((ch)=>{
-    const b = document.createElement("button");
-    b.className = "choice";
-    b.innerHTML = ch.label;
-    b.onclick = ()=>resolve(e,ch);
-    box.appendChild(b);
-  });
-}
+  function renderResolved(s) {
+    var c = el("card");
+    c.innerHTML +=
+      '<div class="outcome">' + s.result.outcome + "</div>" +
+      '<div class="deltas">' + deltaChips(s.result.effects, s.result.econ) + "</div>" +
+      '<div class="next"><button class="primary" id="cont">Continue &rarr;</button></div>';
+    var btns = c.querySelectorAll(".choice");
+    for (var i = 0; i < btns.length; i++) { btns[i].disabled = true; btns[i].style.opacity = 0.5; btns[i].onclick = null; }
+    el("cont").onclick = function () { paint(game.next()); };
+  }
 
-function resolve(e,ch){
-  if(e.once) S.flags[e.id]=true;
-  const {effects,outcome,setFlags} = resolveChoice(ch);
-  const pulsed = [];
-  for(const k in effects){ S[k]=clamp(S[k]+effects[k]); pulsed.push(k); }
-  setFlags.forEach(f=>S.flags[f]=true);
-  renderMeters(pulsed);
+  function renderEnding(s) {
+    var c = el("card"); c.className = "card ending";
+    c.innerHTML =
+      '<div class="turnline"><span class="fortnight">The posting ends &mdash; fortnight ' +
+      Math.min(s.turn, s.maxTurns) + '</span><span class="stamp">Closed</span></div>' +
+      '<h2 class="cardtitle">' + s.ended.title + "</h2>" +
+      '<div class="verdict">' + s.ended.text + "</div>" +
+      '<div class="next" style="text-align:center"><button class="primary" id="again">Take up a new posting</button></div>';
+    el("again").onclick = function () { paint(game.init()); };
+  }
 
-  const c = document.getElementById("card");
-  const deltas = Object.entries(effects).map(([k,v])=>{
-    const nm = METERS.find(m=>m.key===k).name;
-    const cls = v>=0 ? "up" : "down";
-    return `<span class="delta ${cls}">${nm} ${v>0?"+":""}${v}</span>`;
-  }).join("");
-  c.innerHTML +=
-    `<div class="outcome">${outcome}</div>
-     <div class="deltas">${deltas}</div>
-     <div class="next"><button class="primary" id="cont">Continue &rarr;</button></div>`;
-  c.querySelectorAll(".choice").forEach(b=>{b.disabled=true;b.style.opacity=.5;b.onclick=null;});
-  document.getElementById("cont").onclick = ()=>{ turn++; beginFortnight(); };
-}
+  function paint(s) {
+    renderMeters(s.meters, s.pulsed);
+    renderStatus(s);
+    renderNotice(s);
+    if (s.phase === "posture") renderPosture(s);
+    else if (s.phase === "event") renderEvent(s);
+    else if (s.phase === "resolved") renderResolved(s);
+    else if (s.phase === "ended") renderEnding(s);
+  }
 
-/* ---------- endings ---------- */
-function collapseCheck(){
-  if(S.composure<=0) return ENDINGS.breakdown;
-  if(S.order<=0)     return ENDINGS.riot;
-  if(S.prestige<=0)  return ENDINGS.scandal;
-  if(S.revenue<=0)   return ENDINGS.bankrupt;
-  return null;
-}
-function finalVerdict(){
-  const {revenue,order,prestige,contentment}=S;
-  if(prestige<40 || order<40)          return ENDINGS.scandal;
-  if(contentment>=65 && prestige<50)   return ENDINGS.gonenative;
-  if(prestige>=78 && revenue>=58)      return ENDINGS.kcie;
-  if(prestige>=66 && contentment>=58)  return ENDINGS.csi;
-  if(prestige>=58)                     return ENDINGS.cie;
-  return ENDINGS.transfer;
-}
-function showEnding(end){
-  renderMeters();
-  const c = document.getElementById("card");
-  c.className = "card ending";
-  c.innerHTML =
-    `<div class="turnline">
-       <span class="fortnight">The posting ends &mdash; fortnight ${Math.min(turn,MAX_TURNS)}</span>
-       <span class="stamp">Closed</span>
-     </div>
-     <h2 class="cardtitle">${end.title}</h2>
-     <div class="verdict">${end.text}</div>
-     <div class="next" style="text-align:center">
-       <button class="primary" onclick="location.reload()">Take up a new posting</button>
-     </div>`;
-}
-
-init();
+  paint(game.init());
+})();
 </script>
 </body>
 </html>

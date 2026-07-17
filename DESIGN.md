@@ -199,8 +199,26 @@ build direction is set:
    something real.
 
 **Sequencing:** JSON refactor (done) → seasonal + tour/desk spine (done) →
-light economy + personal thread → write content into the new structure →
-presentation.
+light economy (done) + personal thread (seeded) → write content into the new
+structure → presentation.
+
+**Engineering.** The project now follows the working agreement in `CLAUDE.md`:
+separated concerns (headless `src/logic.js`, schema'd `src/content.json`,
+`src/ui.js` presentation), a `build.js` that assembles the shipped single-file
+`index.html`, and a four-stage verify chain (`npm run verify`: content
+validator → seeded simulation with asserted balance bands → build → Playwright
+desktop+mobile smokes). The deploy branch is a release; nothing lands unverified.
+
+**The light economy (built).** A numeric **Treasury** (₹, Indian digit
+grouping) sits beside the meters, fed by **revenue settlements** twice a year
+(collections scaled by the Revenue meter and district mood). Relief spending on
+crises draws it down; a shortfall is **borrowed from Lala Hukum Chand**, and
+that **debt compounds** each new season. The chest services debt at settlement,
+but only partially, so a district run deep into the Lala's books slides toward
+**bankruptcy** (a debt ceiling). Debt beyond a threshold also **bars the
+honours** — a magistrate who beggared the district is not knighted. Balance
+re-verified by simulation; `bankrupt` and `riot` proven reachable by adversarial
+probe policies.
 
 **The seasonal + tour/desk spine (built).** The year runs on a calendar —
 **cold weather** (touring season, F1–8), **hot weather** (the station bakes,

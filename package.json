@@ -1,0 +1,16 @@
+{
+  "name": "pukka-sahib",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A tragicomic district-management game set in 1920s British India.",
+  "scripts": {
+    "validate": "node test/validate.js",
+    "simulate": "node test/simulate.js",
+    "build": "node build.js",
+    "e2e": "node test/e2e.js",
+    "verify": "node test/validate.js && node test/simulate.js && node build.js && node test/e2e.js"
+  },
+  "dependencies": {
+    "playwright": "^1.61.1"
+  }
+}

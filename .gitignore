@@ -1,0 +1,4 @@
+node_modules/
+scratch-shots/
+*.log
+.DS_Store
