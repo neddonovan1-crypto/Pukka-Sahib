@@ -177,10 +177,68 @@ pulse and hover shifts; running prose stays near 52–65 characters wide.
   textures, audio, a writing polish pass. Consider porting to a framework if it
   grows — the token system carries over intact.
 
-## 9. Open Questions
+## 9. Direction — *decided*
+
+Following the district-officer research (`docs/district-officer-life.md`), the
+build direction is set:
+
+1. **Temporal spine — the authentic year + tour/desk choice.** Replace the flat
+   deck with the real calendar (cold-weather touring → hot-weather station →
+   monsoon crisis); weight the deck by season. Each fortnight the player also
+   chooses *where to be* — **in camp** (raises Contentment and grip on the
+   district, costs Composure, lets HQ paperwork pile up) or at the **cutcherry**
+   desk (clears files, pleases Simla/Prestige, slowly blinds you to the
+   district).
+2. **A light economy.** Treasury as a real number; an annual revenue
+   settlement; the moneylender's interest compounding; a famine relief budget
+   you can overspend. Enough machinery for "management" to bite; not a
+   spreadsheet.
+3. **A light personal thread.** The wife who may go to the hills, the letter
+   about the children sent "home," the bottle in the long evening. A handful of
+   recurring personal events feeding Composure — so the *pukka sahib* mask costs
+   something real.
+
+**Sequencing:** JSON refactor (done) → seasonal + tour/desk spine → light
+economy + personal thread → write content into the new structure →
+presentation.
+
+## 10. Data model — *the JSON refactor (done)*
+
+Content is now **pure JSON** embedded in `index.html` as
+`<script type="application/json" id="game-data">`, interpreted by a logic-only
+engine. No code in the content layer, so events can be authored by hand (or a
+tool) and later moved to an external file. Full authoring guide:
+`docs/event-schema.md`. Shape in brief:
+
+```
+{ "config":  { "maxTurns": 24, "start": { …five meters… } },
+  "endings": { "<key>": { "title": …, "text": … }, … },
+  "events":  [ {
+      "id", "tag",                       // stamp marking (e.g. "MOST SECRET")
+      "season": ["cold"|"hot"|"monsoon"|"any"],   // for deck weighting (Fork 1)
+      "kind":   "desk"|"tour"|"club"|"personal"|"crisis",
+      "once":    true|false,
+      "requires": <condition|null>,      // e.g. {"flag":"ramautar_trust"}
+      "title", "body",
+      "choices": [ {
+          "label",
+          "effects":  { "<meter>": <delta>, … },   // flat form
+          "outcome":  "…",
+          "setFlags": ["…"],
+          // …or branching form:
+          "condition": { "meter":"composure", "op":">", "value":40 },
+          "ifTrue":  { "effects", "outcome", "setFlags" },
+          "ifFalse": { "effects", "outcome", "setFlags" }
+      } ] } ] }
+```
+
+The `season`/`kind` fields are carried now but inert until the calendar lands.
+Conditions support `{flag}`, `{meter,op,value}`, and `{allOf|anyOf|not}`.
+
+## 11. Open Questions
 
 - Two-year arc vs. one-year — how long before the loop wears out?
-- Do we want a light resource *economy* (numbers) or keep it meter-nudging
-  (qualitative)? The prototype does the latter; it's more legible and funnier.
 - How historically specific do we go with real events (Rowlatt, non-cooperation,
   1927 Simon Commission)? Leaning: fictional district, real texture.
+- Does the tour/desk choice want a visible **map**, or stay abstract (a mode
+  toggle) until Phase 3?
