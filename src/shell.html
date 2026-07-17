@@ -8,7 +8,8 @@
 <meta property="og:title" content="Pukka Sahib">
 <meta property="og:description" content="A tragicomic year as District Magistrate &amp; Collector of Chhota Nagra, 1920s British India. Keep the peace. Bring in the revenue. And whatever else is lost, keep up appearances.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://pukka-sahib.neddonovan1.workers.dev/assets/cover.jpg">
+<meta property="og:url" content="https://adventuresahib.com/">
+<meta property="og:image" content="https://adventuresahib.com/assets/cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <style>
   :root{
@@ -52,6 +53,21 @@
   .frame{width:100%; max-width:680px; position:relative}
 
   .masthead{display:flex; gap:16px; align-items:center; margin-bottom:4px}
+  /* Sound toggle: a quiet raga in the masthead corner. Struck-through when off. */
+  .audiobtn{
+    flex:0 0 auto; margin-left:auto; align-self:flex-end; cursor:pointer;
+    width:34px; height:34px; border-radius:50%; border:1px solid var(--line);
+    background:var(--surface2); color:var(--seal); position:relative;
+    display:flex; align-items:center; justify-content:center; font-size:1rem; line-height:1;
+  }
+  @media (max-width:520px){ .audiobtn{align-self:center} }
+  .audiobtn:hover{border-color:var(--seal)}
+  .audiobtn:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
+  .audiobtn.off{color:var(--ink-soft)}
+  .audiobtn.off::after{
+    content:""; position:absolute; left:6px; right:6px; top:50%; height:1.5px;
+    background:var(--ink-soft); transform:rotate(-20deg);
+  }
   .seal-svg{flex:0 0 auto; width:62px; height:62px; transform:rotate(-4deg); opacity:.92}
   /* Raster crest (art/web/seal.png, white knocked out to alpha). Replaces the
      inline SVG when the art manifest carries it; the SVG stays as fallback.
@@ -259,6 +275,9 @@
       <h1>Pukka Sahib</h1>
       <div class="sub">Private despatches of the District Magistrate &amp; Collector, Chhota Nagra</div>
     </div>
+    <button type="button" class="audiobtn off" id="audiotoggle" aria-pressed="false" aria-label="Sound off" title="Sound off">
+      <span class="ico" aria-hidden="true">&#9834;</span>
+    </button>
   </header>
   <hr class="rule">
 

@@ -36,6 +36,7 @@ function build() {
   delete require.cache[require.resolve("./src/content.js")];
   var content = JSON.stringify(require("./src/content.js"));
   var logic = stripJs(read(path.join(SRC, "logic.js")));
+  var audio = stripJs(read(path.join(SRC, "audio.js")));
   var ui = stripJs(read(path.join(SRC, "ui.js")));
 
   // Web-ready art (art/web/*.jpg, produced by scripts/optimize-art.js). The UI
@@ -56,7 +57,7 @@ function build() {
   var artBlockSingle = "<script>window.PUKKA_ART=" + JSON.stringify(embeddedArt) + ";</script>";
 
   var dataBlock = '<script type="application/json" id="game-data">' + content + "</script>";
-  var codeBlock = "<script>\n" + logic + "\n" + ui + "\n</script>";
+  var codeBlock = "<script>\n" + logic + "\n" + audio + "\n" + ui + "\n</script>";
   var scripts = dataBlock + "\n" + artBlockSingle + "\n" + codeBlock;
 
   if (shell.indexOf("<!--GAME_SCRIPTS-->") === -1) throw new Error("shell.html missing <!--GAME_SCRIPTS--> marker");
@@ -85,15 +86,16 @@ function build() {
   });
   var artBlockDist = "<script>window.PUKKA_ART=" + JSON.stringify(distArt) + ";</script>";
   var distHtml = shell.replace("<!--GAME_SCRIPTS-->",
-    dataBlock + "\n" + artBlockDist + '\n<script src="logic.js"></script>\n<script src="ui.js"></script>');
+    dataBlock + "\n" + artBlockDist + '\n<script src="logic.js"></script>\n<script src="audio.js"></script>\n<script src="ui.js"></script>');
   fs.writeFileSync(path.join(dist, "index.html"), distHtml);
   fs.writeFileSync(path.join(dist, "logic.js"), logic);
+  fs.writeFileSync(path.join(dist, "audio.js"), audio);
   fs.writeFileSync(path.join(dist, "ui.js"), ui);
   var copied = artNames().length;
 
   console.log("Built index.html:", (out.length / 1024).toFixed(0) + " KB (single-file / Artifact)");
   console.log("  logic:", logic.length, "b · ui:", ui.length, "b · content:", content.length, "b · art embedded:", artKb.toFixed(0) + " KB (" + Object.keys(embeddedArt).length + ")");
-  console.log("Built dist/ for Pages:", "index.html + logic.js + ui.js" + (copied ? " + " + copied + " asset(s)" : ""));
+  console.log("Built dist/ for Pages:", "index.html + logic.js + audio.js + ui.js" + (copied ? " + " + copied + " asset(s)" : ""));
 
   // Page-weight budget: the single-file build is what the Artifact loads in one
   // go, so growth is a decision, not a drift. Raise these only deliberately

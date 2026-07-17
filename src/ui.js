@@ -16,6 +16,11 @@
       ];
   var game = L.createGame(content, Math.random);
 
+  // Synthesised sitar/tanpura ambience (presentation only). Degrades to a no-op
+  // stub when the module or Web Audio is absent.
+  var noAudio = { supported: false, enabled: false, setEnabled: function () {}, season: function () {}, stamp: function () {}, ending: function () {} };
+  var audio = (typeof PukkaAudio !== "undefined") ? PukkaAudio.create(content.config.audio) : noAudio;
+
   var el = function (id) { return document.getElementById(id); };
 
   function meterColour(v) { return v < 25 ? "var(--bad)" : v > 70 ? "var(--good)" : "var(--warn)"; }
@@ -104,7 +109,7 @@
       var chips = deltaChips(o.effects, null);
       b.innerHTML = o.label + '<span class="cue">' + o.note + "</span>" +
         (chips ? '<span class="fore">' + chips + "</span>" : "");
-      b.onclick = function () { paint(game.choosePosture(o.kind)); };
+      b.onclick = function () { audio.stamp(); paint(game.choosePosture(o.kind)); };
       box.appendChild(b);
     });
   }
@@ -123,7 +128,7 @@
       var b = document.createElement("button");
       b.className = "choice";
       b.innerHTML = ch.label;
-      b.onclick = function () { paint(game.chooseOption(i)); };
+      b.onclick = function () { audio.stamp(); paint(game.chooseOption(i)); };
       box.appendChild(b);
     });
   }
@@ -136,7 +141,7 @@
       '<div class="next"><button class="primary" id="cont">Continue &rarr;</button></div>';
     var btns = c.querySelectorAll(".choice");
     for (var i = 0; i < btns.length; i++) { btns[i].disabled = true; btns[i].style.opacity = 0.5; btns[i].onclick = null; }
-    el("cont").onclick = function () { paint(game.next()); };
+    el("cont").onclick = function () { audio.stamp(); paint(game.next()); };
   }
 
   // The honours endings show their real insignia. CIE and KCIE are grades of
@@ -176,6 +181,7 @@
       codasHtml +
       recordHtml +
       '<div class="next" style="text-align:center"><button class="primary" id="again">Take up a new posting</button></div>';
+    audio.ending(s.endedKey);
     el("again").onclick = function () { clearSave(); paint(game.init()); };
   }
 
@@ -230,10 +236,11 @@
       (s.result.outcome ? '<div class="outcome">' + s.result.outcome + "</div>" : "") +
       (deltas ? '<div class="deltas">' + deltas + "</div>" : "") +
       '<div class="next"><button class="primary" id="cont">Continue &rarr;</button></div>';
-    el("cont").onclick = function () { paint(game.next()); };
+    el("cont").onclick = function () { audio.stamp(); paint(game.next()); };
   }
 
   function paint(s) {
+    if (s.season && s.season.key) audio.season(s.season.key);
     renderScene(s);
     renderMeters(s.meters, s.pulsed);
     renderStatus(s);
@@ -319,7 +326,43 @@
     if (sealFallback) sealFallback.style.display = "none";
   }
 
+  // Audio toggle: a speaker button in the masthead. Preference persists; the
+  // browser only lets sound start inside a gesture, so a remembered "on" starts
+  // at the first tap/keypress rather than on load.
+  var AUDIO_KEY = "pukka-sahib-audio";
+  function loadAudioPref() { try { return window.localStorage.getItem(AUDIO_KEY) === "on"; } catch (e) { return false; } }
+  function saveAudioPref(on) { try { window.localStorage.setItem(AUDIO_KEY, on ? "on" : "off"); } catch (e) {} }
+  function wireAudio() {
+    var b = el("audiotoggle"); if (!b) return;
+    if (!audio.supported) { b.hidden = true; return; }
+    var want = loadAudioPref();
+    function sync() {
+      var on = audio.enabled || want;
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      b.setAttribute("aria-label", on ? "Sound on" : "Sound off");
+      b.title = on ? "Sound on" : "Sound off";
+      b.classList.toggle("off", !on);
+    }
+    sync();
+    if (want) { // satisfy autoplay: start at the first genuine gesture
+      var once = function () {
+        if (want && !audio.enabled) audio.setEnabled(true);
+        document.removeEventListener("pointerdown", once); document.removeEventListener("keydown", once);
+        sync();
+      };
+      document.addEventListener("pointerdown", once, { passive: true });
+      document.addEventListener("keydown", once);
+    }
+    b.onclick = function () {
+      want = !(audio.enabled || want);
+      audio.setEnabled(want); // the click is the gesture
+      saveAudioPref(want);
+      sync();
+    };
+  }
+
   buildLegend();
+  wireAudio();
 
   // On load: a resumable save takes you to the start screen with a Resume
   // button; otherwise the cover screen if there's a cover, else straight in.

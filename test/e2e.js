@@ -105,6 +105,17 @@ async function resumeSession(browser, viewport) {
   if (begin) await begin.click();
   await page.waitForSelector("#card .choice", { timeout: 5000 });
 
+  // sound toggle: turning it on (a gesture) must construct/resume audio with
+  // no console error, and flip the button's pressed state
+  var audioBtn = await page.$("#audiotoggle");
+  if (audioBtn && !(await page.$eval("#audiotoggle", function (n) { return n.hidden; }))) {
+    await audioBtn.click();
+    var pressed = await page.$eval("#audiotoggle", function (n) { return n.getAttribute("aria-pressed"); });
+    assert(pressed === "true", label + ": sound toggle did not turn on");
+    await page.waitForTimeout(60);
+    await audioBtn.click(); // back off, leave the run silent
+  }
+
   // legend toggle works
   var key = await page.$("#meterkey");
   assert(key, label + ": no meter legend toggle");

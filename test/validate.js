@@ -32,6 +32,19 @@ var meterKeys = {};
 });
 METERS.forEach(function (m) { check(meterKeys[m], "config.meters missing " + m); });
 
+// Audio (synthesised sitar/tanpura): tonic, master gain, and a raga (a set of
+// semitone degrees) per season. Presentation, but data-driven, so checked.
+if (cfg.audio) {
+  var au = cfg.audio;
+  check(typeof au.tonic === "number" && au.tonic > 0, "config.audio.tonic must be a positive number");
+  check(typeof au.master === "number" && au.master > 0 && au.master <= 1, "config.audio.master must be in (0,1]");
+  SEASON_KEYS.forEach(function (sk) {
+    var scale = au.ragas && au.ragas[sk];
+    check(Array.isArray(scale) && scale.length >= 3, "config.audio.ragas." + sk + " needs a scale of >=3 degrees");
+    (scale || []).forEach(function (d) { check(typeof d === "number" && d >= 0 && d <= 24, "config.audio.ragas." + sk + " degree out of range: " + d); });
+  });
+}
+
 var cal = cfg.calendar;
 check(Array.isArray(cal.months) && cal.months.length === 12, "calendar.months must be length 12");
 check(Array.isArray(cal.seasons) && cal.seasons.length >= 1, "calendar.seasons missing");

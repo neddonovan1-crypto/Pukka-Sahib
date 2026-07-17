@@ -222,6 +222,15 @@
       "debtWarn": 120000
     },
     "interludeChance": 0.16,
+    "audio": {
+      "tonic": 196.0,
+      "master": 0.16,
+      "ragas": {
+        "cold": [0, 1, 4, 5, 7, 8, 11],
+        "hot": [0, 2, 5, 7, 10],
+        "monsoon": [0, 2, 3, 5, 7, 10]
+      }
+    },
     "review": {
       "from": "The wire from the Division, en clair: <b>",
       "close": "</b>",

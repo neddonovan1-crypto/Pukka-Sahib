@@ -403,7 +403,8 @@
         retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,
         event: (phase === "event" || phase === "interlude") ? current : null,
         result: (phase === "resolved" || phase === "ended" || phase === "interlude") ? lastResult : null,
-        ended: ended, honours: honoursStanding(),
+        ended: ended, endedKey: (phase === "ended" && ended) ? endKeyOf(ended) : null,
+        honours: honoursStanding(),
         codas: (phase === "ended" && ended) ? endingCodas(ended) : null,
         record: (phase === "ended") ? serviceRecord(5) : null
       };

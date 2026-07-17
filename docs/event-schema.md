@@ -190,6 +190,17 @@ read as a terse record of *what you did*, not just a verb.
 names and the one-line glosses shown in the legend panel and the meter
 tooltips. Data-only; the validator requires a name and desc per meter.
 
+## Audio (synthesised sitar/tanpura)
+
+`config.audio` tunes the ambience `src/audio.js` synthesises at runtime (no
+samples — a CSP-safe Artifact can't fetch them): `tonic` (Sa, in Hz),
+`master` (overall gain, 0–1), and `ragas` — a set of semitone degrees per
+season that the sparse plucked phrases are drawn from (dawn **Bhairav** for the
+cold weather, a spare midday **Sarang** for the hot, a **Malhar** for the
+rains). Change a season's mood by changing its scale. Default off; the masthead
+toggle starts it in a gesture. Validator checks the tonic, master, and a
+≥3-degree scale per season.
+
 ## Checklist for a new event
 
 1. Unique `id`; a real `tag`; sensible `season` + `kind`.
