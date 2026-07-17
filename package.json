@@ -10,10 +10,9 @@
     "e2e": "node test/e2e.js",
     "verify": "node test/validate.js && node test/simulate.js && node build.js && node test/e2e.js"
   },
-  "dependencies": {
-    "playwright": "^1.61.1"
-  },
   "devDependencies": {
-    "sharp": "^0.35.3"
+    "playwright": "^1.61.1",
+    "sharp": "^0.35.3",
+    "wrangler": "^4.112.0"
   }
 }

@@ -1,0 +1,9 @@
+# Cloudflare Workers (Static Assets) config.
+# The game is a static bundle: `npm run build` writes dist/ (index.html +
+# logic.js + ui.js + assets/), and this deploys it as an assets-only Worker —
+# no server code, Cloudflare just serves the files. `npx wrangler deploy`.
+name = "pukka-sahib"
+compatibility_date = "2024-11-01"
+
+[assets]
+directory = "./dist"
