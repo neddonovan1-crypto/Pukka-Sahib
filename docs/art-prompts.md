@@ -150,6 +150,57 @@ template, then per-subject lines. Generate any you want; ask me to write more.
 
 ---
 
+## Round 2 — what's actually wanted next
+
+All **wide landscapes (1792×1024)**, same STYLE BLOCK. Filenames matter for
+wiring; drop the source PNGs in `art/`.
+
+### Tier 1 — completes the seasonal rotation (do these first)
+Hot and monsoon currently have one scene each, so they don't rotate. A second of
+each makes every season shift fortnight to fortnight, like the cold one already does.
+
+- `season-hot-2.png` — *The hot weather in the open country:* a cracked, dried-up
+  tank and a dead peepul tree, the earth split into plates, a lone bullock-cart
+  crawling a white road that shimmers with heat-haze, two vultures on a bare
+  branch, a sky bleached almost white. Harsh, still, merciless; bleached warm/oxblood.
+- `season-monsoon-2.png` — *The monsoon in the town:* a narrow bazaar street
+  ankle-deep in brown water under driving rain, shopkeepers watching from raised
+  thresholds, a man under a sheet of sacking, a bullock knee-deep, the warm glow
+  of an oil-lamp in a doorway against the storm-dark. Deep indigo, one spot of lamplight.
+
+### Tier 2 — setting scenes for event art (high value)
+These attach to specific events via the `art` field, so the backdrop changes to
+*where you are*, not just the season. Season-neutral duotone.
+
+- `scene-cutcherry.png` — the district office/court: the magistrate at a green
+  baize table under a slow punkah, walls of red-taped files and deed-boxes, a
+  turbaned pleader mid-argument, a barefoot petitioner waiting, a bespectacled
+  clerk copying at a side desk, a chaprassi at the door, dusty light through a
+  shutter. *(For the court/desk events: the stolen buffalo, the land case, Tods,
+  the new form, the budget.)*
+- `scene-club.png` — the verandah of a small up-country European club at evening:
+  cane long-chairs, a glowing billiard-room window, figures in evening dress, a
+  servant with a tray, moths at a hanging lamp, dark garden and flagstaff beyond.
+  Lamplit warmth against indigo dusk. *(For the Club events: billiards,
+  precedence, the scandal.)*
+- `scene-city.png` — the old walled city at festival hour: a crowded lane between
+  tall carved balconies, a temple spire and a minaret, a press of people with
+  garlands and torches, a sacred bull, a policeman in a doorway, wood-smoke and
+  dusk. *(For the procession, the Mark of the Beast, On the City Wall, the boycott.)*
+
+### Tier 3 — optional flavour
+- `scene-hills.png` — a hill station in the hot weather: pine-clad slopes,
+  mock-Tudor bungalows, a winding Mall with a hand-rickshaw and parasols, mist in
+  the deodars, the white wall of the snows behind. Cool, green, a world away.
+  *(For the letter from the hills, Mrs Hauksbee, the letter from the school.)*
+- `scene-durbar.png` — a ceremonial durbar in the maidan: a great embroidered
+  shamiana, the Commissioner on a carpeted dais, notables in robes of honour
+  seated strictly by rank, a caparisoned elephant and banners, a crowd at the
+  edges. Stiff, gorgeous, theatrical. *(For the durbar and the inspection.)*
+
+When these land I'll optimise them, let the `season-*-2` pair rotate
+automatically, and set `art` on the events above for the `scene-*` set.
+
 ## Integration notes (for me)
 
 - Optimise each to display size and **embed as base64 data URIs** in
