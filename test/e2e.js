@@ -80,6 +80,14 @@ async function playSession(browser, label, viewport) {
       assert(/Fortnight 1 of /.test(fortnight), label + ": restart did not reset to fortnight 1 (\"" + fortnight.trim() + "\")");
       var econ2 = (await page.textContent("#economy")) || "";
       assert(econ2.indexOf("1,20,000") !== -1, label + ": restart did not reset the treasury (\"" + econ2.trim() + "\")");
+      // the completed posting must now be in the career record on the start screen
+      await page.reload({ waitUntil: "load" });
+      var service = await page.$(".service");
+      assert(service, label + ": no service record on the start screen after a completed posting");
+      if (service) {
+        var svc = (await page.textContent(".service")) || "";
+        assert(/posting/.test(svc), label + ": service record missing postings line (\"" + svc.trim() + "\")");
+      }
     }
   }
   assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));

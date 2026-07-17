@@ -9,11 +9,31 @@
       "health": 66
     },
     "meters": [
-      { "key": "revenue", "name": "Revenue", "desc": "The land revenue &mdash; the demand realised. An Empire runs on it, and the Board counts it first." },
-      { "key": "order", "name": "Order", "desc": "The peace of the district &mdash; the quiet bazaar, the saluted constable. Let it fall and a crowd becomes a Commission." },
-      { "key": "prestige", "name": "Prestige", "desc": "Your standing with Simla and the Service. The coin the Honours List counts above all others." },
-      { "key": "contentment", "name": "Contentment", "desc": "The district&rsquo;s temper &mdash; whether the ryot blesses you or curses you. Worth more than the Club suspects." },
-      { "key": "health", "name": "Health", "desc": "Your own constitution against the climate. Spend it freely and you go Home on a stretcher." }
+      {
+        "key": "revenue",
+        "name": "Revenue",
+        "desc": "The land revenue &mdash; the demand realised. An Empire runs on it, and the Board counts it first."
+      },
+      {
+        "key": "order",
+        "name": "Order",
+        "desc": "The peace of the district &mdash; the quiet bazaar, the saluted constable. Let it fall and a crowd becomes a Commission."
+      },
+      {
+        "key": "prestige",
+        "name": "Prestige",
+        "desc": "Your standing with Simla and the Service. The coin the Honours List counts above all others."
+      },
+      {
+        "key": "contentment",
+        "name": "Contentment",
+        "desc": "The district&rsquo;s temper &mdash; whether the ryot blesses you or curses you. Worth more than the Club suspects."
+      },
+      {
+        "key": "health",
+        "name": "Health",
+        "desc": "Your own constitution against the climate. Spend it freely and you go Home on a stretcher."
+      }
     ],
     "calendar": {
       "months": [
@@ -226,9 +246,30 @@
       "tonic": 196.0,
       "master": 0.16,
       "ragas": {
-        "cold": [0, 1, 4, 5, 7, 8, 11],
-        "hot": [0, 2, 5, 7, 10],
-        "monsoon": [0, 2, 3, 5, 7, 10]
+        "cold": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          8,
+          11
+        ],
+        "hot": [
+          0,
+          2,
+          5,
+          7,
+          10
+        ],
+        "monsoon": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          10
+        ]
       }
     },
     "review": {
@@ -260,16 +301,45 @@
         "contentment": "DISTRICT&rsquo;S TEMPER REMARKED STOP",
         "health": "CIVIL SURGEON&rsquo;S NOTE ATTACHED STOP"
       }
+    },
+    "chapter": {
+      "key": "dm",
+      "rank": "District Magistrate &amp; Collector",
+      "posting": "Chhota Nagra",
+      "promotionTiers": [
+        "division"
+      ],
+      "promotesTo": null
+    },
+    "honours": {
+      "weights": {
+        "prestige": 0.45,
+        "revenue": 0.2,
+        "order": 0.2,
+        "contentment": 0.15
+      },
+      "ladder": [
+        {
+          "key": "division",
+          "score": 65,
+          "prestige": 70,
+          "barredByDebt": true,
+          "reach": "the <b>C.I.E. and a Division</b> are within reach &mdash; the year is being watched"
+        },
+        {
+          "key": "cie",
+          "score": 55,
+          "prestige": 52,
+          "reach": "a <b>C.I.E.</b> is within reach"
+        }
+      ]
     }
   },
   "endings": {
-    "kcie": {
-      "title": "The K.C.I.E.",
-      "text": "You are gazetted a <b>Knight Commander of the Order of the Indian Empire</b> and rise, a plain magistrate of thirty-odd, to &lsquo;Sir.&rsquo; Promoted to Commissioner, mentioned in despatches, permitted to add letters to your name. You have learned little and will go far. Chhota Nagra is already forgetting you, which is the highest compliment it knows how to pay."
-    },
     "cie": {
       "title": "The C.I.E.",
-      "text": "The Gazette records you a <b>Companion of the Order of the Indian Empire</b> &mdash; the honest workhorse ribbon of a district man who kept the show on the road. No knighthood, no legend: a competent posting, decently done. In the Service, that is quietly understood to be the whole of the job."
+      "text": "The Gazette records you a <b>Companion of the Order of the Indian Empire</b> &mdash; the honest workhorse ribbon of a district man who kept the show on the road. No knighthood, no legend: a competent posting, decently done. In the Service, that is quietly understood to be the whole of the job.",
+      "medal": "medal-cie"
     },
     "transfer": {
       "title": "The Quiet Transfer",
@@ -295,9 +365,10 @@
       "title": "Gone Native",
       "text": "You resign, in terms the Commissioner calls &lsquo;intemperate&rsquo; and Pandit Girdhari calls &lsquo;a beginning.&rsquo; You are henceforth spoken of as a man who let the side down. It is the only ending this district will remember with anything like affection."
     },
-    "kcsi": {
-      "title": "The K.C.S.I.",
-      "text": "You are made a <b>Knight Commander of the Most Exalted Order of the Star of India</b> &mdash; <i>Heaven&rsquo;s Light Our Guide</i> &mdash; and kneel a district officer to rise a knight of the senior star. It is given for a district ruled with a firmness that impressed Simla and a decency that, against every expectation, impressed the district too. You have reached the top of the only ladder the Service acknowledges. The view from it is smaller than you were promised."
+    "division": {
+      "title": "The C.I.E. &mdash; and the Division",
+      "medal": "medal-cie",
+      "text": "The Gazette records you a <b>Companion of the Order of the Indian Empire</b>, and the demi-official letter that follows it matters more: the Lieutenant-Governor has noted the year, and you are to have a <b>Division inside two years</b>. A district man marked for Commissioner is a rare beast, and the Club treats you accordingly, with the particular warmth the Service keeps for a man it expects to be useful to later. The ladder has noticed you. You have seen what the ladder does to men, and you begin to climb."
     }
   }
 }

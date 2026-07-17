@@ -7,7 +7,7 @@
 (function (global) {
   "use strict";
 
-  var METERS = ["revenue", "order", "prestige", "contentment", "health"];
+  var DEFAULT_METERS = ["revenue", "order", "prestige", "contentment", "health"];
   var SECRECY = ["MOST SECRET", "SECRET", "CONFIDENTIAL", "CYPHER"];
 
   function clamp(v) { return Math.max(0, Math.min(100, Math.round(v))); }
@@ -33,6 +33,11 @@
     var POSTURES = CFG.postures;
     var ECON = CFG.economy;
     var MAX_TURNS = CFG.maxTurns;
+    // Meter keys come from the chapter's config so a rank can re-skin its five
+    // columns; the default list keeps older bundles working.
+    var METERS = (CFG.meters && CFG.meters.length)
+      ? CFG.meters.map(function (m) { return m.key; })
+      : DEFAULT_METERS;
     rng = rng || Math.random;
 
     var S, phase, current, lastResult, recent, ended, notice, lastEventId;
@@ -176,37 +181,39 @@
       return null;
     }
 
-    // The List reads the whole year — but not evenly. Prestige is nearly half
-    // the weight (appearances are the job); revenue and order are what Simla
-    // audits; contentment counts least, and is still worth more than the
-    // district suspects.
-    var HONOURS_W = { prestige: 0.45, revenue: 0.2, order: 0.2, contentment: 0.15 };
+    // The honours ladder is chapter data (config.honours): blend weights over
+    // the four public meters, and an ordered ladder of tiers, highest first,
+    // each wanting a showing (the blended score) AND a name (a prestige floor).
+    // A tier with barredByDebt is skipped while the Lala holds your paper.
+    var HONOURS = CFG.honours || {
+      weights: { prestige: 0.45, revenue: 0.2, order: 0.2, contentment: 0.15 },
+      ladder: [{ key: "cie", score: 55, prestige: 52, reach: "a <b>C.I.E.</b> is within reach" }]
+    };
     function honoursScore() {
-      return Math.round(
-        S.prestige * HONOURS_W.prestige + S.revenue * HONOURS_W.revenue +
-        S.order * HONOURS_W.order + S.contentment * HONOURS_W.contentment
-      );
+      var w = HONOURS.weights, h = 0;
+      Object.keys(w).forEach(function (k) { h += (S[k] || 0) * w[k]; });
+      return Math.round(h);
     }
-    // Each tier wants a showing (the blended score) AND a name (a prestige
-    // floor) — the Service will not gazette a knighthood for a man it cannot
-    // picture at the durbar, however sound his figures.
-    var TIERS = { kcsi: { score: 70, prestige: 75 }, kcie: { score: 65, prestige: 70 }, cie: { score: 55, prestige: 52 } };
+    // The highest rung the year clears (ignoring or applying the debt bar).
+    function ladderTier(applyDebtBar) {
+      var p = S.prestige, h = honoursScore();
+      var debtBar = S.debt > ECON.debtWarn;
+      for (var i = 0; i < HONOURS.ladder.length; i++) {
+        var t = HONOURS.ladder[i];
+        if (applyDebtBar && debtBar && t.barredByDebt) continue;
+        if (h >= t.score && p >= t.prestige) return t;
+      }
+      return null;
+    }
 
     function finalVerdict() {
-      var p = S.prestige, o = S.order, c = S.contentment, h = honoursScore();
-      var end;
-      // Ladder ascends CIE -> KCIE -> KCSI. Gone-native outranks scandal: a
-      // magistrate the district loves and Simla has written off resigns his
-      // own way — that is not a disgrace story.
-      if (c >= 65 && p < 50) end = ENDINGS.gonenative;
-      else if (p < 40 || o < 40) end = ENDINGS.scandal;
-      else if (h >= TIERS.kcsi.score && p >= TIERS.kcsi.prestige) end = ENDINGS.kcsi;
-      else if (h >= TIERS.kcie.score && p >= TIERS.kcie.prestige) end = ENDINGS.kcie;
-      else if (h >= TIERS.cie.score && p >= TIERS.cie.prestige) end = ENDINGS.cie;
-      else end = ENDINGS.transfer;
-      // A magistrate who beggared the district into the Lala's books is not knighted.
-      if (S.debt > ECON.debtWarn && (end === ENDINGS.kcsi || end === ENDINGS.kcie)) end = ENDINGS.cie;
-      return end;
+      var p = S.prestige, o = S.order, c = S.contentment;
+      // Gone-native outranks scandal: a magistrate the district loves and the
+      // Service has written off resigns his own way — not a disgrace story.
+      if (c >= 65 && p < 50) return ENDINGS.gonenative;
+      if (p < 40 || o < 40) return ENDINGS.scandal;
+      var tier = ladderTier(true); // the debt bar demotes past barred rungs
+      return tier ? ENDINGS[tier.key] : ENDINGS.transfer;
     }
 
     function eligible(e) {
@@ -404,6 +411,9 @@
         event: (phase === "event" || phase === "interlude") ? current : null,
         result: (phase === "resolved" || phase === "ended" || phase === "interlude") ? lastResult : null,
         ended: ended, endedKey: (phase === "ended" && ended) ? endKeyOf(ended) : null,
+        promoted: (phase === "ended" && ended && CFG.chapter)
+          ? (CFG.chapter.promotionTiers || []).indexOf(endKeyOf(ended)) !== -1 : false,
+        chapter: CFG.chapter || null,
         honours: honoursStanding(),
         codas: (phase === "ended" && ended) ? endingCodas(ended) : null,
         record: (phase === "ended") ? serviceRecord(5) : null
@@ -412,36 +422,37 @@
       return snap;
     }
 
-    // The standing line is the player's honours tutor: it names the tier in
-    // reach and says plainly what binds. The List reads the whole year —
-    // prestige heaviest — so the hint distinguishes a thin showing (raise the
-    // blend: order, revenue, contentment all count) from a thin name (only
-    // prestige will do).
+    // The standing line is the player's honours tutor: it names the rung in
+    // reach (from the chapter's ladder data) and says plainly what the next
+    // rung wants — a stronger showing (any public meter) or a bigger name
+    // (only prestige will do) — plus the Lala's bar while it applies.
     function honoursStanding() {
       var p = S.prestige, c = S.contentment, h = honoursScore();
       var lead = "Honours List &mdash; ";
       var debtBar = S.debt > ECON.debtWarn;
-      function reach(tier) { return h >= TIERS[tier].score && p >= TIERS[tier].prestige; }
-      // what the NEXT rung wants: its score (any of the four meters) or its name (prestige)
-      function want(tier) {
-        var needsScore = h < TIERS[tier].score, needsName = p < TIERS[tier].prestige;
+      function want(t) {
+        var needsScore = h < t.score, needsName = p < t.prestige;
         if (needsScore && needsName) return "a stronger year all round, and a name to hang it on";
         if (needsScore) return "a stronger showing &mdash; order, revenue and contentment all count";
         return "more prestige; the Service must be able to picture you at the durbar";
       }
-      if (reach("kcsi"))
-        return lead + (debtBar
-          ? "the star is earned and the Lala holds your paper; <b>no knighthood</b> until the debt is down"
-          : "a <b>K.C.S.I.</b> (a knighthood of the star) is within reach");
-      if (reach("kcie")) {
-        if (debtBar) return lead + "a <b>C.I.E.</b> at most; no knighthood while the Lala holds your paper";
-        return lead + "a <b>K.C.I.E.</b> (a knighthood) is within reach; the senior star wants " + want("kcsi");
+      var tier = ladderTier(false);
+      if (tier) {
+        var idx = HONOURS.ladder.indexOf(tier);
+        if (debtBar && tier.barredByDebt)
+          return lead + "the year has earned it and the Lala holds your paper; <b>nothing above a plain ribbon</b> until the debt is down";
+        var line = lead + tier.reach;
+        if (idx > 0) {
+          var above = HONOURS.ladder[idx - 1];
+          line += (debtBar && above.barredByDebt)
+            ? "; nothing higher while the Lala holds your paper"
+            : "; the next rung wants " + want(above);
+        } else if (debtBar) line += " &mdash; with the Lala paid off";
+        return line;
       }
-      if (reach("cie"))
-        return lead + "a <b>C.I.E.</b> is within reach; a knighthood wants " + want("kcie") +
-          (debtBar ? " &mdash; and the Lala paid off" : "");
+      var bottom = HONOURS.ladder[HONOURS.ladder.length - 1];
       if (h >= 48 || p >= 48)
-        return lead + "not yet on anyone's list; it wants " + want("cie");
+        return lead + "not yet on anyone's list; it wants " + want(bottom);
       if (c >= 65 && p < 50) return lead + "the district is content and Simla is not; the List rewards the seen, not the good";
       if (p >= 40) return lead + "unlikely on present form; the year reads thin in every column Simla audits";
       return lead + "your name appears only in the complaints";

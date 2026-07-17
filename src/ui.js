@@ -4,9 +4,43 @@
 (function () {
   "use strict";
   var L = (typeof PukkaLogic !== "undefined") ? PukkaLogic : require("./logic.js");
-  var content = JSON.parse(document.getElementById("game-data").textContent);
-  // Meter names + legend glosses come from content (config.meters); fall back to
-  // bare names if an older bundle lacks them.
+  // The inlined data is the chapter registry: { chapters: {key: bundle}, order }.
+  var registry = JSON.parse(document.getElementById("game-data").textContent);
+
+  /* ---------- the career record (versioned localStorage) ---------- */
+  var CAREER_KEY = "pukka-sahib-career";
+  function loadCareer() {
+    try {
+      var raw = window.localStorage.getItem(CAREER_KEY);
+      var c = raw ? JSON.parse(raw) : null;
+      if (!c || c.v !== 1) c = null;
+      return c || { v: 1, completions: {}, honours: [], history: [] };
+    } catch (e) { return { v: 1, completions: {}, honours: [], history: [] }; }
+  }
+  function saveCareer() { try { window.localStorage.setItem(CAREER_KEY, JSON.stringify(career)); } catch (e) {} }
+  var career = loadCareer();
+
+  // The chapter to play: the first rank in the ladder the career has not yet
+  // been promoted out of. (With one chapter shipped, that is the district.)
+  function currentChapterKey() {
+    // A quick-start override (Begin as a seasoned Collector) jumps straight to
+    // the district — offered only once the apprentice year is completed.
+    try {
+      var qs = window.localStorage.getItem("pukka-sahib-quickstart");
+      if (qs === "dm" && registry.chapters.dm && (career.completions.ac || 0) >= 1) return "dm";
+      if (qs) window.localStorage.removeItem("pukka-sahib-quickstart");
+    } catch (e) {}
+    for (var i = 0; i < registry.order.length; i++) {
+      var k = registry.order[i];
+      var promotedOut = (career.history || []).some(function (h) { return h.chapter === k && h.promoted; });
+      if (!promotedOut) return k;
+    }
+    return registry.order[registry.order.length - 1];
+  }
+  var chapterKey = currentChapterKey();
+  var content = registry.chapters[chapterKey];
+
+  // Meter names + legend glosses come from the chapter (config.meters).
   var METERS = (content.config.meters && content.config.meters.length)
     ? content.config.meters.map(function (m) { return { key: m.key, name: m.name, desc: m.desc }; })
     : [
@@ -144,13 +178,21 @@
     el("cont").onclick = function () { audio.stamp(); paint(game.next()); };
   }
 
-  // The honours endings show their real insignia. CIE and KCIE are grades of
-  // the Order of the Indian Empire (same badge); KCSI is the senior Star of India.
-  var MEDAL = { "The C.I.E.": "medal-cie", "The K.C.I.E.": "medal-cie", "The K.C.S.I.": "medal-kcsi" };
+  // Close the run into the career record: the posting, its verdict, any honour
+  // (a ladder-tier ending), and whether it promoted.
+  function recordCompletion(s) {
+    career.completions[chapterKey] = (career.completions[chapterKey] || 0) + 1;
+    career.history.push({ chapter: chapterKey, ending: s.endedKey, title: s.ended.title, promoted: !!s.promoted });
+    var ladder = (content.config.honours && content.config.honours.ladder) || [];
+    if (ladder.some(function (t) { return t.key === s.endedKey; }))
+      career.honours.push({ chapter: chapterKey, key: s.endedKey, title: s.ended.title });
+    saveCareer();
+  }
 
   function renderEnding(s) {
     var c = el("card"); c.className = "card ending";
-    var medalSrc = ART[MEDAL[s.ended.title]];
+    recordCompletion(s);
+    var medalSrc = s.ended.medal ? ART[s.ended.medal] : null;
     var medalHtml = medalSrc ? '<img class="medal" src="' + medalSrc + '" alt="' + s.ended.title + ' insignia">' : "";
     var codasHtml = (s.codas && s.codas.length)
       ? '<div class="record"><div class="record-head">The year, off the record</div>' +
@@ -180,9 +222,18 @@
       '<div class="verdict">' + s.ended.text + "</div>" +
       codasHtml +
       recordHtml +
-      '<div class="next" style="text-align:center"><button class="primary" id="again">Take up a new posting</button></div>';
+      '<div class="next" style="text-align:center"><button class="primary" id="again">' +
+      (s.promoted && s.chapter && s.chapter.promotesTo && registry.chapters[s.chapter.promotesTo]
+        ? "Take up your promotion &rarr;" : "Take up a new posting") +
+      "</button></div>";
     audio.ending(s.endedKey);
-    el("again").onclick = function () { clearSave(); paint(game.init()); };
+    el("again").onclick = function () {
+      clearSave();
+      // A promotion moves the career to the next chapter's bundle; reload so the
+      // module re-derives its chapter from the record. Otherwise, same posting again.
+      if (s.promoted && s.chapter && s.chapter.promotesTo && registry.chapters[s.chapter.promotesTo]) location.reload();
+      else paint(game.init());
+    };
   }
 
   // Art manifest (data URIs in the single-file build, paths on Pages, absent if
@@ -262,7 +313,7 @@
   function store() { try { return window.localStorage; } catch (e) { return null; } }
   function persist() {
     var ls = store(); if (!ls) return;
-    try { ls.setItem(SAVE_KEY, JSON.stringify({ v: SAVE_VERSION, data: game.serialize() })); } catch (e) {}
+    try { ls.setItem(SAVE_KEY, JSON.stringify({ v: SAVE_VERSION, chapter: chapterKey, data: game.serialize() })); } catch (e) {}
   }
   function clearSave() { var ls = store(); if (ls) try { ls.removeItem(SAVE_KEY); } catch (e) {} }
   function loadSave() {
@@ -271,6 +322,7 @@
       var raw = ls.getItem(SAVE_KEY); if (!raw) return null;
       var obj = JSON.parse(raw);
       if (!obj || obj.v !== SAVE_VERSION || !obj.data || !obj.data.S) { ls.removeItem(SAVE_KEY); return null; }
+      if (obj.chapter && obj.chapter !== chapterKey) { ls.removeItem(SAVE_KEY); return null; } // a save from another rank
       if (obj.data.endedKey) { ls.removeItem(SAVE_KEY); return null; } // a finished posting is not resumable
       return obj.data;
     } catch (e) { try { ls.removeItem(SAVE_KEY); } catch (e2) {} return null; }
@@ -295,6 +347,26 @@
 
   function showGame() { el("start").hidden = true; el("game").hidden = false; }
 
+  // The service record: the career so far, shown on the start screen once
+  // there is one — rank held, postings served, honours gazetted.
+  function serviceRecordHtml() {
+    if (!career.history.length) return "";
+    var honours = career.honours.map(function (h) { return h.title; });
+    var meta = content.config.chapter || {};
+    return '<div class="service">' +
+      '<div class="record-head">Record of service</div>' +
+      '<div class="service-line">' + (meta.rank || "") + (meta.posting ? " &middot; " + meta.posting : "") + "</div>" +
+      '<div class="service-line">' + career.history.length + " posting" + (career.history.length === 1 ? "" : "s") + " served" +
+      (honours.length ? " &middot; " + honours.join(" &middot; ") : " &middot; no honours yet gazetted") + "</div>" +
+      "</div>";
+  }
+
+  // Quick start: once the career has been through the apprentice year at least
+  // once, a seasoned-Collector start is always on offer.
+  function quickstartAvailable() {
+    return chapterKey !== "dm" && !!registry.chapters.dm && (career.completions.ac || 0) >= 1;
+  }
+
   function showStart(saved) {
     el("game").hidden = true;
     var st = el("start"); st.hidden = false;
@@ -303,11 +375,13 @@
       ? '<button class="primary" id="resume">Resume the posting &rarr;</button>' +
         '<button class="ghost" id="fresh">Begin a new posting</button>'
       : '<button class="primary" id="begin">Take up your posting &rarr;</button>';
+    if (quickstartAvailable()) resumeBtn += '<button class="ghost" id="quickdm">Begin as a seasoned Collector</button>';
     st.innerHTML =
       cover +
       '<div class="tagline">You are the newly-gazetted District Magistrate &amp; Collector of Chhota Nagra. ' +
       'Keep the peace. Bring in the revenue. And whatever else is lost, keep up appearances. ' +
       'You have a year. Survive the posting.</div>' +
+      serviceRecordHtml() +
       '<div class="start-actions">' + resumeBtn + "</div>";
     if (saved) {
       el("resume").onclick = function () { showGame(); paint(game.restore(saved)); };
@@ -315,6 +389,11 @@
     } else {
       el("begin").onclick = function () { showGame(); paint(game.init()); };
     }
+    var qd = el("quickdm");
+    if (qd) qd.onclick = function () {
+      try { window.localStorage.setItem("pukka-sahib-quickstart", "dm"); } catch (e) {}
+      location.reload();
+    };
   }
 
   // The masthead crest: the engraved raster seal when the build carries it,

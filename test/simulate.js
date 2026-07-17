@@ -1,13 +1,11 @@
 /* Simulation — hundreds of seeded, headless playthroughs with the design's
-   balance targets encoded as hard assertions. A target isn't real until the
-   sim asserts it. Exits non-zero if any band is missed. Run: node test/simulate.js */
+   balance targets encoded as hard assertions, run for every chapter in the
+   registry. A target isn't real until the sim asserts it. Exits non-zero if
+   any band is missed. Run: node test/simulate.js */
 "use strict";
 var L = require("../src/logic.js");
-var content = require("../src/content.js");
+var registry = require("../src/content.js");
 
-var titleToKey = {};
-Object.keys(content.endings).forEach(function (k) { titleToKey[content.endings[k].title] = k; });
-var HONOURS = ["kcsi", "kcie", "cie"];
 var COLLAPSE = ["breakdown", "riot", "scandal", "bankrupt"];
 
 /* ---- policies ---- */
@@ -140,88 +138,99 @@ var POLICIES = {
   }
 };
 
-function play(policy, seed) {
-  var rng = L.seededRng(seed);
-  var game = L.createGame(content, rng);
-  var s = game.init();
-  var events = [], backToBack = false, prev = null, guard = 0;
-  while (s.phase !== "ended" && guard++ < 1000) {
-    if (s.phase === "posture") s = game.choosePosture(policy.posture(s, rng));
-    else if (s.phase === "event") {
-      if (prev === s.event.id) backToBack = true;
-      prev = s.event.id; events.push(s.event.id);
-      s = game.chooseOption(policy.option(s, game, rng));
-    } else if (s.phase === "interlude") s = game.next();
-    else if (s.phase === "resolved") s = game.next();
-    if (typeof s.treasury !== "number" || isNaN(s.treasury) || isNaN(s.debt)) throw new Error("NaN economy at turn " + s.turn);
-  }
-  if (s.phase !== "ended") throw new Error("did not terminate (guard hit)");
-  return { key: titleToKey[s.ended.title], events: events, backToBack: backToBack, turn: s.turn, debt: s.debt };
-}
-
-function runBatch(name, n, seedBase) {
-  var dist = {}, bb = 0, errs = 0;
-  for (var i = 0; i < n; i++) {
-    try {
-      var r = play(POLICIES[name], seedBase + i * 7919 + 1);
-      dist[r.key] = (dist[r.key] || 0) + 1;
-      if (r.backToBack) bb++;
-    } catch (e) { errs++; if (errs < 4) console.error("  ERR[" + name + "]", e.message); }
-  }
-  return { dist: dist, bb: bb, errs: errs, n: n };
-}
-
 function pct(dist, keys, n) {
   var c = 0; keys.forEach(function (k) { c += dist[k] || 0; }); return c / n;
 }
 
-var N = 500;
-var R = {};
-["random", "tourOnly", "deskOnly", "skilled"].forEach(function (p) { R[p] = runBatch(p, N, p.length * 100003); });
-// smaller engineered batches for tail- and pinnacle-reachability
-R.paragon = runBatch("paragon", 200, 777001);
-R.wrecker = runBatch("wrecker", 200, 424242);
-R.reckless = runBatch("reckless", 200, 133337);
-
-console.log("\n=== Balance report (n=" + N + " per policy) ===");
-Object.keys(R).forEach(function (p) {
-  var d = R[p].dist, n = R[p].n; // probe batches run n=200, not N — report honestly
-  console.log(p.padEnd(9), "honours=" + (pct(d, HONOURS, n) * 100).toFixed(0) + "%",
-    "kcie=" + (pct(d, ["kcie"], n) * 100).toFixed(0) + "%",
-    "collapse=" + (pct(d, COLLAPSE, n) * 100).toFixed(0) + "%",
-    "| " + JSON.stringify(d));
-});
-
-/* ---- assertions: the design targets ---- */
 var fails = [];
-function assert(cond, msg) { if (!cond) fails.push(msg); }
 
-// no runtime errors, everything terminates
-Object.keys(R).forEach(function (p) { assert(R[p].errs === 0, p + ": " + R[p].errs + " runtime errors"); });
-// rotation invariant: never the same event twice in a row, in any game
-Object.keys(R).forEach(function (p) { assert(R[p].bb === 0, p + ": " + R[p].bb + " games had back-to-back event repeats"); });
+function simulateChapter(chapterKey, content) {
+  var titleToKey = {};
+  Object.keys(content.endings).forEach(function (k) { titleToKey[content.endings[k].title] = k; });
+  // The honours tiers come from the chapter's ladder (highest first).
+  var LADDER = content.config.honours.ladder.map(function (t) { return t.key; });
+  var TOP = LADDER[0];
 
-// neither pure posture can be spammed to victory
-assert(pct(R.tourOnly.dist, HONOURS, N) <= 0.10, "tour-only earns honours too often (" + (pct(R.tourOnly.dist, HONOURS, N) * 100).toFixed(0) + "%, want ≤10%)");
-assert(pct(R.deskOnly.dist, ["kcie"], N) <= 0.12, "desk-only reaches KCIE too often (want ≤12%)");
-assert(pct(R.tourOnly.dist, ["breakdown"], N) >= 0.30, "tour-only should mostly break down (want ≥30% Invalided Home)");
+  function assert(cond, msg) { if (!cond) fails.push("[" + chapterKey + "] " + msg); }
 
-// skill is rewarded; careless play mostly fails but isn't impossible
-assert(pct(R.skilled.dist, HONOURS, N) >= 0.50, "skilled play should earn honours ≥50% (" + (pct(R.skilled.dist, HONOURS, N) * 100).toFixed(0) + "%)");
-var rnd = pct(R.random.dist, HONOURS, N);
-assert(rnd >= 0.02 && rnd <= 0.50, "random honour-rate out of band [2%,50%]: " + (rnd * 100).toFixed(0) + "%");
+  function play(policy, seed) {
+    var rng = L.seededRng(seed);
+    var game = L.createGame(content, rng);
+    var s = game.init();
+    var events = [], backToBack = false, prev = null, guard = 0;
+    while (s.phase !== "ended" && guard++ < 1000) {
+      if (s.phase === "posture") s = game.choosePosture(policy.posture(s, rng));
+      else if (s.phase === "event") {
+        if (prev === s.event.id) backToBack = true;
+        prev = s.event.id; events.push(s.event.id);
+        s = game.chooseOption(policy.option(s, game, rng));
+      } else if (s.phase === "interlude") s = game.next();
+      else if (s.phase === "resolved") s = game.next();
+      if (typeof s.treasury !== "number" || isNaN(s.treasury) || isNaN(s.debt)) throw new Error("NaN economy at turn " + s.turn);
+    }
+    if (s.phase !== "ended") throw new Error("did not terminate (guard hit)");
+    return { key: titleToKey[s.ended.title], events: events, backToBack: backToBack, turn: s.turn, debt: s.debt };
+  }
 
-// every honour tier + the common collapses are reachable across the pooled runs
-var all = {};
-Object.keys(R).forEach(function (p) { Object.keys(R[p].dist).forEach(function (k) { all[k] = (all[k] || 0) + R[p].dist[k]; }); });
-HONOURS.concat(["breakdown", "scandal", "transfer", "gonenative"]).forEach(function (k) {
-  assert(all[k] > 0, "ending '" + k + "' never occurred in any policy");
-});
-// the two tail collapses must be reachable via their adversarial probe
-assert((R.wrecker.dist.riot || 0) > 0, "riot unreachable — wrecker policy never triggered it");
-assert((R.reckless.dist.bankrupt || 0) > 0, "bankrupt unreachable — reckless policy never triggered it");
-// and the senior star must be winnable by play engineered for it
-assert((R.paragon.dist.kcsi || 0) > 0, "kcsi unreachable — paragon policy never earned it");
+  function runBatch(name, n, seedBase) {
+    var dist = {}, bb = 0, errs = 0;
+    for (var i = 0; i < n; i++) {
+      try {
+        var r = play(POLICIES[name], seedBase + i * 7919 + 1);
+        dist[r.key] = (dist[r.key] || 0) + 1;
+        if (r.backToBack) bb++;
+      } catch (e) { errs++; if (errs < 4) console.error("  ERR[" + chapterKey + "/" + name + "]", e.message); }
+    }
+    return { dist: dist, bb: bb, errs: errs, n: n };
+  }
+
+  var N = 500;
+  var R = {};
+  ["random", "tourOnly", "deskOnly", "skilled"].forEach(function (p) { R[p] = runBatch(p, N, p.length * 100003); });
+  // smaller engineered batches for tail- and pinnacle-reachability
+  R.paragon = runBatch("paragon", 200, 777001);
+  R.wrecker = runBatch("wrecker", 200, 424242);
+  R.reckless = runBatch("reckless", 200, 133337);
+
+  console.log("\n=== [" + chapterKey + "] Balance report (n=" + N + " per policy; probes 200) ===");
+  Object.keys(R).forEach(function (p) {
+    var d = R[p].dist, n = R[p].n;
+    console.log(p.padEnd(9), "honours=" + (pct(d, LADDER, n) * 100).toFixed(0) + "%",
+      TOP + "=" + (pct(d, [TOP], n) * 100).toFixed(0) + "%",
+      "collapse=" + (pct(d, COLLAPSE, n) * 100).toFixed(0) + "%",
+      "| " + JSON.stringify(d));
+  });
+
+  /* ---- assertions: the design targets ---- */
+  // no runtime errors, everything terminates
+  Object.keys(R).forEach(function (p) { assert(R[p].errs === 0, p + ": " + R[p].errs + " runtime errors"); });
+  // rotation invariant: never the same event twice in a row, in any game
+  Object.keys(R).forEach(function (p) { assert(R[p].bb === 0, p + ": " + R[p].bb + " games had back-to-back event repeats"); });
+
+  // neither pure posture can be spammed to victory
+  assert(pct(R.tourOnly.dist, LADDER, N) <= 0.10, "tour-only earns honours too often (" + (pct(R.tourOnly.dist, LADDER, N) * 100).toFixed(0) + "%, want ≤10%)");
+  assert(pct(R.deskOnly.dist, [TOP], N) <= 0.12, "desk-only reaches the top tier too often (want ≤12%)");
+  assert(pct(R.tourOnly.dist, ["breakdown"], N) >= 0.30, "tour-only should mostly break down (want ≥30% Invalided Home)");
+
+  // skill is rewarded; careless play mostly fails but isn't impossible
+  assert(pct(R.skilled.dist, LADDER, N) >= 0.50, "skilled play should earn honours ≥50% (" + (pct(R.skilled.dist, LADDER, N) * 100).toFixed(0) + "%)");
+  var rnd = pct(R.random.dist, LADDER, N);
+  assert(rnd >= 0.02 && rnd <= 0.50, "random honour-rate out of band [2%,50%]: " + (rnd * 100).toFixed(0) + "%");
+
+  // every ladder tier + the common collapses are reachable across the pooled runs
+  var all = {};
+  Object.keys(R).forEach(function (p) { Object.keys(R[p].dist).forEach(function (k) { all[k] = (all[k] || 0) + R[p].dist[k]; }); });
+  LADDER.concat(["breakdown", "scandal", "transfer", "gonenative"]).forEach(function (k) {
+    assert(all[k] > 0, "ending '" + k + "' never occurred in any policy");
+  });
+  // the two tail collapses must be reachable via their adversarial probe
+  assert((R.wrecker.dist.riot || 0) > 0, "riot unreachable — wrecker policy never triggered it");
+  assert((R.reckless.dist.bankrupt || 0) > 0, "bankrupt unreachable — reckless policy never triggered it");
+  // and the top rung must be winnable by play engineered for it
+  assert((R.paragon.dist[TOP] || 0) > 0, "'" + TOP + "' unreachable — paragon policy never earned it");
+}
+
+registry.order.forEach(function (k) { simulateChapter(k, registry.chapters[k]); });
 
 if (fails.length) {
   console.error("\nSIMULATION FAILED — " + fails.length + " band(s) missed:");

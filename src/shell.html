@@ -229,6 +229,14 @@
   .rec-body{padding:0 4px 12px 22px}
   .rec-did{font-weight:600; font-size:.9rem; color:var(--ink)}
   .rec-out{font-style:italic; font-size:.9rem; color:var(--ink-soft); margin-top:5px}
+  /* The service record on the start screen: rank, postings, honours so far. */
+  .service{
+    max-width:52ch; margin:0 auto 18px; padding:10px 16px; text-align:center;
+    background:var(--surface2); border:1px solid var(--line); border-radius:4px;
+  }
+  .service .record-head{margin-bottom:6px}
+  .service-line{font-size:.88rem; color:var(--ink-soft)}
+  .service-line:first-of-type{color:var(--ink); font-weight:600}
   /* Start-screen actions: primary + a quiet secondary for New posting. */
   .start-actions{display:flex; flex-direction:column; align-items:center; gap:10px}
   button.ghost{

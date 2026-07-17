@@ -1,117 +1,225 @@
 [
   {
-    "requires": { "flag": "uriah_sin" },
-    "endings": ["kcsi", "kcie", "cie"],
+    "requires": {
+      "flag": "uriah_sin"
+    },
+    "endings": [
+      "division",
+      "cie"
+    ],
     "head": "The entry the ribbon does not cover",
     "text": "The file does not record &mdash; the file never records &mdash; that a younger man was posted to a station known to kill him, and did, and that the vacancy suited you. You know it. It is the one entry the ribbon does not cover."
   },
   {
-    "requires": { "flag": "uriah_sin" },
-    "endings": ["transfer", "scandal", "breakdown", "riot", "bankrupt", "gonenative"],
+    "requires": {
+      "flag": "uriah_sin"
+    },
+    "endings": [
+      "transfer",
+      "scandal",
+      "breakdown",
+      "riot",
+      "bankrupt",
+      "gonenative"
+    ],
     "head": "A name in the small hours",
     "text": "Somewhere in the small hours you still hear the name of the boy you sent up-country to the fever, whose place fell conveniently vacant. No enquiry ever touched it. Nothing ever will, except you."
   },
   {
-    "requires": { "flag": "boy_covered" },
+    "requires": {
+      "flag": "boy_covered"
+    },
     "head": "The blunder you buried",
     "text": "A young officer who would otherwise have been broken owes you his career and does not know it; you buried his blunder so deep that even he believes he never made it. It is the best thing you did all year, and it can never be told."
   },
   {
-    "requires": { "flag": "lala_owned" },
-    "endings": ["kcsi", "kcie"],
-    "head": "A knight bought on easy terms",
-    "text": "Sir now &mdash; and Lala Hukum Chand keeps, in a red-bound ledger, the exact figure at which a knight of the realm was bought on easy terms. He will never call it in. He does not need to. Owning you is the interest."
+    "requires": {
+      "flag": "lala_owned"
+    },
+    "endings": [
+      "division"
+    ],
+    "head": "A rising man, bought early",
+    "text": "Marked for the Division now &mdash; and Lala Hukum Chand keeps, in a red-bound ledger, the exact figure at which a rising man of Government was bought on easy terms, years before his price went up. He will never call it in. He does not need to. Owning you early is the whole art of the investment."
   },
   {
-    "requires": { "flag": "lala_owned" },
-    "endings": ["cie", "transfer", "scandal", "breakdown", "riot", "bankrupt", "gonenative"],
+    "requires": {
+      "flag": "lala_owned"
+    },
+    "endings": [
+      "cie",
+      "transfer",
+      "scandal",
+      "breakdown",
+      "riot",
+      "bankrupt",
+      "gonenative"
+    ],
     "head": "The Lala's sound investment",
     "text": "Lala Hukum Chand regards your year with the quiet satisfaction of a man reviewing a sound investment: whatever else you turned out to be, you were, in the end, entirely his."
   },
   {
-    "requires": { "flag": "lala_defied" },
+    "requires": {
+      "flag": "lala_defied"
+    },
     "head": "The morning you refused him",
     "text": "The Lala never forgave the morning you refused him to his face, and spent the year proving, in fees and grain-prices, that displeasure is only another line in the ledger. You were the poorer for it, and could look the bazaar in the eye, which is a currency he does not keep."
   },
   {
-    "requires": { "flag": "ramautar_trust" },
+    "requires": {
+      "flag": "ramautar_trust"
+    },
     "head": "Ram Autar's one sentence",
     "text": "Old Ram Autar, who has outlasted six Collectors and will outlast you, allowed himself at the year&rsquo;s end a single sentence of approval, in Persian, which you were not quite meant to catch and have not forgotten."
   },
   {
-    "requires": { "flag": "ramautar_gone" },
+    "requires": {
+      "flag": "ramautar_gone"
+    },
     "head": "The clerk you lost",
     "text": "The head clerk asked for his pension in the cold weather and got it, correctly and coldly, and the record-room has never since given up its secrets to you at quite the old speed. You lost more than a clerk, and knew it too late."
   },
   {
-    "requires": { "flag": "strickland_kept" },
+    "requires": {
+      "flag": "strickland_kept"
+    },
     "head": "Strickland's friendship",
     "text": "Strickland, who knows the district in ways the manuals do not admit exist, counts you a friend &mdash; which is worth more than a decoration and appears on no roll of honour."
   },
   {
-    "requires": { "flag": "hauksbee_ally" },
+    "requires": {
+      "flag": "hauksbee_ally"
+    },
     "head": "Mrs Hauksbee's favour",
     "text": "Mrs Hauksbee, who has made and unmade more careers over the teacups of Simla than the Secretariat has, decided this year that she liked you; and things went, ever so slightly and quite untraceably, your way."
   },
   {
-    "requires": { "flag": "pandit_pact" },
+    "requires": {
+      "flag": "pandit_pact"
+    },
     "head": "The understanding with the Pandit",
     "text": "Pandit Girdhari, who calls the whole edifice you serve a passing weather, nonetheless kept his side of a quiet understanding with you all year &mdash; two honest men on opposite sides of a thing neither of them made."
   },
   {
-    "requires": { "flag": "poplar_settled" },
+    "requires": {
+      "flag": "poplar_settled"
+    },
     "head": "The case you were forbidden",
     "text": "The case Simla forbade you to touch stands settled and planted over, correct by every measure but the one that mattered to Simla, and it is the finest fortnight&rsquo;s work of your year. It will appear in no report as long as you both shall live."
   },
   {
-    "requires": { "flag": "gone_soft" },
-    "endings": ["gonenative"],
+    "requires": {
+      "flag": "gone_soft"
+    },
+    "endings": [
+      "gonenative"
+    ],
     "head": "Gone soft on the native side",
     "text": "&lsquo;Gone soft on the native side&rsquo; is the verdict of the billiard-room, delivered in the tone reserved for a good horse ruined; the district&rsquo;s verdict, delivered in the tone reserved for the rarest of sahibs, is the exact opposite, and neither will ever reach the other."
   },
   {
-    "requires": { "flag": "played_game" },
-    "endings": ["kcsi", "kcie", "cie"],
+    "requires": {
+      "flag": "played_game"
+    },
+    "endings": [
+      "division",
+      "cie"
+    ],
     "head": "You learned the game",
     "text": "You learned the year&rsquo;s real lesson early &mdash; that the district is governed for the report, and the report is written for Simla &mdash; and played it faultlessly, and the ribbon is the proof, and you are not certain, on the whole, that you are glad you learned it."
   },
   {
-    "requires": { "flag": "helped_loafers" },
+    "requires": {
+      "flag": "helped_loafers"
+    },
     "head": "The broken-down Europeans",
     "text": "A handful of broken-down Europeans, the kind the Service prefers not to see, were quietly kept off the streets and out of the papers on your charity this year. It embarrassed everyone and saved two of them, which is a rate of return the Club would not understand."
   },
   {
-    "requires": { "allOf": [ { "flag": "married" }, { "not": { "flag": "alone_married" } } ] },
+    "requires": {
+      "allOf": [
+        {
+          "flag": "married"
+        },
+        {
+          "not": {
+            "flag": "alone_married"
+          }
+        }
+      ]
+    },
     "head": "A memsahib in the bungalow",
     "text": "You married this year, on an impulse the hot weather lent you and time has since ratified; there is a bungalow with curtains now, a child coming, and a reason to be home before dark. Whatever else the year cost you, you did not spend it alone, which the ribbon cannot say for every man who wears one."
   },
   {
-    "requires": { "flag": "alone_married" },
+    "requires": {
+      "flag": "alone_married"
+    },
     "head": "The plains over the hills",
     "text": "You married, and then, when the hot weather came and she went up to the hills, you chose the plains and the district over the fortnight it would have taken to be a husband. A marriage learns its shape early out here, and yours learned that the district would always come first, which is true, and no comfort to the woman who married you not knowing it."
   },
   {
-    "requires": { "allOf": [ { "flag": "bibi" }, { "flag": "looked_away" } ] },
+    "requires": {
+      "allOf": [
+        {
+          "flag": "bibi"
+        },
+        {
+          "flag": "looked_away"
+        }
+      ]
+    },
     "head": "The lane you will not walk down",
     "text": "There was a house in the city once, this year, and a warmth in it the Club would have ended your career for; and you ended it yourself instead, cleanly, before it could. It was the prudent thing. You know the exact lane, and you do not walk down it, and you understand rather better now the sort of man the Service has been making of you."
   },
   {
-    "requires": { "allOf": [ { "flag": "bibi" }, { "not": { "flag": "kept_faith" } }, { "not": { "flag": "looked_away" } } ] },
+    "requires": {
+      "allOf": [
+        {
+          "flag": "bibi"
+        },
+        {
+          "not": {
+            "flag": "kept_faith"
+          }
+        },
+        {
+          "not": {
+            "flag": "looked_away"
+          }
+        }
+      ]
+    },
     "head": "The heart withdrawn",
     "text": "You kept the little house in the city and withdrew the heart from it &mdash; the arrangement maintained, the man withheld, the door of yourself shut against the one person who asked nothing of the Collector. She never reproached you. Her people have watched sahibs do that arithmetic for a hundred years, and she asked for nothing, which is worse."
   },
   {
-    "requires": { "flag": "alone" },
+    "requires": {
+      "flag": "alone"
+    },
     "head": "Married to the Service",
     "text": "You took no wife, kept no house, and gave the district the whole of a devotion another man would have spent on a family. Simla files you as the ideal officer, unencumbered and always available. The bungalow, at two in the morning, files you differently, and keeps its own counsel, as you have taught it to."
   },
   {
-    "requires": { "flag": "adrift" },
+    "requires": {
+      "flag": "adrift"
+    },
     "head": "The decanter, each morning lower",
     "text": "It was never disgrace &mdash; nothing so definite &mdash; only a softening across the lonely months: a later start, a decanter each morning a finger lower than a careful man&rsquo;s. The district noticed before you did; the district always does; and it keeps, in its long memory, a sorrowful column of the names of sahibs who drank alone."
   },
   {
-    "requires": { "allOf": [ { "flag": "kept_faith" }, { "not": { "flag": "played_game" } } ] },
+    "requires": {
+      "allOf": [
+        {
+          "flag": "kept_faith"
+        },
+        {
+          "not": {
+            "flag": "played_game"
+          }
+        }
+      ]
+    },
     "head": "Faith kept, unrecorded",
     "text": "You kept faith, this year, with people who could do nothing for you, at moments when no one was watching and it would have been easier not to. It is recorded nowhere. It is the only part of the year you would defend without flinching."
   }

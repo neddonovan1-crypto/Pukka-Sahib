@@ -1,5 +1,31 @@
 # Authoring Guide — the Event Schema
 
+## Chapters (the career)
+
+Content ships as a **chapter registry** — `src/content.js` exports
+`{ chapters: {key: bundle}, order: [...] }`, and each bundle is a complete
+game: config, endings, events, occasions, codas. `createGame(bundle)` is
+chapter-agnostic; the UI plays the first chapter in `order` the career has not
+been promoted out of. Two bundle fields drive the career:
+
+- `config.chapter` — `{ key, rank, posting, promotionTiers, promotesTo }`.
+  `promotionTiers` lists the ending keys that count as promotion;
+  `promotesTo` names the next chapter (or `null` at the current summit).
+- `config.honours` — `{ weights, ladder }`. `weights` blends the four public
+  meters into the honours score (must sum to 1). `ladder` is ordered highest
+  first: `{ key, score, prestige, reach, barredByDebt? }` — `key` must be an
+  ending in this chapter, `reach` is the standing line shown while that rung
+  is in hand, and `barredByDebt` rungs are skipped while debt exceeds
+  `economy.debtWarn`. Honours by chapter (design): the district year earns the
+  **C.I.E.** at most (its top tier is advancement — the Division); the
+  Commissioner plays for the **K.C.I.E.**, and the **K.C.S.I.** exceptionally;
+  the Lieutenant-Governor for the Knight Grand Commanders (G.C.I.E./G.C.S.I.).
+
+Endings may carry a `medal` art key. The player's career (rank, completions,
+honours, history) persists in localStorage separately from the run save; the
+"Begin as a seasoned Collector" quick-start unlocks once the apprentice year
+has been completed at least once.
+
 All game content lives as **JSON** inside `index.html`, in
 `<script type="application/json" id="game-data">`. The engine (`<script>` below
 it) is logic only and interprets this data. To add or change content you edit
