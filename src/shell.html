@@ -64,6 +64,11 @@
   .seasonband .glyph{font-size:.95rem; opacity:.85}
   .seasonband b{color:var(--ink); font-weight:700}
 
+  .scene{display:block; width:100%; height:auto; border-radius:5px; border:1px solid var(--line); margin:0 0 14px; box-shadow:0 6px 18px -14px var(--shadow)}
+  .start{text-align:center}
+  .start img{width:100%; height:auto; border-radius:6px; border:1px solid var(--line); box-shadow:0 8px 26px -16px var(--shadow); margin-bottom:18px}
+  .start .tagline{font-style:italic; color:var(--ink-soft); margin:0 auto 20px; max-width:54ch; font-size:1.04rem}
+
   .meters{display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:0 0 14px}
   .meter{background:var(--surface2); border:1px solid var(--line); border-radius:3px; padding:8px 5px 7px; text-align:center}
   .meter .name{font-family:"Courier New",Courier,monospace; font-size:.58rem; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-soft)}
@@ -165,12 +170,18 @@
     </div>
   </header>
   <hr class="rule">
-  <div class="seasonband" id="seasonband"></div>
-  <div class="meters" id="meters"></div>
-  <div class="honours" id="honours"></div>
-  <div class="economy" id="economy"></div>
-  <div class="notice" id="notice" hidden></div>
-  <div class="card" id="card"></div>
+
+  <div class="start" id="start" hidden></div>
+
+  <div id="game" hidden>
+    <img class="scene" id="scene" alt="" hidden>
+    <div class="seasonband" id="seasonband"></div>
+    <div class="meters" id="meters"></div>
+    <div class="honours" id="honours"></div>
+    <div class="economy" id="economy"></div>
+    <div class="notice" id="notice" hidden></div>
+    <div class="card" id="card"></div>
+  </div>
 
   <footer>One fortnight per turn &middot; survive the posting</footer>
 </div>

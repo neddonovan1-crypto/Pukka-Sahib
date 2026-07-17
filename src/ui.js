@@ -121,7 +121,25 @@
     el("again").onclick = function () { paint(game.init()); };
   }
 
+  // Art manifest (data URIs in the single-file build, paths on Pages, absent if
+  // no art). The UI degrades cleanly to no imagery when a key is missing.
+  var ART = (typeof window !== "undefined" && window.PUKKA_ART) || {};
+
+  function renderScene(s) {
+    var img = el("scene");
+    if (!img) return;
+    var key = "season-" + s.season.key;
+    var src = ART[key];
+    if (src) {
+      if (img.getAttribute("data-key") !== key) { img.src = src; img.setAttribute("data-key", key); }
+      img.hidden = false;
+    } else {
+      img.hidden = true;
+    }
+  }
+
   function paint(s) {
+    renderScene(s);
     renderMeters(s.meters, s.pulsed);
     renderStatus(s);
     renderNotice(s);
@@ -131,5 +149,19 @@
     else if (s.phase === "ended") renderEnding(s);
   }
 
-  paint(game.init());
+  function showGame() { el("start").hidden = true; el("game").hidden = false; }
+
+  function showStart() {
+    el("game").hidden = true;
+    var st = el("start"); st.hidden = false;
+    st.innerHTML =
+      '<img src="' + ART.cover + '" alt="A district officer looks out over the plains of his district">' +
+      '<div class="tagline">You are the newly-gazetted District Magistrate &amp; Collector of Chhota Nagra. ' +
+      'Keep the peace, the revenue, and &mdash; above all &mdash; up appearances, for a year at least.</div>' +
+      '<button class="primary" id="begin">Take up your posting &rarr;</button>';
+    el("begin").onclick = function () { showGame(); paint(game.init()); };
+  }
+
+  if (ART.cover) showStart();
+  else { showGame(); paint(game.init()); }
 })();

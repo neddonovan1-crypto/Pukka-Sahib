@@ -29,9 +29,24 @@ function build() {
   var logic = stripJs(read(path.join(SRC, "logic.js")));
   var ui = stripJs(read(path.join(SRC, "ui.js")));
 
+  // Web-ready art (art/web/*.jpg, produced by scripts/optimize-art.js). The UI
+  // reads window.PUKKA_ART[name]; single-file gets data URIs, Pages gets paths,
+  // so the same UI code works for both and art stays optional (absent → no art).
+  var artWeb = path.join(ROOT, "art", "web");
+  function artNames() {
+    return fs.existsSync(artWeb) ? fs.readdirSync(artWeb).filter(function (f) { return /\.jpe?g$/i.test(f); }) : [];
+  }
+  var embeddedArt = {}, artKb = 0;
+  artNames().forEach(function (f) {
+    var buf = fs.readFileSync(path.join(artWeb, f));
+    embeddedArt[f.replace(/\.jpe?g$/i, "")] = "data:image/jpeg;base64," + buf.toString("base64");
+    artKb += buf.length / 1024;
+  });
+  var artBlockSingle = "<script>window.PUKKA_ART=" + JSON.stringify(embeddedArt) + ";</script>";
+
   var dataBlock = '<script type="application/json" id="game-data">' + content + "</script>";
   var codeBlock = "<script>\n" + logic + "\n" + ui + "\n</script>";
-  var scripts = dataBlock + "\n" + codeBlock;
+  var scripts = dataBlock + "\n" + artBlockSingle + "\n" + codeBlock;
 
   if (shell.indexOf("<!--GAME_SCRIPTS-->") === -1) throw new Error("shell.html missing <!--GAME_SCRIPTS--> marker");
   var out = shell.replace("<!--GAME_SCRIPTS-->", scripts);
@@ -50,22 +65,22 @@ function build() {
   var dist = path.join(ROOT, "dist");
   var assets = path.join(dist, "assets");
   fs.mkdirSync(assets, { recursive: true });
+  // Pages references art as external files (no weight limit); copy the web JPEGs.
+  var distArt = {};
+  artNames().forEach(function (f) {
+    fs.copyFileSync(path.join(artWeb, f), path.join(assets, f));
+    distArt[f.replace(/\.jpe?g$/i, "")] = "assets/" + f;
+  });
+  var artBlockDist = "<script>window.PUKKA_ART=" + JSON.stringify(distArt) + ";</script>";
   var distHtml = shell.replace("<!--GAME_SCRIPTS-->",
-    dataBlock + '\n<script src="logic.js"></script>\n<script src="ui.js"></script>');
+    dataBlock + "\n" + artBlockDist + '\n<script src="logic.js"></script>\n<script src="ui.js"></script>');
   fs.writeFileSync(path.join(dist, "index.html"), distHtml);
   fs.writeFileSync(path.join(dist, "logic.js"), logic);
   fs.writeFileSync(path.join(dist, "ui.js"), ui);
-  // carry any generated art into the Pages build
-  var artDir = path.join(ROOT, "art");
-  var copied = 0;
-  if (fs.existsSync(artDir)) {
-    fs.readdirSync(artDir).forEach(function (f) {
-      if (/\.(png|jpe?g|svg|webp)$/i.test(f)) { fs.copyFileSync(path.join(artDir, f), path.join(assets, f)); copied++; }
-    });
-  }
+  var copied = artNames().length;
 
-  console.log("Built index.html:", out.length, "bytes (single-file / Artifact)");
-  console.log("  logic:", logic.length, "b · ui:", ui.length, "b · content:", content.length, "b");
+  console.log("Built index.html:", (out.length / 1024).toFixed(0) + " KB (single-file / Artifact)");
+  console.log("  logic:", logic.length, "b · ui:", ui.length, "b · content:", content.length, "b · art embedded:", artKb.toFixed(0) + " KB (" + Object.keys(embeddedArt).length + ")");
   console.log("Built dist/ for Pages:", "index.html + logic.js + ui.js" + (copied ? " + " + copied + " asset(s)" : ""));
   return out;
 }

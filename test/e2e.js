@@ -33,6 +33,8 @@ async function playSession(browser, label, viewport) {
   page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
 
   await page.goto(INDEX, { waitUntil: "load" });
+  var begin = await page.$("#begin");           // dismiss the cover start screen if present
+  if (begin) await begin.click();
   await page.waitForSelector("#card .choice", { timeout: 5000 });
 
   // user-visible invariants present on first paint
