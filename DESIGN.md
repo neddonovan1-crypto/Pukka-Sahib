@@ -99,7 +99,62 @@ Determined by final meter mix at turn 24 (or early collapse):
 - **Sub-Deputy Collector Mukherjee**, your Indian deputy, visibly more
   competent than you, which everyone tactfully ignores.
 
-## 7. Build Plan
+## 7. Visual Identity — *locked*
+
+The look is a **1920s Government of India dossier**: the district's business as
+official paperwork crossing a magistrate's desk. This is the canonical design
+system — new screens derive from these tokens rather than inventing their own.
+
+**Concept.** Buff official file paper by day; the district officer's bungalow by
+lamplight at night. Khaki — from Urdu *khāk*, "dust," the actual colour of the
+Raj's uniforms and its files — is the neutral, not a generic cream. The accent
+is the oxblood of a wax seal and of "red tape." Secondary is official
+indigo-ink. Telegrams and forms were typewritten, so a monospace face carries
+all the bureaucratic furniture (tags, deltas, labels).
+
+**Palette**
+
+| Token | Light — *"buff dossier"* | Dark — *"bungalow by lamplight"* | Role |
+|-------|--------------------------|----------------------------------|------|
+| `--bg` | `#ddd0af` | `#181510` | Desk / page ground |
+| `--surface` | `#ece3c9` | `#241f18` | The filed document |
+| `--surface2` | `#e3d8ba` | `#2b2519` | Gauges, choice buttons |
+| `--ink` | `#231f17` | `#e9ddc0` | Body text |
+| `--ink-soft` | `#5b5340` | `#a89c7f` | Labels, captions |
+| `--line` | `#b9a373` | `#4a4130` | Khaki hairlines |
+| `--seal` | `#8f2f22` | `#cf5a45` | Accent — seal / red tape / headings |
+| `--indigo` | `#2f3d5c` | `#93a7cd` | Secondary — focus rings, official ink |
+| `--good` / `--warn` / `--bad` | `#4a6b3f` / `#977326` / `#8f2f22` | `#82a86f` / `#c9a752` / `#cf5a45` | Meter states (semantic, *not* the accent) |
+
+Neutrals carry a deliberate warm/khaki bias — never a pure grey. The accent is
+spent in one place (seals, headings, red-tape rules); everything else stays
+quiet. Dark theme is designed, not inverted, and both themes are token-driven so
+the viewer's toggle overrides the OS preference.
+
+**Typography**
+
+- **Display & prose:** old-style serif — `"Iowan Old Style", "Palatino Linotype",
+  Palatino, "Book Antiqua", Georgia, serif`. Headings in the seal colour.
+- **Bureaucratic furniture:** typewriter mono — `"Courier New", Courier,
+  monospace` — for event tags (as rubber stamps), stat deltas, meter labels, the
+  masthead department line, and buttons. This mono/serif contrast is the period.
+- No webfonts (the artifact CSP blocks font CDNs); the system stacks above are
+  the commitment, so nothing falls back silently.
+
+**Motifs**
+
+- **Masthead** styled as a GoI file cover: department eyebrow, title, an **I.C.S.
+  roundel seal** (double-ruled circle, rotated a touch).
+- **Event tag** rendered as a **red rubber stamp** — bordered, uppercase mono,
+  slightly rotated ("CRISIS", "RECKONING", "Telegram").
+- **Meters** as a ledger gauge-line with tabular-nums.
+- Faint paper-grain dot texture; double khaki rule under the masthead.
+
+**Rules of the house:** semantic meter colours are separate from the accent;
+keyboard focus is always the indigo ring; `prefers-reduced-motion` disables the
+pulse and hover shifts; running prose stays near 52–65 characters wide.
+
+## 8. Build Plan
 
 - **Phase 0 — Vertical slice (this repo, now).** Single-file web prototype:
   five meters, a turn loop, ~15 event cards, six endings. Proves the loop is
@@ -109,10 +164,11 @@ Determined by final meter mix at turn 24 (or early collapse):
   24-turn arc. Introduce the recurring cast as multi-card storylines.
 - **Phase 2 — Systems.** Proper economy (revenue settlement, the moneylender's
   interest), seasonal deck weighting, save/load, a persistent journal.
-- **Phase 3 — Presentation.** Art direction (period ledger / desk aesthetic),
-  audio, writing polish pass. Consider porting to a framework if it grows.
+- **Phase 3 — Presentation.** Deepen the established identity (§7): period
+  textures, audio, a writing polish pass. Consider porting to a framework if it
+  grows — the token system carries over intact.
 
-## 8. Open Questions
+## 9. Open Questions
 
 - Two-year arc vs. one-year — how long before the loop wears out?
 - Do we want a light resource *economy* (numbers) or keep it meter-nudging
