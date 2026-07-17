@@ -212,7 +212,8 @@
   if (ART.seal) {
     var crest = el("crest"), sealFallback = el("seal-fallback");
     if (crest) { crest.src = ART.seal; crest.hidden = false; }
-    if (sealFallback) sealFallback.setAttribute("hidden", "hidden");
+    // style, not the hidden attribute — [hidden] does not reliably hide inline SVG
+    if (sealFallback) sealFallback.style.display = "none";
   }
 
   if (ART.cover) showStart();

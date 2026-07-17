@@ -79,7 +79,9 @@ async function inkAlpha(src) {
   var data = raw.data, n = raw.info.width * raw.info.height;
   for (var i = 0; i < n; i++) {
     var o = i * 4;
-    data[o + 3] = 255 - Math.min(data[o], data[o + 1], data[o + 2]);
+    // 1.6× ink boost: fine engraved hairlines thin badly at masthead size
+    // without it, and full-strength lines clamp unchanged.
+    data[o + 3] = Math.min(255, Math.round((255 - Math.min(data[o], data[o + 1], data[o + 2])) * 1.6));
   }
   return sharp(data, { raw: { width: raw.info.width, height: raw.info.height, channels: 4 } });
 }
