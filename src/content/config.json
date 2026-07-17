@@ -310,7 +310,14 @@
       "promotionTiers": [
         "division"
       ],
-      "promotesTo": null
+      "promotesTo": null,
+      "carriesIn": [
+        "carry_sweetheart",
+        "carry_tahsildar",
+        "carry_vernacular",
+        "carry_kotra_debt",
+        "carry_despatch"
+      ]
     },
     "honours": {
       "weights": {

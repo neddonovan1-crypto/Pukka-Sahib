@@ -50,6 +50,12 @@
       ];
   var game = L.createGame(content, Math.random);
 
+  // What the last promotion handed this chapter (career.carry, written by
+  // recordCompletion when a promoting run closes): carried flags gate this
+  // chapter's echo events and codas, carried meters adjust the start.
+  var carryIn = (career.carry && career.carry.into === chapterKey) ? career.carry : null;
+  function newRun() { return game.init(carryIn); }
+
   // Synthesised sitar/tanpura ambience (presentation only). Degrades to a no-op
   // stub when the module or Web Audio is absent.
   var noAudio = { supported: false, enabled: false, setEnabled: function () {}, season: function () {}, stamp: function () {}, ending: function () {} };
@@ -186,6 +192,12 @@
     var ladder = (content.config.honours && content.config.honours.ladder) || [];
     if (ladder.some(function (t) { return t.key === s.endedKey; }))
       career.honours.push({ chapter: chapterKey, key: s.endedKey, title: s.ended.title });
+    // A promoting run hands its carries to the next rank (the logic computes
+    // them from config.chapter.carryOut); a re-promotion overwrites the old set.
+    if (s.promoted && s.chapter && s.chapter.promotesTo) {
+      var co = game.carryOut();
+      career.carry = co ? { into: s.chapter.promotesTo, flags: co.flags, meters: co.meters } : null;
+    }
     saveCareer();
   }
 
@@ -232,7 +244,7 @@
       // A promotion moves the career to the next chapter's bundle; reload so the
       // module re-derives its chapter from the record. Otherwise, same posting again.
       if (s.promoted && s.chapter && s.chapter.promotesTo && registry.chapters[s.chapter.promotesTo]) location.reload();
-      else paint(game.init());
+      else paint(newRun());
     };
   }
 
@@ -387,9 +399,9 @@
       '<div class="start-actions">' + resumeBtn + "</div>";
     if (saved) {
       el("resume").onclick = function () { showGame(); paint(game.restore(saved)); };
-      el("fresh").onclick = function () { clearSave(); showGame(); paint(game.init()); };
+      el("fresh").onclick = function () { clearSave(); showGame(); paint(newRun()); };
     } else {
-      el("begin").onclick = function () { showGame(); paint(game.init()); };
+      el("begin").onclick = function () { showGame(); paint(newRun()); };
     }
     var qd = el("quickdm");
     if (qd) qd.onclick = function () {
@@ -455,5 +467,5 @@
   // button; otherwise the cover screen if there's a cover, else straight in.
   var saved = loadSave();
   if (ART.cover || saved) showStart(saved);
-  else { showGame(); paint(game.init()); }
+  else { showGame(); paint(newRun()); }
 })();

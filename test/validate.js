@@ -37,6 +37,33 @@ function validateChapter(content, chapterKey) {
     (cfg.chapter.promotionTiers || []).forEach(function (k) {
       check(!!content.endings[k], "config.chapter.promotionTiers references unknown ending '" + k + "'");
     });
+    // carryOut: what a promoting run hands the next rank. Each entry names one
+    // source (a flag held / any debt / the ending earned) and the flag it
+    // becomes downstream, plus an optional meter dowry.
+    if (cfg.chapter.carryOut !== undefined) {
+      check(Array.isArray(cfg.chapter.carryOut) && cfg.chapter.carryOut.length > 0, "chapter.carryOut must be a non-empty array when present");
+      check(!!cfg.chapter.promotesTo, "chapter.carryOut is meaningless without promotesTo");
+      (cfg.chapter.carryOut || []).forEach(function (d, i) {
+        var w = "chapter.carryOut[" + i + "]";
+        check(typeof d.as === "string" && d.as.length > 0, w + ": needs 'as' (the downstream flag name)");
+        var srcs = ["flag", "debt", "ending"].filter(function (k) { return k in d; });
+        check(srcs.length === 1, w + ": needs exactly one source (flag | debt | ending), got " + srcs.length);
+        if ("debt" in d) check(d.debt === true, w + ": debt source must be true");
+        if ("ending" in d) check(!!content.endings[d.ending], w + ": unknown ending '" + d.ending + "'");
+        Object.keys(d.meters || {}).forEach(function (mk) {
+          check(METERS.indexOf(mk) !== -1, w + ": dowry key not a meter: " + mk);
+          check(typeof d.meters[mk] === "number" && d.meters[mk] !== 0 && Math.abs(d.meters[mk]) <= MAX_METER_DELTA,
+            w + ": dowry " + mk + " must be non-zero within ±" + MAX_METER_DELTA);
+        });
+      });
+    }
+    // carriesIn: the inbound carried flags this chapter's content may gate on.
+    if (cfg.chapter.carriesIn !== undefined) {
+      check(Array.isArray(cfg.chapter.carriesIn) && cfg.chapter.carriesIn.length > 0, "chapter.carriesIn must be a non-empty array when present");
+      (cfg.chapter.carriesIn || []).forEach(function (f, i) {
+        check(typeof f === "string" && f.length > 0, "chapter.carriesIn[" + i + "] must be a flag name");
+      });
+    }
   }
 
   // Honours ladder: blend weights over public meters + ordered tiers.
@@ -331,6 +358,12 @@ function validateChapter(content, chapterKey) {
   });
 
   /* ---- cross-references: every required flag is produced somewhere ---- */
+  // Declared inbound carries count as produced: the previous chapter sets them.
+  ((cfg.chapter && cfg.chapter.carriesIn) || []).forEach(function (f) { flagsProduced[f] = true; });
+  // And every carried-out source flag must be producible in THIS chapter.
+  ((cfg.chapter && cfg.chapter.carryOut) || []).forEach(function (d, i) {
+    if ("flag" in d) check(flagsProduced[d.flag], "chapter.carryOut[" + i + "]: source flag '" + d.flag + "' that nothing sets");
+  });
   flagsRequired.forEach(function (r) {
     check(flagsProduced[r.flag], r.where + ": requires flag '" + r.flag + "' that nothing sets");
   });
@@ -363,6 +396,31 @@ if (!registry.chapters || !Array.isArray(registry.order) || !registry.order.leng
   });
   Object.keys(registry.chapters).forEach(function (k) {
     validateChapter(registry.chapters[k], k);
+  });
+  // The carry handshake between chapters: everything a chapter hands out must
+  // be declared inbound by the chapter it promotes to, and everything declared
+  // inbound must be handed out by some chapter promoting there — a typo on
+  // either side would silently orphan the gated content.
+  Object.keys(registry.chapters).forEach(function (k) {
+    var ch = (registry.chapters[k].config || {}).chapter || {};
+    var to = ch.promotesTo;
+    if (!to) return;
+    if (!registry.chapters[to]) { errors.push("[" + k + "] chapter.promotesTo unknown chapter '" + to + "'"); return; }
+    var accepted = ((registry.chapters[to].config || {}).chapter || {}).carriesIn || [];
+    (ch.carryOut || []).forEach(function (d) {
+      if (accepted.indexOf(d.as) === -1)
+        errors.push("[" + k + "] carryOut '" + d.as + "' is not in chapter '" + to + "' carriesIn");
+    });
+  });
+  Object.keys(registry.chapters).forEach(function (k) {
+    var accepted = ((registry.chapters[k].config || {}).chapter || {}).carriesIn || [];
+    accepted.forEach(function (f) {
+      var handed = Object.keys(registry.chapters).some(function (j) {
+        var ch = (registry.chapters[j].config || {}).chapter || {};
+        return ch.promotesTo === k && (ch.carryOut || []).some(function (d) { return d.as === f; });
+      });
+      if (!handed) errors.push("[" + k + "] carriesIn '" + f + "' is handed out by no chapter promoting here");
+    });
   });
 }
 

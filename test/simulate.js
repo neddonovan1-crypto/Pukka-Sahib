@@ -198,10 +198,10 @@ function simulateChapter(chapterKey, content) {
 
   function assert(cond, msg) { if (!cond) fails.push("[" + chapterKey + "] " + msg); }
 
-  function play(policy, seed) {
+  function play(policy, seed, carry) {
     var rng = L.seededRng(seed);
     var game = L.createGame(content, rng);
-    var s = game.init();
+    var s = game.init(carry);
     var events = [], backToBack = false, prev = null, guard = 0;
     while (s.phase !== "ended" && guard++ < 1000) {
       if (s.phase === "posture") s = game.choosePosture(policy.posture(s, rng));
@@ -209,7 +209,10 @@ function simulateChapter(chapterKey, content) {
         if (prev === s.event.id) backToBack = true;
         prev = s.event.id; events.push(s.event.id);
         s = game.chooseOption(policy.option(s, game, rng));
-      } else if (s.phase === "interlude") s = game.next();
+      } else if (s.phase === "interlude") {
+        if (s.event) events.push(s.event.id); // interludes count as seen content
+        s = game.next();
+      }
       else if (s.phase === "resolved") s = game.next();
       if (typeof s.treasury !== "number" || isNaN(s.treasury) || isNaN(s.debt)) throw new Error("NaN economy at turn " + s.turn);
     }
@@ -217,16 +220,17 @@ function simulateChapter(chapterKey, content) {
     return { key: titleToKey[s.ended.title], events: events, backToBack: backToBack, turn: s.turn, debt: s.debt };
   }
 
-  function runBatch(name, n, seedBase) {
-    var dist = {}, bb = 0, errs = 0;
+  function runBatch(name, n, seedBase, carry) {
+    var dist = {}, bb = 0, errs = 0, seen = {};
     for (var i = 0; i < n; i++) {
       try {
-        var r = play(POLICIES[name], seedBase + i * 7919 + 1);
+        var r = play(POLICIES[name], seedBase + i * 7919 + 1, carry);
         dist[r.key] = (dist[r.key] || 0) + 1;
         if (r.backToBack) bb++;
+        r.events.forEach(function (id) { seen[id] = (seen[id] || 0) + 1; });
       } catch (e) { errs++; if (errs < 4) console.error("  ERR[" + chapterKey + "/" + name + "]", e.message); }
     }
-    return { dist: dist, bb: bb, errs: errs, n: n };
+    return { dist: dist, bb: bb, errs: errs, n: n, seen: seen };
   }
 
   var N = 500;
@@ -237,6 +241,25 @@ function simulateChapter(chapterKey, content) {
   if (bands.probes.riot) R.wrecker = runBatch("wrecker", 200, 424242);
   if (bands.probes.bankrupt) R.reckless = runBatch("reckless", 200, 133337);
   if (bands.probes.burnout) R.burnout = runBatch("burnout", 200, 555000);
+
+  // Carried play: a career arriving from the previous rank, with that
+  // chapter's full carryOut live at once — the echoes must fire for carriers
+  // and never for anyone else.
+  var CARRY = null;
+  Object.keys(registry.chapters).forEach(function (j) {
+    var ch = (registry.chapters[j].config || {}).chapter || {};
+    if (ch.promotesTo !== chapterKey || !ch.carryOut) return;
+    CARRY = { flags: [], meters: {} };
+    ch.carryOut.forEach(function (d) {
+      CARRY.flags.push(d.as);
+      Object.keys(d.meters || {}).forEach(function (k) { CARRY.meters[k] = (CARRY.meters[k] || 0) + d.meters[k]; });
+    });
+  });
+  var CARRIED = ["skilledCarried", "randomCarried"];
+  if (CARRY) {
+    R.skilledCarried = runBatch("skilled", N, 909091, CARRY);
+    R.randomCarried = runBatch("random", N, 606061, CARRY);
+  }
 
   console.log("\n=== [" + chapterKey + "] Balance report (n=" + N + " per policy; probes 200) ===");
   Object.keys(R).forEach(function (p) {
@@ -275,6 +298,58 @@ function simulateChapter(chapterKey, content) {
   if (bands.probes.burnout) assert((R.burnout.dist.breakdown || 0) > 0, "breakdown unreachable — burnout policy never triggered it");
   // and the top rung must be winnable by play engineered for it
   assert((R.paragon.dist[TOP] || 0) > 0, "'" + TOP + "' unreachable — paragon policy never earned it");
+
+  // Carried-play bands: the inheritance must not break the chapter (skill
+  // still earns honours), and the carry-gated content must partition cleanly —
+  // every echo live for carriers, none of it visible to a fresh career.
+  if (CARRY) {
+    assert(pct(R.skilledCarried.dist, LADDER, N) >= 0.50,
+      "skilled carried play should still earn honours ≥50% (" + (pct(R.skilledCarried.dist, LADDER, N) * 100).toFixed(0) + "%)");
+    var carriedSeen = {}, freshSeen = {};
+    Object.keys(R).forEach(function (p) {
+      var into = CARRIED.indexOf(p) !== -1 ? carriedSeen : freshSeen;
+      Object.keys(R[p].seen).forEach(function (id) { into[id] = (into[id] || 0) + R[p].seen[id]; });
+    });
+    // An event is carry-gated iff its requires-chain positively demands a
+    // carried flag (or a gated once-event's id): allOf gates if any leg does,
+    // anyOf only if every leg does, and a negation never gates.
+    function positively(c, names) {
+      if (!c) return false;
+      if ("flag" in c) return !!names[c.flag];
+      if (c.allOf) return c.allOf.some(function (x) { return positively(x, names); });
+      if (c.anyOf) return c.anyOf.every(function (x) { return positively(x, names); });
+      return false;
+    }
+    var gatedNames = {}, gated = {}, grew = true;
+    CARRY.flags.forEach(function (f) { gatedNames[f] = true; });
+    while (grew) {
+      grew = false;
+      content.events.forEach(function (e) {
+        if (gated[e.id] || !e.requires) return;
+        if (positively(e.requires, gatedNames)) {
+          gated[e.id] = true;
+          if (e.once) gatedNames[e.id] = true; // once-event chains inherit the gate
+          grew = true;
+        }
+      });
+    }
+    Object.keys(gated).forEach(function (id) {
+      assert((carriedSeen[id] || 0) > 0, "carry-gated event '" + id + "' never fired in carried play");
+      assert((freshSeen[id] || 0) === 0, "carry-gated event '" + id + "' fired " + freshSeen[id] + "× in a fresh career");
+    });
+    assert(Object.keys(gated).length > 0 || chapterKey !== "dm", "dm should have carry-gated events (found none — gating detector broken?)");
+    if (chapterKey === "dm") {
+      // The marriage spine must swap cleanly: carriers court the Kotra girl,
+      // fresh careers meet Miss Carteret — never both, never crossed.
+      [["pers-seed-her", carriedSeen], ["pers-question-her", carriedSeen], ["dm-lala-kotra", carriedSeen],
+       ["pers-seed", freshSeen], ["pers-question", freshSeen]].forEach(function (pair) {
+        assert((pair[1][pair[0]] || 0) > 0, "'" + pair[0] + "' never fired on its side of the carry partition");
+      });
+      ["pers-seed", "pers-question"].forEach(function (id) {
+        assert((carriedSeen[id] || 0) === 0, "'" + id + "' fired " + carriedSeen[id] + "× for a carried sweetheart");
+      });
+    }
+  }
 }
 
 registry.order.forEach(function (k) { simulateChapter(k, registry.chapters[k]); });

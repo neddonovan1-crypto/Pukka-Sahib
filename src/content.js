@@ -26,6 +26,7 @@ var dm = {
     .concat(load("events-kipling.json"))
     .concat(load("events-kipling-2.json"))
     .concat(load("events-monsoon.json"))
+    .concat(load("events-kotra-echoes.json"))
     .concat(load("warnings.json"))
     .concat(load("interludes.json")),
   occasions: load("occasions.json"),

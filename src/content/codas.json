@@ -222,5 +222,68 @@
     },
     "head": "Faith kept, unrecorded",
     "text": "You kept faith, this year, with people who could do nothing for you, at moments when no one was watching and it would have been easier not to. It is recorded nowhere. It is the only part of the year you would defend without flinching."
+  },
+  {
+    "requires": {
+      "flag": "wrote_for_her"
+    },
+    "head": "The girl from the Christmas camp",
+    "text": "Five years of mail, one paper-chase, and a wire of eleven words: of everything the year decided, the October gangway at Bombay is the piece you would keep. The district got a memsahib who rides better than its Collector and misses nothing; the Collector got the only verdict of the season he never once rereads."
+  },
+  {
+    "requires": {
+      "flag": "asked_to_wait"
+    },
+    "head": "The year she was asked to add",
+    "text": "Her letters still come, kind and complete and a page shorter than they were. You have banked one more year of her against the district&rsquo;s ledger, at an interest neither of you names &mdash; and somewhere in Cheltenham a Thursday caller is patient too."
+  },
+  {
+    "requires": {
+      "flag": "released_her"
+    },
+    "head": "The generous letter",
+    "text": "It was finely done, everyone would agree, if anyone were ever told: five years closed in three drafts, with every grace. The sandalwood box in Surrey is shut now. The bungalow&rsquo;s long evenings have the shape of a door you built yourself, and painted, and locked."
+  },
+  {
+    "requires": {
+      "flag": "settled_old_book"
+    },
+    "head": "Old paper, paid at sight",
+    "text": "Sohan Lal&rsquo;s book came up the country trade to meet you, and went home cancelled the same afternoon. In the bazaar&rsquo;s oldest ledger &mdash; the one that prices signatures, not sums &mdash; the entry against your name now reads simply: <i>good</i>."
+  },
+  {
+    "requires": {
+      "flag": "old_paper_stands"
+    },
+    "head": "The footnote in the Lala's ledger",
+    "text": "The Kotra book was never spoken of again, which is how such books do their work. It sits folded inside the district&rsquo;s account like a seed in a fruit, and the Lala&rsquo;s bow, year on year, keeps the particular warmth a banker reserves for his oldest security."
+  },
+  {
+    "requires": {
+      "flag": "denied_kotra"
+    },
+    "head": "The ghost who signed at Kotra",
+    "text": "You disowned the boy and his book in one even sentence, and the bazaar entered it the same evening. Nothing was ever said. Only, from that Friday, the district&rsquo;s traders quoted the sirkar&rsquo;s word at a rate fractionally under par &mdash; and never told you the discount&rsquo;s name."
+  },
+  {
+    "requires": {
+      "flag": "carry_tahsildar"
+    },
+    "head": "The dak that carries no stamps",
+    "text": "The cutcherry worked for you from the first morning, and you did not have to ask why: a naib&rsquo;s letter from Kotra had gone ahead, five years before the Gazette. The Service keeps two records of a man. The one that matters travels faster."
+  },
+  {
+    "requires": {
+      "flag": "carry_vernacular"
+    },
+    "head": "The munshi's dividend",
+    "text": "Sujan Rai&rsquo;s freezing cold-weather lessons paid out all season in a coin no treasury counts: cases that came to you straight, villages that spoke before they were spoken to, and a district that could not be got at through its interpreters. Somewhere in Kotra an old munshi remains, cautiously, proud."
+  },
+  {
+    "requires": {
+      "flag": "carry_despatch"
+    },
+    "head": "The word 'exceptional', filed",
+    "text": "The despatch that posted you here at four-and-twenty sits at the bottom of your confidential file like ballast, steadying everything written above it. Twice this year a doubt about you reached the Division and came back answered by a Collector&rsquo;s red ink five years old."
   }
 ]

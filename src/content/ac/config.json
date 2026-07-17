@@ -18,6 +18,13 @@
         "confirmed"
       ],
       "promotesTo": "dm",
+      "carryOut": [
+        { "flag": "ac_sweetheart", "as": "carry_sweetheart" },
+        { "flag": "tahsildar_respect", "as": "carry_tahsildar" },
+        { "flag": "ac_vernacular", "as": "carry_vernacular" },
+        { "debt": true, "as": "carry_kotra_debt" },
+        { "ending": "distinction", "as": "carry_despatch", "meters": { "prestige": 3 } }
+      ],
       "tagline": "You are three-and-twenty, five months out from Home, and Assistant Commissioner of Kotra on probation. Learn the work. Mind the Collector. Survive your first hot weather. In six months the Service decides whether you are to be trusted with a district."
     },
     "honours": {

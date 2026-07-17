@@ -49,6 +49,27 @@ async function playSession(browser, label, viewport, opts) {
   assert(/₹/.test(econ), label + ": economy line missing rupee figure (\"" + econ.trim() + "\")");
   var startEcon = econ.trim(); // whatever the chapter starts with — restart must return here
 
+  // Career continuity: a seeded carry must show its meter dowry on first paint
+  // (e.g. the despatch's +3 prestige over the chapter's printed start).
+  if (opts && opts.expectMeter) {
+    var got = await page.$$eval("#meters .meter", function (ns) {
+      var out = {};
+      ns.forEach(function (n) { out[n.querySelector(".name").textContent] = n.querySelector(".val").textContent; });
+      return out;
+    });
+    assert(got[opts.expectMeter.name] === opts.expectMeter.val,
+      label + ": carried start " + opts.expectMeter.name + " should be " + opts.expectMeter.val + ", got " + got[opts.expectMeter.name]);
+  }
+  // And a carried Kotra debt must surface its priority event at the first
+  // drawn fortnight: choose a posture, expect the Lala's call.
+  if (opts && opts.expectFirstEvent) {
+    await page.click(".choices .choice");
+    await page.waitForSelector("#card .cardtitle", { timeout: 5000 });
+    var t0 = (await page.textContent("#card .cardtitle")) || "";
+    assert(t0.indexOf(opts.expectFirstEvent) !== -1,
+      label + ": first drawn event should be \"" + opts.expectFirstEvent + "\", got \"" + t0.trim() + "\"");
+  }
+
   var maxOverflow = 0;
   var ended = false, midShotTaken = false;
   for (var step = 0; step < 200; step++) {
@@ -202,11 +223,23 @@ async function resumeSession(browser, viewport) {
     // flow); mobile is seeded past it and plays the district chapter.
     var d = await playSession(browser, "desktop", { width: 1120, height: 920 });
     console.log("desktop:", JSON.stringify(d));
+    // The seeded career carries a full Kotra inheritance: the despatch's +3
+    // prestige must show on first paint (50 → 53) and the carried debt must
+    // put the Lala's call first in the deck.
     var seasoned = {
       v: 1, completions: { ac: 1 }, honours: [],
-      history: [{ chapter: "ac", ending: "confirmed", title: "Confirmed in the Service", promoted: true }]
+      history: [{ chapter: "ac", ending: "distinction", title: "Confirmed &mdash; with a Despatch", promoted: true }],
+      carry: {
+        into: "dm",
+        flags: ["carry_sweetheart", "carry_tahsildar", "carry_vernacular", "carry_kotra_debt", "carry_despatch"],
+        meters: { prestige: 3 }
+      }
     };
-    var m = await playSession(browser, "mobile", { width: 375, height: 667 }, { career: seasoned });
+    var m = await playSession(browser, "mobile", { width: 375, height: 667 }, {
+      career: seasoned,
+      expectMeter: { name: "Prestige", val: "53" },
+      expectFirstEvent: "The Lala Reads Old Paper"
+    });
     console.log("mobile: ", JSON.stringify(m));
     var r = await resumeSession(browser, { width: 1120, height: 920 });
     console.log("resume: ", JSON.stringify(r));

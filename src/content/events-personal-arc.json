@@ -5,6 +5,7 @@
     "season": ["cold"],
     "kind": "personal",
     "once": true,
+    "requires": { "not": { "flag": "carry_sweetheart" } },
     "title": "The Question of a Wife",
     "body": "The cold-weather mail brings a letter from your sister in Surrey, franked with the old address and the old anxieties. She is glad the posting is a good one. She wonders, in the gentlest hand, whether you do not find it lonely; whether a man in your position ought not, by now, to have someone; whether &mdash; she names a Miss Carteret, lately gone out to Bombay to an uncle &mdash; you might not, when you are next down that way &hellip; You are, the letter does not say and entirely means, eight-and-twenty and unaccountably still a bachelor.",
     "choices": [
@@ -52,6 +53,63 @@
         "effects": { "prestige": 3, "health": -4, "contentment": -3 },
         "setFlags": ["alone"],
         "outcome": "You let the season pass, and Miss Carteret with it, and give the district the devotion another man would give a household. Simla approves of the unencumbered officer; the unencumbered officer, at two in the morning in a bungalow the size of a barn, is less sure. You have chosen. The evenings will present the bill."
+      }
+    ]
+  },
+  {
+    "id": "pers-seed-her",
+    "tag": "PRIVATE",
+    "season": ["cold"],
+    "kind": "personal",
+    "once": true,
+    "requires": { "flag": "carry_sweetheart" },
+    "title": "The Mail That Has Never Missed",
+    "body": "Five years, and her letter has never once missed the monthly boat: Kotra, the paper-chase, the leave you asked and got, and everything since, kept alive in ink across eleven thousand miles. This one is different. Her uncle the judge has retired at last; the Surrey house is to be given up; and she writes &mdash; lightly, the way she rides &mdash; that she is asked at every dinner whether she is engaged, and has begun to find the question harder to laugh at than it was at twenty. She does not press. She has never pressed. That is rather the point of her, and the letter lies on the desk like a settlement notice.",
+    "choices": [
+      {
+        "label": "Answer the whole of it, honestly, the day it arrives.",
+        "effects": { "contentment": 2, "health": 2 },
+        "outcome": "You write past midnight and say what five years of careful mail has walked around: that the district is a posting but she has been the career. It goes down to the boat with the official bag, and you sleep better than you have since the Gazette. What she does with it is now the only file in India you cannot call for."
+      },
+      {
+        "label": "Reply warmly, and step around the question one mail more.",
+        "effects": { "prestige": 1, "health": -2 },
+        "outcome": "Four affectionate, well-made pages about the settlement and the new bund, and not one word on the only matter the letter raised. You are eight-and-twenty and a Collector, and you have answered a direct question with a district report. She will read it twice, put it in the sandalwood box with the others, and begin &mdash; very quietly &mdash; to count."
+      },
+      {
+        "label": "Set it in the drawer until the season's work eases.",
+        "effects": { "health": -2, "contentment": -1 },
+        "outcome": "The season's work does not ease; that is what a season's work is. The letter waits under the crop forecast with its question standing, and for the first time in five years the next boat goes without your answer aboard. In Surrey, a fortnight hence, that silence will arrive precisely on time."
+      }
+    ]
+  },
+  {
+    "id": "pers-question-her",
+    "tag": "PRIVATE",
+    "season": ["hot"],
+    "kind": "personal",
+    "once": true,
+    "requires": { "flag": "pers-seed-her" },
+    "title": "Five Years Is an Answer Too",
+    "body": "The hot weather brings it to a head, as the hot weather brings everything to a head. Her letter this month is the shortest she has ever sent: the house is given up at Michaelmas; an aunt in Cheltenham offers a room; and a Major Enderby, home from Peshawar, has taken to calling on Thursdays &mdash; set down without comment, as she would report a change in the weather. The code is not hard. She has waited from three-and-twenty to eight-and-twenty on a probationer&rsquo;s half-promise, and the fishing fleet sails both ways, and a man who will not decide is deciding. The pen is in your hand. The mail goes down Tuesday.",
+    "choices": [
+      {
+        "label": "Write for her at last: come out in October, and <b>marry</b>.",
+        "effects": { "contentment": 6, "health": 3, "prestige": 1, "revenue": -2 },
+        "setFlags": ["married", "wrote_for_her"],
+        "outcome": "Eleven words of the wire and five years behind each of them. Her answer comes back by the same boat &mdash; she had, it emerges, already spoken to the P&amp;O agent &mdash; and in October the girl from the Christmas camp comes down the gangway at Bombay and looks at you exactly as she looked back from the tonga at Kotra. The bungalow acquires curtains, a seat on a horse that shames the district, and a reason to come home before dark. Major Enderby, you learn much later, never stood a chance and knew it."
+      },
+      {
+        "label": "Ask her to wait one year more; a first district is no place for a bride.",
+        "effects": { "prestige": 2, "health": -3, "contentment": -3 },
+        "setFlags": ["alone", "asked_to_wait"],
+        "outcome": "It is prudent and it is provident and every word of it is true: the famine ledger, the fever season, the bungalow half a day from a doctor. You post it believing it, and for a week feel responsible and just. Her reply, when it comes, is two pages of perfect kindness with something gone out of them &mdash; the thing that made five years of mail feel like a held hand. It does not say what you both know: that you have asked a woman of eight-and-twenty to bet another year on a man who has already been dealt his cards, twice, and folded them."
+      },
+      {
+        "label": "Release her; five years is enough to ask of anyone.",
+        "effects": { "prestige": 1, "health": -4, "contentment": -2 },
+        "setFlags": ["alone", "released_her"],
+        "outcome": "You write the generous letter, the one that sets her free with every grace and takes three drafts because your hand will not stay level. It is the finest thing you have ever done on paper and the most expensive. Her answer is one page: she thanks you for a candour she had, she says, stopped expecting, and wishes you what you wish yourself &mdash; a line you will read a number of times over the years, in the long evenings, without ever deciding how much mercy was in it."
       }
     ]
   },

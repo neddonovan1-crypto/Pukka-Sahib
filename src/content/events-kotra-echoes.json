@@ -1,0 +1,59 @@
+[
+  {
+    "id": "dm-lala-kotra",
+    "tag": "PRIVATE",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": { "flag": "carry_kotra_debt" },
+    "title": "The Lala Reads Old Paper",
+    "body": "He calls within your first fortnights, as the district&rsquo;s banker must, and the call is all correctness until the last minute of it, when he lays a folded paper on the table as though returning something you had dropped. It is Sohan Lal&rsquo;s book &mdash; the Kotra book, the horse and the mess bill and Christmas Week, bought up the country trade the way such paper is always bought, for less than its face and more than its weight. &lsquo;A young man&rsquo;s hand, sahib,&rsquo; he says, with real warmth. &lsquo;But yours.&rsquo; He wants nothing today. That is the whole message: that he has it, that he wanted you to know he has it, and that between the two of you the word <i>credit</i> will always have this small, patient footnote.",
+    "choices": [
+      {
+        "label": "Settle the old book on the spot, to the anna.",
+        "effects": { "prestige": 2 },
+        "econ": { "treasury": -6000 },
+        "setFlags": ["settled_old_book"],
+        "outcome": "You send for the cash-box and clear five years of interest without asking him to total it twice. The Lala receives the money with the faint regret of a collector selling a fine piece, and something in his manner resets: a Collector who pays old paper at sight is a man whose signature means one thing everywhere. It is the cheapest six thousand rupees you will ever spend, and both of you know it."
+      },
+      {
+        "label": "Let it stand, and fold it into the district's account &mdash; on his terms.",
+        "effects": { "health": 1, "contentment": 1 },
+        "econ": { "debt": 9000 },
+        "setFlags": ["old_paper_stands"],
+        "outcome": "It is managed as gentlemen manage things: no figure spoken, the old book folded into the new one at an interest nobody vulgarly names. The convenience is real and the season is busy and you tell yourself a Collector&rsquo;s credit is part of the machinery. So it is. The Lala walks to his carriage with the settled step of a man whose best investment has just confirmed itself, five years on."
+      },
+      {
+        "label": "Tell him the boy who signed that is gone; a Collector pays no ghosts.",
+        "effects": { "prestige": 1, "order": -1, "contentment": -2 },
+        "setFlags": ["denied_kotra"],
+        "outcome": "You say it evenly, and he bows and takes the paper back without a flicker, and the interview ends in perfect courtesy. But a bazaar keeps one ledger for money and another for character, and by Friday the district&rsquo;s traders know that the new Collector-sahib&rsquo;s signature has, in his own account of it, an expiry date. It is a small entry. The bazaar&rsquo;s entries are all small, and none of them are ever struck out."
+      }
+    ]
+  },
+  {
+    "id": "dm-kotra-name",
+    "tag": "THE CUTCHERRY",
+    "season": ["any"],
+    "kind": "interlude",
+    "interlude": true,
+    "once": true,
+    "requires": { "flag": "carry_tahsildar" },
+    "title": "The Word That Came Ahead",
+    "body": "Your district tahsildar, it emerges over the rent-rolls, has a nephew who was a naib in Kotra in your probationer year, and the service&rsquo;s own dak &mdash; the one that carries no stamps and misses no boat &mdash; delivered its report on you long before the Gazette did. &lsquo;My nephew wrote,&rsquo; the old man says, aligning his papers, &lsquo;that the sahib checks the register himself, and thanks the man who brings him bad news.&rsquo; He says nothing further, and the morning&rsquo;s files come to your table in half the usual time, honest ones on top. A cutcherry that has decided to work for you is a machine with the brake off; most Collectors wait a year for it. Yours was bought at Kotra, by a boy with a patwari&rsquo;s register, five years ago.",
+    "effects": { "order": 1, "contentment": 1 }
+  },
+  {
+    "id": "dm-vernacular-echo",
+    "tag": "PETITION",
+    "season": ["any"],
+    "kind": "interlude",
+    "interlude": true,
+    "once": true,
+    "requires": { "flag": "carry_vernacular" },
+    "title": "The Tongue Remembers",
+    "body": "A land case, a crowded verandah, and a pleader translating his client&rsquo;s Urdu with the small professional improvements pleaders make &mdash; until you answer the petitioner directly, in the bazaar speech the munshi flogged into you through a Kotra cold weather, complete with the seventeen words for land tenure and the honorific verb. The verandah goes still, then delighted. The pleader recalibrates his practice on the spot; the petitioner tells the tale in his village that evening with gestures; and the story runs ahead of you thereafter to every camp in the district: this sahib cannot be got at through the interpreter, and &mdash; rarer, better &mdash; does not need to be.",
+    "effects": { "contentment": 2, "prestige": 1 }
+  }
+]

@@ -276,9 +276,18 @@
 
     /* ---------- public transitions ---------- */
 
-    function init() {
+    // `carry` is what the previous posting handed on: { flags: [...], meters:
+    // {k: delta} }. Carried flags gate this chapter's echo events and codas;
+    // carried meter deltas (a despatch's dowry) adjust the start.
+    function init(carry) {
       S = { flags: {}, posture: null, turn: 1, treasury: ECON.startTreasury, debt: 0, log: [] };
       METERS.forEach(function (k) { S[k] = CFG.start[k]; });
+      if (carry) {
+        (carry.flags || []).forEach(function (f) { S.flags[f] = true; });
+        Object.keys(carry.meters || {}).forEach(function (k) {
+          if (METERS.indexOf(k) !== -1) S[k] = clamp(S[k] + carry.meters[k]);
+        });
+      }
       recent = []; ended = null; current = null; lastResult = null; lastEventId = null;
       enterTurn();
       var pulsed = beginFortnight();
@@ -477,6 +486,27 @@
       }).map(function (cd) { return { head: cd.head, text: cd.text }; });
     }
 
+    // What the finished posting hands the next rank, declared in
+    // config.chapter.carryOut: each entry names a source — a flag held, any
+    // debt still owed, or the ending earned — and the flag it becomes in the
+    // next chapter (plus an optional meter dowry). Null when nothing carries.
+    function carryOut() {
+      var defs = (CFG.chapter && CFG.chapter.carryOut) || [];
+      if (!defs.length || phase !== "ended") return null;
+      var ek = endKeyOf(ended);
+      var out = { flags: [], meters: {} };
+      defs.forEach(function (d) {
+        var hit = ("flag" in d) ? !!S.flags[d.flag]
+          : ("debt" in d) ? S.debt > 0
+          : ("ending" in d) ? ek === d.ending
+          : false;
+        if (!hit) return;
+        out.flags.push(d.as);
+        Object.keys(d.meters || {}).forEach(function (k) { out.meters[k] = (out.meters[k] || 0) + d.meters[k]; });
+      });
+      return out.flags.length ? out : null;
+    }
+
     // The service record: the year's most consequential decisions, ranked by
     // weight, then shown in the order they happened.
     function serviceRecord(limit) {
@@ -523,7 +553,7 @@
       init: init, postureOptions: postureOptions, choosePosture: choosePosture,
       chooseOption: chooseOption, next: next,
       snapshot: function () { return snapshot(); },
-      serialize: serialize, restore: restore,
+      serialize: serialize, restore: restore, carryOut: carryOut,
       seasonOf: seasonOf, monthOf: monthOf,
       isSecrecyTag: function (t) { return SECRECY.indexOf((t || "").toUpperCase()) !== -1; },
       rupees: rupees,
