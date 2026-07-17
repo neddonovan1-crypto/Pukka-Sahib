@@ -99,6 +99,16 @@ The engine draws an interlude with a small independent chance
 never starve the event pool. The card shows the body, any effect chips, and a
 single **Continue**.
 
+## Scene art
+
+The banner above the meters shows the season. Seasons rotate through any variant
+art keys present (`season-cold`, `season-cold-2`, …) by the fortnight, so the
+backdrop changes through a run. Any event may set `"art": "<key>"` to override
+the banner with a specific scene while its card is up (the key must exist in the
+build's `window.PUKKA_ART` manifest — see `build.js` / `scripts/optimize-art.js`).
+Art is optional: an unknown or absent key just falls back to the season banner
+(or no image).
+
 ## Conditions
 
 Used by `requires` (event-level) and `condition` (choice-level). Recursive.

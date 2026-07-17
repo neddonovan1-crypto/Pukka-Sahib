@@ -132,10 +132,20 @@
   // no art). The UI degrades cleanly to no imagery when a key is missing.
   var ART = (typeof window !== "undefined" && window.PUKKA_ART) || {};
 
+  // Pick the banner: an event's explicit `art` wins; otherwise the season's
+  // banner, rotating between variants (season-cold, season-cold-2, …) by the
+  // fortnight so the backdrop changes through a run.
+  function bannerKey(s) {
+    if (s.event && s.event.art && ART[s.event.art]) return s.event.art;
+    var base = "season-" + s.season.key;
+    var variants = Object.keys(ART).filter(function (k) { return k === base || k.indexOf(base + "-") === 0; }).sort();
+    if (!variants.length) return base;
+    return variants[(s.turn - 1) % variants.length];
+  }
   function renderScene(s) {
     var img = el("scene");
     if (!img) return;
-    var key = "season-" + s.season.key;
+    var key = bannerKey(s);
     var src = ART[key];
     if (src) {
       if (img.getAttribute("data-key") !== key) { img.src = src; img.setAttribute("data-key", key); }

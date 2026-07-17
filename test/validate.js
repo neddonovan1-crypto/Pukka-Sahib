@@ -111,6 +111,7 @@ content.events.forEach(function (e) {
   scanText(e.title + " " + e.body, w);
   if (e.once) flagsProduced[e.id] = true; // once-events set flags[id]
   if (e.requires) checkCondition(e.requires, w + ".requires");
+  if (e.art !== undefined) check(typeof e.art === "string" && e.art.length > 0, w + ": art must be a non-empty banner key");
   if (e.interlude) {
     // A no-choice occurrence: no choices, optional event-level effect/econ/outcome.
     check(e.kind === "interlude", w + ": interlude events must have kind 'interlude'");

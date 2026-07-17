@@ -16,6 +16,7 @@ fs.mkdirSync(OUT, { recursive: true });
 // data-URI embed. The cover gets a touch more width/quality (it's the hero).
 var JOBS = [
   { in: "season-cold.png", out: "season-cold.jpg", w: 1200, q: 74 },
+  { in: "season-cold-alt.png", out: "season-cold-2.jpg", w: 1200, q: 74 }, // second cold-season backdrop, rotated in
   { in: "season-hot.png", out: "season-hot.jpg", w: 1200, q: 74 },
   { in: "season-monsoon.png", out: "season-monsoon.jpg", w: 1200, q: 74 },
   { in: "cover.png", out: "cover.jpg", w: 1400, q: 78 },
