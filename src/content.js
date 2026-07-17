@@ -15,6 +15,7 @@ var base = load("config.json"); // { config, endings }
 var events = []
   .concat(load("events-district.json"))
   .concat(load("events-personal.json"))
+  .concat(load("events-personal-arc.json"))
   .concat(load("events-kipling.json"))
   .concat(load("events-kipling-2.json"))
   .concat(load("events-monsoon.json"))

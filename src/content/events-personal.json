@@ -256,36 +256,40 @@
     ],
     "kind": "personal",
     "once": false,
+    "requires": {
+      "flag": "married"
+    },
     "title": "A Letter from the Hills",
-    "body": "The hot weather is on, the plains are an oven, and a letter comes down from the hill station where your wife has taken the children for the season. She asks, not for the first time, when you will come up for your local leave &mdash; and whether it is not time the boy was sent Home to school in England, as everyone’s children are.",
+    "body": "The hot weather is on, the plains are an oven, and your wife of a few months has gone up to the hill station with the rest of the marriageable and the newly-married, as a bride must who is not to be widowed by the heat before the year is out. A letter comes down every dak, brighter than she feels, asking &mdash; not for the first time &mdash; when you will come up for your local leave, and whether the district cannot, for one fortnight, govern itself.",
     "choices": [
       {
-        "label": "Take your <b>local leave</b> and go up to the hills.",
+        "label": "Take your <b>local leave</b> and go up to her.",
         "effects": {
           "health": 8,
+          "contentment": 2,
           "prestige": -3,
           "revenue": -2
         },
-        "outcome": "A fortnight of cool air and your own family, and of pretending you are not thinking about the district. You come down restored and faintly guilty. The work waited; it always waits; that is the one dependable thing about it."
+        "outcome": "A fortnight of cool air and a wife still new enough to be a marvel, and of pretending you are not thinking about the district. You come down restored and faintly guilty. The work waited; it always waits; that is the one dependable thing about it."
       },
       {
-        "label": "Stay at your post; <b>agree the boy goes Home</b>.",
+        "label": "Stay at your post; the season is <b>too dangerous to leave</b>.",
         "effects": {
           "health": -6,
           "prestige": 2
         },
-        "outcome": "You sign the letter that sends your son across an ocean to be raised by a school and an aunt, for his health and his accent and his prospects. It is what the Service does to its families. You tell yourself it is for the best, and go back to the files.",
+        "outcome": "You write that duty holds you on the plains, which is true, and that you will come up the moment it eases, which you both suspect is not. A marriage of four months learns, in a hot weather apart, the shape of the marriage it is going to be. You go back to the files.",
         "setFlags": [
-          "boy_sent_home"
+          "alone_married"
         ]
       },
       {
-        "label": "Stay, and <b>put the decision off</b> another year.",
+        "label": "Stay, and <b>put her off</b> with a warm, evasive letter.",
         "effects": {
           "health": -2,
           "contentment": 1
         },
-        "outcome": "You write a warm, evasive letter and post it up the hill. Nothing is decided, which is its own kind of decision. The heat presses on the bungalow like a hand."
+        "outcome": "You fill a page with the leave you mean to take and cannot yet, and post it up the hill. Nothing is decided, which is its own kind of decision. The heat presses on the bungalow like a hand."
       }
     ]
   },
@@ -497,34 +501,34 @@
     "id": "children-home",
     "tag": "PRIVATE",
     "season": [
-      "hot"
+      "monsoon"
     ],
     "kind": "personal",
     "once": true,
     "requires": {
-      "flag": "boy_sent_home"
+      "flag": "married"
     },
-    "title": "A Letter from the School",
-    "body": "A letter comes, months old, in a round schoolboy hand already becoming a stranger's. Your son is well, is learning Latin, has been caned once (unjustly), and asks &mdash; without quite asking &mdash; when you are coming Home. Between the lines a housemaster has added that the boy is settling, which is the word the English use for a wound that has stopped bleeding.",
+    "title": "A Letter from Home",
+    "body": "The news came at the turn of the rains and is only now sinking in: your wife is with child, and has gone Home to England for her confinement, as the wives of this Service do, to bear the baby among doctors who do not lose them and green fields that do not kill them. She will be gone the better part of a year. The letter, in her hand, is full of courage. Between the lines is the fact you both now live with: your child will be born eleven thousand miles from you, and know your face first from a photograph.",
     "choices": [
       {
-        "label": "Write back at once, warmly, and <b>promise a visit</b>.",
+        "label": "Write back at once, warmly, and <b>promise you will get Home</b>.",
         "effects": {
           "health": 5,
           "prestige": -2
         },
-        "outcome": "You fill a page with a leave you cannot yet take and a green English field he half-remembers. It costs nothing to promise and steadies you to imagine it. Whether the promise survives contact with the Secretariat's leave-sanction is another year's grief."
+        "outcome": "You fill a page with a furlough you have not been granted and a green English spring you can barely remember. It costs nothing to promise and steadies you to imagine it. Whether the promise survives contact with the Secretariat&rsquo;s leave-sanction is next year&rsquo;s grief."
       },
       {
-        "label": "Send money and a stiff word of <b>encouragement</b>.",
+        "label": "Send money, and a <b>correct, contained</b> letter of good wishes.",
         "effects": {
           "health": -4,
           "prestige": 1
         },
-        "outcome": "You do what your own father did, in the same climate, for the same reasons, and tell yourself it made a man of you. The letter is correct and cold, and you know it even as you seal it, and you seal it anyway. The heat presses on the bungalow like a hand."
+        "outcome": "You do what the Service does: provide handsomely and feel little, or feel much and show none. The letter is warm enough to pass and cold enough to keep you working, and you seal it knowing exactly what it is, and seal it anyway. The rain drums on the bungalow like a hand."
       },
       {
-        "label": "Pour a drink and <b>leave it unanswered</b>.",
+        "label": "Pour a drink and <b>leave it a day</b>, then a week.",
         "effects": {
           "health": -3,
           "order": -1
@@ -532,7 +536,7 @@
         "setFlags": [
           "adrift"
         ],
-        "outcome": "You mean to answer it tomorrow. Tomorrow the district has a fresh demand, and the letter migrates to the drawer with the others you mean to answer, and something between you and the boy lengthens by another silence. This, too, is how it is done."
+        "outcome": "You mean to answer it tomorrow. Tomorrow the district has a fresh demand, and the letter migrates to the drawer with the others you mean to answer, and something between you and a family you have not yet met lengthens by another silence. This, too, is how it is done."
       }
     ]
   }

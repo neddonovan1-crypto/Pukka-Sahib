@@ -81,9 +81,34 @@
     "text": "A handful of broken-down Europeans, the kind the Service prefers not to see, were quietly kept off the streets and out of the papers on your charity this year. It embarrassed everyone and saved two of them, which is a rate of return the Club would not understand."
   },
   {
-    "requires": { "flag": "boy_sent_home" },
-    "head": "Your boy on the water",
-    "text": "Your own boy is on the water to England now, to school and safety and a slow forgetting of your face, as the children of this Service always are; the bungalow is the quieter, and you do not go into the small room at the end."
+    "requires": { "allOf": [ { "flag": "married" }, { "not": { "flag": "alone_married" } } ] },
+    "head": "A memsahib in the bungalow",
+    "text": "You married this year, on an impulse the hot weather lent you and time has since ratified; there is a bungalow with curtains now, a child coming, and a reason to be home before dark. Whatever else the year cost you, you did not spend it alone, which the ribbon cannot say for every man who wears one."
+  },
+  {
+    "requires": { "flag": "alone_married" },
+    "head": "The plains over the hills",
+    "text": "You married, and then, when the hot weather came and she went up to the hills, you chose the plains and the district over the fortnight it would have taken to be a husband. A marriage learns its shape early out here, and yours learned that the district would always come first, which is true, and no comfort to the woman who married you not knowing it."
+  },
+  {
+    "requires": { "allOf": [ { "flag": "bibi" }, { "flag": "looked_away" } ] },
+    "head": "The lane you will not walk down",
+    "text": "There was a house in the city once, this year, and a warmth in it the Club would have ended your career for; and you ended it yourself instead, cleanly, before it could. It was the prudent thing. You know the exact lane, and you do not walk down it, and you understand rather better now the sort of man the Service has been making of you."
+  },
+  {
+    "requires": { "allOf": [ { "flag": "bibi" }, { "not": { "flag": "kept_faith" } }, { "not": { "flag": "looked_away" } } ] },
+    "head": "The heart withdrawn",
+    "text": "You kept the little house in the city and withdrew the heart from it &mdash; the arrangement maintained, the man withheld, the door of yourself shut against the one person who asked nothing of the Collector. She never reproached you. Her people have watched sahibs do that arithmetic for a hundred years, and she asked for nothing, which is worse."
+  },
+  {
+    "requires": { "flag": "alone" },
+    "head": "Married to the Service",
+    "text": "You took no wife, kept no house, and gave the district the whole of a devotion another man would have spent on a family. Simla files you as the ideal officer, unencumbered and always available. The bungalow, at two in the morning, files you differently, and keeps its own counsel, as you have taught it to."
+  },
+  {
+    "requires": { "flag": "adrift" },
+    "head": "The decanter, each morning lower",
+    "text": "It was never disgrace &mdash; nothing so definite &mdash; only a softening across the lonely months: a later start, a decanter each morning a finger lower than a careful man&rsquo;s. The district noticed before you did; the district always does; and it keeps, in its long memory, a sorrowful column of the names of sahibs who drank alone."
   },
   {
     "requires": { "allOf": [ { "flag": "kept_faith" }, { "not": { "flag": "played_game" } } ] },

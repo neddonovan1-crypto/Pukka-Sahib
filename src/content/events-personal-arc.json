@@ -1,0 +1,116 @@
+[
+  {
+    "id": "pers-seed",
+    "tag": "PRIVATE",
+    "season": ["cold"],
+    "kind": "personal",
+    "once": true,
+    "title": "The Question of a Wife",
+    "body": "The cold-weather mail brings a letter from your sister in Surrey, franked with the old address and the old anxieties. She is glad the posting is a good one. She wonders, in the gentlest hand, whether you do not find it lonely; whether a man in your position ought not, by now, to have someone; whether &mdash; she names a Miss Carteret, lately gone out to Bombay to an uncle &mdash; you might not, when you are next down that way &hellip; You are, the letter does not say and entirely means, eight-and-twenty and unaccountably still a bachelor.",
+    "choices": [
+      {
+        "label": "Write back that the district is wife enough for a while yet.",
+        "effects": { "prestige": 1, "health": -1 },
+        "outcome": "You compose a light, deflecting paragraph about the weight of the work and the smallness of the station, and post it up the cold-weather dak. It is true as far as it goes. It does not go as far as the long evenings, about which you say nothing, to her or to yourself."
+      },
+      {
+        "label": "Confess, on paper, that you have lately thought about it.",
+        "effects": { "contentment": 2, "health": 1 },
+        "outcome": "You admit more than you meant to &mdash; that the bungalow is very large at night, that a man cannot dine with the district for ever &mdash; and feel, sealing it, both lighter and faintly exposed. Your sister will read it three times and begin, at once, to make arrangements you have not sanctioned."
+      },
+      {
+        "label": "Reply about the shooting and the crops, and answer nothing.",
+        "effects": { "contentment": 1 },
+        "outcome": "Two dutiful pages on the cold weather and the partridge and the state of the winter rice, and not one word on the matter she raised. She will understand it perfectly, having a brother, and will not be deterred in the least."
+      }
+    ]
+  },
+  {
+    "id": "pers-question",
+    "tag": "PRIVATE",
+    "season": ["hot"],
+    "kind": "personal",
+    "once": true,
+    "requires": { "flag": "pers-seed" },
+    "title": "The Marriage Question",
+    "body": "The hot weather brings it to a head, as the hot weather brings everything to a head. Miss Carteret, it emerges, is up in the same hills as half the marriageable English in the province &mdash; the &lsquo;fishing fleet,&rsquo; the Club calls them, not always unkindly. There is also, the city being what it is, a quieter arrangement a lonely man may make and no one speak of. And there is the third road, the one the Service half-expects of its best: no wife at all, and the district for a bride. The long evening waits on your answer.",
+    "choices": [
+      {
+        "label": "Go up on leave, court Miss Carteret, and <b>marry</b>.",
+        "effects": { "contentment": 5, "health": 3, "prestige": 1, "revenue": -2 },
+        "setFlags": ["married"],
+        "outcome": "You take your leave, and your courage, up the hill, and come down in six weeks an engaged man and presently a married one. It is sudden and it is the making of you and it terrifies you slightly. The bungalow acquires curtains, a piano no one plays well, and a reason to come home before dark."
+      },
+      {
+        "label": "Keep <b>a quiet house in the city</b>, and tell no one.",
+        "effects": { "health": 4, "contentment": 3, "prestige": -2 },
+        "setFlags": ["bibi"],
+        "outcome": "There is a girl, and a small shuttered house down a lane the sahibs do not walk, and an arrangement as old as the country and as unmentionable to the Club. It is warmth, and it is real, and it is the kind of secret that keeps a man human and could, on a bad day, keep him from a knighthood. You decide the warmth is worth it. You may be right."
+      },
+      {
+        "label": "Marry the Service; <b>a District Officer has no business with a wife</b>.",
+        "effects": { "prestige": 3, "health": -4, "contentment": -3 },
+        "setFlags": ["alone"],
+        "outcome": "You let the season pass, and Miss Carteret with it, and give the district the devotion another man would give a household. Simla approves of the unencumbered officer; the unencumbered officer, at two in the morning in a bungalow the size of a barn, is less sure. You have chosen. The evenings will present the bill."
+      }
+    ]
+  },
+  {
+    "id": "pers-bibi",
+    "tag": "PRIVATE",
+    "season": ["hot", "monsoon"],
+    "kind": "personal",
+    "once": true,
+    "requires": { "flag": "bibi" },
+    "title": "Beyond the Pale",
+    "body": "The arrangement has become, without either of you deciding it, something nearer a marriage than an arrangement. She keeps the little house as a memsahib keeps a bungalow; she has begun to teach you the vernacular past the point of usefulness and into the point of tenderness. And the station has begun, in the way of stations, to half-notice a light in a lane where a sahib&rsquo;s light has no business being. It could be ended tonight with no one the wiser. It could be kept, at a price you cannot yet read.",
+    "choices": [
+      {
+        "label": "Keep it, discreetly, and let the station think what it likes.",
+        "effects": { "contentment": 4, "health": 3, "prestige": -4 },
+        "setFlags": ["kept_faith"],
+        "outcome": "You keep faith with the one person in the district who wants nothing of the Collector and everything of the man. It costs you, in the currency of the billiard-room, more than you will ever quite total. You find, to your surprise, that you would pay it again."
+      },
+      {
+        "label": "Keep it, but at arm&rsquo;s length &mdash; the career comes first.",
+        "effects": { "prestige": 2, "contentment": -4, "health": -2 },
+        "outcome": "You draw the line the Service would draw: the house kept, the heart withdrawn, the visits fewer and the door of yourself shut. She understands before you say it &mdash; her people have watched sahibs do this arithmetic for a hundred years &mdash; and asks for nothing, which is worse than any reproach."
+      },
+      {
+        "label": "End it now, cleanly, before it is discovered.",
+        "effects": { "prestige": 2, "health": -3, "contentment": -4 },
+        "setFlags": ["looked_away"],
+        "outcome": "You do the prudent, cowardly, correct thing: a settlement, a closed door, a lane you will not walk down again. Your career is safe and your conscience is not, and you understand, riding home, exactly the sort of man the Service has been quietly making of you all along."
+      }
+    ]
+  },
+  {
+    "id": "pers-alone",
+    "tag": "PRIVATE",
+    "season": ["monsoon"],
+    "kind": "personal",
+    "once": true,
+    "requires": { "flag": "alone" },
+    "title": "The Long Evenings",
+    "body": "The rains shut you in, and the bungalow you chose over a wife is very large in the dark. There is the district by day, which is a mercy, and the evening, which is not: the punkah, the rain, the bottle, and eleven hundred miles between you and anyone who knew you before India. Other men in your position have gone quietly to pieces in exactly this chair. You have watched them. You had thought yourself the better made.",
+    "choices": [
+      {
+        "label": "Beat it with iron routine &mdash; work, the dawn ride, no drink after nine.",
+        "effects": { "health": 3, "order": 1, "prestige": 1 },
+        "outcome": "You govern yourself as you govern the district: by the timetable and the shut door. It is joyless and it holds. You are, by the standards of a service that buries a certain number of its bachelors every hot weather, a success, and you try not to notice how narrow the margin felt."
+      },
+      {
+        "label": "Pour it all into the district; be married to the work in earnest.",
+        "effects": { "prestige": 3, "health": -4, "contentment": 1 },
+        "setFlags": ["played_game"],
+        "outcome": "You give the year everything a wife might have had, and the district everything, and the returns are the best in the Division and you are the emptiest man at the Club. Simla will read the figures and mark you for advancement. Nobody reads the evenings, which is the point of them."
+      },
+      {
+        "label": "Let the evenings win, a little, most nights.",
+        "effects": { "health": -4, "contentment": 2, "order": -1 },
+        "setFlags": ["adrift"],
+        "outcome": "Not disgrace &mdash; nothing so definite &mdash; only a softening, a later start, a decanter lower each morning than a prudent man&rsquo;s would be. The district notices before you do; the district always does; and files the sahib who drinks alone under a heading it keeps a sorrowful lot of names in."
+      }
+    ]
+  }
+]
