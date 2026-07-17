@@ -67,6 +67,7 @@ function build() {
   // bundle; art lives as real files under assets/ rather than data URIs.
   var dist = path.join(ROOT, "dist");
   var assets = path.join(dist, "assets");
+  fs.rmSync(dist, { recursive: true, force: true }); // clean build — no stale/renamed assets linger
   fs.mkdirSync(assets, { recursive: true });
   // Pages references art as external files (no weight limit); copy the web JPEGs.
   var distArt = {};
