@@ -79,6 +79,11 @@ function validateChapter(content, chapterKey) {
   // Honours ladder: blend weights over public meters + ordered tiers.
   check(cfg.honours && cfg.honours.weights && Array.isArray(cfg.honours.ladder) && cfg.honours.ladder.length >= 1,
     "config.honours must carry weights and a non-empty ladder");
+  // The legend's honours gloss: the standing line stays terse because this
+  // explains what a "showing" is.
+  check(cfg.honours && typeof cfg.honours.desc === "string" && cfg.honours.desc.length > 0,
+    "config.honours.desc missing (the legend's honours gloss)");
+  if (cfg.honours && cfg.honours.desc) scanText(cfg.honours.desc, "honours.desc");
   var ladderKeys = [];
   if (cfg.honours) {
     var wsum = 0;

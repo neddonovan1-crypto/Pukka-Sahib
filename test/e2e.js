@@ -172,8 +172,8 @@ async function resumeSession(browser, viewport) {
   assert(key, label + ": no meter legend toggle");
   if (key) {
     await key.click();
-    var legendVisible = await page.$eval("#legend", function (n) { return !n.hasAttribute("hidden") && n.children.length === 6; });
-    assert(legendVisible, label + ": legend did not open with 6 glosses (five meters + treasury & debt)");
+    var legendVisible = await page.$eval("#legend", function (n) { return !n.hasAttribute("hidden") && n.children.length === 7; });
+    assert(legendVisible, label + ": legend did not open with 7 glosses (five meters + treasury & debt + honours)");
     await key.click();
   }
 

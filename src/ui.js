@@ -106,6 +106,8 @@
     }).join("");
     var ec = content.config.economy;
     if (ec && ec.desc) panel.innerHTML += '<li><b>Treasury &amp; debt</b> &mdash; ' + ec.desc + "</li>";
+    var ho = content.config.honours;
+    if (ho && ho.desc) panel.innerHTML += '<li><b>The honours line</b> &mdash; ' + ho.desc + "</li>";
     btn.setAttribute("aria-expanded", "false");
     btn.onclick = function () {
       var open = panel.hasAttribute("hidden") ? false : true;

@@ -49,6 +49,7 @@
     },
     "honours": {
       "lead": "Probation &mdash; ",
+      "desc": "The verdict blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment. Each rung of the ladder wants a showing and a Prestige floor; a Despatch also wants Sohan Lal&rsquo;s book under &#8377;4,500.",
       "weights": {
         "prestige": 0.45,
         "revenue": 0.2,
@@ -68,7 +69,7 @@
           "key": "confirmed",
           "score": 46,
           "prestige": 43,
-          "reach": "<b>confirmation</b> is within reach &mdash; the probation is passing",
+          "reach": "<b>confirmation</b> is within reach",
           "name": "Confirmation"
         }
       ]

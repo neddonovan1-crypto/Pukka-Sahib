@@ -322,6 +322,7 @@
       ]
     },
     "honours": {
+      "desc": "The List blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment. Each rung wants a showing and a Prestige floor; the Division also wants the Lala&rsquo;s debt under &#8377;1,20,000.",
       "weights": {
         "prestige": 0.45,
         "revenue": 0.2,

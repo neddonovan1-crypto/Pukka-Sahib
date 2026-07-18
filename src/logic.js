@@ -432,42 +432,39 @@
       return snap;
     }
 
-    // The standing line is the player's honours tutor. It must never be
-    // cryptic: name the rung earned or in reach, and state in numbers exactly
-    // what the next rung wants — the blended showing (all four public meters,
-    // prestige weighing heaviest) and/or the prestige floor — plus the
-    // creditor's bar, with its figure, while it applies.
+    // The standing line is the player's honours tutor, kept terse: name the
+    // rung in reach and the next rung's asks as bare figures ("a showing of
+    // 54 (yours 46)"). What a "showing" is lives in the legend
+    // (honours.desc), not here — the status line is not the manual.
     function honoursStanding() {
       var p = S.prestige, c = S.contentment, h = honoursScore();
       var lead = HONOURS.lead || "Honours List &mdash; ";
       var debtBar = S.debt > ECON.debtWarn;
       function tname(t) { return t.name || t.key; }
-      // The concrete asks, with the player's own figures beside them.
       function wants(t) {
         var parts = [];
-        if (h < t.score) parts.push("a year's showing of " + t.score + " &mdash; yours reads " + h + " (all four public columns, Prestige counting most)");
-        if (p < t.prestige) parts.push("Prestige " + t.prestige + " &mdash; yours is " + p);
-        if (!parts.length) parts.push("only that the year hold to its close");
-        return tname(t) + " wants " + parts.join(", and ");
+        if (h < t.score) parts.push("a showing of " + t.score + " (yours " + h + ")");
+        if (p < t.prestige) parts.push("Prestige " + t.prestige + " (yours " + p + ")");
+        if (!parts.length) parts.push("only that the year hold");
+        return tname(t) + " wants " + parts.join(" and ");
       }
       var tier = ladderTier(false);
       if (tier) {
         var idx = HONOURS.ladder.indexOf(tier);
         if (debtBar && tier.barredByDebt)
-          return lead + tname(tier) + " is earned &mdash; and barred: " + CREDITOR + " holds " + rupees(S.debt) +
-            " of your paper. Bring the debt under " + rupees(ECON.debtWarn) + " or it passes you by";
+          return lead + tname(tier) + " is earned but barred: bring " + CREDITOR + "'s debt under " + rupees(ECON.debtWarn);
         var line = lead + tier.reach;
         if (idx > 0) {
           var above = HONOURS.ladder[idx - 1];
           line += (debtBar && above.barredByDebt)
-            ? ". Nothing higher while your debt stands over " + rupees(ECON.debtWarn)
+            ? "; nothing higher while the debt stands over " + rupees(ECON.debtWarn)
             : ". Above it, " + wants(above);
         }
         return line;
       }
       var bottom = HONOURS.ladder[HONOURS.ladder.length - 1];
-      var base = lead + "nothing in reach yet. " + wants(bottom);
-      if (c >= 65 && p < 50) base += ". The district loves you; the List does not read Contentment &mdash; be seen";
+      var base = lead + "nothing in reach yet: " + wants(bottom);
+      if (c >= 65 && p < 50) base += " &mdash; the List reads Prestige, not Contentment";
       return base;
     }
 
