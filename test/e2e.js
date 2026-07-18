@@ -220,6 +220,61 @@ async function resumeSession(browser, viewport) {
   return { errors: errors.length, resumed: !!resumeBtn };
 }
 
+// The promotion handoff, deterministically: seed a save one click from the end
+// of a passing probation, finish it, and assert the whole chain — the
+// disposition strip names the next rank, the career records the promotion and
+// its carry, and the reload opens the district at fortnight 1.
+async function promotionSession(browser, viewport) {
+  var label = "promotion";
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  var errors = [];
+  page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  var save = {
+    v: 2, chapter: "ac",
+    data: {
+      S: { flags: {}, posture: "desk", turn: 12, treasury: 4000, debt: 0, log: [],
+           revenue: 55, order: 55, prestige: 60, contentment: 50, health: 50 },
+      phase: "resolved", currentId: "ac-first-sitting",
+      lastResult: { outcome: "done", effects: {}, econ: null },
+      recent: [], notice: null, lastEventId: "ac-first-sitting", endedKey: null
+    }
+  };
+  await ctx.addInitScript(function (s) { window.localStorage.setItem("pukka-sahib-save", JSON.stringify(s)); }, save);
+  await page.goto(INDEX, { waitUntil: "load" });
+  await page.click("#resume");
+  await page.click("#cont");
+  await page.waitForSelector("#again", { timeout: 5000 });
+  var title = (await page.textContent("#card .cardtitle")) || "";
+  assert(/Confirmed/.test(title), label + ": passing meters did not confirm (\"" + title.trim() + "\")");
+  var disp = await page.$(".disposition--up");
+  assert(disp, label + ": promoting ending has no promotion disposition strip");
+  if (disp) {
+    var dtext = (await page.textContent(".disposition--up")) || "";
+    assert(/District Magistrate/.test(dtext), label + ": disposition does not name the next rank (\"" + dtext.trim() + "\")");
+  }
+  var btn = (await page.textContent("#again")) || "";
+  assert(btn.indexOf("promotion") !== -1, label + ": ending button is not the promotion button (\"" + btn.trim() + "\")");
+  var career = await page.evaluate(function () { return JSON.parse(window.localStorage.getItem("pukka-sahib-career") || "null"); });
+  assert(career && career.history && career.history.some(function (h) { return h.chapter === "ac" && h.promoted; }),
+    label + ": career record missing the promoted apprentice year");
+  assert(career && career.carry && career.carry.into === "dm", label + ": promotion recorded no carry for the district");
+  await page.click("#again");
+  await page.waitForSelector("#begin", { timeout: 8000 });
+  var mast = (await page.textContent("#mastsub")) || "";
+  assert(/District Magistrate/.test(mast), label + ": after promotion the masthead is not the Collector's (\"" + mast.trim() + "\")");
+  var here = (await page.textContent(".rung--here")) || "";
+  assert(/District Magistrate/.test(here), label + ": career ladder 'you are here' did not advance (\"" + here.trim() + "\")");
+  await page.click("#begin");
+  await page.waitForSelector("#card .fortnight", { timeout: 5000 });
+  var fn = (await page.textContent("#card .fortnight")) || "";
+  assert(/Fortnight 1 of 24/.test(fn), label + ": district year did not open at fortnight 1 of 24 (\"" + fn.trim() + "\")");
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  await ctx.close();
+  return { errors: errors.length };
+}
+
 (async function () {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
@@ -248,6 +303,8 @@ async function resumeSession(browser, viewport) {
     console.log("mobile: ", JSON.stringify(m));
     var r = await resumeSession(browser, { width: 1120, height: 920 });
     console.log("resume: ", JSON.stringify(r));
+    var p = await promotionSession(browser, { width: 1120, height: 920 });
+    console.log("promo:  ", JSON.stringify(p));
   } finally {
     await browser.close();
   }

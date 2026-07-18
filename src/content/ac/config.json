@@ -19,6 +19,7 @@
         "confirmed"
       ],
       "promotesTo": "dm",
+      "repeatNote": "The probation is <b>not passed</b>: no district follows. The apprentice year must be served again &mdash; and served better.",
       "carryOut": [
         {
           "flag": "ac_sweetheart",

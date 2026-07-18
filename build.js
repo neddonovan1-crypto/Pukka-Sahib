@@ -56,6 +56,18 @@ function build() {
   });
   var artBlockSingle = "<script>window.PUKKA_ART=" + JSON.stringify(embeddedArt) + ";</script>";
 
+  // Freely-licensed ambience recordings (audio/ambience-<season>.mp3|ogg|m4a,
+  // or ambience.* for all seasons). Hosted deploys get them as lazy-loaded
+  // loops via window.PUKKA_AUDIO_SAMPLES; the single-file build stays on the
+  // synthesised ambience (zero page weight), which is also the runtime
+  // fallback while a recording loads or if it fails. Licences/attribution for
+  // anything in audio/ belong in audio/CREDITS.md.
+  var audioDir = path.join(ROOT, "audio");
+  function audioNames() {
+    return fs.existsSync(audioDir) ? fs.readdirSync(audioDir).filter(function (f) { return /^ambience(-\w+)?\.(mp3|ogg|m4a)$/i.test(f); }) : [];
+  }
+  function audioKey(f) { var m = /^ambience-(\w+)\./i.exec(f); return m ? m[1].toLowerCase() : "all"; }
+
   var dataBlock = '<script type="application/json" id="game-data">' + content + "</script>";
   var codeBlock = "<script>\n" + logic + "\n" + audio + "\n" + ui + "\n</script>";
   var scripts = dataBlock + "\n" + artBlockSingle + "\n" + codeBlock;
@@ -85,8 +97,16 @@ function build() {
     distArt[artKey(f)] = "assets/" + f;
   });
   var artBlockDist = "<script>window.PUKKA_ART=" + JSON.stringify(distArt) + ";</script>";
+  var distAudio = {};
+  audioNames().forEach(function (f) {
+    fs.copyFileSync(path.join(audioDir, f), path.join(assets, f));
+    distAudio[audioKey(f)] = "assets/" + f;
+  });
+  var audioBlockDist = Object.keys(distAudio).length
+    ? "<script>window.PUKKA_AUDIO_SAMPLES=" + JSON.stringify(distAudio) + ";</script>" : "";
   var distHtml = shell.replace("<!--GAME_SCRIPTS-->",
-    dataBlock + "\n" + artBlockDist + '\n<script src="logic.js"></script>\n<script src="audio.js"></script>\n<script src="ui.js"></script>');
+    dataBlock + "\n" + artBlockDist + (audioBlockDist ? "\n" + audioBlockDist : "") +
+    '\n<script src="logic.js"></script>\n<script src="audio.js"></script>\n<script src="ui.js"></script>');
   fs.writeFileSync(path.join(dist, "index.html"), distHtml);
   fs.writeFileSync(path.join(dist, "logic.js"), logic);
   fs.writeFileSync(path.join(dist, "audio.js"), audio);
@@ -95,7 +115,8 @@ function build() {
 
   console.log("Built index.html:", (out.length / 1024).toFixed(0) + " KB (single-file / Artifact)");
   console.log("  logic:", logic.length, "b · ui:", ui.length, "b · content:", content.length, "b · art embedded:", artKb.toFixed(0) + " KB (" + Object.keys(embeddedArt).length + ")");
-  console.log("Built dist/ for Pages:", "index.html + logic.js + audio.js + ui.js" + (copied ? " + " + copied + " asset(s)" : ""));
+  console.log("Built dist/ for Pages:", "index.html + logic.js + audio.js + ui.js" + (copied ? " + " + copied + " asset(s)" : "") +
+    (Object.keys(distAudio).length ? " + ambience recordings (" + Object.keys(distAudio).join(", ") + ")" : " (ambience: synthesised — no audio/ recordings)"));
 
   // Page-weight budget: the single-file build is what the Artifact loads in one
   // go, so growth is a decision, not a drift. Raise these only deliberately

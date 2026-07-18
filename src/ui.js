@@ -23,6 +23,15 @@
   // The chapter to play: the first rank in the ladder the career has not yet
   // been promoted out of. (With one chapter shipped, that is the district.)
   function currentChapterKey() {
+    // A promotion sets a one-shot #go-<chapter> hash before its reload, so the
+    // handoff works even where localStorage is unavailable (private browsing).
+    try {
+      var hm = /^#go-(\w+)$/.exec(window.location.hash || "");
+      if (hm && registry.chapters[hm[1]]) {
+        try { window.history.replaceState(null, "", window.location.pathname + window.location.search); } catch (e2) {}
+        return hm[1];
+      }
+    } catch (e) {}
     // A quick-start override (Begin as a seasoned Collector) jumps straight to
     // the district — offered only once the apprentice year is completed.
     try {
@@ -231,11 +240,25 @@
             "</div></details>";
         }).join("") + "</div>";
     }
+    // The disposition strip: no ending may leave the career's next step
+    // ambiguous. Promotion names the next rank; anything else says plainly
+    // that the year must be served again.
+    var nextKey = s.chapter && s.chapter.promotesTo;
+    var nextMeta = nextKey && registry.chapters[nextKey] && registry.chapters[nextKey].config.chapter;
+    var dispositionHtml = "";
+    if (nextMeta) {
+      dispositionHtml = '<div class="disposition ' + (s.promoted ? "disposition--up" : "disposition--again") + '">' +
+        (s.promoted
+          ? "<b>Promoted.</b> Your next despatches are written as " + nextMeta.rank + (nextMeta.posting ? ", " + nextMeta.posting : "") + "."
+          : (s.chapter.repeatNote || "The year must be served again.")) +
+        "</div>";
+    }
     c.innerHTML =
       '<div class="turnline"><span class="fortnight">The posting ends &mdash; fortnight ' +
       Math.min(s.turn, s.maxTurns) + '</span><span class="stamp">Closed</span></div>' +
       medalHtml +
       '<h2 class="cardtitle">' + s.ended.title + "</h2>" +
+      dispositionHtml +
       '<div class="verdict">' + s.ended.text + "</div>" +
       codasHtml +
       recordHtml +
@@ -243,13 +266,18 @@
       (s.promoted && s.chapter && s.chapter.promotesTo && registry.chapters[s.chapter.promotesTo]
         ? "Take up your promotion &rarr;" : "Take up a new posting") +
       "</button></div>";
-    audio.ending(s.endedKey);
+    var tiers = (content.config.honours && content.config.honours.ladder) || [];
+    audio.ending(s.endedKey, s.promoted || tiers.some(function (t) { return t.key === s.endedKey; }));
     el("again").onclick = function () {
       clearSave();
       // A promotion moves the career to the next chapter's bundle; reload so the
-      // module re-derives its chapter from the record. Otherwise, same posting again.
-      if (s.promoted && s.chapter && s.chapter.promotesTo && registry.chapters[s.chapter.promotesTo]) location.reload();
-      else paint(newRun());
+      // module re-derives its chapter from the record. The URL hash carries the
+      // promotion too, so it survives even where localStorage does not (private
+      // browsing). Otherwise, same posting again.
+      if (s.promoted && s.chapter && s.chapter.promotesTo && registry.chapters[s.chapter.promotesTo]) {
+        try { location.hash = "go-" + s.chapter.promotesTo; } catch (e) {}
+        location.reload();
+      } else paint(newRun());
     };
   }
 

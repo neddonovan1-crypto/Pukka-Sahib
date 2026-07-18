@@ -36,6 +36,13 @@ function validateChapter(content, chapterKey) {
     // The start screen's career ladder speaks each rank's stake.
     check(typeof cfg.chapter.plays === "string" && cfg.chapter.plays.length > 0, "config.chapter.plays missing (what the rank plays for)");
     if (cfg.chapter.plays) scanText(cfg.chapter.plays, "chapter.plays");
+    // A rank that promotes must also say what a failed year means (the ending
+    // card's disposition strip) — no verdict may leave the next step ambiguous.
+    if (cfg.chapter.promotesTo) {
+      check(typeof cfg.chapter.repeatNote === "string" && cfg.chapter.repeatNote.length > 0,
+        "config.chapter.repeatNote missing (what a non-promoting ending means)");
+      if (cfg.chapter.repeatNote) scanText(cfg.chapter.repeatNote, "chapter.repeatNote");
+    }
     check(Array.isArray(cfg.chapter.promotionTiers), "config.chapter.promotionTiers must be an array");
     (cfg.chapter.promotionTiers || []).forEach(function (k) {
       check(!!content.endings[k], "config.chapter.promotionTiers references unknown ending '" + k + "'");
