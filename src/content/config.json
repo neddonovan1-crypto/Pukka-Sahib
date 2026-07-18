@@ -99,11 +99,14 @@
         "base": {
           "contentment": 1,
           "order": 1,
+          "revenue": -1,
           "prestige": -1,
           "health": -1
         },
         "season": {
-          "cold": {},
+          "cold": {
+            "prestige": 1
+          },
           "hot": {
             "health": -4
           },
@@ -332,8 +335,8 @@
       "ladder": [
         {
           "key": "division",
-          "score": 65,
-          "prestige": 70,
+          "score": 67,
+          "prestige": 72,
           "barredByDebt": true,
           "reach": "the <b>C.I.E. and a Division</b> are within reach &mdash; the year is being watched",
           "name": "the Division"

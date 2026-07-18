@@ -59,16 +59,16 @@
       "ladder": [
         {
           "key": "distinction",
-          "score": 54,
-          "prestige": 54,
+          "score": 56,
+          "prestige": 56,
           "barredByDebt": true,
           "reach": "confirmation <b>with a despatch</b> is within reach &mdash; the Collector is writing well of you",
           "name": "a Despatch"
         },
         {
           "key": "confirmed",
-          "score": 46,
-          "prestige": 43,
+          "score": 47,
+          "prestige": 46,
           "reach": "<b>confirmation</b> is within reach",
           "name": "Confirmation"
         }
@@ -145,13 +145,16 @@
         "base": {
           "contentment": 1,
           "order": 1,
+          "revenue": -1,
           "prestige": -1,
           "health": -1
         },
         "season": {
-          "cold": {},
+          "cold": {
+            "prestige": 1
+          },
           "hot": {
-            "health": -6
+            "health": -7
           }
         },
         "labels": {
@@ -160,7 +163,7 @@
         },
         "notes": {
           "cold": [
-            "Learn Kotra with your own eyes &mdash; though the Collector&rsquo;s office wonders where his probationer has got to.",
+            "Learn Kotra with your own eyes &mdash; the cold weather is what camp was invented for, and no one marks a probationer absent in it.",
             "The camp table under the trees: petitions, boundaries, and a sub-division deciding whether it likes you.",
             "The villages remember a young sahib who comes to them. So does the fever."
           ],
