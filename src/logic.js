@@ -117,6 +117,10 @@
 
     function resolveChoice(ch) {
       var b = ch.condition ? (evalCondition(ch.condition) ? ch.ifTrue : ch.ifFalse) : ch;
+      // A gamble: a branch may carry a rare disaster (risk) resolved by the
+      // injected rng — take the risky-reading option and, at risk.chance, the
+      // catastrophe branch replaces the ordinary result entirely.
+      if (b.risk && rng() < b.risk.chance) b = b.risk;
       return {
         effects: b.effects || {},
         outcome: b.outcome || "",

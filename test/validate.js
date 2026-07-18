@@ -284,6 +284,19 @@ function validateChapter(content, chapterKey) {
     if (b.outcome) scanText(b.outcome, where);
     checkEffects(b.effects, where);
     checkEcon(b.econ, where);
+    // A gamble: rare (chance capped at a coin-flip's shy side), catastrophic,
+    // and always avoidable by taking another choice — never nested.
+    if (b.risk !== undefined) {
+      var rw = where + ".risk";
+      check(typeof b.risk.chance === "number" && b.risk.chance > 0 && b.risk.chance <= 0.35,
+        rw + ": chance must be in (0, 0.35]");
+      check(!b.risk.risk, rw + ": risks do not nest");
+      check(typeof b.risk.outcome === "string" && b.risk.outcome.length > 0, rw + ": outcome missing");
+      if (b.risk.outcome) scanText(b.risk.outcome, rw);
+      checkEffects(b.risk.effects, rw);
+      checkEcon(b.risk.econ, rw);
+      (b.risk.setFlags || []).forEach(function (f) { flagsProduced[f] = true; });
+    }
   }
 
   function checkChoices(list, w) {

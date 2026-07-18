@@ -1,0 +1,427 @@
+[
+  {
+    "id": "ac-nullah-ford",
+    "tag": "URGENT",
+    "season": ["cold"],
+    "kind": "tour",
+    "once": true,
+    "title": "The Deposition Across the River",
+    "body": "Word comes to camp at dusk: the one witness in the Bhagwanpura poisoning &mdash; an old man who saw the sweets handed over &mdash; is dying at his village across the nullah, and asking for the sahib. A deposition taken tonight convicts; a deposition not taken dies with him before morning. The nullah is up after unseasonable rain, mud-brown and pulling, and the guide, asked if the ford is passable, gives the answer guides give: <i>doubtless, sahib, if God is willing.</i> Your horse does not like the water. Horses are seldom wrong about water.",
+    "choices": [
+      {
+        "label": "Ford it tonight, deposition papers and all.",
+        "effects": { "order": 3, "prestige": 3, "health": -2 },
+        "risk": {
+          "chance": 0.2,
+          "effects": { "health": -14, "prestige": -5 },
+          "econ": { "treasury": -600 },
+          "setFlags": ["lost_the_dak"],
+          "outcome": "The ford was deeper than the guide swore and the current older than his family's memory of it. The horse goes over, you go under, and the deposition forms go down the nullah to the sea. A constable pulls you out a furlong down, minus a boot, plus the beginnings of a fever that will keep its own calendar. The witness dies at dawn, unrecorded. The sub-division hears the whole story by Tuesday, improved."
+        },
+        "outcome": "Wet to the armpits, swearing in two languages, you get over with the forms held above your head like regimental colours. The deposition is taken by lantern; the old man tells it clearly, signs his thumb, and dies contented at having discomposed his enemies. The conviction follows in due course. The tahsildar, hearing how it was got, says nothing and re-tells it for a year."
+      },
+      {
+        "label": "Wait for first light and pray he lasts.",
+        "effects": { "health": 1, "order": -3, "prestige": -1 },
+        "outcome": "Prudence, the manuals agree, is a virtue. The nullah is down by dawn and the crossing easy, and the old man is an hour dead when you reach the village, and the case dies in the file marked &lsquo;evidence insufficient.&rsquo; The poisoner prospers modestly ever after. On certain evenings you will remember that the guide said <i>doubtless</i>, and that you heard the doubt and took it."
+      },
+      {
+        "label": "Send the sub-inspector over alone; it is his district too.",
+        "effects": { "order": 1, "prestige": -2, "contentment": -1 },
+        "outcome": "He goes because he is told to, and gets over because he is luckier than you deserve, and takes a deposition that a defence pleader will later pick apart precisely because no magistrate witnessed it. Half a conviction, at no risk to yourself. The sub-inspector never mentions it. His report does, in the passive voice, where such things are kept."
+      }
+    ]
+  },
+  {
+    "id": "ac-leopard-beat",
+    "tag": "SHIKAR",
+    "season": ["cold"],
+    "kind": "club",
+    "once": true,
+    "title": "The Thakur's Leopard",
+    "body": "A cattle-lifting leopard has set up in the ravines below Rajgarh, and the Thakur organises a beat with the flourish of a man staging a durbar: elephants borrowed, beaters in his livery, luncheon under a shamiana. The first drive wounds the beast &mdash; a bad shot, not yours &mdash; and it goes into a cane-brake trailing blood. Every man present knows the etiquette: a wounded leopard is followed up on foot by somebody, and the somebody who does it is talked of, and the somebody who declines is also talked of. The Thakur looks at you with bright, hospitable, entirely merciless interest.",
+    "choices": [
+      {
+        "label": "Take the shotgun and go into the cane after it.",
+        "effects": { "prestige": 4, "contentment": 1, "health": -1 },
+        "risk": {
+          "chance": 0.25,
+          "effects": { "health": -18, "prestige": 2 },
+          "setFlags": ["leopard_scar"],
+          "outcome": "It comes from the left, low and silent, which is how they come. You are aware of a weight, a smell of hot copper, a noise you discover later was your own gun going off against its chest &mdash; and then men shouting, and sky. Forty stitches at the mission hospital, a scar from shoulder to elbow, and a story that will buy your dinners for thirty years. The Civil Surgeon, sewing, observes that the district is hard enough on probationers without their volunteering."
+        },
+        "outcome": "Twenty yards of cane, a heartbeat of yellow, and one barrel at a range where missing is not among the outcomes. It is over before fear has finished forming. You walk out carrying your gun wrongly and trying not to shake, and the beaters put their hands to their foreheads, and the Thakur is embracing, expansive, delighted &mdash; a young sahib after his own heart. The story reaches headquarters before you do."
+      },
+      {
+        "label": "Let the Thakur's shikari earn his salt; it is his trade.",
+        "effects": { "prestige": -2, "health": 1, "contentment": 1 },
+        "outcome": "The shikari goes in with a borrowed rifle and thirty years of knowing better, and finishes it neatly, and is given twenty rupees and no dinner-table immortality whatever. It is the sensible course and everyone says so, in the tone the Service keeps for sensible courses. The Thakur's warmth cools by some exactly calculated degree. At the Club, the story is told without your name in it."
+      },
+      {
+        "label": "Declare the light gone and the beat over; leopards keep.",
+        "effects": { "prestige": -3, "order": -2 },
+        "outcome": "A wounded cattle-lifter left in cover is a debt at interest, and the sub-division pays it: a herd-boy mauled at Rajgarh a fortnight on, not fatally, but talked of. The Thakur has the beast destroyed his own way, with nets and spears and no sahibs invited. The invitation list of the district quietly re-forms itself around your absence."
+      }
+    ]
+  },
+  {
+    "id": "ac-polo-remount",
+    "tag": "GYMKHANA",
+    "season": ["cold"],
+    "kind": "club",
+    "once": true,
+    "title": "The Grey That Killed a Subaltern",
+    "body": "The cantonment side is a man short for the cold-weather polo, and the man they are short of is you, and the pony they can lend you is the grey &mdash; fast as telegrams, beautifully schooled, and famous for having put a subaltern of the Guides into the cemetery two seasons back by falling on him at the turn. The soldiers are perfectly frank about all of it, which is their way of asking whether Civilians can ride. The alternative mount is a hireling with a mouth like a cab-horse and the turning circle of a barge.",
+    "choices": [
+      {
+        "label": "Take the grey, and play it like a gentleman in a hurry.",
+        "effects": { "prestige": 3, "health": 1, "contentment": 1 },
+        "risk": {
+          "chance": 0.2,
+          "effects": { "health": -13, "prestige": -1 },
+          "outcome": "At the second chukker's turn the grey props, changes its mind, changes it back, and comes down &mdash; on the leg, mercifully, and not the head, which is the margin between a story and a headstone. A crack, a whiteness, the polished boots of the entire cantonment arriving at a run. Six weeks of splints and the Civil Surgeon's conversation. The soldiers send fruit, and put you down &mdash; you learn much later &mdash; as game, which was rather the object, though not by this route."
+        },
+        "outcome": "The grey goes like the mail and turns like a rumour, and you sit it &mdash; just &mdash; and hit one goal off a scramble that was mostly the pony's idea. The cantonment revises its view of Civilians by one honest inch, which along this frontier of the two Services is a treaty. You dine in mess after, and are made to sing, and the cold weather is suddenly a very good one."
+      },
+      {
+        "label": "Take the hireling and play safe, ugly polo.",
+        "effects": { "prestige": 1, "health": 1 },
+        "outcome": "You block, and hook, and trundle, and are exactly as useful as a gate. The side loses respectably; nobody is buried. A major observes, passing the tea-tent, that the Civil arm rides with great discretion, and the word does the little rounds it was minted for. Still &mdash; you played, which counts for something on both sides of the mall."
+      },
+      {
+        "label": "Plead the assizes; the Service before sport.",
+        "effects": { "prestige": -2, "revenue": 1 },
+        "outcome": "The excuse is real &mdash; the file exists, the work is done, the virtue is genuine &mdash; and it purchases nothing whatever. The cantonment wanted to see the new Civilian ride, and has instead seen him decline to, and along the mall that is a complete set of facts. The assizes, at least, are beautifully prepared."
+      }
+    ]
+  },
+  {
+    "id": "ac-court-baiting",
+    "tag": "CUTCHERRY",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "title": "The Pleader Who Collects Magistrates",
+    "body": "Babu Brindaban Chatterji, B.A., has practised in Kotra longer than you have been alive, and collects young magistrates as other men collect moths. Today, mid-case, he begins: a citation you half-know, a High Court ruling you don't, a courteous request that the Court instruct him &mdash; the Court being so lately from England &mdash; on a point the Court manifestly cannot answer. The tahsildar's face has become porcelain. The whole cutcherry waits to see the pin go through the specimen.",
+    "choices": [
+      {
+        "label": "Admit ignorance from the bench, and adjourn to read the ruling.",
+        "effects": { "prestige": 2, "order": 1, "health": -1 },
+        "outcome": "&lsquo;The Court is obliged to the learned pleader, has not read the ruling, and will have done so by Thursday.&rsquo; A stir; porcelain cracking into something like respect. By Thursday you have read it twice and it does not say what he implied it says, and you tell him so with the page numbers. Brindaban bows very low &mdash; the bow he keeps, the tahsildar explains later, for magistrates who cannot be collected."
+      },
+      {
+        "label": "Bluff through it on tone; the bench must never wobble.",
+        "effects": { "prestige": -3, "order": -1 },
+        "outcome": "You rule with confidence, wrongly, and Brindaban thanks the Court with a purring completeness that tells the whole room he has what he came for. The appeal, when it succeeds at the district, cites your ruling in full. The Collector returns it to you without a note, which is the loudest thing he does all season."
+      },
+      {
+        "label": "Fine him for trifling with the Court's time.",
+        "effects": { "order": 2, "prestige": -2, "contentment": -2 },
+        "outcome": "Ten rupees, paid with a bow of infinite gratitude &mdash; you have made him, for the price of a dinner, the martyr of the district bar. Three pleaders reproduce the performance within the month, fines and all, the fee for the advertisement being now established. The bench holds firm and the bar dines out on it."
+      }
+    ]
+  },
+  {
+    "id": "ac-dak-robbery",
+    "tag": "URGENT",
+    "season": ["any"],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Mail Cart Robbed at the Stones",
+    "body": "The dak cart is stopped at the standing stones two miles short of Kotra &mdash; runner tied to a milestone, insured parcels gone, and with them the tahsil's registered remittance and the sub-division's official post. Robbing the mail is not theft, the police manual observes; it is an act against Government, and sub-divisions are judged by whether it can happen twice. The sub-inspector has a theory, a favourite informer, and a face that wants very much to be told to go and be vigorous somewhere.",
+    "choices": [
+      {
+        "label": "Saturate the roads: pickets, searches, the whole apparatus.",
+        "effects": { "order": 5, "contentment": -3, "health": -2 },
+        "econ": { "treasury": -700 },
+        "outcome": "For a fortnight no cart moves at night without a lantern and a challenge, and honest carters are searched with the rest and say so, bitterly. The gang lies quiet, then tries the Pipalgaon road, and is taken at a picket by a constable who will dine on it for a decade. The mail is not robbed twice. The roads remember the searches, too."
+      },
+      {
+        "label": "Work the informer, quietly, and wait for the fence to move.",
+        "effects": { "order": 2, "prestige": 1 },
+        "econ": { "treasury": -200 },
+        "outcome": "The informer earns his dirty little retainer: the parcels surface in a grain-pit at Pipalgaon, the fence names the gang with the aggrieved thoroughness of a man cheated of his share, and the arrests are made at dinner, undramatically, which is how the best arrests go. The manual would have preferred more marching. The result column does not say so."
+      },
+      {
+        "label": "Report it up and let the district police own the case.",
+        "effects": { "prestige": -3, "order": -2, "health": 1 },
+        "outcome": "It is, technically, correct. A district superintendent arrives with his own theory and his own informers, obliterates the local scent in a week of energy, and departs leaving the case open and the impression &mdash; carefully worded in his diary &mdash; that Kotra's young civilian prefers his robberies handled by post. The gang robs the Tuesday cart in April, as if to sign the verdict."
+      }
+    ]
+  },
+  {
+    "id": "ac-well-quarrel",
+    "tag": "PETITION",
+    "season": ["cold"],
+    "kind": "tour",
+    "once": true,
+    "title": "One Well Between Two Villages",
+    "body": "Mauza Rampur and mauza Shahpur share a boundary, a bitter history, and &mdash; since Shahpur's well went brackish in October &mdash; one sweet well between them. Rampur has begun charging for what it calls courtesy; Shahpur has begun arriving at the well in numbers that make courtesy unnecessary; and last market-day there were lathis out under the banyan, which is one step short of the step nobody comes back from. Both headmen are before your camp table, each with witnesses, genealogies, and a version of 1857.",
+    "choices": [
+      {
+        "label": "Sink Government's own well at Shahpur, and be done.",
+        "effects": { "contentment": 4, "order": 3, "prestige": -1 },
+        "econ": { "treasury": -900 },
+        "outcome": "The sanction takes three reminders and the boring crew arrive scandalously late, but by the hot weather Shahpur draws its own sweet water and the banyan shade returns to gossip and small litigation. The district office queries the expenditure in red ink. You answer with the thana's nil return for the quarter, which is the only arithmetic that matters out here."
+      },
+      {
+        "label": "Fix a water-turn by written order: hours, buckets, and a chaprassi to watch.",
+        "effects": { "order": 2, "contentment": -1, "revenue": 1 },
+        "outcome": "The order is beautiful, laminated in office varnish, and obeyed to the letter &mdash; the letter being the point, since each village now files monthly petitions alleging violations of sub-clause three. The chaprassi at the well becomes the best-informed man in the pargana. Peace of a kind holds: paper peace, renewable quarterly, at your table."
+      },
+      {
+        "label": "Tell them sternly to settle it as neighbours, and ride on.",
+        "effects": { "health": 1, "order": -4, "contentment": -2 },
+        "outcome": "They settle it as neighbours: at the next full moon, with lathis, seven broken heads, and a case that fills your file for a month and the pleaders' pockets for two. The sub-inspector's report does not say &lsquo;the sahib was told,&rsquo; because sub-inspectors do not write such sentences. The tahsildar's silence says it fluently."
+      }
+    ]
+  },
+  {
+    "id": "ac-vaccinator",
+    "tag": "MEDICAL",
+    "season": ["hot"],
+    "kind": "crisis",
+    "once": true,
+    "title": "Smallpox at Pipalgaon",
+    "body": "Two children dead at Pipalgaon and the marks on them beyond argument: smallpox, in the hot weather, with the fair a month out. The vaccinator &mdash; one man, one pony, one box of lymph going bad in the heat &mdash; has been driven from the village twice; the word has gone round that the needle is a Government mark to count souls for a new tax, and the priest of the smallpox goddess does not discourage the theory, arithmetic at the shrine being what it is. The Civil Surgeon's note is one line: <i>contain it now or name the fair after it.</i>",
+    "choices": [
+      {
+        "label": "Go yourself, and be vaccinated again in the village square.",
+        "effects": { "contentment": 3, "order": 2, "health": -3, "prestige": 1 },
+        "outcome": "You sit on a string cot before the whole of Pipalgaon and take the needle, and the tahsildar takes it after you, and then the headman's wife &mdash; who has buried one of the two children and is done with theories &mdash; brings her remaining three. After that it is a queue. The lymph holds, the fair is held, the goddess's priest reports a satisfactory season regardless. The Civil Surgeon's next note is two lines, and one of them is nearly warm."
+      },
+      {
+        "label": "Vaccinate the fair-roads by order, with police at the vaccinator's back.",
+        "effects": { "order": 3, "contentment": -4 },
+        "econ": { "treasury": -300 },
+        "outcome": "It is done, at the pace of a picket line, thoroughly and sullenly. The outbreak dies before the fair; the story of the needles and the constables does not, and reaches your file two years hence, transmuted, the next time Government wants anything at Pipalgaon. Epidemiology will count it a victory. The village books it under a different head."
+      },
+      {
+        "label": "Quarantine the village and let it burn out inside its bounds.",
+        "effects": { "order": -2, "contentment": -5, "health": 1 },
+        "outcome": "The cordon holds because you feed it and the village does not starve because you feed that too, and eleven more die inside the line, none of whom needed to. The fair is saved, the figures defensible, the method a hundred years old. The vaccinator, disbanded roadside, asks the tahsildar what the lymph was for. There is no answer in the file."
+      }
+    ]
+  },
+  {
+    "id": "ac-grain-corner",
+    "tag": "URGENT",
+    "season": ["hot"],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Man Who Bought the Bazaar",
+    "body": "Prices have climbed all through the heat, and now the reason has a name: Motilal, grain-dealer of Kotra, has quietly bought forward the whole of three tahsils' surplus and shut his godowns to watch the figure rise. It is not illegal. It is not even unusual. It is only that the poorer bazaar is down to one meal, and the constable on the grain-market beat reports the particular quiet he does not like, and Motilal, calling to pay his respects, mentions how warmly he subscribed to the Christmas fund.",
+    "choices": [
+      {
+        "label": "Break the corner: force his godowns open for sale at a fixed price.",
+        "effects": { "contentment": 5, "order": 2, "prestige": -2, "revenue": -2 },
+        "risk": {
+          "chance": 0.15,
+          "effects": { "order": -12, "contentment": -4, "prestige": -4 },
+          "setFlags": ["grain_riot"],
+          "outcome": "The godowns open at your order and the bazaar, seeing the doors go back, decides the grain is Government's gift and therefore already its own. Ten minutes of surge, a broken gate, two constables down and a woman trampled at the second door before the line holds. The corner is broken; so is the market's temper for a season. The enquiry finds your order lawful and your arrangements thin, and both findings are correct."
+        },
+        "outcome": "You post the order at the kotwali and stand a magistrate's presence in the market while it is executed, and the grain comes out at a price the poor can pay and Motilal can survive. He takes it, in the long view, entirely well: Government has shown him its edge, and a dealer values a Government with an edge, the same being creditworthy. The bazaar eats. The precedent files itself under courage."
+      },
+      {
+        "label": "Summon him privately and suggest the corner might unwind.",
+        "effects": { "contentment": 2, "order": 1, "prestige": 1 },
+        "outcome": "Tea, compliments, twenty minutes of the weather, and then one sentence about godowns and the temper of hot-weather crowds, left where he can see it. Motilal, no fool, sells down over a fortnight at a profit merely handsome. The bazaar never knows the corner existed, which is the measure of the job done properly &mdash; and the reason no report of it can ever be written."
+      },
+      {
+        "label": "The market is the market; Government does not fix prices.",
+        "effects": { "revenue": 1, "contentment": -5, "order": -3 },
+        "outcome": "It is sound doctrine and you hold to it while the bazaar thins its meals to the edge of the possible. The rains break the corner in the end, as rains do, and Motilal banks the difference. What the doctrine cost is not in any return: only the constable on the grain beat could total it, and he keeps his totals to himself."
+      }
+    ]
+  },
+  {
+    "id": "ac-survey-error",
+    "tag": "SETTLEMENT",
+    "season": ["cold"],
+    "kind": "desk",
+    "once": true,
+    "title": "An Error in the Thakur's Favour",
+    "body": "Checking the settlement maps against the patwari's field-book &mdash; the munshi's drill, now habit &mdash; you find it: forty acres of the best riverain land entered under the Thakur of Rajgarh that the survey of 1881 shows under three cultivators of mauza Bhagwanpura. A pen's width on the map; three families' bread in the field. The error is old, the Thakur's pleader will call it settled, the patwari who made it is dead, and the Thakur has lately been so very hospitable with his leopards and his luncheons.",
+    "choices": [
+      {
+        "label": "Correct the record and restore the land, whatever it costs at Rajgarh.",
+        "condition": { "flag": "thakur_obliged" },
+        "ifTrue": {
+          "effects": { "contentment": 4, "order": 1, "prestige": -3 },
+          "outcome": "The correction goes through and the Thakur receives it with exquisite courtesy and total comprehension: the mare, the luncheons, the beat &mdash; all invested, all lost. His pleader files the appeal by return dak; his hospitality turns off like a tap; and word runs the district that the young sahib cannot be obliged, which costs you dinners and buys you something the dinners were pricing. The three families take their land back quietly, as men do who never expected justice and are unsure of its warranty."
+        },
+        "ifFalse": {
+          "effects": { "contentment": 4, "order": 1, "prestige": -1 },
+          "outcome": "The correction goes through; the appeal follows; the appeal fails, the field-book being unanswerable. Forty acres of riverain go back to three households who had farmed them as tenants of their own land for twenty years. The Thakur is cold at the next durbar, and the district notes the coldness, and notes too that the maps in Kotra now mean what they say. A settlement officer's dry postscript: &lsquo;error regretted; correction confirmed.&rsquo;"
+        }
+      },
+      {
+        "label": "Let sleeping surveys lie; reopen nothing.",
+        "effects": { "prestige": 1, "contentment": -3 },
+        "setFlags": ["survey_buried"],
+        "outcome": "The field-book goes back to its shelf and the map stays authoritative and wrong. The Thakur's luncheons continue. The three families of Bhagwanpura continue also &mdash; as tenants, paying rent on their grandfather's land to a man whose title is a clerk's slip. Nothing happens at all, except that the munshi's drill has found something and been overruled by comfort, and drills learn from that."
+      },
+      {
+        "label": "Refer it to the Collector with the papers and no recommendation.",
+        "effects": { "prestige": -1, "revenue": 1 },
+        "outcome": "The file goes up beautifully arranged and perfectly neutral, and comes back in a month with one line in red: <i>Correct the record. Why was a recommendation not made?</i> The land is restored, the Thakur is cold at you anyway &mdash; the file bears your signature &mdash; and you have taught the Collector something about you that you will spend two seasons unteaching."
+      }
+    ]
+  },
+  {
+    "id": "ac-club-feud",
+    "tag": "PRIVATE",
+    "season": ["any"],
+    "kind": "club",
+    "once": true,
+    "title": "The Quarrel Above Your Head",
+    "body": "The Canal Engineer and the District Superintendent of Police have not spoken since the incident with the snipe-jheel and the shooting lease &mdash; the facts of which have long been overtaken by the annotations &mdash; and Kotra&rsquo;s tiny station society has divided into two dinner-tables accordingly. You are junior to both, useful to both, and this week both have invited you for Saturday. There is no Saturday with two dinners in it. The Club steward, who has watched twenty years of this, polishes glasses with the detachment of a man watching weather form.",
+    "choices": [
+      {
+        "label": "Dine with neither: invent a camp inspection and sleep in a tent.",
+        "effects": { "health": 1, "prestige": -1, "contentment": 1 },
+        "outcome": "The tent is real, the inspection nearly, and the sub-division profits by a boundary case heard at dawn that would otherwise have waited a month. Both tables note the dodge and neither can fault it; a probationer at his work is unanswerable. It cannot be done every Saturday. It is a very good trick exactly once."
+      },
+      {
+        "label": "Dine with both: soup and fish at one table, joint and savoury at the other.",
+        "effects": { "prestige": 2, "health": -2 },
+        "outcome": "It requires a synchronised khitmutgar, a bicycle, and nerve, and it succeeds so completely that both principals discover it the same evening and are forced &mdash; each having half a dinner's worth of grievance &mdash; to laugh. They laugh at you together, which is the first thing they have done together since the jheel. The reconciliation does not quite follow, but the tables merge for Christmas, and the steward gives you the look he reserves for promising material."
+      },
+      {
+        "label": "Accept the senior man's table and post the junior a graceful regret.",
+        "effects": { "prestige": 1, "contentment": -2 },
+        "outcome": "Correct, safe, and scored precisely: the Engineer's table gains a junior, the Superintendent's list gains a name in the margin. Policemen keep margins long after engineers have forgotten dinners. You will meet that margin again in some file about lock-up returns, wearing procedural clothes, and you will not quite be able to prove where it was born."
+      }
+    ]
+  },
+  {
+    "id": "ac-mission-school",
+    "tag": "PETITION",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "title": "The Padre's School",
+    "body": "The Reverend Mr. Elphick of the American Mission &mdash; twenty years at Kotra, dusty, indestructible, loved and priced accurately by everyone &mdash; wants the sahib's name at the head of his new school subscription, and a Government grant besides. The school is real and good and teaches sweepers' children their letters, which is precisely the trouble: the bania quarter has no wish to fund the education of its future clerks' competitors, and the orthodox have petitioned against Government money touching a mission at all. Mr. Elphick sits before you, hat on knee, with the patience of a man who has outlasted seven of you.",
+    "choices": [
+      {
+        "label": "Head the list, move the grant, and let the petitions come.",
+        "effects": { "contentment": 2, "prestige": -2, "order": -1 },
+        "econ": { "treasury": -250 },
+        "outcome": "The grant goes through against a headwind of paper, and your name at the head of the list is quoted in three petitions as proof of Government's designs upon religion. The school opens with forty pupils and a portrait of the Queen-Empress. Years on, a copying-clerk in some collectorate will write a fair hand because of it; nobody will trace the hand to you, which is, Mr. Elphick would say, rather the point of the exercise."
+      },
+      {
+        "label": "Subscribe privately; Government's name stays off mission paper.",
+        "effects": { "prestige": 1, "contentment": 1 },
+        "econ": { "treasury": -150 },
+        "outcome": "Fifty rupees under a plain initial, and the official file closed with a minute so balanced it could stand on its edge. Mr. Elphick pockets the cheque and reads the minute and smiles like leather creasing: he has seen this compromise seven times too. The school opens smaller. The orthodox claim the victory; the bania quarter claims the economy; the sweepers' children divide what is left."
+      },
+      {
+        "label": "Decline both: the Service is neutral in matters of religion.",
+        "effects": { "prestige": 1, "contentment": -2 },
+        "outcome": "The doctrine is unimpeachable and you deliver it well, and Mr. Elphick hears it out with his head tilted like a man listening to rain on a roof he has already mended. He builds the school anyway, two years slower, on Ohio money. Neutrality is preserved. What it was neutral between, the sweeper quarter could tell you, but nobody files their returns."
+      }
+    ]
+  },
+  {
+    "id": "ac-boundary-pillar",
+    "tag": "SETTLEMENT",
+    "season": ["cold"],
+    "kind": "tour",
+    "once": true,
+    "title": "The Travelling Pillar",
+    "body": "Boundary pillar XLIV, which fixes the line between two estates and incidentally between two irrigation rights, has moved. Not fallen: moved &mdash; eleven feet west, replanted with care, whitewashed fresher than its brothers. Both zamindars express astonishment. The patwari's memory has failed with a completeness that suggests instruction. Eleven feet west is worth perhaps forty rupees of water a year; men have gone to the sessions over four annas. The pillar stands in the winter wheat looking as innocent as anything in masonry can.",
+    "choices": [
+      {
+        "label": "Re-fix it by theodolite from the survey marks, publicly, with both parties present.",
+        "effects": { "order": 3, "prestige": 2, "health": -1 },
+        "outcome": "A morning of chains and angles before a gallery of forty, the instrument glinting like justice, and the pillar goes back east eleven feet to the inch, watched by both zamindars with faces of civic satisfaction over private arithmetic. Nobody is charged; everybody is warned; the pargana grasps that the marks in the record can be conjured back out of it at will. Pillars keep still for years after such a morning."
+      },
+      {
+        "label": "Prosecute someone for mischief; pillars do not walk unaided.",
+        "effects": { "order": 1, "prestige": -1, "contentment": -2 },
+        "outcome": "The case is good until it meets the witnesses, all of whom saw nothing on a moonless night arranged for the purpose. It dies of failed memory in your own court, having cost two hearings and made the patwari an enemy with a long ledger. The pillar, meanwhile, stays where the mischief put it until the survey can be paid to travel. Prosecution was the correct instinct and the wrong tool, a distinction the cold weather is teaching you weekly."
+      },
+      {
+        "label": "Note it for the next settlement; eleven feet can wait its turn.",
+        "effects": { "revenue": 1, "order": -3 },
+        "outcome": "The note is accurate and the queue is long, and by the time the settlement party arrives &mdash; two years, as it proves &mdash; pillar XLIV has moved twice more and bred a suit, a counter-suit, and one first-class affray. Water arithmetic does not wait its turn. It compounds, like the interest at Sohan Lal's, and some other magistrate collects the sum."
+      }
+    ]
+  },
+  {
+    "id": "ac-nautch-question",
+    "tag": "PRIVATE",
+    "season": ["cold"],
+    "kind": "club",
+    "once": true,
+    "title": "The Thakur's Entertainment",
+    "body": "The Thakur's cold-weather entertainment is the event of the pargana: fireworks, a banquet in two cuisines, and afterwards &mdash; the point of the evening, not printed on the card &mdash; a nautch, with singers down from Lucknow whose names mean nothing to you and a great deal to everyone else. The older Service went to nautches as it went to durbars; the newer opinion, with the Padre and the ladies behind it, calls them what the mission tracts call them. The Collector, consulted by telegram, replies with maddening serenity: <i>USE YOUR JUDGMENT.</i>",
+    "choices": [
+      {
+        "label": "Attend the whole evening, nautch and all, as the old Service did.",
+        "effects": { "contentment": 3, "prestige": -2, "health": 1 },
+        "outcome": "The singing is the finest thing you have heard in India and you say so, and the Thakur glows, and every landholder present marks that the sahib sat it out like a guest and not an inspector. The pargana's doors open an inch wider ever after. At the station, the Padre's sister develops a way of not seeing you at the Club that will last until Easter, and the invitation-book of the ladies notes what it notes."
+      },
+      {
+        "label": "Dine, toast, and withdraw before the singers &mdash; the diplomatic hour.",
+        "effects": { "prestige": 1, "contentment": 1 },
+        "outcome": "You leave on the last of the fireworks with compliments so rounded the Thakur cannot find the edge of them, and your tonga is heard leaving by exactly the people who needed to hear it. Both worlds are half-satisfied, which the Service, on the whole, counts a full success. The munshi, asked next morning how the singing had been, permits himself: &lsquo;Sahib, it was the singing of Lucknow.&rsquo; You will always slightly wonder."
+      },
+      {
+        "label": "Decline the card altogether; a magistrate is not entertained by suitors.",
+        "effects": { "prestige": 2, "contentment": -3 },
+        "outcome": "It is the purest reading of the rules, and the Thakur receives your regrets with a courtesy that drops the local temperature two degrees for a season. Half his suits are before your file, so the scruple is real; the pargana merely notes that the new sahib holds himself apart, and deals with you thereafter at arm's length, papers first. Clean hands, cold company. It is a trade, like everything out here."
+      }
+    ]
+  },
+  {
+    "id": "ac-dying-clerk",
+    "tag": "PRIVATE",
+    "season": ["hot"],
+    "kind": "personal",
+    "once": true,
+    "title": "The Copying-Clerk's Cough",
+    "body": "Hari Ram, second copying-clerk, has been dying quietly at his table all through the heat &mdash; the cough, the wrists, the beautiful unwavering hand &mdash; and everyone in the office knows it, and the office has arranged itself around not saying so, since his pay feeds eleven people and a pension wants five more years of service he does not have. Today he faints across the criminal register, and the question he has been keeping off your table falls onto it: the establishment rules on one side, eleven people on the other, and the hot weather auditing everyone impartially.",
+    "choices": [
+      {
+        "label": "Sick-leave on full pay, on your own responsibility, and hang the audit.",
+        "effects": { "contentment": 3, "prestige": -1 },
+        "econ": { "treasury": -200 },
+        "outcome": "Three months at his village under the mango trees, pay drawn as if present &mdash; a fiction your office maintains with the solidarity of a regiment. The audit query arrives in September, and you answer it with a candour that makes the Deputy Auditor read it twice. Hari Ram dies in the cold weather, at home, his son taken on as third clerk the same week. The office notes what the sahib did. Offices never forget that ledger, whichever way it is written."
+      },
+      {
+        "label": "Invalid him by the book, with the gratuity the rules allow.",
+        "effects": { "revenue": 1, "contentment": -2 },
+        "outcome": "The medical board sits, the certificate signs him out, the gratuity is three hundred and twelve rupees and audit-proof. It is everything the rules provide and the rules provide little; eleven people learn to live on a third of what they lived on. The office accepts it as offices accept weather. The register he fainted on keeps a small tea-coloured stain under the sessions entries, which you find yourself not sending for rebinding."
+      },
+      {
+        "label": "Keep him at his table lightly loaded; work is a kind of medicine.",
+        "effects": { "health": -1, "contentment": 1, "order": -1 },
+        "outcome": "It is kindly meant and he is grateful, and he dies at the table in August with the pen in his hand, half through a mutation entry &mdash; which spares the pension question and answers the others. The office says only that he was a great copyist. The file he did not finish goes to the third clerk, who completes it in a hand nearly as beautiful, having been taught by his father."
+      }
+    ]
+  },
+  {
+    "id": "ac-collectors-dog",
+    "tag": "THE STATION",
+    "season": ["cold"],
+    "kind": "interlude",
+    "interlude": true,
+    "once": true,
+    "title": "The Collector's Dog Defects",
+    "body": "The Collector's fox-terrier, Binks &mdash; a personage of the district, mentioned in demi-official correspondence &mdash; has taken to walking the two miles to your bungalow and installing himself on your verandah with the air of an inspecting officer. Nothing recalls him: not the orderly sent for the purpose, not dignity, not dinner. The Collector's note on the subject is a masterpiece of the man: <i>Keep him till he bores of you. He is an excellent judge of juniors, and has never once been wrong in reverse.</i> Binks stays a fortnight, reviews your household, and departs as he came. You find you miss him disproportionately.",
+    "effects": { "contentment": 1, "health": 1 }
+  },
+  {
+    "id": "ac-dust-devil",
+    "tag": "THE HEAT",
+    "season": ["hot"],
+    "kind": "interlude",
+    "interlude": true,
+    "once": true,
+    "title": "The Dust-Devil in the Compound",
+    "body": "At the dead hour a dust-devil comes off the maidan and walks through the compound like a slow brown djinn: forty feet of spinning grit that takes the office's entire out-tray, ascends it in a spiral of pending correspondence, and distributes the sub-division's business over three villages and a tank. The chaprassis pursue official paper through the cactus with lathis. A goatherd returns form XIV (Cattle Pound, Monthly) the next morning, gravely, asking whether there is a reward. You pay him from your own pocket and enter the afternoon, in the office diary, as <i>dust-storm; correspondence delayed</i> &mdash; the driest sentence you will ever write about the day the sky read your files.",
+    "effects": { "health": -1, "contentment": 1 }
+  }
+]

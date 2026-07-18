@@ -285,5 +285,47 @@
     },
     "head": "The word 'exceptional', filed",
     "text": "The despatch that posted you here at four-and-twenty sits at the bottom of your confidential file like ballast, steadying everything written above it. Twice this year a doubt about you reached the Division and came back answered by a Collector&rsquo;s red ink five years old."
+  },
+  {
+    "requires": {
+      "flag": "bridge_fell"
+    },
+    "head": "The word 'economical'",
+    "text": "The Kalapani has digested its bridge, and the enquiry&rsquo;s finding follows you now from file to file: <i>economical.</i> Thirty-five thousand saved, a lakh drowned. Every officer in the province who reads your name this year reads that word beside it, and the ford drowns carts again as it always did."
+  },
+  {
+    "requires": {
+      "flag": "mauled"
+    },
+    "head": "The shoulder that reads the weather",
+    "text": "The tigress of Salaiya left you a barometer set in bone and a name in the grass country that no Gazette can gazette. The gun-bearer who killed her on your body refused the reward and asked instead that his grandson be entered for the police. He was. The Service keeps some accounts properly."
+  },
+  {
+    "requires": {
+      "flag": "planter_committed"
+    },
+    "head": "The committal the bazaar remembers",
+    "text": "The jury did what juries do, and the fine would not have kept Amherst in cartridges. It did not matter. What the district keeps is the committal itself, in your hand: the one season&rsquo;s proof that the law could reach a sahib. The Club&rsquo;s coldness will thaw in time. The other thing does not melt."
+  },
+  {
+    "requires": {
+      "flag": "planter_hushed"
+    },
+    "head": "The exchange rate",
+    "text": "Five thousand rupees, and the file closed as accident, and the Christmas shoot was the best in years. In the coolie lines they quote the figure still, without heat, as one quotes any settled market price. It is the only judgment you delivered this year that will be cited for a generation."
+  },
+  {
+    "requires": {
+      "flag": "mela_graves"
+    },
+    "head": "What the goddess did not forget",
+    "text": "Three hundred graves at Tribeni, and no order of yours among the causes &mdash; only the absence where orders ought to have been. The enquiry was gentle. The burning-ghats were not. You trusted the river once, and the district will drink that year&rsquo;s water for as long as you govern it."
+  },
+  {
+    "requires": {
+      "flag": "tipped_the_villages"
+    },
+    "head": "Four cups of tea",
+    "text": "No document records the conversations, and the compensation awards along the new line ran honest for the first time in railway memory. Strictly, the trust was breached; practically, it was spent where it was subscribed. You have decided which officer you are. The decision will not always be this cheap."
   }
 ]

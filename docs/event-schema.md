@@ -180,6 +180,26 @@ creditor's scalar), `turn` (the fortnight number), and `showing` (the live
 honours blend) — the late-year report warnings gate on `turn` + `showing`, so
 a year quietly falling short of its ladder is warned, not surprised.
 
+## Gambles (`risk`)
+
+A choice (or an `ifTrue`/`ifFalse` branch) may carry a rare catastrophe:
+
+```json
+{ "label": "Ford the nullah tonight, papers and all.",
+  "effects": { "prestige": 3, "order": 2, "health": -2 },
+  "risk": { "chance": 0.2,
+            "effects": { "health": -14, "prestige": -6 },
+            "econ": { "treasury": -800 },
+            "setFlags": ["lost_the_dak"],
+            "outcome": "The ford was deeper than the guide swore…" } }
+```
+
+At `chance` (validator caps it at 0.35), the risk branch replaces the ordinary
+result entirely — effects, econ, flags, outcome. Resolved through the injected
+rng, so seeded simulations stay deterministic. House rules: the catastrophe
+must always be *avoidable* (another choice without a gamble exists), the label
+should read risky, and risks never nest.
+
 Example — an event that only appears once the player is both indebted to the
 Lala *and* short of composure:
 

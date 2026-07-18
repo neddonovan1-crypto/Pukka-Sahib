@@ -117,15 +117,24 @@ var POLICIES = {
     posture: function (s) { return s.retreat ? s.retreat.key : "desk"; },
     option: function (s) {
       // Most Order-negative choice, counting a branching choice at its worst
-      // branch — the nastiest outcomes hide in ifFalse.
-      var worstOrder = function (ch) {
-        if (ch.effects) return ch.effects.order || 0;
-        var a = (ch.ifTrue && ch.ifTrue.effects && ch.ifTrue.effects.order) || 0;
-        var b = (ch.ifFalse && ch.ifFalse.effects && ch.ifFalse.effects.order) || 0;
-        return Math.min(a, b);
+      // branch — including a gamble's catastrophe branch, where the deepest
+      // order drops now live — while sparing Prestige, so scandal doesn't end
+      // the run before the thana burns.
+      var worst = function (ch, m) {
+        var vals = [];
+        [ch, ch.ifTrue, ch.ifFalse].forEach(function (b) {
+          if (!b) return;
+          if (b.effects) vals.push(b.effects[m] || 0);
+          if (b.risk && b.risk.effects) vals.push(b.risk.effects[m] || 0);
+        });
+        if (!vals.length) vals.push(0);
+        return Math.min.apply(null, vals);
       };
       var bi = 0, bo = 1e9;
-      s.event.choices.forEach(function (ch, i) { var o = worstOrder(ch); if (o < bo) { bo = o; bi = i; } });
+      s.event.choices.forEach(function (ch, i) {
+        var sc = worst(ch, "order") - 0.15 * worst(ch, "prestige");
+        if (sc < bo) { bo = sc; bi = i; }
+      });
       return bi; // → riot
     }
   },

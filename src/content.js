@@ -21,6 +21,7 @@ var dm = {
   endings: dmBase.endings,
   events: []
     .concat(load("events-district.json"))
+    .concat(load("events-district-2.json"))
     .concat(load("events-personal.json"))
     .concat(load("events-personal-arc.json"))
     .concat(load("events-kipling.json"))
@@ -41,6 +42,7 @@ var ac = {
   endings: acBase.endings,
   events: []
     .concat(load("ac/events-apprentice.json"))
+    .concat(load("ac/events-apprentice-2.json"))
     .concat(load("ac/events-personal.json"))
     .concat(load("ac/warnings.json")),
   occasions: load("ac/occasions.json"),

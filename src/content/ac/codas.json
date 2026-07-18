@@ -51,5 +51,26 @@
     },
     "head": "The tongue you learned",
     "text": "You leave Kotra speaking the language under the language &mdash; the well-songs, the grain-dealer&rsquo;s doubletalk, the seventeen words for land &mdash; and it will make you, all your service, the officer the villages talk to and the Club talks about. Fazl Din&rsquo;s fee, it turns out, was never the rupees. It was what you would do with the hearing."
+  },
+  {
+    "requires": {
+      "flag": "leopard_scar"
+    },
+    "head": "The scar from the cane-brake",
+    "text": "Shoulder to elbow, and it will announce cold weather to you for fifty years. The story has already outgrown the facts &mdash; in the bazaar version the leopard was two leopards &mdash; and you have learned the Service&rsquo;s strangest arithmetic: forty stitches can be worth more than a season&rsquo;s flawless files."
+  },
+  {
+    "requires": {
+      "flag": "lost_the_dak"
+    },
+    "head": "The forms that went to sea",
+    "text": "Somewhere below Kotra the nullah delivered a satchel of Government paper to the river, and the river kept it. The witness died unrecorded, the poisoner kept his liberty, and you keep the guide&rsquo;s word <i>doubtless</i> filed where you file the things no office keeps."
+  },
+  {
+    "requires": {
+      "flag": "survey_buried"
+    },
+    "head": "The map that stayed wrong",
+    "text": "Forty acres of riverain still stand under the Thakur&rsquo;s name, and three families still pay rent on their grandfather&rsquo;s land. The field-book knows. The munshi knows. The luncheons at Rajgarh were excellent all season, and you have begun to understand what they are priced in."
   }
 ]
