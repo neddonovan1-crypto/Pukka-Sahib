@@ -14,7 +14,8 @@
         "label": "Take the Seth's tender and bank the difference against the rains.",
         "effects": {
           "revenue": 3,
-          "prestige": 1
+          "prestige": 2,
+          "contentment": 1
         },
         "risk": {
           "chance": 0.25,
@@ -192,8 +193,9 @@
       {
         "label": "Trust the river and the gods; fairs have washed themselves for a thousand years.",
         "effects": {
+          "contentment": 4,
           "health": 1,
-          "contentment": 1,
+          "prestige": 1,
           "order": -2
         },
         "risk": {
