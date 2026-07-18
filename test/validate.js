@@ -244,8 +244,10 @@ function validateChapter(content, chapterKey) {
   var flagsProduced = {};
   var flagsRequired = [];
 
-  // Conditions may also read the economy's debt scalar (for the Lala warning).
-  var COND_METERS = METERS.concat(["debt"]);
+  // Conditions may also read the economy's debt scalar (the Lala warning),
+  // the fortnight ("turn"), and the honours blend ("showing") — the late-year
+  // report warnings fire on the blend, not any single meter.
+  var COND_METERS = METERS.concat(["debt", "turn", "showing"]);
 
   function checkCondition(c, where) {
     if (!c) return;

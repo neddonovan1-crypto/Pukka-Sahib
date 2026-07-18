@@ -184,5 +184,61 @@
         "outcome": "The terms ease, the book closes softly, and nothing whatever reaches the Collector, and you tell yourself the matter is managed. It is. You are. Sohan Lal&rsquo;s salaam acquires the particular warmth a banker keeps for his best security, and somewhere in the sub-division&rsquo;s long memory you are entered under a heading you will not read for years."
       }
     ]
+  },
+  {
+    "id": "ac-warn-report",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "allOf": [
+        {
+          "meter": "turn",
+          "op": ">=",
+          "value": 8
+        },
+        {
+          "meter": "showing",
+          "op": "<",
+          "value": 48
+        }
+      ]
+    },
+    "title": "The Collector Shows You the Draft",
+    "body": "He is not obliged to, and that he does it is the kindest thing anyone has done for you in India. Across his desk, upside down, in his own hand: the draft of your confidential report. <i>Industrious &hellip; well-meaning &hellip;</i> and then the sentence that ends probations: <i>requires a further period of supervision.</i> He lets you read it twice. &lsquo;It goes up in six weeks,&rsquo; he says, squaring the paper. &lsquo;It is a draft. Drafts are corrected by evidence, not by conversation. What the year wants is a <b>showing</b> &mdash; the whole ledger, not a good column or two. You have the six weeks.&rsquo;",
+    "choices": [
+      {
+        "label": "Spend the six weeks like a man reprieved: every file, every village, every evening.",
+        "effects": {
+          "prestige": 4,
+          "revenue": 3,
+          "contentment": 2,
+          "health": -5
+        },
+        "outcome": "You work the sub-division as if the steamer ticket were already written, because it half is: the arrears docketed, the worst tank finally cleared, the far villages ridden in a fortnight of dawns. The Collector watches the evidence arrive and says nothing whatever, which from him is applause. What it costs you is entered in the one ledger the report does not audit."
+      },
+      {
+        "label": "Ask him, column by column, exactly what is short.",
+        "effects": {
+          "prestige": 2,
+          "revenue": 1,
+          "health": -1
+        },
+        "outcome": "He tells you, because you asked like an officer and not like a boy: where the returns read thin, which headmen have not been seen, what the district office counts that you did not know was counted. It is the most useful twenty minutes of your year. The correcting of it is still yours to do, and six weeks is not long."
+      },
+      {
+        "label": "Thank him, and let the year stand on what it has been.",
+        "effects": {
+          "contentment": 1,
+          "health": 1,
+          "prestige": -2
+        },
+        "outcome": "There is a dignity in it, and he notes the dignity, and dignity is not evidence. The draft goes up in six weeks corrected only where the season corrects it. You sleep better than the reprieved men do, and you have wagered your district on the ledger as it stands."
+      }
+    ]
   }
 ]

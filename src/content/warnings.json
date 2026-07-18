@@ -286,5 +286,61 @@
         "outcome": "You stop performing for the billiard-room, and the relief is physical, like loosening a collar. The district feels the change the way a horse feels a rider stop fighting him, and gives you more than it has ever given. The station&rsquo;s verdict goes up through the proper channels in the proper tone: a useful officer, gone soft on the native side. Such men, the minute observes, are loved and not promoted."
       }
     ]
+  },
+  {
+    "id": "dm-warn-report",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "allOf": [
+        {
+          "meter": "turn",
+          "op": ">=",
+          "value": 16
+        },
+        {
+          "meter": "showing",
+          "op": "<",
+          "value": 54
+        }
+      ]
+    },
+    "title": "A Word Before the Report Goes Up",
+    "body": "The Commissioner takes you aside at the end of his visit, out on the verandah where words leave no file. The annual report on Chhota Nagra is drafting, he says, and he will be plain: it drafts <i>adequate</i>. Not a word anyone is sent Home over &mdash; and not a word anyone is honoured for. &lsquo;The List reads the whole ledger, Collector: revenue, order, the temper of the district, and the name you have made. Some columns of yours read well. A List year is not a column. You have a third of the year to make the ledger agree with your best pages &mdash; or to be, permanently, a man the Service describes as sound.&rsquo;",
+    "choices": [
+      {
+        "label": "Make the last third the answer: tour hard, collect harder, be seen everywhere.",
+        "effects": {
+          "prestige": 4,
+          "revenue": 3,
+          "contentment": 2,
+          "health": -5
+        },
+        "outcome": "You govern the remaining months like a man sitting an examination, because you are: the arrears brought current, the assize returns cleaned, the far tahsils toured until the district begins telling stories about your horse. The Commissioner's final draft is not the November draft. What the difference cost is nowhere in it."
+      },
+      {
+        "label": "Ask him where the ledger reads thin, and work those columns only.",
+        "effects": {
+          "prestige": 2,
+          "revenue": 1,
+          "health": -1
+        },
+        "outcome": "He respects the question and answers it like a gunnery officer: which figures the Division actually reads, which complaints reached him twice, which of your economies read as neglect up the chain. Precision is cheaper than heroics and buys most of the same report. The working of it is still yours, and the year is two-thirds spent."
+      },
+      {
+        "label": "Tell him the district is governed, whatever the draft says.",
+        "effects": {
+          "contentment": 1,
+          "order": 1,
+          "prestige": -2
+        },
+        "outcome": "It is true, and he does not dispute it; he only looks at you the way seniors look at juniors who have just chosen their ceiling. The report goes up saying <i>adequate</i>, and the List, which has never once read a district, reads the report. Chhota Nagra, which is governed, thanks you in the only currency it has &mdash; which is not the one the Gazette pays in."
+      }
+    ]
   }
 ]

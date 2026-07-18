@@ -95,7 +95,10 @@
       if (!c) return true;
       if ("flag" in c) return !!S.flags[c.flag];
       if ("meter" in c) {
-        var v = S[c.meter];
+        // Besides the five meters, conditions may read debt, the fortnight
+        // ("turn"), and the honours blend ("showing") — so warnings can fire
+        // on a year that is quietly falling short, not only on a single dial.
+        var v = c.meter === "showing" ? honoursScore() : S[c.meter];
         switch (c.op) {
           case ">": return v > c.value;
           case ">=": return v >= c.value;

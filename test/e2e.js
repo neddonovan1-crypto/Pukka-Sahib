@@ -224,8 +224,9 @@ async function resumeSession(browser, viewport) {
 // of a passing probation, finish it, and assert the whole chain — the
 // disposition strip names the next rank, the career records the promotion and
 // its carry, and the reload opens the district at fortnight 1.
-async function promotionSession(browser, viewport) {
-  var label = "promotion";
+async function promotionSession(browser, viewport, opts) {
+  opts = opts || {};
+  var label = opts.breakStorage ? "promotion-no-storage" : "promotion";
   var ctx = await browser.newContext({ viewport: viewport });
   var page = await ctx.newPage();
   var errors = [];
@@ -256,10 +257,19 @@ async function promotionSession(browser, viewport) {
   }
   var btn = (await page.textContent("#again")) || "";
   assert(btn.indexOf("promotion") !== -1, label + ": ending button is not the promotion button (\"" + btn.trim() + "\")");
-  var career = await page.evaluate(function () { return JSON.parse(window.localStorage.getItem("pukka-sahib-career") || "null"); });
-  assert(career && career.history && career.history.some(function (h) { return h.chapter === "ac" && h.promoted; }),
-    label + ": career record missing the promoted apprentice year");
-  assert(career && career.carry && career.carry.into === "dm", label + ": promotion recorded no carry for the district");
+  if (opts.breakStorage) {
+    // A browser whose storage dies mid-session (private mode): the promotion
+    // must still hand over, riding the #go-<chapter> hash across the reload.
+    await page.evaluate(function () {
+      window.localStorage.clear();
+      window.localStorage.setItem = function () { throw new Error("QuotaExceededError"); };
+    });
+  } else {
+    var career = await page.evaluate(function () { return JSON.parse(window.localStorage.getItem("pukka-sahib-career") || "null"); });
+    assert(career && career.history && career.history.some(function (h) { return h.chapter === "ac" && h.promoted; }),
+      label + ": career record missing the promoted apprentice year");
+    assert(career && career.carry && career.carry.into === "dm", label + ": promotion recorded no carry for the district");
+  }
   await page.click("#again");
   await page.waitForSelector("#begin", { timeout: 8000 });
   var mast = (await page.textContent("#mastsub")) || "";
@@ -305,6 +315,8 @@ async function promotionSession(browser, viewport) {
     console.log("resume: ", JSON.stringify(r));
     var p = await promotionSession(browser, { width: 1120, height: 920 });
     console.log("promo:  ", JSON.stringify(p));
+    var p2 = await promotionSession(browser, { width: 1120, height: 920 }, { breakStorage: true });
+    console.log("promo2: ", JSON.stringify(p2));
   } finally {
     await browser.close();
   }

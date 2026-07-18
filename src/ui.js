@@ -400,11 +400,15 @@
     if (!career.history.length) return "";
     var honours = career.honours.map(function (h) { return h.title; });
     var meta = content.config.chapter || {};
+    // The latest verdicts, most recent first — so "what did I just get?"
+    // is always answerable from the start screen.
+    var lately = career.history.slice(-3).reverse().map(function (h) { return h.title; });
     return '<div class="service">' +
       '<div class="record-head">Record of service</div>' +
       '<div class="service-line">' + (meta.rank || "") + (meta.posting ? " &middot; " + meta.posting : "") + "</div>" +
       '<div class="service-line">' + career.history.length + " posting" + (career.history.length === 1 ? "" : "s") + " served" +
       (honours.length ? " &middot; " + honours.join(" &middot; ") : " &middot; no honours yet gazetted") + "</div>" +
+      '<div class="service-line">Lately: ' + lately.join(" &middot; ") + "</div>" +
       "</div>";
   }
 

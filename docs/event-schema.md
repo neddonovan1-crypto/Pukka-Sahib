@@ -175,6 +175,11 @@ Used by `requires` (event-level) and `condition` (choice-level). Recursive.
 { "not":   <cond> }                                    // negation
 ```
 
+Besides the five meters, `meter` may name three pseudo-meters: `debt` (the
+creditor's scalar), `turn` (the fortnight number), and `showing` (the live
+honours blend) — the late-year report warnings gate on `turn` + `showing`, so
+a year quietly falling short of its ladder is warned, not surprised.
+
 Example — an event that only appears once the player is both indebted to the
 Lala *and* short of composure:
 
