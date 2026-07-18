@@ -266,6 +266,13 @@
       var biased = pool.filter(function (e) { return prefer.indexOf(e.kind) !== -1 || e.kind === "crisis"; });
       var cand = biased.length >= 2 ? biased : pool;
       if (!cand.length) cand = EVENTS.filter(function (e) { return !e.interlude && eligible(e); });
+      if (!cand.length) {
+        // Dry-pool failsafe: rather than crash, the year re-presents settled
+        // business — once-flags are ignored, but gates are still respected.
+        cand = EVENTS.filter(function (e) {
+          return !e.interlude && !e.priority && (!e.requires || evalCondition(e.requires));
+        });
+      }
       var fresh = cand.filter(function (e) { return recent.indexOf(e.id) === -1; });
       if (fresh.length) cand = fresh;
       else if (cand.length > 1) {

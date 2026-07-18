@@ -285,6 +285,57 @@ async function promotionSession(browser, viewport, opts) {
   return { errors: errors.length };
 }
 
+// The district-to-Division handoff: a career past the probation, a save one
+// click from a Division-tier ending, and the reload must open the Commissioner.
+async function promotionDmSession(browser, viewport) {
+  var label = "promotion-dm";
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  var errors = [];
+  page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  var career = {
+    v: 1, completions: { ac: 1 }, honours: [],
+    history: [{ chapter: "ac", ending: "confirmed", title: "Confirmed in the Service", promoted: true }]
+  };
+  var save = {
+    v: 2, chapter: "dm",
+    data: {
+      S: { flags: { married: true }, posture: "desk", turn: 24, treasury: 90000, debt: 0, log: [],
+           revenue: 62, order: 62, prestige: 80, contentment: 52, health: 50 },
+      phase: "resolved", currentId: "pers-seed",
+      lastResult: { outcome: "done", effects: {}, econ: null },
+      recent: [], notice: null, lastEventId: "pers-seed", endedKey: null
+    }
+  };
+  await ctx.addInitScript(function (seed) {
+    window.localStorage.setItem("pukka-sahib-career", JSON.stringify(seed.career));
+    window.localStorage.setItem("pukka-sahib-save", JSON.stringify(seed.save));
+  }, { career: career, save: save });
+  await page.goto(INDEX, { waitUntil: "load" });
+  await page.click("#resume");
+  await page.click("#cont");
+  await page.waitForSelector("#again", { timeout: 5000 });
+  var title = (await page.textContent("#card .cardtitle")) || "";
+  assert(/C\.I\.E\.|Division/.test(title), label + ": district year with top meters did not reach a promoting tier (\"" + title.trim() + "\")");
+  var disp = (await page.textContent(".disposition--up").catch(function () { return ""; })) || "";
+  assert(/Commissioner/.test(disp), label + ": disposition does not name the Commissioner (\"" + disp.trim() + "\")");
+  var career2 = await page.evaluate(function () { return JSON.parse(window.localStorage.getItem("pukka-sahib-career") || "null"); });
+  assert(career2 && career2.carry && career2.carry.into === "comm", label + ": promotion recorded no carry for the Division");
+  assert(career2 && career2.carry && career2.carry.flags.indexOf("carry_wife") !== -1, label + ": married year did not carry the wife");
+  await page.click("#again");
+  await page.waitForSelector("#begin", { timeout: 8000 });
+  var mast = (await page.textContent("#mastsub")) || "";
+  assert(/Commissioner/.test(mast), label + ": after promotion the masthead is not the Commissioner's (\"" + mast.trim() + "\")");
+  await page.click("#begin");
+  await page.waitForSelector("#card .fortnight", { timeout: 5000 });
+  var fn = (await page.textContent("#card .fortnight")) || "";
+  assert(/Fortnight 1 of 24/.test(fn), label + ": the Division did not open at fortnight 1 of 24 (\"" + fn.trim() + "\")");
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  await ctx.close();
+  return { errors: errors.length };
+}
+
 (async function () {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
@@ -317,6 +368,8 @@ async function promotionSession(browser, viewport, opts) {
     console.log("promo:  ", JSON.stringify(p));
     var p2 = await promotionSession(browser, { width: 1120, height: 920 }, { breakStorage: true });
     console.log("promo2: ", JSON.stringify(p2));
+    var p3 = await promotionDmSession(browser, { width: 1120, height: 920 });
+    console.log("promo3: ", JSON.stringify(p3));
   } finally {
     await browser.close();
   }

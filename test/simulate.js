@@ -29,6 +29,11 @@ var CHAPTER_BANDS = {
     spamFail: { keys: ["transfer", "gonenative", "breakdown", "scandal"], min: 0.40, label: "tour-only should mostly fail the probation (want ≥40% extended/gone-native/collapse)" },
     pooledReachable: ["scandal", "transfer", "gonenative"],
     probes: { riot: false, bankrupt: true, burnout: true }
+  },
+  comm: {
+    spamFail: { keys: ["breakdown", "gonenative", "transfer", "scandal"], min: 0.40, label: "tour-only should mostly fail the Division (want ≥40% invalided/shelved/superseded/retired)" },
+    pooledReachable: ["breakdown", "scandal", "transfer", "gonenative"],
+    probes: { riot: true, bankrupt: true, burnout: false }
   }
 };
 
@@ -102,7 +107,10 @@ var POLICIES = {
           (e.revenue || 0) * (m.revenue < 62 ? 0.8 : 0.2) +
           (e.order || 0) * (m.order < 50 ? 0.8 : 0.2) +
           (e.health || 0) * (m.health < 40 ? 1.6 : 0);
-        if (ch.econ && ch.econ.debt && s.debt + ch.econ.debt > DEBT_GUARDS.lo) sc -= 50; // the warn line kills the top rung
+        if (ch.econ && ch.econ.debt) {
+          sc -= ch.econ.debt / 45000; // big borrowings poison a pinnacle year outright
+          if (s.debt + ch.econ.debt > DEBT_GUARDS.lo) sc -= 50; // the warn line kills the top rung
+        }
         if (ch.econ && ch.econ.treasury < 0) sc -= Math.max(0, -ch.econ.treasury - s.treasury) / 25000;
         if (sc > bs) { bs = sc; best = i; }
       });
@@ -178,12 +186,16 @@ var POLICIES = {
         var b = (ch.ifFalse && ch.ifFalse.effects && ch.ifFalse.effects.revenue) || 0;
         return Math.min(a, b);
       };
-      var bi = -1, best = 0;
-      s.event.choices.forEach(function (ch, i) { var v = econOf(ch); if (v > best) { best = v; bi = i; } });
-      if (bi >= 0) return bi;
-      var ri = 0, rv = 1e9;
-      s.event.choices.forEach(function (ch, i) { var r = worstRev(ch); if (r < rv) { rv = r; ri = i; } });
-      return ri;
+      // Borrowing and revenue collapse are the same road at different speeds:
+      // weigh the deepest borrow against the worst revenue drop together (a
+      // revenue point priced in rupees), so the probe starves the settlements
+      // that would otherwise auto-rescue it.
+      var bi = 0, best = -1e15;
+      s.event.choices.forEach(function (ch, i) {
+        var v = econOf(ch) - worstRev(ch) * 5000;
+        if (v > best) { best = v; bi = i; }
+      });
+      return bi;
     }
   }
 };

@@ -1,0 +1,537 @@
+[
+  {
+    "id": "comm-first-appeals",
+    "tag": "CUTCHERRY",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "title": "The First Appeal Against Petherick",
+    "body": "The appeal pile teaches you the Division faster than any tour: and here, third from the top, is Marwan &mdash; Petherick, twenty-six years in the Service, eight in that district, senior to you in everything but the warrant of precedence &mdash; and an order of his that is, on the plain law, wrong. Not corrupt: high-handed, in the old style, and appealable for exactly that reason. Your first reversal of a Collector will be quoted in three districts by Friday. So will your first failure to reverse one.",
+    "choices": [
+      {
+        "label": "Reverse him on the law, in a judgment with no adjectives.",
+        "effects": { "order": 2, "prestige": 2, "contentment": 1 },
+        "setFlags": ["overruled_petherick"],
+        "outcome": "Four paragraphs, the statute, the precedent, and not one word about the man &mdash; a reversal any Collector could read aloud to his own cutcherry without flinching. Petherick wires two words: <i>NOTED. PETHERICK.</i> The Division reads the judgment as it was written: the new Commissioner corrects the order, not the officer. It is the most important document of your first quarter, and you spent a whole evening taking the adjectives out."
+      },
+      {
+        "label": "Uphold him; a Commissioner's first duty is his Collectors' authority.",
+        "effects": { "prestige": 1, "contentment": -3, "order": -1 },
+        "setFlags": ["backed_petherick_wrong"],
+        "outcome": "The order stands, the law notwithstanding, and Marwan understands precisely what has been decided: not the case, but the policy &mdash; the new Commissioner backs his men. Petherick's programme letters grow one degree warmer. The appellant, who was right, pays for the policy; the High Court, eighteen months on, reverses you both in language that finds its way into the Secretariat's file on you, under a tab you will never see."
+      },
+      {
+        "label": "Send it back for review, with a private letter suggesting he correct it himself.",
+        "effects": { "prestige": 1, "contentment": 1, "health": -1 },
+        "outcome": "The letter takes three drafts &mdash; senior man, junior warrant, old style, plain error &mdash; and it works: Petherick reviews his own order, amends it without reference to yours, and honour is whole all round. It is the elegant solution, and like most elegant solutions it is invisible: the Division sees only that the appeal went quiet. Authority spent silently is authority spent all the same. You will find out the balance later."
+      }
+    ]
+  },
+  {
+    "id": "comm-ormsby-procession",
+    "tag": "URGENT",
+    "season": ["any"],
+    "kind": "crisis",
+    "once": true,
+    "title": "Ormsby Wants to Ban the Procession",
+    "body": "A cypher from Chhota Nagra at midnight &mdash; your old district, and young Ormsby two years in the chair you once filled. The Mohurrum route and the new temple's music: the oldest collision in the calendar, and his intelligence says this year the parties have imported men. He wants to ban the procession outright, and he is asking &mdash; correctly, the power being yours &mdash; for sanction by wire. A ban held firmly can keep the peace. A ban that wavers makes the riot it feared. And you know that route, that temple corner, those mohullas, better than any man now serving.",
+    "choices": [
+      {
+        "label": "Sanction the ban, and wire him the backing in words he can publish.",
+        "effects": { "order": 4, "prestige": 2, "contentment": -2 },
+        "setFlags": ["backed_ormsby"],
+        "outcome": "Your reply names the sanction, the sections, and the sentence he may print: <i>the Commissioner concurs and will answer for it.</i> Ormsby bans, holds, and is obeyed; the imported men, finding the order seamless from district to Division, go home unemployed. Mohurrum passes sullen and dry. A young Collector who has been backed in the dark once will hold anything for you afterwards &mdash; which is, at Divisional rank, the whole art and the whole bank."
+      },
+      {
+        "label": "Overrule him: license the procession, re-route it past the corner yourself.",
+        "effects": { "order": 1, "prestige": 1, "contentment": 2, "health": -2 },
+        "risk": {
+          "chance": 0.2,
+          "effects": { "order": -14, "prestige": -8, "contentment": -5 },
+          "setFlags": ["mohurrum_burned"],
+          "outcome": "The re-route holds for six hundred yards and fails at a lane your memory called too narrow to matter &mdash; it has been widened since your day, and the parties meet in it. Two nights of Chhota Nagra burning its own bazaars; the Army called at dawn on the second. Ormsby, whose ban you overrode, conducts himself faultlessly and says nothing to anyone, which is worse than accusation. The enquiry will note that the Commissioner acted on personal knowledge eight years stale. So, for longer, will you."
+        },
+        "outcome": "You take the night train down and walk the route with Ormsby at dawn, and the old knowledge holds: the procession goes wide of the temple corner by two mohullas, licensed, drummed, and watched from four rooftops. Both parties claim the arrangement as a victory, which is the definition of one that works. Ormsby takes the overruling like an officer &mdash; and takes note, too, that the Commissioner's knowledge of his district was worth the humiliation. The Division files the lesson both ways."
+      },
+      {
+        "label": "Leave it wholly to the man on the spot; that is what Collectors are for.",
+        "effects": { "prestige": -2, "order": -3, "health": 1 },
+        "outcome": "Doctrine, and sound doctrine &mdash; and Ormsby, denied both sanction and refusal, bans on his own authority with a wire on the file showing the Division declined to answer. The ban holds, barely, at a cost in lathi-work a firmer paper would have spared. What travels the Division is not the outcome but the silence: at midnight, with men imported, Sonepore did not answer. Your other two Collectors read that file with the closest professional attention of their year."
+      }
+    ]
+  },
+  {
+    "id": "comm-marwan-arrears",
+    "tag": "SETTLEMENT",
+    "season": ["cold"],
+    "kind": "desk",
+    "once": true,
+    "title": "The Figures Marwan Sends Up",
+    "body": "Your office has done the arithmetic twice: Marwan&rsquo;s revenue returns balance beautifully, and cannot be true. The suspensions granted after last year&rsquo;s hail do not appear; the arrears column has been &mdash; the polite word is <i>consolidated</i>. Petherick is not stealing a rupee. He is doing something the Service knows better: burying a bad year in a good ledger, to spare his district the enhancement and himself the correspondence. Twenty-six years of service sit on the other side of the question, and your signature goes at the bottom of the Division&rsquo;s total.",
+    "choices": [
+      {
+        "label": "Order a special audit of Marwan's books, under your own hand.",
+        "effects": { "revenue": 3, "prestige": 2, "contentment": -2 },
+        "setFlags": ["audited_marwan"],
+        "outcome": "The audit finds what you knew it would: nothing venal, everything irregular, a district's bad year laundered through a good clerk. The figures are restated, the enhancement recalculated honestly, and Petherick offers, stiffly, to retire. You decline the offer in a letter that costs you an evening: the Division needs his district-craft more than his ledger-craft. He stays, correct and glacial. Your revenue column now means what it says, which His Honour's office notices within the quarter."
+      },
+      {
+        "label": "Go down and settle it with him alone, over two evenings and a decanter.",
+        "effects": { "revenue": 1, "contentment": 2, "health": -1 },
+        "outcome": "Twenty-six years deserve the journey. The first evening is fencing; the second, after the port, is the truth: the hail, the suspensions, the dread &mdash; at his age &mdash; of a Secretariat correspondence he no longer has the patience to win. The figures are quietly restated next quarter, by him, correctly. No file records the arrangement. This is how the old Service governed everything, and you begin to see why &mdash; and what it cost: every such settlement is invisible, unauditable, and dies with the two men who made it."
+      },
+      {
+        "label": "Initial the returns as sent; a Commissioner is not an auditor.",
+        "effects": { "prestige": 1, "revenue": -3 },
+        "setFlags": ["signed_marwan_figures"],
+        "outcome": "Your initials go under his totals, and the Division's column reads handsome at Government House. The truth surfaces where buried truths surface: at settlement, eighteen months on, when Marwan's arrears prove twice the record and the correspondence you both dodged arrives with interest &mdash; addressed, this time, to the officer who initialled. Petherick will be retired by then. The initials, as the Accountant-General's office observes with actual relish, will not."
+      }
+    ]
+  },
+  {
+    "id": "comm-dass-club",
+    "tag": "PRIVATE",
+    "season": ["any"],
+    "kind": "club",
+    "once": true,
+    "title": "The Silchar Club Question",
+    "body": "Dass took Silchar eight months ago &mdash; Balliol, the open competition, fourteen years&rsquo; service, the best settlement report in the province &mdash; and the Silchar Club has not elected him. Has not refused, of course: his name simply &lsquo;awaits the committee,&rsquo; meeting by meeting, while the district watches its English club decline its Indian Collector. Now the Club&rsquo;s annual dinner invites you, as Commissioner, to preside. Dass has said nothing to you. His wife, they say, no longer drives past the Club road. Every Collector in the Division is watching what you do with the card on your table.",
+    "choices": [
+      {
+        "label": "Reply that you dine where your Collectors dine, and regret you are engaged.",
+        "effects": { "prestige": 2, "contentment": 3 },
+        "setFlags": ["stood_by_dass"],
+        "outcome": "One sentence, no adjectives, and you dine that week at Silchar &mdash; at the Collector's bungalow, publicly, the flag on the car. The Club committee discovers within the month that its list had somehow never been in doubt; Dass is elected without his name ever having been refused, which is how such doors always claim they opened. He never mentions it. But his settlement work, already the best in the province, acquires the particular finish of a man who knows his chief will hold the ladder. The Division has learned the only fact about you that matters at altitude."
+      },
+      {
+        "label": "Preside at the dinner, and say what is wanted in the speech.",
+        "effects": { "prestige": 1, "contentment": -1 },
+        "outcome": "You go, and the dinner is excellent, and your speech carries one paragraph about the Service knowing no distinctions that the port-flushed tables applaud without hearing. The committee thanks you for a memorable evening. The name goes on awaiting. You have said the right thing in the one register where saying is free, and Dass, reading the Silchar paper's account at his breakfast table, understands the transaction to the last anna. So, eventually, do you."
+      },
+      {
+        "label": "It is a private club; a Commissioner has no standing in its lists.",
+        "effects": { "prestige": -1, "contentment": -3 },
+        "outcome": "Constitutionally impeccable: the Club is private, the list is theirs, the Service is neutral. The doctrine holds all the way down &mdash; through the committee, who cite it; the station, which shelters under it; and the Dass household, which has heard it before in three provinces and files it where they file such rulings. His work stays excellent, his letters correct. Something that might have been given to you, and to the Service through you, is quietly put away instead. Neutrality is also a decision. It is simply the one that never has to sign."
+      }
+    ]
+  },
+  {
+    "id": "comm-famine-test",
+    "tag": "MOST SECRET",
+    "season": ["hot"],
+    "kind": "crisis",
+    "once": true,
+    "title": "Marwan Fails the Rain",
+    "body": "The hot-weather reports from Marwan make the shape every Indian officer knows by heart: two failed falls of rain, cattle prices sliding, grain edging up, the tank levels a fortnight worse than the decade&rsquo;s mean. The Famine Code is exact: you may declare <i>scarcity</i> now &mdash; test works opened, remissions ready, a lakh committed against a calamity that may not come &mdash; or wait for the Code&rsquo;s full tests, which are conclusive precisely because they are late. Petherick, on the spot, says wait. The tahsildar in you, who once watched a district eat its seed grain, says otherwise.",
+    "choices": [
+      {
+        "label": "Declare scarcity now and open the test works early.",
+        "effects": { "contentment": 4, "order": 2, "prestige": -2, "revenue": -2 },
+        "econ": { "treasury": -60000 },
+        "setFlags": ["declared_early"],
+        "outcome": "The declaration goes up over Petherick's recorded dissent, and the works open while the cattle can still walk to them. The rains half-fail, exactly ambiguously: enough to let the Secretariat query your lakh, not enough to have fed Marwan without it. No famine is visible &mdash; which is the whole trouble with prevention: its successes are invisible and its invoices are not. His Honour, who served through '97, initials the file himself: <i>expenditure approved. This is what the reserve is for.</i> You frame nothing, but you keep that file number by heart."
+      },
+      {
+        "label": "Hold to the Code and wait for the full tests.",
+        "effects": { "revenue": 2, "prestige": 1 },
+        "risk": {
+          "chance": 0.25,
+          "effects": { "contentment": -12, "order": -7, "prestige": -8, "health": -2 },
+          "econ": { "treasury": -90000 },
+          "setFlags": ["famine_late"],
+          "outcome": "The rains fail entire, and the Code's tests are met three weeks after the district's poorest met them privately. The works open into a labour already weakened; the relief, costlier now in every column, chases the calamity instead of standing before it. The mortality figures are, by the standards of '97, creditable. They are figures. Petherick ages a decade in a quarter, and his dissent on your file &mdash; <i>wait</i> &mdash; has your concurrence under it, where it will outlast you both."
+        },
+        "outcome": "The rains come late and sufficient, the tanks fill, the prices ease, and the lakh stays in the treasury with the Code vindicated and Petherick quietly triumphant. It was, on the figures, the correct decision. You know &mdash; because the tahsildar in you kept the count &mdash; how many weeks of margin the district's poorest were carrying when the sky finally paid. Three. The Code does not have a column for that number. You have begun keeping one of your own."
+      },
+      {
+        "label": "Split it: quiet preparations, works surveyed and stores moved, no declaration.",
+        "effects": { "order": 1, "prestige": 1, "health": -2 },
+        "econ": { "treasury": -15000 },
+        "outcome": "The middle way, done properly, is merely both ways at half-price: stores pre-positioned, works surveyed, staff warned, and no declaration to alarm the Secretariat or commit the reserve. When the rains half-fail, Marwan moves a fortnight faster than the Code alone would have moved it &mdash; and a fortnight slower than a declaration would have. The saved difference is real and so is the spent one; neither appears in any return. Administration at altitude, you are learning, is the management of invisible margins."
+      }
+    ]
+  },
+  {
+    "id": "comm-death-appeal",
+    "tag": "CONFIDENTIAL",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "title": "The Kurmi Who Killed the Moneylender",
+    "body": "A confirmation case up from Silchar sessions: a Kurmi cultivator, his holding foreclosed by instalments of paper he could not read, waited three days at the moneylender&rsquo;s door and then beat him to death with the man&rsquo;s own scale-beam. The law is untroubled: murder, premeditated, death. Dass, forwarding, has recorded the facts and &mdash; against usage &mdash; one sentence more: <i>the deceased had foreclosed eleven holdings in four years by methods this court was twice asked to examine and could not.</i> The recommendation to mercy is yours to make or withhold before the papers go up.",
+    "choices": [
+      {
+        "label": "Recommend commutation, and say why in full.",
+        "effects": { "contentment": 3, "prestige": -1 },
+        "setFlags": ["mercy_kurmi"],
+        "outcome": "Your minute takes the evening: the eleven foreclosures, the two failed examinations, the three days at the door &mdash; premeditation, or a man waiting to be heard by anyone at all. Government commutes to transportation. The Silchar bazaar, which had followed the case as its own, notes that the sirkar saw what the court could not say. The moneylending fraternity notes it too, differently, and somewhere in the Division a dozen ledgers grow marginally more careful. One life against that. You would sign it again."
+      },
+      {
+        "label": "The law has spoken; forward without recommendation.",
+        "effects": { "order": 2, "prestige": 1, "contentment": -3 },
+        "outcome": "The papers go up clean and the sentence stands and is executed at Silchar gaol on a Tuesday, before a crowd the police report describes as &lsquo;large and silent.&rsquo; The law is left whole, which is a real thing and worth real weight: the next scale-beam stays on its hook. But Dass's one extra sentence remains on the file in his small exact hand, unanswered, and you find over the years that of all the paper that ever crossed your table, it is the sentence you can recite."
+      },
+      {
+        "label": "Send the case back: let the foreclosures themselves be prosecuted first.",
+        "effects": { "order": -1, "contentment": 2, "health": -1 },
+        "outcome": "A bold reference: try the dead man's methods before hanging his killer. The Legal Remembrancer's office replies at length &mdash; the deceased cannot be prosecuted, the accused cannot wait, the two files cannot legally touch &mdash; and the sentence is confirmed while your reference travels. What survives is the attempt: Dass has it framed in his memory if nowhere else, and the district pleaders cite &lsquo;the Commissioner's reference&rsquo; for a decade in usury cases, where it does slow, real work the law never records."
+      }
+    ]
+  },
+  {
+    "id": "comm-river-island",
+    "tag": "SETTLEMENT",
+    "season": ["cold"],
+    "kind": "desk",
+    "once": true,
+    "title": "The Island That Changed Districts",
+    "body": "The river, shifting in last year&rsquo;s floods, has moved its deep-stream channel &mdash; and with it, by law, the boundary: a char island of two thousand new acres now lies in Chhota Nagra that lay in Marwan when it was worth nothing. Now it is silt-rich and worth a great deal, and both your Collectors claim it with a completeness of documentation that does them each credit. Ormsby has law and the channel; Petherick has history, the cultivators&rsquo; origin, and twenty-six years of not losing arguments. The file has reached four inches. The cultivators, meanwhile, are ploughing.",
+    "choices": [
+      {
+        "label": "Decide it on the channel rule in a week, and let the loser appeal you.",
+        "effects": { "order": 2, "revenue": 2, "prestige": 1 },
+        "outcome": "The law is the channel and the channel is Ormsby's, and you say so in five pages before the ploughing reaches the disputes stage. Petherick appeals to the Board of Revenue on principle and is dismissed with costs to nobody, honour maintained. The cultivators take their leases from Chhota Nagra and could not care which flag flies over the silt, provided someone will register it &mdash; which, four inches of file notwithstanding, was always the entire question."
+      },
+      {
+        "label": "Broker a joint settlement: the island managed by one district, revenue shared.",
+        "effects": { "contentment": 2, "revenue": 1, "health": -1 },
+        "outcome": "A conference at the rest-house on the bank: two Collectors, one map, and a Commissioner declining to leave until the thing is signed. The compromise is administratively untidy and humanly exact &mdash; Marwan's cultivators keep their patta continuity, Chhota Nagra keeps the police and the records, the revenue splits by a formula only its three authors will ever understand. The Board of Revenue calls it irregular and lets it stand. Twenty years on, both districts will believe they won, which is the only known definition of a durable boundary."
+      },
+      {
+        "label": "Refer the whole question to the Board of Revenue's survey.",
+        "effects": { "prestige": -2, "revenue": -2 },
+        "outcome": "The Board's survey party is thorough and eighteen months away, and in the interregnum two thousand unadministered acres administer themselves: rival lease-mongers, a knife fight at the ferry, crops sown under one district's receipts and attached under the other's. The survey, arriving at last, awards the island by the channel rule in a fortnight &mdash; the ruling you could have made in one. The file, now nine inches, is filed. The knife fight is in it, indexed, under your decision to wait."
+      }
+    ]
+  },
+  {
+    "id": "comm-probationer-echo",
+    "tag": "CONFIDENTIAL",
+    "season": ["cold"],
+    "kind": "personal",
+    "once": true,
+    "title": "A Boy Not Shaping",
+    "body": "Among Ormsby&rsquo;s confidential reports comes one on his probationer &mdash; a boy of three-and-twenty, five months out from Home, posted to Kotra sub-division. The phrases are the phrases: <i>industrious &hellip; well-meaning &hellip; has not yet found his feet &hellip; a further period of supervision.</i> You know that sub-division. You know that report; one very like it was nearly written about a boy at Kotra once, and was not, because a Collector took two days and a horse and went to look for himself. Ormsby is correct, overworked, and eight miles of paper from the boy. The despatch box can go up with the report as it stands, or wait a week.",
+    "choices": [
+      {
+        "label": "Take two days and a horse, and go and look at the boy yourself.",
+        "effects": { "prestige": 1, "contentment": 2, "health": -2 },
+        "setFlags": ["went_to_kotra"],
+        "outcome": "Kotra again: the same cutcherry, the same tank, a different tahsildar keeping the same silences. The boy is drowning in exactly the way you once drowned &mdash; all industry, no eyes &mdash; and two days of riding his boundaries with him teach him more than five months of red ink. To Ormsby you say only that the report might winter in a drawer. It does. The boy finds his feet by March, never knowing why the Commissioner came, and there is now one more debt in the Service's oldest ledger, payable forward, to a probationer not yet born."
+      },
+      {
+        "label": "Endorse the report; the Service's filters exist for a reason.",
+        "effects": { "prestige": 1, "health": 1, "contentment": -1 },
+        "outcome": "The report goes up endorsed and the machinery does what the machinery does: the probation extended, the boy transferred to a smaller charge under a harder eye. It is, on the evidence before you, defensible; the filters do exist for a reason, and not every drowning boy is you. But you notice what you did not do &mdash; the two days, the horse &mdash; and you notice that fourteen years at altitude have made the not-doing easy. That is the report on YOU this fortnight, filed where you file such things."
+      },
+      {
+        "label": "Wire Ormsby: bring the boy to your camp for a week as extra A.D.C.",
+        "effects": { "contentment": 1, "prestige": -1, "health": -1 },
+        "outcome": "A week of carrying your despatch-box teaches the boy what no sub-division can: how the whole machine sounds when it runs &mdash; the wires, the appeals, the Collectors managed at a distance, the Division breathing. He goes back to Kotra visibly recalibrated; Ormsby, mildly puzzled, reports improvement by February. The A.D.C. fiction deceives nobody senior. His Honour's private secretary, who misses nothing, enters in his own book that Sonepore grows its juniors &mdash; a smaller entry than a knighthood, and worth more to the Service."
+      }
+    ]
+  },
+  {
+    "id": "comm-honours-drafting",
+    "tag": "MOST SECRET",
+    "season": ["cold"],
+    "kind": "desk",
+    "once": true,
+    "title": "The List You Now Write",
+    "body": "The circular arrives in the cold weather as it arrived all your service &mdash; but now it arrives FOR you: the Division&rsquo;s honours recommendations, in the Commissioner&rsquo;s own hand, two names at most. You have three. Petherick: twenty-six years, due, expected, and after the ledger business perhaps less than urgent. Ormsby: brilliant, young, a C.I.E. now would make him &mdash; or mark him for the jealousy of every senior he leapfrogs. Dass: the best settlement report in the province, and a name the committee up the hill will read twice for reasons no circular acknowledges. Two lines. You remember, with sudden completeness, every List you ever waited on.",
+    "choices": [
+      {
+        "label": "Petherick and Dass: the years and the work.",
+        "effects": { "contentment": 3, "prestige": 1 },
+        "setFlags": ["listed_dass"],
+        "outcome": "The years, because the Service must keep faith with its long servants or lose the long service; the work, because if the List cannot see Dass's settlement report it can see nothing. The committee blinks at the second name and passes it &mdash; your covering minute left them nowhere to stand. Petherick's C.S.I. lands like a pension; Dass's C.I.E. lands like a door opening three inches on a corridor his sons will walk down. Ormsby, told privately his year will come, believes you, correctly. It is the best List you will ever write and no one will ever know it."
+      },
+      {
+        "label": "Petherick and Ormsby: the safe List that keeps the Division warm.",
+        "effects": { "prestige": 2, "contentment": -2 },
+        "outcome": "The committee approves without a query, which tells you what you submitted. Petherick is gratified, Ormsby is launched, the Division's English tables toast the Gazette &mdash; and at Silchar the settlement report that was the best in the province goes unmentioned at its author's breakfast, where the omission is understood with fourteen years' practice. Dass's work does not slacken; that is not where such accounts are kept. The account is kept. Everyone at altitude keeps it. You have merely chosen which side of it to be on this year."
+      },
+      {
+        "label": "One name only: Dass, with a minute the committee cannot dodge.",
+        "effects": { "prestige": -2, "contentment": 2 },
+        "outcome": "A single recommendation is a Commissioner shouting, and you shout in your best drafting: the report, the figures, the fourteen years, and one closing sentence &mdash; <i>if this officer's claims are again postponed, I request my reasons be asked for in writing.</i> The committee, offered the choice between a knighthood-corridor scandal and a C.I.E., chooses the C.I.E. Petherick and Ormsby, passed over together, are cool for a season; the Division's Indian services are something else entirely, for years. You spent real capital. You know exactly what you bought."
+      }
+    ]
+  },
+  {
+    "id": "comm-branch-line",
+    "tag": "P.W.D.",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "title": "One Line, Three Districts",
+    "body": "The branch railway is sanctioned at last &mdash; one line, and three districts that want it. The traffic survey favours Marwan by a nose; the famine argument favours Silchar, whose tail-country starves hardest in bad years; and Chhota Nagra&rsquo;s memorial, drafted by its chamber of commerce, arrives with four hundred signatures and a map in three colours. Each Collector has written supporting his district, as each should. The Railway Board will weigh your recommendation heavier than all three together, and every deputation in the Division knows it: your verandah has become a station platform of waiting notables.",
+    "choices": [
+      {
+        "label": "Recommend on the famine argument: the line goes where the hunger goes.",
+        "effects": { "contentment": 4, "prestige": 1, "revenue": -1 },
+        "outcome": "Your minute leads with the scarcity maps: rail is the one famine relief that arrives before the famine, and Silchar's tail-country has met the Code's tests twice in a decade. The Board, offered an argument that will read well in a blue-book, adopts it. Marwan's chamber grumbles at the traffic figures; the grumble has no famine map to stand on. Years hence, in the first bad year after the rails reach it, grain will move into the tail-country at a speed that makes the old carts look like the old world &mdash; and nobody grumbling this season will remember there was ever a choice."
+      },
+      {
+        "label": "Recommend on the traffic survey; railways are commerce, not charity.",
+        "effects": { "revenue": 3, "prestige": 1, "contentment": -2 },
+        "outcome": "The survey is sound and your minute is sounder, and the line goes to Marwan where the goods are. It pays from the first year, which the Railway Board remembers about you approvingly. The famine argument retires to its file to wait for a famine, which comes in its own time, as they do, and finds the tail-country still forty miles from a railhead. Relief moves at cart-speed; the enquiry does not blame the alignment, alignments being commerce. The blue-book that year has no map of where the line is not."
+      },
+      {
+        "label": "Send up all three cases without preference, scrupulously weighed.",
+        "effects": { "prestige": -2, "contentment": -1 },
+        "outcome": "The scrupulous minute weighs everything and lifts nothing, and the Board, denied a Divisional preference, decides on grounds visible from Calcutta: the alignment that serves a director's jute interest two districts north. Nobody in Sonepore gets the line they wanted; everybody gets the lesson &mdash; a Commissioner who will not choose has chosen to be overruled. Three Collectors file your circulated minute without comment. The comment is the filing."
+      }
+    ]
+  },
+  {
+    "id": "comm-durbar-princes",
+    "tag": "CEREMONIAL",
+    "season": ["cold"],
+    "kind": "club",
+    "once": true,
+    "title": "The Nawab's Motor-Car",
+    "body": "The Divisional durbar assembles the Division&rsquo;s princes in their order, and the order is the whole of the event. This year the Nawab of Tikri &mdash; senior by his eleven guns and immemorially by everything else &mdash; proposes to arrive by motor-car, the first in the Division, and the master of ceremonies is in despair: the schedule of processions is written in elephants, and an elephant procession paced behind a Daimler is either a revolution or a farce. The Raja of Barwa has already let it be known that if the car enters the maidan, his elephants withdraw. The durbar is in nine days.",
+    "choices": [
+      {
+        "label": "Rule the maidan elephant-only, and give the car a place of honour at the gate.",
+        "effects": { "prestige": 2, "contentment": 2 },
+        "outcome": "The ruling is Solomon in ceremonial dress: within the gate, the old order entire, elephants, fly-whisks and all; at the gate, the Daimler on a carpet, garlanded, with its own guard &mdash; technically parked, visibly enthroned. The Nawab, who wanted the car seen rather than driven, is delighted; Barwa's elephants process unrivalled; and the crowd gets both the old India and the new one, correctly ranked, which is what a durbar is for. The master of ceremonies retires that year, content, having seen everything now."
+      },
+      {
+        "label": "Admit the car; the future will not wait on Barwa's elephants.",
+        "effects": { "prestige": 1, "contentment": -3 },
+        "outcome": "The Daimler enters the maidan at four miles an hour, magnificent and absurd between the ranks, and Barwa's elephants are withdrawn on schedule, their absence a hole in the durbar visible from the dais. The Nawab has won and knows it; every lesser chief recalibrates accordingly; and the season's quiet war of precedence that follows &mdash; calls unpaid, weddings unattended, a polo tournament stillborn &mdash; costs the Division more administration than a small riot. The future, you note for the file, can be admitted. It cannot be admitted FIRST at a durbar."
+      },
+      {
+        "label": "Postpone the durbar on grounds of the late harvest.",
+        "effects": { "prestige": -2, "contentment": -1 },
+        "outcome": "The harvest obliges with a fig-leaf and the durbar moves to February, by which time &mdash; the calculation &mdash; the novelty may cool. It does not cool; it multiplies: by February the Raja of Barwa has ordered a Rolls, sight unseen, and the question returns doubled, with the cold weather nearly spent and the invitations twice printed. Postponement, your predecessor's note in the confidential box observes in another context, is interest paid on a decision. You have now read the note twice. It was left, you begin to suspect, for exactly this file."
+      }
+    ]
+  },
+  {
+    "id": "comm-sedition-press",
+    "tag": "CONFIDENTIAL",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "title": "The Young Men's Paper",
+    "body": "The <i>New Dawn</i> is not the old vernacular scolding: it is written by young men who have read Mill and Burke and quote them accurately, printed in English and the vernacular side by side, and its circulation among the Division&rsquo;s pleaders, schoolmasters and clerks has trebled in a year. This week&rsquo;s leader, on the Silchar Club affair, is measured, wounding, and difficult to answer because it is largely true. The Legal Remembrancer marks two paragraphs as prosecutable. Petherick wants it prosecuted. Dass, asked privately, says only: <i>every subscription list in my district would double.</i>",
+    "choices": [
+      {
+        "label": "No prosecution &mdash; and answer the true parts by mending them.",
+        "effects": { "contentment": 3, "prestige": -1 },
+        "outcome": "You leave the paper its liberty and take away its best material: the Club question is settled the month after, two of the leader's smaller grievances &mdash; a ferry toll, a school grant &mdash; are examined and mended, and the <i>New Dawn</i> finds itself in the unaccustomed position of having been read carefully by the Government it attacks. Its circulation grows anyway; the times are what they are. But its tone acquires the particular difficulty of arguing with a Government that mends things, and difficulty of tone, at this altitude, is worth more than a conviction."
+      },
+      {
+        "label": "Prosecute the marked paragraphs; the line must be visible.",
+        "effects": { "order": 1, "prestige": -2, "contentment": -3 },
+        "outcome": "The conviction is secured &mdash; the paragraphs did cross the statute &mdash; and the editor serves his six months with conspicuous serenity, reading Morley in his cell and publishing the reading-list. Circulation trebles again; two new papers open on the proceeds of the fame; and at the young men's debating societies of three districts the question is no longer whether Government is wrong but whether it is afraid. The Legal Remembrancer counts the case a success. His ledger has one column."
+      },
+      {
+        "label": "Have Dass answer it in print, over his own name.",
+        "effects": { "prestige": 1, "contentment": 1, "health": -1 },
+        "outcome": "It is asking a great deal, and you ask it face to face, and Dass considers for a long moment and writes the reply: two columns, Mill quoted back with the pages right, the Club affair handled with a dryness that draws blood, signed with his own name and his own service. The <i>New Dawn</i> prints it entire &mdash; honour of the debating chamber &mdash; with a rejoinder half as good. Nothing is settled; everything is elevated: the argument now has two sides in print instead of a statute and a cell. His Honour, sent the cuttings, wires one word: <i>MORE.</i>"
+      }
+    ]
+  },
+  {
+    "id": "comm-cyclone-silchar",
+    "tag": "URGENT",
+    "season": ["monsoon"],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Cyclone Crosses Silchar",
+    "body": "The storm signal went to nine at noon and the wire went dead at four, and the last message out of Silchar reads like the first line of a history you do not want written: <i>tidal bore expected, moving people from the island tracts, Dass.</i> A cyclone is crossing the coast of your Division. The Government steamer can attempt the river tonight &mdash; in the storm's outer edge &mdash; and put you at Silchar by morning with plenary powers and the Division's stores behind you; or you can command from Sonepore, where the telegraph ends, and trust the man on the spot with the worst night of his service.",
+    "choices": [
+      {
+        "label": "Take the steamer down tonight, into the edge of it.",
+        "effects": { "order": 3, "prestige": 4, "contentment": 3, "health": -3 },
+        "risk": {
+          "chance": 0.15,
+          "effects": { "health": -16, "prestige": 1 },
+          "setFlags": ["storm_passage"],
+          "outcome": "The river in a cyclone's skirt is not water but geography in motion. The steamer takes a floating godown roof through her port paddle-box at two in the morning and limps the last thirty miles half-crippled, and you arrive at Silchar soaked, bruised, fevered &mdash; and there, which against every sane calculation turns out to matter enormously: the Commissioner came through THAT to reach them. You govern the relief for a week from a cot, coughing, between quinine doses. The Surgeon's eventual report on you deploys the word &lsquo;reckless&rsquo; in a sentence otherwise resembling a citation."
+        },
+        "outcome": "The steamer goes down through a night of horizontal rain, and at first light Silchar rises out of a drowned country &mdash; and the relief begins from the ghat itself: stores landed, powers delegated, the island tracts reached by every hull that floats. Dass has done everything right and says so of his people; you say so of him, in the despatch that matters. The death roll, when it is counted, is a fifth of the Bengal precedents. The Division will tell the story of that steamer for twenty years, and the story is the point: when the wire died, Sonepore came."
+      },
+      {
+        "label": "Command from Sonepore: stores, steamers and powers to Dass by every channel left.",
+        "effects": { "order": 2, "prestige": 1, "contentment": 1 },
+        "econ": { "treasury": -40000 },
+        "outcome": "You strip the Division for him: every steamer, every bag of rice within two days' haul, plenary powers wired down the one line the storm left standing, and a standing order that no indent from Silchar waits on sanction. Dass, so armed, is magnificent &mdash; the island tracts cleared before the bore, the relief camps victualled by the third day. The blue-book gives the week to him entire, correctly. What it cannot record is what the Division noticed: that the Commissioner's part was to trust his man completely, and that with THIS Commissioner, that is a policy and not an accident."
+      },
+      {
+        "label": "Wait for the wire to be restored before committing the Division's stores.",
+        "effects": { "prestige": -4, "contentment": -4, "order": -2 },
+        "outcome": "The wire is two days dead, and the two days are the two days: the bore takes the island tracts on the first night, and the relief that reaches Silchar on the fourth day is measured against the relief that could have sailed on the first. Dass never says one word on the subject, in his life, to anyone. The Silchar district gazetteer, compiled a generation later by some earnest assistant, will note simply that help was &lsquo;delayed by the interruption of communications.&rsquo; You know the name of the interruption. It signed the file."
+      }
+    ]
+  },
+  {
+    "id": "comm-breach-marwan",
+    "tag": "URGENT",
+    "season": ["monsoon"],
+    "kind": "crisis",
+    "once": true,
+    "title": "Petherick Loses the Embankment",
+    "body": "The Marwan embankment is breached &mdash; not the weather&rsquo;s fault alone: the maintenance registers, when your engineer pulls them, show three years of patching where rebuilding was indented for and refused, two of the refusals initialled by Petherick against his own overseer&rsquo;s advice. Forty villages are under water and the relief is his to run &mdash; and he is running it badly: old methods, old pace, a district office drowning in its own procedure while the water sits. Every hour is paid for in the flooded country. Superseding a Collector mid-crisis is a thing the Service does not do. Doing nothing is a thing the water does not notice.",
+    "choices": [
+      {
+        "label": "Go down and run the relief through him &mdash; beside him, hour by hour.",
+        "effects": { "order": 3, "contentment": 3, "prestige": 1, "health": -4 },
+        "outcome": "You take the camp to Marwan and govern from his verandah, every order issued in his name, every innovation &mdash; the boat brigades, the free kitchens, the cattle camps on the bund &mdash; entered as his. The relief doubles its pace in three days. The district sees its Collector everywhere and its Commissioner nowhere, which is the design. What Petherick sees, across a lamplit table at the end of it, is the design too. &lsquo;You might have superseded me,&rsquo; he says. It is the nearest thing to thanks the old Service manufactures, and it is worth the fortnight."
+      },
+      {
+        "label": "Supersede him: put Ormsby in charge of the relief across district lines.",
+        "effects": { "order": 4, "contentment": 2, "prestige": -3 },
+        "setFlags": ["superseded_petherick"],
+        "outcome": "The order is one paragraph and it ends a career: Ormsby crosses the boundary with plenary powers and runs the relief like a young man's war, brilliantly &mdash; the water beaten, the camps model, the mortality negligible. The Service's verdict is exact and double: the relief was right, and the manner unforgivable. Petherick retires at the cold weather, correct to the last file. The other Commissioners of the province, at the January conference, are courteous to you in the way one is courteous to weather. Forty villages are dry. You paid what it cost."
+      },
+      {
+        "label": "Support him as he is; the registers can be examined when the water falls.",
+        "effects": { "prestige": 1, "order": -3, "contentment": -4 },
+        "outcome": "Loyalty to the man on the spot, the Service's oldest reflex, and the water exacts its price for it: the relief runs at Petherick's pace, which is the pace of 1885, and the flooded country pays the difference in fever and drowned cattle and three weeks that needed to be ten days. The register question, taken up in the cold weather as promised, now reads as an indictment of two: the Collector who refused the rebuilding, and the Commissioner who, knowing it, left the water to him. His Honour's note on the file is one line: <i>and where were YOU?</i>"
+      }
+    ]
+  },
+  {
+    "id": "comm-monsoon-appeals",
+    "tag": "CUTCHERRY",
+    "season": ["monsoon"],
+    "kind": "desk",
+    "once": true,
+    "title": "The Rains' Paper Flood",
+    "body": "The rains flood more than rivers: the appeal work of three districts, dammed all hot weather by vacancies and fever, comes down on Sonepore in one September spate. One hundred and forty appeals ready for hearing; litigants&rsquo; agents camped in the verandah like a small fair; and your Reader, a man of judicious silences, observes that the last Commissioner cleared such a list by &lsquo;methods, sahib, of great speed.&rsquo; The methods are in the registers: affirmed, affirmed, affirmed &mdash; forty in a week, none reversed, none read. A Division&rsquo;s justice, or a Division&rsquo;s arithmetic. The pile does not care which you choose. The litigants do.",
+    "choices": [
+      {
+        "label": "Read every record: double sittings, lamplight, the monsoon spent at the table.",
+        "effects": { "order": 2, "contentment": 3, "prestige": 1, "health": -5 },
+        "outcome": "Six weeks of it, morning and lamplight, the rain on the roof and the records in their damp bundles &mdash; and out of one hundred and forty appeals, nineteen reversed, each reversal a man who was right and had begun to stop believing it mattered. The agents in the verandah change their advice to clients across three districts: the new Commissioner READS. It is the costliest thing you do all year, paid in the only currency that cannot be indented for, and it buys the thing no durbar buys &mdash; the Division's belief that above its courts there is a court."
+      },
+      {
+        "label": "Triage: full hearings where the record smells wrong, short work of the hopeless.",
+        "effects": { "order": 1, "prestige": 1, "health": -2 },
+        "outcome": "Twenty years of reading files has left you a nose, and you trust it: two-thirds of the list is honest chaff, dismissed in batches with clean short orders; the remaining fifty get the lamp and the full record, and yield eleven reversals that needed finding. It is sound judicial economy and everyone senior would applaud it. The margin of error lives, as margins do, in the batches &mdash; somewhere in the chaff, statistically, was wheat. You cleared the list by November. On certain wet nights the arithmetic clears its throat."
+      },
+      {
+        "label": "The last Commissioner's methods: affirm the presumption of regularity.",
+        "effects": { "health": 2, "prestige": -2, "contentment": -3 },
+        "outcome": "The presumption of regularity is a real doctrine and a great labour-saver, and the list is cleared by October with the registers immaculate. The verandah fair strikes camp; the agents amend their advice: the Division affirms, spend your money below. Appeals from Sonepore fall by a third next year &mdash; a statistic that reads, at Government House, as contentment. It is the other thing. Of the hundred and forty records you did not read, the number that needed reading is a figure known only to God and the district pleaders, and neither publishes."
+      }
+    ]
+  },
+  {
+    "id": "comm-circular-absurd",
+    "tag": "CIRCULAR",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "title": "Circular No. 47 (Statistical)",
+    "body": "The Secretariat, in its wisdom and its hot-weather leisure, requires of every Division a new quarterly return: Form K, in nonuplicate, showing &mdash; among forty-one columns &mdash; the number of wells &lsquo;actual and potential,&rsquo; the &lsquo;moral condition&rsquo; of each tahsil on a five-point scale, and the mileage of roads &lsquo;passable, impassable, and partially passable.&rsquo; Your three Collectors have written separately to ask what a potential well is. The return will consume, your office calculates, eleven clerk-years per annum across the Division. Refusal is insubordination. Compliance is madness. The choice is the oldest one in the Service.",
+    "choices": [
+      {
+        "label": "Comply exquisitely: staff it, return it perfect, and let the figures speak.",
+        "effects": { "prestige": 1, "revenue": -1, "health": -1 },
+        "outcome": "Sonepore's Form K arrives first in the province, flawless, with the moral condition of every tahsil gravely scored and a covering note offering your methodology to other Divisions. The Secretariat is delighted; two Divisions adopt your forms; the return becomes permanent, which you knew, and eleven clerk-years become the price, forever, of a reputation for efficiency. Somewhere in column 38 the potential wells of Marwan glimmer, potentially. Your Reader enters the file under a heading of his own devising: <i>Victories, Pyrrhic.</i>"
+      },
+      {
+        "label": "Return it late, thin, and accompanied by a costed protest.",
+        "effects": { "prestige": -1, "contentment": 2, "health": 1 },
+        "outcome": "Your protest prices the circular &mdash; eleven clerk-years, set against the Division's actual work in a table of painful clarity &mdash; and the covering return answers the answerable columns and enters &lsquo;see remarks&rsquo; against the rest. The Secretariat is icy for a season; your Collectors, spared, are quietly devoted; and eighteen months later Form K is &lsquo;consolidated&rsquo; into an existing return by a committee that cites, without attribution, your table. This is how the machine improves: someone pays a little prestige to feed it arithmetic. The someone is never thanked. The clerks know."
+      },
+      {
+        "label": "Delegate it downward, uncosted, as it was delegated to you.",
+        "effects": { "health": 1, "contentment": -3 },
+        "outcome": "The circular rolls downhill with your forwarding stamp, gathering instructions as it goes, and lands where such things land: on tahsil clerks who now measure the moral condition of their neighbours on a five-point scale after office hours. The returns come up imaginative and punctual. Three districts' establishments note that the new Commissioner passes weight downward unexamined &mdash; the one datum about a chief that travels faster than any circular. Form K is accurate about nothing except, in its silent way, about you."
+      }
+    ]
+  },
+  {
+    "id": "comm-old-kotra-tour",
+    "tag": "CAMP",
+    "season": ["cold"],
+    "kind": "tour",
+    "once": true,
+    "title": "The Road Through Kotra",
+    "body": "The inspection line to Chhota Nagra runs, if you let it, through Kotra sub-division &mdash; the tank, the cutcherry, the mango tope where a probationer once pitched his first camp and lay awake listening to the jackals and the size of his own inadequacy. The old tahsildar is fourteen years retired, living, they say, at his village on the Pipalgaon road behind a garden of astonishing marigolds. Sujan Rai the munshi is dead. Sohan Lal&rsquo;s grandson keeps the shop. The programme allows the detour, at the cost of a day. Commissioners&rsquo; programmes are not sentimental documents. Commissioners draft them.",
+    "choices": [
+      {
+        "label": "Take the day. Camp at the old tope, and call on the old tahsildar.",
+        "effects": { "contentment": 2, "health": 2, "prestige": -1 },
+        "setFlags": ["kotra_pilgrimage"],
+        "outcome": "The marigolds are everything reported. The old man receives you in a spotless court, produces tea, a grandson, and &mdash; from a tin box &mdash; a copy he kept, all these years, of a certain boundary decision in a young sahib's uncertain hand: &lsquo;the first paper, sahib, on which I saw you had stopped guessing.&rsquo; You sit an hour and are three-and-twenty again, and then the Commissioner's tents move on. Some inspections examine the district. This one examined you, and the marks, for once, were kind."
+      },
+      {
+        "label": "Hold the programme; the past is not on the inspection list.",
+        "effects": { "prestige": 1, "revenue": 1 },
+        "outcome": "The camp goes by the direct road and the day is spent on Chhota Nagra's grain registers, profitably. From the trunk road, for perhaps ninety seconds, the Kotra tank is visible across the fields, exactly the colour it always was in November. You do not stop the car. The registers are in excellent order. That evening you write the tahsildar a letter instead, which is not the same thing, and post it, which is something; his reply, in a clerk's hand over his shaking signature, thanks the Commissioner-sahib and encloses, pressed flat, one marigold."
+      },
+      {
+        "label": "Send for the old man to attend your Chhota Nagra durbar with honour.",
+        "effects": { "prestige": 1, "contentment": 1 },
+        "outcome": "He comes the forty miles by bullock-cart, erect in a court dress of the old cut, and you seat him on the dais among the notables and say, in the vernacular, one sentence about what the Service owes the men who train its probationers. It is correct, public, and &mdash; you see it in his face, which shows nothing &mdash; not quite the thing. The thing would have been the garden, the tea, the tin box. Honour is what a durbar can distribute. It is not always what was owed."
+      }
+    ]
+  },
+  {
+    "id": "comm-lg-shooting",
+    "tag": "PROGRAMME",
+    "season": ["cold"],
+    "kind": "club",
+    "once": true,
+    "title": "His Honour Wants a Tiger",
+    "body": "Government House signifies that His Honour, touring your Division in February, would &lsquo;not be averse&rsquo; to a tiger &mdash; which in the language of private secretaries means the programme fails without one. The Nawab of Tikri&rsquo;s preserves can furnish a beat and, discreetly, a certainty: his shikaris have a big cattle-lifter marked down and could, as the phrase goes, <i>arrange</i> him under His Honour&rsquo;s gun. The alternative is honest jungle and an honest blank day, which the last Division to inflict one on a Lieutenant-Governor is still remembered for. You loathe arranged tigers. You are also due an honours decision from this particular gun.",
+    "choices": [
+      {
+        "label": "An honest beat: real jungle, and the tiger's own opinion consulted.",
+        "effects": { "prestige": 1, "contentment": 1, "health": -1 },
+        "outcome": "You tell the Nawab's master of shikar that the sahibs will take the jungle as they find it, and the jungle, with its own sense of occasion, provides: a long blank morning, one wild pig, and at four o'clock a tiger nobody arranged, taken by His Honour with a shot even the beaters discuss with respect. Luck &mdash; but the honest kind, and he knows the difference precisely; Lieutenant-Governors are connoisseurs of arrangement. On the drive back he says, apropos of nothing: &lsquo;I am glad it was not a bought one.&rsquo; The file this conversation belongs to has no number."
+      },
+      {
+        "label": "Let the Nawab arrange it; February is no month for principles.",
+        "effects": { "prestige": 2, "health": 1, "contentment": -1 },
+        "outcome": "The beat is flawless, the tiger enormous, punctual, and slightly drowsy, and His Honour drops it at forty yards with a shot he describes at dinner while the Nawab glows. The programme is a triumph. Three weeks later, at Government House, His Honour remarks across the port &mdash; mildly, watching you &mdash; that it was &lsquo;a very well-conducted tiger.&rsquo; He knew. They always know. What he has learned is not that you can find him a tiger, but what you will arrange when something is wanted &mdash; a datum a Lieutenant-Governor files under more headings than shikar."
+      },
+      {
+        "label": "Offer snipe, and a programme of model works instead of a beat.",
+        "effects": { "prestige": -2, "health": 1 },
+        "outcome": "The jheels are full, the snipe innumerable, the relief works genuinely worth showing, and the programme is, by every objective measure, the most instructive a Lieutenant-Governor has had in years. It is remembered by Government House, collectively and permanently, as the tour without the tiger. The private secretary's thank-you letter is warm about the drainage. Between its lines, in the white spaces where such things are written, is the sentence every programme-drafter in the province can read: Sonepore does not quite understand what tours are FOR."
+      }
+    ]
+  },
+  {
+    "id": "comm-morning-mail",
+    "tag": "THE DAK",
+    "season": ["any"],
+    "kind": "interlude",
+    "interlude": true,
+    "once": true,
+    "title": "The Weight of the Bag",
+    "body": "The Division&rsquo;s dak arrives at six in two locked bags, and this morning, unlocking the second, your Reader pauses and weighs it in his hand like a melon. &lsquo;When the sahib came,&rsquo; he observes, &lsquo;this bag was one-third of this. The Division writes to the sahib more because the sahib answers.&rsquo; He says it as praise. You hear it as the sound of a machine finding your capacity and feeding to match, which is what machines do until the feeding is the man. You answer the bag by ten. Tomorrow&rsquo;s, imperceptibly, will be heavier.",
+    "effects": { "health": -1, "prestige": 1 }
+  },
+  {
+    "id": "comm-orderlys-son",
+    "tag": "PRIVATE",
+    "season": ["any"],
+    "kind": "interlude",
+    "interlude": true,
+    "once": true,
+    "title": "The Orderly's Son",
+    "body": "A young constable presents himself at the camp office with a chit and a face you have seen before &mdash; and place, after a disorienting second, fourteen years back: your first orderly at Kotra, the one who taught you, wordlessly, which petitioners' salaams were true. This is his son, passed into the police, posted to your camp guard by a havildar with a sense of history. The father is well, the boy reports, farms at home, and &lsquo;instructs the whole village, sahib, that he instructed the Commissioner.&rsquo; You confirm the instruction for the record. The boy&rsquo;s salute, as you leave, is his father&rsquo;s exactly.",
+    "effects": { "contentment": 2 }
+  },
+  {
+    "id": "comm-map-room",
+    "tag": "THE STATION",
+    "season": ["monsoon"],
+    "kind": "interlude",
+    "interlude": true,
+    "once": true,
+    "title": "The Division on One Wall",
+    "body": "Marooned by an all-day deluge, you have the survey sheets of the whole Division mounted at last on the office's long wall: four million people, three districts, every metalled mile and village track, the rivers drawn in the blue of engineers who never saw them brown and lethal. You stand before it a long time with the rain drumming. Kotra is a thumbnail in the top corner. Chhota Nagra is a hand's-breadth. A man could spend a life learning one of these sheets, and you are answerable for all of them, and the wall says, evenly: this is what the word Division means. You have the map varnished against the damp. It outlasts your tenure, and several after.",
+    "effects": { "health": 1, "prestige": 1 }
+  }
+]

@@ -404,6 +404,14 @@ function validateChapter(content, chapterKey) {
     check(flagsProduced[r.flag], r.where + ": requires flag '" + r.flag + "' that nothing sets");
   });
 
+  /* ---- the whole year must be servable without repeats ---- */
+  // A fresh run draws an event most fortnights; gated events may never become
+  // eligible, so the ungated non-interlude deck alone must cover the year.
+  var ungated = content.events.filter(function (e) { return !e.interlude && !e.requires && !e.priority; }).length;
+  var drawsNeeded = cfg.maxTurns - (content.occasions || []).length;
+  check(ungated >= drawsNeeded,
+    "only " + ungated + " ungated events for " + drawsNeeded + " drawn fortnights — a fresh year runs the deck dry");
+
   /* ---- pool floors per season (deck can't run dry) ---- */
   chapterSeasons.forEach(function (sk) {
     var n = content.events.filter(function (e) {

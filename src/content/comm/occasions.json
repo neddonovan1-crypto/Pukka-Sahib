@@ -1,0 +1,161 @@
+[
+  {
+    "id": "comm-lg-visit",
+    "turn": 6,
+    "tag": "PROGRAMME",
+    "title": "His Honour Comes Down",
+    "body": "The Lieutenant-Governor&rsquo;s cold-weather tour reaches Sonepore: three days, a durbar, two inspections of your choosing, and one dinner at the flag bungalow at which the Division&rsquo;s whole society will read its standing in the seating. His Honour inspects the way old gunners shoot &mdash; unhurried, and never twice at the same mark. The programme is yours to draft, and every Commissioner in the province drafts it the same way at bottom: what to show, and what to walk him past. He has been reading your wires for six months. Now he has come to read you.",
+    "choices": [
+      {
+        "label": "Show him the Division's real problems, worst foremost, with your plans beside them.",
+        "condition": {
+          "meter": "prestige",
+          "op": ">=",
+          "value": 55
+        },
+        "ifTrue": {
+          "effects": {
+            "prestige": 6,
+            "contentment": 1
+          },
+          "outcome": "You take him to the silted feeder-canal the Secretariat has refused three times, and the school question at Silchar, and the Marwan arrears, each with its costed plan &mdash; and he inspects them with the appetite of a man shown real work by a man not afraid of it. At the dinner he is expansive; at the durbar, deliberate; and the note he leaves in his own hand says the thing his office exists not to say: <i>this Division is governed. Ask me for the canal again in March.</i>"
+        },
+        "ifFalse": {
+          "effects": {
+            "prestige": -3,
+            "health": -1
+          },
+          "outcome": "Candour from strength is statesmanship; candour from a thin season reads as a man rehearsing his excuses. The problems are real, the plans are sound, and the impression &mdash; the thing his tour exists to collect &mdash; is of a Division that has problems. The pencil moves at the canal, at the school, at the arrears. The note he leaves is courteous and one line shorter than courtesy requires, and the March conversation it does not invite is the one you needed."
+        }
+      },
+      {
+        "label": "A polished progress: the model works, the best villages, the machine at parade order.",
+        "effects": {
+          "prestige": 2,
+          "contentment": -2,
+          "health": -2
+        },
+        "econ": {
+          "treasury": -9000
+        },
+        "outcome": "The Division parades: whitewash, garlands, the model tahsil drilled to the minute, tea under a shamiana that cost a village school's grant. His Honour, who has been shown model tahsils since before you sat the competition, admires everything and inspects nothing, and leaves precisely as informed as he came &mdash; which he notes, because being left uninformed is a datum too. &lsquo;A very smooth three days,&rsquo; says the private secretary at the carriage door, with the emphasis of his trade on the adjective."
+      },
+      {
+        "label": "Hand the tour to your three Collectors: let him see the men, not the scenery.",
+        "effects": {
+          "prestige": 1,
+          "contentment": 2
+        },
+        "outcome": "A Commissioner secure enough to stand aside is its own exhibit: Ormsby shows his grain trade, Petherick his settlement craft, Dass his embankments, each in his own district and his own manner, with you one respectful pace behind. His Honour reads the design at once &mdash; it is the sort of thing he did himself, coming up &mdash; and prices it correctly: a chief who grows men. The durbar is warm. The dinner is warmer. Only the legend of the tour belongs to your Collectors, which was the price, and was the point."
+      }
+    ]
+  },
+  {
+    "id": "comm-hills-exodus",
+    "turn": 14,
+    "tag": "CIRCULAR",
+    "title": "The Province Goes Up the Hill",
+    "body": "May: the Secretariat completes its annual ascent, and the plains settle into the long conspiracy of the hot weather &mdash; Government at seven thousand feet, the governed at a hundred and nine degrees. Your own summer must now be disposed of. The Division&rsquo;s work runs on either way; the question is where its Commissioner is seen to sit while it runs, and the province keeps two ledgers on the subject: the Secretariat&rsquo;s, which counts attendance at the hill conferences, and the plains&rsquo;, which counts something else.",
+    "choices": [
+      {
+        "label": "Stay down all season: the Division does not go up, and neither does its Commissioner.",
+        "effects": {
+          "contentment": 3,
+          "prestige": -1,
+          "health": -3
+        },
+        "outcome": "The word travels as such words do, carried by the amused and the impressed alike: Sonepore is staying down. The hill conferences proceed without you, and cost you two committee places that matter in the way committee places matter. The plains' ledger writes a different entry, in a different ink: through the worst of June, when the districts looked up, the flag was flying at Sonepore. Petherick, of all men, mentions it &mdash; once, sideways, at the September conference: &lsquo;we noticed.&rsquo;"
+      },
+      {
+        "label": "Divide the season: the conferences attended, the crises kept for the plains.",
+        "effects": {
+          "prestige": 2,
+          "health": -1
+        },
+        "outcome": "The amphibious summer, and it is honest work at both altitudes: a fortnight up for the revenue conference, where your equalisation paper takes its first Secretariat wounds and survives; the rest down, where the Division can find you. The arrangement is unremarkable, which is its virtue &mdash; nobody's ledger records it. What it costs is motion: four transfers of a household establishment and a workload that travels in tin boxes and never quite arrives when you do. The Surgeon, hearing your chest in August, asks how many times you have changed climate since April. He writes the number down."
+      },
+      {
+        "label": "Take the season's leave up the hill; the Division has three Collectors for a reason.",
+        "effects": {
+          "health": 6,
+          "prestige": -3,
+          "contentment": -2
+        },
+        "outcome": "It is entirely regular, faintly noted, and profoundly restorative: three months of deodar air, the invaluable dinners, His Honour at short range across a bridge-table where a certain amount of the province's real business is transacted between rubbers. You come down in September burnished and rebuilt. The Division ran correctly on delegation &mdash; and formed, in your absence, the small permanent habit of running on delegation, which will take a cold weather's touring to unteach. The plains' ledger holds the season against the flag. So, privately, do you."
+      }
+    ]
+  },
+  {
+    "id": "comm-october-conference",
+    "turn": 23,
+    "tag": "CEREMONIAL",
+    "title": "The October Conference",
+    "body": "The rains spent, the province&rsquo;s Commissioners convene at the capital for the October conference: two days of papers, one state dinner, and the year&rsquo;s true business conducted in the intervals &mdash; postings weighed, reputations settled, the honours season opened like a card-table. Your own year is nearly written now. What the conference will decide, in its corridors and its cloakrooms, is how it is to be READ: and the reading, as every man in the long room knows, is made as much by the teller as the tale. You are called on the second morning to present the Division&rsquo;s year.",
+    "choices": [
+      {
+        "label": "Present the year plainly: the ledger, both columns, and no varnish.",
+        "effects": {
+          "prestige": 3,
+          "contentment": 1
+        },
+        "outcome": "Twenty minutes, no rhetoric: what was attempted, what came off, what failed and what the failure taught, with the figures standing where adjectives usually sit. The long room hears it in the particular silence that senior men keep for a performance they cannot fault and would not have risked. His Honour, presiding, asks one question, pre-arranged by neither of you, and your answer &mdash; because the ledger is real &mdash; is simply more ledger. &lsquo;Thank you, Commissioner,&rsquo; he says, and writes nothing, having heard everything. The corridors do the rest."
+      },
+      {
+        "label": "Present the year as a story, and give your Collectors the heroes' parts.",
+        "effects": {
+          "contentment": 3,
+          "prestige": 1
+        },
+        "outcome": "You tell the cyclone as Dass's week, the arrears as Petherick's craft, the grain trade as Ormsby's nerve &mdash; the Commissioner appearing in his own account only as the man who signed things. It is noticed, of course; such constructions always are. But the three reputations you burnish are the Division's working capital for a decade, and the men themselves, hearing of it as men do, are yours thereafter in the coin no warrant commands. The other Commissioners call it generous. The two cleverest of them call it, correctly, investment."
+      },
+      {
+        "label": "Read the room and trim the tale to the season's fashion.",
+        "effects": {
+          "prestige": 1,
+          "health": -1,
+          "contentment": -1
+        },
+        "outcome": "The season's fashion is retrenchment, so the year is presented as economy: the works reframed as savings, the relief as efficiency, the ledger curated to the mode. It goes down smoothly &mdash; fashionable papers always do &mdash; and joins the conference's great drift of smooth papers, indistinguishable by design. His Honour's question, when it comes, is gentle and precise, and aimed exactly at a curated join; your answer holds, at the cost of a second trimming. Walking out, you cannot remember which parts of your own year you presented. That, too, is a reading."
+      }
+    ]
+  },
+  {
+    "id": "comm-residency-repairs",
+    "turn": 10,
+    "tag": "P.W.D.",
+    "title": "The Flag Bungalow Is Falling Down",
+    "body": "The Executive Engineer&rsquo;s condition survey of the Commissioner&rsquo;s residence, ordered by routine, reads like a coroner&rsquo;s verdict: the west wing&rsquo;s beams are white-ant lace, the roof of the ballroom is holding itself up &lsquo;by habit,&rsquo; and the estimate for proper renewal stands at a figure that makes the office clerk lower his voice. The house is Government&rsquo;s; the scale of its keeping, by the pleasant fiction of the Regulations, is substantially the occupant&rsquo;s. A Commissioner&rsquo;s residence is also an instrument &mdash; durbars, dinners, the theatre of the flag &mdash; and instruments must be maintained. The Bank, the Engineer mentions helpfully, finances such works &lsquo;on very usual terms.&rsquo;",
+    "choices": [
+      {
+        "label": "Renew it properly on the Bank's terms; the flag must fly from a sound roof.",
+        "effects": {
+          "prestige": 2,
+          "contentment": 1
+        },
+        "econ": {
+          "debt": 200000
+        },
+        "outcome": "The work is done as the Raj does its best work &mdash; slowly, massively, teak where deodar would serve &mdash; and the house emerges fit for a Lieutenant-Governor, which is rather the point. The durbars gain a setting, the dinners gain a room, the Division gains the reassurance of a solid flagstaff. The Bank gains a mortgage on three years of your pay, entered in Calcutta under 'very usual terms', which is banking for: we now hold the Commissioner."
+      },
+      {
+        "label": "Patch the worst from the treasury and prop the rest another year.",
+        "effects": {
+          "health": -1
+        },
+        "econ": {
+          "treasury": -18000
+        },
+        "outcome": "The white-ant lace is cut out, the ballroom roof propped with honest sal posts that spoil the ceiling and save the skull, and the grand renewal deferred to your successor's tenure and your successor's Bank. The house creaks through the rains making its opinions known. The Engineer closes his file with the P.W.D.'s deepest sigh, that of a man who proposed teak and was given props."
+      },
+      {
+        "label": "Shut the west wing entirely and live in what stands.",
+        "effects": {
+          "prestige": -2,
+          "contentment": -1,
+          "health": 1
+        },
+        "outcome": "The cheapest course and the most eloquent: the Commissioner's residence visibly half-shuttered, the ballroom dark for a year, the Division's entertaining migrated to the Club and the notables' own houses, where the flag is a guest instead of a host. The economy is real and the theatre pays for it, as theatre always makes economy pay. The white ants, unpersecuted, continue their own slow settlement of the west wing, the one durbar in the Division that never adjourns."
+      }
+    ]
+  }
+]

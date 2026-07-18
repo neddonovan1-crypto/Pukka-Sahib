@@ -1,0 +1,183 @@
+[
+  {
+    "id": "comm-wife-division",
+    "tag": "PRIVATE",
+    "season": ["cold"],
+    "kind": "personal",
+    "once": true,
+    "requires": { "flag": "carry_wife" },
+    "title": "The Memsahib of the Division",
+    "body": "Your wife has taken the measure of Sonepore in a fortnight, as she took the measure of the district years ago, and delivers it over the breakfast table with the crispness you married her for: the Commissioner&rsquo;s house is run like a dak bungalow, the station&rsquo;s ladies are at war over the Flower Show, the Petherick marriage is unhappier than his ledgers, and the Dass household &mdash; this with a level look &mdash; has not been called on by a single English wife in eight months. She proposes to spend your prestige on all four fronts at once. She is asking, in form. She is informing, in fact.",
+    "choices": [
+      {
+        "label": "Give her a free hand and the carriage.",
+        "effects": { "contentment": 4, "prestige": 2, "health": 1 },
+        "setFlags": ["memsahib_reigns"],
+        "outcome": "Within the quarter the house runs like a flagship, the Flower Show war is composed by a mixed committee of her invention, and her card sits on the Dass hall table &mdash; followed, because the Commissioner's wife's card is a ruling, by everyone's. At the cold-weather durbar Mrs. Dass wears her first easy expression in three provinces. &lsquo;A Division,&rsquo; your wife observes, dressing for dinner, &lsquo;is governed exactly like a district, only the files wear better clothes.&rsquo; His Honour's wife and she become, ominously for two Secretariats, correspondents."
+      },
+      {
+        "label": "A free hand everywhere but Silchar; the Club matter is politics.",
+        "effects": { "prestige": 1, "contentment": -2, "health": -1 },
+        "outcome": "She hears the ruling out, says &lsquo;I see,&rsquo; and runs the permitted fronts brilliantly &mdash; and the Dass hall table stays bare, by your order now instead of the station's cowardice, a distinction the household in question is too experienced to miss. Your wife does not raise it again. She merely declines, with perfect wifely correctness, ever to describe the Flower Show committee to you, and something in the breakfast conversation is one degree cooler until spring. She married a man who went into cane-brakes. She is recalibrating."
+      },
+      {
+        "label": "The Division's society can wait; ask her to keep the house quiet this year.",
+        "effects": { "health": 2, "contentment": -3 },
+        "outcome": "A quiet house, a knighthood year, no hostages offered to the station's wars: the logic is sound and she executes it flawlessly, because she executes everything flawlessly. The house is calm. The dinners are few and small. And the Division's society, denied its natural centre, organises itself around lesser tables where lesser verdicts are minted &mdash; several of them, this year, about the Commissioner's household keeping itself so very much to itself. Economy of prestige, you re-learn, is not the same as banking it."
+      }
+    ]
+  },
+  {
+    "id": "comm-empty-residency",
+    "tag": "PRIVATE",
+    "season": ["monsoon"],
+    "kind": "personal",
+    "once": true,
+    "requires": { "flag": "carry_alone" },
+    "title": "The House That Echoes",
+    "body": "The Commissioner&rsquo;s house at Sonepore was built for a family of eight and their establishment: seventeen rooms, two wings, a ballroom under holland covers. You occupy a bedroom, the study, and the small verandah, and the rains have shut you in with the arithmetic. The khansama, ambitious for the house&rsquo;s honour, petitions weekly for dinner-parties you do not give. The bearer has silently moved your things twice, each time to a smaller room. At night the ballroom clicks and settles overhead like an auditor turning pages. You chose the Service over a household, years ago, in a hot-weather letter. The house appears to have read the correspondence.",
+    "choices": [
+      {
+        "label": "Fill it by main force: guest wings open, a standing table for juniors passing through.",
+        "effects": { "contentment": 3, "prestige": 1, "health": 1 },
+        "econ": { "treasury": -4000 },
+        "outcome": "You institute what the old Commissioners kept: the open table &mdash; any officer of the Division passing through Sonepore dines and sleeps at the flag bungalow without invitation. The house wakes. Assistant magistrates argue settlement law over your port; a forest officer's dog has puppies in the west wing; the khansama, vindicated, ascends to greatness. It is not a family. It is what the Service offers instead, and taken at the flood it is nearly enough &mdash; and the juniors who dined there will govern provinces someday, telling stories about the table at Sonepore."
+      },
+      {
+        "label": "Take the work into the echo: the house as one great office.",
+        "effects": { "prestige": 2, "health": -3 },
+        "outcome": "The ballroom becomes the map room, the drawing-room the record room, the dining-table a desk sixteen feet long &mdash; the whole house conscripted, like its occupant, into the Division. The work prospers remarkably. The Surgeon, calling professionally in September, walks the ringing corridors, listens to your chest, and writes in his private book the sentence he does not say aloud: <i>the house is winning.</i> He prescribes the river steamer. He is not wrong. He is treating the wrong echo."
+      },
+      {
+        "label": "Shut the wings, keep the three rooms, and let the house think what it likes.",
+        "effects": { "health": -2, "contentment": -1, "revenue": 1 },
+        "outcome": "Holland covers, locked doors, an establishment cut to a bachelor's third &mdash; economical, rational, and precisely as cheerful as it sounds. The station notes that the flag bungalow shows three lit windows; the Division's small kindnesses, having no door to arrive at, go elsewhere. In October you find the bearer has, without orders, aired and relit the guest wing &mdash; &lsquo;in case, sahib.&rsquo; You let it stand. Neither of you mentions in case of what, and the three windows become, without ceremony, five."
+      }
+    ]
+  },
+  {
+    "id": "comm-lala-branch",
+    "tag": "PRIVATE",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": { "flag": "carry_lala_paper" },
+    "title": "The Lala Opens a Branch",
+    "body": "Among your first callers at Sonepore is a gomashta in spotless white with a letter of introduction whose seal you know before you read it: the Lala of Chhota Nagra presents his compliments to the Commissioner-sahib, ventures to hope the Division will prosper under so distinguished a hand, and begs to mention that his house has this month opened a branch at Sonepore &mdash; for the convenience, the letter says with its author&rsquo;s own dryness, <i>of old friends</i>. The paper he holds of yours came up with the branch. Of course it did. It is the best-travelled paper in the province.",
+    "choices": [
+      {
+        "label": "Clear the old paper now, at whatever it costs the year's economy.",
+        "effects": { "prestige": 2, "contentment": -1 },
+        "econ": { "treasury": -25000 },
+        "setFlags": ["cleared_lala_at_last"],
+        "outcome": "You send for the account and settle it to the anna, interest and all, in one draft that makes the year's private economy gasp &mdash; and the gomashta, receiving payment in full, bows lower than he bowed at introduction. The letter that goes back to Chhota Nagra reports, you may be sure, exactly what it found: a Commissioner who cut the string. At Divisional rank the Lala's friendship and the Lala's paper are different instruments entirely, and you have just chosen, publicly, which one he may play. He respects it. His kind always respects it &mdash; from clients they have lost."
+      },
+      {
+        "label": "Let the account run; old arrangements have old manners.",
+        "effects": { "health": 1, "contentment": 1 },
+        "econ": { "debt": 15000 },
+        "setFlags": ["lala_still_holds"],
+        "outcome": "The account continues as accounts do, gathering its quiet interest, and the branch at Sonepore proves wonderfully convenient &mdash; remittances, exchanges, the small frictionless services of a house that knows your hand. Nothing is ever asked. That is the product: nothing-is-ever-asked, compounding quarterly. Somewhere in the Lala's steel almirah your paper ages like a bond, and when the honours season comes round and the Bank's threshold is measured, his figure will be in the total. He has followed you up two ranks. He is prepared to follow you further than you are prepared to go."
+      },
+      {
+        "label": "Receive the gomashta with full courtesy &mdash; and move your business to the Bank.",
+        "effects": { "prestige": 1, "contentment": -1 },
+        "econ": { "debt": 8000 },
+        "outcome": "The courtesies are exchanged, the sherbet drunk, and the following week your accounts migrate to the Bank of Bengal's agency &mdash; whose interest is lower, whose manners are colder, and whose ledgers are read by the Accountant-General rather than the bazaar. The old paper is transferred, discounted, formalised: a debt now, plainly, instead of a relationship. The gomashta reports the migration without editorial. The Lala, reading it, will understand it as the one answer his letter did not price: not repudiation, not friendship &mdash; regularisation. It is what Commissioners do. It is why the bazaar finds them duller than Collectors."
+      }
+    ]
+  },
+  {
+    "id": "comm-old-sin-caller",
+    "tag": "MOST SECRET",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "requires": { "flag": "carry_old_sin" },
+    "title": "The Man Who Kept the File",
+    "body": "He was a copying-clerk in the Chhota Nagra record room in your year there, and he is retired now, and he has ridden a bullock-cart forty miles to call on you with a bundle wrapped in oilcloth. Inside, in fair copy, is the thing you had allowed yourself to believe was weather long blown through: dates, transfers, the four villages, the card-party &mdash; the season the railway alignment travelled from your table to the Lala&rsquo;s ear. He does not threaten. He is old, respectful, and precise: his son needs a Government post, his village needs a well, and the sahib, he is sure, will know what is best done with old papers.",
+    "choices": [
+      {
+        "label": "Take the bundle to His Honour yourself, first, with your own account of that season.",
+        "effects": { "prestige": -6, "health": -3, "contentment": 1 },
+        "setFlags": ["confessed_old_sin"],
+        "outcome": "The interview at Government House is the longest hour of your service. His Honour reads the fair copy through twice, and your account once, and is silent for a time that has geological qualities. What saves you &mdash; narrowly, and he lets you see how narrowly &mdash; is the arithmetic of who brought the file to whom. The season's honours question closes quietly; the word &lsquo;censure&rsquo; is not used; the file goes into the graveyard series under his own key. &lsquo;You were a fool once at eight-and-twenty,&rsquo; he says at the door. &lsquo;Contrive not to be one twice.&rsquo; The old clerk's village, you see to it privately, gets its well."
+      },
+      {
+        "label": "The post for the son, the well for the village, the bundle for the fire.",
+        "effects": { "health": 1, "prestige": 1 },
+        "econ": { "treasury": -3000 },
+        "setFlags": ["fed_the_keeper"],
+        "outcome": "It is all quite easily done: the son has, in fact, passed the clerkship examination; the well is, in fact, a sound work chargeable to the local fund; the bundle burns in your study grate in four minutes. Nothing about any of it would surprise an auditor. That is the genius of old clerks: they ask only for things a clean man could grant. But a transaction has occurred, and both parties hold its memory, and memory does not burn &mdash; and somewhere a second fair copy exists or does not, which is now the precise size and shape of the rest of your career."
+      },
+      {
+        "label": "Have him shown out; a Commissioner is not blackmailed by bullock-cart.",
+        "effects": { "prestige": 1, "order": -1, "health": -2 },
+        "setFlags": ["defied_the_keeper"],
+        "outcome": "He goes as he came, with the bundle and his salaams intact, and for a month nothing happens, which is the loudest month of your year. Then the <i>New Dawn</i> prints, without names, a delicately savage paragraph about &lsquo;the travels of certain railway knowledge in a certain famous season&rsquo; &mdash; unprosecutable, unanswerable, and unmistakable to the eleven men in the province who matter. His Honour does not mention it. That is the sanction: he does not mention it, and the K.C.S.I. conversation, wherever it had reached, is not resumed this year. The old clerk's village, you learn later, got its well from the Lala."
+      }
+    ]
+  },
+  {
+    "id": "comm-lg-expectations",
+    "tag": "D.O.",
+    "season": ["cold"],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": { "flag": "carry_marked" },
+    "title": "The Marked Man's Interview",
+    "body": "His Honour receives you within your first month &mdash; alone, no private secretary, the good sherry &mdash; and lays your own legend on the table between you: the district man marked for advancement, the Division given young, the C.I.E. that came with a despatch about a fast track. &lsquo;I asked for you,&rsquo; he says. &lsquo;Against two seniors. Which means, Commissioner, that your first bad year is also mine. I do not propose to have one.&rsquo; The interview lasts eleven minutes. It is a gift, a warning, and a mortgage, in a single vintage.",
+    "choices": [
+      {
+        "label": "Answer him with a programme: what Sonepore will show in twelve months, in figures.",
+        "effects": { "prestige": 3, "health": -1 },
+        "outcome": "You have the programme in your head and you give it him unpapered: the arrears, the embankments, the two Collectors' weather, the one appointment you mean to fight for. He listens without moving, takes one note at the end, and stands. &lsquo;That is what I told them you would say.&rsquo; The mortgage remains &mdash; marked men are never unmortgaged &mdash; but the rate has improved: he has stopped backing a legend and started backing a plan, and Lieutenant-Governors, you now learn, defend plans in Council far harder than they defend men."
+      },
+      {
+        "label": "Say plainly that you will govern the Division, not the legend.",
+        "effects": { "prestige": 1, "contentment": 1 },
+        "outcome": "It is a sentence you rehearsed on the drive, and he receives it with the flicker of a man hearing a good line he has heard before. &lsquo;They all say that,&rsquo; he says, not unkindly. &lsquo;The good ones mean it for about a year.&rsquo; The interview ends warmly enough. What you have bought is modest and real: he will judge the work. What you have not escaped &mdash; what no marked man escapes &mdash; is the compounding of expectation, which pays no interest and calls its principal without notice, usually in the rains."
+      },
+      {
+        "label": "Ask him, since the stake is shared, for the thing Commissioners never ask: his priorities in writing.",
+        "effects": { "prestige": -1, "order": 1, "revenue": 1 },
+        "outcome": "The pause is long enough to reprice the sherry. Then, unexpectedly, he laughs &mdash; and dictates, there and then, a half-page headed <i>Memorandum for the Commissioner of Sonepore</i>: revenue equalisation, the Silchar embankments, &lsquo;and the temper of the young men, about which I am told less than I suspect.&rsquo; It is the only such document in the province and it makes your year plannable &mdash; and him, formally, part-author of it. The private secretary, learning of the memorandum's existence, regards you thereafter with the wariness one reserves for men who change the rules of a game already going well."
+      }
+    ]
+  },
+  {
+    "id": "comm-bank-review",
+    "tag": "PRIVATE",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": { "flag": "carry_debts" },
+    "title": "The Agent Reviews the Account",
+    "body": "The Bank of Bengal&rsquo;s Agent at Sonepore calls in your first weeks &mdash; a spare Scot with the manner of a man auditing weather &mdash; and reviews, over tea neither of you drinks, the account that followed you up from the district: the old borrowings, rolled and re-rolled, respectable in size and unrespectable in age. &lsquo;A Commissioner&rsquo;s pay can retire this in three careful years,&rsquo; he observes, &lsquo;or carry it forever, which is the more usual election. I am instructed to accommodate either. I am no&rsquo; instructed to have an opinion.&rsquo; He has one. It is seated across the table, being polite about your tea.",
+    "choices": [
+      {
+        "label": "The three careful years: a written retirement schedule, signed today.",
+        "effects": { "contentment": -2, "prestige": 1 },
+        "econ": { "debt": -20000, "treasury": -10000 },
+        "setFlags": ["retiring_the_debt"],
+        "outcome": "The schedule is drawn in the Agent's own hand, quarterly instalments against pay, and you sign it with the tea still cold. The careful years begin at once: a smaller stable, a plainer table, entertainments priced like works estimates &mdash; economies the station notices and prices variously. The Agent notices only the instalments, which arrive. By his lights &mdash; and his lights reach Calcutta &mdash; a signature that executes is the rarest security in India, and the Bank's ledgers begin to carry, against your name, the one annotation money cannot buy: <i>good for it.</i>"
+      },
+      {
+        "label": "Carry it as gentlemen carry it, and let the pay do what the pay does.",
+        "effects": { "health": 1, "contentment": 1 },
+        "econ": { "debt": 5000 },
+        "outcome": "The usual election, elected. The account rolls forward with the seasons, fed and never fattened, and the Agent renews it annually with the expression of a man watering a plant he has been forbidden to prune. Life at the flag bungalow is comfortable, correct, and fractionally beyond the pay that funds it, as it has been since Kotra. Nothing happens. Nothing will happen &mdash; until the honours season, when a threshold is consulted; or the pension, when a total is; or the one bad year when the Bank, with real regret, is instructed to have an opinion after all."
+      },
+      {
+        "label": "Move the whole account to the Lala's easier terms.",
+        "effects": { "health": 1, "prestige": -1 },
+        "econ": { "debt": -8000 },
+        "setFlags": ["fled_to_the_bazaar"],
+        "outcome": "The bazaar's terms are, as ever, softer &mdash; the interest lower, the manner warmer, the renewals automatic &mdash; and the Agent transfers the balance without one word of comment, which from a Scot is a page of them. The relief is real and the ledger genuinely lighter. But the account has crossed a frontier older than the Bank: it is bazaar paper now, held where bazaar paper is held, readable by everyone whose business is the reading &mdash; and a Commissioner whose name lives in the bazaar's books is known to the bazaar in ways no Gazette lists, and priced accordingly, in a currency that is never rupees."
+      }
+    ]
+  }
+]

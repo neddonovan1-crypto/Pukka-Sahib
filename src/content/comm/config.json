@@ -1,0 +1,390 @@
+{
+  "config": {
+    "maxTurns": 24,
+    "seasonFloor": 6,
+    "start": {
+      "revenue": 52,
+      "order": 55,
+      "prestige": 52,
+      "contentment": 45,
+      "health": 56
+    },
+    "chapter": {
+      "key": "comm",
+      "rank": "Commissioner",
+      "posting": "the Sonepore Division",
+      "plays": "the K.C.I.E. &mdash; and the K.C.S.I., in an exceptional year",
+      "promotionTiers": [
+        "kcsi",
+        "kcie"
+      ],
+      "promotesTo": null,
+      "carriesIn": [
+        "carry_marked",
+        "carry_wife",
+        "carry_alone",
+        "carry_lala_paper",
+        "carry_old_sin",
+        "carry_debts"
+      ],
+      "tagline": "You are seven-and-thirty, and Commissioner of the Sonepore Division: three districts, three Collectors, four million souls, and above you only His Honour the Lieutenant-Governor. You no longer govern anything directly. You govern the men who do &mdash; back them, overrule them, answer for them. A knighthood is on this table, and so is everything else. You have a year."
+    },
+    "honours": {
+      "lead": "Honours List &mdash; ",
+      "desc": "The List blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment. Each rung wants a showing and a Prestige floor; both knighthoods are barred while the Bank&rsquo;s debt stands over &#8377;2,60,000. The K.C.S.I. is not earned. It is <i>noticed</i> &mdash; and it has never once been noticed on a thin year.",
+      "weights": {
+        "prestige": 0.45,
+        "revenue": 0.2,
+        "order": 0.2,
+        "contentment": 0.15
+      },
+      "ladder": [
+        {
+          "key": "kcsi",
+          "name": "the K.C.S.I.",
+          "score": 74,
+          "prestige": 80,
+          "barredByDebt": true,
+          "reach": "the <b>K.C.S.I.</b> itself is spoken of &mdash; His Honour has used your name at Council"
+        },
+        {
+          "key": "kcie",
+          "name": "the K.C.I.E.",
+          "score": 62,
+          "prestige": 66,
+          "barredByDebt": true,
+          "reach": "a knighthood &mdash; the <b>K.C.I.E.</b> &mdash; is within reach; the Division reads well up the hill"
+        }
+      ]
+    },
+    "meters": [
+      {
+        "key": "revenue",
+        "name": "Revenue",
+        "desc": "Three districts&rsquo; collections, read as one column at Government House. You no longer collect a rupee yourself; you answer for every one."
+      },
+      {
+        "key": "order",
+        "name": "Order",
+        "desc": "The peace of four million people, held through three Collectors and their police. A district burns at district scale; a Division burns in the newspapers."
+      },
+      {
+        "key": "prestige",
+        "name": "Prestige",
+        "desc": "Your standing with His Honour and the Secretariat &mdash; the column knighthoods are paid from. At this altitude it moves on judgment, not industry."
+      },
+      {
+        "key": "contentment",
+        "name": "Contentment",
+        "desc": "The temper of the Division &mdash; its districts, its princes, its press, and not least your own three Collectors, who can make a Commissioner or quietly unmake him."
+      },
+      {
+        "key": "health",
+        "name": "Health",
+        "desc": "A constitution at seven-and-thirty: fourteen Indian years spent, and the account no longer forgives. The heart keeps the Division&rsquo;s hours now."
+      }
+    ],
+    "calendar": {
+      "months": [
+        "November",
+        "December",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October"
+      ],
+      "seasons": [
+        {
+          "key": "cold",
+          "name": "Cold weather",
+          "tagline": "the inspecting season",
+          "glyph": "❄",
+          "from": 1,
+          "to": 8,
+          "intros": [
+            "The inspecting season: three districts to ride, three Collectors to weigh, and a Division learning what its new Commissioner looks at first.",
+            "Camp again &mdash; grander now, two tents and a flag &mdash; and under the old canvas smell, the old question: what is actually happening out here, behind the returns?",
+            "The cold weather is short and the Division is wide, and every district you do not visit will draw its own conclusions about why.",
+            "Your Collectors send their programmes up like schoolboys' term-plans. Somewhere in each one is the thing it is arranged to keep you from seeing."
+          ]
+        },
+        {
+          "key": "hot",
+          "name": "Hot weather",
+          "tagline": "the deciding season",
+          "glyph": "☀",
+          "from": 9,
+          "to": 16,
+          "intros": [
+            "The heat empties the plains of everyone who can leave and every question that can wait. What remains on your table is precisely what cannot.",
+            "The Secretariat has gone up the hill and governs by telegram. The Division stays down, and so &mdash; mostly &mdash; must its Commissioner.",
+            "Punkah weather. The files come up from three districts with the ink sweated half through the paper, and tempers ride a degree behind the thermometer.",
+            "At seven-and-thirty the hot weather is no longer an examination. It is a creditor, calling on a settled schedule."
+          ]
+        },
+        {
+          "key": "monsoon",
+          "name": "The rains",
+          "tagline": "the answering season",
+          "glyph": "☔",
+          "from": 17,
+          "to": 24,
+          "intros": [
+            "The rains break over three districts at once, and every telegraph line in the Division ends at your table. Now it is all answering.",
+            "River weather. Somewhere in four million acres a bund is weeping, and the question of the season is whether your Collector on the spot is the man you judged him to be.",
+            "The Division goes green and treacherous together. Relief, breaches, fever camps &mdash; the year's verdict is being written now, in water.",
+            "His Honour wires weekly through the rains. The wires are short. The answers had better be."
+          ]
+        }
+      ]
+    },
+    "postures": {
+      "tour": {
+        "base": {
+          "contentment": 1,
+          "order": 1,
+          "revenue": -1,
+          "prestige": -1,
+          "health": -1
+        },
+        "season": {
+          "cold": {
+            "prestige": 1
+          },
+          "hot": {
+            "health": -5
+          },
+          "monsoon": {
+            "health": -1,
+            "order": -1
+          }
+        },
+        "labels": {
+          "cold": "Go down and inspect a district",
+          "hot": "Tour on through the heat",
+          "monsoon": "Go out to the flooded country"
+        },
+        "notes": {
+          "cold": [
+            "See a district with your own eyes &mdash; the returns say what Collectors want; the villages say what is.",
+            "An inspecting Commissioner steadies three districts at once: the one he is in, and the two wondering when he comes.",
+            "The camp, the flag, the morning durbars &mdash; the Division likes to see its Commissioner. The appeal files at Sonepore do not."
+          ],
+          "hot": [
+            "Touring in the heat at seven-and-thirty is noticed in two places: the districts, and your own chest.",
+            "The plains in May: every mile is felt, and every mile is counted, by men deciding whether the new Commissioner is made of the old stuff."
+          ],
+          "monsoon": [
+            "Out along the rivers where the year is being decided &mdash; a Commissioner seen at a breach is worth a regiment of telegrams.",
+            "Flood country: the work is real, the fever is real, and the office at Sonepore silts like a channel while you are gone."
+          ]
+        }
+      },
+      "desk": {
+        "base": {
+          "prestige": 1,
+          "revenue": 1,
+          "contentment": -1,
+          "order": -1,
+          "health": 1
+        },
+        "season": {
+          "cold": {
+            "prestige": -1,
+            "contentment": -1,
+            "health": 1
+          },
+          "hot": {
+            "health": -2
+          },
+          "monsoon": {
+            "order": 1,
+            "health": -1
+          }
+        },
+        "labels": {
+          "cold": "Hold the Divisional office",
+          "hot": "Work the files at Sonepore",
+          "monsoon": "Direct the rains from headquarters"
+        },
+        "notes": {
+          "cold": [
+            "The appeals decided, the Secretariat answered, the machine oiled &mdash; and three districts inspected by nobody.",
+            "A Commissioner at his desk in the touring season is read up the hill as sound, and down the Division as absent.",
+            "The office prospers. Somewhere out there, so does whatever the returns are arranged to hide."
+          ],
+          "hot": [
+            "Behind the chiks with the Division's paper: the sensible place, and the place where three districts' troubles arrive fully grown.",
+            "The files must be mastered sometime, and the heat is when the ambitious master them. It is also when the heart keeps its books."
+          ],
+          "monsoon": [
+            "The telegraph ends at your table: relief sanctioned, breaches answered, Collectors held to their hour. Command from the centre &mdash; if your men are good.",
+            "Headquarters in the rains is the right place for a Commissioner who trusts his Collectors, and the wrong one for a Commissioner who is merely dry."
+          ]
+        }
+      }
+    },
+    "retreats": {
+      "cold": {
+        "key": "comm-retreat-cold",
+        "flag": "comm_leave_cold",
+        "tag": "LOCAL LEAVE",
+        "label": "Ten days' shooting in the Terai",
+        "note": "The old cure &mdash; grass, mist, and a rifle; the Division can mind itself for a fortnight, or say it cannot.",
+        "title": "Ten Days in the Grass",
+        "body": "You take the leave a Commissioner may sign for himself, and go up into the Terai with one tent, one shikari, and no flag. Mist on the grass at dawn, a chital screaming somewhere, the first rifle you have carried in three years. For ten days nobody calls you sahib with an initial after it. You come back with one good head, a sunburnt neck, and the discovery &mdash; annual, always forgotten &mdash; that the Division survived you.",
+        "effects": {
+          "health": 7,
+          "contentment": 2,
+          "prestige": -2,
+          "revenue": -2,
+          "order": -1
+        }
+      },
+      "hot": {
+        "key": "comm-retreat-hot",
+        "flag": "comm_leave_hot",
+        "tag": "PROGRAMME",
+        "label": "Go up to the hills with the Secretariat",
+        "note": "Half the Government is up there governing by wire &mdash; a Commissioner may join it for a fortnight without scandal. The plains notice all the same.",
+        "title": "A Fortnight Up the Hill",
+        "body": "It is entirely regular: the Secretariat is up, His Honour is up, and a Commissioner with Divisional business at Government House may follow it. The business takes four days; you stay fourteen. Cold air, deodars, dinner-parties where nobody has a temperature, and the plains a brown haze eight thousand feet below with your three districts somewhere in it. You work well up there. You sleep better. And every file that follows you up carries, faintly, the smell of the heat it was written in.",
+        "effects": {
+          "health": 9,
+          "prestige": -2,
+          "contentment": -3,
+          "order": -1
+        }
+      },
+      "monsoon": {
+        "key": "comm-retreat-monsoon",
+        "flag": "comm_leave_monsoon",
+        "tag": "MEDICAL",
+        "label": "A week on the river steamer, resting",
+        "note": "The Civil Surgeon has begun listening to your chest with his eyes shut. A week aboard, between inspections, would quiet him.",
+        "title": "The Week Aboard",
+        "body": "The Surgeon puts it as a suggestion, which from him is an order: a week on the Government steamer, nominally inspecting ghats, actually sleeping ten hours a night on deck under the awning while the brown river does the travelling. Rain on the water all day, the shores sliding by too slowly to be business. The engineer plays a concertina, rather well. Your chest unclenches by degrees you had stopped noticing it had. The ghats, for the record, are inspected: they are wet.",
+        "effects": {
+          "health": 8,
+          "prestige": -3,
+          "revenue": -1,
+          "order": -1
+        }
+      }
+    },
+    "economy": {
+      "startTreasury": 300000,
+      "settlementTurns": [
+        7,
+        19
+      ],
+      "settlementBase": 330000,
+      "interestRate": 0.18,
+      "debtCeiling": 320000,
+      "debtWarn": 260000,
+      "creditor": "the Bank",
+      "desc": "The Division&rsquo;s funds, answered for at Government House. Overspend and the Bank&rsquo;s Agent carries the difference: interest (18%) falls due at every change of season, and each half-year settlement repays up to half its take. Debt past &#8377;2,60,000 bars both knighthoods; past &#8377;3,20,000 the Agent writes to Government, and the Service retires you over it."
+    },
+    "interludeChance": 0.16,
+    "review": {
+      "from": "His Honour&rsquo;s note on the season, in his own cypher: <b>",
+      "close": "</b>",
+      "weakBelow": 35,
+      "bands": [
+        {
+          "min": 62,
+          "text": "THE DIVISION READS WELL STOP CONTINUE"
+        },
+        {
+          "min": 52,
+          "text": "SOUND STOP CONTINUE"
+        },
+        {
+          "min": 42,
+          "text": "LESS THAN I HOPED STOP COME UP AND SEE ME"
+        },
+        {
+          "min": 0,
+          "text": "I AM ASKED QUESTIONS I CANNOT ANSWER STOP GOVERNMENT HOUSE AT ONCE"
+        }
+      ],
+      "weak": {
+        "prestige": "COUNCIL DOES NOT KNOW YOUR NAME STOP",
+        "order": "YOUR DISTRICTS READ UNEASY STOP",
+        "revenue": "YOUR COLUMN FALLS SHORT STOP",
+        "contentment": "YOUR DIVISION COMPLAINS OF YOU STOP",
+        "health": "YOU LOOKED ILL AT DURBAR STOP"
+      }
+    },
+    "audio": {
+      "tonic": 185.0,
+      "master": 0.16,
+      "ragas": {
+        "cold": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          8,
+          11
+        ],
+        "hot": [
+          0,
+          2,
+          5,
+          7,
+          10
+        ],
+        "monsoon": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          10
+        ]
+      }
+    }
+  },
+  "endings": {
+    "kcsi": {
+      "title": "Knight Commander of the Star of India",
+      "text": "It is the one the Service does not expect: not the workhorse order but the <b>Star of India</b>, the ribbon they keep for Residents and Lieutenant-Governors and, once in a long while, for a Commissioner whose year could not decently be passed over. His Honour, investing you, says only: <i>&lsquo;I asked for this one specially. They wanted to give you the other.&rsquo;</i> You are <b>Sir</b> &mdash; the little word that reorders every room you will ever enter again &mdash; and seven-and-thirty, and the men who run India have begun, in their unhurried way, to speak of you as one of themselves. Above the Divisions sit the Provinces. The thought has already occurred to you. It has already occurred to them."
+    },
+    "kcie": {
+      "title": "Knight Commander of the Indian Empire",
+      "text": "The Gazette does it in a line and the line does everything: <b>K.C.I.E.</b>, and you are <b>Sir</b>, and your wife &mdash; if the years have given you one &mdash; is Lady, and the khansama's bearing acquires a permanent extra half-inch. It is the knighthood a strong Division year earns when it is done soundly and seen clearly: not lightning, but the solid gold of the working Empire. At the durbar the princes recalibrate you by a full grade, which is worth a battalion; at the Club your chair is somehow always free. Somewhere behind the telegrams, the question of a Province has quietly opened its file."
+    },
+    "transfer": {
+      "title": "Superseded",
+      "text": "The year ends and the Gazette, when it comes, is about other men: a junior Commissioner goes to the Board of Revenue, another is made Officiating Chief Secretary, and you are confirmed &mdash; the word is chosen with care &mdash; <i>in your present appointment.</i> Nothing is said. Nothing is ever said. You have simply been weighed at the altitude where everyone is able, and found &mdash; not wanting, exactly. Interchangeable. The Division is yours for another year, and the ladder above it has quietly pulled up one rung."
+    },
+    "scandal": {
+      "title": "Retired &mdash; At His Own Request",
+      "text": "At Commissioner's rank there is no scene; there is a walk with His Honour on the Government House lawn, between the salvias, and the observation that a man who has given India twenty years is entitled to consult his own health, and that the pension rules are at their most generous just now. The request is drafted for you, in the third person, and you sign it, because the alternative is an enquiry and everyone on the lawn knows it. The Gazette says <i>at his own request.</i> The Club says nothing, very loudly. The P&amp;O sails on Thursdays."
+    },
+    "breakdown": {
+      "title": "The Heart Gives Its Notice",
+      "text": "It happens at the desk, between one file and the next: a fist closing inside the chest, the pen making a mark on the margin that no clerk will ever docket. The Civil Surgeon, sent for, listens for a long time and then does not order you to the hills; he orders you Home, and writes <i>immediately</i> in a hand meant to be shown to superiors. Fourteen Indian years, called in by the only creditor who never renegotiates. The Division passes to an officiating man before your cabin trunk is corded. They are kind at the ghat. The river goes on with its own business, as it always did."
+    },
+    "riot": {
+      "title": "A Division in the Newspapers",
+      "text": "It begins in one district and is in all three within a week, and then it is not a district matter at all: it is questions in the House, leaders in the London press, and a Commission of Enquiry with a law lord at its head sitting on YOUR Division. The Commission is scrupulous. It finds the local officers steady and the disposition of forces defective, and disposition, at Divisional rank, has a single owner. You are not censured. You are described &mdash; four hundred pages of description &mdash; and a described man, the Service knows, is never afterwards employed at altitude. The Star, the Province, the whispered futures: all of it burned in the same week as the bazaars."
+    },
+    "bankrupt": {
+      "title": "The Agent Writes to Government",
+      "text": "The Bank is patient with Commissioners &mdash; patience is its trade &mdash; but patience has a floor, and below the floor is a letter: courteous, copied, addressed not to you but to the Accountant-General. A Commissioner whose personal paper has reached Government's notice is a security risk in silk, and the Service acts on it with the smooth speed it keeps for money matters alone. Retirement, the pension intact &mdash; the Bank saw to that; it is owed most of it &mdash; and a passage Home booked in a name that was very nearly Sir Somebody's. The Agent sees you off at the ghat, gravely. Business, his bow observes, is business."
+    },
+    "gonenative": {
+      "title": "Shelved Among the Princes",
+      "text": "The Division loved you; that was the trouble. The durbars too warm, the princes too fond, the vernacular too fluent, and the Secretariat's file growing the phrase from which no career at altitude recovers: <i>more at ease with the Indian than with the official world.</i> The solution is elegant, honourable, and final &mdash; a Residency: two gun-salutes, a palace guest-house, precedence over everyone and authority over nothing. You will spend your remaining service adjusting the successions of small kingdoms, beautifully. The Provinces are governed by other men. At the durbars &mdash; and this is the joke you alone are positioned to enjoy &mdash; you are happier than any of them."
+    }
+  }
+}

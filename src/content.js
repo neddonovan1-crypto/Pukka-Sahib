@@ -49,14 +49,28 @@ var ac = {
   codas: load("ac/codas.json")
 };
 
-// The career ladder, in playing order: the probation, then the district.
-// Chapters III (the Division) and IV (the province) join when written;
-// `planned` lets the start screen show the whole ladder before they exist.
+/* ---- Chapter III: Commissioner, the Sonepore Division ---- */
+var commBase = load("comm/config.json"); // { config, endings }
+var comm = {
+  key: "comm",
+  config: commBase.config,
+  endings: commBase.endings,
+  events: []
+    .concat(load("comm/events-division.json"))
+    .concat(load("comm/events-division-2.json"))
+    .concat(load("comm/events-carried.json"))
+    .concat(load("comm/warnings.json")),
+  occasions: load("comm/occasions.json"),
+  codas: load("comm/codas.json")
+};
+
+// The career ladder, in playing order: the probation, the district, the
+// Division. Chapter IV (the province) joins when written; `planned` lets the
+// start screen show the whole ladder before it exists.
 module.exports = {
-  chapters: { ac: ac, dm: dm },
-  order: ["ac", "dm"],
+  chapters: { ac: ac, dm: dm, comm: comm },
+  order: ["ac", "dm", "comm"],
   planned: [
-    { rank: "Commissioner", plays: "the K.C.I.E." },
     { rank: "Lieutenant-Governor", plays: "the Grand Commanders" }
   ]
 };

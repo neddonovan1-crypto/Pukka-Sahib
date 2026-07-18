@@ -1,0 +1,218 @@
+[
+  {
+    "id": "comm-race-week",
+    "tag": "GYMKHANA",
+    "season": ["cold"],
+    "kind": "club",
+    "once": true,
+    "title": "The Sonepore Race Week",
+    "body": "Race week is the Division&rsquo;s season in miniature: four days of racing, three balls, every planter, prince and officer within two hundred miles, and a Commissioner expected to preside over all of it as patron, steward, and bank of last resort. The subscriptions alone are a month&rsquo;s pay; the hospitality the flag bungalow is expected to return is another; and the Nawab of Tikri has entered a horse against the planters&rsquo; champion in the Cup with the whole Division betting on the result like a plebiscite. Your predecessor, the Club treasurer mentions, did the week &lsquo;very handsomely.&rsquo; He is still paying it off in Cheltenham.",
+    "choices": [
+      {
+        "label": "Do the week handsomely; a Division judges its chief by his table.",
+        "effects": { "prestige": 3, "contentment": 2, "health": -2 },
+        "econ": { "debt": 45000 },
+        "outcome": "The flag bungalow keeps open house for four days, the champagne is honest, the Cup dinner seats sixty with two princes above the salt, and the Division pronounces its new Commissioner a man in the grand manner. The grand manner is itemised in the Bank's next statement with a thoroughness the champagne had obscured. It was, everyone agrees for years, a famous week. The Agent, renewing the paper, agrees too, in figures."
+      },
+      {
+        "label": "Preside correctly and entertain within the pay.",
+        "effects": { "prestige": -1, "health": 1 },
+        "econ": { "treasury": -6000 },
+        "outcome": "You give one good dinner instead of four, subscribe what the scale suggests, and watch the racing from the stewards' box with unfeigned pleasure. It is dignified, solvent, and noted: the Division, which reads hospitality as a return on its loyalty, marks the new regime down a point for economy. The Club treasurer, alone in Sonepore, marks it up two. Both entries stand. Both are correct."
+      },
+      {
+        "label": "Back the Nawab's horse in the Cup &mdash; publicly, and at the rails.",
+        "effects": { "contentment": 3, "prestige": 1 },
+        "risk": {
+          "chance": 0.3,
+          "effects": { "prestige": -6, "contentment": -1 },
+          "econ": { "debt": 30000 },
+          "outcome": "The planters' champion wins by four lengths, the plebiscite goes the wrong way with the Commissioner's colours nailed to it, and the book you carried at the rails &mdash; gentlemen's wagers, all of them, all honoured &mdash; runs to a figure the Bank will learn on Tuesday. Worse than the money is the arithmetic the Division does aloud: the sirkar backed the prince against the planters and lost. Nothing about the week stays private. Race weeks are for exactly that."
+        },
+        "outcome": "The Nawab's grey takes the Cup by a head in the last fifty yards, and the roar can be heard, they swear, at the river. Your winnings are trivial and irrelevant; the investment was the gesture, and it pays across two ledgers at once &mdash; the Nawab's durbar warmth all season, and the Division's delight at a Commissioner with blood in him. Even the beaten planters stand the drinks. It was, of course, a gamble. The whole week is; that is what it is for."
+      }
+    ]
+  },
+  {
+    "id": "comm-workshops-strike",
+    "tag": "URGENT",
+    "season": ["any"],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Workshops Come Out",
+    "body": "The railway workshops at Sonepore &mdash; four thousand men, the largest single employment in the Division &mdash; have struck: wages docked for war-time hours never restored, a foreman&rsquo;s dismissal, and organisers down from Calcutta who speak a new language of committees and demands. The Agent of the railway wants police inside the gates by morning. The men, so far, are orderly &mdash; drilled, indeed, in a discipline that worries the D.I.G. more than stones would. Four thousand households have stopped earning in a town of forty thousand. The mathematics of that has a fuse on it.",
+    "choices": [
+      {
+        "label": "Keep the police outside the gates, and force arbitration on both parties.",
+        "effects": { "order": 3, "contentment": 3, "prestige": -1, "health": -2 },
+        "setFlags": ["arbitrated_strike"],
+        "outcome": "You refuse the railway its garrison and the organisers their martyrs at one stroke, and sit both sides at the circuit-house table with the Division's authority holding the chairs. Nine days of it: the wage question split down an arithmetic middle, the foreman reinstated to a different shed, the Calcutta men left with nothing to organise but a settlement. The railway board complains to Government about interference. Government, reading the returns from three provinces where gates were garrisoned instead, does not reply."
+      },
+      {
+        "label": "Give the railway its police, and let the company hold its own gates.",
+        "effects": { "prestige": 1, "revenue": 1 },
+        "risk": {
+          "chance": 0.25,
+          "effects": { "order": -16, "contentment": -6, "prestige": -5 },
+          "setFlags": ["workshops_firing"],
+          "outcome": "It holds for six days, and on the seventh a picket line, a police lathi, a thrown fish-plate and a panicked volley arrive in the one sequence from which no town recovers by itself. Three dead at the gates, the bazaars shut in hartal, and the fuse under four thousand idle households burning visibly at last. The strike is broken, technically. What it cost is in the enquiry's arithmetic and the town's memory, filed under the year, under your sanction, under the words &lsquo;as requested by the company.&rsquo;"
+        },
+        "outcome": "The gates are held, the pickets thin, and hunger does the company's negotiating: the men come back in the fifth week on terms worse than they struck against, which the railway board calls a return to sound relations. The town does not riot. It merely remembers &mdash; the workshops have long memories and longer apprenticeships &mdash; and the next organiser down from Calcutta, in whatever year he comes, will find four thousand men who require no persuading at all."
+      },
+      {
+        "label": "Requisition the workshops' grain shops open on credit, and starve the crisis of hunger while it talks.",
+        "effects": { "contentment": 2, "order": 1 },
+        "econ": { "treasury": -25000 },
+        "outcome": "The Division guarantees the grain-shop books for a month &mdash; a lakh of credit standing between four thousand households and the fuse &mdash; and with hunger removed from the table, the strike becomes what it claimed to be: a wage dispute, negotiable, and in the fourth week negotiated. The railway repays half the guarantee under protest. The Accountant-General queries the rest, and your reply &mdash; that it was the cheapest month of order ever bought in Sonepore &mdash; enters the province's textbook of irregular things worth doing."
+      }
+    ]
+  },
+  {
+    "id": "comm-arms-festival",
+    "tag": "URGENT",
+    "season": ["hot"],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Licensed Guns of Marwan",
+    "body": "The Marwan festival falls this year on the anniversary of a grievance &mdash; the old land case, never quite dead &mdash; and the D.I.G.&rsquo;s return shows what the district&rsquo;s notables have quietly done about it: ninety-four new arms licences taken out in six months, all lawful, all sporting guns, all in the two factions&rsquo; villages. Petherick proposes to suspend every licence in the tahsil for the festival fortnight &mdash; lawful, sweeping, and certain to be read as the sirkar disarming one faction at the other&rsquo;s request, since the other faction&rsquo;s guns are older than the register.",
+    "choices": [
+      {
+        "label": "Suspend all guns, both factions, register or no register &mdash; and search evenhandedly.",
+        "effects": { "order": 5, "contentment": -3, "prestige": 1 },
+        "econ": { "treasury": -8000 },
+        "outcome": "The order goes wider than Petherick asked &mdash; every gun in the tahsil, licensed or heirloom, deposited at the thana for the fortnight, both factions searched by parties with a magistrate attached to each. The evenhandedness is loudly resented and privately banked by both sides, each having feared the other's exemption more than its own loss. The festival passes with lathis only, and the lathis are containable. Ninety-four sporting guns go home clean in the third week. The grievance keeps; grievances do; but it keeps unloaded."
+      },
+      {
+        "label": "Refuse the suspension; lawful licences are not revoked on suspicion.",
+        "effects": { "contentment": 1, "prestige": -1 },
+        "risk": {
+          "chance": 0.2,
+          "effects": { "order": -15, "contentment": -5, "prestige": -6, "health": -2 },
+          "setFlags": ["marwan_firing"],
+          "outcome": "On the second night of the festival the two processions meet at the boundary field, and this year the folly is propellant: shots across the dark, five dead before dawn including a constable, and a tahsil in blood-feud by the end of the month. The licences were all in order; the enquiry says so at length. It says other things at length too, quoting your minute on the sanctity of lawful licences with a restraint crueller than comment. Petherick's request sits above it in the file, refused, initialled, dated three weeks before the moon."
+        },
+        "outcome": "The principle holds and, this year, so does the peace: the festival passes with the guns at home and the factions content to glare. Petherick accepts the refusal with professional grace and doubles his pickets privately, which you learn later and fund retrospectively. Whether the quiet was the principle's vindication or its luck is a question the file does not raise. The D.I.G.'s return for the next half-year shows a hundred and forty new licences. He forwards it without a minute. The number is the minute."
+      },
+      {
+        "label": "Buy the festival: fund both factions' processions jointly, with honours evenly split.",
+        "effects": { "contentment": 4, "order": 2, "prestige": -2 },
+        "econ": { "treasury": -15000 },
+        "outcome": "The oldest trick in the district book, played at Divisional scale: Government funds both processions, the routes are drawn by lot in open durbar, and the factions' headmen are yoked into a joint festival committee with precedence so exquisitely balanced that neither can secede without conceding the other the chair. The festival is gaudy, expensive, and bloodless. The Secretariat queries the grant. You reply with the price of one platoon of military police for one fortnight, and the correspondence dies of arithmetic."
+      }
+    ]
+  },
+  {
+    "id": "comm-memorial-fund",
+    "tag": "CIRCULAR",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "title": "The Viceregal Memorial",
+    "body": "A circular from the provincial committee, signed by names that decide careers: the memorial to the late Viceroy is to be provincial in scope and voluntary in subscription, and each Division&rsquo;s figure will be published in the Gazette &mdash; a word doing, in that sentence, work that would tire a coolie. Sonepore&rsquo;s &lsquo;expected&rsquo; figure, pencilled discreetly on the covering slip, is a lakh. The Division&rsquo;s notables will subscribe as their Commissioner is seen to lead, and the flag bungalow&rsquo;s own figure will lead the list. Your pay is what your pay is. The Gazette does not print pay.",
+    "choices": [
+      {
+        "label": "Lead the list handsomely, and raise the lakh with a full-dress campaign.",
+        "effects": { "prestige": 4, "health": -2, "contentment": -2 },
+        "econ": { "debt": 35000 },
+        "outcome": "Your own subscription heads the list at a figure the Bank digests in silence, and behind it the campaign rolls through the Division: durbars, dinners, the princes assessed by gun-salute, the planters by acreage, until Sonepore's total stands second in the province and the committee's telegram of thanks arrives with the word &lsquo;conspicuous&rsquo; in it. Conspicuous is the coin the circular was minted to collect. You have paid in it, and been paid in it, and the Bank's statement records the exchange rate."
+      },
+      {
+        "label": "Subscribe correctly, canvass nobody, and let the figure be what the Division wills.",
+        "effects": { "contentment": 2, "prestige": -3 },
+        "outcome": "Your hundred rupees stand at the head of a list that grows as such lists grow when nobody waters them: respectably, slowly, to a third of the pencilled figure. The committee's acknowledgment is prompt and one sentence long. At the October conference the provincial totals are read out, Division by Division, to a silence in which your figure sits like a guest in the wrong coat. Nothing follows. At altitude, nothing following IS what follows: a small subtraction, entered where you cannot audit it."
+      },
+      {
+        "label": "Redirect the energy: propose the memorial take the form of a famine reserve fund.",
+        "effects": { "prestige": 1, "contentment": 3 },
+        "econ": { "treasury": -10000 },
+        "outcome": "Your counter-proposal &mdash; that the province remember the late Viceroy, who twice fought famine, with an endowed relief reserve rather than an equestrian bronze &mdash; is argued in a minute of some elegance and seconded, unexpectedly, by two other Commissioners tired of subscribing to statuary. The committee, cornered by its own dead man's record, adopts a hybrid: a smaller bronze, a real fund. The Division's grain-country subscribes to the fund with actual warmth. The committee's thanks to you are correct and cool: you have improved their memorial and spoiled their Gazette."
+      }
+    ]
+  },
+  {
+    "id": "comm-forest-rights",
+    "tag": "PETITION",
+    "season": ["cold"],
+    "kind": "tour",
+    "once": true,
+    "title": "The Forest and the Villages",
+    "body": "The reserved forest along the Division&rsquo;s southern hills was demarcated twenty years ago by a Settlement Officer with a fine pen and a poor map, and the villages inside the line have been criminals ever since: every head-load of firewood an offence, every grazing buffalo compoundable, the forest guards farming the fines like a crop. The petition reaches your camp with four hundred thumb-prints. The Conservator, consulted, is frank: the forest is valuable, the demarcation was careless, and the Department has spent twenty years defending on principle a line drawn after lunch.",
+    "choices": [
+      {
+        "label": "Order a revision settlement: redraw the line village by village, rights recorded.",
+        "effects": { "contentment": 5, "order": 2, "prestige": -1, "revenue": -2 },
+        "outcome": "Eighteen months of survey parties, claims heard under trees, and the Department fighting each furlong &mdash; and at the end a line that means something: village commons excised, fuel and grazing rights entered in a record a headman can hold, the guards' fine-harvest ploughed under. The Conservator, a fair man losing acreage, appeals twice and is twice overruled with full reasons. Revenue's column pays a little for it. The southern hills, criminal for twenty years by cartography, return to being what they were: villages."
+      },
+      {
+        "label": "Keep the line, but commute the offences: a standing licence at a nominal fee.",
+        "effects": { "contentment": 2, "revenue": 1 },
+        "outcome": "The lawyer's solution: the boundary stands, and around it you build a licensing scheme that converts twenty years of criminality into an annual eight-anna ticket &mdash; fuel, grazing, and thatch-grass, per household, no questions. The fines collapse; the guards, their crop failed, request transfers; the Department keeps its acreage and discovers the tickets yield more than the fines did. It is neat, cheap, and it works &mdash; and it leaves standing, for some future officer's conscience, the line itself, and the principle that a village can be made lawful only by subscription."
+      },
+      {
+        "label": "The forest is the Department's; forward the petition through channels.",
+        "effects": { "prestige": -1, "contentment": -4 },
+        "outcome": "The four hundred thumb-prints travel the channels: Conservator, Board, Secretariat, each adding a docket, none an answer, and return in eleven months regretting that no revision is contemplated. The villages, who had walked two days to give their thumbs, learn the result from a peon's proclamation. That cold weather the forest fires along the southern line are unusually numerous, and the Department's report attributes them, correctly, to &lsquo;incendiarism by persons unknown.&rsquo; They are not unknown. They are on the petition, all four hundred of them."
+      }
+    ]
+  },
+  {
+    "id": "comm-plague-port",
+    "tag": "MEDICAL",
+    "season": ["monsoon"],
+    "kind": "crisis",
+    "once": true,
+    "title": "Plague at the River Port",
+    "body": "A lascar dead at the Sonepore ghat, and the Port Health Officer&rsquo;s wire uses the word the Empire has organised itself around since Bombay: <i>plague.</i> One case, rat-borne, in a riverside ward of godowns and grain-boats that trades with three provinces. The Plague Regulations give you powers that amount to martial law &mdash; and a history: the provinces that used them all learned what inspection gangs and forced segregation buy in a bazaar&rsquo;s trust, and the provinces that used none buried the lesson differently. The grain trade is watching the flag bungalow. So is every rat in four hundred godowns.",
+    "choices": [
+      {
+        "label": "Rat war, not people war: godowns sealed and cleansed, inoculation offered, no forced searches.",
+        "effects": { "contentment": 3, "order": 2, "health": -2, "prestige": 1 },
+        "econ": { "treasury": -30000 },
+        "outcome": "You spend the money where the disease lives: grain moved to new godowns rat-proofed on the Karachi pattern, the old ones sulphured one by one, bounties on tails, and the inoculation tent pitched in the market with the Civil Surgeon inoculating you first, publicly, sleeve rolled. Eleven cases, four deaths, and out &mdash; a figure the Sanitary Commissioner reads twice. The bazaar, unsearched and unsegregated, kept its trust and its trade. The rats of Sonepore, the Port Officer observes in his report, were treated as the enemy. It had not previously been Departmental doctrine."
+      },
+      {
+        "label": "The full Regulations: cordon, house search, segregation camp.",
+        "effects": { "order": -2, "contentment": -6, "prestige": 1 },
+        "econ": { "treasury": -20000 },
+        "outcome": "The riverside ward goes under cordon at dawn: search gangs, chalk marks, the segregation camp on the maidan filling with the fevered and the merely feverish alike. The disease is contained &mdash; nine cases &mdash; and the containment costs what it has cost in every province: the ward's women hidden in grain-pits from the searchers, two riots' worth of temper dispersed at lathi-point, and a bazaar that will hide its next sick man from you at any price, which is how the next outbreak will grow past finding before you hear of it. The Regulations are satisfied. They usually are."
+      },
+      {
+        "label": "One case is one case; quarantine the boats and watch.",
+        "effects": { "revenue": 1, "health": 1 },
+        "risk": {
+          "chance": 0.25,
+          "effects": { "contentment": -8, "order": -6, "prestige": -7, "health": -2 },
+          "setFlags": ["plague_spread"],
+          "outcome": "The second case is a fortnight later and the twentieth a week after that, and by October the riverside ward is a name in three provinces' quarantine orders and Sonepore's grain trade is embargoed at every downstream ghat. What the delay saved is unmeasurable; what it cost is invoiced weekly &mdash; the trade, the deaths, the eventual cordon harsher for coming late. His Honour's wire is the shortest of your service: <i>REPORT WHY.</i> The answer takes four pages and satisfies nobody, including its author."
+        },
+        "outcome": "The boats swing at quarantine moorings for three weeks, the watch is kept, and the ghat's single grave stays single: no second case. The trade grumbles at the moorings and prospers regardless. It was, on the strict figures, the proportionate course &mdash; and you notice what the proportionate course was made of: one Port Officer's vigilance, one season's luck with the rats, and a wager you did not fully price at the time. The Regulations' authors buried that wager's losers by the ten thousand. This year, the coin came down heads."
+      }
+    ]
+  },
+  {
+    "id": "comm-theatricals",
+    "tag": "THE STATION",
+    "season": ["hot"],
+    "kind": "club",
+    "once": true,
+    "title": "The Amateur Theatricals",
+    "body": "The Sonepore Amateur Dramatic Society proposes &lsquo;The Rivals&rsquo; for the hot-weather nights, and has fallen at the first fence: the casting. Mrs. Prendergast&rsquo;s Marwan cousin assumes Mrs. Malaprop by right of seniority; the Judge&rsquo;s wife has been promised it, she believes, since March; and the society&rsquo;s secretary &mdash; a Deputy Collector of promise, white to the lips &mdash; has called on you to resign the whole undertaking into the Commissioner&rsquo;s hands. It is nothing: an entertainment. It is everything: the station&rsquo;s hot-weather temper, with three months of punkah nights ahead and nothing else to talk about.",
+    "choices": [
+      {
+        "label": "Take the patronage and cast it yourself, with a steward's shamelessness.",
+        "effects": { "contentment": 3, "prestige": 1, "health": -1 },
+        "outcome": "You appoint yourself patron, declare the casting a matter of high administrative discretion, and split the part: Mrs. Malaprop plays the first three nights in one incarnation and the last three in the other, billed alphabetically, with a supper for both companies at the flag bungalow to seal it. It is absurd, it is Solomonic, and it works &mdash; the station laughs at the arrangement instead of feuding over the part, which was the whole of the statecraft required. The Deputy Collector's colour returns. The play, incidentally, is rather good twice."
+      },
+      {
+        "label": "Decline; a Commissioner does not cast comedies.",
+        "effects": { "health": 1, "contentment": -2 },
+        "outcome": "The line is correct and the vacuum fills as vacuums do: the society splits into two companies performing rival comedies in the same month to divided houses, and the split runs down through the wives to the husbands into the offices, where a Deputy Conservator declines to certify an Assistant Engineer's estimate for reasons genuinely traceable, by those who keep such genealogies, to Mrs. Malaprop. Three months of punkah nights administer the feud faithfully. It reaches the cold weather intact, and dines."
+      },
+      {
+        "label": "Give the part to neither: import the Judge's wife from Silchar for it.",
+        "effects": { "prestige": 1, "contentment": 1 },
+        "outcome": "The diagonal solution: Mrs. Dass, who played the part at Poona to notices the society's secretary is made to read aloud at committee, is invited as guest of the patron &mdash; unanswerable on merit, unattackable on precedence, and carrying its second cargo quietly under the first. She is, it turns out, superb; the house calls her twice; and the Silchar Club question, already settling, settles a little further under cover of the applause. Two rivals are disappointed evenly, which they can live with. The season's talk is the performance, which everyone can."
+      }
+    ]
+  }
+]

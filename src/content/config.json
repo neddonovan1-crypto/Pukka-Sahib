@@ -316,7 +316,37 @@
         "division",
         "cie"
       ],
-      "promotesTo": null,
+      "promotesTo": "comm",
+      "repeatNote": "The Division is not offered. Chhota Nagra must be governed again &mdash; another year, a stronger showing.",
+      "carryOut": [
+        {
+          "ending": "division",
+          "as": "carry_marked",
+          "meters": {
+            "prestige": 3
+          }
+        },
+        {
+          "flag": "married",
+          "as": "carry_wife"
+        },
+        {
+          "flag": "alone",
+          "as": "carry_alone"
+        },
+        {
+          "flag": "lala_owned",
+          "as": "carry_lala_paper"
+        },
+        {
+          "flag": "uriah_sin",
+          "as": "carry_old_sin"
+        },
+        {
+          "debt": true,
+          "as": "carry_debts"
+        }
+      ],
       "carriesIn": [
         "carry_sweetheart",
         "carry_tahsildar",
