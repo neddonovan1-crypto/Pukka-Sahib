@@ -313,7 +313,8 @@
       "posting": "Chhota Nagra",
       "plays": "the C.I.E. &mdash; and a Division, if the year is remarkable",
       "promotionTiers": [
-        "division"
+        "division",
+        "cie"
       ],
       "promotesTo": null,
       "carriesIn": [
@@ -354,7 +355,7 @@
   "endings": {
     "cie": {
       "title": "The C.I.E.",
-      "text": "The Gazette records you a <b>Companion of the Order of the Indian Empire</b> &mdash; the honest workhorse ribbon of a district man who kept the show on the road. No knighthood, no legend: a competent posting, decently done. In the Service, that is quietly understood to be the whole of the job.",
+      "text": "The Gazette records you a <b>Companion of the Order of the Indian Empire</b> &mdash; the honest workhorse ribbon of a district man who kept the show on the road. No legend is born, and the Club's congratulations have the temperature of a well-kept ledger. But the Service promotes its safe pairs of hands, and in due course the letter comes up from the Secretariat: a <b>Division</b> of your own, in the ordinary way of things, when the roster turns. It is not glory. It is the ladder &mdash; and you are on it.",
       "medal": "medal-cie"
     },
     "transfer": {
