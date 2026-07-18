@@ -13,17 +13,36 @@
       "key": "ac",
       "rank": "Assistant Commissioner",
       "posting": "Kotra sub-division",
+      "plays": "Confirmation &mdash; with a Despatch, if the Collector is impressed",
       "promotionTiers": [
         "distinction",
         "confirmed"
       ],
       "promotesTo": "dm",
       "carryOut": [
-        { "flag": "ac_sweetheart", "as": "carry_sweetheart" },
-        { "flag": "tahsildar_respect", "as": "carry_tahsildar" },
-        { "flag": "ac_vernacular", "as": "carry_vernacular" },
-        { "debt": true, "as": "carry_kotra_debt" },
-        { "ending": "distinction", "as": "carry_despatch", "meters": { "prestige": 3 } }
+        {
+          "flag": "ac_sweetheart",
+          "as": "carry_sweetheart"
+        },
+        {
+          "flag": "tahsildar_respect",
+          "as": "carry_tahsildar"
+        },
+        {
+          "flag": "ac_vernacular",
+          "as": "carry_vernacular"
+        },
+        {
+          "debt": true,
+          "as": "carry_kotra_debt"
+        },
+        {
+          "ending": "distinction",
+          "as": "carry_despatch",
+          "meters": {
+            "prestige": 3
+          }
+        }
       ],
       "tagline": "You are three-and-twenty, five months out from Home, and Assistant Commissioner of Kotra on probation. Learn the work. Mind the Collector. Survive your first hot weather. In six months the Service decides whether you are to be trusted with a district."
     },
@@ -41,13 +60,15 @@
           "score": 54,
           "prestige": 54,
           "barredByDebt": true,
-          "reach": "confirmation <b>with a despatch</b> is within reach &mdash; the Collector is writing well of you"
+          "reach": "confirmation <b>with a despatch</b> is within reach &mdash; the Collector is writing well of you",
+          "name": "a Despatch"
         },
         {
           "key": "confirmed",
-          "score": 48,
-          "prestige": 45,
-          "reach": "<b>confirmation</b> is within reach &mdash; the probation is passing"
+          "score": 46,
+          "prestige": 43,
+          "reach": "<b>confirmation</b> is within reach &mdash; the probation is passing",
+          "name": "Confirmation"
         }
       ]
     },
@@ -222,7 +243,8 @@
       "interestRate": 0.2,
       "debtCeiling": 6500,
       "debtWarn": 4500,
-      "creditor": "Sohan Lal"
+      "creditor": "Sohan Lal",
+      "desc": "Your own pay and mess-bills, not the sirkar&rsquo;s money. Spend past the chest and Sohan Lal lends the difference: his interest (20%) falls due at every change of season, and the February settlement clears what it can. Debt past &#8377;4,500 bars a Despatch; past &#8377;6,500 it reaches the Collector, and you are sent Home over it."
     },
     "interludeChance": 0.16,
     "review": {

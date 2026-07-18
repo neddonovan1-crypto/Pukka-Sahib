@@ -229,6 +229,18 @@
   .rec-body{padding:0 4px 12px 22px}
   .rec-did{font-weight:600; font-size:.9rem; color:var(--ink)}
   .rec-out{font-style:italic; font-size:.9rem; color:var(--ink-soft); margin-top:5px}
+  /* The career ladder on the start screen: the ranks in order, what each
+     plays for, and where this career stands. Planned ranks render dimmed. */
+  .ladder{
+    max-width:52ch; margin:0 auto 14px; padding:10px 16px; text-align:left;
+    background:var(--surface2); border:1px solid var(--line); border-radius:4px;
+  }
+  .ladder .record-head{margin-bottom:8px; text-align:center}
+  .rung{padding:3px 0; font-size:.88rem; color:var(--ink-soft)}
+  .rung-rank{font-weight:600; color:var(--ink)}
+  .rung-plays{display:block; font-size:.8rem; font-style:italic; margin-left:1.35em}
+  .rung--here .rung-rank{color:var(--seal)}
+  .rung--planned{opacity:.55}
   /* The service record on the start screen: rank, postings, honours so far. */
   .service{
     max-width:52ch; margin:0 auto 18px; padding:10px 16px; text-align:center;

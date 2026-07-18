@@ -40,7 +40,12 @@ async function playSession(browser, label, viewport, opts) {
 
   await page.goto(INDEX, { waitUntil: "load" });
   var begin = await page.$("#begin");           // dismiss the cover start screen if present
-  if (begin) await begin.click();
+  if (begin) {
+    // the start screen must show the whole career ladder (shipped + planned ranks)
+    var rungs = await page.$$eval("#start .ladder .rung", function (ns) { return ns.length; });
+    assert(rungs >= 3, label + ": start-screen career ladder missing or short (" + rungs + " rungs)");
+    await begin.click();
+  }
   await page.waitForSelector("#card .choice", { timeout: 5000 });
 
   // user-visible invariants present on first paint
@@ -167,8 +172,8 @@ async function resumeSession(browser, viewport) {
   assert(key, label + ": no meter legend toggle");
   if (key) {
     await key.click();
-    var legendVisible = await page.$eval("#legend", function (n) { return !n.hasAttribute("hidden") && n.children.length === 5; });
-    assert(legendVisible, label + ": legend did not open with 5 glosses");
+    var legendVisible = await page.$eval("#legend", function (n) { return !n.hasAttribute("hidden") && n.children.length === 6; });
+    assert(legendVisible, label + ": legend did not open with 6 glosses (five meters + treasury & debt)");
     await key.click();
   }
 

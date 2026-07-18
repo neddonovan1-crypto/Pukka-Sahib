@@ -33,6 +33,9 @@ function validateChapter(content, chapterKey) {
   check(cfg.chapter && cfg.chapter.key === chapterKey, "config.chapter.key must equal registry key '" + chapterKey + "'");
   if (cfg.chapter) {
     check(cfg.chapter.rank && cfg.chapter.posting, "config.chapter missing rank/posting");
+    // The start screen's career ladder speaks each rank's stake.
+    check(typeof cfg.chapter.plays === "string" && cfg.chapter.plays.length > 0, "config.chapter.plays missing (what the rank plays for)");
+    if (cfg.chapter.plays) scanText(cfg.chapter.plays, "chapter.plays");
     check(Array.isArray(cfg.chapter.promotionTiers), "config.chapter.promotionTiers must be an array");
     (cfg.chapter.promotionTiers || []).forEach(function (k) {
       check(!!content.endings[k], "config.chapter.promotionTiers references unknown ending '" + k + "'");
@@ -81,6 +84,8 @@ function validateChapter(content, chapterKey) {
     (cfg.honours.ladder || []).forEach(function (t, i) {
       var w = "honours.ladder[" + i + "]";
       check(t.key && typeof t.score === "number" && typeof t.prestige === "number", w + ": needs key/score/prestige");
+      check(typeof t.name === "string" && t.name.length > 0, w + ": needs a display name (the standing line speaks it)");
+      if (t.name) scanText(t.name, w);
       check(typeof t.reach === "string" && t.reach.length > 0, w + ": needs a standing line (reach)");
       if (t.reach) scanText(t.reach, w);
       check(t.score < lastScore, w + ": ladder must descend by score");
@@ -202,6 +207,10 @@ function validateChapter(content, chapterKey) {
   ["startTreasury", "settlementTurns", "settlementBase", "interestRate", "debtCeiling", "debtWarn"].forEach(function (k) {
     check(ec && ec[k] !== undefined, "economy." + k + " missing");
   });
+  // The money's rules are invisible until they bite, so every chapter glosses
+  // them (the legend's sixth entry): interest, settlement, bar, ceiling.
+  check(ec && typeof ec.desc === "string" && ec.desc.length > 0, "economy.desc missing (the legend's treasury & debt gloss)");
+  if (ec && ec.desc) scanText(ec.desc, "economy.desc");
   if (ec) {
     check(Array.isArray(ec.settlementTurns) && ec.settlementTurns.length >= 1, "economy.settlementTurns empty");
     ec.settlementTurns.forEach(function (st) { check(st >= 1 && st <= cfg.maxTurns, "settlementTurn out of range: " + st); });
@@ -391,6 +400,11 @@ function validateChapter(content, chapterKey) {
 if (!registry.chapters || !Array.isArray(registry.order) || !registry.order.length) {
   errors.push("content registry must export { chapters, order }");
 } else {
+  // planned: the unwritten ranks the start-screen ladder previews.
+  (registry.planned || []).forEach(function (pl, i) {
+    if (!pl || typeof pl.rank !== "string" || !pl.rank.length || typeof pl.plays !== "string" || !pl.plays.length)
+      errors.push("registry.planned[" + i + "] needs rank and plays");
+  });
   registry.order.forEach(function (k) {
     if (!registry.chapters[k]) errors.push("order lists unknown chapter '" + k + "'");
   });

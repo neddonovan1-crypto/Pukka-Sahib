@@ -240,7 +240,8 @@
       "interestRate": 0.18,
       "debtCeiling": 180000,
       "debtWarn": 120000,
-      "creditor": "the Lala"
+      "creditor": "the Lala",
+      "desc": "The district&rsquo;s chest, not your purse. Overspend it and the Lala lends the difference: his interest (18%) falls due at every change of season, and each revenue settlement repays him up to half its take. Debt past &#8377;1,20,000 bars the higher honours; past &#8377;1,80,000 he calls it in, and the Service sends you Home over it."
     },
     "interludeChance": 0.16,
     "audio": {
@@ -307,6 +308,7 @@
       "key": "dm",
       "rank": "District Magistrate &amp; Collector",
       "posting": "Chhota Nagra",
+      "plays": "the C.I.E. &mdash; and a Division, if the year is remarkable",
       "promotionTiers": [
         "division"
       ],
@@ -332,13 +334,15 @@
           "score": 65,
           "prestige": 70,
           "barredByDebt": true,
-          "reach": "the <b>C.I.E. and a Division</b> are within reach &mdash; the year is being watched"
+          "reach": "the <b>C.I.E. and a Division</b> are within reach &mdash; the year is being watched",
+          "name": "the Division"
         },
         {
           "key": "cie",
           "score": 55,
           "prestige": 52,
-          "reach": "a <b>C.I.E.</b> is within reach"
+          "reach": "a <b>C.I.E.</b> is within reach",
+          "name": "the C.I.E."
         }
       ]
     }

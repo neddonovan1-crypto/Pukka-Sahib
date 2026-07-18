@@ -48,5 +48,13 @@ var ac = {
 };
 
 // The career ladder, in playing order: the probation, then the district.
-// Chapters III (the Division) and IV (the province) join when written.
-module.exports = { chapters: { ac: ac, dm: dm }, order: ["ac", "dm"] };
+// Chapters III (the Division) and IV (the province) join when written;
+// `planned` lets the start screen show the whole ladder before they exist.
+module.exports = {
+  chapters: { ac: ac, dm: dm },
+  order: ["ac", "dm"],
+  planned: [
+    { rank: "Commissioner", plays: "the K.C.I.E." },
+    { rank: "Lieutenant-Governor", plays: "the Grand Commanders" }
+  ]
+};

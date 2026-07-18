@@ -86,14 +86,17 @@
     });
   }
 
-  // The legend: a tap/keyboard-reachable panel glossing the five meters, for
-  // players who can't hover. Built once from content, toggled by its button.
+  // The legend: a tap/keyboard-reachable panel glossing the five meters — and
+  // the money, whose rules (interest, the settlement, the honours bar, the
+  // ceiling) are otherwise invisible until they bite. Built once from content.
   function buildLegend() {
     var btn = el("meterkey"), panel = el("legend");
     if (!btn || !panel) return;
     panel.innerHTML = METERS.map(function (m) {
       return '<li><b>' + m.name + '</b> &mdash; ' + (m.desc || "") + '</li>';
     }).join("");
+    var ec = content.config.economy;
+    if (ec && ec.desc) panel.innerHTML += '<li><b>Treasury &amp; debt</b> &mdash; ' + ec.desc + "</li>";
     btn.setAttribute("aria-expanded", "false");
     btn.onclick = function () {
       var open = panel.hasAttribute("hidden") ? false : true;
@@ -107,6 +110,8 @@
     var econ = "Treasury " + L.rupees(s.treasury) +
       (s.debt > 0 ? ' &middot; <span class="debt">Debt to ' + ((content.config.economy && content.config.economy.creditor) || "the Lala") + ' ' + L.rupees(s.debt) + "</span>" : "");
     el("economy").innerHTML = econ;
+    if (content.config.economy && content.config.economy.desc)
+      el("economy").title = decode(stripTags(content.config.economy.desc)); // hover gloss; the legend has it too
     var se = s.season;
     el("seasonband").innerHTML =
       '<span class="glyph">' + se.glyph + "</span> <b>" + se.name + "</b> &middot; " + s.month + " &mdash; " + se.tagline;
@@ -373,6 +378,29 @@
       "</div>";
   }
 
+  // The career ladder: the whole shape of the game, on the start screen — the
+  // ranks in playing order (from the registry, plus the ranks yet to be
+  // written), what each plays for, and where this career stands on it.
+  function careerLadderHtml() {
+    var roman = ["I", "II", "III", "IV", "V"];
+    var rows = registry.order.map(function (k, i) {
+      var meta = registry.chapters[k].config.chapter || {};
+      var promotedOut = (career.history || []).some(function (h) { return h.chapter === k && h.promoted; });
+      var state = k === chapterKey ? "here" : promotedOut ? "done" : "next";
+      var mark = state === "here" ? " &mdash; <b>you are here</b>" : state === "done" ? " &mdash; served ✓" : "";
+      return '<div class="rung rung--' + state + '">' +
+        '<span class="rung-rank">' + roman[i] + ". " + (meta.rank || k) + "</span>" +
+        (meta.plays ? '<span class="rung-plays">plays for ' + meta.plays + mark + "</span>" : "") +
+        "</div>";
+    });
+    (registry.planned || []).forEach(function (pl, j) {
+      rows.push('<div class="rung rung--planned">' +
+        '<span class="rung-rank">' + roman[registry.order.length + j] + ". " + pl.rank + "</span>" +
+        '<span class="rung-plays">plays for ' + pl.plays + " &mdash; to come</span></div>");
+    });
+    return '<div class="ladder"><div class="record-head">The career</div>' + rows.join("") + "</div>";
+  }
+
   // Quick start: once the career has been through the apprentice year at least
   // once, a seasoned-Collector start is always on offer.
   function quickstartAvailable() {
@@ -395,6 +423,7 @@
     st.innerHTML =
       cover +
       '<div class="tagline">' + tagline + "</div>" +
+      careerLadderHtml() +
       serviceRecordHtml() +
       '<div class="start-actions">' + resumeBtn + "</div>";
     if (saved) {
