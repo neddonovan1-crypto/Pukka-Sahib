@@ -1,92 +1,89 @@
 [
   {
-    "id": "comm-pagett-mp",
-    "tag": "PROGRAMME",
-    "season": [
-      "cold"
-    ],
-    "kind": "club",
-    "once": true,
-    "title": "Pagett, M.P.",
-    "body": "He arrives in November, as they always arrive in November: Mr. Pagett, Member of Parliament, out for four months to study the East for a book already half-written in his head. He has letters from the Secretary of State&rsquo;s office, opinions on land revenue formed on the boat, and a way of saying &lsquo;the real India&rsquo; that makes your Reader&rsquo;s face perfectly smooth. He will see whatever you show him, misunderstand it at his leisure, and publish. He is also &mdash; this is the trap in the tail &mdash; on the Select Committee that will examine the next India Bill.",
-    "choices": [
-      {
-        "label": "Give him the real Division: camps, cutcherries, famine registers, and no varnish.",
-        "effects": {
-          "prestige": 2,
-          "health": -2,
-          "contentment": 1
-        },
-        "setFlags": [
-          "educated_pagett"
-        ],
-        "outcome": "Three weeks of it: a relief work at dawn, a settlement camp, an afternoon in your appeal court with the cases translated line by line, and one long evening over the famine registers of the last bad year. He argues at every step, and slowly stops arguing. The book, when it comes, is wrong about everything ornamental and right about the three things that matter &mdash; and two years hence, on the Select Committee, a fortified voice keeps saying &lsquo;that is not what I saw in Sonepore.&rsquo; The Service reckons such conversions worth a brigade."
-      },
-      {
-        "label": "The standard progress: model villages, garlands, and the early train onward.",
-        "effects": {
-          "prestige": 1,
-          "health": -1
-        },
-        "econ": {
-          "treasury": -4000
-        },
-        "outcome": "He is processed as such visitors are processed &mdash; smoothly, warmly, and entirely without information &mdash; and departs delighted with the Division and with himself. The book devotes a chapter to Sonepore's contentment, which he measured from a durbar dais at forty yards. It is quoted twice in Parliament, both times against you: once to prove all is well and cuts can deepen, once to prove the Service gilds its cages. Varnish, you re-learn, is read by whoever holds the lamp."
-      },
-      {
-        "label": "Plead the assizes and hand him to the Collectors' juniors.",
-        "effects": {
-          "health": 2,
-          "prestige": -2
-        },
-        "outcome": "The juniors do their honest best, which is the trouble: Mr. Pagett, sensing himself fobbed off on subalterns, files the slight where such men file slights &mdash; in print, and in committee. The book's Sonepore chapter is brief and acid, its administration &lsquo;aloof even by the standards of the Service.&rsquo; His Honour, who entertained Pagett for two full days at Government House, asks mildly why the Division could not find him one. There is no good answer. There was only the assizes, which were real, and are no defence."
-      }
-    ]
-  },
-  {
-    "id": "comm-succession-sen",
+    "id": "comm-lee-lists",
     "tag": "MOST SECRET",
     "season": [
       "any"
     ],
     "kind": "desk",
     "once": true,
-    "title": "The Head of the Sub-Agency",
-    "body": "Old Considine, twenty years Deputy Commissioner of the Bhil tracts &mdash; the wildest corner of Marwan, held together by his word and his fever-yellowed patience &mdash; is dying at his post, and the Secretariat&rsquo;s list proposes his successor: Mr. Sen, Bengal cadre, brilliant, senior, and entitled. Within the week three thakurs of the tracts have called at Sonepore to hint, with elaborate courtesy, that the hills &lsquo;will not understand&rsquo; such an appointment &mdash; and your D.I.G. notes drily that the men financing the deputation are the moneylenders Considine spent twenty years keeping off the Bhils&rsquo; backs. The prejudice is real. So is the use being made of it.",
+    "title": "The Lists Must Change",
+    "body": "The Commission on the Superior Services has reported, Parliament has accepted, and the circular arrives with a timetable in it: half the superior posts to be held by Indian officers within fifteen years, and each Commissioner to nominate now, from his provincial services, the men for the accelerated lists. Petherick&rsquo;s covering minute is one sentence &mdash; <i>I decline to assist at the liquidation</i> &mdash; which you may not forward and cannot unread. Dass, consulted, declines with a small smile to advise on so delicate a matter, the smile observing that his whole career is the matter. The Division has perhaps six provincial officers fit for the lists, and two of them are fit for anything in the Service.",
     "choices": [
       {
-        "label": "Back Sen without reservation &mdash; and go up with him for his first fortnight.",
+        "label": "Send up the two best names, merit alone, and sign the storm.",
         "effects": {
           "contentment": 3,
-          "prestige": 2,
-          "order": -1,
-          "health": -2
+          "prestige": 1
         },
         "setFlags": [
-          "backed_sen"
+          "lee_merit_list"
         ],
-        "outcome": "You ride into the tracts at the new man's side and hold the installation durbar yourself: the Commissioner's flag beside the new Deputy Commissioner's chair, and one sentence in the hill dialect &mdash; rehearsed with your munshi for a week &mdash; that Considine-sahib chose to die at his post, and this man comes with his files and his Commissioner behind him. The thakurs recalibrate; the moneylenders wait; and Sen, who expected to be hedged, is instead launched. By the cold weather the tracts have discovered he is unbribable and rides like a Bhil, in that order of importance."
+        "outcome": "A Kayasth subordinate judge with the best judicial record in the Division, and a Muslim deputy collector who held a subdivision through the worst of the rains: two names, no balancing, no seniority varnish, and a minute that says merit is the only principle that will survive the timetable. Half the provincial cadre is furious on communal arithmetic, the other half on length-of-service, and both halves note that the Commissioner picked as if the lists were real. Ten years on, one of the two is a district officer the province quotes. Lists, it turns out, are prophecies. You wrote a true one."
       },
       {
-        "label": "Ask the Secretariat for a seasoned frontier hand instead; the tracts are not a proving-ground.",
-        "effects": {
-          "order": 2,
-          "prestige": -1,
-          "contentment": -2
-        },
-        "setFlags": [
-          "blocked_sen"
-        ],
-        "outcome": "The request is granted &mdash; such requests always are, which is what is wrong with them &mdash; and a sound greying man goes up instead, and the tracts stay quiet. The cost is entered elsewhere: Sen, superseded on grounds no paper states, reads the unstated perfectly, as his whole cadre does. The Secretariat's list has your letter on it now, citable for a generation of such refusals. Quiet was purchased. What it was purchased with does not appear in the returns, and appreciates."
-      },
-      {
-        "label": "Accept the posting but hedge it: a strong police assistant, and your own backing kept in reserve.",
+        "label": "Nominate by strict seniority; the machine must believe the rules.",
         "effects": {
           "prestige": 1,
-          "order": -3,
           "contentment": -1
         },
-        "outcome": "The worst of both: Sen goes up visibly on probation, with a watchdog at his elbow and a Commissioner audibly waiting to see. The tracts read the hedge as licence and try him &mdash; a grazing raid, a burned outpost &mdash; and though he holds it, barely, the holding costs what full backing would have made unnecessary. Men rise to the confidence placed in them, the Service's oldest saw. It has a converse. You have just administered it."
+        "outcome": "The two oldest eligible names go up, unimpeachable and tired, and the cadre relaxes: the new dispensation will be worked on the old arithmetic, time-serving convertible at par. The two appointments perform exactly as their confidential rolls promised — adequately, till pension. The reform's first decade in your Division is thereby spent proving what its enemies said of it, which seniority always proves. The two best men watch the lists close over their heads and draw the conclusion able men draw. One resigns for the law and prospers. The Service keeps the other, wasted, as a reproach nobody reads."
+      },
+      {
+        "label": "Return the circular with a request for criteria; let Government define its own revolution.",
+        "effects": {
+          "prestige": -2,
+          "health": 1
+        },
+        "outcome": "The request is reasonable, which is its camouflage, and buys eight months while the file travels. The reply, when it comes, defines nothing and directs everything: the Secretariat, tired of waiting, fills your quota itself, from the gradation list, sight unseen — one sound man and one notorious pleader of files whom no Commissioner would have touched. You have taught Government to nominate over your head, and it has learned fluently. The lesson is cited two circulars later, on a different subject, with your Division's name in the precedent."
+      }
+    ]
+  },
+  {
+    "id": "comm-fever-orphans",
+    "tag": "PETITION",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Orphans of the Fever Year",
+    "body": "The great influenza took its toll of the Division in two months of 1918 and was never fully counted; the counting arrives now, five years late, in a missionary census: some two hundred children of the fever year living as field-serfs, cattle-boys and temple beggars across the three districts &mdash; orphans absorbed by villages too poor to absorb them, worked as orphans are worked. The American Mission offers an orphanage, funded and staffed, schooling guaranteed &mdash; and baptism, in practice, guaranteed too. The orthodox associations counter-petition within the week, subscription list attached: genuine, indignant, and one-tenth the Mission&rsquo;s figure. Both parties await Government&rsquo;s pleasure. The children await nobody; they are carrying water somewhere at this moment.",
+    "choices": [
+      {
+        "label": "Accept the Mission's offer, conversion and all; fed and taught beats free and starving.",
+        "effects": {
+          "contentment": -3,
+          "prestige": -1,
+          "order": 1
+        },
+        "setFlags": [
+          "orphans_mission"
+        ],
+        "outcome": "The orphanage rises at Silchar, brick and whitewash, and fills within the year: two hundred children fed, schooled, doctored — and Sunday-schooled, as everyone understood. The orthodox press has a name for you all season, and the agitation is real and mostly honest. Fifteen years on, the fever year's orphans are compositors, hospital assistants, mission teachers — lettered, employed, and lost entirely to the faiths of their dead parents, which was the price, and was always in the prospectus. You did the arithmetic with open eyes: souls were the currency both sides dealt in, and only one side's coin came with bread."
+      },
+      {
+        "label": "A Government orphanage on district funds, creed-blind, audit be damned.",
+        "effects": {
+          "contentment": 3,
+          "prestige": 1
+        },
+        "econ": {
+          "treasury": -14000
+        },
+        "setFlags": [
+          "orphans_sirkar"
+        ],
+        "outcome": "Government, which has no business in orphanages and no budget head for them, acquires one of each: a plain building, a pensioned havildar-major as warden, the schooling secular and the kitchens split by caste, which satisfies nobody in principle and everybody in practice. The audit query arrives on schedule and is answered with the mission census and one sentence: <i>the alternative tenders were payable in conversions.</i> The Accountant-General passes it — irregularly, humanly, once. Both petitions claim the credit. The children, asked years later where they were raised, say: the sirkar's house. It is the only loyalty the exchequer ever bought at par."
+      },
+      {
+        "label": "Board them out to caste-fellows on paid stipends, with inspection.",
+        "effects": {
+          "revenue": 1,
+          "contentment": 1,
+          "health": -1
+        },
+        "outcome": "The traditional answer, funded: each child boarded with caste-kin at four rupees a month, a sub-inspector of schools to ride the circuit and see them living. It is cheap, humane on paper, and leaky as a old canal: a third of the stipends feed the households and not the child, and the inspections catch what quarterly inspections catch. Some are raised as sons. Some are raised as servants with a Government allowance attached. The system's report reads well because the system wrote it. You keep the mission census in your desk, and twice a year you have a district officer check one name from it, at random, which is not administration. It is conscience, sampling."
       }
     ]
   },
@@ -365,44 +362,48 @@
     ]
   },
   {
-    "id": "comm-tenancy-bill",
-    "tag": "CONFIDENTIAL",
+    "id": "comm-commission-dass",
+    "tag": "MOST SECRET",
     "season": [
       "any"
     ],
     "kind": "desk",
     "once": true,
-    "title": "The Bill and the Well-Curb",
-    "body": "The Secretariat circulates the draft Tenancy Amendment Bill for Divisional opinion: clean, symmetrical, drafted by men who have not smelt a threshing-floor in a decade. Clause nine, meant to protect the occupancy tenant, will &mdash; as your own settlement years tell you at a glance &mdash; destroy him: it makes his right saleable, which means the moneylenders will own every occupancy holding in the Division inside fifteen years. You mention the clause, testing, to your orderly&rsquo;s father &mdash; twenty acres at Pipariya &mdash; across a well-curb on tour. The old man laughs for some time. &lsquo;Sahib,&rsquo; he says, &lsquo;the banias have already priced it.&rsquo;",
+    "title": "The Commission Wants Mr. Dass",
+    "body": "The Statutory Commission is touring the provinces to judge India&rsquo;s fitness for the next instalment of self-government, and it has arrived trailing its own answer: there is not one Indian member on it, and the movement has answered the insult with a boycott &mdash; black flags at every railway station, and any Indian who assists it marked publicly as a hireling. Now the Commission&rsquo;s secretary writes: the evidence of Mr. Dass, Collector of Silchar, &lsquo;would be particularly valued.&rsquo; If he testifies, his community burns him in effigy. If he declines, Government enters it on the roll it keeps. He comes to Sonepore and asks you &mdash; not for orders, he is careful to say. For advice.",
     "choices": [
       {
-        "label": "Fight clause nine with the well-curb evidence: village testimony, gathered and forwarded whole.",
+        "label": "Take his place: the Division's memorandum will carry the evidence, over your signature alone.",
         "effects": {
-          "contentment": 3,
-          "prestige": 1,
+          "prestige": 2,
+          "contentment": 2,
           "health": -2
         },
         "setFlags": [
-          "fought_clause_nine"
+          "shielded_dass"
         ],
-        "outcome": "You spend a cold-weather fortnight collecting what draftsmen never see: thirty village depositions on what a saleable right means to a man in a bad year with a bania at the door, the bazaar's own forward prices for occupancy paper &mdash; they exist already, your orderly's father was precise &mdash; and a covering minute that quotes the well-curb laugh verbatim. The Legislative Department is affronted, then shaken, then persuaded: clause nine emerges restricted to transfers within the cultivating classes. It is the most consequential paper of your year, and no one outside three offices will ever know it happened."
+        "outcome": "You construct the shield in a night's drafting: the Division submits one consolidated memorandum, all officers' views subsumed, signed by the Commissioner — and you appear before their lordships yourself, two hours of it, including the passage on the districts' fitness for responsible institutions that is Dass's argument in your voice, acknowledged as such nowhere and understood as such by every man in the room. The boycott has nothing to burn; Government has nothing to enter on its roll; the evidence — his evidence — is in the blue-book. He never thanks you in words. He merely, for the rest of your service, answers your half-written thoughts by return dak."
       },
       {
-        "label": "File the standard opinion: the Bill is welcome, with minor verbal suggestions.",
+        "label": "Advise him to testify, and stand beside him publicly when he does.",
+        "effects": {
+          "prestige": 1,
+          "contentment": -3,
+          "order": -1
+        },
+        "setFlags": [
+          "dass_testified"
+        ],
+        "outcome": "He gives evidence for three hours — measured, unanswerable, the best the Commission hears in the province, and the effigy burns at Silchar that evening on schedule, and his wife's servants begin giving notice. He bears it as he bears everything, and something in him closes that had been, slowly, opening. The blue-book quotes him at length; the movement's press quotes the quotations differently; and you learn what your advice weighed: he would not have gone but that you said go. The evidence mattered. You will spend years deciding whether it mattered that much."
+      },
+      {
+        "label": "Advise nothing; some questions belong to a man's own conscience.",
         "effects": {
           "health": 1,
-          "prestige": 1,
-          "contentment": -2
+          "prestige": -1,
+          "contentment": -1
         },
-        "outcome": "The Division's opinion goes up in the approved key, agreeable and inconsequential, and the Bill proceeds with clause nine gleaming in it. The Act works exactly as the well-curb predicted, at the pace of such things: a trickle of registered transfers, then a stream, and in the settlement reports of the next decade a new landlord class appears in the columns, bland as arithmetic. By then you are elsewhere. The opinion with your signature is in the Act's file, concurring. Files at that depth are never read. They are only, occasionally, exhumed."
-      },
-      {
-        "label": "Oppose the whole Bill as meddling; the tenancy law should be let alone.",
-        "effects": {
-          "prestige": -2,
-          "order": 1
-        },
-        "outcome": "The root-and-branch opinion, vigorously argued and comprehensively ignored: Government wants a Bill, and a Commissioner who opposes everything protects nothing. The Act passes with clause nine intact, and your dissent &mdash; being total &mdash; contributed not one amendment. The old settlement hands applaud your letter at the Club, which is where letters like it retire. The occupancy tenants of the Division would have preferred a narrower letter that worked. They were not, of course, consulted. That was rather the point of the well-curb, and the chance it offered, once."
+        "outcome": "It is scrupulous, and he receives it as what it also is: the one man whose judgment he wanted, declining to lend it. He declines the Commission in the end, in a letter of great correctness; Government makes its entry on the roll; the movement, unappeased by half-measures, notes merely that he hesitated. Both ledgers marked, no shield raised, and the advice he asked for still owing. Your correspondence continues, correct as ever. The half-written thoughts, which he once answered by return, now come back as queries."
       }
     ]
   },

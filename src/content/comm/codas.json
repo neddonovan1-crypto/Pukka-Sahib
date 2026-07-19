@@ -124,27 +124,6 @@
   },
   {
     "requires": {
-      "flag": "educated_pagett"
-    },
-    "head": "The member who saw Sonepore",
-    "text": "Three weeks of the real Division, and two years later a voice on the Select Committee keeps saying &lsquo;that is not what I saw in Sonepore.&rsquo; You will never be able to prove what the education was worth. Neither will the men who drafted around it."
-  },
-  {
-    "requires": {
-      "flag": "backed_sen"
-    },
-    "head": "The durbar in the hill dialect",
-    "text": "One rehearsed sentence, the flag beside the new man&rsquo;s chair, and a fortnight of your cold weather spent where the Secretariat could not see it. Sen holds the tracts still. The men who financed the deputation against him hold their peace, which in the tracts is the same as holding nothing."
-  },
-  {
-    "requires": {
-      "flag": "blocked_sen"
-    },
-    "head": "The letter on the list",
-    "text": "The tracts stayed quiet and the greying man was sound, and your letter sits on the Secretariat&rsquo;s list where such letters sit &mdash; citable, for a generation, by men whose reasons will be worse than yours. Quiet was purchased. The currency is still appreciating."
-  },
-  {
-    "requires": {
       "flag": "royal_silence"
     },
     "head": "The photograph of the empty street",
@@ -159,16 +138,37 @@
   },
   {
     "requires": {
-      "flag": "fought_clause_nine"
-    },
-    "head": "The laugh at the well-curb",
-    "text": "Thirty depositions, one bazaar price-list that should not have existed, and a clause pulled back from the brink in a file no one will ever read. The occupancy tenants of the Division do not know your name. That is what it cost to keep things as they are, which is sometimes the whole victory."
-  },
-  {
-    "requires": {
       "flag": "planted_the_coops"
     },
     "head": "Eight points off the harvest rate",
     "text": "A third of the societies failed, as the Registrar&rsquo;s own arithmetic promised. The rest did the quiet revolutionary thing: the bazaar&rsquo;s rate dropped eight points to compete, across every village in the Division, including the ones with no society at all. Reform, when it finally works, sends no wire."
+  },
+  {
+    "requires": {
+      "flag": "lee_merit_list"
+    },
+    "head": "The two names",
+    "text": "Merit alone, no varnish, and half the cadre furious on two different arithmetics. Ten years on, one of the two is a district officer the province quotes, and the lists you wrote read like prophecy &mdash; which is what honest lists are. Nobody remembers the storm. Both men do."
+  },
+  {
+    "requires": {
+      "flag": "shielded_dass"
+    },
+    "head": "The evidence in your voice",
+    "text": "Two hours before their lordships, and the best passage in the Division&rsquo;s memorandum was another man&rsquo;s argument delivered over your signature, acknowledged nowhere, understood everywhere. The boycott had nothing to burn and Government nothing to enter. Some services between officers have no file. This one has a blue-book, unattributed."
+  },
+  {
+    "requires": {
+      "flag": "dass_testified"
+    },
+    "head": "The effigy at Silchar",
+    "text": "He went because you said go, and the evidence was the best the Commission heard, and the effigy burned on schedule. The blue-book keeps the three hours; Silchar keeps the evening. You have both learned the weight of your advice, which is a thing better learned cheaper."
+  },
+  {
+    "requires": {
+      "flag": "orphans_sirkar"
+    },
+    "head": "The sirkar's house",
+    "text": "No budget head, one irregular audit answer, and two hundred children of the fever year raised creed-blind under a pensioned havildar-major. Asked years later where they were from, they say: the sirkar&rsquo;s house. The exchequer has bought many loyalties dearer and none at par."
   }
 ]
