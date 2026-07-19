@@ -37,17 +37,23 @@
         ctx = new AC();
         master = ctx.createGain();
         master.gain.value = 0;
-        master.connect(ctx.destination);
+        // A gentle warmth filter on the whole bed: everything above ~2.4 kHz
+        // rolls off, which is where the "mosquito" lived. Real sitar recordings
+        // heard across a verandah lose the same top.
+        var warmth = ctx.createBiquadFilter();
+        warmth.type = "lowpass"; warmth.frequency.value = 2400; warmth.Q.value = 0.5;
+        master.connect(warmth); warmth.connect(ctx.destination);
         // The taraf: every sitar pluck also excites a small bank of feedback
         // combs tuned to Sa, Pa and the octave — the sympathetic strings that
-        // make a sitar ring on after the note.
+        // make a sitar ring on after the note. Kept dark and faint: it is a
+        // halo, not a whine.
         sitarBus = ctx.createGain(); sitarBus.gain.value = 1;
         sitarBus.connect(master);
         [TONIC, TONIC * Math.pow(2, 7 / 12), TONIC * 2].forEach(function (f) {
           var d = ctx.createDelay(0.1); d.delayTime.value = 1 / f;
-          var fb = ctx.createGain(); fb.gain.value = 0.86;
-          var lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 3200;
-          var wet = ctx.createGain(); wet.gain.value = 0.055;
+          var fb = ctx.createGain(); fb.gain.value = 0.8;
+          var lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 2200;
+          var wet = ctx.createGain(); wet.gain.value = 0.04;
           sitarBus.connect(d); d.connect(lp); lp.connect(fb); fb.connect(d);
           d.connect(wet); wet.connect(master);
         });
@@ -82,6 +88,9 @@
       // sample: tune rho for ~-60 dB across the buffer; the averaging filter
       // adds its own damping on top, which is the safety margin at the end.
       var rho = Math.pow(10, -3 / (freq * dur));
+      // A decaying sine at the fundamental under the string: the resonating
+      // gourd. Without it the whole tone is edge and no body.
+      var om = 2 * Math.PI * freq / sr, bodyK = -5 / len;
       var idx = 0, dc = 0, peak = 0;
       for (i = 0; i < len; i++) {
         var v = rho * 0.5 * (line[idx] + line[(idx + 1) % N]);
@@ -89,6 +98,7 @@
         idx = (idx + 1) % N;
         var w = v + jawari * 0.5 * v * v;      // even harmonics: the buzz
         dc = dc * 0.995 + w * 0.005; w -= dc;  // and a DC blocker to pay for them
+        w += 0.45 * Math.sin(om * i) * Math.exp(bodyK * i);
         out[i] = w;
         var a = w < 0 ? -w : w; if (a > peak) peak = a;
       }
@@ -106,7 +116,7 @@
         var t = ctx.currentTime + (opts.at || 0);
         var dur = opts.dur || 2.2;
         var src = ctx.createBufferSource();
-        src.buffer = renderString(freq, dur, opts.bright == null ? 0.85 : opts.bright, opts.jawari == null ? 0.35 : opts.jawari);
+        src.buffer = renderString(freq, dur, opts.bright == null ? 0.6 : opts.bright, opts.jawari == null ? 0.22 : opts.jawari);
         if (opts.glide != null) {
           var r0 = Math.max(0.5, Math.min(2, note(opts.glide) / freq));
           if (Math.abs(r0 - 1) > 0.01) {
@@ -128,13 +138,15 @@
       try {
         var t = ctx.currentTime + at, dur = 5.2;
         var src = ctx.createBufferSource();
-        src.buffer = renderString(freq, dur, 0.5, 0.55);
-        var dry = ctx.createGain(); dry.gain.value = gain * 0.45;
-        var bp = ctx.createBiquadFilter(); bp.type = "bandpass"; bp.Q.value = 5;
-        bp.frequency.setValueAtTime(freq * 1.3, t);
-        bp.frequency.exponentialRampToValueAtTime(freq * 7, t + dur * 0.55);
-        bp.frequency.exponentialRampToValueAtTime(freq * 2, t + dur);
-        var wet = ctx.createGain(); wet.gain.value = gain * 0.8;
+        src.buffer = renderString(freq, dur, 0.4, 0.3);
+        var dry = ctx.createGain(); dry.gain.value = gain * 0.7;
+        // The bloom stays low and broad: sweeping it to the 7th harmonic with a
+        // narrow band was the other half of the whine.
+        var bp = ctx.createBiquadFilter(); bp.type = "bandpass"; bp.Q.value = 2.5;
+        bp.frequency.setValueAtTime(freq * 1.2, t);
+        bp.frequency.exponentialRampToValueAtTime(freq * 3.5, t + dur * 0.55);
+        bp.frequency.exponentialRampToValueAtTime(freq * 1.5, t + dur);
+        var wet = ctx.createGain(); wet.gain.value = gain * 0.5;
         src.connect(dry); dry.connect(master);
         src.connect(bp); bp.connect(wet); wet.connect(master);
         src.start(t);
@@ -143,10 +155,10 @@
 
     // The tanpura cycle: Pa (low), sa, sa, Sa (low) — slow and overlapping.
     function droneCycle(at) {
-      tanpuraString(note(7) / 2, at, 0.20);
-      tanpuraString(TONIC, at + 1.3, 0.15);
-      tanpuraString(TONIC, at + 2.55, 0.15);
-      tanpuraString(TONIC / 2, at + 3.7, 0.19);
+      tanpuraString(note(7) / 2, at, 0.26);
+      tanpuraString(TONIC, at + 1.3, 0.20);
+      tanpuraString(TONIC, at + 2.55, 0.20);
+      tanpuraString(TONIC / 2, at + 3.7, 0.25);
     }
 
     // A sparse phrase from the season's raga: a directional walk along the
@@ -155,7 +167,7 @@
     function phrase(at) {
       var scale = RAGAS[seasonKey] || RAGAS.cold;
       var n = 2 + Math.floor(rnd() * 4);
-      var oct = rnd() < 0.6 ? 12 : 0;
+      var oct = rnd() < 0.25 ? 12 : 0; // mostly the middle octave; the upper is an excursion, not a home
       var pos = Math.floor(rnd() * scale.length);
       var dir = rnd() < 0.5 ? 1 : -1;
       var prev = null, t = at;
@@ -167,7 +179,7 @@
         var semi = scale[pos] + oct;
         if (i === n - 1 && rnd() < 0.5) semi = (rnd() < 0.7 ? 0 : 7) + oct;
         pluck(note(semi), {
-          at: t, dur: 1.8 + rnd() * 1.2, gain: 0.3,
+          at: t, dur: 1.8 + rnd() * 1.2, gain: 0.36,
           glide: (prev != null && rnd() < 0.6) ? prev : null
         });
         prev = semi;
@@ -283,7 +295,7 @@
       if (!enabled || !ensure()) return;
       var seq = honour ? [0, 4, 7, 12] : [12, 10, 7, 3];
       for (var i = 0; i < seq.length; i++)
-        pluck(note(seq[i]), { at: 0.05 + i * 0.5, dur: 2.6, gain: 0.32, glide: i > 0 ? seq[i - 1] : null });
+        pluck(note(seq[i]), { at: 0.05 + i * 0.5, dur: 2.6, gain: 0.36, glide: i > 0 ? seq[i - 1] : null });
     }
 
     function season(k) {

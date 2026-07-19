@@ -224,6 +224,11 @@ function simulateChapter(chapterKey, content) {
 
   function assert(cond, msg) { if (!cond) fails.push("[" + chapterKey + "] " + msg); }
 
+  // Every once-marked event — interludes included, which resolve outside
+  // chooseOption and once slipped past their own flag (the aeroplane bug).
+  var ONCE_IDS = {};
+  content.events.forEach(function (e) { if (e.once) ONCE_IDS[e.id] = true; });
+
   function play(policy, seed, carry) {
     var rng = L.seededRng(seed);
     var game = L.createGame(content, rng);
@@ -243,20 +248,26 @@ function simulateChapter(chapterKey, content) {
       if (typeof s.treasury !== "number" || isNaN(s.treasury) || isNaN(s.debt)) throw new Error("NaN economy at turn " + s.turn);
     }
     if (s.phase !== "ended") throw new Error("did not terminate (guard hit)");
-    return { key: titleToKey[s.ended.title], events: events, backToBack: backToBack, turn: s.turn, debt: s.debt };
+    var counts = {}, onceRepeat = false;
+    events.forEach(function (id) {
+      counts[id] = (counts[id] || 0) + 1;
+      if (ONCE_IDS[id] && counts[id] > 1) onceRepeat = true;
+    });
+    return { key: titleToKey[s.ended.title], events: events, backToBack: backToBack, onceRepeat: onceRepeat, turn: s.turn, debt: s.debt };
   }
 
   function runBatch(name, n, seedBase, carry) {
-    var dist = {}, bb = 0, errs = 0, seen = {};
+    var dist = {}, bb = 0, onceRep = 0, errs = 0, seen = {};
     for (var i = 0; i < n; i++) {
       try {
         var r = play(POLICIES[name], seedBase + i * 7919 + 1, carry);
         dist[r.key] = (dist[r.key] || 0) + 1;
         if (r.backToBack) bb++;
+        if (r.onceRepeat) onceRep++;
         r.events.forEach(function (id) { seen[id] = (seen[id] || 0) + 1; });
       } catch (e) { errs++; if (errs < 4) console.error("  ERR[" + chapterKey + "/" + name + "]", e.message); }
     }
-    return { dist: dist, bb: bb, errs: errs, n: n, seen: seen };
+    return { dist: dist, bb: bb, onceRep: onceRep, errs: errs, n: n, seen: seen };
   }
 
   var N = 500;
@@ -304,6 +315,8 @@ function simulateChapter(chapterKey, content) {
   Object.keys(R).forEach(function (p) { assert(R[p].errs === 0, p + ": " + R[p].errs + " runtime errors"); });
   // rotation invariant: never the same event twice in a row, in any game
   Object.keys(R).forEach(function (p) { assert(R[p].bb === 0, p + ": " + R[p].bb + " games had back-to-back event repeats"); });
+  // once means once: no once-marked card (interludes included) fires twice in a run
+  Object.keys(R).forEach(function (p) { assert(R[p].onceRep === 0, p + ": " + R[p].onceRep + " games repeated a once-only event"); });
 
   // neither pure posture can be spammed to victory
   assert(pct(R.tourOnly.dist, LADDER, N) <= 0.10, "tour-only earns honours too often (" + (pct(R.tourOnly.dist, LADDER, N) * 100).toFixed(0) + "%, want ≤10%)");

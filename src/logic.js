@@ -260,8 +260,9 @@
       // occurrence. Kept out of the posture-weighted draw so it can't starve the
       // business pool or force a repeat.
       var interludes = EVENTS.filter(function (e) { return e.interlude && eligible(e) && inSeason(e); });
-      if (interludes.length && rng() < (CFG.interludeChance || 0.16)) {
-        current = pick(interludes);
+      var freshInterludes = interludes.filter(function (e) { return recent.indexOf(e.id) === -1; });
+      if (freshInterludes.length && rng() < (CFG.interludeChance || 0.16)) {
+        current = pick(freshInterludes);
         recent.push(current.id); if (recent.length > 4) recent.shift();
         return;
       }
@@ -369,6 +370,9 @@
       drawEvent();
       if (current.interlude) {
         // A no-choice occurrence: apply its own small effect and offer only Continue.
+        // Interludes resolve here rather than through chooseOption, so their
+        // once-flag must be spent here too — or a once interlude repeats.
+        if (current.once) S.flags[current.id] = true;
         var ieff = current.effects || {};
         var ipulsed = applyMeters(ieff);
         applyEcon(current.econ);
