@@ -13,7 +13,7 @@
       {
         "label": "Obey him wholly: a month's regimen, delegated files, early nights enforced.",
         "effects": { "health": 8, "prestige": -2 },
-        "outcome": "You surrender like a sensible garrison. The Reader triages the dak; two Collectors discover delegated powers they use rather well; dinner is at eight and the lamp is out at eleven, and within the month the hand holding the pen has stopped being interesting to watch. The Division runs a fraction slower and entirely adequately &mdash; the discovery, mildly humiliating and deeply useful, being that it can. The Surgeon, at the follow-up, grunts the grunt he keeps for patients who intend to be pallbearers rather than principals."
+        "outcome": "You surrender like a sensible garrison. The Reader triages the dak; two Collectors discover delegated powers they use rather well; dinner is at eight and the lamp is out at eleven, and within the month the hand holding the pen has stopped being interesting to watch. The Division runs a fraction slower and perfectly well &mdash; the discovery, mildly humiliating and deeply useful, being that it can. The Surgeon, at the follow-up, grunts the grunt he keeps for patients who intend to be pallbearers rather than principals."
       },
       {
         "label": "Half-terms: the regimen accepted, the despatch-box retained.",
@@ -72,12 +72,12 @@
         "label": "Take the instruction whole: a cold-weather progress, durbars, the theatre relit.",
         "effects": { "prestige": 7, "health": -3 },
         "econ": { "treasury": -8000 },
-        "outcome": "You had forgotten &mdash; had let yourself forget &mdash; that the flag is an instrument of government. The progress goes out in the old style: elephants where elephants answer, durbars in three districts, the Commissioner seen, garlanded, quoted. It is exhausting, faintly absurd, and entirely effective: the Division's notables re-anchor, Council's questions lose their smiles, and His Honour, receiving the cuttings, initials one word to his secretary: <i>better.</i> Theatre, you re-learn at seven-and-thirty, is not the opposite of substance. It is substance, performed where the audience can audit it."
+        "outcome": "You had forgotten &mdash; had let yourself forget &mdash; that the flag is an instrument of government. The progress goes out in the old style: elephants where elephants answer, durbars in three districts, the Commissioner seen, garlanded, quoted. It is exhausting, faintly absurd, and it answers: the Division's notables re-anchor, Council's questions lose their smiles, and His Honour, receiving the cuttings, initials one word to his secretary: <i>better.</i> Theatre, you re-learn at seven-and-thirty, is merely substance performed where the audience can audit it."
       },
       {
         "label": "Answer with the ledgers: ask him to judge the year on its figures.",
         "effects": { "prestige": 2, "contentment": 1, "health": -1 },
-        "outcome": "You make the unfashionable case over the port &mdash; the arrears down, the appeals current, the embankments sound &mdash; and he hears it through because it is true and because he is fair. &lsquo;The figures are yours,&rsquo; he concedes at the door. &lsquo;The impression, Commissioner, is MINE to manage, and you have been spending my capital to save yours.&rsquo; It is exactly accurate, and it is the sentence that finally teaches you the trade you are now in: at altitude, substance is banked jointly. He backs the figures this season. The account is flagged."
+        "outcome": "You make the unfashionable case over the port &mdash; the arrears down, the appeals current, the embankments sound &mdash; and he hears it through because it is true and because he is fair. &lsquo;The figures are yours,&rsquo; he concedes at the door. &lsquo;The impression, Commissioner, is MINE to manage, and you have been spending my capital to save yours.&rsquo; It is accurate to the anna, and it is the sentence that finally teaches you the trade you are now in: at altitude, substance is banked jointly. He backs the figures this season. The account is flagged."
       },
       {
         "label": "Say that if Council wants theatre, Council may find another actor.",
@@ -113,7 +113,7 @@
         "label": "A quarter is time; the settlement season may yet mend it.",
         "effects": { "health": 1, "contentment": 1 },
         "econ": { "debt": 20000 },
-        "outcome": "The quarter passes as quarters at altitude pass &mdash; at the gallop, spending &mdash; and the settlement mends what settlements mend, which is never the principal. The Agent renews once more on his own authority, visibly against his instructions, out of the private sympathy of one servant of a hard master for another. It is the last renewal his signature can carry. The next conversation, both of you understand across the unvisited tea, will not be with him; it will be with Calcutta, in writing, copied &mdash; and Calcutta does not call without an appointment. It writes to Government."
+        "outcome": "The quarter passes as quarters at altitude pass &mdash; at the gallop, spending &mdash; and the settlement mends what settlements mend, which is never the principal. The Agent renews once more on his own authority, against his instructions and knowing you know it, out of the private sympathy of one servant of a hard master for another. It is the last renewal his signature can carry. The next conversation, both of you understand across the unvisited tea, will not be with him; it will be with Calcutta, in writing, copied &mdash; and Calcutta does not call without an appointment. It writes to Government."
       }
     ]
   },
@@ -129,7 +129,7 @@
       { "meter": "showing", "op": "<", "value": 60 }
     ] },
     "title": "The Word at the Half-Year",
-    "body": "His Honour&rsquo;s half-yearly minute on his Commissioners is the province&rsquo;s most private document, and his private secretary &mdash; passing through Sonepore on tour, entirely off the record, over whisky he barely touches &mdash; commits the indiscretion he was plainly sent to commit: &lsquo;the Sonepore paragraph drafts <i>sound</i>.&rsquo; He lets the word sit. In the vocabulary of half-yearly minutes, <i>sound</i> is what a Division is called when nothing in it compels a better adjective; knighthoods are not made of it. &lsquo;There is a third of the year left,&rsquo; the secretary observes to his glass. &lsquo;His Honour rewrites his drafts. He has been known to enjoy having to.&rsquo;",
+    "body": "His Honour&rsquo;s half-yearly minute on his Commissioners is the province&rsquo;s most private document, and his private secretary &mdash; passing through Sonepore on tour, wholly off the record, over whisky he barely touches &mdash; commits the indiscretion he was plainly sent to commit: &lsquo;the Sonepore paragraph drafts <i>sound</i>.&rsquo; He lets the word sit. In the vocabulary of half-yearly minutes, <i>sound</i> is what a Division is called when nothing in it compels a better adjective; knighthoods are not made of it. &lsquo;There is a third of the year left,&rsquo; the secretary observes to his glass. &lsquo;His Honour rewrites his drafts. He has been known to enjoy having to.&rsquo;",
     "choices": [
       {
         "label": "Give him the compelling adjective: one great work driven home before the year closes.",
@@ -139,7 +139,7 @@
       {
         "label": "Ask, through the same channel, what precisely would compel.",
         "effects": { "prestige": 2, "health": -1 },
-        "outcome": "The question travels back the way the indiscretion came, and the answer returns in kind, unsigned, one line: <i>H.H. counts three things &mdash; what you finished, what you foresaw, and whom you made.</i> It is the syllabus, from the examiner, and the last third of the year is spent to it deliberately: one work finished, one famine memorandum filed early enough to be foresight, one Dass and one Ormsby pushed visibly forward. Calculated? Entirely. But the syllabus, you notice, is simply the Service's whole duty in nine words, and a man could do worse than govern to it for the rest of his career."
+        "outcome": "The question travels back the way the indiscretion came, and the answer returns in kind, unsigned, one line: <i>H.H. counts three things &mdash; what you finished, what you foresaw, and whom you made.</i> It is the syllabus, from the examiner, and the last third of the year is spent to it deliberately: one work finished, one famine memorandum filed early enough to be foresight, one Dass and one Ormsby pushed forward in plain view. Calculated? To the anna. But the syllabus, you notice, is simply the Service's whole duty in nine words, and a man could do worse than govern to it for the rest of his career."
       },
       {
         "label": "The year is what it is; His Honour may draft what he finds.",

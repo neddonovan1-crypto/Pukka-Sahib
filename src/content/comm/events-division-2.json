@@ -20,7 +20,7 @@
         "econ": {
           "debt": 45000
         },
-        "outcome": "The flag bungalow keeps open house for four days, the champagne is honest, the Cup dinner seats sixty with two princes above the salt, and the Division pronounces its new Commissioner a man in the grand manner. The grand manner is itemised in the Bank's next statement with a thoroughness the champagne had obscured. It was, everyone agrees for years, a famous week. The Agent, renewing the paper, agrees too, in figures."
+        "outcome": "The flag bungalow keeps open house for four days, the champagne is honest, the Cup dinner seats sixty with two princes above the salt, and the Division pronounces its new Commissioner a man in the grand manner. The grand manner is itemised in the Bank's next statement with a thoroughness the champagne had obscured. It was, everyone agrees for years, a famous week. The Agent, renewing the paper, agrees also. &lsquo;A verra famous week,&rsquo; he says, and writes the new figure."
       },
       {
         "label": "Preside correctly and entertain within the pay.",
@@ -31,7 +31,7 @@
         "econ": {
           "treasury": -6000
         },
-        "outcome": "You give one good dinner instead of four, subscribe what the scale suggests, and watch the racing from the stewards' box with unfeigned pleasure. It is dignified, solvent, and noted: the Division, which reads hospitality as a return on its loyalty, marks the new regime down a point for economy. The Club treasurer, alone in Sonepore, marks it up two. Both entries stand. Both are correct."
+        "outcome": "You give one good dinner instead of four, subscribe what the scale suggests, and watch the racing from the stewards' box with unfeigned pleasure. Dignified, solvent &mdash; and noted: the Division, which reads hospitality as a return on its loyalty, marks the new regime down a point for economy. The Club treasurer, alone in Sonepore, marks it up two. Both entries stand, in their several books."
       },
       {
         "label": "Back the Nawab's horse in the Cup &mdash; publicly, and at the rails.",
@@ -48,9 +48,9 @@
           "econ": {
             "debt": 30000
           },
-          "outcome": "The planters' champion wins by four lengths, the plebiscite goes the wrong way with the Commissioner's colours nailed to it, and the book you carried at the rails &mdash; gentlemen's wagers, all of them, all honoured &mdash; runs to a figure the Bank will learn on Tuesday. Worse than the money is the arithmetic the Division does aloud: the sirkar backed the prince against the planters and lost. Nothing about the week stays private. Race weeks are for exactly that."
+          "outcome": "The planters' champion wins by four lengths, the plebiscite goes the wrong way with the Commissioner's colours nailed to it, and the book you carried at the rails &mdash; gentlemen's wagers, all of them, all honoured &mdash; runs to a figure the Bank will learn on Tuesday. Worse than the money is the sum the Division does aloud: the sirkar backed the prince against the planters and lost. The Bank hears of it Tuesday. The Division knew by Saturday night."
         },
-        "outcome": "The Nawab's grey takes the Cup by a head in the last fifty yards, and the roar can be heard, they swear, at the river. Your winnings are trivial and irrelevant; the investment was the gesture, and it pays across two ledgers at once &mdash; the Nawab's durbar warmth all season, and the Division's delight at a Commissioner with blood in him. Even the beaten planters stand the drinks. It was, of course, a gamble. The whole week is; that is what it is for."
+        "outcome": "The Nawab's grey takes the Cup by a head in the last fifty yards, and the roar can be heard, they swear, at the river. The winnings are trivial; the wager was the gesture, and it pays across two ledgers at once &mdash; the Nawab's durbar warmth all season, and the Division's delight at a Commissioner with blood in him. &lsquo;I bred her, sahib,&rsquo; the Nawab says, four times, to four different circles. Even the beaten planters stand the drinks."
       }
     ]
   },
@@ -63,7 +63,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Workshops Come Out",
-    "body": "The railway workshops at Sonepore &mdash; four thousand men, the largest single employment in the Division &mdash; have struck: wages docked for war-time hours never restored, a foreman&rsquo;s dismissal, and organisers down from Calcutta who speak a new language of committees and demands. The Agent of the railway wants police inside the gates by morning. The men, so far, are orderly &mdash; drilled, indeed, in a discipline that worries the D.I.G. more than stones would. Four thousand households have stopped earning in a town of forty thousand. The mathematics of that has a fuse on it.",
+    "body": "The railway workshops at Sonepore &mdash; four thousand men, the largest single employment in the Division &mdash; have struck: wages docked for war-time hours never restored, a foreman&rsquo;s dismissal, and organisers down from Calcutta who speak a new language of committees and demands. The Agent of the railway wants police inside the gates by morning. The men, so far, are orderly &mdash; drilled, indeed, in a discipline that worries the D.I.G. more than stones would. The sheds stand silent for the first time in thirty years; you can hear the kites over the yards. Four thousand households have stopped earning in a town of forty thousand, and that sum carries a fuse.",
     "choices": [
       {
         "label": "Keep the police outside the gates, and force arbitration on both parties.",
@@ -210,7 +210,7 @@
         "econ": {
           "treasury": -10000
         },
-        "outcome": "Your counter-proposal &mdash; that the province remember the late Viceroy, who twice fought famine, with an endowed relief reserve rather than an equestrian bronze &mdash; is argued in a minute of some elegance and seconded, unexpectedly, by two other Commissioners tired of subscribing to statuary. The committee, cornered by its own dead man's record, adopts a hybrid: a smaller bronze, a real fund. The Division's grain-country subscribes to the fund with actual warmth. The committee's thanks to you are correct and cool: you have improved their memorial and spoiled their Gazette."
+        "outcome": "Your counter-proposal &mdash; that the province remember the late Viceroy, who twice fought famine, with an endowed relief reserve rather than an equestrian bronze &mdash; is argued in a minute you take two evenings over, and seconded, unexpectedly, by two other Commissioners tired of subscribing to statuary. The committee, cornered by its own dead man's record, adopts a hybrid: a smaller bronze, a real fund. The Division's grain-country subscribes to the fund with actual warmth. The committee's thanks to you are correct and cool: you have improved their memorial and spoiled their Gazette."
       }
     ]
   },
@@ -322,7 +322,7 @@
     "kind": "club",
     "once": true,
     "title": "The Amateur Theatricals",
-    "body": "The Sonepore Amateur Dramatic Society proposes &lsquo;The Rivals&rsquo; for the hot-weather nights, and has fallen at the first fence: the casting. Mrs. Prendergast&rsquo;s Marwan cousin assumes Mrs. Malaprop by right of seniority; the Judge&rsquo;s wife has been promised it, she believes, since March; and the society&rsquo;s secretary &mdash; a Deputy Collector of promise, white to the lips &mdash; has called on you to resign the whole undertaking into the Commissioner&rsquo;s hands. It is nothing: an entertainment. It is everything: the station&rsquo;s hot-weather temper, with three months of punkah nights ahead and nothing else to talk about.",
+    "body": "The Sonepore Amateur Dramatic Society proposes &lsquo;The Rivals&rsquo; for the hot-weather nights, and has fallen at the first fence: the casting. Mrs. Prendergast&rsquo;s Marwan cousin assumes Mrs. Malaprop by right of seniority; the Judge&rsquo;s wife has been promised it, she believes, since March; and the society&rsquo;s secretary &mdash; a Deputy Collector of promise, white to the lips &mdash; has called on you to resign the whole undertaking into the Commissioner&rsquo;s hands. &lsquo;I would sooner settle a boundary case, sir,&rsquo; he says, and means it. An entertainment, nothing more &mdash; and the station&rsquo;s whole hot-weather temper with it, three months of punkah nights ahead and nothing else to talk about.",
     "choices": [
       {
         "label": "Take the patronage and cast it yourself, with a steward's shamelessness.",
@@ -331,7 +331,7 @@
           "prestige": 1,
           "health": -1
         },
-        "outcome": "You appoint yourself patron, declare the casting a matter of high administrative discretion, and split the part: Mrs. Malaprop plays the first three nights in one incarnation and the last three in the other, billed alphabetically, with a supper for both companies at the flag bungalow to seal it. It is absurd, it is Solomonic, and it works &mdash; the station laughs at the arrangement instead of feuding over the part, which was the whole of the statecraft required. The Deputy Collector's colour returns. The play, incidentally, is rather good twice."
+        "outcome": "You appoint yourself patron, declare the casting a matter of high administrative discretion, and split the part: Mrs. Malaprop plays the first three nights in one incarnation and the last three in the other, billed alphabetically, with a supper for both companies at the flag bungalow to seal it. Absurd &mdash; and it answers: the station laughs at the arrangement instead of feuding over the part, which was the whole of the statecraft required. The Deputy Collector's colour returns. The play, incidentally, is rather good twice."
       },
       {
         "label": "Decline; a Commissioner does not cast comedies.",
@@ -339,7 +339,7 @@
           "health": 1,
           "contentment": -2
         },
-        "outcome": "The line is correct and the vacuum fills as vacuums do: the society splits into two companies performing rival comedies in the same month to divided houses, and the split runs down through the wives to the husbands into the offices, where a Deputy Conservator declines to certify an Assistant Engineer's estimate for reasons genuinely traceable, by those who keep such genealogies, to Mrs. Malaprop. Three months of punkah nights administer the feud faithfully. It reaches the cold weather intact, and dines."
+        "outcome": "The line is correct and the vacuum fills as vacuums do: the society splits into two companies performing rival comedies in the same month to divided houses, and the split runs down through the wives to the husbands into the offices, where a Deputy Conservator declines to certify an Assistant Engineer's estimate for reasons traceable, by those who keep such genealogies, to Mrs. Malaprop. Three months of punkah nights administer the feud faithfully. It reaches the cold weather intact, and dines."
       },
       {
         "label": "Give the part to neither: import the Judge's wife from Silchar for it.",
@@ -347,7 +347,7 @@
           "prestige": 1,
           "contentment": 1
         },
-        "outcome": "The diagonal solution: Mrs. Dass, who played the part at Poona to notices the society's secretary is made to read aloud at committee, is invited as guest of the patron &mdash; unanswerable on merit, unattackable on precedence, and carrying its second cargo quietly under the first. She is, it turns out, superb; the house calls her twice; and the Silchar Club question, already settling, settles a little further under cover of the applause. Two rivals are disappointed evenly, which they can live with. The season's talk is the performance, which everyone can."
+        "outcome": "The diagonal solution: Mrs. Dass, who played the part at Poona to notices the society's secretary is made to read aloud at committee, is invited as guest of the patron &mdash; unanswerable on merit, unattackable on precedence, and carrying its second cargo quietly under the first. She is, it turns out, superb; the house calls her twice; and the Silchar Club question, already settling, settles a little further under cover of the applause. Two rivals are disappointed evenly, and can live with it. The season's talk is the performance, and everyone can live with that."
       }
     ]
   }

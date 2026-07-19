@@ -7,7 +7,7 @@
     "once": true,
     "requires": { "flag": "carry_wife" },
     "title": "The Memsahib of the Division",
-    "body": "Your wife has taken the measure of Sonepore in a fortnight, as she took the measure of the district years ago, and delivers it over the breakfast table with the crispness you married her for: the Commissioner&rsquo;s house is run like a dak bungalow, the station&rsquo;s ladies are at war over the Flower Show, the Petherick marriage is unhappier than his ledgers, and the Dass household &mdash; this with a level look &mdash; has not been called on by a single English wife in eight months. She proposes to spend your prestige on all four fronts at once. She is asking, in form. She is informing, in fact.",
+    "body": "Your wife has taken the measure of Sonepore in a fortnight, as she took the measure of the district years ago, and delivers it over the breakfast table with the crispness you married her for: the Commissioner&rsquo;s house is run like a dak bungalow, the station&rsquo;s ladies are at war over the Flower Show, the Petherick marriage is unhappier than his ledgers, and the Dass household &mdash; this with a level look &mdash; has not been called on by a single English wife in eight months. She proposes to spend your prestige on all four fronts at once, and she is asking only in form. The decisions were taken before the eggs cooled.",
     "choices": [
       {
         "label": "Give her a free hand and the carriage.",
@@ -41,7 +41,7 @@
         "label": "Fill it by main force: guest wings open, a standing table for juniors passing through.",
         "effects": { "contentment": 3, "prestige": 1, "health": 1 },
         "econ": { "treasury": -4000 },
-        "outcome": "You institute what the old Commissioners kept: the open table &mdash; any officer of the Division passing through Sonepore dines and sleeps at the flag bungalow without invitation. The house wakes. Assistant magistrates argue settlement law over your port; a forest officer's dog has puppies in the west wing; the khansama, vindicated, ascends to greatness. It is not a family. It is what the Service offers instead, and taken at the flood it is nearly enough &mdash; and the juniors who dined there will govern provinces someday, telling stories about the table at Sonepore."
+        "outcome": "You institute what the old Commissioners kept: the open table &mdash; any officer of the Division passing through Sonepore dines and sleeps at the flag bungalow without invitation. The house wakes. Assistant magistrates argue settlement law over your port; a forest officer's dog has puppies in the west wing; the khansama, vindicated, ascends to greatness. A family it is not; but it is what the Service offers instead, and taken at the flood it is nearly enough &mdash; and the juniors who dined there will govern provinces someday, telling stories about the table at Sonepore."
       },
       {
         "label": "Take the work into the echo: the house as one great office.",
@@ -51,7 +51,7 @@
       {
         "label": "Shut the wings, keep the three rooms, and let the house think what it likes.",
         "effects": { "health": -2, "contentment": -1, "revenue": 1 },
-        "outcome": "Holland covers, locked doors, an establishment cut to a bachelor's third &mdash; economical, rational, and precisely as cheerful as it sounds. The station notes that the flag bungalow shows three lit windows; the Division's small kindnesses, having no door to arrive at, go elsewhere. In October you find the bearer has, without orders, aired and relit the guest wing &mdash; &lsquo;in case, sahib.&rsquo; You let it stand. Neither of you mentions in case of what, and the three windows become, without ceremony, five."
+        "outcome": "Holland covers, locked doors, an establishment cut to a bachelor's third &mdash; economical, rational, and about as cheerful as it sounds. The station notes that the flag bungalow shows three lit windows; the Division's small kindnesses, having no door to arrive at, go elsewhere. In October you find the bearer has, without orders, aired and relit the guest wing &mdash; &lsquo;in case, sahib.&rsquo; You let it stand. Neither of you mentions in case of what, and the three windows become, without ceremony, five."
       }
     ]
   },
@@ -71,7 +71,7 @@
         "effects": { "prestige": 2, "contentment": -1 },
         "econ": { "treasury": -25000 },
         "setFlags": ["cleared_lala_at_last"],
-        "outcome": "You send for the account and settle it to the anna, interest and all, in one draft that makes the year's private economy gasp &mdash; and the gomashta, receiving payment in full, bows lower than he bowed at introduction. The letter that goes back to Chhota Nagra reports, you may be sure, exactly what it found: a Commissioner who cut the string. At Divisional rank the Lala's friendship and the Lala's paper are different instruments entirely, and you have just chosen, publicly, which one he may play. He respects it. His kind always respects it &mdash; from clients they have lost."
+        "outcome": "You send for the account and settle it to the anna, interest and all, in one draft that makes the year's private economy gasp &mdash; and the gomashta, receiving payment in full, bows lower than he bowed at introduction. The letter that goes back to Chhota Nagra reports, you may be sure, what it found: a Commissioner who cut the string. At Divisional rank the Lala's friendship and the Lala's paper are two different instruments, and you have just chosen, publicly, which one he may play. He respects it. His kind always respects it &mdash; from clients they have lost."
       },
       {
         "label": "Let the account run; old arrangements have old manners.",
@@ -84,7 +84,7 @@
         "label": "Receive the gomashta with full courtesy &mdash; and move your business to the Bank.",
         "effects": { "prestige": 1, "contentment": -1 },
         "econ": { "debt": 8000 },
-        "outcome": "The courtesies are exchanged, the sherbet drunk, and the following week your accounts migrate to the Bank of Bengal's agency &mdash; whose interest is lower, whose manners are colder, and whose ledgers are read by the Accountant-General rather than the bazaar. The old paper is transferred, discounted, formalised: a debt now, plainly, instead of a relationship. The gomashta reports the migration without editorial. The Lala, reading it, will understand it as the one answer his letter did not price: not repudiation, not friendship &mdash; regularisation. It is what Commissioners do. It is why the bazaar finds them duller than Collectors."
+        "outcome": "The courtesies are exchanged, the sherbet drunk, and the following week your accounts migrate to the Bank of Bengal's agency &mdash; whose interest is lower, whose manners are colder, and whose ledgers are read by the Accountant-General rather than the bazaar. The old paper is transferred, discounted, formalised: a debt now, plainly, instead of a relationship. The gomashta reports the migration without editorial. The Lala, reading it, will understand it as the one answer his letter did not price: not repudiation, not friendship &mdash; regularisation. That is what Commissioners do, and why the bazaar finds them duller than Collectors."
       }
     ]
   },
@@ -176,7 +176,7 @@
         "effects": { "health": 1, "prestige": -1 },
         "econ": { "debt": -8000 },
         "setFlags": ["fled_to_the_bazaar"],
-        "outcome": "The bazaar's terms are, as ever, softer &mdash; the interest lower, the manner warmer, the renewals automatic &mdash; and the Agent transfers the balance without one word of comment, which from a Scot is a page of them. The relief is real and the ledger genuinely lighter. But the account has crossed a frontier older than the Bank: it is bazaar paper now, held where bazaar paper is held, readable by everyone whose business is the reading &mdash; and a Commissioner whose name lives in the bazaar's books is known to the bazaar in ways no Gazette lists, and priced accordingly, in a currency that is never rupees."
+        "outcome": "The bazaar's terms are, as ever, softer &mdash; the interest lower, the manner warmer, the renewals automatic &mdash; and the Agent transfers the balance without one word of comment, which from a Scot is a page of them. The relief is real and the ledger lighter. But the account has crossed a frontier older than the Bank: it is bazaar paper now, held where bazaar paper is held, readable by everyone whose business is the reading &mdash; and a Commissioner whose name lives in the bazaar's books is known to the bazaar in ways no Gazette lists, and priced accordingly, in a currency that is never rupees."
       }
     ]
   }

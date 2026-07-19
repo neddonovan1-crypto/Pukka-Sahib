@@ -160,10 +160,10 @@
           "from": 9,
           "to": 16,
           "intros": [
-            "The heat empties the plains of everyone who can leave and every question that can wait. What remains on your table is precisely what cannot.",
+            "The heat empties the plains of everyone who can leave and every question that can wait. What remains on your table is the part that cannot.",
             "The Secretariat has gone up the hill and governs by telegram. The Division stays down, and so &mdash; mostly &mdash; must its Commissioner.",
             "Punkah weather. The files come up from three districts with the ink sweated half through the paper, and tempers ride a degree behind the thermometer.",
-            "At seven-and-thirty the hot weather is no longer an examination. It is a creditor, calling on a settled schedule."
+            "At seven-and-thirty the hot weather is no longer an examination but a creditor, and it calls on a settled schedule."
           ]
         },
         {
@@ -259,7 +259,7 @@
           ],
           "hot": [
             "Behind the chiks with the Division's paper: the sensible place, and the place where three districts' troubles arrive fully grown.",
-            "The files must be mastered sometime, and the heat is when the ambitious master them. It is also when the heart keeps its books."
+            "The files must be mastered sometime, and the heat is when the ambitious master them. The heart keeps its books in the same months."
           ],
           "monsoon": [
             "The telegraph ends at your table: relief sanctioned, breaches answered, Collectors held to their hour. Command from the centre &mdash; if your men are good.",
@@ -292,7 +292,7 @@
         "label": "Go up to the hills with the Secretariat",
         "note": "Half the Government is up there governing by wire &mdash; a Commissioner may join it for a fortnight without scandal. The plains notice all the same.",
         "title": "A Fortnight Up the Hill",
-        "body": "It is entirely regular: the Secretariat is up, His Honour is up, and a Commissioner with Divisional business at Government House may follow it. The business takes four days; you stay fourteen. Cold air, deodars, dinner-parties where nobody has a temperature, and the plains a brown haze eight thousand feet below with your three districts somewhere in it. You work well up there. You sleep better. And every file that follows you up carries, faintly, the smell of the heat it was written in.",
+        "body": "It is quite regular: the Secretariat is up, His Honour is up, and a Commissioner with Divisional business at Government House may follow it. The business takes four days; you stay fourteen. Cold air, deodars, dinner-parties where nobody has a temperature, and the plains a brown haze eight thousand feet below with your three districts somewhere in it. You work well up there. You sleep better. And every file that follows you up carries, faintly, the smell of the heat it was written in.",
         "effects": {
           "health": 9,
           "prestige": -2,

@@ -38,7 +38,7 @@
         "econ": {
           "treasury": -9000
         },
-        "outcome": "The Division parades: whitewash, garlands, the model tahsil drilled to the minute, tea under a shamiana that cost a village school's grant. His Honour, who has been shown model tahsils since before you sat the competition, admires everything and inspects nothing, and leaves precisely as informed as he came &mdash; which he notes, because being left uninformed is a datum too. &lsquo;A very smooth three days,&rsquo; says the private secretary at the carriage door, with the emphasis of his trade on the adjective."
+        "outcome": "The Division parades: whitewash, garlands, the model tahsil drilled to the minute, tea under a shamiana that cost a village school's grant. His Honour, who has been shown model tahsils since before you sat the competition, admires everything and inspects nothing, and leaves as informed as he came &mdash; and he notes it, because being left uninformed is a datum too. &lsquo;A very smooth three days,&rsquo; says the private secretary at the carriage door, with the emphasis of his trade on the adjective."
       },
       {
         "label": "Hand the tour to your three Collectors: let him see the men, not the scenery.",
@@ -46,7 +46,7 @@
           "prestige": 1,
           "contentment": 2
         },
-        "outcome": "A Commissioner secure enough to stand aside is its own exhibit: Ormsby shows his grain trade, Petherick his settlement craft, Dass his embankments, each in his own district and his own manner, with you one respectful pace behind. His Honour reads the design at once &mdash; it is the sort of thing he did himself, coming up &mdash; and prices it correctly: a chief who grows men. The durbar is warm. The dinner is warmer. Only the legend of the tour belongs to your Collectors, which was the price, and was the point."
+        "outcome": "A Commissioner secure enough to stand aside is its own exhibit: Ormsby shows his grain trade, Petherick his settlement craft, Dass his embankments, each in his own district and his own manner, with you one respectful pace behind. His Honour reads the design at once &mdash; it is the sort of thing he did himself, coming up &mdash; and prices it correctly: a chief who grows men. The durbar is warm. The dinner is warmer. Only the legend of the tour belongs to your Collectors, and that was the bargain from the start."
       }
     ]
   },
@@ -81,7 +81,7 @@
           "prestige": -3,
           "contentment": -2
         },
-        "outcome": "It is entirely regular, faintly noted, and profoundly restorative: three months of deodar air, the invaluable dinners, His Honour at short range across a bridge-table where a certain amount of the province's real business is transacted between rubbers. You come down in September burnished and rebuilt. The Division ran correctly on delegation &mdash; and formed, in your absence, the small permanent habit of running on delegation, which will take a cold weather's touring to unteach. The plains' ledger holds the season against the flag. So, privately, do you."
+        "outcome": "It is quite regular, faintly noted, and profoundly restorative: three months of deodar air, the invaluable dinners, His Honour at short range across a bridge-table where a deal of the province's real business is transacted between rubbers. You come down in September burnished and rebuilt. The Division ran correctly on delegation &mdash; and formed, in your absence, the small permanent habit of running on delegation, which will take a cold weather's touring to unteach. The plains' ledger holds the season against the flag. So, privately, do you."
       }
     ]
   },
@@ -115,7 +115,7 @@
           "health": -1,
           "contentment": -1
         },
-        "outcome": "The season's fashion is retrenchment, so the year is presented as economy: the works reframed as savings, the relief as efficiency, the ledger curated to the mode. It goes down smoothly &mdash; fashionable papers always do &mdash; and joins the conference's great drift of smooth papers, indistinguishable by design. His Honour's question, when it comes, is gentle and precise, and aimed exactly at a curated join; your answer holds, at the cost of a second trimming. Walking out, you cannot remember which parts of your own year you presented. That, too, is a reading."
+        "outcome": "The season's fashion is retrenchment, so the year is presented as economy: the works reframed as savings, the relief as efficiency, the ledger curated to the mode. It goes down smoothly &mdash; fashionable papers always do &mdash; and joins the conference's great drift of smooth papers, indistinguishable by design. His Honour's question, when it comes, is gentle, and aimed at a curated join; your answer holds, at the cost of a second trimming. Walking out, you cannot remember which parts of your own year you presented. That, too, is a reading."
       }
     ]
   },
@@ -135,7 +135,7 @@
         "econ": {
           "debt": 200000
         },
-        "outcome": "The work is done as the Raj does its best work &mdash; slowly, massively, teak where deodar would serve &mdash; and the house emerges fit for a Lieutenant-Governor, which is rather the point. The durbars gain a setting, the dinners gain a room, the Division gains the reassurance of a solid flagstaff. The Bank gains a mortgage on three years of your pay, entered in Calcutta under 'very usual terms', which is banking for: we now hold the Commissioner."
+        "outcome": "The work is done as the Raj does its best work &mdash; slowly, massively, teak where deodar would serve &mdash; and the house emerges fit for a Lieutenant-Governor, that being rather the object. The durbars gain a setting, the dinners gain a room, the Division gains the reassurance of a solid flagstaff. The Bank gains a mortgage on three years of your pay, entered in Calcutta under 'very usual terms', which is banking for: we now hold the Commissioner."
       },
       {
         "label": "Patch the worst from the treasury and prop the rest another year.",

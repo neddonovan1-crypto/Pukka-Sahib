@@ -27,7 +27,7 @@
           "prestige": 1,
           "contentment": -1
         },
-        "outcome": "The two oldest eligible names go up, unimpeachable and tired, and the cadre relaxes: the new dispensation will be worked on the old arithmetic, time-serving convertible at par. The two appointments perform exactly as their confidential rolls promised — adequately, till pension. The reform's first decade in your Division is thereby spent proving what its enemies said of it, which seniority always proves. The two best men watch the lists close over their heads and draw the conclusion able men draw. One resigns for the law and prospers. The Service keeps the other, wasted, as a reproach nobody reads."
+        "outcome": "The two oldest eligible names go up, unimpeachable and tired, and the cadre relaxes: the new dispensation will be worked on the old arithmetic, time-serving convertible at par. The two appointments perform as their confidential rolls promised — adequately, till pension. The reform's first decade in your Division is thereby spent proving what its enemies said of it. The two best men watch the lists close over their heads and draw the conclusion able men draw. One resigns for the law and prospers. The Service keeps the other, wasted, as a reproach nobody reads."
       },
       {
         "label": "Return the circular with a request for criteria; let Government define its own revolution.",
@@ -60,7 +60,7 @@
         "setFlags": [
           "orphans_mission"
         ],
-        "outcome": "The orphanage rises at Silchar, brick and whitewash, and fills within the year: two hundred children fed, schooled, doctored — and Sunday-schooled, as everyone understood. The orthodox press has a name for you all season, and the agitation is real and mostly honest. Fifteen years on, the fever year's orphans are compositors, hospital assistants, mission teachers — lettered, employed, and lost entirely to the faiths of their dead parents, which was the price, and was always in the prospectus. You did the arithmetic with open eyes: souls were the currency both sides dealt in, and only one side's coin came with bread."
+        "outcome": "The orphanage rises at Silchar, brick and whitewash, and fills within the year: two hundred children fed, schooled, doctored — and Sunday-schooled, as everyone understood. The orthodox press has a name for you all season, and the agitation is real and mostly honest. Fifteen years on, the fever year's orphans are compositors, hospital assistants, mission teachers — lettered, employed, and lost to the faiths of their dead parents. That was the price, and it was always in the prospectus. You did the arithmetic with open eyes: souls were the currency both sides dealt in, and only one side's coin came with bread."
       },
       {
         "label": "A Government orphanage on district funds, creed-blind, audit be damned.",
@@ -74,7 +74,7 @@
         "setFlags": [
           "orphans_sirkar"
         ],
-        "outcome": "Government, which has no business in orphanages and no budget head for them, acquires one of each: a plain building, a pensioned havildar-major as warden, the schooling secular and the kitchens split by caste, which satisfies nobody in principle and everybody in practice. The audit query arrives on schedule and is answered with the mission census and one sentence: <i>the alternative tenders were payable in conversions.</i> The Accountant-General passes it — irregularly, humanly, once. Both petitions claim the credit. The children, asked years later where they were raised, say: the sirkar's house. It is the only loyalty the exchequer ever bought at par."
+        "outcome": "Government, which has no business in orphanages and no budget head for them, acquires one of each: a plain building, a pensioned havildar-major as warden, the schooling secular and the kitchens split by caste, which satisfies nobody in principle and everybody in practice. The audit query arrives on schedule and is answered with the mission census and one sentence: <i>the alternative tenders were payable in conversions.</i> The Accountant-General passes it — irregularly, humanly, once. Both petitions claim the credit. The children, asked years later where they were raised, say: the sirkar's house."
       },
       {
         "label": "Board them out to caste-fellows on paid stipends, with inspection.",
@@ -83,7 +83,7 @@
           "contentment": 1,
           "health": -1
         },
-        "outcome": "The traditional answer, funded: each child boarded with caste-kin at four rupees a month, a sub-inspector of schools to ride the circuit and see them living. It is cheap, humane on paper, and leaky as a old canal: a third of the stipends feed the households and not the child, and the inspections catch what quarterly inspections catch. Some are raised as sons. Some are raised as servants with a Government allowance attached. The system's report reads well because the system wrote it. You keep the mission census in your desk, and twice a year you have a district officer check one name from it, at random, which is not administration. It is conscience, sampling."
+        "outcome": "The traditional answer, funded: each child boarded with caste-kin at four rupees a month, a sub-inspector of schools to ride the circuit and see them living. It is cheap, humane on paper, and leaky as an old canal: a third of the stipends feed the households and not the child, and the inspections catch what quarterly inspections catch. Some are raised as sons. Some are raised as servants with a Government allowance attached. The system's report reads well because the system wrote it. You keep the mission census in your desk, and twice a year you have a district officer check one name from it, at random. That is not administration. It is conscience, sampling."
       }
     ]
   },
@@ -96,7 +96,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Bonfire in the Cloth Market",
-    "body": "The movement has reached Sonepore in form: a hartal called for Friday, volunteers in white khaddar picketing the cloth market and the liquor shops, and a bonfire of foreign cloth announced for the maidan &mdash; merchants&rsquo; own stock, given up under a pressure somewhere between conversion and siege. It is disciplined, non-violent, and organised by a local committee of pleaders and schoolmasters who quote the law of assembly back at your magistrates, correctly. The excise column is already bleeding. The cloth trade is next. And every lathi drawn makes a hundred converts.",
+    "body": "The non-co-operation movement has reached Sonepore in form: a hartal called for Friday, volunteers in white khaddar picketing the cloth market and the liquor shops, and a bonfire of foreign cloth announced for the maidan &mdash; merchants&rsquo; own stock, given up under a pressure somewhere between conversion and siege. It is disciplined, non-violent, and organised by a local committee of pleaders and schoolmasters who quote the law of assembly back at your magistrates, correctly. The excise column is already bleeding. The cloth trade is next. And every lathi drawn makes a hundred converts.",
     "choices": [
       {
         "label": "Let the hartal run its lawful course, and police only the peace.",
@@ -106,7 +106,7 @@
           "revenue": -3,
           "prestige": -2
         },
-        "outcome": "Friday comes: the shops shut, the bonfire burns, the speeches are made to a maidan full of people and constables with orders to watch and be bored. Nothing happens, which is everything: no martyrs, no photographs, no story but a fire. The movement holds the town a season and recedes as movements recede when nothing feeds them. The revenue is real money really lost, and the Secretariat's reserved side calls your restraint 'inaction' in a minute. The D.I.G. calls it, privately, the cheapest public order he has bought in thirty years."
+        "outcome": "Friday comes: the shops shut, the bonfire burns, the speeches are made to a maidan full of people and constables with orders to watch and be bored. Nothing happens, which is everything: no martyrs, no photographs, no story but a fire. The movement holds the town a season and recedes as movements recede when nothing feeds them. The revenue is real money really lost, and the Secretariat's reserved side calls your restraint 'inaction' in a minute. &lsquo;The cheapest public order I ever bought,&rsquo; says the D.I.G., privately, &lsquo;in thirty years of buying it.&rsquo;"
       },
       {
         "label": "Break the picketing under the ordinance; commerce must move.",
@@ -144,7 +144,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Tahsil That Resigned",
-    "body": "The movement&rsquo;s newest instruction reaches the Marwan countryside, and one tahsil obeys it wholesale: forty-one patwaris and every village chaukidar resign in a single week, papers pinned under stones on tahsil office steps. Without patwaris there is no record; without record no collection; without chaukidars no eyes. The machine that governs four hundred villages has simply&hellip; stood up and walked out, politely, leaving its registers squared. Petherick proposes wholesale dismissal and replacement. The replacement stock of trained patwaris in the whole Division is eleven men.",
+    "body": "The Congress movement&rsquo;s newest instruction reaches the Marwan countryside, and one tahsil obeys it wholesale: forty-one patwaris and every village chaukidar resign in a single week, papers pinned under stones on tahsil office steps. Without patwaris there is no record; without record no collection; without chaukidars no eyes. The machine that governs four hundred villages has simply&hellip; stood up and walked out, politely, leaving its registers squared. Petherick proposes wholesale dismissal and replacement. The replacement stock of trained patwaris in the whole Division is eleven men.",
     "choices": [
       {
         "label": "Hold the posts open a season, unfilled, and let the tahsil feel their absence.",
@@ -153,7 +153,7 @@
           "revenue": -3,
           "order": -1
         },
-        "outcome": "You gazette nothing, dismiss nobody, and wait &mdash; and the tahsil discovers what a countryside without records is: no mutations entered, no boundaries provable, no succession safe, every dispute suddenly bottomless. The moneylenders flourish horribly. By the third month the villages themselves are petitioning their patwaris to unresign, and by the fourth most have, unpunished and slightly sheepish. The revenue year is scarred. The lesson taught itself, which is the only durable way lessons are taught, and cost you one column to prove it."
+        "outcome": "You gazette nothing, dismiss nobody, and wait &mdash; and the tahsil discovers what a countryside without records is: no mutations entered, no boundaries provable, no succession safe, every dispute suddenly bottomless. The moneylenders flourish horribly. By the third month the villages themselves are petitioning their patwaris to unresign, and by the fourth most have, unpunished and slightly sheepish. The revenue year is scarred. The lesson taught itself, and it cost you one column of revenue to let it."
       },
       {
         "label": "Dismiss and replace: the eleven trained men, promoted clerks, and a crash school.",
@@ -175,7 +175,7 @@
           "prestige": 1,
           "health": -2
         },
-        "outcome": "It takes four days of durbars under a tree to find it, and there it is, under the khaddar and the slogans: the new record-room fees, a District Board levy eighteen months old that fell hardest on exactly these men. The politics gave the grievance its language; the grievance gave the politics its troops. You remit the levy &mdash; it was always bad &mdash; and thirty-four of forty-one quietly withdraw their papers. The movement keeps the seven and the speech. You keep the tahsil. Both sides call it victory, correctly."
+        "outcome": "It takes four days of durbars under a tree to find it, and there it is, under the khaddar and the slogans: the new record-room fees, a District Board levy eighteen months old that fell hardest on these very men. The politics gave the grievance its language; the grievance gave the politics its troops. You remit the levy &mdash; it was always bad &mdash; and thirty-four of forty-one quietly withdraw their papers. The movement keeps the seven and the speech. You keep the tahsil. Both sides call it victory, correctly."
       }
     ]
   },
@@ -188,7 +188,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Royal Train Stops at Sonepore",
-    "body": "The Prince&rsquo;s Indian tour will halt in your Division: three hours, a decorated station, an address of welcome, and a drive through streets that the movement has already promised will be <b>empty</b> &mdash; the hartal is called, the printed notices are on the walls, and the world&rsquo;s press travels on the royal train. Bombay&rsquo;s welcome ended in four days of riot; other cities have offered His Royal Highness the deeper wound of silence: shuttered bazaars, deserted pavements, a procession through a ghost town, photographed. Government House wants a warm and loyal demonstration. Government House does not have to produce one.",
+    "body": "The Prince&rsquo;s Indian tour will halt in your Division: three hours, a decorated station, an address of welcome, and a drive through streets that the swaraj movement has already promised will be <b>empty</b> &mdash; the hartal is called, the printed notices are on the walls, and the world&rsquo;s press travels on the royal train. Bombay&rsquo;s welcome ended in four days of riot; other cities have offered His Royal Highness the deeper wound of silence: shuttered bazaars, deserted pavements, a procession through a ghost town, photographed. Government House wants a warm and loyal demonstration. Government House does not have to produce one.",
     "choices": [
       {
         "label": "Stake the full programme on the streets being full, and work every lever to fill them.",
@@ -212,7 +212,7 @@
           ],
           "outcome": "The levers move everything but the town. The route is bunted, the schoolchildren marshalled, the durbar loyal &mdash; and beyond the barriers, street after shuttered street, a silence you can hear over the band, caught by every camera on the train. The London illustrated papers run the empty pavements of Sonepore across two pages. Nobody blames you in writing. The tour's history, when it is written, gives your three hours one sentence, and you are the unnamed subject of its passive voice."
         },
-        "outcome": "You spend three weeks on it like a campaign: the princes and their retinues drawn in from three districts, the fair rescheduled to coincide, the cloth market's own grievance settled the fortnight before so its jobbers owe you the day, and the schools, the regiments, the pensioners &mdash; every loyalty in the Division with legs &mdash; given its place on the route. The streets fill. Genuinely, in the end: a crowd draws a crowd, and a prince is, whatever the politics, a show. The train departs; the wire from Government House is two words and glows faintly. The movement's committee, to its credit, admits privately it was fairly beaten &mdash; this once."
+        "outcome": "You spend three weeks on it like a campaign: the princes and their retinues drawn in from three districts, the fair rescheduled to coincide, the cloth market's own grievance settled the fortnight before so its jobbers owe you the day, and the schools, the regiments, the pensioners &mdash; every loyalty in the Division with legs &mdash; given its place on the route. The streets fill &mdash; in the end, in earnest: a crowd draws a crowd, and a prince is, whatever the politics, a show. The train departs, and the wire from Government House is two words: <i>WELL DONE.</i> The movement's committee, to its credit, admits privately it was fairly beaten &mdash; this once."
       },
       {
         "label": "Shrink the programme to the station and the durbar: nothing that can be boycotted.",
@@ -224,7 +224,7 @@
         "econ": {
           "treasury": -5000
         },
-        "outcome": "Three hours inside a perimeter: the address, the durbar, the princes, a guard of honour, and no drive at all &mdash; a programme with no streets in it, and therefore no empty ones. The hartal duly empties a town nobody official looks at, and history is denied its photograph. Government House sniffs at the thinness; the royal staff, who have seen Bombay, are quietly grateful. It is the competent middle course, remembered by no one, which was its entire design."
+        "outcome": "Three hours inside a perimeter: the address, the durbar, the princes, a guard of honour, and no drive at all &mdash; a programme with no streets in it, and therefore no empty ones. The hartal duly empties a town nobody official looks at, and history is denied its photograph. Government House sniffs at the thinness; the royal staff, who have seen Bombay, are quietly grateful. It is the competent middle course, remembered by no one. That was the design."
       },
       {
         "label": "Advise Government House to route the train through by night, halting elsewhere.",
@@ -258,7 +258,7 @@
         "econ": {
           "treasury": -8000
         },
-        "outcome": "The proposal goes up with the one limb the circular never contemplated: the Commissioner's own establishment cut to the bone, the camp halved, two of the office's five sections merged, the savings real and the flag visibly plainer. It does not find the whole two lakhs &mdash; the school grants take a trim after all &mdash; but the political arithmetic transforms: no Collector can protest his own cuts, and no committee-man in the legislature can jeer at an axe that fell on the axeman first. His Honour circulates your proposal to the other Divisions without comment. The comment is the circulation."
+        "outcome": "The proposal goes up with the one limb the circular never contemplated: the Commissioner's own establishment cut to the bone, the camp halved, two of the office's five sections merged, the savings real and the flag visibly plainer. It does not find the whole two lakhs &mdash; the school grants take a trim after all &mdash; but the political arithmetic transforms: no Collector can protest his own cuts, and no committee-man in the legislature can jeer at an axe that fell on the axeman first. His Honour circulates your proposal to the other Divisions unannotated. Petherick, unconsulted, wires two words: <i>WELL CUT.</i>"
       },
       {
         "label": "Give up the deputy collectorship: justice can walk slower; schools and Bhils cannot.",
@@ -275,7 +275,7 @@
           "prestige": -3,
           "contentment": 2
         },
-        "outcome": "Your reply is a small masterpiece of costed defiance and it achieves what such masterpieces achieve: admiration, circulation, and defeat. The Secretariat, denied your fingerprints, makes the cuts itself, from the hill station, by category &mdash; the school grants and the Bhil establishment both, trimmed evenly, blindly, in the worst proportions available. The Division learns its Commissioner fought, which is worth something real. The cuts land where local knowledge would never have put them, which costs something realer."
+        "outcome": "Your reply is a small masterpiece of costed defiance and it achieves what such masterpieces achieve: admiration, circulation, and defeat. The Secretariat, denied your fingerprints, makes the cuts itself, from the hill station, by category &mdash; the school grants and the Bhil establishment both, trimmed evenly, blindly, in the worst proportions available. The Division learns its Commissioner fought; that is worth something real. The cuts land where local knowledge would never have put them; that costs something realer."
       }
     ]
   },
@@ -300,7 +300,7 @@
         "setFlags": [
           "worked_the_reforms"
         ],
-        "outcome": "The garland, the durbar seat, the Collectors instructed to brief him as they would brief you &mdash; and the countermand accepted without appeal, because the law is the law and the reforms are Government's own policy, whatever the Club says at the long table. The Minister, braced for obstruction, is disarmed by machinery that works for him; his tour ends with a speech, widely reported, in which the word 'co-operation' appears without irony. The rubbish contract, for the record, goes wrong exactly as Ormsby predicted. The Minister quietly re-supersedes the board himself in the spring, which is the reforms working, and worth a hundred contracts."
+        "outcome": "The garland, the durbar seat, the Collectors instructed to brief him as they would brief you &mdash; and the countermand accepted without appeal, because the law is the law and the reforms are Government's own policy, whatever the Club says at the long table. The Minister, braced for obstruction, is disarmed by machinery that works for him; his tour ends with a speech, widely reported, in which the word 'co-operation' appears without irony. The rubbish contract, for the record, goes wrong just as Ormsby predicted. The Minister quietly re-supersedes the board himself in the spring, which is the reforms working, and worth a hundred contracts."
       },
       {
         "label": "Correct but cool: the honours of his office, and not one ounce more.",
@@ -308,7 +308,7 @@
           "prestige": 1,
           "contentment": -2
         },
-        "outcome": "Everything the warrant of precedence requires and nothing it does not: the call returned at the correct interval, the tour facilitated at the correct scale, the Collectors civil and unforthcoming. The Minister feels the temperature exactly as it is set, and his party's press prints it: the steel frame obstructs. Nothing is untrue and nothing is quotable, which is the design. What is lost is invisible and considerable: the first Minister the Division ever had came, was frozen, and went &mdash; and told the legislature so, in the debate on the next Services vote."
+        "outcome": "Everything the warrant of precedence requires and nothing it does not: the call returned at the correct interval, the tour facilitated at the correct scale, the Collectors civil and unforthcoming. The Minister feels the temperature at which it is set, and his party's press prints it: the steel frame obstructs. Nothing is untrue and nothing is quotable; that was the design. What is lost is invisible and considerable: the first Minister the Division ever had came, was frozen, and went &mdash; and told the legislature so, in the debate on the next Services vote."
       },
       {
         "label": "Fight the countermand through the Governor's reserved side.",
@@ -317,7 +317,7 @@
           "prestige": -2,
           "contentment": -3
         },
-        "outcome": "There is a constitutional seam between the two halves of Government, and you drive a wedge into it: the supersession recast as a law-and-order matter, reserved, beyond the Minister's writ. The Governor's side upholds you &mdash; narrowly, with visible discomfort &mdash; and the victory is complete and poisonous: the Minister has learned the reforms can be outflanked, his legislature has learned who taught the lesson, and the interpellations about the Sonepore Division begin at the next session and do not stop. You won a rubbish contract. The bill arrives quarterly, in Hansard."
+        "outcome": "There is a constitutional seam between the two halves of Government, and you drive a wedge into it: the supersession recast as a law-and-order matter, reserved, beyond the Minister's writ. The Governor's side upholds you &mdash; narrowly, and does not enjoy it &mdash; and the victory is complete and poisonous: the Minister has learned the reforms can be outflanked, his legislature has learned who taught the lesson, and the interpellations about the Sonepore Division begin at the next session and do not stop. You won a rubbish contract. The bill arrives quarterly, in Hansard."
       }
     ]
   },
@@ -339,7 +339,7 @@
           "prestige": 1,
           "health": -1
         },
-        "outcome": "Two instructions, both resented, both obeyed. Ormsby sits through committee evenings learning the humility of a member's chair; Motilal comes to Sonepore monthly for tea and an hour of procedure &mdash; budgets, quorums, the arts of the agenda &mdash; coached as carefully as any probationer, because that is what he is: the first of a species on which the whole reform gambles. The board wobbles a year and walks. Its roads are worse than Ormsby's roads and its schools are better than Ormsby's schools, and it is theirs, which was the entire constitutional point."
+        "outcome": "Two instructions, both resented, both obeyed. Ormsby sits through committee evenings learning the humility of a member's chair; Motilal comes to Sonepore monthly for tea and an hour of procedure &mdash; budgets, quorums, the arts of the agenda &mdash; coached as carefully as any probationer, because that is what he is: the first of a species on which the whole reform gambles. The board wobbles a year and walks. Its roads are worse than Ormsby's roads and its schools are better than Ormsby's schools, and it is theirs. That was the constitutional point."
       },
       {
         "label": "Let it fail on its own: the reforms must earn their footing or lose it.",
@@ -357,7 +357,7 @@
           "prestige": -1,
           "contentment": -2
         },
-        "outcome": "The counter-signature is lawful, and through it the old hand steers the new body: Motilal presides, Ormsby disposes, and the board discovers by degrees that its resolutions are stage machinery. It works, in the sense that the roads stay mended. It teaches, in the sense that every member learns the reforms are furniture &mdash; a lesson they carry back to the electorate, the press, and the legislature, where it compounds. The Minister cites the Chhota Nagra board by name in the autumn debate. It is not a compliment, and it has your Division's name in it."
+        "outcome": "The counter-signature is lawful, and through it the old hand steers the new body: Motilal presides, Ormsby disposes, and the board discovers by degrees that its resolutions are stage machinery. The roads stay mended, so it works. But every member learns the reforms are furniture, and carries that lesson back to the electorate, the press, and the legislature, where it compounds. The Minister cites the Chhota Nagra board by name in the autumn debate. It is not a compliment, and it has your Division's name in it."
       }
     ]
   },
@@ -370,7 +370,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Commission Wants Mr. Dass",
-    "body": "The Statutory Commission is touring the provinces to judge India&rsquo;s fitness for the next instalment of self-government, and it has arrived trailing its own answer: there is not one Indian member on it, and the movement has answered the insult with a boycott &mdash; black flags at every railway station, and any Indian who assists it marked publicly as a hireling. Now the Commission&rsquo;s secretary writes: the evidence of Mr. Dass, Collector of Silchar, &lsquo;would be particularly valued.&rsquo; If he testifies, his community burns him in effigy. If he declines, Government enters it on the roll it keeps. He comes to Sonepore and asks you &mdash; not for orders, he is careful to say. For advice.",
+    "body": "The Statutory Commission is touring the provinces to judge India&rsquo;s fitness for the next instalment of self-government, and it has arrived trailing its own answer: there is not one Indian member on it, and the movement for self-rule has answered the insult with a boycott &mdash; black flags at every railway station, and any Indian who assists it marked publicly as a hireling. Now the Commission&rsquo;s secretary writes: the evidence of Mr. Dass, Collector of Silchar, &lsquo;would be particularly valued.&rsquo; If he testifies, his community burns him in effigy. If he declines, Government enters it on the roll it keeps. He comes to Sonepore and asks you &mdash; not for orders, he is careful to say. For advice.",
     "choices": [
       {
         "label": "Take his place: the Division's memorandum will carry the evidence, over your signature alone.",
@@ -416,7 +416,7 @@
     "kind": "personal",
     "once": true,
     "title": "Mrs. Considine Calls",
-    "body": "Old Considine of the Bhil tracts died at his post in the spring, as he had always intended, and left behind twenty years&rsquo; service, a name the hills still swear by, and the usual estate of such men: a thin pension, a widow of great composure, and a son of nineteen who has failed the ICS examination by eleven marks. Mrs. Considine calls at the flag bungalow in her grey silks, refuses tea twice and accepts it the third time, and asks for nothing whatever for ten minutes, which is how such interviews are conducted. The boy needs a start. The Service buried his father with full honours and owes his family, by its own strict rules, exactly nothing further. There are the rules. There is also the ledger the rules do not keep.",
+    "body": "Old Considine of the Bhil tracts died at his post in the spring, as he had always intended, and left behind twenty years&rsquo; service, a name the hills still swear by, and the usual estate of such men: a thin pension, a widow of great composure, and a son of nineteen who has failed the ICS examination by eleven marks. Mrs. Considine calls at the flag bungalow in her grey silks, refuses tea twice and accepts it the third time, and asks for nothing whatever for ten minutes, which is how such interviews are conducted. The boy needs a start. The Service buried his father with full honours and owes his family, by its own strict rules, nothing further. So run the rules. The other ledger, the one the rules do not keep, is taking tea in your drawing-room.",
     "choices": [
       {
         "label": "Nominate the boy for the Provincial Service; the rules leave a Commissioner that much.",
@@ -427,7 +427,7 @@
         "setFlags": [
           "placed_considines_son"
         ],
-        "outcome": "The nomination is lawful, discretionary, and precisely the kind of thing the reformed Service is trying to outgrow, and you sign it with your eyes open: eleven marks is a boy having a bad week, and twenty years in the Bhil tracts is a family having paid in advance. The provincial cadre takes him. He proves &mdash; the hills' blood running true &mdash; rather better than the eleven marks: a sound tahsildar-magistrate by thirty, in the very tracts his father held. The purists would say the nomination bent the door. It did. Doors, the old Service always held, are for exactly that."
+        "outcome": "The nomination is lawful, discretionary, and just the kind of thing the reformed Service is trying to outgrow, and you sign it with your eyes open: eleven marks is a boy having a bad week, and twenty years in the Bhil tracts is a family having paid in advance. The provincial cadre takes him. He proves &mdash; the hills' blood running true &mdash; rather better than the eleven marks: a sound tahsildar-magistrate by thirty, in the very tracts his father held. The purists would say the nomination bent the door. It did. That is what the old Service kept doors for."
       },
       {
         "label": "A word at the Club instead: the railway agency, or the Nawab's estate office.",
@@ -435,7 +435,7 @@
           "contentment": 1,
           "health": 1
         },
-        "outcome": "The clean course: nothing official touched, one letter to the railway Agent and one conversation at Tikri, and the boy has two offers within the month &mdash; good berths both, better paid than Government, and neither of them the thing his father's son wanted, which was the thing his father had. He takes the estate office and does well, and calls on you correctly each Christmas, and something in his bearing says he understands precisely which door was not opened, and by whom, and that it was, by the rules, correct. Mrs. Considine's notes remain faultlessly warm. The grey silks do not call again."
+        "outcome": "The clean course: nothing official touched, one letter to the railway Agent and one conversation at Tikri, and the boy has two offers within the month &mdash; good berths both, better paid than Government, and neither of them the thing his father's son wanted, which was the thing his father had. He takes the estate office and does well, and calls on you correctly each Christmas, and something in his bearing says he understands which door was not opened, and by whom, and that it was, by the rules, correct. Mrs. Considine's notes remain faultlessly warm. The grey silks do not call again."
       },
       {
         "label": "Tell her the truth: the examination is the door, and it must stay shut evenly.",
@@ -444,7 +444,7 @@
           "contentment": -2,
           "health": -1
         },
-        "outcome": "You say it as kindly as it can be said &mdash; that the Service her husband served is trying to become a thing appointments cannot bend, and that the trying has costs, and that this is one of them, sitting in your drawing-room in grey. She receives it with the composure of twenty years of hill stations, thanks you for the tea, and goes. The boy sits again the next year, unhelped, and fails by three. The rules held. You dine out on none of this, and the file it belongs to &mdash; the ledger the rules do not keep &mdash; carries the entry against the Service, not against you, which is a distinction that comforts less each year."
+        "outcome": "You say it as kindly as it can be said &mdash; that the Service her husband served is trying to become a thing appointments cannot bend, and that the trying has costs, and that this is one of them, sitting in your drawing-room in grey. She receives it with the composure of twenty years of hill stations, thanks you for the tea, and goes. The boy sits again the next year, unhelped, and fails by three. The rules held. You dine out on none of this, and the file it belongs to &mdash; the ledger the rules do not keep &mdash; carries the entry against the Service, not against you. Each year that distinction comforts less."
       }
     ]
   },
@@ -469,7 +469,7 @@
         "econ": {
           "treasury": -6000
         },
-        "outcome": "You pick a middling village on a main road &mdash; not a showpiece site, a seedbed &mdash; and spend the lakh on the two items the village itself votes for (the wells and the bank) plus the reading-room the circular requires, which becomes the panchayat's office, which is a better use. The Viceregal inspection admires; the report engraves; and, unusually for a beautiful idea, something survives the Viceroyalty: the co-op bank, honestly floored, is still lending at reasonable rates when its founding circular is waste-paper. Two neighbouring villages copy the wells unsubsidised. That is the whole theory of the scheme, occurring."
+        "outcome": "You pick a middling village on a main road &mdash; not a showpiece site, a seedbed &mdash; and spend the lakh on the two items the village itself votes for (the wells and the bank) plus the reading-room the circular requires, which becomes the panchayat's office &mdash; a better use. The Viceregal inspection admires; the report engraves; and, unusually for a beautiful idea, something survives the Viceroyalty: the co-op bank, honestly floored, is still lending at reasonable rates when its founding circular is waste-paper. Two neighbouring villages copy the wells without a rupee of subsidy. That was the whole theory of the scheme. There it is, walking."
       },
       {
         "label": "Stage it: whitewash the showpiece village by the railway and bank the effort for real work.",
@@ -477,7 +477,7 @@
           "prestige": 2,
           "contentment": -1
         },
-        "outcome": "The village nearest the inspection railhead receives its destiny: whitewash, a reading-room with cut flowers, a co-operative bank whose books are beautiful and whose lending is ceremonial. The Viceregal staff, who have seen forty of these and know exactly what they are seeing, inspect with practised benevolence and write the paragraph the report requires. Everyone's time is economised, which is the transaction's honest core. The village keeps the whitewash and a mild sense of having been used, and the beautiful idea files itself among its predecessors, moral, material, and inert."
+        "outcome": "The village nearest the inspection railhead receives its destiny: whitewash, a reading-room with cut flowers, a co-operative bank whose books are beautiful and whose lending is ceremonial. The Viceregal staff, who have seen forty of these and know what they are looking at, inspect with practised benevolence and write the paragraph the report requires. Everyone's time is economised, which is the transaction's honest core. The village keeps the whitewash and a mild sense of having been used, and the beautiful idea files itself among its predecessors, moral, material, and inert."
       },
       {
         "label": "Return the lakh with a costed counter-proposal: the same money as well-boring grants across forty villages.",
@@ -485,7 +485,7 @@
           "prestige": -2,
           "contentment": 2
         },
-        "outcome": "The counter-proposal is correct, which is its flaw: a Viceregal scheme wants a Model Village that can be walked through, not forty water-tables quietly lowered. The Private Secretary's reply regrets that the funds are earmarked, and the lakh goes to a Division that will stage it properly. Your forty villages bore no wells. The file of the exchange, though, has a career of its own: it surfaces years later under a different Viceroy whose beautiful idea is, word for word, well-boring grants &mdash; and someone remembers where the costing came from. Ideas at that altitude have no memory. Files do."
+        "outcome": "The counter-proposal is correct; that is its flaw. A Viceregal scheme wants a Model Village that can be walked through, not forty water-tables quietly lowered. The Private Secretary's reply regrets that the funds are earmarked, and the lakh goes to a Division that will stage it properly. Your forty villages bore no wells. The file of the exchange, though, has a career of its own: it surfaces years later under a different Viceroy whose beautiful idea is, word for word, well-boring grants &mdash; and someone remembers where the costing came from. Ideas at that altitude have no memory. Files do."
       }
     ]
   },
@@ -521,7 +521,7 @@
         "econ": {
           "treasury": -8000
         },
-        "outcome": "The model camp at Silchar cures four hundred and proves the method; the indent travels upward with its figures and returns, eight months later, half-granted &mdash; sanctioned for next year's budget, the sanction itself a genuine victory of the patient kind. The campaign proper begins the following rains, a season late. The difference between this year and next is a number the Surgeon knows and does not say aloud, and enters, because he is honest, in the annual return, where it reads as it reads. Procedure was followed. The river tracts followed their own."
+        "outcome": "The model camp at Silchar cures four hundred and proves the method; the indent travels upward with its figures and returns, eight months later, half-granted &mdash; sanctioned for next year's budget, the sanction itself a victory of the patient kind. The campaign proper begins the following rains, a season late. The difference between this year and next is a number the Surgeon knows and does not say aloud, and enters, because he is honest, in the annual return, where it reads as it reads. Procedure was followed. The river tracts followed their own."
       },
       {
         "label": "The fever is endemic and the budget is the budget; note the returns and move on.",
@@ -558,12 +558,12 @@
         "outcome": "The societies go in with the machine behind them: registration expedited, honest panches coached, the first defaulting secretary prosecuted fast and publicly so the second thinks better of it. A third fail inside two years &mdash; the Registrar's own average &mdash; and the survivors do the quiet revolutionary thing: the bazaar's harvest rate across the Division drops eight points to compete. The moneylending houses adjust, as capital adjusts. The Lala's gomashta calls to congratulate you, beautifully, on 'the improvement of the cultivator,' and you both admire the sentence for what it carries."
       },
       {
-        "label": "Let the Registrar proceed unaided; the movement must stand on peasant legs or not at all.",
+        "label": "Let the Registrar proceed unaided; the co-operative movement must stand on peasant legs or not at all.",
         "effects": {
           "health": 1,
           "contentment": -1
         },
-        "outcome": "Neutrality, honestly meant: no obstruction, no shelter, the societies to root in their own soil. The bazaar's counter-methods are patient and unprosecutable &mdash; a member's other debts called in at sowing time, a secretary's brother refused his shop credit &mdash; and of forty societies, eleven survive to their third year: the strongest, in the villages with the stubbornest panches, genuinely peasant-legged. The Registrar calls it a massacre. The survivors call themselves veterans. Both descriptions hold. The question, like all real questions, has merely been deferred a decade at the villages' expense."
+        "outcome": "Neutrality, honestly meant: no obstruction, no shelter, the societies to root in their own soil. The bazaar's counter-methods are patient and unprosecutable &mdash; a member's other debts called in at sowing time, a secretary's brother refused his shop credit &mdash; and of forty societies, eleven survive to their third year: the strongest, in the villages with the stubbornest panches, peasant-legged in earnest. The Registrar calls it a massacre. The survivors call themselves veterans. Both descriptions hold. The question itself has merely been deferred a decade, at the villages' expense."
       },
       {
         "label": "Broker the two systems: societies for crop finance, the bazaar's houses invited to hold their reserve deposits.",
