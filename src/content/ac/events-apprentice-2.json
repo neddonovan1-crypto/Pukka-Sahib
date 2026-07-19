@@ -49,7 +49,7 @@
           "prestige": -2,
           "contentment": -1
         },
-        "outcome": "He goes because he is told to, and gets over because he is luckier than you deserve, and takes a deposition that a defence pleader will later pick apart precisely because no magistrate witnessed it. Half a conviction, at no risk to yourself. The sub-inspector never mentions it. His report does, in the passive voice, where such things are kept."
+        "outcome": "He goes because he is told to, and gets over because he is luckier than you deserve, and takes a deposition that a defence pleader will later pick apart because no magistrate witnessed it. Half a conviction, at no risk to yourself. The sub-inspector never mentions it. His report does, in the passive voice, where such things are kept."
       }
     ]
   },
@@ -62,7 +62,7 @@
     "kind": "club",
     "once": true,
     "title": "The Thakur's Leopard",
-    "body": "A cattle-lifting leopard has set up in the ravines below Rajgarh, and the Thakur organises a beat with the flourish of a man staging a durbar: elephants borrowed, beaters in his livery, luncheon under a shamiana. The first drive wounds the beast &mdash; a bad shot, not yours &mdash; and it goes into a cane-brake trailing blood. Every man present knows the etiquette: a wounded leopard is followed up on foot by somebody, and the somebody who does it is talked of, and the somebody who declines is also talked of. The Thakur looks at you with bright, hospitable, entirely merciless interest.",
+    "body": "A cattle-lifting leopard has set up in the ravines below Rajgarh, and the Thakur organises a beat with the flourish of a man staging a durbar: elephants borrowed, beaters in his livery, luncheon under a shamiana. The first drive wounds the beast &mdash; a bad shot, not yours &mdash; and it goes into a cane-brake trailing blood. Every man present knows the etiquette: a wounded leopard is followed up on foot by somebody, and the somebody who does it is talked of, and the somebody who declines is also talked of. The Thakur looks at you with bright, hospitable, merciless interest.",
     "choices": [
       {
         "label": "Take the shotgun and go into the cane after it.",
@@ -91,7 +91,7 @@
           "health": 1,
           "contentment": 1
         },
-        "outcome": "The shikari goes in with a borrowed rifle and thirty years of knowing better, and finishes it neatly, and is given twenty rupees and no dinner-table immortality whatever. It is the sensible course and everyone says so, in the tone the Service keeps for sensible courses. The Thakur's warmth cools by some exactly calculated degree. At the Club, the story is told without your name in it."
+        "outcome": "The shikari goes in with a borrowed rifle and thirty years of knowing better, and finishes it neatly, and is given twenty rupees and no dinner-table immortality whatever. It is the sensible course and everyone says so, in the tone the Service keeps for sensible courses. The Thakur's warmth cools by a calculated degree. At the Club, the story is told without your name in it."
       },
       {
         "label": "Declare the light gone and the beat over; leopards keep.",
@@ -145,7 +145,7 @@
           "prestige": -2,
           "revenue": 1
         },
-        "outcome": "The excuse is real &mdash; the file exists, the work is done, the virtue is genuine &mdash; and it purchases nothing whatever. The cantonment wanted to see the new Civilian ride, and has instead seen him decline to, and along the mall that is a complete set of facts. The assizes, at least, are beautifully prepared."
+        "outcome": "The excuse is real &mdash; the file exists, the work is done, the virtue solid &mdash; and it purchases nothing whatever. The cantonment wanted to see the new Civilian ride, and has instead seen him decline to, and along the mall that is a complete set of facts. The assizes, at least, are beautifully prepared."
       }
     ]
   },
@@ -254,7 +254,7 @@
         "econ": {
           "treasury": -900
         },
-        "outcome": "The sanction takes three reminders and the boring crew arrive scandalously late, but by the hot weather Shahpur draws its own sweet water and the banyan shade returns to gossip and small litigation. The district office queries the expenditure in red ink. You answer with the thana's nil return for the quarter, which is the only arithmetic that matters out here."
+        "outcome": "The sanction takes three reminders and the boring crew arrive scandalously late, but by the hot weather Shahpur draws its own sweet water and the banyan shade returns to gossip and small litigation. The district office queries the expenditure in red ink. You answer with the thana's nil return for the quarter, and hear no more of it."
       },
       {
         "label": "Fix a water-turn by written order: hours, buckets, and a chaprassi to watch.",
@@ -328,7 +328,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Man Who Bought the Bazaar",
-    "body": "Prices have climbed all through the heat, and now the reason has a name: Motilal, grain-dealer of Kotra, has quietly bought forward the whole of three tahsils' surplus and shut his godowns to watch the figure rise. It is not illegal. It is not even unusual. It is only that the poorer bazaar is down to one meal, and the constable on the grain-market beat reports the particular quiet he does not like, and Motilal, calling to pay his respects, mentions how warmly he subscribed to the Christmas fund.",
+    "body": "Prices have climbed all through the heat, and now the reason has a name: Motilal, grain-dealer of Kotra, has quietly bought forward the whole of three tahsils' surplus and shut his godowns to watch the figure rise. There is no law against it, and nothing even unusual in it; only the poorer bazaar is down to one meal, the constable on the grain-market beat reports the quiet he does not like, and Motilal, calling to pay his respects, mentions how warmly he subscribed to the Christmas fund.",
     "choices": [
       {
         "label": "Break the corner: force his godowns open for sale at a fixed price.",
@@ -350,7 +350,7 @@
           ],
           "outcome": "The godowns open at your order and the bazaar, seeing the doors go back, decides the grain is Government's gift and therefore already its own. Ten minutes of surge, a broken gate, two constables down and a woman trampled at the second door before the line holds. The corner is broken; so is the market's temper for a season. The enquiry finds your order lawful and your arrangements thin, and both findings are correct."
         },
-        "outcome": "You post the order at the kotwali and stand a magistrate's presence in the market while it is executed, and the grain comes out at a price the poor can pay and Motilal can survive. He takes it, in the long view, entirely well: Government has shown him its edge, and a dealer values a Government with an edge, the same being creditworthy. The bazaar eats. The precedent files itself under courage."
+        "outcome": "You post the order at the kotwali and stand a magistrate's presence in the market while it is executed, and the grain comes out at a price the poor can pay and Motilal can survive. He takes it, in the long view, well enough: Government has shown him its edge, and a dealer values a Government with an edge, the same being creditworthy. The bazaar eats that night, and knows why."
       },
       {
         "label": "Summon him privately and suggest the corner might unwind.",
@@ -414,7 +414,7 @@
         "setFlags": [
           "survey_buried"
         ],
-        "outcome": "The field-book goes back to its shelf and the map stays authoritative and wrong. The Thakur's luncheons continue. The three families of Bhagwanpura continue also &mdash; as tenants, paying rent on their grandfather's land to a man whose title is a clerk's slip. Nothing happens at all, except that the munshi's drill has found something and been overruled by comfort, and drills learn from that."
+        "outcome": "The field-book goes back to its shelf and the map stays authoritative and wrong. The Thakur's luncheons continue. The three families of Bhagwanpura continue also &mdash; as tenants, paying rent on their grandfather's land to a man whose title is a clerk's slip. You do not check the maps against the field-book quite so often after that."
       },
       {
         "label": "Refer it to the Collector with the papers and no recommendation.",
@@ -444,7 +444,7 @@
           "prestige": -1,
           "contentment": 1
         },
-        "outcome": "The tent is real, the inspection nearly, and the sub-division profits by a boundary case heard at dawn that would otherwise have waited a month. Both tables note the dodge and neither can fault it; a probationer at his work is unanswerable. It cannot be done every Saturday. It is a very good trick exactly once."
+        "outcome": "The tent is real, the inspection nearly, and the sub-division profits by a boundary case heard at dawn that would otherwise have waited a month. Both tables note the dodge and neither can fault it; a probationer at his work is unanswerable. It cannot be done every Saturday; it is a very good trick once."
       },
       {
         "label": "Dine with both: soup and fish at one table, joint and savoury at the other.",
@@ -460,7 +460,7 @@
           "prestige": 1,
           "contentment": -2
         },
-        "outcome": "Correct, safe, and scored precisely: the Engineer's table gains a junior, the Superintendent's list gains a name in the margin. Policemen keep margins long after engineers have forgotten dinners. You will meet that margin again in some file about lock-up returns, wearing procedural clothes, and you will not quite be able to prove where it was born."
+        "outcome": "Correct, safe, and scored to a nicety: the Engineer's table gains a junior, the Superintendent's list gains a name in the margin. Policemen keep margins long after engineers have forgotten dinners. You will meet that margin again in some file about lock-up returns, wearing procedural clothes, and you will not quite be able to prove where it was born."
       }
     ]
   },
@@ -473,7 +473,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Padre's School",
-    "body": "The Reverend Mr. Elphick of the American Mission &mdash; twenty years at Kotra, dusty, indestructible, loved and priced accurately by everyone &mdash; wants the sahib's name at the head of his new school subscription, and a Government grant besides. The school is real and good and teaches sweepers' children their letters, which is precisely the trouble: the bania quarter has no wish to fund the education of its future clerks' competitors, and the orthodox have petitioned against Government money touching a mission at all. Mr. Elphick sits before you, hat on knee, with the patience of a man who has outlasted seven of you.",
+    "body": "The Reverend Mr. Elphick of the American Mission &mdash; twenty years at Kotra, dusty, indestructible, loved and priced accurately by everyone &mdash; wants the sahib's name at the head of his new school subscription, and a Government grant besides. The school is real and good and teaches sweepers' children their letters, which is the trouble: the bania quarter has no wish to fund the education of its future clerks' competitors, and the orthodox have petitioned against Government money touching a mission at all. Mr. Elphick sits before you, hat on knee, with the patience of a man who has outlasted seven of you.",
     "choices": [
       {
         "label": "Head the list, move the grant, and let the petitions come.",
@@ -565,7 +565,7 @@
           "prestige": -2,
           "health": 1
         },
-        "outcome": "The singing is the finest thing you have heard in India and you say so, and the Thakur glows, and every landholder present marks that the sahib sat it out like a guest and not an inspector. The pargana's doors open an inch wider ever after. At the station, the Padre's sister develops a way of not seeing you at the Club that will last until Easter, and the invitation-book of the ladies notes what it notes."
+        "outcome": "The singing is the finest thing you have heard in India and you say so, and the Thakur glows, and every landholder present marks that the sahib sat it out like a guest and not an inspector. The pargana's doors open an inch wider ever after. At the station, the Padre's sister develops a way of not seeing you at the Club that will last until Easter, and your name comes off two dinner lists by Christmas."
       },
       {
         "label": "Dine, toast, and withdraw before the singers &mdash; the diplomatic hour.",
@@ -605,7 +605,7 @@
         "econ": {
           "treasury": -200
         },
-        "outcome": "Three months at his village under the mango trees, pay drawn as if present &mdash; a fiction your office maintains with the solidarity of a regiment. The audit query arrives in September, and you answer it with a candour that makes the Deputy Auditor read it twice. Hari Ram dies in the cold weather, at home, his son taken on as third clerk the same week. The office notes what the sahib did. Offices never forget that ledger, whichever way it is written."
+        "outcome": "Three months at his village under the mango trees, pay drawn as if present &mdash; a fiction your office maintains with the solidarity of a regiment. The audit query arrives in September, and you answer it with a candour that makes the Deputy Auditor read it twice. Hari Ram dies in the cold weather, at home, under the mango trees, his son taken on as third clerk the same week."
       },
       {
         "label": "Invalid him by the book, with the gratuity the rules allow.",

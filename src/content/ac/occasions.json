@@ -25,7 +25,7 @@
           "health": -2,
           "contentment": 2
         },
-        "outcome": "You dine alone on the khansama&rsquo;s heroic idea of plum pudding, and the English mail arrives two days late with a smell of Home that undoes you rather. Kotra notes with approval that its sahib did not leave. The district notes, with a different kind of attention, that the new boy does not show."
+        "outcome": "You dine alone on the khansama&rsquo;s heroic idea of plum pudding, and the English mail arrives two days late with a smell of Home that undoes you rather. Kotra approves that its sahib did not leave. At Chhota Nagra the Collector&rsquo;s lady asks, twice, who the new boy is; nobody can quite say."
       },
       {
         "label": "Attend <b>modestly</b> &mdash; three days, no wagers, early trains.",
@@ -66,7 +66,7 @@
             "prestige": -3,
             "health": -1
           },
-          "outcome": "Honesty from a probationer whose season has not earned it reads as carelessness rather than candour. The pencil moves at the tank, at the thana, at the unreconciled ledger; and the phrase that reaches the confidential report is &lsquo;frank as to his difficulties&rsquo; &mdash; which sounds well, and is not."
+          "outcome": "Honesty from a probationer whose season has not earned it reads as carelessness rather than candour. The pencil moves at the tank, at the thana, at the unreconciled ledger; and the confidential report gets the phrase &lsquo;frank as to his difficulties&rsquo; &mdash; a sentence that sounds well and was not meant to."
         }
       },
       {
@@ -79,7 +79,7 @@
         "econ": {
           "treasury": -800
         },
-        "outcome": "Whitewash on the thana, the best rent-rolls on top, tea under the one decent tree with the headmen coached to contentment. The Collector, who has inspected sub-divisions since before you were born, sees precisely what has been done and awards it precisely the marks that effort earns: a probationer who takes trouble. What lies under the whitewash he will find out in his own time, which is the gamble."
+        "outcome": "Whitewash on the thana, the best rent-rolls on top, tea under the one decent tree with the headmen coached to contentment. The Collector, who has inspected sub-divisions since before you were born, sees at a glance what has been done and awards it the marks that effort earns: a probationer who takes trouble. What lies under the whitewash he will find out in his own time. That is the gamble."
       },
       {
         "label": "Let the sub-division speak for itself; you have work to be doing.",
@@ -87,7 +87,7 @@
           "prestige": -2,
           "contentment": 1
         },
-        "outcome": "There is a school of thought that says a man&rsquo;s work is his inspection. It is a school the Service admires in memoirs and marks down in confidential reports. The Collector finds his own way round Kotra, forms his own view, and writes &mdash; you will learn years later &mdash; &lsquo;does not yet understand what an inspection is for&rsquo;: which is not the work, but the man."
+        "outcome": "There is a school of thought that says a man&rsquo;s work is his inspection. It is a school the Service admires in memoirs and marks down in confidential reports. The Collector finds his own way round Kotra, forms his own view, and writes &mdash; you will learn years later &mdash; &lsquo;does not yet understand what an inspection is for.&rsquo; The inspection was never of the sub-division."
       }
     ]
   }

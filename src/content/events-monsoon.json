@@ -6,7 +6,7 @@
     "kind": "tour",
     "once": true,
     "title": "In Flood Time",
-    "body": "The ford at Barhwi is under eight feet of brown water and the bridge of boats went down-river on Tuesday, in pieces. You must be across tonight &mdash; the assize papers say so &mdash; and the only man who could take you is the old ferryman who has kept the crossing fifty years, who looks at the race of the current and then at you, and says that he swam this river once in a worse flood than this, for a woman, when he was young; and that he will take the sahib over now, if the sahib is not afraid.",
+    "body": "The ford at Barhwi is under eight feet of brown water and the bridge of boats went down-river on Tuesday, in pieces. You must be across tonight &mdash; the assize papers say so &mdash; and the only man who could take you is the old ferryman who has kept the crossing fifty years. He looks at the race of the current, and then at you. &lsquo;I swam this river once, in a worse flood than this, for a woman &mdash; when I was young,&rsquo; he says. &lsquo;I will take the Sahib over now, if the Sahib is not afraid.&rsquo;",
     "choices": [
       {
         "label": "Cross tonight in the old man&rsquo;s boat.",
@@ -39,7 +39,7 @@
     "kind": "tour",
     "once": true,
     "title": "The Mugger of Kasauli Ghat",
-    "body": "The flood has brought the mugger up from the deep river to the village crossing &mdash; a crocodile the length of a country cart, old enough that the ghat is named for him. Last week he took a goat; on Sunday he took the potter&rsquo;s son, at the women&rsquo;s bathing steps, in front of the women. The village wants him shot. The priest observes that the mugger has been fed and garlanded at that ghat since before the Company, and that certain misfortunes follow the killing of what a village has honoured.",
+    "body": "The flood has brought the mugger up from the deep river to the village crossing &mdash; a crocodile the length of a country cart, old enough that the ghat is named for him. Last week he took a goat; on Sunday he took the potter&rsquo;s son, at the women&rsquo;s bathing steps, in front of the women. The village wants him shot. The priest observes that the mugger has been fed and garlanded at that ghat since before the Company. &lsquo;Misfortunes follow,&rsquo; he says, looking at the water, &lsquo;upon the killing of what a village has honoured.&rsquo;",
     "choices": [
       {
         "label": "Sit up over the ghat tonight and shoot him yourself.",
@@ -89,7 +89,7 @@
       {
         "label": "File Ram Autar&rsquo;s sheet; the works are feeding somebody, and the season is long.",
         "effects": { "prestige": -2, "contentment": -4, "order": -2, "health": 1 },
-        "outcome": "You put the sheet where sheets go, and the works grind on, three parts fraud and one part food. Ram Autar receives the decision with a bow of precisely calibrated depth and enters something in the private ledger he keeps behind his eyes, where your account has stood in credit until now. The bazaar knows the arithmetic to the last seer, and adjusts its opinion of the sirkar accordingly."
+        "outcome": "You put the sheet where sheets go, and the works grind on, three parts fraud and one part food. Ram Autar receives the decision with a bow measured to the half-inch and enters something in the private ledger he keeps behind his eyes, where your account has stood in credit until now. The bazaar knows the arithmetic to the last seer, and adjusts its opinion of the sirkar accordingly."
       }
     ]
   },
@@ -111,7 +111,7 @@
         "label": "Accept the Lala&rsquo;s copy; he keeps duplicates of everything, beautifully.",
         "effects": { "order": 1, "contentment": -3, "prestige": -1, "health": 2 },
         "setFlags": ["lala_copy"],
-        "outcome": "The Lala produces his copy within the hour, bound in red cloth, immaculate &mdash; a man does not lend money against land for thirty years without keeping better records than Government. It is accepted, attested, and filed, and the boundary it shows has drifted perhaps two fields Lala-ward of anyone&rsquo;s memory. Piparia signs the acknowledgment because Piparia owes him money. Everything is in order. That is precisely the trouble."
+        "outcome": "The Lala produces his copy within the hour, bound in red cloth, immaculate &mdash; a man does not lend money against land for thirty years without keeping better records than Government. It is accepted, attested, and filed, and the boundary it shows has drifted perhaps two fields Lala-ward of anyone&rsquo;s memory. Piparia signs the acknowledgment because Piparia owes him money. Everything is in order. That is the trouble."
       },
       {
         "label": "Report the loss to Simla and ask for a fresh survey next cold weather.",
@@ -144,13 +144,13 @@
       {
         "label": "Hold everything that can be held; the flood will not last for ever.",
         "effects": { "prestige": -1, "order": -1, "health": 2 },
-        "outcome": "You do the sanctioned nothing, beautifully. The grain moves before the seizure order does; the bad character, unbonded, improves the interval; the poplar case sleeps on. When the line is restored you have nothing to report and nothing to answer for, which the Service regards as a week well spent, and the district regards as a week with no Government at all. Both are exactly right."
+        "outcome": "You do the sanctioned nothing, beautifully. The grain moves before the seizure order does; the bad character, unbonded, improves the interval; the poplar case sleeps on. When the line is restored you have nothing to report and nothing to answer for, which the Service regards as a week well spent, and the district regards as a week with no Government at all. Both are right."
       },
       {
         "label": "Use the silence: settle the poplar case your way and let the file catch up later.",
         "effects": { "prestige": 2, "contentment": 3, "order": -1, "health": -1 },
         "setFlags": ["poplar_settled"],
-        "outcome": "The case Simla forbade you to touch is touched, disposed of, and planted over before Simla exists again &mdash; settled the way anyone standing in the actual mud would settle it. When the wire hums back to life the thing is done beyond undoing, and the report is a masterpiece of the past tense. It is the best fortnight&rsquo;s work of your year, and it can never, ever be mentioned."
+        "outcome": "The case Simla forbade you to touch is touched, disposed of, and planted over before Simla exists again &mdash; settled the way anyone standing in the actual mud would settle it. When the wire hums back to life the thing is done beyond undoing, and the report is a masterpiece of the past tense. It is the best fortnight&rsquo;s work of your year, and it can never be mentioned."
       }
     ]
   },
@@ -161,7 +161,7 @@
     "kind": "personal",
     "once": true,
     "title": "The Krait in the Bath-Room",
-    "body": "The rains flush the snakes out of the earth and into the world&rsquo;s bath-rooms, and the season&rsquo;s returns are already seven dead in the district &mdash; then, this morning, the krait is in yours: a foot of dull slate lying along the cool of the pipe, the small one, the one that kills in the small hours. The sweeper takes its head off with one crack of a lathi as if dispatching a beetle. The same week, his own boy is bitten at the lines and lies swelling; and the Civil Surgeon mentions there is a new serum now, from the hills, that Government does not yet pay for.",
+    "body": "The rains flush the snakes out of the earth and into the world&rsquo;s bath-rooms, and the season&rsquo;s returns are already seven dead in the district &mdash; then, this morning, the krait is in yours: a foot of dull slate lying along the cool of the pipe, the small one, the one that kills in the small hours. The sweeper takes its head off with one crack of a lathi as if dispatching a beetle. The same week, his own boy is bitten at the lines and lies swelling; and the Civil Surgeon mentions there is a new serum now, from Kasauli. &lsquo;Government does not pay for it yet,&rsquo; he says. &lsquo;Government will, in ten years.&rsquo;",
     "choices": [
       {
         "label": "Wire Kasauli for the serum, for the boy and the lines, at your own charge.",
@@ -177,7 +177,7 @@
       {
         "label": "Circulate a district order on snake precautions, and mind your own boots.",
         "effects": { "order": 1, "contentment": -2, "health": 1 },
-        "outcome": "The order is a sound one &mdash; boots, lanterns, beds away from walls, the usual &mdash; and it is read aloud in every police line and school in the district, where it will save some unknowable number of lives belonging to people who will never connect them to you. The boy at the lines is past the reach of paper by Friday. Administration, you write in the margin of the season, is charity with the faces removed."
+        "outcome": "The order is a sound one &mdash; boots, lanterns, beds away from walls, the usual &mdash; and it is read aloud in every police line and school in the district, where it will save some unknowable number of lives belonging to people who will never connect them to you. The boy at the lines is past the reach of paper by Friday. The order goes out with the evening dak, and the rain takes the ink on the cover before it clears the compound."
       }
     ]
   },

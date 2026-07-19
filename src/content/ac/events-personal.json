@@ -62,7 +62,7 @@
         "setFlags": [
           "ac_sweetheart"
         ],
-        "outcome": "She says yes before you have finished the sentence, which teaches you something about how the week looked from her side of it. The station smiles behind its hands for a fortnight; the Collector&rsquo;s wife begins, visibly, to plan. A probationer with an understanding at Home is reckoned half-steadied already &mdash; and the mail, from March, will matter more than it has ever mattered."
+        "outcome": "&lsquo;You may write,&rsquo; she says, before you have finished asking &mdash; and you learn something of how the week looked from her side of it. The station smiles behind its hands for a fortnight; the Collector&rsquo;s wife begins to plan. A probationer with an understanding at Home is reckoned half-steadied already, and the mail, from March, will matter more than it has ever mattered."
       },
       {
         "label": "Say nothing; a probationer has no business with an understanding.",
@@ -79,7 +79,7 @@
           "prestige": -2,
           "health": 1
         },
-        "outcome": "Moonlight, the band, six days of it behind you, and you make the speech a man should make after six months, not six days. She is kinder about it than you deserve, and the story is round the station by the following tiffin, told gently, at your expense. The Collector&rsquo;s wife says only that young men out from Home are all the same, which is the first entirely true thing anyone has said all Week."
+        "outcome": "Moonlight, the band, six days of it behind you, and you make the speech a man should make after six months, not six days. She is kinder about it than you deserve, and the story is round the station by the following tiffin, told gently, at your expense. &lsquo;They are all the same, out from Home,&rsquo; says the Collector&rsquo;s wife &mdash; and for once the verandah does not argue with her."
       }
     ]
   },
@@ -93,7 +93,7 @@
     "interlude": true,
     "once": true,
     "title": "A Parcel from Home",
-    "body": "It has been three months on the water and a fortnight in the dak: a cake in a tin, packed by your mother against every ordinance of climate and distance. One end is mould and must be cut away with ceremony; the rest is Christmas at nine thousand miles&rsquo; remove, eaten slowly on the verandah with the jackals tuning up beyond the compound wall. The tahsildar, offered a slice, pronounces it excellent and entirely unlike food. You keep the tin. Everyone keeps the tin.",
+    "body": "It has been three months on the water and a fortnight in the dak: a cake in a tin, packed by your mother against every ordinance of climate and distance. One end is mould and must be cut away with ceremony; the rest is Christmas at nine thousand miles&rsquo; remove, eaten slowly on the verandah with the jackals tuning up beyond the compound wall. The tahsildar, offered a slice, pronounces it excellent, and quite unlike food. You keep the tin. Everyone keeps the tin.",
     "effects": {
       "health": 2,
       "contentment": 1

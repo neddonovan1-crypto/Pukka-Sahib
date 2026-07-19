@@ -50,7 +50,7 @@
             "prestige": -4,
             "health": -2
           },
-          "outcome": "Honesty is a fine policy for a district that will bear looking at, and yours, just now, will not. The pencil moves in the notebook at the jail, at the school, at the third unmended culvert; and the sentence Simla reads this year has the word &lsquo;slack&rsquo; in it, which takes precisely one cold weather to earn and three to live down."
+          "outcome": "Honesty is a fine policy for a district that will bear looking at, and yours, just now, will not. The pencil moves in the notebook at the jail, at the school, at the third unmended culvert; and the sentence Simla reads this year has the word &lsquo;slack&rsquo; in it, which takes one cold weather to earn and three to live down."
         }
       },
       {
@@ -147,7 +147,7 @@
           "contentment": -6,
           "prestige": -3
         },
-        "outcome": "The river, which has also been playing the odds for forty years, calls. The breach goes out on the ninth night with a sound the district will describe for a generation, and the water takes the rice, the cattle, and eleven lives the enquiry will call &lsquo;regrettably unavoidable.&rsquo; It also takes &mdash; quietly, completely &mdash; the district&rsquo;s belief that the sahib stands between it and the river, which was most of what the sahib had."
+        "outcome": "The river, which has also been playing the odds for forty years, calls. The breach goes out on the ninth night with a sound the district will describe for a generation, and the water takes the rice, the cattle, and eleven lives the enquiry will call &lsquo;regrettably unavoidable.&rsquo; It also takes, quietly, the district&rsquo;s belief that the sahib stands between it and the river, which was most of what the sahib had."
       }
     ]
   },
@@ -182,7 +182,7 @@
             "prestige": 3,
             "health": -1
           },
-          "outcome": "The prose glows, and the figures &mdash; decent enough, this year, to bear it &mdash; do not contradict a word. Government reads of firm and sympathetic administration, notes the collections, and is satisfied. It is not exactly untrue, which is the whole art of the Annual Report; and only you and Ram Autar know which adjectives are load-bearing."
+          "outcome": "The prose glows, and the figures &mdash; decent enough, this year, to bear it &mdash; do not contradict a word. Government reads of firm and sympathetic administration, notes the collections, and is satisfied. It is not quite untrue, which is the whole art of the Annual Report; and only you and Ram Autar know where the varnish lies thickest."
         },
         "ifFalse": {
           "effects": {

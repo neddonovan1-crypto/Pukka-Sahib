@@ -14,7 +14,7 @@
       "value": 30
     },
     "title": "The Civil Surgeon Takes Your Wrist",
-    "body": "He does it at the Club, between one soda and the next, with the casualness that is a doctor&rsquo;s way of not frightening the young: two fingers on your wrist, a look under your eyes, a question about your sleep that you answer too quickly. Then he sets the glass down and is suddenly not casual at all. First-year men, he says, come in two kinds: the ones who tell me in March, and the ones I ship Home in June. He waits to hear which kind you propose to be.",
+    "body": "He does it at the Club, between one soda and the next, with the casualness that is a doctor&rsquo;s way of not frightening the young: two fingers on your wrist, a look under your eyes, a question about your sleep that you answer too quickly. Then he sets the glass down and is suddenly not casual at all. &lsquo;First-year men come in two kinds: the ones who tell me in March, and the ones I ship Home in June.&rsquo; He waits to hear which kind you propose to be.",
     "choices": [
       {
         "label": "Tell him everything and do as you are told.",
@@ -22,7 +22,7 @@
           "health": 8,
           "prestige": -1
         },
-        "outcome": "Quinine on a schedule, meat once a day, no work after dinner for a fortnight, and a standing order to appear before him weekly looking better. It is faintly humiliating and entirely effective. The Collector, who hears everything, notes only that the boy had the sense to be looked after &mdash; which is, in the Service&rsquo;s ledger, a point in favour."
+        "outcome": "Quinine on a schedule, meat once a day, no work after dinner for a fortnight, and a standing order to appear before him weekly looking better. It is faintly humiliating, and it works. The Collector, who hears everything, notes only that the boy had the sense to be looked after."
       },
       {
         "label": "Admit to being a little pulled down; accept half his regimen.",
@@ -56,7 +56,7 @@
       "value": 35
     },
     "title": "The Tahsildar Shuts the Door",
-    "body": "Twenty-two years in this cutcherry, and the tahsildar has never once shut the door before speaking. He shuts it now. The talk at the Tuesday market has changed, he says; the cattle-pound was rushed on Friday and the pound-keeper did not report it; and there is a man moving between the villages whose business no one will name to him, which is itself the worst news he has brought you. A sub-division does not warn its probationer twice, sahib. He has seen what comes when boys wait to be sure.",
+    "body": "Twenty-two years in this cutcherry, and the tahsildar has never once shut the door before speaking. He shuts it now. The talk at the Tuesday market has changed, he says; the cattle-pound was rushed on Friday and the pound-keeper did not report it; and there is a man moving between the villages whose business no one will name to him, which is itself the worst news he has brought you. &lsquo;A sub-division does not warn its probationer twice, sahib.&rsquo; He has seen what comes when boys wait to be sure.",
     "choices": [
       {
         "label": "Ride the bad villages yourself this week, with the sub-inspector.",
@@ -65,7 +65,7 @@
           "prestige": 1,
           "health": -3
         },
-        "outcome": "Four days in the saddle showing the sub-division its sahib: the pound-keeper examined, the market walked at its busiest hour, the unnameable man called upon at his lodging and invited, courteously, to need to be elsewhere. It is your first taste of governing by being seen, and it works, and it costs you a week of the health the season keeps its own books on."
+        "outcome": "Four days in the saddle showing the sub-division its sahib: the pound-keeper examined, the market walked at its busiest hour, the unnameable man called upon at his lodging and invited, courteously, to need to be elsewhere. It is your first taste of governing by being seen, and it works, and it costs you a week of sleep and half a stone you could not spare."
       },
       {
         "label": "Ask the district for a half-company of armed police, to be safe.",
@@ -77,7 +77,7 @@
         "econ": {
           "treasury": -600
         },
-        "outcome": "The police come down, and Kotra goes quiet in the particular way a place goes quiet when it has decided you are afraid of it. The Collector sanctions the deployment without comment, which is a comment. The tahsildar says nothing at all, which is a louder one."
+        "outcome": "The police come down, and Kotra goes quiet in the way a place goes quiet when it has decided you are afraid of it. The Collector sanctions the deployment and adds no comment. The tahsildar brings the requisition for your signature, and goes out with his eyes on the floor."
       },
       {
         "label": "Thank him gravely and watch another fortnight.",
@@ -147,7 +147,7 @@
       "value": 3000
     },
     "title": "Sohan Lal Presents His Book",
-    "body": "The Kotra bania has been all deference since November &mdash; the horse, the mess account, the small conveniences of a gentleman&rsquo;s credit &mdash; and now he calls at the bungalow with his book, and the deference has a new floor under it. He names your figure to the anna, gently, the way a man names an illness. He mentions &mdash; as one mentions the weather &mdash; that the Collector-sahib takes a close interest in the accounts of young officers; that nothing need ever reach him; that between gentlemen there are always arrangements. A probationer&rsquo;s debts, sahib, are such a small thing. Until they are the only thing.",
+    "body": "The Kotra bania has been all deference since November &mdash; the horse, the mess account, the small conveniences of a gentleman&rsquo;s credit &mdash; and now he calls at the bungalow with his book, and the deference has a new floor under it. He names your figure to the anna, gently, the way a man names an illness. He mentions &mdash; as one mentions the weather &mdash; that the Collector-sahib takes a close interest in the accounts of young officers; that nothing need ever reach him; that between gentlemen there are always arrangements. &lsquo;A probationer&rsquo;s debts, sahib, are such a small thing &mdash; until they are the only thing.&rsquo;",
     "choices": [
       {
         "label": "Sell the horse and clear what you can, this week.",
@@ -159,7 +159,7 @@
           "treasury": -2500,
           "debt": -4500
         },
-        "outcome": "The horse goes to a subaltern at the cantonment for less than he cost, and most of the book is cleared, and the station notes the sale and prices your judgment accordingly. It stings for a fortnight. It would have stung for a career. Sohan Lal receives the money with real regret &mdash; a paying debtor is a client lost &mdash; and his salaams return to their old depth."
+        "outcome": "The horse goes to a subaltern at the cantonment for less than he cost, and most of the book is cleared, and the station notes the sale and prices your judgment accordingly. It stings for a fortnight; a career would have stung longer. Sohan Lal receives the money with real regret &mdash; a paying debtor is a client lost &mdash; and his salaams return to their old depth."
       },
       {
         "label": "Go to the Collector yourself, before the bania can.",
@@ -219,7 +219,7 @@
           "contentment": 2,
           "health": -5
         },
-        "outcome": "You work the sub-division as if the steamer ticket were already written, because it half is: the arrears docketed, the worst tank finally cleared, the far villages ridden in a fortnight of dawns. The Collector watches the evidence arrive and says nothing whatever, which from him is applause. What it costs you is entered in the one ledger the report does not audit."
+        "outcome": "You work the sub-division as if the steamer ticket were already written, because it half is: the arrears docketed, the worst tank finally cleared, the far villages ridden in a fortnight of dawns. The Collector watches the evidence arrive and says nothing whatever, which from him is applause. The cost shows in the shaving-glass, and nowhere in the returns."
       },
       {
         "label": "Ask him, column by column, exactly what is short.",

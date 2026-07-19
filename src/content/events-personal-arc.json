@@ -22,7 +22,7 @@
       ]
     },
     "title": "The Question of a Wife",
-    "body": "The cold-weather mail brings a letter from your sister in Surrey, franked with the old address and the old anxieties. She is glad the posting is a good one. She wonders, in the gentlest hand, whether you do not find it lonely; whether a man in your position ought not, by now, to have someone; whether &mdash; she names a Miss Carteret, lately gone out to Bombay to an uncle &mdash; you might not, when you are next down that way &hellip; You are, the letter does not say and entirely means, eight-and-twenty and unaccountably still a bachelor.",
+    "body": "The cold-weather mail brings your sister's letter from Surrey, smelling faintly of damp wool and the old anxieties. She is glad the posting is a good one. She wonders, in the gentlest hand, whether you do not find it lonely; whether a man in your position ought not, by now, to have someone; whether &mdash; she names a Miss Carteret, lately gone out to Bombay to an uncle &mdash; you might not, when you are next down that way &hellip; Nowhere does she write that you are eight-and-twenty and still a bachelor. Every line says it.",
     "choices": [
       {
         "label": "Write back that the district is wife enough for a while yet.",
@@ -30,7 +30,7 @@
           "prestige": 1,
           "health": -1
         },
-        "outcome": "You compose a light, deflecting paragraph about the weight of the work and the smallness of the station, and post it up the cold-weather dak. It is true as far as it goes. It does not go as far as the long evenings, about which you say nothing, to her or to yourself."
+        "outcome": "You put together a light, deflecting paragraph on the weight of the work and the smallness of the station, and post it by the cold-weather dak. True enough, so far as it goes. Of the long evenings you say nothing, to her or to yourself."
       },
       {
         "label": "Confess, on paper, that you have lately thought about it.",
@@ -38,14 +38,14 @@
           "contentment": 2,
           "health": 1
         },
-        "outcome": "You admit more than you meant to &mdash; that the bungalow is very large at night, that a man cannot dine with the district for ever &mdash; and feel, sealing it, both lighter and faintly exposed. Your sister will read it three times and begin, at once, to make arrangements you have not sanctioned."
+        "outcome": "You admit more than you meant to &mdash; that the bungalow is very large at night, that a man cannot dine with the district for ever &mdash; and feel, sealing it, both lighter and faintly exposed. Your sister will read it three times, and begin at once to make arrangements you have not sanctioned."
       },
       {
         "label": "Reply about the shooting and the crops, and answer nothing.",
         "effects": {
           "contentment": 1
         },
-        "outcome": "Two dutiful pages on the cold weather and the partridge and the state of the winter rice, and not one word on the matter she raised. She will understand it perfectly, having a brother, and will not be deterred in the least."
+        "outcome": "Two dutiful pages on the partridge-shooting and the state of the winter rice, and not one word on the matter she raised. She has a brother; she will understand, and she will not be put off."
       }
     ],
     "priority": true
@@ -71,7 +71,7 @@
       ]
     },
     "title": "The Marriage Question",
-    "body": "The hot weather brings it to a head, as the hot weather brings everything to a head. Miss Carteret, it emerges, is up in the same hills as half the marriageable English in the province &mdash; the &lsquo;fishing fleet,&rsquo; the Club calls them, not always unkindly. There is also, the city being what it is, a quieter arrangement a lonely man may make and no one speak of. And there is the third road, the one the Service half-expects of its best: no wife at all, and the district for a bride. The long evening waits on your answer.",
+    "body": "The hot weather brings it to a head, as it brings everything. Miss Carteret, it appears, is up in the same hills as half the marriageable English in the province &mdash; the &lsquo;fishing fleet,&rsquo; the Club calls them, not always unkindly. There is also, the city being what it is, a quieter arrangement a lonely man may make and no one speak of. And there is the third road, the one the Service half-expects of its best men: no wife at all, and the district for a bride. The lamp hisses. The long evening waits on your answer.",
     "choices": [
       {
         "label": "Go up on leave, court Miss Carteret, and <b>marry</b>.",
@@ -84,7 +84,7 @@
         "setFlags": [
           "married"
         ],
-        "outcome": "You take your leave, and your courage, up the hill, and come down in six weeks an engaged man and presently a married one. It is sudden and it is the making of you and it terrifies you slightly. The bungalow acquires curtains, a piano no one plays well, and a reason to come home before dark."
+        "outcome": "You take your leave, and your courage, up the hill, and come down in six weeks an engaged man and presently a married one. It is sudden, and it frightens you rather more than the district does. The bungalow acquires curtains, a piano no one plays well, and a reason to come home before dark."
       },
       {
         "label": "Keep <b>a quiet house in the city</b>, and tell no one.",
@@ -96,7 +96,7 @@
         "setFlags": [
           "bibi"
         ],
-        "outcome": "There is a girl, and a small shuttered house down a lane the sahibs do not walk, and an arrangement as old as the country and as unmentionable to the Club. It is warmth, and it is real, and it is the kind of secret that keeps a man human and could, on a bad day, keep him from a knighthood. You decide the warmth is worth it. You may be right."
+        "outcome": "There is a girl, and a small shuttered house down a lane the sahibs do not walk, with pigeons on the coping and cool water in the chatties. The arrangement is as old as the country and as unmentionable at the Club. It keeps a man human; on a bad day it could keep him from a knighthood. You decide the warmth is worth it."
       },
       {
         "label": "Marry the Service; <b>a District Officer has no business with a wife</b>.",
@@ -108,7 +108,7 @@
         "setFlags": [
           "alone"
         ],
-        "outcome": "You let the season pass, and Miss Carteret with it, and give the district the devotion another man would give a household. Simla approves of the unencumbered officer; the unencumbered officer, at two in the morning in a bungalow the size of a barn, is less sure. You have chosen. The evenings will present the bill."
+        "outcome": "You let the season pass, and Miss Carteret with it, and give the district what another man would give a household. Simla approves of the unencumbered officer. At two in the morning, in a bungalow the size of a barn, the unencumbered officer is less sure. The evenings will send in their bill."
       }
     ],
     "priority": true
@@ -134,7 +134,7 @@
       ]
     },
     "title": "The Mail That Has Never Missed",
-    "body": "Five years, and her letter has never once missed the monthly boat: Kotra, the paper-chase, the leave you asked and got, and everything since, kept alive in ink across eleven thousand miles. This one is different. Her uncle the judge has retired at last; the Surrey house is to be given up; and she writes &mdash; lightly, the way she rides &mdash; that she is asked at every dinner whether she is engaged, and has begun to find the question harder to laugh at than it was at twenty. She does not press. She has never pressed. That is rather the point of her, and the letter lies on the desk like a settlement notice.",
+    "body": "Five years, and her letter has never once missed the monthly boat: Kotra, the paper-chase, the leave you asked and got, and everything since, kept alive in ink across eleven thousand miles. This one is different. Her uncle the judge has retired at last; the Surrey house is to be given up; and &mdash; set down lightly, the way she rides &mdash; &lsquo;I am asked at every dinner now whether I am engaged. I laughed it off again on Tuesday. The laugh is wearing thin.&rsquo; She does not press. She has never pressed; that is rather the point of her. The letter lies on the desk like a settlement notice.",
     "choices": [
       {
         "label": "Answer the whole of it, honestly, the day it arrives.",
@@ -142,7 +142,7 @@
           "contentment": 2,
           "health": 2
         },
-        "outcome": "You write past midnight and say what five years of careful mail has walked around: that the district is a posting but she has been the career. It goes down to the boat with the official bag, and you sleep better than you have since the Gazette. What she does with it is now the only file in India you cannot call for."
+        "outcome": "You write past midnight and say what five years of careful mail has walked around: that the district is a posting, but she has been the career. It goes down to the boat with the official bag, and you sleep better than you have since the Gazette. What she does with it is now the only file in India you cannot call for."
       },
       {
         "label": "Reply warmly, and step around the question one mail more.",
@@ -158,7 +158,7 @@
           "health": -2,
           "contentment": -1
         },
-        "outcome": "The season's work does not ease; that is what a season's work is. The letter waits under the crop forecast with its question standing, and for the first time in five years the next boat goes without your answer aboard. In Surrey, a fortnight hence, that silence will arrive precisely on time."
+        "outcome": "The season's work does not ease; season's work never does. The letter waits under the crop forecast with its question standing, and for the first time in five years the boat goes without your answer aboard. In Surrey, a fortnight hence, the silence will be understood."
       }
     ],
     "priority": true
@@ -184,7 +184,7 @@
       ]
     },
     "title": "Five Years Is an Answer Too",
-    "body": "The hot weather brings it to a head, as the hot weather brings everything to a head. Her letter this month is the shortest she has ever sent: the house is given up at Michaelmas; an aunt in Cheltenham offers a room; and a Major Enderby, home from Peshawar, has taken to calling on Thursdays &mdash; set down without comment, as she would report a change in the weather. The code is not hard. She has waited from three-and-twenty to eight-and-twenty on a probationer&rsquo;s half-promise, and the fishing fleet sails both ways, and a man who will not decide is deciding. The pen is in your hand. The mail goes down Tuesday.",
+    "body": "The hot weather brings it to a head, as it brings everything. Her letter this month is the shortest she has ever sent: the house is given up at Michaelmas; an aunt in Cheltenham offers a room; and a Major Enderby, home from Peshawar, has taken to calling on Thursdays &mdash; set down without comment, as she would report a change in the weather. The code is not hard. She has waited from three-and-twenty to eight-and-twenty on a probationer&rsquo;s half-promise, the fishing fleet sails both ways, and a man who will not decide is deciding. The pen is in your hand. The mail goes down Tuesday.",
     "choices": [
       {
         "label": "Write for her at last: come out in October, and <b>marry</b>.",
@@ -198,7 +198,7 @@
           "married",
           "wrote_for_her"
         ],
-        "outcome": "Eleven words of the wire and five years behind each of them. Her answer comes back by the same boat &mdash; she had, it emerges, already spoken to the P&amp;O agent &mdash; and in October the girl from the Christmas camp comes down the gangway at Bombay and looks at you exactly as she looked back from the tonga at Kotra. The bungalow acquires curtains, a seat on a horse that shames the district, and a reason to come home before dark. Major Enderby, you learn much later, never stood a chance and knew it."
+        "outcome": "Eleven words of wire, and five years behind each of them. Her answer comes back by the same boat &mdash; she had, it turns out, already spoken to the P&amp;O agent &mdash; and in October the girl from the Christmas camp comes down the gangway at Bombay and looks at you as she looked back from the tonga at Kotra. The bungalow acquires curtains, a seat on a horse that shames the district, and a reason to come home before dark. Major Enderby, you learn long afterwards, never stood a chance and knew it."
       },
       {
         "label": "Ask her to wait one year more; a first district is no place for a bride.",
@@ -211,7 +211,7 @@
           "alone",
           "asked_to_wait"
         ],
-        "outcome": "It is prudent and it is provident and every word of it is true: the famine ledger, the fever season, the bungalow half a day from a doctor. You post it believing it, and for a week feel responsible and just. Her reply, when it comes, is two pages of perfect kindness with something gone out of them &mdash; the thing that made five years of mail feel like a held hand. It does not say what you both know: that you have asked a woman of eight-and-twenty to bet another year on a man who has already been dealt his cards, twice, and folded them."
+        "outcome": "Prudent, provident, and every word of it true: the famine ledger, the fever season, the bungalow half a day from a doctor. You post it believing it, and for a week feel responsible and just. Her reply is two pages of perfect kindness with something gone out of them &mdash; the thing that made five years of mail feel like a held hand. She does not write, and neither do you, that you have asked a woman of eight-and-twenty to bet one more year on a man who has twice been dealt his cards and folded them."
       },
       {
         "label": "Release her; five years is enough to ask of anyone.",
@@ -224,7 +224,7 @@
           "alone",
           "released_her"
         ],
-        "outcome": "You write the generous letter, the one that sets her free with every grace and takes three drafts because your hand will not stay level. It is the finest thing you have ever done on paper and the most expensive. Her answer is one page: she thanks you for a candour she had, she says, stopped expecting, and wishes you what you wish yourself &mdash; a line you will read a number of times over the years, in the long evenings, without ever deciding how much mercy was in it."
+        "outcome": "You write the generous letter, the one that sets her free with every grace, and it takes three drafts because your hand will not stay level. It is the finest thing you have ever done on paper, and the dearest. Her answer is one page: she thanks you for a candour she had, she says, stopped expecting, and wishes you what you wish yourself &mdash; a line you will read many times over the years, in the long evenings, without ever deciding how much mercy was in it."
       }
     ],
     "priority": true
@@ -251,7 +251,7 @@
       ]
     },
     "title": "Beyond the Pale",
-    "body": "The arrangement has become, without either of you deciding it, something nearer a marriage than an arrangement. She keeps the little house as a memsahib keeps a bungalow; she has begun to teach you the vernacular past the point of usefulness and into the point of tenderness. And the station has begun, in the way of stations, to half-notice a light in a lane where a sahib&rsquo;s light has no business being. It could be ended tonight with no one the wiser. It could be kept, at a price you cannot yet read.",
+    "body": "The arrangement has become, without either of you deciding it, something nearer a marriage. She keeps the little house as a memsahib keeps a bungalow; there is always cool water in the chatties, and a rose in a brass pot by the window; and she has taught you the vernacular past the point of use and into the point of tenderness. Now the station has begun, as stations do, to half-notice a light in a lane where a sahib&rsquo;s light has no business. To end it would take one evening and no witnesses. To keep it will cost something not yet priced.",
     "choices": [
       {
         "label": "Keep it, discreetly, and let the station think what it likes.",
@@ -263,7 +263,7 @@
         "setFlags": [
           "kept_faith"
         ],
-        "outcome": "You keep faith with the one person in the district who wants nothing of the Collector and everything of the man. It costs you, in the currency of the billiard-room, more than you will ever quite total. You find, to your surprise, that you would pay it again."
+        "outcome": "You keep faith with the one person in the district who wants nothing of the Collector and everything of the man. It costs you, in the currency of the billiard-room, more than you will ever quite total. You find, somewhat to your surprise, that you would pay it again."
       },
       {
         "label": "Keep it, but at arm&rsquo;s length &mdash; the career comes first.",
@@ -272,7 +272,7 @@
           "contentment": -4,
           "health": -2
         },
-        "outcome": "You draw the line the Service would draw: the house kept, the heart withdrawn, the visits fewer and the door of yourself shut. She understands before you say it &mdash; her people have watched sahibs do this arithmetic for a hundred years &mdash; and asks for nothing, which is worse than any reproach."
+        "outcome": "You draw the line the Service would draw: the house kept, the heart withdrawn, the visits fewer, the door of yourself shut. She understands before you speak &mdash; her people have watched sahibs come to this for a hundred years. &lsquo;As the Presence wishes,&rsquo; she says, and asks for nothing, which is worse than any reproach."
       },
       {
         "label": "End it now, cleanly, before it is discovered.",
@@ -284,7 +284,7 @@
         "setFlags": [
           "looked_away"
         ],
-        "outcome": "You do the prudent, cowardly, correct thing: a settlement, a closed door, a lane you will not walk down again. Your career is safe and your conscience is not, and you understand, riding home, exactly the sort of man the Service has been quietly making of you all along."
+        "outcome": "It is done prudently: a settlement, a closed door, a lane you will not ride down again. Your career is safe; your conscience is not. Riding home in the dark, you understand what sort of man the Service has been quietly making of you all along."
       }
     ],
     "priority": true
@@ -310,7 +310,7 @@
       ]
     },
     "title": "The Long Evenings",
-    "body": "The rains shut you in, and the bungalow you chose over a wife is very large in the dark. There is the district by day, which is a mercy, and the evening, which is not: the punkah, the rain, the bottle, and eleven hundred miles between you and anyone who knew you before India. Other men in your position have gone quietly to pieces in exactly this chair. You have watched them. You had thought yourself the better made.",
+    "body": "The rains shut you in, and the bungalow you chose over a wife is very large in the dark. There is the district by day, which is a mercy, and the evening, which is not: the punkah, the rain on the thatch, the bottle, and eleven hundred miles between you and anyone who knew you before India. Other men have gone quietly to pieces in this very chair. You watched them do it. You had thought yourself better made.",
     "choices": [
       {
         "label": "Beat it with iron routine &mdash; work, the dawn ride, no drink after nine.",
@@ -319,7 +319,7 @@
           "order": 1,
           "prestige": 1
         },
-        "outcome": "You govern yourself as you govern the district: by the timetable and the shut door. It is joyless and it holds. You are, by the standards of a service that buries a certain number of its bachelors every hot weather, a success, and you try not to notice how narrow the margin felt."
+        "outcome": "You govern yourself as you govern the district: by the timetable and the shut door. It is joyless, and it holds. The Service buries a few of its bachelors every hot weather; you will not be one of them this year, and you try not to notice how narrow it ran."
       },
       {
         "label": "Pour it all into the district; be married to the work in earnest.",
@@ -331,7 +331,7 @@
         "setFlags": [
           "played_game"
         ],
-        "outcome": "You give the year everything a wife might have had, and the district everything, and the returns are the best in the Division and you are the emptiest man at the Club. Simla will read the figures and mark you for advancement. Nobody reads the evenings, which is the point of them."
+        "outcome": "You give the year what a wife might have had, and the district takes all of it. The returns are the best in the Division, and you are the emptiest man at the Club. Simla will read the figures and mark you for advancement. Nobody reads the evenings."
       },
       {
         "label": "Let the evenings win, a little, most nights.",
@@ -343,7 +343,7 @@
         "setFlags": [
           "adrift"
         ],
-        "outcome": "Not disgrace &mdash; nothing so definite &mdash; only a softening, a later start, a decanter lower each morning than a prudent man&rsquo;s would be. The district notices before you do; the district always does; and files the sahib who drinks alone under a heading it keeps a sorrowful lot of names in."
+        "outcome": "Not disgrace &mdash; nothing so definite &mdash; only a softening, a later start, a decanter lower each morning than a prudent man&rsquo;s. The district notices before you do. It files the sahib who drinks alone under a heading that holds a sorrowful lot of names."
       }
     ],
     "priority": true

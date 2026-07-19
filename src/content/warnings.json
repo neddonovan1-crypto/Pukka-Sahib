@@ -31,7 +31,7 @@
           "health": 5,
           "order": -1
         },
-        "outcome": "You bargain with your own body like a bania, and it accepts the instalment. The worst of the edge comes off; the cutcherry learns to decide small things without you, which is not entirely a gain; and the Civil Surgeon, reading your face at the Club, gives you the nod a jailer gives a prisoner behaving sensibly."
+        "outcome": "You bargain with your own body like a bania, and it accepts the instalment. The worst of the edge comes off; the cutcherry learns to decide small things without you, which is not all gain; and the Civil Surgeon, reading your face at the Club, gives you the nod a jailer gives a prisoner behaving sensibly."
       },
       {
         "label": "Thank him, pour him another, and carry on; the district cannot wait.",
@@ -106,10 +106,10 @@
       "value": 38
     },
     "title": "A Word at the Club",
-    "body": "The Judge waits until the billiard-room empties, which is how the Club conducts its serious business, and gives it to you between racks, kindly: your name is being spoken slightingly &mdash; a dinner-table in Simla, a Deputy Secretary&rsquo;s minute, the Commissioner silent when he might have defended you. A man&rsquo;s standing out here is his armour, he says, chalking his cue; below a certain weight of it, any question becomes a scandal, because no one troubles to answer it for you.",
+    "body": "The Judge waits until the billiard-room empties, which is how the Club conducts its serious business, and gives it to you between racks, kindly: your name is being spoken slightingly &mdash; a dinner-table in Simla, a Deputy Secretary&rsquo;s minute, the Commissioner silent when he might have defended you. &lsquo;A man&rsquo;s standing out here is his armour,&rsquo; he says, chalking his cue. &lsquo;Wear it thin enough, and any question becomes a scandal, for no one troubles to answer it for you.&rsquo;",
     "choices": [
       {
-        "label": "Give the burra khana of the season for precisely the people who matter.",
+        "label": "Give the burra khana of the season for the people who matter.",
         "effects": {
           "prestige": 7,
           "contentment": -2
@@ -125,7 +125,7 @@
           "prestige": 5,
           "health": -3
         },
-        "outcome": "Four drafts to get the tone right &mdash; achievement wearing modesty like a buttonhole &mdash; and a night&rsquo;s sleep lost to self-disgust, which is the document&rsquo;s true cost. It lands. Phrases from it reappear, unattributed, in the Commissioner&rsquo;s own review of the district, which is how you know it has entered the bloodstream. You keep the drafts locked up like a guilty thing."
+        "outcome": "Four drafts to get the tone right &mdash; achievement wearing modesty like a buttonhole &mdash; and a night&rsquo;s sleep lost to self-disgust. It lands. Phrases from it reappear, unattributed, in the Commissioner&rsquo;s own review of the district, which is how you know it has gone home. You keep the drafts locked up like a guilty thing."
       },
       {
         "label": "Let the record speak for itself.",
@@ -152,7 +152,7 @@
       "value": 25
     },
     "title": "The Board Grows Curious",
-    "body": "The Board of Revenue writes in the tone it keeps for Collectors it has begun to watch: the returns of Chhota Nagra are noted with concern; the Member trusts the demand will be realised; a district that cannot pay its way, the letter does not quite say and entirely means, will presently be given a Collector who can make it. An Empire is a business, and you are a branch office showing a loss.",
+    "body": "The Board of Revenue writes in the tone it keeps for Collectors it has begun to watch: the returns of Chhota Nagra are noted with concern; the Member trusts the demand will be realised; a district that cannot pay its way, the letter stops just short of saying, will presently be given a Collector who can make it. An Empire is a business, and you are a branch office showing a loss.",
     "choices": [
       {
         "label": "Press the collections hard before settlement, and let it be felt.",
@@ -197,7 +197,7 @@
       "value": 110000
     },
     "title": "The Lala Calls In Person",
-    "body": "Lala Hukum Chand does not send his man; he comes himself, which is the compliment a creditor pays a debt worth watching. Sherbet, enquiries after your health, a tour of the garden &mdash; and then, gently, the figure, produced like a pearl from a handkerchief. He names what the district owes him to the anna. He mentions, as one mentions the weather, that above a certain figure a district is no longer governed but administered on behalf of its creditors &mdash; and that Government House has always understood this perfectly.",
+    "body": "Lala Hukum Chand does not send his man; he comes himself, which is the compliment a creditor pays a debt worth watching. Sherbet, enquiries after your health, a tour of the garden &mdash; and then, gently, the figure, produced like a pearl from a handkerchief. He names what the district owes him to the anna. Then, as one mentions the weather: &lsquo;Past a certain figure, sahib, a district is not governed. It is administered, on behalf of its creditors. Government House has always understood this.&rsquo;",
     "choices": [
       {
         "label": "Pay him down from the chest, whatever it leaves for the rest of the year.",
@@ -219,7 +219,7 @@
         "econ": {
           "debt": -25000
         },
-        "outcome": "The interest softens; the nephew prospers; the bazaar, which can read a contract award like a sacred text, adds it up aloud. Nothing has been done that a Commission could name, which is the precise size of the comfort. The Lala leaves content. He has exchanged a little money for a little of you, and he knows which appreciates."
+        "outcome": "The interest softens; the nephew prospers; the bazaar, which can read a contract award like a sacred text, adds it up aloud. Nothing has been done that a Commission could name, and that is the whole of the comfort. The Lala leaves content. He has exchanged a little money for a little of you, and he knows which appreciates."
       },
       {
         "label": "Let him whistle for it; the Raj does not dance to a bania.",
@@ -266,7 +266,7 @@
           "prestige": 5,
           "contentment": -5
         },
-        "outcome": "You withdraw behind the sahib as behind a shut door: engagements declined, petitions through channels, the vernacular put away like summer clothes. The Club thaws within the month, which tells you what it always was. Out in the district a certain warmth goes quietly out of the salaams, and does not come back, and you feel its absence at odd hours for the rest of the posting."
+        "outcome": "You withdraw behind the sahib as behind a shut door: engagements declined, petitions through channels, the vernacular put away like summer clothes. The Club thaws within the month, which tells you what it always was. Out in the district something warm goes quietly out of the salaams, and does not come back, and you feel its absence at odd hours for the rest of the posting."
       },
       {
         "label": "Split the difference &mdash; correct in public, faithful in private.",
@@ -339,7 +339,7 @@
           "order": 1,
           "prestige": -2
         },
-        "outcome": "It is true, and he does not dispute it; he only looks at you the way seniors look at juniors who have just chosen their ceiling. The report goes up saying <i>adequate</i>, and the List, which has never once read a district, reads the report. Chhota Nagra, which is governed, thanks you in the only currency it has &mdash; which is not the one the Gazette pays in."
+        "outcome": "It is true, and he does not dispute it; he only looks at you the way seniors look at juniors who have just chosen their ceiling. The report goes up saying <i>adequate</i>, and the List, which has never once read a district, reads the report. Chhota Nagra, being governed, thanks you in its own currency. The Gazette pays in another."
       }
     ]
   }

@@ -15,7 +15,7 @@
         "effects": { "prestige": 2 },
         "econ": { "treasury": -6000 },
         "setFlags": ["settled_old_book"],
-        "outcome": "You send for the cash-box and clear five years of interest without asking him to total it twice. The Lala receives the money with the faint regret of a collector selling a fine piece, and something in his manner resets: a Collector who pays old paper at sight is a man whose signature means one thing everywhere. It is the cheapest six thousand rupees you will ever spend, and both of you know it."
+        "outcome": "You send for the cash-box and clear five years of interest without asking him to total it twice. The Lala receives the money with the faint regret of a collector selling a fine piece, and something in his manner alters for good: a Collector who pays old paper at sight is a man whose signature means one thing everywhere. It is the cheapest six thousand rupees you will ever spend, and both of you know it."
       },
       {
         "label": "Let it stand, and fold it into the district's account &mdash; on his terms.",
@@ -53,7 +53,7 @@
     "once": true,
     "requires": { "flag": "carry_vernacular" },
     "title": "The Tongue Remembers",
-    "body": "A land case, a crowded verandah, and a pleader translating his client&rsquo;s Urdu with the small professional improvements pleaders make &mdash; until you answer the petitioner directly, in the bazaar speech the munshi flogged into you through a Kotra cold weather, complete with the seventeen words for land tenure and the honorific verb. The verandah goes still, then delighted. The pleader recalibrates his practice on the spot; the petitioner tells the tale in his village that evening with gestures; and the story runs ahead of you thereafter to every camp in the district: this sahib cannot be got at through the interpreter, and &mdash; rarer, better &mdash; does not need to be.",
+    "body": "A land case, a crowded verandah, and a pleader translating his client&rsquo;s Urdu with the small professional improvements pleaders make &mdash; until you answer the petitioner directly, in the bazaar speech the munshi flogged into you through a Kotra cold weather, complete with the seventeen words for land tenure and the honorific verb. The verandah goes still, then delighted. The pleader amends his practice on the spot; the petitioner tells the tale in his village that evening with gestures; and the story runs ahead of you thereafter to every camp in the district: this sahib cannot be got at through the interpreter, and &mdash; rarer, better &mdash; does not need to be.",
     "effects": { "contentment": 2, "prestige": 1 }
   }
 ]

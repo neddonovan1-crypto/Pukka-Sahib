@@ -120,8 +120,8 @@
           "to": 8,
           "intros": [
             "Your first cold weather in charge of anything: tents, files, and a sub-division that knows more about you than you know about it.",
-            "The mornings are sharp and blue and everything is still possible &mdash; which is, the tahsildar&rsquo;s face suggests, exactly the problem.",
-            "Camp weather. The Collector says a young man learns his work under canvas or not at all.",
+            "The mornings are sharp and blue and everything is still possible; the tahsildar&rsquo;s face says that is the trouble with boys.",
+            "Camp weather. &lsquo;A young man learns his work under canvas,&rsquo; says the Collector, &lsquo;or not at all.&rsquo;",
             "Kotra watches its new sahib the way a village watches a new bullock: with patience, and a private book on how long he will last."
           ]
         },
@@ -165,7 +165,7 @@
           "cold": [
             "Learn Kotra with your own eyes &mdash; the cold weather is what camp was invented for, and no one marks a probationer absent in it.",
             "The camp table under the trees: petitions, boundaries, and a sub-division deciding whether it likes you.",
-            "The villages remember a young sahib who comes to them. So does the fever."
+            "The villages remember a young sahib who comes to them. The fever meets him on the road."
           ],
           "hot": [
             "Touring in your first hot weather is admired, noticed, and paid for out of your own hide.",
@@ -201,7 +201,7 @@
           ],
           "hot": [
             "Behind the chiks with the punkah going: the sensible place, as the empty station keeps telling you.",
-            "The office is where the first hot weather is survived. It is also where it is felt most."
+            "The office is where the first hot weather is survived &mdash; and where it is felt most."
           ]
         }
       }
@@ -230,7 +230,7 @@
         "label": "Ten days in the hills on a certificate",
         "note": "The Civil Surgeon will sign it &mdash; first hot weathers break boys who are too proud to ask.",
         "title": "Ten Days on a Certificate",
-        "body": "The Civil Surgeon looks at you across his desk, writes &lsquo;debility&rsquo; on a form with the fluency of long practice, and tells you that the hills in April have saved more young careers than all the confidential reports ever written. Ten days of deodars and cold air and sleep. Below, the plain bakes on without you, and notes &mdash; without malice, in its ledger &mdash; that the new sahib went up.",
+        "body": "The Civil Surgeon looks at you across his desk, writes &lsquo;debility&rsquo; on a form with the fluency of long practice, and tells you that the hills in April have saved more young careers than all the confidential reports ever written. Ten days of deodars and cold air and sleep. Below, the plain bakes on without you, and remembers &mdash; without malice &mdash; that the new sahib went up.",
         "effects": {
           "health": 10,
           "prestige": -3,
@@ -320,11 +320,11 @@
     },
     "confirmed": {
       "title": "Confirmed in the Service",
-      "text": "The probation passes, as most probations pass: without fireworks, on the strength of a season&rsquo;s honest work and a confidential report that says <b>&lsquo;will shape&rsquo;</b> &mdash; the Service&rsquo;s highest praise for a man it has decided to keep. You are confirmed, and in due course the posting comes down: a district of your own. It is everything you came out for, and it frightens you exactly as much as it should."
+      "text": "The probation passes, as most probations pass: without fireworks, on the strength of a season&rsquo;s honest work and a confidential report that says <b>&lsquo;will shape&rsquo;</b> &mdash; the Service&rsquo;s highest praise for a man it has decided to keep. You are confirmed, and in due course the posting comes down: a district of your own. It is everything you came out for, and it frightens you as much as it should."
     },
     "transfer": {
       "title": "Probation Extended",
-      "text": "The confidential report is a masterpiece of the unsaid: <i>industrious &hellip; well-meaning &hellip; requires a further period of supervision.</i> Your probation is extended and you are posted to another sub-division, smaller than Kotra, to be looked at for another year by another Collector. It is not disgrace. It is the Service saying, with perfect courtesy, that it has not yet made up its mind about you &mdash; and you have a tonga-ride and a new bungalow in which to reflect that you had six months to make it up, and did not."
+      "text": "The confidential report is a masterpiece of the unsaid: <i>industrious &hellip; well-meaning &hellip; requires a further period of supervision.</i> Your probation is extended and you are posted to another sub-division, smaller than Kotra, to be looked at for another year by another Collector. Not disgrace &mdash; only the Service saying, with perfect courtesy, that it has not yet made up its mind about you; and you have a tonga-ride and a new bungalow in which to reflect that you had six months to make it up for it, and did not."
     },
     "scandal": {
       "title": "Asked to Resign",
@@ -332,7 +332,7 @@
     },
     "breakdown": {
       "title": "Invalided in Your First Year",
-      "text": "The first hot weather finds the crack in you, as it finds the crack in a certain number of every year&rsquo;s batch. The Civil Surgeon&rsquo;s certificate is compassionate and final; the P&amp;O berth is booked by the Collector&rsquo;s own hand. They will say at Home that India did not agree with you. India agreed with you entirely; it simply asked a price you could not pay at three-and-twenty."
+      "text": "The first hot weather finds the crack in you, as it finds the crack in a certain number of every year&rsquo;s batch. The Civil Surgeon&rsquo;s certificate is compassionate and final; the P&amp;O berth is booked by the Collector&rsquo;s own hand. They will say at Home that India did not agree with you. India agreed with you well enough; it asked a price you could not pay at three-and-twenty."
     },
     "riot": {
       "title": "A Commission, at Your Age",

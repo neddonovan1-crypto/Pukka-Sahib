@@ -8,7 +8,7 @@
     "kind": "desk",
     "once": false,
     "title": "Pandit Girdhari Holds a Meeting",
-    "body": "Pandit Girdhari Lal, pleader and Congress man, proposes to address a public meeting on the subject of the salt tax, self-rule, and &mdash; the intelligence report notes with alarm &mdash; &lsquo;the general condition of things.&rsquo; It is entirely peaceful. It is also entirely legal. Both facts are considered a nuisance.",
+    "body": "Pandit Girdhari Lal, pleader and Congress man, gives notice of a public meeting upon the salt tax, self-rule, and &mdash; so runs the police abstract &mdash; &lsquo;the general condition of things.&rsquo; The Superintendent wants it stopped. &lsquo;Nothing but talk, sahib,&rsquo; says the Court Inspector, laying down the file, &lsquo;but talk carries in the hot weather.&rsquo; The law, inconveniently, is on the Pandit's side.",
     "choices": [
       {
         "label": "<b>Ban the meeting</b> under Section 144. Order is order.",
@@ -18,7 +18,7 @@
           "prestige": 2,
           "health": -3
         },
-        "outcome": "The meeting does not happen. The <i>reason</i> it did not happen is now a far more effective piece of Congress propaganda than the meeting could ever have been. The Pandit sends you a note of thanks. You suspect he is not joking.",
+        "outcome": "There is no meeting. There is instead a banned meeting, which does more for the Congress cause than any two hours of the Pandit's oratory. He sends round a note of thanks in his beautiful court-hand. You do not think he is joking.",
         "setFlags": [
           "unrest_stir"
         ]
@@ -30,7 +30,7 @@
           "contentment": 5,
           "prestige": -3
         },
-        "outcome": "Nothing happens. Speeches are made, the crowd disperses for tea, and the whole apparatus of sedition proves to run, like everything else here, on the assumption that it will be tolerated."
+        "outcome": "Nothing happens. The Pandit speaks for two hours in the dust of the maidan, the crowd claps in the right places and goes home to its dinner, and the clerk's notes fill three pages with nothing a prosecutor could love."
       },
       {
         "label": "<b>Attend personally</b> and sit in the front row.",
@@ -40,7 +40,7 @@
           "health": -4,
           "order": 1
         },
-        "outcome": "Your presence is so unexpected that the Pandit revises his speech on the spot to be scrupulously polite. You understand perhaps one word in five, and both of you leave convinced you have won."
+        "outcome": "The sight of the Magistrate in the front row throws the Pandit clean off his stride, and the speech turns courteous on the wing. &lsquo;We are honoured,&rsquo; he says afterwards, and means at least half of it. Each of you goes home certain the evening was his."
       }
     ]
   },
@@ -53,7 +53,7 @@
     "kind": "desk",
     "once": false,
     "title": "Lala Hukum Chand Pays a Call",
-    "body": "Lala Hukum Chand &mdash; moneylender, landholder, and the man to whom most of the district is quietly mortgaged &mdash; calls to pay his respects. He brings a basket of remarkable mangoes and mentions, in passing and with great delicacy, that a certain land dispute might be settled &lsquo;to everyone's satisfaction&rsquo; with a word from your court.",
+    "body": "Lala Hukum Chand &mdash; moneylender, landholder, holder of half the district's paper &mdash; comes to pay his respects, with a basket of Langra mangoes still cool from the well. &lsquo;A trifle of the season,&rsquo; he says. Then, folding his hands, he touches on a land suit now before your court, which might with one word be settled &lsquo;to everyone's satisfaction.&rsquo;",
     "choices": [
       {
         "label": "Accept the mangoes; <b>ignore the hint</b>.",
@@ -62,7 +62,7 @@
           "health": -1,
           "contentment": 1
         },
-        "outcome": "You have eaten the mangoes and taken none of the meaning, which the Lala finds both admirable and slightly stupid. He will try again, better, later."
+        "outcome": "The mangoes are excellent. The hint goes home unanswered, and the Lala bows himself out admiring your honesty and doubting your wits. He will come again, with something better than fruit."
       },
       {
         "label": "<b>Decline the mangoes</b> and the man, coldly.",
@@ -71,7 +71,7 @@
           "revenue": -3,
           "health": -2
         },
-        "outcome": "Incorruptible and lonely. The Lala's money oils every wheel in the district, and you have just introduced a little sand. Things will run slower now, and you will not know why."
+        "outcome": "The basket goes back untouched on the servant's head. The Lala's rupee turns every wheel between here and the river, and from this week the wheels turn stiff. Things move slower in the cutcherry now, and no clerk can tell you why."
       },
       {
         "label": "Have the mangoes; drop a <b>helpful word</b> in court.",
@@ -82,7 +82,7 @@
           "health": -3,
           "order": 1
         },
-        "outcome": "The dispute is settled to the Lala's satisfaction. You are now, in a small and deniable way, his. It is astonishing how light the first thread feels.",
+        "outcome": "The suit goes the Lala's way, and the mango-stones go out with the sweepings. Nothing is written; nothing need be. The first thread weighs less than a hair, as he well knows.",
         "setFlags": [
           "indebted"
         ],
@@ -101,7 +101,7 @@
     "kind": "desk",
     "once": false,
     "title": "Deputy Collector Mukherjee Is Right Again",
-    "body": "Sub-Deputy Collector Mukherjee &mdash; your Indian deputy, Cambridge-educated, visibly cleverer than you, and far too well-mannered to say so &mdash; points out, very gently, that the drainage scheme you approved yesterday will flood the very quarter it was meant to protect. He is, of course, correct.",
+    "body": "Sub-Deputy Collector Mukherjee &mdash; Cambridge, gold spectacles, and manners too good ever to show that he is the cleverer man &mdash; lays a tracing on your desk. &lsquo;If the levels are as the amin took them,&rsquo; he says gently, &lsquo;the new drain will put the water into the weavers' quarter, not out of it.&rsquo; The levels are as the amin took them. He is right.",
     "choices": [
       {
         "label": "<b>Thank him</b> publicly and change the scheme.",
@@ -110,7 +110,7 @@
           "prestige": -3,
           "health": 2
         },
-        "outcome": "The scheme is fixed. The clerks note that the Magistrate takes correction from an Indian officer, and file the observation somewhere it may one day be useful to somebody."
+        "outcome": "The scheme is redrawn and the quarter stays dry. In the vernacular office it is noted that the Magistrate took correction from a Bengali deputy before them all, and the noting is put by for whatever use it may one day serve."
       },
       {
         "label": "Change the scheme; <b>take the credit</b> yourself.",
@@ -119,7 +119,7 @@
           "health": -4,
           "contentment": 3
         },
-        "outcome": "The quarter stays dry and your reputation stays high. Mukherjee says nothing, and remembers everything, and remains more competent than you, which is the one thing you cannot fix."
+        "outcome": "The quarter stays dry, and the credit comes to your desk. Mukherjee wipes his spectacles and says nothing at all. He is a very patient man."
       },
       {
         "label": "<b>Overrule him</b>. A sahib does not reverse himself before the office.",
@@ -129,7 +129,7 @@
           "order": -3,
           "health": -2
         },
-        "outcome": "The quarter floods on schedule. You were right about appearances and wrong about drainage, and the water does not care which."
+        "outcome": "The rains prove Mukherjee right to the inch. The weavers' quarter goes under a foot of grey water, and you stand on the bund at dawn watching the charpoys float out of doorways."
       }
     ]
   },
@@ -142,7 +142,7 @@
     "kind": "personal",
     "once": false,
     "title": "The Long Evening",
-    "body": "It is nine o'clock, the punkah has stopped because the punkah-wallah has fallen asleep, and you are alone in a bungalow the size of a barn with a bottle of Scotch and eleven hundred miles between you and anyone who knew you before India. The bottle, at least, is company.",
+    "body": "Nine o'clock. The punkah has stopped &mdash; the punkah-coolie asleep over his rope &mdash; and the bungalow is a barn of hot shadow with one lamp, one bottle of Scotch, and eleven hundred miles between you and anyone who knew you before India. A jackal cries somewhere beyond the compound wall. The bottle, at least, is company.",
     "choices": [
       {
         "label": "Pour a <b>large one</b>. And another. It is that or the silence.",
@@ -151,7 +151,7 @@
           "prestige": -2,
           "order": -1
         },
-        "outcome": "The evening softens. So, over the months, does something else. This is how the district's more famous ruins began &mdash; not with a scandal, but with a nightcap that grew steadily larger and started earlier."
+        "outcome": "The second peg is better than the first, and the room grows kinder. Every station keeps the memory of a man who began this way &mdash; no scandal, only a nightcap that came a little earlier each hot weather. He was good company too, they say."
       },
       {
         "label": "Pour a <b>small one</b> and write letters home you won't post.",
@@ -159,7 +159,7 @@
           "health": 3,
           "contentment": 1
         },
-        "outcome": "You describe an India that does not exist to people who would not understand the one that does. It helps. The unsent letters go in the drawer with the others."
+        "outcome": "You write of an India that does not exist to people who could not credit the one that does. It steadies the hand. The letter goes into the drawer with the others, unposted."
       },
       {
         "label": "<b>Go to bed sober</b> and lie awake in the heat.",
@@ -167,7 +167,7 @@
           "health": -3,
           "prestige": 1
         },
-        "outcome": "Virtue, and the ceiling, keep you company until two. In the morning you are correct, upright, and hollow-eyed, which the office takes for dedication."
+        "outcome": "You lie under the dead punkah and listen to the brain-fever bird going up the scale till two. At six you are at your desk, sober and hollow-eyed, and the office calls it devotion to duty."
       }
     ]
   },
@@ -180,7 +180,7 @@
     "kind": "desk",
     "once": false,
     "title": "A New Form Is Required",
-    "body": "Simla, in its wisdom, introduces Form XIV-B, to be completed in quintuplicate, recording the caste, occupation, and &lsquo;general disposition&rsquo; of every petitioner appearing before the court. Ram Autar, your head clerk, lays it before you with the particular stillness he reserves for orders that are both compulsory and insane.",
+    "body": "Simla, in its wisdom, sends down Form XIV-B, to be filled in quintuplicate, showing the caste, calling, and &lsquo;general disposition&rsquo; of every petitioner appearing before the court. Ram Autar, your head clerk, lays it on the desk and steps back a pace. &lsquo;It is hukm,&rsquo; he says, in the flat voice he keeps for orders that are both compulsory and mad.",
     "choices": [
       {
         "label": "<b>Implement it fully.</b> An order is an order.",
@@ -189,7 +189,7 @@
           "contentment": -4,
           "health": -5
         },
-        "outcome": "The office vanishes beneath quintuplicate. Justice slows to the speed of carbon paper. Simla, receiving its forms on time, concludes that Chhota Nagra is a model of efficiency, which is the exact opposite of the truth and precisely what the forms were designed to produce."
+        "outcome": "The office goes under quintuplicate like a boat under the bore. Justice slows to the pace of carbon paper, and the petitioners squat in the verandah a day longer for it. Simla, receiving its forms punctually, writes Chhota Nagra down a model district."
       },
       {
         "label": "Have Ram Autar <b>fill them in plausibly</b> and file the rest.",
@@ -198,7 +198,7 @@
           "contentment": 2,
           "prestige": -1
         },
-        "outcome": "Ram Autar's face does not move, but something in the office relaxes. A quiet compact is formed: he will manufacture the paperwork the Empire requires, and you will not ask how. It is the most useful alliance you will make in India.",
+        "outcome": "&lsquo;It shall be done,&rsquo; says Ram Autar, and the office breathes again. The forms go up to Simla punctual and beautifully imagined. He will make the paper the Empire wants, and you will not ask how; that bargain is worth more to you than a settlement officer.",
         "setFlags": [
           "ramautar_trust"
         ]
@@ -209,7 +209,7 @@
           "prestige": -4,
           "health": -2
         },
-        "outcome": "You receive Form XIV-B-1, a supplementary form on which to record objections to Form XIV-B. The machine has met your resistance and grown a new part to digest it."
+        "outcome": "In a month comes Form XIV-B-1, a supplementary form for the recording of objections to Form XIV-B. Ram Autar lays it beside the first without a word."
       }
     ]
   },
@@ -225,7 +225,7 @@
       "flag": "ramautar_trust"
     },
     "title": "Ram Autar Has a Nephew",
-    "body": "Ram Autar, your invaluable head clerk, mentions with exquisite indirection that his sister's son is a promising young man in want of a clerkship, and that a vacancy happens to exist in the tahsil office. Everything Ram Autar does for you depends on a web of exactly such small arrangements. So, you are beginning to realise, does everything.",
+    "body": "Ram Autar comes at the matter as a pilot takes a shoal, by many soundings. His sister's son, it appears, is a young man of promise and good English handwriting; and there is, as it happens, a vacancy in the tahsil office. &lsquo;Only if the Presence thinks fit,&rsquo; he says, studying the window. Half the work of the district runs on such small arrangements. You are beginning to learn how much.",
     "choices": [
       {
         "label": "<b>Appoint the nephew.</b> Ram Autar has earned it.",
@@ -235,7 +235,7 @@
           "prestige": -2,
           "order": 1
         },
-        "outcome": "The nephew is appointed and turns out to be perfectly competent, which is not the point. The point is that you now understand how the district is actually staffed, and that the answer has nothing to do with the rules and everything to do with Ram Autar."
+        "outcome": "The nephew is appointed, and proves a good clerk &mdash; they always do. And you have learned how the district is really staffed. The answer is not in the Civil List; it is in Ram Autar's head, with much else."
       },
       {
         "label": "<b>Insist on open competition</b> for the post.",
@@ -244,7 +244,7 @@
           "health": -4,
           "order": -2
         },
-        "outcome": "You hold a fair examination, which the nephew wins anyway, having been the only serious candidate Ram Autar permitted to apply. You have upheld a principle and changed nothing, at some cost to a friendship you could not afford to spend."
+        "outcome": "An open examination is held, with notices in two bazaars. The nephew wins it, no other serious candidate having found it convenient to sit. You have kept the rule, spent a friendship you could ill afford, and got the same clerk either way."
       }
     ]
   },
@@ -260,7 +260,7 @@
       "flag": "married"
     },
     "title": "A Letter from the Hills",
-    "body": "The hot weather is on, the plains are an oven, and your wife of a few months has gone up to the hill station with the rest of the marriageable and the newly-married, as a bride must who is not to be widowed by the heat before the year is out. A letter comes down every dak, brighter than she feels, asking &mdash; not for the first time &mdash; when you will come up for your local leave, and whether the district cannot, for one fortnight, govern itself.",
+    "body": "The hot weather is on, the plains lie white as an ash-pit, and your wife of a few months has gone up to the hill station with the rest of the newly-married, as a bride must who is not to be buried on the plains before October. A letter comes down by every dak, written brighter than she feels, asking &mdash; not for the first time &mdash; when you will take your local leave, and whether the district cannot govern itself for one fortnight. The envelope smells faintly of pine.",
     "choices": [
       {
         "label": "Take your <b>local leave</b> and go up to her.",
@@ -270,7 +270,7 @@
           "prestige": -3,
           "revenue": -2
         },
-        "outcome": "A fortnight of cool air and a wife still new enough to be a marvel, and of pretending you are not thinking about the district. You come down restored and faintly guilty. The work waited; it always waits; that is the one dependable thing about it."
+        "outcome": "A fortnight of deodars and cold nights and a wife still new enough to be a wonder, and of not saying the word &lsquo;district&rsquo; at breakfast. You come down brown, mended, and a little guilty. The files have waited. Files always wait."
       },
       {
         "label": "Stay at your post; the season is <b>too dangerous to leave</b>.",
@@ -278,7 +278,7 @@
           "health": -6,
           "prestige": 2
         },
-        "outcome": "You write that duty holds you on the plains, which is true, and that you will come up the moment it eases, which you both suspect is not. A marriage of four months learns, in a hot weather apart, the shape of the marriage it is going to be. You go back to the files.",
+        "outcome": "You write that duty holds you to the plains, which is true, and that you will come up the moment it eases, which you both doubt. A marriage of four months learns, in one hot weather apart, the shape of the marriage it is going to be. You go back to the files.",
         "setFlags": [
           "alone_married"
         ]
@@ -289,7 +289,7 @@
           "health": -2,
           "contentment": 1
         },
-        "outcome": "You fill a page with the leave you mean to take and cannot yet, and post it up the hill. Nothing is decided, which is its own kind of decision. The heat presses on the bungalow like a hand."
+        "outcome": "You fill a page with the leave you mean to take and cannot name a date for, and send it up the hill. Nothing is settled. Outside the loo is blowing, and the mango-tops thrash grey with dust."
       }
     ]
   },
@@ -302,7 +302,7 @@
     "kind": "personal",
     "once": false,
     "title": "The Hot Weather",
-    "body": "By May the thermometer stands at a hundred and ten in the shade, the station has half-emptied for the hills, the punkahs never stop, and the nights are worse than the days. This is the season that breaks men quietly &mdash; the <i>loo</i> wind, the glare, and the long solitary evenings with nothing between you and the silence but a bottle and the ceiling.",
+    "body": "By May the thermometer stands at a hundred and ten in the shade, the station has half-emptied for the hills, and the nights are worse than the days. This is the season that breaks men quietly: the <i>loo</i> by day, the glare off the courtyard, and after dark the long empty evenings when the punkah creaks and there is nothing between you and the silence but a bottle and the ceiling-cloth.",
     "choices": [
       {
         "label": "Keep to a <b>rigid routine</b> &mdash; dawn rides, cold baths, work.",
@@ -310,7 +310,7 @@
           "health": 3,
           "order": 1
         },
-        "outcome": "Discipline is the sahib’s armour against the heat. You ride at dawn, work through the shuttered day, and hold yourself together by the timetable. It is joyless, and it works."
+        "outcome": "You ride at five, before the sun clears the mango-tope, take your bath cold, and work through the shuttered day by timetable. It is joyless, and it answers."
       },
       {
         "label": "Let the <b>Club and the bottle</b> carry you through.",
@@ -319,7 +319,7 @@
           "prestige": -2,
           "order": -1
         },
-        "outcome": "The little society of the half-empty station closes ranks around its bar. The evenings pass more easily; the mornings less so. It is the well-worn road, and you can see from here where it leads."
+        "outcome": "The half-dozen left in the station close ranks at the Club bar, and the same four stories go round with the ice. The evenings pass easier; the mornings, harder. It is a well-worn road, and every man on it knows where it goes."
       },
       {
         "label": "<b>Drive yourself</b> at the work to fill the emptiness.",
@@ -328,7 +328,7 @@
           "prestige": 1,
           "health": -4
         },
-        "outcome": "You bury the silence under files and clear a backlog two years deep. Simla is pleased. Something in you is being spent that no honours list will ever repay."
+        "outcome": "You bury the silence under files and clear arrears two years deep. Simla minutes its approval. One morning you catch sight of yourself in the shaving-glass, and pause."
       }
     ]
   },
@@ -344,7 +344,7 @@
       "flag": "indebted"
     },
     "title": "Lala Hukum Chand Calls It In",
-    "body": "The mangoes are long eaten, and the Lala has come to collect on the goodwill he so carefully planted. Nothing so crude as the money, he assures you &mdash; merely a small matter: a rival trader whose licence might be found irregular, a word in the right ledger. He smiles. Outside, the district you both govern goes about its business, not knowing which of you it belongs to.",
+    "body": "The mangoes are long eaten, and the Lala has come for his return on them. Nothing so gross as the money, he protests, hands spread: merely a rival grain-dealer whose licence, looked at closely, might be found irregular. &lsquo;A small matter,&rsquo; he says, &lsquo;between friends.&rsquo; Through the window the bazaar goes about its business, not knowing which of you it belongs to.",
     "choices": [
       {
         "label": "Do the small thing he asks. It <b>is</b> small.",
@@ -360,7 +360,7 @@
         "econ": {
           "debt": -40000
         },
-        "outcome": "The rival's licence is found wanting; the Lala's ledger is squared; a little of your debt is quietly forgiven. It was small, exactly as he said, and that is how it is done &mdash; never one large sin, always a series of small ones, each easier than the last."
+        "outcome": "The licence is found wanting; a line in the Lala's ledger is scored through. It was a small matter, as he said. They are all small matters, one after another, each a little easier than the last."
       },
       {
         "label": "<b>Refuse him</b>, and let the debt stand.",
@@ -375,7 +375,7 @@
         "setFlags": [
           "lala_defied"
         ],
-        "outcome": "You decline, politely, and watch the warmth leave the room. The debt is called to its full figure, and his money leaves the wheels of your district un-oiled overnight. You have kept your honour. It will prove a more expensive possession than you imagined."
+        "outcome": "&lsquo;As the Presence pleases,&rsquo; says the Lala, and the warmth goes out of the room like a lamp turned down. The debt is called to the last anna, and his money leaves the wheels of your district dry overnight. You have kept your izzat. It is not a cheap thing to keep."
       },
       {
         "label": "<b>Repay him in full</b> from the chest and be free.",
@@ -389,7 +389,7 @@
         "setFlags": [
           "lala_defied"
         ],
-        "outcome": "You empty a dangerous share of the treasury to buy back your own hands. The Lala takes his money with a bow that conveys precisely how much more useful the debt would have been to him than the cash. You are poorer, and free, and those turn out to be connected."
+        "outcome": "You pay him out of the chest &mdash; a dangerous share of it &mdash; and are quit. The Lala counts nothing and bows very low; the debt was worth more to him than the silver, and the bow says so. You walk back through the record-room a poorer man, and a free one."
       }
     ]
   },
@@ -405,7 +405,7 @@
       "flag": "unrest_stir"
     },
     "title": "The District Stops Work",
-    "body": "What began with Pandit Girdhari's banned meeting has become a <i>hartal</i> &mdash; the shops shuttered, the courts empty, the very peons of your own cutcherry finding urgent reasons to be elsewhere. It is disciplined, it is peaceful, and it frightens the Secretariat far more than a riot would, because a riot can at least be charged.",
+    "body": "What began with Pandit Girdhari's banned meeting has become a <i>hartal</i> in the name of the non-co-operation movement. The cloth-shops are shuttered, the courts stand empty, and your own cutcherry peons discover sick grandmothers in distant villages. Not a stone thrown, not a voice raised; only the bazaar gone silent as a tank at noon. A riot could at least be charged. This cannot.",
     "choices": [
       {
         "label": "<b>Break the strike</b> under the emergency powers.",
@@ -418,7 +418,7 @@
         "setFlags": [
           "crackdown"
         ],
-        "outcome": "You invoke the ordinances, arrest the organisers, and reopen the shops at the point of persuasion. Order returns to the surface of things. Underneath, something has changed no ordinance addresses: the district has learned it can stop, all together, whenever it chooses."
+        "outcome": "You take the emergency powers, lift the organisers before dawn, and have the shops open by persuasion of the lathi. The surface of things is restored. But the district has learned that it can stop &mdash; all of it, together &mdash; and no ordinance reaches that."
       },
       {
         "label": "<b>Wait it out</b> and let the hartal exhaust itself.",
@@ -428,7 +428,7 @@
           "prestige": -4,
           "health": -3
         },
-        "outcome": "You do nothing, magnificently, for eleven days, while Simla's telegrams grow shriller. The strike ends of its own weight, having proved its point precisely by your inability to prevent it. Blyth-Curram will remember that you sat on your hands. So will the Pandit."
+        "outcome": "For eleven days you do nothing, in the grand manner, while the telegrams from Simla climb from Urgent to Clear-the-Line. On the twelfth the shops open of themselves, the point having been made. Blyth-Curram will remember that you sat still. So will the Pandit."
       },
       {
         "label": "<b>Meet the Pandit</b> and offer a real concession.",
@@ -441,7 +441,7 @@
         "setFlags": [
           "pandit_pact"
         ],
-        "outcome": "You do the thing no one in Simla forgives: you treat with him as a man with a case. You give a little &mdash; a committee, a hearing, a grievance actually addressed &mdash; and the shutters go up. You have kept your district and quite possibly ended your career, and you are no longer sure those are different things."
+        "outcome": "You send for the Pandit and treat with him as a man with a case, which Simla does not forgive. A committee, a hearing, one grievance honestly taken up &mdash; and next morning the shutters rattle up all down the Sadar Bazaar. &lsquo;It needed only asking,&rsquo; says the Pandit. You have kept your district. What it has cost you will arrive later, by post."
       }
     ]
   },
@@ -457,7 +457,7 @@
       "flag": "ramautar_trust"
     },
     "title": "What Ram Autar Knew",
-    "body": "An anonymous petition, in a clerk's careful hand, lays out how the head clerk's small arrangements have grown over the years into something the audit would call embezzlement and the district calls simply how things are done. Ram Autar has run your office, saved your reputation a dozen times, and, it seems, taken his tithe of all that passed through it. He awaits your decision with the stillness he shows a compulsory order.",
+    "body": "An anonymous petition, in a fair court-hand, sets out with dates and figures how the head clerk's little arrangements have grown across the years into what an auditor would call embezzlement and the bazaar calls dastur. Ram Autar has run your office, saved your name a dozen times, and taken his tithe of all that passed the desk. He stands now by the almirah, still as a heron, waiting for the hukm.",
     "choices": [
       {
         "label": "<b>Bury the petition.</b> He has earned that much.",
@@ -470,7 +470,7 @@
         "setFlags": [
           "complicit"
         ],
-        "outcome": "You feed the petition to the brazier and say nothing. The office runs on as before, and you understand at last that you did not buy Ram Autar's loyalty &mdash; you rented it, and this is the rent. He pours your tea next morning exactly as always. You cannot meet his eye; he does not require you to."
+        "outcome": "The petition goes into the brazier, curls once, and is gone. The office runs on. You did not buy Ram Autar's loyalty, you find; you rented it, and this is a quarter's rent. Next morning he pours out your tea as he always does, and does not ask you to meet his eye."
       },
       {
         "label": "<b>Confront him</b> privately and demand it stop.",
@@ -480,7 +480,7 @@
           "order": -1,
           "contentment": 1
         },
-        "outcome": "You put it to him quietly and he neither denies nor apologises; he simply, gravely, agrees. The skimming stops. So does a great deal of the frictionless magic by which your office used to work, for it turns out the two ran through the same quiet pipes."
+        "outcome": "You put it to him with the doors shut. He neither denies nor excuses. &lsquo;It shall cease,&rsquo; he says gravely, and it ceases. So does much of the ease with which your office used to run, for the two flowed in one channel."
       },
       {
         "label": "<b>Report him.</b> The law is the law.",
@@ -493,7 +493,7 @@
         "setFlags": [
           "ramautar_gone"
         ],
-        "outcome": "You do the clean, correct, ruinous thing. Ram Autar is suspended pending enquiry, and within a fortnight you discover how much of the district lived in his head and nowhere else. You have upheld the law and lost the man who made your rule possible. The files are honest now. They are also three weeks behind."
+        "outcome": "You report him, which is clean, correct, and ruinous. Ram Autar is suspended pending enquiry, and within a fortnight you learn how much of the district lived in his head and nowhere else on paper. The files are honest now, and three weeks behind."
       }
     ]
   },
@@ -509,7 +509,7 @@
       "flag": "married"
     },
     "title": "A Letter from Home",
-    "body": "The news came at the turn of the rains and is only now sinking in: your wife is with child, and has gone Home to England for her confinement, as the wives of this Service do, to bear the baby among doctors who do not lose them and green fields that do not kill them. She will be gone the better part of a year. The letter, in her hand, is full of courage. Between the lines is the fact you both now live with: your child will be born eleven thousand miles from you, and know your face first from a photograph.",
+    "body": "The news came with the first rains and is only now sinking in: your wife is with child, and has gone Home for her confinement, as the wives of this Service go &mdash; to doctors who do not lose them, and fields that are green. She will be away the better part of a year. Her letter is all courage and lists of linen. Under it lies the thing you both now carry: your child will be born eleven thousand miles off, and learn your face from a photograph on the mantel.",
     "choices": [
       {
         "label": "Write back at once, warmly, and <b>promise you will get Home</b>.",
@@ -517,7 +517,7 @@
           "health": 5,
           "prestige": -2
         },
-        "outcome": "You fill a page with a furlough you have not been granted and a green English spring you can barely remember. It costs nothing to promise and steadies you to imagine it. Whether the promise survives contact with the Secretariat&rsquo;s leave-sanction is next year&rsquo;s grief."
+        "outcome": "You fill a page with a furlough not yet sanctioned and an English April you can barely call to mind. It steadies you to write it. Whether the promise lives through the Secretariat&rsquo;s leave-list is next year&rsquo;s grief."
       },
       {
         "label": "Send money, and a <b>correct, contained</b> letter of good wishes.",
@@ -525,7 +525,7 @@
           "health": -4,
           "prestige": 1
         },
-        "outcome": "You do what the Service does: provide handsomely and feel little, or feel much and show none. The letter is warm enough to pass and cold enough to keep you working, and you seal it knowing exactly what it is, and seal it anyway. The rain drums on the bungalow like a hand."
+        "outcome": "You do as the Service does: provide handsomely and show nothing. The draft goes by the same mail as a letter warm enough to pass and cool enough to leave you fit for work, and you seal it knowing what it is. Outside, the rain drums on the thatch."
       },
       {
         "label": "Pour a drink and <b>leave it a day</b>, then a week.",
@@ -536,7 +536,7 @@
         "setFlags": [
           "adrift"
         ],
-        "outcome": "You mean to answer it tomorrow. Tomorrow the district has a fresh demand, and the letter migrates to the drawer with the others you mean to answer, and something between you and a family you have not yet met lengthens by another silence. This, too, is how it is done."
+        "outcome": "You mean to answer it to-morrow. To-morrow there is a breach in the canal bund, and the day after a dacoity, and the letter goes into the drawer with the others. The silence between you and a family you have not met grows by one more mail."
       }
     ]
   }
