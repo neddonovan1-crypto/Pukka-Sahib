@@ -10,41 +10,61 @@
   /* ---------- the career record (versioned localStorage) ---------- */
   var CAREER_KEY = "pukka-sahib-career";
   function loadCareer() {
+    var blank = { v: 1, completions: {}, honours: [], history: [], carries: {} };
     try {
       var raw = window.localStorage.getItem(CAREER_KEY);
       var c = raw ? JSON.parse(raw) : null;
       if (!c || c.v !== 1) c = null;
-      return c || { v: 1, completions: {}, honours: [], history: [] };
-    } catch (e) { return { v: 1, completions: {}, honours: [], history: [] }; }
+      if (!c) return blank;
+      // Migrate the single carry slot to per-target carries, so replaying an
+      // earlier rank can never clobber a later chapter's inheritance.
+      if (!c.carries) c.carries = {};
+      if (c.carry && c.carry.into) {
+        if (!c.carries[c.carry.into]) c.carries[c.carry.into] = { flags: c.carry.flags || [], meters: c.carry.meters || {} };
+        delete c.carry;
+      }
+      return c;
+    } catch (e) { return blank; }
   }
   function saveCareer() { try { window.localStorage.setItem(CAREER_KEY, JSON.stringify(career)); } catch (e) {} }
   var career = loadCareer();
 
-  // The chapter to play: the first rank in the ladder the career has not yet
-  // been promoted out of. (With one chapter shipped, that is the district.)
-  function currentChapterKey() {
-    // A promotion sets a one-shot #go-<chapter> hash before its reload, so the
-    // handoff works even where localStorage is unavailable (private browsing).
-    try {
-      var hm = /^#go-(\w+)$/.exec(window.location.hash || "");
-      if (hm && registry.chapters[hm[1]]) {
-        try { window.history.replaceState(null, "", window.location.pathname + window.location.search); } catch (e2) {}
-        return hm[1];
-      }
-    } catch (e) {}
-    // A quick-start override (Begin as a seasoned Collector) jumps straight to
-    // the district — offered only once the apprentice year is completed.
-    try {
-      var qs = window.localStorage.getItem("pukka-sahib-quickstart");
-      if (qs === "dm" && registry.chapters.dm && (career.completions.ac || 0) >= 1) return "dm";
-      if (qs) window.localStorage.removeItem("pukka-sahib-quickstart");
-    } catch (e) {}
+  // The rank the career has reached: the first rung not yet promoted out of.
+  function naturalChapterKey() {
     for (var i = 0; i < registry.order.length; i++) {
       var k = registry.order[i];
       var promotedOut = (career.history || []).some(function (h) { return h.chapter === k && h.promoted; });
       if (!promotedOut) return k;
     }
     return registry.order[registry.order.length - 1];
+  }
+  // A rank is playable from the start screen if it is the career's current
+  // rung, has been served at least once, or sits directly above a served rank
+  // (the old seasoned-Collector jump, generalised).
+  function chapterPlayable(k) {
+    if (!registry.chapters[k]) return false;
+    if (k === naturalChapterKey()) return true;
+    if ((career.completions[k] || 0) >= 1) return true;
+    var i = registry.order.indexOf(k);
+    return i > 0 && (career.completions[registry.order[i - 1]] || 0) >= 1;
+  }
+  // The chapter to play: a promotion hash wins (one-shot, works without
+  // storage), then a picked rung from the start screen, then the career.
+  function currentChapterKey() {
+    try {
+      var hm = /^#go-(\w+)$/.exec(window.location.hash || "");
+      if (hm && registry.chapters[hm[1]]) {
+        try { window.history.replaceState(null, "", window.location.pathname + window.location.search); } catch (e2) {}
+        try { window.localStorage.removeItem("pukka-sahib-quickstart"); } catch (e3) {} // the promotion outranks any picked rung
+        return hm[1];
+      }
+    } catch (e) {}
+    try {
+      var qs = window.localStorage.getItem("pukka-sahib-quickstart");
+      if (qs && chapterPlayable(qs)) return qs;
+      if (qs) window.localStorage.removeItem("pukka-sahib-quickstart");
+    } catch (e) {}
+    return naturalChapterKey();
   }
   var chapterKey = currentChapterKey();
   var content = registry.chapters[chapterKey];
@@ -59,10 +79,10 @@
       ];
   var game = L.createGame(content, Math.random);
 
-  // What the last promotion handed this chapter (career.carry, written by
-  // recordCompletion when a promoting run closes): carried flags gate this
-  // chapter's echo events and codas, carried meters adjust the start.
-  var carryIn = (career.carry && career.carry.into === chapterKey) ? career.carry : null;
+  // What the last promotion handed this chapter (career.carries[chapter],
+  // written by recordCompletion when a promoting run closes): carried flags
+  // gate this chapter's echo events and codas, carried meters adjust the start.
+  var carryIn = career.carries[chapterKey] || null;
   function newRun() { return game.init(carryIn); }
 
   // Synthesised sitar/tanpura ambience (presentation only). Degrades to a no-op
@@ -209,10 +229,12 @@
     if (ladder.some(function (t) { return t.key === s.endedKey; }))
       career.honours.push({ chapter: chapterKey, key: s.endedKey, title: s.ended.title });
     // A promoting run hands its carries to the next rank (the logic computes
-    // them from config.chapter.carryOut); a re-promotion overwrites the old set.
+    // them from config.chapter.carryOut); a re-promotion overwrites that
+    // target's set and no other's.
     if (s.promoted && s.chapter && s.chapter.promotesTo) {
       var co = game.carryOut();
-      career.carry = co ? { into: s.chapter.promotesTo, flags: co.flags, meters: co.meters } : null;
+      if (co) career.carries[s.chapter.promotesTo] = { flags: co.flags, meters: co.meters };
+      else delete career.carries[s.chapter.promotesTo];
     }
     saveCareer();
   }
@@ -356,23 +378,46 @@
   }
 
   /* ---------- save / resume (versioned localStorage) ---------- */
-  var SAVE_KEY = "pukka-sahib-save", SAVE_VERSION = 2; // v2: chapter-tagged (pre-career saves are dropped)
+  // One save slot per chapter, so picking another rung from the start screen
+  // never touches a posting in progress elsewhere on the ladder.
+  var SAVE_PREFIX = "pukka-sahib-save", SAVE_VERSION = 2; // v2: chapter-tagged (pre-career saves are dropped)
   function store() { try { return window.localStorage; } catch (e) { return null; } }
+  function saveSlot(k) { return SAVE_PREFIX + "-" + k; }
+  // Migrate the legacy single slot into its chapter's slot.
+  (function () {
+    var ls = store(); if (!ls) return;
+    try {
+      var raw = ls.getItem(SAVE_PREFIX); if (!raw) return;
+      var obj = JSON.parse(raw);
+      if (obj && obj.v === SAVE_VERSION && obj.chapter && obj.data && !ls.getItem(saveSlot(obj.chapter)))
+        ls.setItem(saveSlot(obj.chapter), raw);
+      ls.removeItem(SAVE_PREFIX);
+    } catch (e) { try { ls.removeItem(SAVE_PREFIX); } catch (e2) {} }
+  })();
   function persist() {
     var ls = store(); if (!ls) return;
-    try { ls.setItem(SAVE_KEY, JSON.stringify({ v: SAVE_VERSION, chapter: chapterKey, data: game.serialize() })); } catch (e) {}
+    try { ls.setItem(saveSlot(chapterKey), JSON.stringify({ v: SAVE_VERSION, chapter: chapterKey, data: game.serialize() })); } catch (e) {}
   }
-  function clearSave() { var ls = store(); if (ls) try { ls.removeItem(SAVE_KEY); } catch (e) {} }
+  function clearSave() { var ls = store(); if (ls) try { ls.removeItem(saveSlot(chapterKey)); } catch (e) {} }
   function loadSave() {
     var ls = store(); if (!ls) return null;
+    var key = saveSlot(chapterKey);
     try {
-      var raw = ls.getItem(SAVE_KEY); if (!raw) return null;
+      var raw = ls.getItem(key); if (!raw) return null;
       var obj = JSON.parse(raw);
-      if (!obj || obj.v !== SAVE_VERSION || !obj.data || !obj.data.S) { ls.removeItem(SAVE_KEY); return null; }
-      if (obj.chapter && obj.chapter !== chapterKey) { ls.removeItem(SAVE_KEY); return null; } // a save from another rank
-      if (obj.data.endedKey) { ls.removeItem(SAVE_KEY); return null; } // a finished posting is not resumable
+      if (!obj || obj.v !== SAVE_VERSION || !obj.data || !obj.data.S) { ls.removeItem(key); return null; }
+      if (obj.chapter && obj.chapter !== chapterKey) { ls.removeItem(key); return null; } // a save from another rank
+      if (obj.data.endedKey) { ls.removeItem(key); return null; } // a finished posting is not resumable
       return obj.data;
-    } catch (e) { try { ls.removeItem(SAVE_KEY); } catch (e2) {} return null; }
+    } catch (e) { try { ls.removeItem(key); } catch (e2) {} return null; }
+  }
+  // Whether another rung holds a resumable posting (for the ladder's notes).
+  function saveExistsFor(k) {
+    var ls = store(); if (!ls) return false;
+    try {
+      var obj = JSON.parse(ls.getItem(saveSlot(k)) || "null");
+      return !!(obj && obj.v === SAVE_VERSION && obj.data && obj.data.S && !obj.data.endedKey);
+    } catch (e) { return false; }
   }
 
   // Keyboard: number keys pick the visible choices; Enter/Space advance a
@@ -414,15 +459,23 @@
 
   // The career ladder: the whole shape of the game, on the start screen — the
   // ranks in playing order (from the registry, plus the ranks yet to be
-  // written), what each plays for, and where this career stands on it.
+  // written), what each plays for, and where this career stands on it. Every
+  // playable rung is a picker: served ranks can be taken up again, and the
+  // rank above a served one is open (the seasoned-Collector jump, generalised).
   function careerLadderHtml() {
     var roman = ["I", "II", "III", "IV", "V"];
     var rows = registry.order.map(function (k, i) {
       var meta = registry.chapters[k].config.chapter || {};
       var promotedOut = (career.history || []).some(function (h) { return h.chapter === k && h.promoted; });
-      var state = k === chapterKey ? "here" : promotedOut ? "done" : "next";
-      var mark = state === "here" ? " &mdash; <b>you are here</b>" : state === "done" ? " &mdash; served ✓" : "";
-      return '<div class="rung rung--' + state + '">' +
+      var served = promotedOut || (career.completions[k] || 0) >= 1;
+      var pickable = k !== chapterKey && chapterPlayable(k);
+      var state = k === chapterKey ? "here" : served ? "done" : "next";
+      var mark = state === "here" ? " &mdash; <b>you are here</b>"
+        : served ? " &mdash; served ✓" + (pickable ? " &middot; <u>take it up again</u>" : "")
+        : pickable ? " &mdash; <u>open to you</u>" : "";
+      if (pickable && saveExistsFor(k)) mark += " &middot; a posting in progress";
+      return '<div class="rung rung--' + state + (pickable ? " rung--pick" : "") + '"' +
+        (pickable ? ' data-go="' + k + '" role="button" tabindex="0"' : "") + ">" +
         '<span class="rung-rank">' + roman[i] + ". " + (meta.rank || k) + "</span>" +
         (meta.plays ? '<span class="rung-plays">plays for ' + meta.plays + mark + "</span>" : "") +
         "</div>";
@@ -435,10 +488,20 @@
     return '<div class="ladder"><div class="record-head">The career</div>' + rows.join("") + "</div>";
   }
 
-  // Quick start: once the career has been through the apprentice year at least
-  // once, a seasoned-Collector start is always on offer.
-  function quickstartAvailable() {
-    return chapterKey !== "dm" && !!registry.chapters.dm && (career.completions.ac || 0) >= 1;
+  // Picking a rung: remember the choice and reload — the module re-derives its
+  // chapter on boot. Each chapter keeps its own save slot, so nothing is lost.
+  function wireLadderPicker(root) {
+    var rungs = root.querySelectorAll(".rung[data-go]");
+    for (var i = 0; i < rungs.length; i++) {
+      (function (node) {
+        function go() {
+          try { window.localStorage.setItem("pukka-sahib-quickstart", node.getAttribute("data-go")); } catch (e) {}
+          location.reload();
+        }
+        node.onclick = go;
+        node.onkeydown = function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); go(); } };
+      })(rungs[i]);
+    }
   }
 
   function showStart(saved) {
@@ -449,7 +512,6 @@
       ? '<button class="primary" id="resume">Resume the posting &rarr;</button>' +
         '<button class="ghost" id="fresh">Begin a new posting</button>'
       : '<button class="primary" id="begin">Take up your posting &rarr;</button>';
-    if (quickstartAvailable()) resumeBtn += '<button class="ghost" id="quickdm">Begin as a seasoned Collector</button>';
     var tagline = (content.config.chapter && content.config.chapter.tagline) ||
       'You are the newly-gazetted District Magistrate &amp; Collector of Chhota Nagra. ' +
       'Keep the peace. Bring in the revenue. And whatever else is lost, keep up appearances. ' +
@@ -466,11 +528,7 @@
     } else {
       el("begin").onclick = function () { showGame(); paint(newRun()); };
     }
-    var qd = el("quickdm");
-    if (qd) qd.onclick = function () {
-      try { window.localStorage.setItem("pukka-sahib-quickstart", "dm"); } catch (e) {}
-      location.reload();
-    };
+    wireLadderPicker(st);
   }
 
   // The masthead subtitle follows the chapter: whose despatches these are.

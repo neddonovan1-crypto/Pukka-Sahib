@@ -248,6 +248,12 @@
   .rung-plays{display:block; font-size:.8rem; font-style:italic; margin-left:1.35em}
   .rung--here .rung-rank{color:var(--seal)}
   .rung--planned{opacity:.55}
+  /* Playable rungs are the chapter picker. */
+  .rung--pick{cursor:pointer; border-radius:3px; margin:0 -6px; padding-left:6px; padding-right:6px}
+  .rung--pick:hover, .rung--pick:focus-visible{background:var(--surface); outline:none}
+  .rung--pick:hover .rung-rank{color:var(--seal)}
+  .rung--pick:focus-visible{outline:2px solid var(--indigo); outline-offset:1px}
+  .rung--pick u{text-decoration-color:var(--seal); text-underline-offset:2px}
   /* The service record on the start screen: rank, postings, honours so far. */
   .service{
     max-width:52ch; margin:0 auto 18px; padding:10px 16px; text-align:center;

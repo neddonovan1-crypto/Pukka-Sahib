@@ -191,7 +191,7 @@ async function resumeSession(browser, viewport) {
   }
   assert(usedKey, label + ": never exercised keyboard selection");
   var beforeFn = (await page.textContent("#card .fortnight")) || (await page.textContent("#seasonband")) || "";
-  var hadSave = await page.evaluate(function () { return !!localStorage.getItem("pukka-sahib-save"); });
+  var hadSave = await page.evaluate(function () { return !!localStorage.getItem("pukka-sahib-save-ac"); }); // per-chapter slot (fresh career = the probation)
   assert(hadSave, label + ": no save was written mid-run");
 
   // reload — the start screen should now offer Resume
@@ -268,7 +268,7 @@ async function promotionSession(browser, viewport, opts) {
     var career = await page.evaluate(function () { return JSON.parse(window.localStorage.getItem("pukka-sahib-career") || "null"); });
     assert(career && career.history && career.history.some(function (h) { return h.chapter === "ac" && h.promoted; }),
       label + ": career record missing the promoted apprentice year");
-    assert(career && career.carry && career.carry.into === "dm", label + ": promotion recorded no carry for the district");
+    assert(career && career.carries && career.carries.dm, label + ": promotion recorded no carry for the district");
   }
   await page.click("#again");
   await page.waitForSelector("#begin", { timeout: 8000 });
@@ -321,8 +321,8 @@ async function promotionDmSession(browser, viewport) {
   var disp = (await page.textContent(".disposition--up").catch(function () { return ""; })) || "";
   assert(/Commissioner/.test(disp), label + ": disposition does not name the Commissioner (\"" + disp.trim() + "\")");
   var career2 = await page.evaluate(function () { return JSON.parse(window.localStorage.getItem("pukka-sahib-career") || "null"); });
-  assert(career2 && career2.carry && career2.carry.into === "comm", label + ": promotion recorded no carry for the Division");
-  assert(career2 && career2.carry && career2.carry.flags.indexOf("carry_wife") !== -1, label + ": married year did not carry the wife");
+  assert(career2 && career2.carries && career2.carries.comm, label + ": promotion recorded no carry for the Division");
+  assert(career2 && career2.carries && career2.carries.comm.flags.indexOf("carry_wife") !== -1, label + ": married year did not carry the wife");
   await page.click("#again");
   await page.waitForSelector("#begin", { timeout: 8000 });
   var mast = (await page.textContent("#mastsub")) || "";
@@ -331,6 +331,67 @@ async function promotionDmSession(browser, viewport) {
   await page.waitForSelector("#card .fortnight", { timeout: 5000 });
   var fn = (await page.textContent("#card .fortnight")) || "";
   assert(/Fortnight 1 of 24/.test(fn), label + ": the Division did not open at fortnight 1 of 24 (\"" + fn.trim() + "\")");
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  await ctx.close();
+  return { errors: errors.length };
+}
+
+// The chapter picker: a career past the district must be able to take up an
+// earlier rank again from the start-screen ladder — without touching the
+// current rank's save slot.
+async function chapterPickSession(browser, viewport) {
+  var label = "pick";
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  var errors = [];
+  page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  var career = {
+    v: 1, completions: { ac: 1, dm: 1 }, honours: [],
+    history: [
+      { chapter: "ac", ending: "confirmed", title: "Confirmed in the Service", promoted: true },
+      { chapter: "dm", ending: "cie", title: "The C.I.E.", promoted: true }
+    ],
+    carries: { comm: { flags: ["carry_marked"], meters: { prestige: 3 } } }
+  };
+  // A Commissioner's posting in progress: picking Kotra must not disturb it.
+  var commSave = {
+    v: 2, chapter: "comm",
+    data: {
+      S: { flags: {}, posture: null, turn: 5, treasury: 250000, debt: 0, log: [],
+           revenue: 55, order: 55, prestige: 58, contentment: 47, health: 52 },
+      phase: "posture", currentId: null, lastResult: null,
+      recent: [], notice: null, lastEventId: null, endedKey: null
+    }
+  };
+  await ctx.addInitScript(function (seed) {
+    window.localStorage.setItem("pukka-sahib-career", JSON.stringify(seed.career));
+    window.localStorage.setItem("pukka-sahib-save-comm", JSON.stringify(seed.save));
+  }, { career: career, save: commSave });
+  await page.goto(INDEX, { waitUntil: "load" });
+  var mast0 = (await page.textContent("#mastsub")) || "";
+  assert(/Commissioner/.test(mast0), label + ": career past the district did not open at the Division (\"" + mast0.trim() + "\")");
+  var picks = await page.$$eval(".rung[data-go]", function (ns) { return ns.map(function (n) { return n.getAttribute("data-go"); }); });
+  assert(picks.indexOf("ac") !== -1 && picks.indexOf("dm") !== -1,
+    label + ": served ranks not pickable on the ladder (got " + picks.join(",") + ")");
+  await page.click('.rung[data-go="ac"]');
+  await page.waitForSelector("#begin", { timeout: 8000 });
+  var mast = (await page.textContent("#mastsub")) || "";
+  assert(/Assistant Commissioner/.test(mast), label + ": picking rung I did not open Kotra (\"" + mast.trim() + "\")");
+  await page.click("#begin");
+  await page.waitForSelector("#card .fortnight", { timeout: 5000 });
+  var fn = (await page.textContent("#card .fortnight")) || "";
+  assert(/Fortnight 1 of 12/.test(fn), label + ": the replayed probation did not open at fortnight 1 of 12 (\"" + fn.trim() + "\")");
+  var commSaveAfter = await page.evaluate(function () { return window.localStorage.getItem("pukka-sahib-save-comm"); });
+  assert(!!commSaveAfter, label + ": picking Kotra destroyed the Commissioner's save slot");
+  // Pick the Division back and resume the posting in progress.
+  await page.reload({ waitUntil: "load" });
+  await page.click('.rung[data-go="comm"]');
+  await page.waitForSelector("#resume", { timeout: 8000 });
+  await page.click("#resume");
+  await page.waitForSelector("#card", { timeout: 5000 });
+  var fn2 = (await page.textContent("#card .fortnight").catch(function () { return ""; })) || (await page.textContent("#seasonband")) || "";
+  assert(/Fortnight 5 of 24/.test(fn2), label + ": the Division posting did not resume at fortnight 5 (\"" + fn2.trim() + "\")");
   assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
   await ctx.close();
   return { errors: errors.length };
@@ -370,6 +431,8 @@ async function promotionDmSession(browser, viewport) {
     console.log("promo2: ", JSON.stringify(p2));
     var p3 = await promotionDmSession(browser, { width: 1120, height: 920 });
     console.log("promo3: ", JSON.stringify(p3));
+    var pk = await chapterPickSession(browser, { width: 1120, height: 920 });
+    console.log("pick:   ", JSON.stringify(pk));
   } finally {
     await browser.close();
   }
