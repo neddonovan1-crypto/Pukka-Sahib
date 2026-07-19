@@ -14,7 +14,7 @@
       "value": 30
     },
     "title": "The Surgeon-General Closes the Door",
-    "body": "He has attended three Lieutenant-Governors and examines you tonight with the locked book open on his knee, which he has never done before. &lsquo;I will say this once, plainly, because rank has stopped every other man who owed it to you. The machine is not tired; it is FAILING. I can keep it in harness a year at a price, or watch it go at the Council table some afternoon between questions &mdash; and I have watched that once in this province, and I wrote the bulletin, and I decline to write yours.&rsquo; He closes the book. &lsquo;The price is obedience. Yours, for once.&rsquo;",
+    "body": "He has attended three Lieutenant-Governors, and tonight he examines you with the locked book open on his knee, which he has never done before. &lsquo;I will say this once, plainly, because rank has stopped every other man who owed it to you. The machine is not tired; it is FAILING. I can keep it in harness a year at a price, or watch it go at the Council table some afternoon between questions &mdash; and I have watched that once in this province, and I wrote the bulletin, and I decline to write yours.&rsquo; He closes the book. &lsquo;The price is obedience. Yours, for once.&rsquo;",
     "choices": [
       {
         "label": "Obey him entirely: the regimen, the delegations, the early nights, all of it.",
@@ -22,14 +22,14 @@
           "health": 8,
           "prestige": -2
         },
-        "outcome": "You surrender as you have never surrendered to anything in the Service: the boxes triaged by the Chief Secretary, two receptions in three declined, dinner at eight and the lamp out at eleven under a nightly discipline the ADCs enforce with terrified fidelity. The province runs a fraction slower and entirely well — the machine you built running on its own trained momentum, which was always the test of the building. The Surgeon-General, at the month's review, grunts and writes briefly. You will never see the entry. The bearer, who sees everything, reports it was one word, underlined."
+        "outcome": "You surrender as you have never surrendered to anything in the Service: the boxes triaged by the Chief Secretary, two receptions in three declined, dinner at eight and the lamp out at eleven, under a nightly discipline the ADCs enforce with terrified fidelity. The province runs a fraction slower and runs well &mdash; the machine you built moving on its own trained momentum, which was always the test of the building. The Surgeon-General, at the month&rsquo;s review, grunts and writes briefly. You will never see the entry. The bearer, who sees everything, reports it was one word, underlined."
       },
       {
         "label": "Half-terms: the regimen taken, the red box kept.",
         "effects": {
           "health": 4
         },
-        "outcome": "The negotiation he expected: the tonic, the ride, the diet, the early dinner — and the box stays, because the box at this rank is not work, it is the province's pulse, and you cannot govern deaf. He takes the half loaf with a professional shrug that does not conceal the professional arithmetic. The machine steadies at half-repair: enough for the year, on the year's luck holding. Passing you at the levee a month later he taps his own chest, twice, exactly as a Civil Surgeon did at Sonepore years ago — the Service's oldest telegraph, one word, sent collect, again."
+        "outcome": "The negotiation he expected: the tonic, the ride, the diet, the early dinner &mdash; and the box stays, because the box at this rank is not work, it is the province&rsquo;s pulse, and you cannot govern deaf. He takes the half loaf with a professional shrug that does not conceal the professional arithmetic. The machine steadies at half-repair: enough for the year, if the year&rsquo;s luck holds. Passing you at the levee a month later, he taps his own chest, twice, as a Civil Surgeon once did at Sonepore &mdash; the Service&rsquo;s oldest telegraph, one word, sent collect, again."
       },
       {
         "label": "Thank him; the term has a year to run and the term comes first.",
@@ -37,7 +37,7 @@
           "prestige": 1,
           "health": -4
         },
-        "outcome": "There is always a reason at every rank, and the top supplies the grandest: the term, the session, the honours season, the province that cannot be governed from a sickbed. He hears the reason out, closes the locked book, and stands with a courtesy more frightening than any warning. At the door: 'They will call it devotion to duty, Your Honour. In the bulletin.' The season takes the interview's advice in the only direction seasons take advice. The heart keeps the Division bell it has been keeping since Sonepore, and rings it, now, at its own discretion."
+        "outcome": "There is always a reason at every rank, and the top supplies the grandest: the term, the session, the honours season, the province that cannot be governed from a sickbed. He hears the reason out, closes the locked book, and stands, with a courtesy more frightening than any warning. At the door: &lsquo;They will call it devotion to duty, Your Honour. In the bulletin.&rsquo; The season takes the interview&rsquo;s advice in the only direction seasons take advice. The heart keeps the division bell it has been keeping since Sonepore, and rings it now at its own discretion."
       }
     ]
   },
@@ -68,7 +68,7 @@
         "econ": {
           "treasury": -25000
         },
-        "outcome": "The warrant makes the province one command for sixty days, and the IG uses it like the campaign he has been drafting in his head for years: the armed reserves pooled and moving by rail, the informer belts re-funded in one sweep, the three travelling organisers of the pattern taken quietly at a river junction with their correspondence intact. The festivals pass flat, which is the whole of what such operations show for themselves. The correspondence goes up to Delhi under your covering note giving the credit where it lives. The IG's annual report calls the sixty days 'the model the manual lacks.' The manual, in due course, acquires it."
+        "outcome": "The warrant makes the province one command for sixty days, and the IG uses it like the campaign he has been drafting in his head for years: the armed reserves pooled and moving by rail, the informer belts re-funded in one sweep, the three travelling organisers of the pattern taken quietly at a river junction with their correspondence intact. The festivals pass flat, which is all such operations ever show for themselves. The correspondence goes up to Delhi under your covering note, giving the credit where it lives. The IG&rsquo;s annual report calls the sixty days &lsquo;the model the manual lacks.&rsquo; The manual, in due course, acquires it."
       },
       {
         "label": "Reinforce the festival cities and hold the pattern under watch.",
@@ -79,7 +79,7 @@
         "econ": {
           "treasury": -12000
         },
-        "outcome": "The visible precaution at the visible points: pickets doubled in six cities, the festivals passing under a police presence the crowds feel and price. It holds — the pattern declines battle where the ground is held and flows around it, patient as water, into next season's file. The IG executes the half-measure with entire correctness and files his fuller appreciation 'for record,' which at his rank as at every rank means: for the enquiry, should there be one. You have bought the season and lent the year, at the usual rates."
+        "outcome": "The visible precaution at the visible points: pickets doubled in six cities, the festivals passing under a police presence the crowds feel and price. It holds. The pattern declines battle where the ground is held, and flows round it, patient as water, into next season&rsquo;s file. The IG executes the half-measure to the letter, and files his fuller appreciation &lsquo;for record&rsquo; &mdash; which at his rank, as at every rank, means: for the enquiry, should there be one. You have bought the season and lent the year, at the usual rates."
       },
       {
         "label": "The Divisions hold their own peace; strengthen the DIGs and decline the theory.",
@@ -87,7 +87,7 @@
           "order": -4,
           "prestige": -1
         },
-        "outcome": "Orthodoxy at the final altitude: the range is the unit, the DIG the instrument, and each range, reinforced, holds its own ground while the thing that respects no boundaries works the seams between ranges — seams which at province scale are whole districts. The festival trouble, when it comes, comes at a boundary town precisely as charted, and is contained at a cost that would have funded the IG's sixty days three times over. His report on it appends, without comment, the map from the hour with the maps. The colour of the map has not changed. It has merely been paid for."
+        "outcome": "Orthodoxy at the final altitude: the range is the unit, the DIG the instrument, and each range, reinforced, holds its own ground while the thing that respects no boundaries works the seams between ranges &mdash; and the seams, at province scale, are whole districts. The festival trouble, when it comes, comes at a boundary town just as the chart foretold, and is contained at a cost that would have funded the IG&rsquo;s sixty days three times over. His report on it appends, without comment, the map from the hour with the maps. The colour of the map has not changed. It has merely been paid for."
       }
     ]
   },
@@ -114,14 +114,14 @@
           "prestige": 6,
           "health": -2
         },
-        "outcome": "Two days at Viceregal Lodge and one interview of two hours that you prepare for like an examination, because it is one: the term laid out whole — what was attempted, what came off, what failed and why you would do it again, and the three things Barhampur needs that Delhi has twice refused. He listens with his eyes shut, which those who know him know is his highest attention, and at the end says only: 'THAT I can defend. Send me the refusals again in writing.' The Secretary of State's questions stop. One of the three refusals, in the spring, quietly reverses. The habit of defending, you understand at last, was never automatic. It is subscribed to, annually, in interviews exactly like the one you nearly did not request."
+        "outcome": "Two days at Viceregal Lodge and one interview of two hours that you prepare for like an examination, because it is one: the term laid out whole &mdash; what was attempted, what came off, what failed and why you would do it again, and the three things Barhampur needs that Delhi has twice refused. He listens with his eyes shut, which those who know him know is his highest attention, and at the end says only, &lsquo;THAT I can defend. Send me the refusals again in writing.&rsquo; The Secretary of State&rsquo;s questions stop. One of the three refusals, in the spring, quietly reverses. The habit of defending, you understand at last, was never automatic. It is subscribed to, annually, in interviews like the one you nearly did not request."
       },
       {
         "label": "Send him something to say: the term's case, in writing, by return.",
         "effects": {
           "prestige": 3
         },
-        "outcome": "The despatch is the best paper you have ever written under pressure — the term's ledger, both columns, drafted for a reader who must quote it under hostile questioning — and it does its work: the Viceroy's next home mail deploys your sentences, and the questions subside to the background level all provinces generate. What the paper cannot do is what papers cannot do: be the man. The interview not sought is noted in the private ledger Viceroys keep of who comes when called and who sends despatches, and at the next vacancy among the Governorships, when the names are weighed at Viceregal Lodge, the weighing takes an extra, thoughtful moment over yours."
+        "outcome": "The despatch is the best paper you have ever written under pressure &mdash; the term&rsquo;s ledger, both columns, drafted for a reader who must quote it under hostile questioning &mdash; and it does its work: the Viceroy&rsquo;s next home mail deploys your sentences, and the questions subside to the background level all provinces generate. What the paper cannot do is be the man. The interview not sought is noted in the private ledger Viceroys keep, of who comes when called and who sends despatches; and at the next vacancy among the Governorships, when the names are weighed at Viceregal Lodge, the weighing pauses an extra, thoughtful moment over yours."
       },
       {
         "label": "The term will answer for itself in the returns.",
@@ -129,7 +129,7 @@
           "contentment": 1,
           "prestige": -3
         },
-        "outcome": "The reply is dignified, brief, and relies on the annual figures — which are, in fact, sound. Nothing follows, in the way that nothing follows at the top: no rebuke, no summons, only a subtle change of temperature in the Delhi correspondence, a Viceregal habit of defending that becomes, in your case, a Viceregal habit of accuracy. The Secretary of State's questions continue at their own rhythm, answered now with figures instead of conviction. Figures defend a term. They have never yet adorned one, and the List, when it is settled, is settled among the adorned."
+        "outcome": "The reply is dignified, brief, and rests on the annual figures &mdash; which are, in fact, sound. Nothing follows, in the way that nothing follows at the top: no rebuke, no summons, only a change of temperature in the Delhi correspondence, a Viceregal habit of defending that becomes, in your case, a Viceregal habit of accuracy. The Secretary of State&rsquo;s questions continue at their own rhythm, answered now with figures instead of conviction. Figures defend a term. They have never yet adorned one, and the List, when it is settled, is settled among the adorned."
       }
     ]
   },
@@ -160,7 +160,7 @@
           "treasury": -50000,
           "debt": -250000
         },
-        "outcome": "It is done in one brutal quarter: the Home securities, the insurance, the horses beyond the ceremonial four, a Government House economy conducted in public because at this scale there is no private — and the figure falls below the line where questions live. The draft dies in the party book unasked. The province watches the economising and reads it variously; the bazaars, which keep the truest books, read it exactly: the Lakat-Sahib is breaking his own paper. In the bazaars' oldest reckoning, a man who does that to himself before another can do it to him is the best security on the market. It is not the List's opinion. It is the older exchange's, and it has never once been wrong about a man."
+        "outcome": "It is done in one brutal quarter: the Home securities, the insurance, the horses beyond the ceremonial four, a Government House economy conducted in public because at this scale there is no private &mdash; and the figure falls below the line where questions live. The draft dies in the party book unasked. The province watches the economising and reads it variously; the bazaars, which keep the truest books, read it right: the Lat-Sahib is breaking his own paper. In the bazaars&rsquo; oldest reckoning, a man who does that to himself before another can do it to him is the best security on the market. That is not the List&rsquo;s opinion. It is the older exchange&rsquo;s, and it has never yet been wrong about a man."
       },
       {
         "label": "Go to the Viceroy before the question can travel: the figure, the history, no excuses.",
@@ -171,7 +171,7 @@
         "econ": {
           "debt": -120000
         },
-        "outcome": "The Kotra walk, taken for the last time at the highest door in India: the figure on one sheet, the twenty-two-year history on another, and the request — not for rescue, for instruction. The Viceroy reads both sheets twice, is silent for the length of a Council division, and then does the thing his office exists to do and almost never does: arranges, through channels three removes from Government, an advance against your pension at rates that end the compounding, and writes one letter Home of which you learn only the effect — the draft question withdrawn, the party book closed. 'Every proconsul since Clive has had paper,' he says at the door. 'The ones we lose are the ones who hide it.' You have been instructed. It cost what the walk always costs, and was worth what it was always worth."
+        "outcome": "The Kotra walk, taken for the last time at the highest door in India: the figure on one sheet, the twenty-two-year history on another, and the request &mdash; not for rescue, for instruction. The Viceroy reads both sheets twice, is silent for the length of a Council division, and then does the thing his office exists to do and almost never does: arranges, through channels three removes from Government, an advance against your pension at rates that end the compounding, and writes one letter Home of which you learn only the effect &mdash; the draft question withdrawn, the party book closed. &lsquo;Every proconsul since Clive has had paper,&rsquo; he says at the door. &lsquo;The ones we lose are the ones who hide it.&rsquo; You have been instructed. It cost what the walk always costs, and was worth what it was always worth."
       },
       {
         "label": "The figures are survivable and the friendship will hold a third time.",
@@ -182,7 +182,7 @@
         "econ": {
           "debt": 40000
         },
-        "outcome": "You write the old friend a warm letter about the shooting, which he will understand perfectly, and the season proceeds with the draft standing in the book like weather on the horizon. The friendship holds — he was always the best of that year's guns — but friendships hold questions, not arithmetic: the figures travel on by their own locomotion, gathering compound interest and third parties, and the horizon weather moves at the pace such weather keeps, which is unhurried, and one-directional, and yours now to watch every morning of the term that remains."
+        "outcome": "You write the old friend a warm letter about the shooting, which he will understand perfectly, and the season proceeds with the draft standing in the book like weather on the horizon. The friendship holds &mdash; he was always the best of that year&rsquo;s guns &mdash; but friendships hold questions, not arithmetic. The figures travel on by their own locomotion, gathering compound interest and third parties, and the horizon weather moves at the pace such weather keeps: unhurried, one-directional, and yours now to watch every morning of the term that remains."
       }
     ]
   },
@@ -219,15 +219,15 @@
           "revenue": 3,
           "health": -5
         },
-        "outcome": "You choose the province's oldest running sore — the canal extension stalled in committee since before your term, three Divisions' water at stake — and drive it through the last third of the term like a campaign: Delhi besieged by weekly instalments, the Council managed session by session, the Finance Member converted by figures and exhaustion. It closes in October: sanctioned, funded, the first sod turned by your own hand with the cameras present, because you have learned what the cameras are for. The running note is rewritten in November. The private secretary's Christmas card, unsigned as always, contains one word: <i>insisted.</i>"
+        "outcome": "You choose the province&rsquo;s oldest running sore &mdash; the canal extension stalled in committee since before your term, three Divisions&rsquo; water at stake &mdash; and drive it through the last third of the term like a campaign: Delhi besieged by weekly instalments, the Council managed session by session, the Finance Member converted by figures and exhaustion. It closes in October: sanctioned, funded, the first sod turned by your own hand with the cameras present, because you have learned what cameras are for. The running note is rewritten in November. The private secretary&rsquo;s Christmas card, unsigned as always, contains one word: <i>insisted.</i>"
       },
       {
-        "label": "Ask, through the same channel, what precisely would compel.",
+        "label": "Ask, through the same channel, what would compel a better adjective.",
         "effects": {
           "prestige": 2,
           "health": -1
         },
-        "outcome": "The question travels back inside a thank-you letter, and the answer returns by the next tour, in passing, to a rose bush: <i>Home counts three things at this altitude — what you finished, what you prevented, and what you leave standing that has your name inside it and not on it.</i> The syllabus, from the examiners. The last third of the term is spent to it deliberately: the canal finished, the famine code's revision filed early enough to be prevention, and the provincial service lists — the men you made — pushed forward where the next decade will find them. Calculated, entirely. But the syllabus is the Service's whole duty in twenty words, and a man could govern to it from the first day of Kotra, and you nearly did."
+        "outcome": "The question travels back inside a thank-you letter, and the answer returns by the next tour, in passing, to a rose bush: <i>Home counts three things at this altitude &mdash; what you finished, what you prevented, and what you leave standing that has your name inside it and not on it.</i> The syllabus, from the examiners. The last third of the term is spent to it deliberately: the canal finished, the Famine Code&rsquo;s revision filed early enough to be prevention, and the provincial service lists &mdash; the men you made &mdash; pushed forward where the next decade will find them. Calculated, every step. But the syllabus is the Service&rsquo;s whole duty in twenty words, and a man could govern to it from the first day of Kotra, and you nearly did."
       },
       {
         "label": "The term is what it is; Home may draft what it finds.",
@@ -236,7 +236,7 @@
           "contentment": 1,
           "prestige": -2
         },
-        "outcome": "There is a version of this that is serenity and a version that is surrender, and at five-and-forty, in the rains, with the locked book's contents unknown, you are past pretending to know at every hour which is which. The last third is governed honestly at the term's own pace, and the running note goes to the honours season saying what it drafted: <i>competent.</i> The List, when it comes, is the List of that word. The province, which never saw the note, keeps its own: it is kept in bazaar ledgers and village memories and the case-lists of pleaders' sons, and it does not use the word competent, and it is the one you will re-read, some evenings, for the rest of your life."
+        "outcome": "There is a version of this that is serenity and a version that is surrender, and at five-and-forty, in the rains, with the locked book&rsquo;s contents unknown, you have given up pretending to know at every hour which is which. The last third is governed honestly at the term&rsquo;s own pace, and the running note goes to the honours season saying what it drafted: <i>competent.</i> The List, when it comes, is the List of that word. The province, which never saw the note, keeps its own &mdash; in bazaar ledgers and village memories and the case-lists of pleaders&rsquo; sons &mdash; and it does not use the word competent, and it is the one you will re-read, some evenings, for the rest of your life."
       }
     ]
   }

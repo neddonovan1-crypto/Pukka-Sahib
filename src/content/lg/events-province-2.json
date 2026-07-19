@@ -8,7 +8,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Address from the Throne-Chair",
-    "body": "The session opens with the Lieutenant-Governor&rsquo;s address, and this year the opposition has announced its answer in advance: the swaraj bloc will rise and walk out as you begin &mdash; forty members, the press gallery primed, the gesture aimed not at the Council but at the cinema-newsreel man they have thoughtfully invited. Your Chief Secretary has drafted the standard address, a stately hour of nothing. The walkout will happen whatever you read. The only question you control is what the empty benches are walked out ON &mdash; and what the members who remain, and the province beyond them, hear next.",
+    "body": "The session opens with the Lieutenant-Governor&rsquo;s address, and this year the opposition has advertised its answer: the swaraj bloc will rise and walk out as you begin &mdash; forty members, the press gallery primed, the gesture aimed not at the Council but at the cinema-newsreel man they have thoughtfully invited. The Chief Secretary has drafted the standard address, a stately hour of nothing. The walkout will happen whatever you read. What you control is the thing the empty benches walk out ON &mdash; and what the members who remain, and the province beyond them, hear next.",
     "choices": [
       {
         "label": "Tear up the draft: speak short, plain, and mostly to the benches that will have gone.",
@@ -19,7 +19,7 @@
         "setFlags": [
           "spoke_to_empty_benches"
         ],
-        "outcome": "Eleven minutes instead of the hour: the year's three real problems named in figures, the Government's three answers named in dates, and one closing passage addressed, deliberately, to the forty empty seats — that the door they used remains open, that the problems will not wait for their return, and that you will report progress to this House whether or not the whole House is present to hear it. The remaining benches are silent, then not. The newsreel man, to the bloc's disgust, uses YOUR footage. The speech is reprinted in the vernacular press entire — the first Government House address in the province's history to earn that fate by being worth it."
+        "outcome": "Eleven minutes instead of the hour: the year&rsquo;s three real problems named in figures, Government&rsquo;s three answers named in dates, and one closing passage addressed, deliberately, to the forty empty seats &mdash; that the door they used stands open, that the problems will not wait on their return, and that you will report progress to this House whether or not the whole House is there to hear it. The remaining benches are silent, then not. The newsreel man, to the bloc&rsquo;s disgust, uses YOUR footage, and the vernacular press reprints the speech entire &mdash; the first Government House address in the province&rsquo;s history to be worth the ink."
       },
       {
         "label": "Read the stately draft unmoved; the Crown's address does not bend to theatre.",
@@ -27,7 +27,7 @@
           "prestige": 1,
           "contentment": -2
         },
-        "outcome": "The bloc walks at your first sentence, the newsreel gets its procession, and you read the Chief Secretary's hour to the loyal remainder with the imperturbability the manual prescribes. It is correct, and dignified, and it concedes the entire day's meaning to the men who left: the story is the walkout, the address a grey background to it. Dignity unbent is the Crown's oldest posture and its least nourishing; the province reads next morning about forty men who acted and one who continued. Continuity, you note, filing the cuttings, is not a headline. It is what headlines happen to."
+        "outcome": "The bloc walks at your first sentence, the newsreel gets its procession, and you read the Chief Secretary&rsquo;s hour to the loyal remainder with the imperturbability the manual prescribes. Correct, dignified &mdash; and the whole day&rsquo;s meaning is conceded to the men who left. The story is the walkout; the address is grey background to it. Dignity unbent is the Crown&rsquo;s oldest posture and its least nourishing, and next morning the province reads of forty men who acted and one who went on reading aloud. You file the cuttings yourself."
       },
       {
         "label": "Receive the bloc's leaders privately the evening before, and see what the walkout costs to call off.",
@@ -36,7 +36,7 @@
           "prestige": -2,
           "health": -1
         },
-        "outcome": "They come — negotiation being, whatever the platform says, their actual trade — and the price emerges over two hours: a select committee on the detenus, and Government time for their tenancy motion. You pay the second and half the first, and the walkout is called off, and the session opens full. The bargain holds and remains, necessarily, secret — which means the province sees only a Government address received quietly, and the bloc's own followers ask their leaders why the fire went out. Within the year the leaders must burn something larger to prove the flame. Purchased calm, you enter in the private ledger, compounds like the Lala's interest."
+        "outcome": "They come &mdash; negotiation, whatever the platform says, being their actual trade &mdash; and the price emerges over two hours: a select committee on the detenus, and Government time for their tenancy motion. You pay the second and half the first; the walkout is called off; the session opens full. The bargain holds, and must stay secret, so the province sees only a Government address quietly received, and the bloc&rsquo;s own followers ask their leaders where the fire went. Within the year the leaders must burn something larger to prove the flame still lit. Purchased calm, you enter in the private ledger, compounds like the Lala&rsquo;s interest."
       }
     ]
   },
@@ -49,7 +49,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Ordinance Question",
-    "body": "Four political dacoities in three months &mdash; revolutionary cells funding themselves at gunpoint, a treasure-guard dead at Motijhil, and the CID&rsquo;s assessment frank: under ordinary law, with witnesses terrorised and juries divided, convictions will not come. The draft ordinance is in your box: special tribunals, no juries, accelerated procedure &mdash; the strong medicine, pre-mixed by the Home Department, wanting only your certificate that the province requires it. The Council would refuse it; the ordinance exists precisely to pass over the Council. Every Lieutenant-Governor before you reached for it eventually. The reaching is what the revolutionaries are counting on; it is their best recruiting sergeant.",
+    "body": "Four political dacoities in three months &mdash; revolutionary cells funding themselves at gunpoint, a treasure-guard dead at Motijhil, and the CID frank in its assessment: under ordinary law, with witnesses terrorised and juries divided, convictions will not come. The draft ordinance is in your box: special tribunals, no juries, accelerated procedure &mdash; strong medicine, pre-mixed by the Home Department, wanting only your certificate that the province requires it. The Council would refuse it; the ordinance exists to pass over the Council. Every Lieutenant-Governor before you reached for it in the end. The reaching is what the revolutionaries count on. It is their best recruiting sergeant.",
     "choices": [
       {
         "label": "Refuse the ordinance; break the cells with police work under ordinary law, however long it takes.",
@@ -61,7 +61,7 @@
         "setFlags": [
           "refused_ordinance"
         ],
-        "outcome": "The certificate goes back unsigned, with a minute that will be quoted at your memorial service: that the law's slowness is the price of the law's legitimacy, and Government will pay it rather than lend the bomb its best argument. The CID, re-instructed and re-funded, does it the hard way — informers, watchers, eleven months — and the Motijhil cell comes to trial under ordinary law, convicted by evidence a defence could test. Two dacoities happen meanwhile that the tribunals might have prevented; you counted them possible and said so in advance, which is the minute's hardest sentence. The movement's press, deprived of its tyranny, is reduced to attacking your patience."
+        "outcome": "The certificate goes back unsigned, with a minute that will be quoted at your memorial service: the law&rsquo;s slowness is the price of the law&rsquo;s legitimacy, and Government will pay it rather than lend the bomb its best argument. The CID, re-instructed and re-funded, does it the hard way &mdash; informers, watchers, eleven months &mdash; and the Motijhil cell comes to trial under ordinary law, convicted on evidence a defence could test. Two dacoities happen meanwhile that the tribunals might have prevented; you counted them possible and said so in advance, which is the minute&rsquo;s hardest sentence. The swaraj movement&rsquo;s press, deprived of its tyranny, is reduced to attacking your patience."
       },
       {
         "label": "Certify it, narrowly drawn: the tribunals for dacoity-murder only, with a one-year lapse.",
@@ -70,7 +70,7 @@
           "prestige": 1,
           "contentment": -3
         },
-        "outcome": "The ordinance issues wearing every restraint you could bolt to it — the narrow schedule, the automatic lapse, appellate review — and it works as such instruments work: the tribunals convict, the cells scatter, the dacoities stop. It is also, restraints and all, THE ORDINANCE: the platforms have their tyranny, the detenus their successors, and the one-year lapse is renewed once, by you, because instruments in being are never surrendered on schedule — a sentence you once read about other Governments with contempt. Order is restored. What was borrowed to restore it is on loan from a fund that does not forgive interest."
+        "outcome": "The ordinance issues wearing every restraint you could bolt to it &mdash; the narrow schedule, the automatic lapse, appellate review &mdash; and it works as such instruments work: the tribunals convict, the cells scatter, the dacoities stop. But restraints and all, it is THE ORDINANCE: the platforms have their tyranny, the detenus their successors, and the one-year lapse is renewed once, by you, because an instrument in being is never surrendered on schedule &mdash; a sentence you once read of other Governments with contempt. Order is restored. What was borrowed to restore it came from a fund that does not forgive interest."
       },
       {
         "label": "Put it to the Council first, knowing the answer; let the refusal be theirs before the certificate is yours.",
@@ -79,7 +79,7 @@
           "contentment": 1,
           "order": -1
         },
-        "outcome": "The constitutional long way round: the Bill introduced, debated for six furious days, and thrown out by twenty votes, precisely as everyone knew — whereupon you certify, the necessity now wearing the Council's refusal as its justification. The manoeuvre is transparent and the transparency is the message: Government asked, was answered, and acted anyway, which is dyarchy described in one motion. The tribunals do their work. The opposition keeps the six days' Hansard, which reads better every year, and the province learns the reforms' exact weight-bearing limit, marked by your certificate like a flood-line on a bridge."
+        "outcome": "The constitutional long way round: the Bill introduced, debated six furious days, and thrown out by twenty votes, as everyone knew it would be &mdash; whereupon you certify, the necessity now wearing the Council&rsquo;s refusal for its justification. The manoeuvre is transparent, and the transparency is the message: Government asked, was answered, and acted anyway &mdash; dyarchy described in one motion. The tribunals do their work. The opposition keeps the six days&rsquo; Hansard, which reads better every year, and the province learns the weight the reforms will bear, marked by your certificate like a flood-line on a bridge."
       }
     ]
   },
@@ -92,7 +92,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Capital Stops",
-    "body": "It has been building all season and the rains bring it down: a general strike in Barhampur city &mdash; the mills, the tramways, the carters, the printing houses, at last even the municipal sweepers &mdash; part wages, part politics, part the accumulated temper of a wet and hungry year. The city of four hundred thousand is stopping, ward by ward. The mill-owners&rsquo; association demands requisitioned labour and prosecutions; the strike committee &mdash; a coalition of trade unionists and the movement&rsquo;s men, uneasy with each other &mdash; demands a wage board and the release of two arrested pickets. The sweepers&rsquo; strike is the clock: in this weather, cholera arrives with the second uncollected week.",
+    "body": "It has been building all season, and the rains bring it down: a general strike in Barhampur city &mdash; the mills, the tramways, the carters, the printing houses, at last the municipal sweepers themselves &mdash; part wages, part politics, part the temper of a wet and hungry year. The city of four hundred thousand stops, ward by ward. The mill-owners&rsquo; association demands requisitioned labour and prosecutions; the strike committee, trade unionists and the non-co-operation movement&rsquo;s men uneasily yoked, demands a wage board and the release of two arrested pickets. The sweepers&rsquo; strike is the clock: in this weather, cholera comes with the second uncollected week.",
     "choices": [
       {
         "label": "A wage board under a High Court judge, now, with the pickets bailed as its first act.",
@@ -105,7 +105,7 @@
         "setFlags": [
           "wage_board"
         ],
-        "outcome": "Announced from Government House within forty-eight hours, judge named, terms published, pickets bailed on the board's own motion — and the strike's coalition splits exactly as designed: the unionists, offered the substance, cannot follow the movement's men in refusing it for the theatre. The mills return by wards; the sweepers return first, which the city notices with its nose and credits you for; the board's award, months later, splits the wage difference and is honoured because its parentage was clean. The mill-owners' association enters you in its books as a Bolshevik. The entry is framed in three union offices, which you are given to understand is the province's highest honour."
+        "outcome": "Announced from Government House within forty-eight hours, judge named, terms published, pickets bailed on the board&rsquo;s own motion &mdash; and the strike&rsquo;s coalition splits along its seam: the unionists, offered the substance, cannot follow the movement&rsquo;s men in refusing it for the theatre. The mills return by wards; the sweepers return first, which the city notices with its nose and credits to you; and the board&rsquo;s award, months later, splits the wage difference and is honoured because its parentage was clean. The mill-owners&rsquo; association enters you in its books as a Bolshevik. The entry hangs framed in three union offices, which you are given to understand is the province&rsquo;s highest honour."
       },
       {
         "label": "Hold the ring and wait it out: essential services by Army pioneers, everything else endured.",
@@ -115,7 +115,7 @@
           "contentment": -3,
           "health": -1
         },
-        "outcome": "The pioneers lift the refuse and run a skeleton tramway, the pickets stay lawful under a police presence kept deliberately thin, and the strike is left to argue with the strikers' own larders. It breaks in the fifth week, on hunger, as such sieges break — the men back on the old terms, the owners' association triumphant, the committee's moderates discredited with their followers for having won nothing. Order held throughout; not a lathi was lifted; the books record a model of restraint. The mills' next strike, three years out, will skip the moderates entirely, that lesson having been taught by patience, at compound interest."
+        "outcome": "The pioneers lift the refuse and run a skeleton tramway, the pickets stay lawful under a police presence kept deliberately thin, and the strike is left to argue with the strikers&rsquo; own larders. It breaks in the fifth week, on hunger, as such sieges break: the men back on the old terms, the owners triumphant, the committee&rsquo;s moderates discredited with their followers for having won nothing. Order held throughout; not a lathi was lifted; the books record a model of restraint. The mills&rsquo; next strike, three years out, will not trouble with moderates. That lesson was taught by patience, and it took."
       },
       {
         "label": "The owners' course: requisition, prosecution, and the strike broken across a fortnight.",
@@ -133,9 +133,9 @@
           "setFlags": [
             "barhampur_firing"
           ],
-          "outcome": "The requisitioned carters are stoned at the Motijhil crossing, the escort fires, and the city answers with three days of the real thing: mills burning, the tramway barricaded, the Army in the wards, eleven dead by the official count that nobody believes. The strike is broken — everything is broken, that is the method's arithmetic — and the enquiry's terms of reference are drafted in London, which tells you the rest. Barhampur city keeps the date as an anniversary. Your name is in the keeping."
+          "outcome": "The requisitioned carters are stoned at the Motijhil crossing, the escort fires, and the city answers with three days of the real thing: mills burning, the tramway barricaded, the Army in the wards, eleven dead by an official count nobody believes. The strike is broken. Everything is broken; that is the method&rsquo;s arithmetic. The enquiry&rsquo;s terms of reference are drafted in London, which tells you the rest. Barhampur city keeps the date as an anniversary, and your name is in the keeping."
         },
-        "outcome": "It works as force works when it is lucky: the requisitions hold, the prosecutions decapitate the committee, and the strike collapses in twelve days with the mills' whistles blowing reveille over a sullen city. The owners' association's address of thanks is illuminated on vellum. The wage question, being unaddressed, is not settled but postponed, and the city's temper goes underground where the CID must now pay to read it. You have balanced the year's books with a loan from next year's peace — the oldest transaction in the government of cities, and the dearest."
+        "outcome": "It works as force works when it is lucky: the requisitions hold, the prosecutions behead the committee, and the strike collapses in twelve days with the mills&rsquo; whistles blowing reveille over a sullen city. The owners&rsquo; address of thanks is illuminated on vellum. The wage question, being unaddressed, is not settled but postponed, and the city&rsquo;s temper goes underground, where the CID must now pay to read it. You have balanced the year&rsquo;s books with a loan from next year&rsquo;s peace &mdash; the oldest transaction in the government of cities, and the dearest."
       }
     ]
   },
@@ -148,7 +148,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Year the Rivers Rose Together",
-    "body": "It is the year the old men will date things by: both great rivers in spate at once, three Divisions under water somewhere, and the relief machine &mdash; your machine, five Commissioners deep &mdash; running at its limits. The capital wants its Lieutenant-Governor visible; the wires want answering; and the northern Division, worst hit and weakest led, wants what Silchar once wanted of a Commissioner you used to be. You are five-and-forty, with a heart the Surgeon-General keeps a locked book on, and the breach country is a week of causeways, fever, and rain. The machine can be commanded from the capital. It can only be LED from the water.",
+    "body": "This is the year the old men will date things by: both great rivers in spate at once, three Divisions under water somewhere, and the relief machine &mdash; your machine, five Commissioners deep &mdash; running at its limit. The capital wants its Lieutenant-Governor visible; the wires want answering; and the northern Division, worst hit and weakest led, wants what Silchar once wanted of a Commissioner you used to be. You are five-and-forty, with a heart the Surgeon-General keeps a locked book on, and the breach country is a week of causeways, fever and rain. The machine can be commanded from the capital. It can only be LED from the water.",
     "choices": [
       {
         "label": "Go north into the breach country for a week, and lead the worst of it yourself.",
@@ -167,9 +167,9 @@
           "setFlags": [
             "fever_of_the_flood"
           ],
-          "outcome": "The week does what the Surgeon-General's locked book predicted: the fever takes you at the Rampur camps, and the last three days are commanded from a cot in a rest-house with the rain on the roof and your aide writing orders at dictation between doses. The relief holds — your being there held it — and the province gets the story of an Honour carried out of the flood country on a police launch, half-conscious under an awning. The story is worth a great deal. The convalescence is six weeks of the term, and the locked book acquires a page that will be quoted at you, gently, at every medical board hereafter."
-        },
-        "outcome": "A week in the water country: causeway to causeway by launch and elephant, the northern Commissioner steadied by your presence as you were once steadied at a bund at midnight, the relief camps inspected at the pace of a man who has run them and cannot be shown a painted one. The machine, watched by its head from inside, finds a gear it did not know it kept. The photograph someone takes at the Rampur breach — His Honour to the knees in it, pointing, hatless — does more for the term than the whole session's Hansard. The heart holds. The Surgeon-General, informed afterwards, writes one word in the locked book, which you never see."
+          "outcome": "The week does what the Surgeon-General&rsquo;s locked book foretold: the fever takes you at the Rampur camps, and the last three days are commanded from a cot in a rest-house, rain loud on the roof, your aide taking orders at dictation between doses. The relief holds &mdash; your being there held it &mdash; and the province gets the story of an Honour carried out of the flood country on a police launch, half-conscious under the awning. The story is worth a great deal. The convalescence is six weeks of the term, and the locked book gains a page that will be quoted at you, gently, at every medical board hereafter."
+          },
+        "outcome": "A week in the water country: causeway to causeway by launch and elephant, the northern Commissioner steadied by your being there as you were once steadied at a bund at midnight, the relief camps inspected at the pace of a man who has run them and cannot be shown a painted one. The machine, watched by its head from inside it, finds a gear it did not know it kept. The photograph somebody takes at the Rampur breach &mdash; His Honour in it to the knees, pointing, hatless &mdash; does more for the term than a whole session&rsquo;s Hansard. The heart holds. The Surgeon-General, told afterwards, writes one word in the locked book, and you never learn what it was."
       },
       {
         "label": "Command from the capital: powers delegated, reserves released, the machine trusted.",
@@ -181,7 +181,7 @@
         "econ": {
           "treasury": -80000
         },
-        "outcome": "The textbook year, run from the map room: plenary powers wired to five Commissioners inside two days, the famine reserve thrown open without reference Home, boats and pioneers moved between Divisions by a single controlling hand that never leaves the capital and never sleeps before one. It is administration at its correct altitude and it works — the mortality, when counted, is the lowest of any comparable year on the province's books. The books say so. The flood country, which never saw you, says other things, or rather says nothing, which in the vernacular of gratitude is a verdict too."
+        "outcome": "The textbook year, run from the map room: plenary powers wired to five Commissioners inside two days, the famine reserve thrown open without reference Home, boats and pioneers moved between Divisions by one controlling hand that never leaves the capital and never sleeps before one. It is administration at its correct altitude, and it answers: the mortality, when counted, is the lowest of any comparable year on the province&rsquo;s books. The books say so. The flood country, which never saw you, says nothing at all, and in the vernacular of gratitude that is a verdict too."
       },
       {
         "label": "The session cannot be abandoned: govern the flood between sittings.",
@@ -190,7 +190,7 @@
           "order": -2,
           "contentment": -3
         },
-        "outcome": "The constitutional position is real — the budget is in committee, the Council in session, the transferred half of Government unable to move without the House — and you hold to it: mornings in the chamber, evenings on the wires, the flood governed in the margins of a legislature's timetable. The margins are not enough; margins never are. The northern Division's relief runs ten days late at its worst point, and the ten days are counted where such days are counted. The session completes its business punctually. Among the business, in the autumn, is a motion of censure on the flood administration, and the House that you would not leave carries it."
+        "outcome": "The constitutional position is real &mdash; the budget in committee, the Council in session, the transferred half of Government unable to move without the House &mdash; and you hold to it: mornings in the chamber, evenings on the wires, the flood governed in the margins of a legislature&rsquo;s timetable. The margins are not enough. The northern Division&rsquo;s relief runs ten days late at its worst point, and the ten days are counted where such days are counted. The session finishes its business punctually. Among the business, in the autumn, is a motion of censure on the flood administration, and the House you would not leave carries it."
       }
     ]
   },
@@ -203,7 +203,7 @@
     "kind": "personal",
     "once": true,
     "title": "The Intelligence About the Garden Party",
-    "body": "The Deputy Inspector-General (Intelligence) asks for ten minutes and uses three: a cell, a revolver bought in Chandernagore, and a plan &mdash; corroborated twice &mdash; against Your Honour&rsquo;s person, occasion unknown, the garden parties and the morning rides both studied. The recommendations are on one sheet: the rides stopped, the durbars behind barriers, the open garden parties suspended, an escort doubled and closed up. It is all sensible. It is also the surrender the revolver is pointed at: a Lieutenant-Governor governing from inside a cordon is the pamphlets&rsquo; portrait of the Raj, drawn by Government itself. Your wife &mdash; if the years have given you one &mdash; is on the list of persons to be informed. She has not been informed yet. Nobody has, except you.",
+    "body": "The Deputy Inspector-General (Intelligence) asks for ten minutes and uses three: a cell, a revolver bought in Chandernagore, and a plan &mdash; corroborated twice &mdash; against Your Honour&rsquo;s person, occasion unknown, the garden parties and the morning rides both studied. His recommendations fit one sheet: the rides stopped, the durbars behind barriers, the open garden parties suspended, the escort doubled and closed up. All of it sensible, and all of it the surrender the revolver is pointed at &mdash; a Lieutenant-Governor governing from inside a cordon is the pamphlets&rsquo; portrait of the Raj, drawn by Government itself. Your wife, if the years have given you one, is on the list of persons to be informed. Nobody has been informed yet, except you.",
     "choices": [
       {
         "label": "Refuse the cordon: the rides, the durbars and the garden parties continue unchanged.",
@@ -221,9 +221,9 @@
           "setFlags": [
             "the_shot"
           ],
-          "outcome": "It comes at the third garden party, from the shrubbery by the band-stand: two shots, one wide, one through the shoulder — and the newsreel that was filming the roses films instead a Lieutenant-Governor on the grass, hat off, telling the crowd in the vernacular to be still, it is nothing, before the aides reach him. The boy is taken alive, which you insisted on from the ground, and tried, and the province's temper over the affair confounds every prediction: the attempt is disowned street by street. The shoulder mends crooked. The sentence you spoke from the grass is quoted for thirty years, and was, you privately concede, mostly annoyance at the interrupted band."
+          "outcome": "It comes at the third garden party, from the shrubbery by the band-stand: two shots, one wide, one through the shoulder &mdash; and the newsreel that was filming the roses films instead a Lieutenant-Governor on the grass, hat off, telling the crowd in the vernacular to be still, it is nothing, before the aides reach him. The boy is taken alive, which you insisted on from the ground, and tried; and the province&rsquo;s temper confounds every prediction &mdash; the attempt is disowned street by street. The shoulder mends crooked. The sentence you spoke from the grass is quoted for thirty years, and was mostly annoyance at the interrupted band."
         },
-        "outcome": "The one-sheet goes back with a line across it and one instruction kept — the watchers may watch, invisibly — and the rides and gardens continue as before, because the whole argument of the Raj at its best was that its officers walked about in it. The cell is taken five weeks later at the Chandernagore end, revolver and all, by the patient methods; the plan dies unattempted. Nobody outside four men ever knows the season was different from any other. The DIG, closing the file, permits himself one sentence of unprofessional warmth. You keep the one-sheet with the line through it, in the drawer with the other things that were nearly otherwise."
+        "outcome": "The one-sheet goes back with a line across it and one instruction kept &mdash; the watchers may watch, invisibly &mdash; and the rides and gardens go on as before, because the whole argument of the Raj at its best was that its officers walked about in it. The cell is taken five weeks later at the Chandernagore end, revolver and all, by the patient methods, and the plan dies unattempted. Outside four men, nobody ever knows the season was different from any other. The DIG, closing the file, permits himself one sentence of unprofessional warmth. You keep the one-sheet with the line through it, in the drawer with the other things that were nearly otherwise."
       },
       {
         "label": "Take the middle course: the public occasions kept, the patterns broken, the escort quietly doubled.",
@@ -231,7 +231,7 @@
           "order": 1,
           "health": -1
         },
-        "outcome": "The craftsman's answer: nothing visibly changes and everything is changed — routes varied, timings randomised, the escort in plain clothes among the roses, the garden parties as open as ever to any eye that cannot count sub-inspectors. It is the DIG's own preference and it works with nothing to show for working, which is intelligence's fate: the cell, finding no pattern, waits, and is taken waiting. The season passes. What it costs is private and cumulative — the arithmetic done now before every ride, the crowd read now at every durbar — a small tax on spontaneity, levied for the rest of the term, which is how such threats do their damage even when they never fire."
+        "outcome": "The craftsman&rsquo;s answer: nothing visibly changes and everything is changed &mdash; routes varied, timings broken, the escort in plain clothes among the roses, the garden parties as open as ever to any eye that cannot count sub-inspectors. It is the DIG&rsquo;s own preference, and it works with nothing to show for working, intelligence&rsquo;s usual wages. The cell, finding no pattern, waits, and is taken waiting. The season passes. The cost is private and cumulative: the arithmetic done now before every ride, the crowd read now at every durbar &mdash; a small tax on spontaneity, levied for the rest of the term. That is how such threats do their damage when they never fire."
       },
       {
         "label": "Accept the full recommendations; a dead Lieutenant-Governor governs nothing.",
@@ -240,7 +240,7 @@
           "prestige": -3,
           "contentment": -2
         },
-        "outcome": "The cordon closes with professional smoothness: barriers at the durbars, the rides discontinued 'on medical advice,' the garden parties by card and search. It is proof against everything except its own meaning, which the province reads in a fortnight and the pamphlets set in type: the Lakat-Sahib is afraid. The cell, its occasion removed, moves to the softer target the DIG always said was next, and is taken there, after a near thing with a district judge. You are safe all term. Something that the rides and the open gardens were FOR — older than your term, not yours to spend — is spent, and does not come back with the next incumbent either."
+        "outcome": "The cordon closes with professional smoothness: barriers at the durbars, the rides discontinued &lsquo;on medical advice,&rsquo; the garden parties by card and search. It is proof against everything but its own meaning, which the province reads in a fortnight and the pamphlets set in type: the Lat-Sahib is afraid. The cell, its occasion gone, moves to the softer target the DIG always said was next, and is taken there, after a near thing with a district judge. You are safe all term. Something the rides and the open gardens were FOR &mdash; older than your term, and not yours to spend &mdash; is spent, and does not come back with the next incumbent either."
       }
     ]
   },
@@ -253,7 +253,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Saint Crosses the Border",
-    "body": "The movement&rsquo;s saint &mdash; the little man the newspapers of three continents follow, spinning-wheel, third-class carriage and all &mdash; has entered your province on foot, walking village to village toward Barhampur city with the press of the world a day&rsquo;s march behind him. Every district he crosses reports the same: enormous, orderly crowds, the liquor shops closing of themselves, the temperature of everything rising. Delhi&rsquo;s instruction is a masterpiece of its kind: <i>the matter is left to the discretion of the local Government.</i> Arrest him and the province may burn, with the world watching. Let him walk and every mile is a durbar the Raj is not holding. The discretion is yours, and history is taking notes in shorthand.",
+    "body": "The saint of the movement for self-rule &mdash; the little man the newspapers of three continents follow, spinning-wheel, third-class carriage and all &mdash; has entered your province on foot, walking village to village toward Barhampur city with the press of the world a day&rsquo;s march behind him. Every district he crosses reports the same: enormous, orderly crowds, the liquor shops closing of themselves, the temperature of everything rising. Delhi&rsquo;s instruction is a masterpiece of its kind: <i>the matter is left to the discretion of the local Government.</i> Arrest him, and the province may burn with the world watching. Let him walk, and every mile is a durbar the Raj is not holding. The discretion is yours.",
     "choices": [
       {
         "label": "Let him walk, police the route lightly, and govern on as if a saint were ordinary traffic.",
@@ -265,7 +265,7 @@
         "setFlags": [
           "let_him_walk"
         ],
-        "outcome": "The instruction to five Commissioners is one sentence: he is a traveller exercising his lawful right, and the province's business is the harvest. The march swells, crests at the city in a meeting of two hundred thousand — entirely peaceable, there being nothing to be peaceable against — and passes on across the far border, leaving the movement's organisers with magnificent photographs and no martyr, no firing, no ordinance: nothing to build on but oratory, which fades. The clubs call it abdication all season. The CID's graph of political temperature, which does not attend the clubs, shows the year's lowest reading the month after he leaves."
+        "outcome": "The instruction to five Commissioners is one sentence: he is a traveller exercising his lawful right, and the province&rsquo;s business is the harvest. The march swells, crests at the city in a meeting of two hundred thousand &mdash; wholly peaceable, there being nothing to be peaceable against &mdash; and passes over the far border, leaving the movement&rsquo;s organisers with magnificent photographs and no martyr, no firing, no ordinance: nothing to build on but oratory, which fades. The clubs call it abdication all season. The CID&rsquo;s graph of political temperature, which does not attend the clubs, shows the year&rsquo;s lowest reading the month after he leaves."
       },
       {
         "label": "Arrest him quietly at the border, before the march can gather.",
@@ -277,7 +277,7 @@
         "setFlags": [
           "arrested_the_saint"
         ],
-        "outcome": "It is done at dawn with courtesy on both sides — he thanks the arresting magistrate, who never afterwards speaks of the interview unmoved — and the hartals begin by noon: every city in the province, then cities in provinces not yours, then questions in a Parliament five thousand miles away. The trial is his masterpiece; he pleads guilty at length, and the sentencing magistrate's tribute to the prisoner is quoted against Government for a generation. The province does not burn — his own discipline holds it — which mercy the pamphlets credit to him, correctly. You have given the movement its text for a decade, printed at Government's press."
+        "outcome": "It is done at dawn, with courtesy on both sides &mdash; he thanks the arresting magistrate, who never afterwards speaks of that interview unmoved &mdash; and the hartals begin by noon: every city in the province, then cities in provinces not yours, then questions in a Parliament five thousand miles away. The trial is his masterpiece. He pleads guilty at length, and the sentencing magistrate&rsquo;s tribute to the prisoner is quoted against Government for a generation. The province does not burn; his own discipline holds it, and the pamphlets credit the mercy to him, correctly. You have given the movement its text for a decade, printed at Government&rsquo;s press."
       },
       {
         "label": "Meet him: invite him to Government House as he passes the capital.",
@@ -289,7 +289,7 @@
         "setFlags": [
           "met_the_saint"
         ],
-        "outcome": "The invitation astonishes everyone but its recipient, who accepts by return runner. Two hours at Government House: he in his blanket in the great chair, talking of village sanitation and the drink evil with the precision of the lawyer he was, and of first things with the other precision, while the ADCs hover scandalised. Nothing is conceded on either side; something is exchanged that neither ever names. Delhi is appalled — the despatch takes four pages to be appalled in — and Whitehall asks whether Barhampur has gone soft. Yet in your province, and only in your province, the next campaign is called off. Neither of you ever explains. Both of you know."
+        "outcome": "The invitation astonishes everyone but its recipient, who accepts by return runner. Two hours at Government House: he in his blanket in the great chair, talking village sanitation and the drink evil with the precision of the lawyer he was, and of first things with the other precision, while the ADCs hover scandalised. Nothing is conceded on either side. At the door he says, &lsquo;You are the first of them to ask me in,&rsquo; and is gone up the road. Delhi is appalled &mdash; the despatch takes four pages to be appalled in &mdash; and Whitehall asks whether Barhampur has gone soft. Yet in your province, and only in your province, the next campaign is called off. Neither of you ever explains it."
       }
     ]
   },
@@ -302,7 +302,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Province's List",
-    "body": "The circular that once meant a probationer&rsquo;s despatch, then a Commissioner&rsquo;s two lines, now arrives at its final form: the Birthday Honours, the whole province&rsquo;s sheet, settled at your table before it goes to the Viceroy. The claims are the eternal ones. The Nawab of Tikri, due the G.C.I.E. by every rule of salutes and seniority, and lately host to certain meetings the CID files without comment. Krishnaswami the Minister &mdash; a knighthood would bind the ablest Indian in the province to the constitution, or brand him its pensioner and finish him with his own people. And the Surgeon-General, thirty years of plague camps and no durbar arts at all, whom every List has passed over for men with better tailors.",
+    "body": "The circular that once meant a probationer&rsquo;s despatch, then a Commissioner&rsquo;s two lines, arrives now at its final form: the Birthday Honours, the whole province&rsquo;s sheet, settled at your table before it goes to the Viceroy. The claims are the eternal ones. The Nawab of Tikri, due the G.C.I.E. by every rule of salutes and seniority, and lately host to meetings the CID files without comment. Krishnaswami the Minister &mdash; a knighthood would bind the ablest Indian in the province to the constitution, or brand him its pensioner and finish him with his own people. And the Surgeon-General, thirty years of plague camps and no durbar arts at all, passed over by every List in favour of men with better tailors.",
     "choices": [
       {
         "label": "The Surgeon-General to the top of the sheet, and let the durbar arithmetic wait a year.",
@@ -313,7 +313,7 @@
         "setFlags": [
           "listed_the_surgeon"
         ],
-        "outcome": "The knighthood goes to thirty years of plague camps, with a citation you write yourself in one draft because it needs no second. The durbar world is briefly scandalised — a List with no prince at its head — and the Services, the hospitals, and every camp-trained officer in India read it as it was meant: the coin paid, for once, at the mint of the work. The Surgeon-General, informed, is silent for a long moment and then says he will wear it for the sub-assistant surgeons, who die of the plagues too and get no letters after their names. You put THAT in no citation. It stays in the locked book where he keeps his notes on you, and yours on him."
+        "outcome": "The knighthood goes to thirty years of plague camps, with a citation you write yourself in one draft because it needs no second. The durbar world is briefly scandalised &mdash; a List with no prince at its head &mdash; and the Services, the hospitals, and every camp-trained officer in India read it as it was meant: the coin paid, for once, at the mint of the work. The Surgeon-General is silent a long moment when you tell him. &lsquo;I&rsquo;ll wear it for the sub-assistant surgeons,&rsquo; he says at last. &lsquo;They die of the plagues too, and get no letters after their names.&rsquo; That goes in no citation. It stays in the locked book where he keeps his notes on you, and yours on him."
       },
       {
         "label": "The Nawab's G.C.I.E.; the salutes table is a treaty, and treaties are kept.",
@@ -322,7 +322,7 @@
           "prestige": 1,
           "contentment": -1
         },
-        "outcome": "The Grand Cross goes to Tikri as the table prescribes, and the durbar order of the province settles by one notch, contented: the Raj keeps its bargains with its allies, which is the whole Political line in one investiture. The CID's uncommented file gains no comment and one cross-reference. At the ceremony the Nawab — vast now, shrewd always — holds your eye a half-second past the salute, acknowledging the entire transaction: the meetings, the file, the List, the keeping of forms by both parties. Princes and Governments understand each other perfectly, you reflect, walking back. That has always been the difficulty."
+        "outcome": "The Grand Cross goes to Tikri as the table prescribes, and the durbar order of the province settles by one notch, contented: the Raj keeps its bargains with its allies, the whole Political line in one investiture. The CID&rsquo;s uncommented file gains no comment and one cross-reference. At the ceremony the Nawab &mdash; vast now, shrewd always &mdash; holds your eye a half-second past the salute, acknowledging the entire transaction: the meetings, the file, the List, the keeping of forms by both parties. Princes and Governments understand each other perfectly, you reflect, walking back. That has always been the difficulty."
       },
       {
         "label": "Krishnaswami's knighthood: bind the constitution's best man to the constitution.",
@@ -330,7 +330,7 @@
           "prestige": 1,
           "contentment": -2
         },
-        "outcome": "He accepts — after four days' silence that tell you everything about the price — and the investiture makes the newsreels: the ablest Indian in the province kneeling to the Crown's sword. The constitutionalists exult; the movement's press writes his political obituary with relish, and is not wholly wrong: Sir Krishnaswami's word never again moves the young men, and his majorities thin session by session as 'the Government's Minister' replaces the man in the province's mouth. You bound him to the constitution, exactly as designed. What the constitution lost in the binding — its one bridge to the other bank — appears on no List, and is irreplaceable, and you chose it."
+        "outcome": "He accepts &mdash; after four days&rsquo; silence that tell you everything about the price &mdash; and the investiture makes the newsreels: the ablest Indian in the province kneeling to the Crown&rsquo;s sword. The constitutionalists exult. The Congress movement&rsquo;s press writes his political obituary with relish, and is not wholly wrong: Sir Krishnaswami&rsquo;s word never again moves the young men, and his majorities thin session by session as &lsquo;the Government&rsquo;s Minister&rsquo; replaces the man in the province&rsquo;s mouth. You bound him to the constitution, as designed. What the constitution lost in the binding &mdash; its one bridge to the other bank &mdash; appears on no List."
       }
     ]
   },
@@ -343,7 +343,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Code Itself",
-    "body": "Twice in your service the Famine Code has been late for you: once as a tahsildar-aged boy watching a district eat its seed grain, once as a Commissioner whose concurrence sits under Petherick&rsquo;s <i>wait</i> forever. Now the Code itself is on your table &mdash; the provincial revision, due once a generation, yours to settle. The reformers&rsquo; draft moves every trigger earlier: scarcity declared on rainfall and price curves, not starvation observed; test works opened on forecast. The Finance men have priced it: three false alarms a decade, a lakh or more each. The old Code&rsquo;s answer is carved on its every page: certainty before expenditure. You know to the week what certainty costs. You have the pen the drafters of &rsquo;83 held, and the margin they wrote in is yours now.",
+    "body": "Twice in your service the Famine Code has been late for you: once as a tahsildar-aged boy watching a district eat its seed grain, once as a Commissioner whose concurrence sat under Petherick&rsquo;s <i>wait</i> forever. Now the Code itself is on your table &mdash; the provincial revision, due once a generation, yours to settle. The reformers&rsquo; draft moves every trigger earlier: scarcity declared on rainfall and price curves, not on starvation observed; test works opened on forecast. The Finance men have priced it: three false alarms a decade, a lakh or more each. The old Code&rsquo;s answer is carved on its every page &mdash; certainty before expenditure &mdash; and you know to the week what certainty costs. The pen the drafters of &rsquo;83 held is yours now, and the margin they wrote in.",
     "choices": [
       {
         "label": "Move every trigger earlier and sign it: buy the false alarms, and name the price honestly.",
@@ -355,7 +355,7 @@
         "setFlags": [
           "rewrote_the_code"
         ],
-        "outcome": "The revision goes through with the rainfall triggers in it and a signing minute that will be quoted longer than anything else you write: <i>a false alarm costs a lakh; a true one, answered late, costs a district; Government has compared the invoices.</i> The Finance men enter their dissent, correctly, for the record. Twice in the following decade the new Code fires early and wrongly, and the lakhs are spent on works the rains then water, and the Council grumbles. Once it fires early and rightly, and the famine that does not happen has, as always, no monument — except the Code itself, which is yours, and which men who never learn your name will be governed by for fifty years."
+        "outcome": "The revision goes through with the rainfall triggers in it, and a signing minute that will be quoted longer than anything else you write: <i>a false alarm costs a lakh; a true one, answered late, costs a district; Government has compared the invoices.</i> The Finance men enter their dissent, correctly, for the record. Twice in the following decade the new Code fires early and wrongly, and the lakhs are spent on works the rains then water, and the Council grumbles. Once it fires early and rightly. The famine that does not happen has, as always, no monument &mdash; except the Code itself, which men who never learn your name will be governed by for fifty years."
       },
       {
         "label": "Split the difference: earlier tests, but declaration still on observed distress.",
@@ -363,7 +363,7 @@
           "revenue": 1,
           "contentment": 1
         },
-        "outcome": "The compromise revision: the machinery wound one notch faster, the trigger left where the old certainty set it. It is defensible from both benches, costs little, saves some — the notch is real, perhaps a fortnight's worth — and leaves the Code's soul where '83 put it: expenditure shall wait upon the visible. You know what the visible means in a bad year; you have ridden through it twice. The fortnight you bought will save lives you can estimate. The fortnight you declined to buy has a number too. You did the estimate, late one night, and put it in no minute, and the drawer where you keep such arithmetic gained a page."
+        "outcome": "The compromise revision: the machinery wound one notch faster, the trigger left where the old certainty set it. It is defensible from both benches, costs little, saves some &mdash; the notch is real, perhaps a fortnight&rsquo;s worth &mdash; and leaves the Code&rsquo;s soul where &rsquo;83 put it: expenditure shall wait upon the visible. You know what the visible means in a bad year; you have ridden through it twice. The fortnight you bought will save lives you can estimate. The fortnight you declined to buy has a number too. You did that estimate late one night, and put it in no minute, and the drawer where you keep such arithmetic gained a page."
       },
       {
         "label": "The Code has held since '83; confirm it and spend the energy on the reserve fund instead.",
@@ -372,7 +372,7 @@
           "prestige": -1,
           "contentment": -2
         },
-        "outcome": "The revision confirms the old text with amendments of punctuation, and your effort goes where the Finance men cheer it: the famine reserve doubled, invested, ring-fenced by statute — the answer that says the machinery is sound and only wants fuel. It is half true and handsomely funded. The Code's late triggers remain, waiting for the year that will demonstrate them upon some district, under some future Honour who will curse the generation that had the pen and confirmed the punctuation. You had your reasons; they are in the file; the file is well-argued. So was Petherick's."
+        "outcome": "The revision confirms the old text with amendments of punctuation, and your effort goes where the Finance men cheer it: the famine reserve doubled, invested, ring-fenced by statute &mdash; the answer that says the machinery is sound and only wants fuel. It is half true, and handsomely funded. The Code&rsquo;s late triggers remain, waiting for the year that will demonstrate them upon a district, under a successor who will curse the generation that had the pen and confirmed the punctuation. You had your reasons. They are in the file, and the file is well argued. So was Petherick&rsquo;s."
       }
     ]
   },
@@ -385,7 +385,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Drink Revenue",
-    "body": "The excise column is the budget&rsquo;s third leg: two crores a year from the licensed liquor and drug shops, a revenue that collects itself. The temperance motion before the Council &mdash; moved jointly, for once, by the movement&rsquo;s men and the missionary interest &mdash; demands rationing of shops, local option, and a declared policy of &lsquo;minimum consumption, not maximum revenue.&rsquo; Your own district years told you what the out-still system does to a village. Your Finance Member has told you, in one sentence, what its abolition does to a budget: <i>find me two crores, and Your Honour may have any conscience the Council votes.</i>",
+    "body": "The excise column is the budget&rsquo;s third leg: two crores a year from the licensed liquor and drug shops, a revenue that collects itself. The temperance motion before the Council &mdash; moved jointly, for once, by the non-co-operation movement&rsquo;s men and the missionary interest &mdash; demands rationing of shops, local option, and a declared policy of &lsquo;minimum consumption, not maximum revenue.&rsquo; Your own district years taught you what the out-still system does to a village. Your Finance Member has told you, in one sentence, what its abolition does to a budget: &lsquo;Find me two crores, and Your Honour may have any conscience the Council votes.&rsquo;",
     "choices": [
       {
         "label": "Accept the motion's principle and begin the ration: revenue to fall by plan, year on year.",
@@ -397,7 +397,7 @@
         "setFlags": [
           "rationed_the_stills"
         ],
-        "outcome": "Government accepts 'minimum consumption' as declared policy — the first province to say the words — and the machinery begins its slow contraction: shops thinned by a tenth a year, hours cut, the out-stills abolished outright in the worst tracts. The budget bleeds on schedule and the Finance Member finds his two crores where you told him to, in the canal colony receipts and a stamp revision, hating every anna. The vernacular press, which agrees with Government about nothing, agrees about this. In the villages of five Divisions the shops recede one by one, like a tide going out, and take a certain quantum of the province's misery out with them."
+        "outcome": "Government accepts &lsquo;minimum consumption&rsquo; as declared policy &mdash; the first province to say the words &mdash; and the machinery begins its slow contraction: shops thinned by a tenth a year, hours cut, the out-stills abolished outright in the worst tracts. The budget bleeds on schedule, and the Finance Member finds his two crores where you told him to look, in the canal colony receipts and a stamp revision, hating every anna of the search. The vernacular press, which agrees with Government about nothing, agrees about this. In the villages of five Divisions the shops recede one by one, like a tide going out."
       },
       {
         "label": "Reject the motion; the revenue is real and the virtue would be voluntary elsewhere.",
@@ -405,7 +405,7 @@
           "revenue": 3,
           "contentment": -3
         },
-        "outcome": "The Finance Member's speech, delivered by you with the figures polished: the two crores fund the schools and dispensaries the same benches demand in every other debate, and Government declines to bankrupt the transferred departments for a temperance certificate. It is fiscally unanswerable and it hands the movement its cleanest issue: the picketing of liquor shops resumes within the season, now wearing the Council's rejected motion as a halo, and every excise auction becomes a small public moral drama with Government cast, by its own budget, as the publican. The two crores keep arriving. Each year they cost a little more to collect, in the coin that is not counted."
+        "outcome": "The Finance Member&rsquo;s speech, delivered by you with the figures polished: the two crores fund the schools and dispensaries the same benches demand in every other debate, and Government declines to bankrupt the transferred departments for a temperance certificate. Fiscally it is unanswerable, and it hands the movement its cleanest issue. The picketing of liquor shops resumes within the season, wearing the Council&rsquo;s rejected motion for a halo, and every excise auction becomes a small public moral drama with Government cast, by its own budget, as the publican. The two crores keep arriving. Each year they cost a little more to collect, in the coin that is not counted."
       },
       {
         "label": "Local option, honestly applied: let each district board vote its own shops up or down.",
@@ -414,7 +414,7 @@
           "revenue": -1,
           "order": -1
         },
-        "outcome": "The constitutional middle path, and for once genuinely taken: the boards get the power, and use it, variously — a dozen dry tahsils in the first year, wet towns beside them, the revenue dented but breathing. What follows is federalism's honest chaos: smuggling across dry lines, wet boards taxing their neighbours' virtue, three election cycles fought entirely on drink. It is untidy, alive, and the boards' own — self-government practised on the one subject every villager has an opinion about, which may be, you note in a minute the Secretariat finds flippant, precisely what the reforms were for."
+        "outcome": "The constitutional middle path, and for once genuinely taken: the boards get the power and use it, variously &mdash; a dozen dry tahsils in the first year, wet towns beside them, the revenue dented but breathing. What follows is federalism&rsquo;s honest chaos: smuggling across dry lines, wet boards taxing their neighbours&rsquo; virtue, three election cycles fought wholly on drink. It is untidy, alive, and the boards&rsquo; own &mdash; self-government practised on the one subject every villager holds an opinion about. That, you note in a minute the Secretariat finds flippant, may be what the reforms were for."
       }
     ]
   },
@@ -427,7 +427,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Report on the Jails",
-    "body": "You appointed the Jails Committee in a routine hour and its report is anything but: the province&rsquo;s prisons hold half again their designed numbers; the whipping returns for petty offences read, in the chairman&rsquo;s phrase, &lsquo;like the practice of another century&rsquo;; and the political prisoners&rsquo; wards have generated their own martyrology of jail strikes and forced feeding that the world&rsquo;s press has begun to quote. The committee splits three ways in its recommendations. The Inspector-General of Prisons, a decent man defending an indecent inheritance, asks only that whatever you decide be decided quickly: he has four hunger-strikers in the second week at Fort Barhampur, and the instructions on file are from 1894.",
+    "body": "You appointed the Jails Committee in a routine hour, and its report is anything but: the province&rsquo;s prisons hold half again their designed numbers; the whipping returns for petty offences read, in the chairman&rsquo;s phrase, &lsquo;like the practice of another century&rsquo;; and the political prisoners&rsquo; wards have bred their own martyrology of jail strikes and forced feeding that the world&rsquo;s press has begun to quote. The committee splits three ways in its recommendations. The Inspector-General of Prisons, a decent man defending an indecent inheritance, asks only that whatever you decide be decided quickly: he has four hunger-strikers in their second week at Fort Barhampur, and the instructions on file date from 1894.",
     "choices": [
       {
         "label": "The full reform: whipping abolished for petty offences, remission liberalised, the political wards given rules a civilised man can administer.",
@@ -439,7 +439,7 @@
         "setFlags": [
           "reformed_the_jails"
         ],
-        "outcome": "The resolution adopts the report's boldest column: the lash struck from the petty schedule, remission made systematic, and for the political wards a code of your own drafting — newspapers, letters, association, and a standing instruction on hunger strikes that trades force for patience and medical honesty. The Services predict indiscipline; the indiscipline does not come, prisons being governed, as the new code's preamble observes, by expectation more than iron. The hunger strikes end — martyrdom requires a tyrant, and the new rules decline the casting. Three provinces copy the code within five years. The IG of Prisons, retiring, sends you his 1894 instructions, framed, with one word across them: <i>superseded.</i>"
+        "outcome": "The resolution adopts the report&rsquo;s boldest column: the lash struck from the petty schedule, remission made systematic, and for the political wards a code of your own drafting &mdash; newspapers, letters, association, and a standing instruction on hunger strikes that trades force for patience and medical honesty. The Services predict indiscipline. It does not come; prisons are governed, as the new code&rsquo;s preamble observes, by expectation more than iron, and the hunger strikes end because martyrdom requires a tyrant and the new rules decline the casting. Three provinces copy the code within five years. The IG of Prisons, retiring, sends you his 1894 instructions, framed, one word written across them: <i>superseded.</i>"
       },
       {
         "label": "Reform the ordinary wards; hold the political prisoners to the strict rules they are held under.",
@@ -448,7 +448,7 @@
           "prestige": 1,
           "contentment": -3
         },
-        "outcome": "The split decision: real mercies for the ordinary convict — the lash curtailed, remission opened — and for the politicals, the existing rigour reaffirmed, Government declining to gazette a privileged class of offender. It is a defensible line and a fertile one: the political wards, denied reform, supply the movement's presses with exactly the copy the full reform would have dried up, now garnished with the contrast you drew yourself — mercy for thieves, rigour for patriots, as the pamphlet puts it, unfairly, quotably, forever. The hunger strikes resume in the spring. The instructions on file are yours now, not 1894's, which is the difference the second week makes."
+        "outcome": "The split decision: real mercies for the ordinary convict &mdash; the lash curtailed, remission opened &mdash; and for the politicals the existing rigour reaffirmed, Government declining to gazette a privileged class of offender. It is a defensible line, and a fertile one. The political wards, denied reform, supply the presses of the movement for self-rule with the copy the full reform would have dried up, garnished now with the contrast you drew yourself &mdash; mercy for thieves, rigour for patriots, as the pamphlet puts it, unfairly, quotably, forever. The hunger strikes resume in the spring. The instructions on file are yours now, not 1894&rsquo;s. That is the difference the second week makes."
       },
       {
         "label": "Print the report, thank the committee, and refer the schedules to the Government of India.",
@@ -457,7 +457,7 @@
           "prestige": -2,
           "contentment": -1
         },
-        "outcome": "The all-India reference is even half-genuine — the whipping schedule IS central — and it buys what references buy: two years of decorous correspondence while the report yellows in its printed edition. The four hunger-strikers resolve themselves in the interval by the methods of 1894, one of them terminally, and the inquest's verdict of 'syncope' is jeered in three languages. The dead man's photograph joins the walls. When the central revision at last arrives it adopts half the committee's column and no one remembers whose committee it was — except the province, which remembers only who had the report on his table while the fort's instructions stayed old."
+        "outcome": "The all-India reference is even half-genuine &mdash; the whipping schedule IS central &mdash; and it buys what references buy: two years of decorous correspondence while the report yellows in its printed edition. The four hunger-strikers resolve themselves meanwhile by the methods of 1894, one of them terminally, and the inquest&rsquo;s verdict of &lsquo;syncope&rsquo; is jeered in three languages. The dead man&rsquo;s photograph joins the walls. When the central revision arrives at last, it adopts half the committee&rsquo;s column, and nobody remembers whose committee it was &mdash; except the province, which remembers who had the report on his table while the fort&rsquo;s instructions stayed old."
       }
     ]
   },
@@ -470,7 +470,7 @@
     "kind": "club",
     "once": true,
     "title": "The Government House Season",
-    "body": "Whatever else the province thinks of its Government, it agrees on the Season: the cold-weather round of Government House balls, garden parties, and the levee at which the whole official and half the unofficial province files past the dais by strict precedence. It is theatre, expensive theatre, and it is also the one occasion on which the Raj physically assembles &mdash; and this year the invitation question has teeth. The list has always been white and official, salted with princes. The new Council, the Indian bar, the merchant houses whose subscriptions built the new hospital: the province that actually runs now waits, half of it, on the wrong side of your gates. The Military Secretary, keeper of the sacred list, awaits instructions with visible foreboding.",
+    "body": "Whatever else the province thinks of its Government, it agrees about the Season: the cold-weather round of Government House balls, garden parties, and the levee at which the whole official and half the unofficial province files past the dais in strict precedence. Expensive theatre &mdash; and the one occasion on which the Raj physically assembles. This year the invitation question has teeth. The list has always been white and official, salted with princes. The new Council, the Indian bar, the merchant houses whose subscriptions built the new hospital: the province that actually runs now waits, half of it, on the wrong side of your gates. The Military Secretary, keeper of the sacred list, awaits instructions with visible foreboding.",
     "choices": [
       {
         "label": "Remake the list: the Council entire, the bar, the merchant houses — the province as it is.",
@@ -484,7 +484,7 @@
         "setFlags": [
           "opened_the_gates"
         ],
-        "outcome": "The Military Secretary ages a decade in a fortnight and executes it flawlessly: the Season opens with a levee at which half the file is passing the dais for the first time in the institution's history, correct, gratified, and observing everything. The old list's grandees are glacial for a month — several 'regret' the ball, and are not missed, which teaches them the new arithmetic faster than argument. By the third garden party the mixture has begun, awkwardly, to take: a barrister's wife and a Commissioner's discover a common enemy in the band's repertoire. It is only theatre. But the Raj was always only theatre, and you have re-cast it one season before the audience stopped coming."
+        "outcome": "The Military Secretary ages a decade in a fortnight and executes it flawlessly: the Season opens with a levee at which half the file passes the dais for the first time in the institution&rsquo;s history &mdash; correct, gratified, observing everything. The old list&rsquo;s grandees are glacial for a month; several &lsquo;regret&rsquo; the ball, and are not missed, which teaches them the new arithmetic faster than argument could. By the third garden party the mixture has begun, awkwardly, to take: a barrister&rsquo;s wife and a Commissioner&rsquo;s discover a common enemy in the band&rsquo;s repertoire. It is only theatre. But the Raj was always theatre, and you have re-cast it one season before the audience stopped coming."
       },
       {
         "label": "Enlarge the list carefully: the Ministers, the knights, a measured salting of the new.",
@@ -495,7 +495,7 @@
         "econ": {
           "treasury": -12000
         },
-        "outcome": "The diplomatic increment: rank admits, unofficial eminence waits, and each year's list is a little wider than the last by a formula nobody can attack because nobody can state it. The Season passes brilliantly; the excluded note their exclusion with the precision the excluded always command, and the included new men find themselves a visible, countable token class at the dais — which some bear as honour and one, a Calcutta barrister of great future consequence, files under a heading you will hear from again. Gradualism's eternal wager: that the pace insults fewer than it converts. The Military Secretary, at least, sleeps."
+        "outcome": "The diplomatic increment: rank admits, unofficial eminence waits, and each year&rsquo;s list is a little wider than the last by a formula nobody can attack because nobody can state it. The Season passes brilliantly. The excluded note their exclusion with the precision the excluded always command, and the included new men find themselves a visible, countable token class at the dais &mdash; some bear it as honour, and one, a Calcutta barrister of great future consequence, files it under a heading you will hear from again. Gradualism&rsquo;s eternal wager: that the pace insults fewer than it converts. The Military Secretary, at least, sleeps."
       },
       {
         "label": "The list is custom, and custom is capital: keep it, and economise on the scale instead.",
@@ -504,7 +504,7 @@
           "revenue": 1,
           "contentment": -2
         },
-        "outcome": "The old list, a shortened Season, and the savings genuine — the Finance Member's one happy fortnight of the year. The institution contracts with dignity: fewer balls, the levee immaculate, the gates exactly where the last century left them. The province that runs itself outside those gates completes, this season, its quiet migration elsewhere — to the new clubs, the bar library, the Ministers' own garden parties, where the conversations that matter now happen without a dais at all. Government House keeps its custom and loses its centrality, which was the only revenue the theatre ever really earned."
+        "outcome": "The old list, a shortened Season, and the savings genuine &mdash; the Finance Member&rsquo;s one happy fortnight of the year. The institution contracts with dignity: fewer balls, the levee immaculate, the gates where the last century left them. And the province that runs itself outside those gates completes, this season, its quiet migration elsewhere &mdash; to the new clubs, the bar library, the Ministers&rsquo; own garden parties, where the conversations that matter now happen without a dais at all. Government House keeps its custom and loses its centrality, and centrality was the only revenue the theatre ever earned."
       }
     ]
   },
@@ -518,7 +518,7 @@
     "interlude": true,
     "once": true,
     "title": "The English Borders",
-    "body": "The Government House gardens keep, by immemorial establishment, four English borders &mdash; delphinium, lupin, hollyhock, sweet-pea &mdash; maintained against the climate by a head mali of genius and a water bill the Finance Member has twice queried in twenty years. In the first true heat you find the old man at dusk, hand-shading a bed of failing delphiniums with a screen of woven grass, and stay an hour learning the campaign: the ice-house clippings, the north-wall shifts, the seeds got out yearly from a firm in Chester by a standing order older than your service. &lsquo;They cannot live here, Huzoor,&rsquo; he says, without looking up. &lsquo;That is why we grow them.&rsquo; You have the water bill approved permanently, by minute, that evening. Some expenditures explain the whole enterprise; the auditors will never find this one&rsquo;s head of account.",
+    "body": "The Government House gardens keep, by immemorial establishment, four English borders &mdash; delphinium, lupin, hollyhock, sweet-pea &mdash; held against the climate by a head mali of genius and a water bill the Finance Member has twice queried in twenty years. In the first true heat you find the old man at dusk, shading a bed of failing delphiniums with a screen of woven grass, and stay an hour learning the campaign: the ice-house clippings, the north-wall shifts, the seed got out yearly from a firm in Chester on a standing order older than your service. &lsquo;They cannot live here, Huzoor,&rsquo; he says, not looking up. &lsquo;That is why we grow them.&rsquo; You have the water bill approved permanently, by minute, that evening. The auditors will never find that expenditure&rsquo;s true head of account.",
     "effects": {
       "health": 1,
       "contentment": 1
@@ -534,7 +534,7 @@
     "interlude": true,
     "once": true,
     "title": "The Boy Who Holds Kotra",
-    "body": "At the cold-weather levee, far down the file where the juniors pass in a nervous blur, an aide murmurs a name and a posting: Assistant Commissioner, Kotra sub-division, on probation. You stop the file. He is three-and-twenty and terrified &mdash; His Honour has STOPPED &mdash; and you ask him the questions nobody else in the room could ask: whether the tank silts at the north end still, whether the cutcherry roof survived the last rains, whether Sohan Lal&rsquo;s grandson keeps the shop by the gate, and what the tahsildar&rsquo;s face does when the boy is about to make a mistake. He answers the last one exactly, and something in your chest turns over twice. &lsquo;Mind that face,&rsquo; you tell him, and the file moves on, and the whole room has watched Kotra sub-division become, for ninety seconds, the centre of an Empire.",
+    "body": "At the cold-weather levee, far down the file where the juniors pass in a nervous blur, an aide murmurs a name and a posting: Assistant Commissioner, Kotra sub-division, on probation. You stop the file. He is three-and-twenty and terrified &mdash; His Honour has STOPPED &mdash; and you ask him what nobody else in the room could ask: whether the tank silts at the north end still, whether the cutcherry roof stood the last rains, whether Sohan Lal&rsquo;s grandson keeps the shop by the gate, and what the tahsildar&rsquo;s face does when the boy is about to make a mistake. He answers the last one right, and something in your chest turns over twice. &lsquo;Mind that face,&rsquo; you tell him, and the file moves on, and the whole room has watched Kotra sub-division become, for ninety seconds, the centre of an Empire.",
     "effects": {
       "contentment": 2,
       "prestige": 1
@@ -550,7 +550,7 @@
     "interlude": true,
     "once": true,
     "title": "The Bodyguard at Dawn",
-    "body": "Insomnia, the rains, and a red box finished at five: you go down through the sleeping house and find the Bodyguard at their dawn exercise in the wet &mdash; forty lancers of the escort squadron schooling their horses in the mist by the river wall, pennons furled, the only sounds hoof-fall and the river. The rissaldar-major, seventy if a day, salutes without surprise, as though Lieutenant-Governors at dawn were a known feature of the service, and you stand under the dripping neem and watch the figures wheel until the light comes up. None of it is necessary &mdash; the lances, the pennons, the dawn schooling of horses no war will ever want &mdash; and watching it you understand again, wordlessly, the fraction of all this that was always theatre, and the fraction that was men doing a thing beautifully because it is done, and how much of your twenty-two years has been spent on the border between the two. The box is answered. You sleep till nine, and no one dares wake you.",
+    "body": "Insomnia, the rains, and a red box finished at five: you go down through the sleeping house and find the Bodyguard at their dawn exercise in the wet &mdash; forty lancers of the escort squadron schooling their horses in the mist by the river wall, pennons furled, the only sounds hoof-fall and the river. The rissaldar-major, seventy if a day, salutes without surprise, as though Lieutenant-Governors at dawn were a known feature of the service, and you stand under the dripping neem and watch the figures wheel until the light comes. None of it is necessary &mdash; the lances, the pennons, the schooling of horses no war will ever want &mdash; and watching, you understand again how much of all this was theatre, how much was men doing a thing beautifully because it is done, and how much of your own twenty-two years has been spent on the border between the two. The box is answered. You sleep till nine, and no one dares wake you.",
     "effects": {
       "health": 2
     }

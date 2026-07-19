@@ -28,11 +28,11 @@
         "carry_debts",
         "carry_lala_paper"
       ],
-      "tagline": "You are five-and-forty, and His Honour: Lieutenant-Governor of Barhampur &mdash; forty million souls, five Divisions, an elected Council that can refuse you money, a press that can refuse you peace, and above you only the Viceroy, Parliament, and history. There is no next rank worth having. There is only how this is done, and what the Gazette says when it is over. You have a year of the term left, and the Grand Commanders are given for years like the one you are about to have &mdash; one way or the other."
+      "tagline": "You are five-and-forty, and His Honour: Lieutenant-Governor of Barhampur &mdash; forty million souls, five Divisions, an elected Council that can refuse you money, a press that can refuse you peace, and above you only the Viceroy, Parliament, and history. No next rank is worth the having now; there is only how this is done, and what the Gazette says when it is over. You have a year of the term left, and the Grand Commanders are given for years like the one ahead &mdash; one way or the other."
     },
     "honours": {
       "lead": "Honours List &mdash; ",
-      "desc": "The List blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment. The Grand Commanders are settled between the Viceroy and the King&rsquo;s private secretary, and they are settled on whole terms, not seasons: the G.C.S.I. has gone to perhaps one Lieutenant-Governor in a generation.",
+      "desc": "The List blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment. The Grand Commanders are settled between the Viceroy and the King&rsquo;s private secretary, on whole terms, not seasons: the G.C.S.I. has gone to perhaps one Lieutenant-Governor in a generation.",
       "weights": {
         "prestige": 0.45,
         "revenue": 0.2,
@@ -222,7 +222,7 @@
           ],
           "hot": [
             "The session is where the term is defended: question hour, the budget, the divisions. The province is where it is earned. The chair is in the session.",
-            "Eight thousand feet of governing by paper and speech &mdash; cool, correct, and exactly as far from the plains as the plains believe."
+            "Eight thousand feet of governing by paper and speech &mdash; cool, correct, and just as far from the plains as the plains believe."
           ],
           "monsoon": [
             "The wires end at your table: relief sanctioned by the lakh, Commissioners held to their hour, the province commanded from the centre &mdash; if your five men are good.",
@@ -239,7 +239,7 @@
         "label": "A week's shooting as the Nawab's guest",
         "note": "The old cure at the new scale: a princely camp, real jungle, and no red box &mdash; the province can spare its Honour a week, or say it cannot.",
         "title": "The Week at Tikri",
-        "body": "The Nawab of Tikri &mdash; older now, vast, and one of the few men in India who treats you exactly as he treated the young Commissioner of Sonepore &mdash; has asked for years, and this year you go: a week in his jungles with one aide, no cypher clerk, and a standing order that only the Viceroy's own wire may follow you in. Tiger are seen and spared; sand-grouse are seen and not; and on the last evening the Nawab observes, over billiards, that of all the sahibs he has collected, the ones who lasted were the ones who occasionally disappeared. You come back four pounds heavier and ten years younger. The red box has bred in your absence, and it was worth it.",
+        "body": "The Nawab of Tikri &mdash; older now, vast, and one of the few men in India who treats you just as he treated the young Commissioner of Sonepore &mdash; has asked for years, and this year you go: a week in his jungles with one aide, no cypher clerk, and a standing order that only the Viceroy's own wire may follow you in. Tiger are seen and spared; sand-grouse are seen and not; and on the last evening the Nawab observes, over billiards, that of all the sahibs he has collected, the ones who lasted were the ones who occasionally disappeared. You come back four pounds heavier and ten years younger. The red box has bred in your absence, and it was worth it.",
         "effects": {
           "health": 7,
           "contentment": 2,
@@ -385,7 +385,7 @@
     },
     "gonenative": {
       "title": "The Proconsul Who Crossed Over",
-      "text": "The province loved you, and you let it show, and at Government House level that is a policy: too warm with the Council, too patient with the movement, too fond of the durbar and the vernacular and the long grave courtesies of the country &mdash; until Whitehall, reading your despatches, began to ask in the margins WHOSE case the Lieutenant-Governor was putting. The term is allowed to complete. The Grand Cross is not offered, and a paragraph is inserted in the Secretary of State&rsquo;s valedictory letter praising your &lsquo;deep sympathy with Indian aspirations&rsquo; &mdash; each word placed like a wreath. You go Home, write the book they all feared, and it is reviewed everywhere, and quoted in the House by the other side. India reads it too. India, which knew you first as a boy at Kotra, forgives you the title of it, and keeps your name."
+      "text": "The province loved you, and you let it show, and at Government House level that is a policy: too warm with the Council, too patient with the swaraj movement, too fond of the durbar and the vernacular and the long grave courtesies of the country &mdash; until Whitehall, reading your despatches, began to ask in the margins WHOSE case the Lieutenant-Governor was putting. The term is allowed to complete. The Grand Cross is not offered, and a paragraph is inserted in the Secretary of State&rsquo;s valedictory letter praising your &lsquo;deep sympathy with Indian aspirations&rsquo; &mdash; each word placed like a wreath. You go Home, write the book they all feared, and it is reviewed everywhere, and quoted in the House by the other side. India reads it too. India, which knew you first as a boy at Kotra, forgives you the title of it, and keeps your name."
     }
   }
 }
