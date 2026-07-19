@@ -49,7 +49,7 @@
     },
     "honours": {
       "lead": "Probation &mdash; ",
-      "desc": "The verdict blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment. Each rung of the ladder wants a showing and a Prestige floor; a Despatch also wants Sohan Lal&rsquo;s book under &#8377;4,500.",
+      "desc": "The verdict blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment.",
       "weights": {
         "prestige": 0.45,
         "revenue": 0.2,

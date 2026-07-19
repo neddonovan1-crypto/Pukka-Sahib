@@ -10,6 +10,12 @@
   var DEFAULT_METERS = ["revenue", "order", "prestige", "contentment", "health"];
   var SECRECY = ["MOST SECRET", "SECRET", "CONFIDENTIAL", "CYPHER"];
 
+  // The year-end verdict floors, exported so the UI legend can print the same
+  // numbers the engine judges by: finish with Prestige or Order under `floor`
+  // and the year is a scandal; Contentment at `nativeContentment` with
+  // Prestige under `nativePrestige` reads as gone native.
+  var VERDICT = { floor: 40, nativeContentment: 65, nativePrestige: 50 };
+
   function clamp(v) { return Math.max(0, Math.min(100, Math.round(v))); }
 
   // mulberry32 — small seeded PRNG for deterministic simulation.
@@ -218,8 +224,8 @@
       var p = S.prestige, o = S.order, c = S.contentment;
       // Gone-native outranks scandal: a magistrate the district loves and the
       // Service has written off resigns his own way — not a disgrace story.
-      if (c >= 65 && p < 50) return ENDINGS.gonenative;
-      if (p < 40 || o < 40) return ENDINGS.scandal;
+      if (c >= VERDICT.nativeContentment && p < VERDICT.nativePrestige) return ENDINGS.gonenative;
+      if (p < VERDICT.floor || o < VERDICT.floor) return ENDINGS.scandal;
       var tier = ladderTier(true); // the debt bar demotes past barred rungs
       return tier ? ENDINGS[tier.key] : ENDINGS.transfer;
     }
@@ -589,7 +595,7 @@
 
   var SECRECY_TAGS = ["MOST SECRET", "SECRET", "CONFIDENTIAL", "CYPHER"];
   var API = {
-    createGame: createGame, seededRng: seededRng, rupees: rupees,
+    createGame: createGame, seededRng: seededRng, rupees: rupees, VERDICT: VERDICT,
     isSecrecyTag: function (t) { return SECRECY_TAGS.indexOf((t || "").toUpperCase()) !== -1; }
   };
   if (typeof module !== "undefined" && module.exports) module.exports = API;

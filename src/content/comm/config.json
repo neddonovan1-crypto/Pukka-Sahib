@@ -31,7 +31,7 @@
     },
     "honours": {
       "lead": "Honours List &mdash; ",
-      "desc": "The List blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment. Each rung wants a showing and a Prestige floor; both knighthoods are barred while the Bank&rsquo;s debt stands over &#8377;2,60,000. The K.C.S.I. is not earned. It is <i>noticed</i> &mdash; and it has never once been noticed on a thin year.",
+      "desc": "The List blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment. The K.C.S.I. is not earned; it is <i>noticed</i> &mdash; and it has never once been noticed on a thin year.",
       "weights": {
         "prestige": 0.45,
         "revenue": 0.2,

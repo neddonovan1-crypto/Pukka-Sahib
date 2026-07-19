@@ -126,8 +126,22 @@
     }).join("");
     var ec = content.config.economy;
     if (ec && ec.desc) panel.innerHTML += '<li><b>Treasury &amp; debt</b> &mdash; ' + ec.desc + "</li>";
+    // The honours gloss states the exact bars, generated from the ladder data
+    // itself so a retune can never leave this stale — plus the year-end
+    // verdict floors, read from the same constants the engine judges by.
     var ho = content.config.honours;
-    if (ho && ho.desc) panel.innerHTML += '<li><b>The honours line</b> &mdash; ' + ho.desc + "</li>";
+    if (ho && ho.desc) {
+      var bars = (ho.ladder || []).slice().reverse().map(function (t) {
+        return "<b>" + (t.name || t.key) + "</b> wants a showing of " + t.score + " and Prestige " + t.prestige +
+          (t.barredByDebt && content.config.economy ? " (debt under " + L.rupees(content.config.economy.debtWarn) + ")" : "");
+      });
+      var V = L.VERDICT || { floor: 40, nativeContentment: 65, nativePrestige: 50 };
+      panel.innerHTML += '<li><b>The honours line</b> &mdash; ' + ho.desc +
+        " The bars: " + bars.join("; ") + ". Short of every bar, the year ends in a transfer. " +
+        "And whatever the showing: finish with Prestige or Order under " + V.floor +
+        " and the year is a scandal; Contentment at " + V.nativeContentment +
+        " or more with Prestige under " + V.nativePrestige + " reads as gone native.</li>";
+    }
     btn.setAttribute("aria-expanded", "false");
     btn.onclick = function () {
       var open = panel.hasAttribute("hidden") ? false : true;
