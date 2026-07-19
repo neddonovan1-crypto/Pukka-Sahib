@@ -8,7 +8,7 @@
     "kind": "desk",
     "once": true,
     "title": "Two Tenders for the Kalapani Bridge",
-    "body": "The Kalapani crossing drowns a few carts every rains and the bridge is sanctioned at last, and two tenders lie on your table. Mackinnon &amp; Co. will build it for a lakh and a quarter, to Roorkee standards, with their usual mournful Scotch thoroughness. Seth Banwari Das will build it for ninety thousand, using &mdash; his estimate is candid in its silences &mdash; local brick, local methods, and a nephew lately returned from an engineering course of unstated duration. Thirty-five thousand rupees is a famine reserve, a school, a year of roads. The Executive Engineer's minute says only: <i>the cheap bridge is cheap for reasons.</i>",
+    "body": "The Kalapani crossing drowns a few carts every rains; now the bridge is sanctioned at last, and two tenders lie on your table. Mackinnon &amp; Co. will build it for a lakh and a quarter, to Roorkee standards, with their usual mournful Scotch thoroughness. Seth Banwari Das will build it for ninety thousand, using &mdash; his estimate is candid in its silences &mdash; local brick, local methods, and a nephew lately back from an engineering course of unstated duration. Thirty-five thousand rupees is a famine reserve, a school, a year of roads. The Executive Engineer's minute says only: <i>the cheap bridge is cheap for reasons.</i>",
     "choices": [
       {
         "label": "Take the Seth's tender and bank the difference against the rains.",
@@ -30,9 +30,9 @@
           "setFlags": [
             "bridge_fell"
           ],
-          "outcome": "The first real spate takes the second pier out at four in the morning, and the bridge goes into the Kalapani with a grinding you are told was heard two villages off &mdash; mercifully empty, but for the toll-keeper, who swims. The enquiry finds the brick underburnt, the nephew's calculations optimistic, and the sanctioning officer &mdash; you &mdash; economical. The word follows you in files for years: <i>economical.</i> Thirty-five thousand saved, a lakh lost, and the crossing drowns carts again while the case drags."
+          "outcome": "The first real spate takes the second pier out at four in the morning, and the bridge goes into the Kalapani with a grinding they say was heard two villages off &mdash; empty, mercifully, but for the toll-keeper, who swims. The enquiry finds the brick underburnt, the nephew's calculations optimistic, and the sanctioning officer &mdash; you &mdash; economical. That word follows you in files for years: <i>economical.</i> Thirty-five thousand saved, a lakh lost, and the crossing drowns carts again while the case drags."
         },
-        "outcome": "The nephew, on inspection, proves better than his uncle's prose: the piers are honest, the brick rings true under your cane, and the bridge stands its first rains without a tremor. Thirty-five thousand rupees go to metal the Pipariya road, and the district gets two works for the price of one and a quarter. The Executive Engineer inspects, grunts, and enters the structure as <i>adequate</i> &mdash; P.W.D. for a compliment it has no form to express."
+        "outcome": "The nephew, on inspection, proves better than his uncle's prose: the piers are honest, the brick rings true under your cane, and the bridge stands its first rains without a tremor. Thirty-five thousand rupees go to metal the Pipariya road, and the district gets two works for the price of one and a quarter. The Executive Engineer walks the span, grunts, and enters the structure as <i>adequate</i> &mdash; P.W.D. for a compliment it has no form to express."
       },
       {
         "label": "Pay Mackinnon's price; rivers keep no accounts of savings.",
@@ -43,7 +43,7 @@
         "econ": {
           "treasury": -18000
         },
-        "outcome": "The bridge rises grey and over-engineered, with rivets where the district expected prayer, and it will outlive you, your grandchildren, and possibly the Empire. The economy column suffers; the Kalapani takes no one else. Years hence men will call it simply <i>the sahib's bridge</i>, all parties to the tender being forgotten &mdash; which is the only immortality the Service reliably pays out."
+        "outcome": "The bridge rises grey and over-engineered, with rivets where the district expected prayer, and it will outlive you, your grandchildren, and possibly the Empire. The economy column suffers. Years hence men will call it simply <i>the sahib's bridge</i>, the parties to the tender being long forgotten, and the Kalapani drowns no more carts."
       },
       {
         "label": "Re-tender with the specifications stiffened until the price tells the truth.",
@@ -52,7 +52,7 @@
           "revenue": 1,
           "health": -1
         },
-        "outcome": "Three months of clauses, penalty bonds, and the Seth's nephew's drawings sent to Roorkee for slaughter, and the two tenders converge on an honest figure a whisker under Mackinnon's. The bridge is built well and late, missing one rains &mdash; in which the crossing drowns two carts and a bullock, as if the river were signing the file. Procedure is satisfied. Procedure always is; it never has to swim."
+        "outcome": "Three months of clauses, penalty bonds, and the nephew's drawings sent to Roorkee for slaughter, and the two tenders converge on an honest figure a whisker under Mackinnon's. The bridge is built well, and late, missing one rains &mdash; in which the crossing drowns two carts and a bullock, as if the river were initialling the file. Procedure is satisfied. Procedure never has to swim."
       }
     ]
   },
@@ -65,7 +65,7 @@
     "kind": "tour",
     "once": true,
     "title": "The Man-Eater of Salaiya",
-    "body": "Four dead in the grass country by the Salaiya ravines &mdash; a woodcutter, two herd-boys, a woman at the stream &mdash; and the villages have stopped going out, which in a revenue district is the beginning of famine arithmetic. The tigress is old, lame in one pad, and clever the way only a beast that has learned men is clever. The shikaris have baited and sat up and been outwaited every time. What is left is the old way: follow her up on foot into grass that closes over your head, with one gun-bearer and the knowledge that at ten feet the rifle is a formality either way.",
+    "body": "Four dead in the grass country by the Salaiya ravines &mdash; a woodcutter, two herd-boys, a woman at the stream &mdash; and the villages have stopped going out, which in a revenue district is how famines begin. The tigress is old, lame in one pad, and clever the way only a beast that has learned men is clever. The shikaris have baited and sat up and been out-waited every time. What is left is the old way: follow her up on foot into grass that closes over your head, with one gun-bearer and the knowledge that at ten feet the rifle is a formality either way.",
     "choices": [
       {
         "label": "Go in after her on foot; the district is watching its Collector.",
@@ -83,7 +83,7 @@
           "setFlags": [
             "mauled"
           ],
-          "outcome": "She lets you pass her once &mdash; you will understand that later, and never comfortably &mdash; and takes you from behind on the second beat. There is no fear at the time; fear is delivered afterwards, with the bill. The gun-bearer, sixty years old and steady as scripture, kills her on your body. Eleven weeks of hospital, a shoulder that will announce the monsoon for the rest of your life, and a district that speaks of you thereafter in a tone you could not have purchased with ten years of good administration."
+          "outcome": "She lets you pass her once &mdash; you will understand that later, and never comfortably &mdash; and takes you from behind on the second beat. There is no fear at the time; fear is delivered afterwards, with the bill. The gun-bearer, sixty years old and steady as scripture, kills her on your body. Eleven weeks of hospital, a shoulder that will announce the monsoon for the rest of your life, and a district that speaks of you thereafter in a tone ten years of good administration could not have bought."
         },
         "outcome": "Two hours of grass at the pace of a funeral, reading her pug-marks like a ledger of bad intentions, and then the shot offered once, at eleven feet, taken clean. She is old, worn to bone under the hide, her killing teeth broken to stumps &mdash; man was the only meat left to her. The villages come out to touch the carcass and cry your name, and go back to their fields the same evening. The revenue returns for the quarter record the whole episode as: <i>normal.</i>"
       },
@@ -97,7 +97,7 @@
         "econ": {
           "treasury": -900
         },
-        "outcome": "Three weeks, nine buffalo, and the patience of a chancery suit, and she comes at last to the water below the third machan on a night of no moon. The shot is long and lucky. The villages are freed a season later than they needed to be and one herd-boy paid the difference &mdash; a fact nobody states, the machan method being by every rule the correct one. The rules do not sit up nights. You did, and know what the correctness cost."
+        "outcome": "Three weeks, nine buffalo, and the patience of a chancery suit, and she comes at last to the water below the third machan on a night of no moon. The shot is long and lucky. The villages are freed a season later than they need have been, and one herd-boy paid the difference &mdash; a fact nobody states aloud, the machan method being by every rule the correct one. You sat up the nights yourself, and know to a boy what the correctness cost."
       },
       {
         "label": "Wire for a military party; tigers are a Government of India subject.",
@@ -105,7 +105,7 @@
           "prestige": -4,
           "contentment": -2
         },
-        "outcome": "Two subalterns arrive with express rifles, high spirits, and a fortnight's leave, wound her twice, and depart to write about it. She kills a mail-runner the following week, meticulously, as if in reply. It is another month before a Salaiya cow-herd ends her with a matchlock his grandfather buried in 1858 &mdash; and the story the district keeps is that one: the sirkar sent for soldiers, and the grass country saved itself."
+        "outcome": "Two subalterns arrive with express rifles, high spirits, and a fortnight's leave, wound her twice, and depart to write about it. She kills a mail-runner the following week, carefully, as if in reply. It is another month before a Salaiya cow-herd ends her with a matchlock his grandfather buried in 1858 &mdash; and the story the district keeps is that one: the sirkar sent for soldiers, and the grass country saved itself."
       }
     ]
   },
@@ -118,7 +118,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Line Will Come Through Chhota Nagra",
-    "body": "A demi-official from a friend in the Railway Board, marked twice private: the branch line is decided, the alignment all but signed, and it comes through your district &mdash; through, to be exact, four villages of dusty nothing along the Pipariya road whose land is presently worth what dust is worth. In six months it will be worth what railway frontage is worth. You know it. Nobody else in the district knows it. The Lala would give five years' interest to know it, and a Collector's knowledge, the Regulations observe with unusual poetry, is held in trust for the Crown.",
+    "body": "A demi-official from a friend on the Railway Board, marked twice private: the branch line is decided, the alignment all but signed, and it comes through your district &mdash; through, to be exact, four villages of dusty nothing along the Pipariya road. Their land to-day is worth what dust is worth; in six months it will be worth railway frontage. You know it, and nobody else in the district knows it. The Lala would give five years' interest for one sight of that letter, and a Collector's knowledge, the Regulations observe with unusual poetry, is held in trust for the Crown.",
     "choices": [
       {
         "label": "Lock the letter in the confidential box and act on nothing.",
@@ -126,7 +126,7 @@
           "prestige": 2,
           "health": -1
         },
-        "outcome": "The knowledge sits in your box like a coal you must not warm your hands at. When the alignment publishes, the speculators descend, the four villages sell high and buy litigation, and the Lala &mdash; who reads surveyors' camps the way you read files &mdash; banks a quiet fortune anyway. You bank the other thing: the ability, ever after, to meet the Railway Board friend's eye. The Service pays its best salaries in that currency, having discovered it costs the Treasury nothing."
+        "outcome": "The knowledge sits in your box like a coal you must not warm your hands at. When the alignment publishes, the speculators come down like kites, the four villages sell high and buy litigation, and the Lala &mdash; who can read a surveyor's camp at two miles &mdash; banks a quiet fortune without your help. What you bank is the power to meet your Railway Board friend's eye at Christmas, and you find it answers."
       },
       {
         "label": "Warn the four village headmen quietly to sell nothing cheap.",
@@ -138,7 +138,7 @@
         "setFlags": [
           "tipped_the_villages"
         ],
-        "outcome": "No document, no witness: four cups of tea, four conversations about the improvidence of selling ancestral land in uncertain times. When the line publishes and the touts arrive with their earnest-money, they find four villages mysteriously unwilling to be fleeced, and the compensation awards run honest. Strictly, you have breached the trust; practically, you have spent it where it was subscribed. The distinction will not survive an enquiry. There is no enquiry. There is only the Lala's glance at the next durbar, measuring you anew."
+        "outcome": "No document, no witness: four cups of tea, and four times over you observe, &lsquo;It would be a pity to sell ancestral land in uncertain times.&rsquo; When the line publishes and the touts arrive with their earnest-money, they find four villages mysteriously unwilling to be fleeced, and the compensation awards run honest. Strictly, you have breached the trust; practically, you have spent it where it was subscribed. The distinction would not survive an enquiry. There is no enquiry. There is only the Lala's glance at the next durbar, measuring you anew."
       },
       {
         "label": "Tell the Lala over cards &mdash; and let him owe you the district's biggest favour.",
@@ -153,7 +153,7 @@
         "setFlags": [
           "uriah_sin"
         ],
-        "outcome": "It is done in eleven words between deals, and the Lala neither blinks nor thanks you, thanks being evidence. Your paper with him thins remarkably by quarter's end; the four villages sell for dust-price to names that trace, three transfers deep, to his cousins. Nothing connects. Everything connects. He has bought land from peasants and a Collector from the Crown in the same fortnight, and knows precisely which was the bargain."
+        "outcome": "It is done in eleven words between deals, and the Lala neither blinks nor thanks you, thanks being evidence. Your paper with him thins remarkably by quarter's end; the four villages sell for dust-price to names that trace, three transfers deep, to his cousins. No paper connects you; every glance does. He has bought land from peasants and a Collector from the Crown in the same fortnight, and he knows which was the cheaper article."
       }
     ]
   },
@@ -179,7 +179,7 @@
         "econ": {
           "treasury": -12000
         },
-        "outcome": "Ten days of lime, trenches, picketed water-points and inspections at dawn, with the Civil Surgeon a red-eyed prophet and you the secular arm. The pandas, shown the arithmetic of a fair that dies against a fair that is talked of for piety and order both, become fierce sanitarians overnight. Deaths crest at forty and stop. Eighty thousand go home clean. It is the hardest-worked fortnight of your life, and the Sanitary Commissioner's report calls it &lsquo;a model&rsquo; &mdash; a word that will follow you usefully for years."
+        "outcome": "Ten days of lime, trenches, picketed water-points and inspections at dawn, the Civil Surgeon a red-eyed prophet and you the secular arm. The pandas, shown the arithmetic &mdash; a fair that dies against a fair that is talked of for piety and order both &mdash; turn fierce sanitarians overnight. Deaths crest at forty and stop. Eighty thousand go home clean. You have not worked so hard in your life, and the Sanitary Commissioner's report calls it &lsquo;a model&rsquo; &mdash; a word that will follow you usefully for years."
       },
       {
         "label": "Close the bathing and disperse the fair by proclamation.",
@@ -188,7 +188,7 @@
           "contentment": -5,
           "prestige": 1
         },
-        "outcome": "It is defensible epidemiology and terrible statecraft. The proclamation reads as sacrilege by the time the pandas have translated it, there is stone-throwing at the east gate before the camps strike, and the roads out of Tribeni seed cholera through three districts, exactly as the textbooks warned. Your own figures stay low; the province's do not. The Government resolution thanks you thinly, in the past tense, the way one thanks a man who followed the wrong rule correctly."
+        "outcome": "It is defensible epidemiology and terrible statecraft. The proclamation reads as sacrilege by the time the pandas have translated it, there is stone-throwing at the east gate before the camps strike, and the roads out of Tribeni seed cholera through three districts, as the textbooks warned. Your own figures stay low; the province's do not. The Government resolution thanks you thinly, in the past tense."
       },
       {
         "label": "Trust the river and the gods; fairs have washed themselves for a thousand years.",
@@ -208,9 +208,9 @@
           "setFlags": [
             "mela_graves"
           ],
-          "outcome": "The gods, this year, are occupied elsewhere. It runs through the camps like fire in thatch &mdash; three hundred dead by the last count anyone dared publish, the burning-ghats working day and night, the fair breaking up in terror and carrying the vibrio home along every road in the presidency. The enquiry is gentle, there being no order of yours to condemn; only an absence where orders ought to have been. Gentleness, you discover, can end a career as thoroughly as censure, merely more slowly."
+          "outcome": "The gods, this year, are occupied elsewhere. It runs through the camps like fire in thatch &mdash; three hundred dead by the last count anyone dared publish, the burning-ghats working day and night, the fair breaking up in terror and carrying the vibrio home along every road in the presidency. The enquiry condemns no order of yours, there being none; it finds only an absence where orders should have been, and reads the absence into the record, slowly, page by page."
         },
-        "outcome": "The river is high, the season early, and the nine deaths stay ninety-nine short of the catastrophe the Civil Surgeon dreamed nightly. The fair bathes, prospers, and disperses fat and holy. He calls it luck in his report and is right, and you sign the report because he is right. The pandas call it the goddess. The goddess, this once, did not present her bill. You are three years too young in the district to know how rarely she forgets."
+        "outcome": "The river is high, the season early, and the nine deaths stay ninety-nine short of the catastrophe the Civil Surgeon dreamed of nightly. The fair bathes, prospers, and disperses fat and holy. &lsquo;Luck,&rsquo; he writes in his report, and is right, and you sign it because he is right. The pandas call it the goddess. The goddess, this once, did not present her bill. You are three years too young in the district to know how rarely she forgets."
       }
     ]
   },
@@ -223,7 +223,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Death at Amherst's Factory",
-    "body": "Amherst of the indigo concern &mdash; Club member, host of the Christmas shoot, four hundred coolies on his books &mdash; has beaten a factory hand for theft, and the man has died of it: three days later, of a ruptured spleen, with the marks still legible. The Civil Surgeon's post-mortem is unambiguous and so is everything else: the assault is manslaughter, the accused is white, the assessors will be his dinner-guests, and every planter in the province is watching what a Collector does when the law and the Club point opposite ways. Amherst's manager has already called, regretting the &lsquo;accident,&rsquo; and mentioning the widow is to be &lsquo;looked after.&rsquo;",
+    "body": "Amherst of the indigo concern &mdash; Club member, host of the Christmas shoot, four hundred coolies on his books &mdash; has beaten a factory hand for theft, and the man has died of it: three days later, of a ruptured spleen, with the marks still legible. The Civil Surgeon's post-mortem is unambiguous and so is everything else: the assault is manslaughter, the accused is white, the assessors will be his dinner-guests, and every planter in the province is watching what a Collector does when the law and the Club point opposite ways. Amherst's manager has already called, regretting the &lsquo;accident,&rsquo; and mentioning that the widow will be &lsquo;looked after.&rsquo;",
     "choices": [
       {
         "label": "Commit him for trial and let the evidence say what it says.",
@@ -247,7 +247,7 @@
         "setFlags": [
           "planter_hushed"
         ],
-        "outcome": "Five thousand rupees settles it &mdash; a fortune in the coolie lines, a shooting-party's bar bill at the factory &mdash; and the file closes on the Surgeon's report with &lsquo;no further action&rsquo; in your hand. The Club is warm all winter; Amherst's Christmas shoot is the best in years; and in the lines they put it simply, as they put everything: a sahib's price for a man is five thousand rupees. You will hear that exchange-rate quoted back, in one dialect or another, for the rest of your service."
+        "outcome": "Five thousand rupees settles it &mdash; a fortune in the coolie lines, a shooting-party's bar bill at the factory &mdash; and the file closes on the Surgeon's report with &lsquo;no further action&rsquo; in your hand. The Club is warm all winter, and Amherst's Christmas shoot is the best in years. In the lines they put it as they put everything, shortly: &lsquo;A sahib's price for a man is five thousand rupees.&rsquo; You will hear the exchange-rate quoted back, in one dialect or another, for the rest of your service."
       },
       {
         "label": "Refer the papers to Government and let the province carry it.",
@@ -255,7 +255,7 @@
           "prestige": -2,
           "order": 1
         },
-        "outcome": "The file goes up with the post-mortem on top and no recommendation, and comes back four months later sanctioning prosecution &mdash; by then the key witness has been re-employed at a distant factory of Amherst's, the marks are a memory, and the case dies decorously at trial for want of what it had in abundance the week you sent it away. Everyone behaved correctly. The widow gets the five thousand anyway. The lines note only the four months, which they understood perfectly."
+        "outcome": "The file goes up with the post-mortem on top and no recommendation, and comes back four months later sanctioning prosecution &mdash; by which time the key witness has been re-employed at a distant factory of Amherst's, the marks are a memory, and the case dies decorously at trial for want of what it had in abundance the week you sent it away. Everyone behaved correctly. The widow gets her five thousand anyway. In the lines they count only the four months."
       }
     ]
   },
@@ -268,7 +268,7 @@
     "kind": "club",
     "once": true,
     "title": "The War of the Durbar Chairs",
-    "body": "The cold-weather durbar approaches, and with it the district's true religion: precedence. The Raja of Barwa claims a chair with arms, his grandfather having had one from a Lieutenant-Governor in a moment of inattention since enshrined as immemorial right. The Nawab of Tikri, who ranks him by two guns and knows it to the bore, has let it be known that if Barwa's chair has arms, he will attend with an elephant or not at all. The English table of precedence is silent on arms of chairs. Your predecessor, the office whispers, once postponed a durbar sooner than rule on it.",
+    "body": "The cold-weather durbar approaches, and with it the district's true religion: precedence. The Raja of Barwa claims a chair with arms, his grandfather having had one from a Lieutenant-Governor in a moment of inattention since enshrined as immemorial right. The Nawab of Tikri, who ranks him by two guns and knows it to the bore, has let it be known that if Barwa's chair has arms, he will attend with an elephant or not at all. The English table of precedence is silent on the arms of chairs. Your predecessor, the office whispers, once postponed a durbar sooner than rule on it.",
     "choices": [
       {
         "label": "Rule by the gun-table: Tikri above Barwa, arms to neither, and publish the seating.",
@@ -277,7 +277,7 @@
           "prestige": 2,
           "contentment": -2
         },
-        "outcome": "The seating plan goes out over your signature like a judgment at law, and is scrutinised like one, and holds. Barwa attends wounded, Tikri attends vindicated and elephantless, and both, having a written ruling to resent or brandish, are spared the expense of feud. Your successor will find the plan in the confidential box with a grateful note. Durbars, you have learned, are the district's parliament: the business is nothing and the seating is the constitution."
+        "outcome": "The seating plan goes out over your signature like a judgment at law, is scrutinised like one, and holds. Barwa attends wounded, Tikri attends vindicated and elephantless, and both, having a written ruling to resent or brandish, are spared the expense of feud. Your successor will find the plan in the confidential box with a grateful note. Durbars are the district's parliament: the business is nothing, and the seating is the constitution."
       },
       {
         "label": "Give Barwa his armed chair and Tikri a place half a pace forward.",
@@ -285,7 +285,7 @@
           "contentment": 2,
           "prestige": -1
         },
-        "outcome": "The Solomon course: each magnate gains a distinction the other can affect not to see. The durbar passes in perfect amity, and within a month the half-pace and the chair-arms have both entered the district's immemorial custom, to be claimed, cited, and fought over by parties yet unborn. You have purchased this year's peace at compound interest, the rate at which all precedence is borrowed."
+        "outcome": "The Solomon course: each magnate gains a distinction the other can affect not to see. The durbar passes in perfect amity, and within a month the half-pace and the chair-arms have both entered the district's immemorial custom, to be claimed, cited, and fought over by parties yet unborn. This year's peace is bought. Next year's file is already opening."
       },
       {
         "label": "Abolish chairs altogether: a standing durbar, on grounds of ceremony reform.",
@@ -294,7 +294,7 @@
           "contentment": -3,
           "order": -1
         },
-        "outcome": "Reform arrives at Chhota Nagra and is received as reform usually is: as an insult distributed with perfect equality. Barwa and Tikri, enemies for three generations, discover a warm common cause in the outrage of standing, and their joint memorial to the Commissioner is the only document either house will ever sign together &mdash; a diplomatic achievement, though not the kind the durbar was meant to produce, and not one your confidential report enjoys."
+        "outcome": "Reform is received at Chhota Nagra as reform usually is: as an insult distributed with perfect equality. Barwa and Tikri, enemies for three generations, discover a warm common cause in the outrage of standing, and their joint memorial to the Commissioner is the only document either house has ever signed beside the other's. The Commissioner forwards it to you without a covering note."
       }
     ]
   },
@@ -316,7 +316,7 @@
           "prestige": 2,
           "health": -1
         },
-        "outcome": "Fourteen covers, and the two ladies placed so that speaking is impossible but being seen not to speak is impossible too; and between the fish and the joint the Padre&rsquo;s wife &mdash; primed, magnificent &mdash; appeals to both on the same question of the Flower Show committee. By the savoury they are allies against a common incompetence, which is the oldest solvent known to stations. The feud is not ended; it is adjourned sine die, which in India is the same thing. The Service should give a medal for seating plans. It gives, instead, more seating plans."
+        "outcome": "Fourteen covers, and the two ladies placed so that speaking is impossible but being seen not to speak is impossible too; and between the fish and the joint the Padre&rsquo;s wife &mdash; primed, magnificent &mdash; appeals to both on the same question of the Flower Show committee. By the savoury they are allies against a common incompetence, the oldest solvent known to stations. The feud is not ended; it is adjourned sine die. The whist evenings resume on Thursday."
       },
       {
         "label": "Rule for neither and announce the Club is no field for private wars.",
@@ -333,7 +333,7 @@
           "health": 1,
           "contentment": -2
         },
-        "outcome": "It does not burn out; it institutionalises. By the rains there are two Flower Shows, two amateur theatrical societies sharing one stage on alternate Thursdays, and a children's party question of real diplomatic delicacy. The station learns to live divided, as stations can, and something small and daily goes out of it &mdash; nine households in a sea of half a million, and they cannot all dine at one table. It was, you come to see, never about sleeves. It was about the sea."
+        "outcome": "It does not burn out; it institutionalises. By the rains there are two Flower Shows, two amateur theatrical societies sharing one stage on alternate Thursdays, and a children's party question of real diplomatic delicacy. The station learns to live divided, as stations can, and something small and daily goes out of it &mdash; nine English households in half a million souls, and they can no longer all dine at one table. The sleeves, you come to understand, were never the quarrel."
       }
     ]
   },
@@ -373,7 +373,7 @@
           "revenue": 1,
           "contentment": -4
         },
-        "outcome": "The reference is procedurally impeccable and travels beautifully: to the Sub-Divisional Officer (Canals), on leave; his assistant, who calls for a report from the very patwari whose register is the fiction at issue; and back to your table in five weeks marked <i>no irregularity disclosed.</i> By then the tail wheat is past saving. The compensation claims arrive with the rains &mdash; addressed to you, the Department having no camp the villagers can walk to. They always know whose district it is, whatever the channel."
+        "outcome": "The reference is procedurally impeccable and travels beautifully: to the Sub-Divisional Officer (Canals), on leave; to his assistant, who calls for a report from the very patwari whose register is the fiction at issue; and back to your table in five weeks marked <i>no irregularity disclosed.</i> By then the tail wheat is past saving. The compensation claims arrive with the rains, addressed to you &mdash; the Department keeps no camp a villager can walk to. They always know whose district it is, whatever the channel."
       }
     ]
   },
@@ -395,7 +395,7 @@
           "order": 1,
           "health": -3
         },
-        "outcome": "Census night finds the district gridded, lanterned, and counted to a standard the provincial tables later call &lsquo;conspicuously complete&rsquo; &mdash; including the river population, taken by you from a police boat between midnight and three, boat by boat, to the vast entertainment of the boatmen. The wandering tribes are counted at their fires by an enumerator who is half one of them. It is the largest single administrative act of your year, and it earns, characteristically, one printed line and a lithographed thanks. The line is read where lines are read."
+        "outcome": "Census night finds the district gridded, lanterned, and counted to a standard the provincial tables later call &lsquo;conspicuously complete&rsquo; &mdash; including the river population, taken by you from a police boat between midnight and three, boat by boat, to the vast entertainment of the boatmen. The wandering tribes are counted at their fires by an enumerator who is half one of them. It is the largest single administrative act of your year, and it earns one printed line and a lithographed thanks. The line is read where lines are read."
       },
       {
         "label": "Meet the purdah problem properly: recruit and train women enumerators.",
@@ -404,7 +404,7 @@
           "prestige": -1,
           "order": 1
         },
-        "outcome": "The mission ladies, two vernacular schoolmistresses, and &mdash; decisive stroke &mdash; the retired midwife of the civil lines, who has entered more zenanas than the census has columns. The purdah schedules come back full and accurate for the first time in three censuses, and the innovation is noted in the provincial report with the faint alarm that attends all successful novelty. The orthodox grumble at the principle and privately concede the courtesy. Two of the schoolmistresses ask whether Government has more such work. Government, being Government, does not answer for eleven years."
+        "outcome": "The mission ladies, two vernacular schoolmistresses, and &mdash; the decisive stroke &mdash; the retired midwife of the civil lines, who has entered more zenanas than the census has columns. The purdah schedules come back full and accurate for the first time in three censuses, and the innovation is noted in the provincial report with the faint alarm that attends successful novelty. The orthodox grumble at the principle and privately concede the courtesy. Two of the schoolmistresses ask whether Government has more such work. Government, being Government, does not answer for eleven years."
       },
       {
         "label": "Let the schedules say what they say; a census is an estimate in fancy dress.",
@@ -435,7 +435,7 @@
           "contentment": 1,
           "health": -1
         },
-        "outcome": "You meet the battalion a march out with the camping-grounds marked, the supply contracts pre-let at rates split honestly between the hymn and the bill, and a magistrate's clerk attached to the quartermaster for instant claims. The Colonel, who has been managed by many Collectors and obstructed by more, recognises the real article, and the battalion goes through like the mail: paid for, fed, gone. The villages total the damage at one gate and one goose, both compensated by Saturday. The Colonel's letter of thanks goes, unasked, to the Commissioner."
+        "outcome": "You meet the battalion a march out with the camping-grounds marked, the supply contracts pre-let at rates split honestly between the hymn and the bill, and a magistrate's clerk attached to the quartermaster for instant claims. &lsquo;You have done this before,&rsquo; says the Colonel, folding the map, and the battalion goes through like the mail: paid for, fed, gone. The villages total the damage at one gate and one goose, both compensated by Saturday. The Colonel's letter of thanks goes, unasked, to the Commissioner."
       },
       {
         "label": "Appoint contractors and let the machinery grind by the book.",
@@ -443,7 +443,7 @@
           "revenue": 1,
           "contentment": -3
         },
-        "outcome": "The indents are met by the book, the book's rates being what they are, and the difference between hymn and bill is extracted from the villages by the contractors in the time-honoured manner. The march passes without incident visible from a office window. The claims ledger fills for a quarter with small ruin: carts returned cracked, grass-lands grazed to dirt, a well fouled. Each item is settled at schedule rates. The schedule, the villages note, was written by the locusts' own commissariat."
+        "outcome": "The indents are met by the book, the book's rates being what they are, and the difference between hymn and bill is extracted from the villages by the contractors in the time-honoured manner. The march passes without incident visible from an office window. The claims ledger fills for a quarter with small ruin: carts returned cracked, grass-lands grazed to dirt, a well fouled. Each item is settled at schedule rates. The schedule, the villages note, was written by the locusts' own commissariat."
       },
       {
         "label": "Protest the route to the Division; the district cannot bear it this year.",
@@ -451,7 +451,7 @@
           "prestige": -3,
           "contentment": 2
         },
-        "outcome": "The protest is well-argued, half-true, and doomed: routes are made two provinces up, and a Collector who pleads his district's poverty against the movement of troops is entered in a military ledger as <i>difficult</i>, a word that migrates to civil ledgers by channels never fully mapped. The battalion comes through regardless, one march later. The villages, at least, hear the sahib fought the route, and are compensated in the coin of that story &mdash; which buys, as it happens, more contentment than the schedule rates ever did."
+        "outcome": "The protest is well-argued, half-true, and doomed: routes are made two provinces up, and a Collector who pleads his district's poverty against the movement of troops is entered in a military ledger as <i>difficult</i>, a word that migrates to civil ledgers by channels never fully mapped. The battalion comes through regardless, one march late. The villages hear that the sahib fought the route for them, and the story goes round the wells all winter, worth more to them than the schedule rates ever were."
       }
     ]
   },
@@ -464,7 +464,7 @@
     "kind": "tour",
     "once": true,
     "title": "The Subadar's Field",
-    "body": "In camp at Pipariya an old man stands at the edge of the morning crowd, straight as a lance and letting every petitioner go before him, which is how you know what he was before you see the medals: Subadar, pensioned, Mutiny ribbons among the campaign silver &mdash; the right side, in the year when sides were chosen with knives. His grievance is small and complete: a field his father held, entered wrongly at settlement forty years ago, farmed by his family ever since on sufferance that the neighbouring zamindar has now withdrawn. He does not ask for justice. He states his services, hands up his discharge certificate, folded to cloth, and waits at attention.",
+    "body": "In camp at Pipariya an old man stands at the edge of the morning crowd, straight as a lance and letting every petitioner go before him, which is how you know what he was before you see the medals: Subadar, pensioned, Mutiny ribbons among the campaign silver &mdash; the right side, in the year when sides were chosen with knives. His grievance is small and complete: a field his father held, entered wrongly at settlement forty years ago, farmed by his family ever since on a sufferance the neighbouring zamindar has now withdrawn. He does not ask for justice. He states his services, hands up his discharge certificate, folded soft as cloth, and waits at attention.",
     "choices": [
       {
         "label": "Hear the case under the tree, now, and settle it before the camp moves.",
@@ -473,7 +473,7 @@
           "prestige": 2,
           "order": 1
         },
-        "outcome": "The patwari is fetched at the trot, the old settlement read against the older one, and the error found where errors live, in a copyist's transposition of 1868. You correct the entry, seal it, and hand the Subadar his field before noon, and he takes it as he took his discharge: at the salute, without one word beyond the permitted formula. That evening he sends the camp a basket of oranges, refuses payment through three intermediaries, and stations his grandson at the road to present arms &mdash; with a stick &mdash; as your carts go by. There are mornings that pay for the whole year. The Service never learns which they will be."
+        "outcome": "The patwari is fetched at the trot, the old settlement read against the older one, and the error found where errors live, in a copyist's transposition of 1868. You correct the entry, seal it, and hand the Subadar his field before noon, and he takes it as he took his discharge: at the salute, without one word beyond the permitted formula. That evening he sends the camp a basket of oranges, refuses payment through three intermediaries, and posts his grandson at the road to present arms &mdash; with a stick &mdash; as your carts go by."
       },
       {
         "label": "Take the papers into the regular file, with a note for early hearing.",
@@ -482,7 +482,7 @@
           "revenue": 1,
           "contentment": -1
         },
-        "outcome": "It is correct, and the note is honoured, and the case is heard at station in seven weeks and rightly decided in nine. The Subadar attends each hearing in medals, standing through the pleaders' Urdu like a man on quarter-guard, and thanks the court when it is over. Only the tahsildar, who served sepoy fathers all his life, tells you what the seven weeks were: the old man had told his village the sahib would settle it under the tree. The village counted the weeks. Right verdicts also have exchange-rates."
+        "outcome": "It is correct, and the note is honoured, and the case is heard at station in seven weeks and rightly decided in nine. The Subadar attends each hearing in medals, standing through the pleaders' Urdu like a man on quarter-guard, and thanks the court when it is over. Only the tahsildar, who has served sepoy fathers all his life, tells you what the seven weeks were. &lsquo;He told his village the sahib would settle it under the tree,&rsquo; he says. &lsquo;The village counted the weeks.&rsquo;"
       },
       {
         "label": "It is a civil matter between him and the zamindar; the courts are open.",
@@ -504,7 +504,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Vernacular Press Discovers You",
-    "body": "The <i>Nagra Samachar</i> &mdash; circulation eleven hundred, influence unmeasurable &mdash; has published a piece on the district's administration in which a Collector, unnamed and unmistakable, sells justice by lamplight, keeps a dancing-girl in the civil lines, and has diverted famine grain to his stable. The author, Babu Nikhil Chandra, editor and entire staff, prints on a hand-press behind the grain market and has been fined for sedition once, which in his trade is a diploma. The law of criminal libel is at your hand. So is the certainty that a prosecution will treble his circulation and canonise him by Tuesday.",
+    "body": "The <i>Nagra Samachar</i> &mdash; circulation eleven hundred, influence unmeasurable &mdash; has published a piece on the district's administration in which a Collector, unnamed and unmistakable, sells justice by lamplight, keeps a dancing-girl in the civil lines, and has diverted famine grain to his stable. The author, Babu Nikhil Chandra, editor and entire staff, prints on a hand-press behind the grain market and has been fined for sedition once, which in his trade is a diploma. Criminal libel lies ready to your hand &mdash; and so does the certainty that a prosecution will treble his circulation and canonise him by Tuesday.",
     "choices": [
       {
         "label": "Ignore it absolutely; a Collector's answer is his district.",
@@ -512,7 +512,7 @@
           "prestige": 1,
           "health": -1
         },
-        "outcome": "You govern on as if the <i>Samachar</i> were weather, which within a month it is: the dancing-girl paragraph dies of no denial to feed on, and Nikhil Chandra moves to the Canal Department, which fights back and is therefore better copy. The bazaar, which believed the piece for a week, disbelieves it by the fortnight on the evidence it trusts most &mdash; that the sahib did not care. The file you did not open is, your Commissioner remarks years later, the best thing in your record."
+        "outcome": "You govern on as if the <i>Samachar</i> were weather, and within a month it is: the dancing-girl paragraph dies of having no denial to feed on, and Nikhil Chandra moves to the Canal Department, which fights back and is therefore better copy. The bazaar, which believed the piece for a week, disbelieves it by the fortnight on the evidence it trusts most &mdash; that the sahib did not care. &lsquo;The best thing in your record,&rsquo; your Commissioner tells you years afterwards, &lsquo;is a file you never opened.&rsquo;"
       },
       {
         "label": "Prosecute: some lies are a tax on government itself.",
@@ -521,7 +521,7 @@
           "prestige": -3,
           "contentment": -2
         },
-        "outcome": "The trial is a festival. Nikhil Chandra conducts his own defence in three languages, weeps at the majesty of British justice, is convicted on the plain print, fined two hundred rupees &mdash; paid by subscription at the courtroom door &mdash; and emerges the first man of letters in the district's history to be garlanded twice in one afternoon. The <i>Samachar</i> trebles, as foretold. The judgment is legally perfect. You have won a verdict and financed a legend, and the ledger of that trade will not close for twenty years."
+        "outcome": "The trial is a festival. Nikhil Chandra conducts his own defence in three languages, weeps at the majesty of British justice, is convicted on the plain print, fined two hundred rupees &mdash; paid by subscription at the courtroom door &mdash; and emerges the first man of letters in the district's history to be garlanded twice in one afternoon. The <i>Samachar</i> trebles, as foretold. The judgment is legally perfect. The garlands are still fresh at sundown."
       },
       {
         "label": "Send for him privately and show him the actual famine-grain accounts.",
@@ -532,7 +532,7 @@
         "setFlags": [
           "editor_shown"
         ],
-        "outcome": "He comes expecting a threat and is handed the stable ledger and the grain registers, with tea. He checks them for two hours, finding nothing because there is nothing, and departs unrepentant about the principle and precise about the facts &mdash; the retraction, when it comes, is three lines on an inner page, which from Nikhil Chandra is a monument. Thereafter the <i>Samachar</i> abuses your policies weekly and your honesty never, a distinction whose worth you will not fully price until the famine year, when the bazaar has to decide, quickly, whose figures to believe."
+        "outcome": "He comes expecting a threat and is handed the stable ledger and the grain registers, with tea. He checks them for two hours, finding nothing because there is nothing, and departs unrepentant about the principle and exact about the facts &mdash; the retraction, when it comes, is three lines on an inner page, which from Nikhil Chandra is a monument. Thereafter the <i>Samachar</i> abuses your policies weekly and your honesty never. You will not price that distinction fully until the famine year, when the bazaar must decide, quickly, whose figures to believe."
       }
     ]
   },
@@ -564,9 +564,9 @@
           "setFlags": [
             "taken_by_the_river"
           ],
-          "outcome": "The causeway at the second village is gone where the horseman crossed it an hour before, and the river takes you and the horse together, almost idly, the way big water takes things. The horse drowns. A fisherman's night-line saves you, three-quarters drowned and fevered before morning. The bund, driven by the old overseer on your shouted orders from the wrong bank, holds &mdash; barely &mdash; and the district gets the story of a Collector pulled from the river like a log, which is worth less than a Collector on the bund, and says so behind its hands while the fever runs."
+          "outcome": "The causeway at the second village is gone where the horseman crossed it an hour before, and the river takes you and the horse together, almost idly, the way big water takes things. The horse drowns. A fisherman's night-line saves you, three-quarters drowned and fevered before morning. The bund, driven by the old overseer on your shouted orders from the wrong bank, holds &mdash; barely. The district gets the story of a Collector pulled from the river like a log, and tells it behind its hands while the fever runs."
         },
-        "outcome": "Four hours in falling rain with lanterns strung along the weep, driving earth, brushwood, and nine villages' manpower into the dark water by voice alone &mdash; the voice being, past two in the morning, the only instrument of government left. At dawn the crest comes down and stands two hands short of the sandbags and, slowly, drops. The bund holds. Nine thousand people wake dry without ever knowing the night happened, which is, the old overseer observes, wringing out his turban, the whole definition of the work."
+        "outcome": "Four hours in falling rain with lanterns strung along the weep, driving earth, brushwood, and nine villages' manpower into the dark water by voice alone &mdash; the voice being, past two in the morning, the only instrument of government left. At dawn the crest comes down, stands two hands short of the sandbags, and slowly drops. The bund holds. Nine thousand people wake dry without ever knowing the night happened. &lsquo;They will never know,&rsquo; says the old overseer, wringing out his turban. &lsquo;That, sahib, is the whole of the work.&rsquo;"
       },
       {
         "label": "Send the overseer full powers and every cart of stores by the high road.",
@@ -577,7 +577,7 @@
         "econ": {
           "treasury": -6000
         },
-        "outcome": "The overseer, given plenary authority and material, is worth three of most men; the stores reach him by the high road at four; the bund is held, at the cost of a breach-width of brushwood and the difference between probably and certainly, which he spent alone in the rain wishing an order-giver stood beside him. It is a night's work to be proud of at one remove. The villages learn a magistrate sent help. It is remembered a season, where the other thing is remembered a generation."
+        "outcome": "The overseer, given plenary authority and material, is worth three of most men; the stores reach him by the high road at four; the bund is held, at the cost of a breach-width of brushwood and one old man's night alone in the rain wishing an order-giver stood beside him. It is a night's work to be proud of at one remove. The villages learn that a magistrate sent help. It is remembered for a season, where the other thing is remembered for a generation."
       },
       {
         "label": "Wake and clear the villages behind it; earth can be rebuilt.",
@@ -587,7 +587,7 @@
           "prestige": -2,
           "revenue": -3
         },
-        "outcome": "The evacuation is a triumph of organisation and a catastrophe of arithmetic: nine thousand moved wet and furious to high ground &mdash; and the bund, unheld, breaches at dawn precisely as feared, drowning the rice, the byres, and the year. No lives are lost, which the resolution records with approval. Everything else is lost, which the villages record. They would have held it, the headmen say afterwards, and they are right, and what they needed was leave, and stores, and one lantern with authority under it. Safety, you learn, is also a thing that can be over-bought."
+        "outcome": "The evacuation goes like a parade and counts like a defeat: nine thousand moved wet and furious to high ground &mdash; and the bund, unheld, breaches at dawn as feared, drowning the rice, the byres, and the year. No lives are lost, which the resolution records with approval. Everything else is lost, which the villages record. &lsquo;We would have held it,&rsquo; the headmen say afterwards, and they are right: what they wanted was leave, and stores, and one lantern with authority under it."
       }
     ]
   },
@@ -600,7 +600,7 @@
     "kind": "crisis",
     "once": true,
     "title": "Fever in the Relief Works",
-    "body": "The test-relief works on the Pipariya embankment &mdash; two thousand diggers, wages in grain, the state's answer to a thin year &mdash; have begun to answer back: malaria is through the coolie lines like a rumour, the hospital tents are full, and the works doctor, a licentiate twenty-three years old and grey with exhaustion, reports the labour attendance dropping by a hundred a day. Close the works and the wages stop with the fever; keep them open and the embankment becomes, in the Civil Surgeon's phrase, a machine for assembling patients. The rain falls evenly on all policies.",
+    "body": "The test-relief works on the Pipariya embankment &mdash; two thousand diggers, wages in grain, the state's answer to a thin year &mdash; have begun to answer back: malaria is through the coolie lines like a rumour, the hospital tents are full, and the works doctor, a licentiate twenty-three years old and grey with exhaustion, reports the labour attendance dropping by a hundred a day. Close the works and the wages stop with the fever; keep them open and the embankment becomes, in the Civil Surgeon's phrase, &lsquo;a machine for assembling patients.&rsquo; The rain falls evenly on all policies.",
     "choices": [
       {
         "label": "Move the whole works: new camp on high ground, quinine parade at the pay-table.",
@@ -613,7 +613,7 @@
         "econ": {
           "treasury": -8000
         },
-        "outcome": "Three days of organised upheaval: the lines re-pitched on the ridge above the mist-line, the tanks screened, and quinine issued at the pay-table where no digger can miss it and no ticket-clerk can sell it. The fever curve bends in a week, the attendance climbs back, and the embankment resumes its slow arithmetic. The licentiate sleeps nine hours for the first time in a month. His report calls the move &lsquo;the turning point,&rsquo; and yours calls the licentiate the same, and both reports are true."
+        "outcome": "Three days of organised upheaval: the lines re-pitched on the ridge above the mist-line, the tanks screened, and quinine issued at the pay-table, where no digger can miss it and no ticket-clerk can sell it. The fever curve bends in a week, the attendance climbs back, and the embankment goes forward again. The licentiate sleeps nine hours for the first time in a month. His report calls the move &lsquo;the turning point,&rsquo; and yours calls the licentiate the same, and both reports are true."
       },
       {
         "label": "Keep the works open as they stand; wages are the greater medicine.",
@@ -622,7 +622,7 @@
           "contentment": -3,
           "order": -1
         },
-        "outcome": "The doctrine is defensible and the graves are dug in instalments: forty-one before the rains break the season's back, each certified &lsquo;fever&rsquo; in the works register between the wage columns. The embankment finishes on time. The audit passes the accounts without remark; the coolie lines pass their own accounts on to the recruiting maistries, and next thin year the works at Pipariya fill slower, the district having learned its own exchange rate between grain and quinine."
+        "outcome": "The doctrine is defensible and the graves are dug in instalments: forty-one before the rains break the season's back, each certified &lsquo;fever&rsquo; in the works register between the wage columns. The embankment finishes on time. The audit passes the accounts without remark. The coolie lines pass their own accounts to the recruiting maistries, and next thin year the works at Pipariya fill slower, and no maistry has to explain why."
       },
       {
         "label": "Close the works and distribute the grain as gratuitous relief.",
@@ -631,7 +631,7 @@
           "prestige": -3,
           "revenue": -3
         },
-        "outcome": "The fever camp empties and the fever with it, and the grain goes out by village lists &mdash; into which, within the fortnight, the headmen's cousins have marched in battalions. Gratuitous relief, the Famine Code observes, demoralises; what it demonstrably does is redistribute upward. The embankment stands half-built in the rain like a policy, and Government, reviewing the season, notes that the district abandoned its test. The diggers who were real are fed. The Code and you both know it could not have been sorted finer in the time, and only one of you signs."
+        "outcome": "The fever camp empties and the fever with it, and the grain goes out by village lists &mdash; into which, within the fortnight, the headmen's cousins have marched in battalions. Gratuitous relief, says the Famine Code, demoralises; what it does at Pipariya is feed the cousins first. The embankment stands half-built in the rain like a policy, and Government, reviewing the season, notes that the district abandoned its test. The diggers who were real are fed. It could not have been sorted finer in the time, and only you had to sign."
       }
     ]
   },
@@ -644,7 +644,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Ferry at Gola Ghat",
-    "body": "The Gola Ghat ferry has capsized in the swollen river with a market crowd aboard &mdash; eleven drowned, among them two children, and the boat itself, recovered downstream, tells the story in one look: licensed for twenty-five, it carried sixty, the ferryman having sold footings in the rain at double fare. He is in custody and the ghat villages want him hanged by Thursday. But the licence is your office's; the last inspection, eight months stale, is your office's; and the overloading was the open custom of every monsoon crossing in the district, as everyone from the tahsildar to your own orderly has always known.",
+    "body": "The Gola Ghat ferry has capsized in the swollen river with a market crowd aboard &mdash; eleven drowned, among them two children, and the boat itself, recovered downstream, tells the story in one look: licensed for twenty-five, it carried sixty, the ferryman having sold footings in the rain at double fare. He is in custody, and the ghat villages want him hanged by Thursday. But the licence is your office's; the last inspection, eight months stale, is your office's; and the overloading was the open custom of every monsoon crossing in the district, as everyone from the tahsildar to your own orderly has always known.",
     "choices": [
       {
         "label": "Prosecute the ferryman &mdash; and publish an enquiry into your own ferries office.",
@@ -654,7 +654,7 @@
           "contentment": 1,
           "health": -2
         },
-        "outcome": "The ferryman gets his three years, and beside the conviction you set the harder document: an open enquiry finding the inspections a fiction, the licence fees a toll, and two of your own ferry moharrirs dismissed in disgrace. The district reads both judgments together, which is the point &mdash; the small man did not drown alone in the blame. New ferry rules go out under your signature with teeth in them. At Gola Ghat they still overload, but by five now, not thirty-five, which is what reform amounts to and more than it usually does."
+        "outcome": "The ferryman gets his three years, and beside the conviction you set the harder document: an open enquiry finding the inspections a fiction, the licence fees a toll, and two of your own ferry moharrirs dismissed in disgrace. The district reads the two judgments together, as they were meant to be read &mdash; the small man has not drowned alone in the blame. New ferry rules go out under your signature with teeth in them. At Gola Ghat they still overload, but by five now, not thirty-five."
       },
       {
         "label": "Prosecute the ferryman and leave the office out of the papers.",
@@ -663,7 +663,7 @@
           "prestige": -1,
           "contentment": -2
         },
-        "outcome": "The trial is swift, the sentence sound, the ghat villages half-satisfied. But the bazaar can count as well as the court: sixty footings sold under a licence nobody inspected, and only the man at the oar in irons. The moharrirs' fees resume by the cold weather at the old rates plus a risk premium. When the Padma ferry goes over four years hence &mdash; after your time &mdash; the enquiry that could not be avoided then reads the inspection registers back to this season, and finds your signature where the silence started."
+        "outcome": "The trial is swift, the sentence sound, the ghat villages half-satisfied. But the bazaar can count as well as the court: sixty footings sold under a licence nobody inspected, and only the man at the oar in irons. The moharrirs' fees resume by the cold weather at the old rates plus a risk premium. When the Padma ferry goes over four years hence &mdash; after your time &mdash; the enquiry that cannot be avoided then reads the inspection registers back to this season, and finds your signature where the silence started."
       },
       {
         "label": "Treat it as the river's act: compensation, condolence, and no trial.",
@@ -672,7 +672,7 @@
           "order": -4,
           "prestige": -2
         },
-        "outcome": "Fifty rupees a body and a Collector at the burning-ghat with his hat off &mdash; real money and real respect, and the ghat villages take both and are not confused for one hour about what they were instead of. The ferryman, released, does not resume the oar; the crossing trade knows what his footings cost and prices him accordingly, which is a sentence no court can pass or remit. The monsoon crossings run on exactly as before. The river, which was the only party truly acquitted, takes nine more at Rampur ghat within the year."
+        "outcome": "Fifty rupees a body and a Collector at the burning-ghat with his hat off &mdash; real money and real respect, and the ghat villages take both, knowing to an anna what they stand in place of. The ferryman, released, does not go back to the oar; the crossing trade knows what his footings cost and prices him accordingly, a sentence no court can pass or remit. The monsoon crossings run on as before. The river, the only party truly acquitted, takes nine more at Rampur ghat within the year."
       }
     ]
   },
@@ -686,7 +686,7 @@
     "interlude": true,
     "once": true,
     "title": "The Krait in the Boot",
-    "body": "Cold grey morning in camp, and the bearer, performing the immemorial rite of knocking out the sahib's boots, produces from the left one a krait &mdash; eight inches of slate-coloured death, stupid with cold, which he decants onto the ground and beheads with the boot-jack in one economical movement, resuming his duties without comment. You put on the boot. It is a long moment before you can make the foot go down into it. The bearer, whose morning rite you have twice this cold weather called an old wives' precaution, says nothing then and nothing later, which is the most eloquent he has ever been. His Christmas present, you privately resolve, will astonish his village.",
+    "body": "Cold grey morning in camp, and the bearer, performing the immemorial rite of knocking out the sahib's boots, produces from the left one a krait &mdash; eight inches of slate-coloured death, stupid with cold &mdash; decants it onto the ground, and beheads it with the boot-jack in one economical movement, resuming his duties without comment. You put on the boot. It is a long moment before you can make the foot go down into it. The bearer, whose morning rite you have twice this cold weather called an old wives' precaution, says nothing then and nothing after, and has never been so eloquent. His Christmas present, you resolve, will astonish his village.",
     "effects": {
       "health": -1,
       "contentment": 1
@@ -702,7 +702,7 @@
     "interlude": true,
     "once": true,
     "title": "The Parliament of Frogs",
-    "body": "The first full night of the rains, and the tank behind the bungalow convenes what can only be called a parliament: ten thousand frogs in continuous session, motions, amendments, and points of order roared down in a bronze-throated uproar that makes the punkah's creak inaudible and sleep a theory. You lie awake under the din composing furious minutes to the Public Works Department about drainage. Somewhere in the second watch the absurdity of it arrives like grace: the tank has held this session every June for ten thousand years, and the Empire is the amendment, not the motion. You sleep after that, better than you have all season, gavelled down by the oldest government in India.",
+    "body": "The first full night of the rains, and the tank behind the bungalow convenes what can only be called a parliament: ten thousand frogs in continuous session, motions, amendments, and points of order roared down in a bronze-throated uproar that makes the punkah's creak inaudible and sleep a theory. You lie awake under the din composing furious minutes to the Public Works Department about drainage. Somewhere in the second watch the absurdity of it arrives: the tank has held this session every June for ten thousand years, and the Empire is the amendment, not the motion. You sleep after that, better than you have all season, gavelled down by the oldest government in India.",
     "effects": {
       "health": 2
     }

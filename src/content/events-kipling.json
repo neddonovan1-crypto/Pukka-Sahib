@@ -8,7 +8,7 @@
     "kind": "desk",
     "once": true,
     "title": "Tods' Amendment",
-    "body": "The Legal Member's new Sub-Montane Tracts Ryotwari Enactment is a marvel of drafting and, you are assured, a boon to the cultivator. At the Club dinner it is little Tods &mdash; six years old, ungovernable, and fluent in the bazaar tongue his ayah taught him &mdash; who announces to the table, between mouthfuls, exactly what the bazaar says the new law will do to the cultivator, which is the opposite of a boon and considerably more specific.",
+    "body": "The Legal Member's new Sub-Montane Tracts Ryotwari Enactment is a marvel of drafting and, you are assured, a boon to the cultivator. At the Club dinner it is little Tods &mdash; six years old, ungovernable, fluent in the bazaar tongue his ayah taught him &mdash; who announces between mouthfuls what the bazaar says the new law will really do. &lsquo;The ryots say it gives the land to the bunnias,&rsquo; says Tods, and asks for more pudding.",
     "choices": [
       {
         "label": "Take the child's report seriously and <b>propose an amendment</b>.",
@@ -17,7 +17,7 @@
           "prestige": -2,
           "health": -2
         },
-        "outcome": "You draft a note embodying, in the language of the Secretariat, what a six-year-old learned from a groom. The clause is amended. Somewhere a Legal Member pencils &lsquo;Tods' Amendment&rsquo; in the margin and never knows he was corrected by a child, and by a district that no one thought to ask."
+        "outcome": "You draft a note embodying, in the language of the Secretariat, what a six-year-old had from a groom. The clause is amended. Somewhere a Legal Member pencils &lsquo;Tods' Amendment&rsquo; in a margin, and never learns he was corrected by a child and a bazaar nobody thought to ask."
       },
       {
         "label": "Smile at the mite and <b>pass the Enactment</b> as drafted.",
@@ -26,7 +26,7 @@
           "contentment": -5,
           "order": -1
         },
-        "outcome": "You are not about to redraft an Act of the Government of India on the word of an infant, however fluent. The law goes through as written, and in six months the cultivators discover precisely what Tods knew at dinner, and so, expensively, do you."
+        "outcome": "You are not about to redraft an Act of the Government of India on the word of an infant, however fluent. The law goes through as written. In six months the cultivators have discovered what Tods knew at dinner, and the discovery reaches your desk as forty petitions in one week."
       },
       {
         "label": "Quietly <b>send a man to the bazaar</b> to check the child's tale.",
@@ -48,7 +48,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Enlightenment of Pagett, M.P.",
-    "body": "Mr. Pagett, a Radical Member newly off the boat, has come to study Indian Conditions for a fortnight, and has already grasped, he tells you warmly, that the Congress speaks for the teeming millions and the whole country groans for self-government. He is your guest, your responsibility, and entirely certain. The cold weather is turning; the hot weather, and the real education, are on their way.",
+    "body": "Mr. Pagett, a Radical Member newly off the boat, has come to study Indian Conditions for a fortnight. &lsquo;The Congress,&rsquo; he tells you warmly, before his boxes are unstrapped, &lsquo;speaks for the teeming millions. The whole country groans for self-government.&rsquo; He is your guest, your responsibility, and certain of everything. The cold weather is turning, and the hot weather, with the real education, is on its way.",
     "choices": [
       {
         "label": "Show him the <b>real, fractured district</b> &mdash; caste, creed, and the cultivator who has never heard of Congress.",
@@ -56,7 +56,7 @@
           "prestige": 3,
           "health": -3
         },
-        "outcome": "You walk him through a country that refuses to fit his pamphlet: the tenant who fears his headman more than any Viceroy, two faiths who will not share a well, the peasant to whom Simla and London are the same distant rumour. Pagett's certainties wilt in the dust. He goes home wiser, and writes, alas, the same articles."
+        "outcome": "You walk him through a country that refuses to fit his pamphlet: the tenant who fears his headman more than any Viceroy, two faiths that will not share a well, the peasant to whom Simla and London are the same distant rumour. Pagett's certainties wilt in the dust. He goes home wiser, and writes, alas, the same articles."
       },
       {
         "label": "Flatter his views, feed him well, and <b>pack him off content</b>.",
@@ -65,7 +65,7 @@
           "health": 2,
           "contentment": -1
         },
-        "outcome": "You give him the tour he came to have, agree with everything, and put him on the train still glowing. He will report that the local officials are sound fellows who quite understand the national aspiration. It costs you nothing and teaches him less, which suits you both."
+        "outcome": "You give him the tour he came to have, agree with everything, and put him on the train still glowing. He will report that the local officials are sound fellows who quite understand the national aspiration. It costs you three dinners and teaches him nothing."
       },
       {
         "label": "Let a <b>day of touring in the heat</b> do the arguing.",
@@ -74,7 +74,7 @@
           "health": -1,
           "prestige": 1
         },
-        "outcome": "You say little and let the sun, the flies, the twelve-hour march and the sheer unanswerable size of the thing work on him. By evening the Member has stopped lecturing and started listening, which is the nearest to enlightenment a fortnight allows."
+        "outcome": "You say little and let the sun, the flies, and the twelve-hour march do the arguing. By evening the Member has stopped lecturing and begun asking questions. To the last of them &mdash; &lsquo;How many of you govern all this?&rsquo; &mdash; you give him the figure, and he is quiet for the rest of the ride."
       }
     ]
   },
@@ -87,7 +87,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Head of the District",
-    "body": "The Secretariat, in a spasm of principle, has appointed Mr. Banerjee &mdash; able, honourable, Calcutta-educated, and Bengali &mdash; to hold charge of the Karara tract, a country of proud and turbulent men who have announced, with perfect courtesy and total conviction, that they will take orders from no clerk of the plains. The appointment is just. It may also be the spark to a rising, and both facts are on your desk.",
+    "body": "The Secretariat, in a spasm of principle, has appointed Mr. Banerjee &mdash; able, honourable, Calcutta-educated, and Bengali &mdash; to hold charge of the Karara tract, a country of proud and turbulent men who have announced, with perfect courtesy and total conviction, that they will take no orders from a clerk of the plains. The appointment is just, and it may be the spark to a rising, and both facts lie in the same docket on your desk.",
     "choices": [
       {
         "label": "<b>Install him and back him</b> with every man you have.",
@@ -97,7 +97,7 @@
           "contentment": -2,
           "health": -3
         },
-        "outcome": "You put Banerjee in his chair and stand behind it with the police. He is competent and unbowed; the tract seethes, tests him, and subsides only because the force behind him never blinks. You have upheld a principle at the point of a bayonet, which is the usual price of principle out here."
+        "outcome": "You put Banerjee in his chair and stand behind it with the police. He is competent and unbowed; the tract seethes, tests him, and subsides, because the force behind him never blinks. Principle is upheld at the point of a bayonet, and the bayonets stay fixed the whole cold weather."
       },
       {
         "label": "Quietly <b>arrange a safer posting</b> for him elsewhere.",
@@ -107,7 +107,7 @@
           "contentment": -1,
           "health": -2
         },
-        "outcome": "You spare Banerjee the Karara and the Karara its rising, and in doing so concede that a good man may not rule where his face is wrong. He understands exactly what has happened, thanks you with a dignity that shames you, and files it with the other lessons the Service teaches its ablest sons."
+        "outcome": "You spare Banerjee the Karara and the Karara its rising, and concede in doing so that a good man may not rule where his face is wrong. &lsquo;I quite understand,&rsquo; he says, and thanks you with a dignity that scalds. He goes on to serve, very well, somewhere easier."
       },
       {
         "label": "<b>Tell Simla plainly</b> the appointment courts a rising.",
@@ -117,7 +117,7 @@
           "health": -1,
           "contentment": 1
         },
-        "outcome": "You put your objection on paper, over your signature, and let the Secretariat own its choice. The appointment is quietly reconsidered; you are quietly marked as an officer who tells his betters what they do not wish to hear. Both outcomes were entirely foreseeable, which is why so few men risk the second."
+        "outcome": "You put your objection on paper, over your signature, and let the Secretariat own its choice. The appointment is quietly reconsidered; you are quietly entered as an officer who tells his betters what they do not care to hear. The entry outlasts the thanks."
       }
     ]
   },
@@ -130,7 +130,7 @@
     "kind": "tour",
     "once": false,
     "title": "The Men Who Would Be Kings",
-    "body": "Two enormous, ragged Englishmen &mdash; loafers, deserters, adventurers, it is never quite clear &mdash; present themselves at your camp with a Masonic handshake, a contract written on greasy paper, and a plan to walk beyond the frontier and make themselves kings of a country no map has properly seen. They ask only that the sahib not telegraph ahead to have them stopped.",
+    "body": "Two enormous, ragged Englishmen &mdash; loafers, deserters, it is never quite clear &mdash; present themselves at your camp with a Masonic handshake and a plan to walk beyond the frontier and make themselves kings of a country no map has properly seen. &lsquo;We have signed a contrack,&rsquo; says the larger, producing a greasy paper. &lsquo;No liquor and no women till the thing is done.&rsquo; They ask only that the sahib not wire ahead to have them stopped.",
     "choices": [
       {
         "label": "Give them a <b>drink, a warning</b>, and let them go.",
@@ -139,7 +139,7 @@
           "order": -1,
           "contentment": 1
         },
-        "outcome": "You tell them the frontier eats such men and their scheme is madness, and they agree cheerfully and go anyway, as such men do. You never learn how it ended &mdash; only that one of them is said to have come crawling back, years later, with a tale no sane man believed and a thing wrapped in cloth that he would not show."
+        "outcome": "You tell them the frontier eats such men, and they agree cheerfully and go anyway, as such men do. You never learn how it ended &mdash; only that one of them is said to have come crawling back, years later, with a tale no sane man believed and a thing wrapped in cloth that he would not show."
       },
       {
         "label": "Have them <b>run out of the district</b> at once.",
@@ -148,7 +148,7 @@
           "prestige": 1,
           "health": -1
         },
-        "outcome": "You are not in the business of speeding lunatics toward an international incident, and you have them escorted firmly to the railhead. Correct, dull, and a small theft from the world's stock of glorious catastrophe. They curse your name, which from men bound for a throne is nearly a distinction."
+        "outcome": "You are not in the business of speeding lunatics toward an international incident, and you have them escorted firmly to the railhead. Correct, dull, and a small theft from the world's stock of glorious catastrophe. They curse you from the carriage window, in style, the whole length of the platform."
       },
       {
         "label": "Slip them a <b>letter of introduction</b> and a nod.",
@@ -174,7 +174,7 @@
     "kind": "personal",
     "once": true,
     "title": "Thrown Away",
-    "body": "Young Cottar &mdash; nineteen, raised soft and sheltered and sent out to a country that shelters no one &mdash; took a public rebuke over a trifle harder than the trifle deserved, rode out alone into the hot weather, and did not ride back. The Civil Surgeon has found him, and the revolver, and now stands in your office proposing, gently, that it be written up as cholera, for the sake of a mother in England who need never know.",
+    "body": "Young Cottar &mdash; nineteen, raised soft and sheltered and sent out to a country that shelters no one &mdash; took a public rebuke over a trifle harder than the trifle deserved, rode out alone into the hot weather, and did not ride back. The Civil Surgeon has found him, and the revolver, and stands now in your office, not quite meeting your eye. &lsquo;Cholera,&rsquo; he says. &lsquo;For the sake of a mother in England who need never know.&rsquo;",
     "choices": [
       {
         "label": "<b>Sign the merciful lie.</b> Cholera it is.",
@@ -186,7 +186,7 @@
         "setFlags": [
           "boy_covered"
         ],
-        "outcome": "You put your name to a death certificate you know to be false, and a mother keeps a son who died bravely of fever instead of alone of despair. It is a kindness and a forgery and the two will not separate. The station buries the Boy and its knowledge of him in the same hour, calls the whole thing very sad, and goes in to dinner."
+        "outcome": "You put your name to a death certificate you know to be false, and a mother keeps a son who died bravely of fever instead of alone of despair. It is a kindness and a forgery, and the two will not separate. The station buries the Boy and its knowledge of him in the same hour, calls the whole thing very sad, and goes in to dinner."
       },
       {
         "label": "Record the <b>truth</b>, coldly and completely.",
@@ -195,7 +195,7 @@
           "health": -6,
           "contentment": -3
         },
-        "outcome": "You will not begin your rule with a lie, however kind, and you write the thing as it was. The paper is impeccable; the mother's letter, when it comes, is not answerable by any paper; and the station marks you as a man without the ordinary human mercy, which out here is filed as a want of soundness."
+        "outcome": "You will not begin your rule with a lie, however kind, and you write the thing as it was. The paper is impeccable; the mother's letter, when it comes, cannot be answered by any paper; and the station sets you down as a man without the ordinary mercy. The letter stays in your desk for three years."
       },
       {
         "label": "Blame the <b>system that broke him</b>, and say so in the report.",
@@ -220,7 +220,7 @@
     "kind": "desk",
     "once": false,
     "title": "Strickland of the Police",
-    "body": "Strickland &mdash; the police officer the station thinks unsound because he vanishes for weeks and comes back knowing things &mdash; lays before you what a month living as a groom in the city's back lanes has taught him: who is arming, who is owed money by whom, which respectable men are not respectable. It is intelligence no honest method could have got; it would let you break trouble before it starts, and ruin a dozen men on a word.",
+    "body": "Strickland &mdash; the police officer the station thinks unsound because he vanishes for weeks and comes back knowing things &mdash; lays before you what a month living as a groom in the city's back lanes has taught him: who is arming, who is owed money by whom, which respectable men are not respectable. It is intelligence no honest method could have got; it would let you break trouble before it starts, and ruin a dozen men on a word. &lsquo;Use it or burn it,&rsquo; he says. &lsquo;I am going back either way.&rsquo;",
     "choices": [
       {
         "label": "<b>Act on it</b> &mdash; arrests, warnings, a quiet pre-emption.",
@@ -252,7 +252,7 @@
         "setFlags": [
           "strickland_kept"
         ],
-        "outcome": "You file what he brings against a rainy day, using none of it yet, letting it sit in your head like a loaded thing in a drawer. It is the compromise of a man who wants clean hands and a full magazine, and it is not, if you are honest, either."
+        "outcome": "You file what he brings against a rainy day, using none of it yet, letting it sit in your head like a loaded thing in a drawer. A man cannot keep clean hands and a full magazine together, and you have contrived, for the present, to hold neither."
       }
     ]
   },
@@ -277,7 +277,7 @@
         "setFlags": [
           "hauksbee_ally"
         ],
-        "outcome": "You pay court to the drawing-room as assiduously as to the cutcherry, and it works: your name begins to travel in the currents that matter, borne by a woman who moves the machinery of Empire without being allowed near its levers. It is the most useful and least dignified campaign of your year."
+        "outcome": "You pay court to the drawing-room as assiduously as to the cutcherry, and it answers: your name begins to travel in the currents that matter, borne by a woman who moves the machinery of Empire without being allowed near its levers. It is the most useful and least dignified campaign of your year."
       },
       {
         "label": "Keep a <b>cautious distance</b> from Simla's intrigues.",
@@ -285,7 +285,7 @@
           "prestige": -3,
           "health": 2
         },
-        "outcome": "You decline to make your career in a hill-station drawing-room, and Mrs Hauksbee, who mistakes no one, marks you as a dull dog who will go exactly as far as his files carry him and no further. She is very often right about such things."
+        "outcome": "You decline to make your career in a hill-station drawing-room, and Mrs Hauksbee, who mistakes no one, marks you as a dull dog who will go just as far as his files carry him and no further. She is very often right about such things."
       },
       {
         "label": "Amuse her with <b>honest gossip from the plains</b>.",
@@ -294,7 +294,7 @@
           "health": -1,
           "contentment": 1
         },
-        "outcome": "You send her, now and then, a genuinely funny and indiscreet account of district life, asking nothing. She adores it, repeats it beautifully, and does you small unseen kindnesses for the pleasure of the correspondence. The surest way to power in Simla, it turns out, is to be entertaining and want nothing &mdash; which almost no one can manage."
+        "outcome": "You send her, now and then, a funny and indiscreet account of district life, asking nothing. She adores it, repeats it beautifully, and does you small unseen kindnesses for the pleasure of the correspondence. &lsquo;My magistrate,&rsquo; she is heard to say, &lsquo;is the only man in India who has never asked me for anything.&rsquo;"
       }
     ]
   },
@@ -307,7 +307,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Matter of Jack Barrett",
-    "body": "A powerful man &mdash; a name that signs your confidential reports &mdash; lets it be known, through the usual soft channels, that it would gratify him to see young Jack Barrett transferred to Fever Hill, the pestilential little station up the line from which men are carried out more often than posted away. Barrett is inconvenient to him. Barrett has a wife. The request is deniable, ordinary, and entirely clear.",
+    "body": "A powerful man &mdash; a name that signs your confidential reports &mdash; lets it be known, through the usual soft channels, that it would gratify him to see young Jack Barrett transferred to Fever Hill, the pestilential little station up the line from which men are carried out more often than posted away. Barrett is inconvenient to him. Barrett has a wife. The request is deniable, ordinary, and perfectly understood.",
     "choices": [
       {
         "label": "<b>Refuse</b>, and make a dangerous enemy.",
@@ -328,7 +328,7 @@
         "setFlags": [
           "uriah_sin"
         ],
-        "outcome": "You post Jack Barrett to Fever Hill with a stroke of the pen and a phrase about the needs of the service, and in eleven weeks the fever does what the powerful man could not decently do himself. You are thanked, obliquely, and advanced, and you have learned the exact market price of a young man's life, paid in a currency you can never spend on anything clean."
+        "outcome": "You post Jack Barrett to Fever Hill with a stroke of the pen, and in eleven weeks the fever does what the powerful man could not decently do himself. You are thanked, obliquely, and advanced. The phrase on the order was &lsquo;the needs of the service.&rsquo; You do not use that phrase again."
       },
       {
         "label": "Quietly <b>warn Barrett</b> to apply for leave.",
@@ -350,7 +350,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Bridge-Builders",
-    "body": "Findlayson's great railway bridge over the river &mdash; three years' work, the pride of the Public Works, all but finished &mdash; stands in the path of the highest flood in living memory. The Chief Engineer, grey with sleeplessness, begs you for every man and every boat the district can raise to save it. The same men and boats are the only thing that can lift the low villages out of the water. There is not enough of either for both.",
+    "body": "Findlayson's great railway bridge over the river &mdash; three years' work, the pride of the Public Works, all but finished &mdash; stands in the path of the highest flood in living memory. &lsquo;Every man and every boat the district can raise,&rsquo; begs the Chief Engineer, grey with sleeplessness. The same men and boats are the only thing that can lift the low villages out of the water. There is not enough of either for both.",
     "choices": [
       {
         "label": "Throw the district's <b>labour and boats at the bridge</b>.",
@@ -373,7 +373,7 @@
           "order": 1,
           "health": -3
         },
-        "outcome": "You put the people before the pride of the Public Works, and the boats go to the rooftops instead of the piers. Fewer drown. In the grey morning the river has taken a span of Findlayson's bridge and three years of his life with it, and the Department will want to know, in writing, exactly whose orders left it undefended."
+        "outcome": "You put the people before the pride of the Public Works, and the boats go to the rooftops instead of the piers. Fewer drown. In the grey morning the river has taken a span of Findlayson's bridge and three years of his life with it, and the Department will want to know, in writing, whose orders left it undefended."
       },
       {
         "label": "<b>Split the effort</b> and pray the river is merciful.",
@@ -386,7 +386,7 @@
         "econ": {
           "treasury": -25000
         },
-        "outcome": "You halve the district between the bridge and the villages, and thereby ask the flood to be reasonable, which floods are not. The bridge is damaged but stands; some villages are reached in time and some are not; and you spend the night learning that the refusal to choose is itself a choice, and usually the worst one."
+        "outcome": "You halve the district between the bridge and the villages, and thereby ask the flood to be reasonable. Floods are not. The bridge is damaged but stands; some villages are reached in time and some are not; and there is a stretch of that night, between the third boat and the fourth, that you never speak of afterwards."
       }
     ]
   },
@@ -399,7 +399,7 @@
     "kind": "desk",
     "once": false,
     "title": "The Mark of the Beast",
-    "body": "On a night of drunken celebration, Fleete &mdash; a newcomer who holds his liquor worse than his tongue &mdash; grinds his cigar-butt into the forehead of the god Hanuman in the little temple by the bazaar. By morning the bazaar is silent in the particular way that precedes trouble, a leper has been seen at Fleete's gate, and the Civil Surgeon is using the word &lsquo;fever&rsquo; for something he cannot name.",
+    "body": "On a night of drunken celebration, Fleete &mdash; a newcomer who holds his liquor worse than his tongue &mdash; grinds his cigar-butt into the forehead of the god Hanuman in the little temple by the bazaar. By morning the bazaar is silent in the way that precedes trouble, a leper has been seen at Fleete's gate, and the Civil Surgeon is using the word &lsquo;fever&rsquo; for something he cannot name.",
     "choices": [
       {
         "label": "Get Fleete <b>out of the district</b> quietly and say nothing.",
@@ -417,7 +417,7 @@
           "contentment": -3,
           "health": -2
         },
-        "outcome": "You answer an old darkness with constables and a firm hand, which is the only answer the Service issues you. The trouble does not come, this time; whether your constables prevented it, or something else decided to let it lie, is not a question the district office is equipped to file."
+        "outcome": "You answer an old darkness with constables and a firm hand, the Service issuing no other equipment for it. The trouble does not come, this time. Whether the constables prevented it, or something older chose to let it lie, is not a question the office forms provide for."
       },
       {
         "label": "Make a <b>formal apology</b> and reparation to the temple.",
@@ -459,7 +459,7 @@
           "prestige": 2,
           "health": -5
         },
-        "outcome": "You process the matter as the regulations intend: the woman to a mission, the house to the estate, the grave to whatever grows over graves no one is left to tend. Everything is in order. You have done nothing wrong, precisely, and you cannot for the life of you feel clean."
+        "outcome": "You process the matter as the regulations intend: the woman to a mission, the house to the estate, the grave to whatever grows over graves no one is left to tend. Everything is in order. You have done nothing wrong that a court could name, and you cannot for the life of you feel clean."
       },
       {
         "label": "Pay to <b>keep the child's grave</b>, and send her home to her people.",
@@ -468,7 +468,7 @@
           "contentment": 2,
           "prestige": -1
         },
-        "outcome": "You cannot mend it, but you can keep one small grave from vanishing and send one woman back to her own with something in her hand and her dignity intact. It is a district officer's whole art, in the end: not to set things right, which is beyond you, but to make them a little less wrong."
+        "outcome": "You cannot mend it, but you keep one small grave from vanishing and send one woman back to her own people with something in her hand and her dignity whole. Years later the grave is still swept, by someone the mali will not name."
       }
     ]
   },
@@ -491,7 +491,7 @@
           "prestige": 2,
           "health": -2
         },
-        "outcome": "You spring the trap the festival was meant to spoil, and the old rebel &mdash; frail, courteous, forty years a legend &mdash; is taken quietly in the crowd. Government is pleased. The city, which had made him a story, will now make him a martyr, which is the one promotion the Police can always be relied upon to arrange."
+        "outcome": "You spring the trap the festival was meant to spoil, and the old rebel &mdash; frail, courteous, forty years a legend &mdash; is taken quietly in the crowd. Government is pleased. The city, which had made him a story, sets about making him a martyr, and the Police congratulate themselves in triplicate."
       },
       {
         "label": "Let the festival <b>carry him out</b>, and see nothing.",
@@ -514,7 +514,7 @@
           "prestige": 1,
           "contentment": 1
         },
-        "outcome": "You spend a strange evening among the poets and the plotters and come away understanding, for once, the true shape of the game &mdash; who is loyal, who is bought, who merely lonely &mdash; which is worth more than any arrest and can be entered in no return. Strickland would approve. The Commissioner must never know."
+        "outcome": "You spend a strange evening among the poets and the plotters and come away knowing, for once, the true shape of the game &mdash; who is loyal, who is bought, who is merely lonely. It is worth more than any arrest, and it can be entered in no return. Strickland would approve. The Commissioner must never know."
       }
     ]
   },
@@ -530,7 +530,7 @@
     "body": "A cypher telegram from the Residency: a man will come to you carrying half a torn banknote; you are to match it against the half enclosed, ask him nothing, and pass him north with horses and silence. It is the Great Game &mdash; the quiet war of the passes that appears in no budget and no honours list &mdash; and you have been handed a small, deniable piece of it.",
     "choices": [
       {
-        "label": "Play your part <b>exactly</b>, and ask nothing.",
+        "label": "Play your part <b>to the letter</b>, and ask nothing.",
         "effects": {
           "prestige": 3,
           "health": -3,
@@ -548,7 +548,7 @@
           "health": -4,
           "order": 1
         },
-        "outcome": "You do as bidden and, being a curious man in a dangerous trade, you also find out a little more than you were meant to. The knowledge is a weight and not a shield. In the Great Game, the men who know the most tend to be the men found face-down in the snow of a pass no map admits exists."
+        "outcome": "You do as bidden and, being a curious man in a dangerous trade, you also find out a little more than you were meant to. The knowledge is a weight and not a shield. In the Great Game, the men who know most are the men found face-down in the snow of a pass no map admits exists."
       },
       {
         "label": "Wire back that your district is <b>not a corridor</b> for the Residency's spies.",
@@ -557,7 +557,7 @@
           "health": 2,
           "order": 1
         },
-        "outcome": "You decline, on paper, to play, and the cypher traffic goes cold and finds another, more obliging magistrate up the line. You have kept your hands out of a filthy business and marked yourself, in a quarter that never forgets, as a man who would not be useful. Both were entirely predictable."
+        "outcome": "You decline, on paper, to play, and the cypher traffic goes cold and finds another, more obliging magistrate up the line. You have kept your hands out of a filthy business, and marked yourself, in a quarter that never forgets, as a man who would not be useful. The cypher clerks stop saluting you first."
       }
     ]
   }

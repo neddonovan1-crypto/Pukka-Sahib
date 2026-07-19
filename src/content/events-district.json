@@ -8,7 +8,7 @@
     "kind": "desk",
     "once": false,
     "title": "The Matter of the Sacred Bull",
-    "body": "Sub-Inspector Diwan Chand petitions, with immense dignity, that a Brahminy bull &mdash; holy, enormous, and wholly above the law &mdash; has for the third time eaten the marigolds he had grown for the flower show. He requests that the bull be, in his words, &lsquo;officially discouraged.&rsquo;",
+    "body": "There is a bull in Chhota Nagra that fears neither God nor the Penal Code. Sub-Inspector Diwan Chand petitions, with immense dignity, that this Brahminy beast has for the third time eaten the marigolds he grew for the flower show. &lsquo;Let the bull be officially discouraged,&rsquo; he writes. &lsquo;I ask no more.&rsquo;",
     "choices": [
       {
         "label": "Solemnly issue a written order that the bull be <b>kept off official flowerbeds</b>.",
@@ -17,7 +17,7 @@
           "contentment": 3,
           "health": -2
         },
-        "outcome": "The order is framed and hung in the police lines. The bull cannot read it. Everyone is nonetheless satisfied that Something Has Been Done."
+        "outcome": "The order is copied fair, framed, and hung in the police lines. The bull cannot read. Diwan Chand salutes it every morning, and honour is satisfied."
       },
       {
         "label": "Have the bull quietly <b>relocated</b> to a distant village.",
@@ -26,7 +26,7 @@
           "contentment": -6,
           "health": 1
         },
-        "outcome": "The village it is relocated to takes the arrival of a holy bull as an omen, and a deputation arrives within the week to ask what they have done to deserve it."
+        "outcome": "The bull goes by night in a commissariat cart. The receiving village takes a holy bull for an omen, and within the week a deputation arrives to ask what they have done to deserve it."
       },
       {
         "label": "Refuse to involve the district administration in <b>bovine theology</b>.",
@@ -35,7 +35,7 @@
           "contentment": -3,
           "health": 2
         },
-        "outcome": "Correct, dignified, and entirely useless. Diwan Chand's marigolds are eaten a fourth time. He does not forgive you, but he does respect you, which is worse."
+        "outcome": "Correct, dignified, useless. The marigolds are eaten a fourth time. Diwan Chand salutes you thereafter with a terrible punctilio, and never mentions flowers again."
       }
     ]
   },
@@ -48,7 +48,7 @@
     "kind": "club",
     "once": false,
     "title": "The Billiards Subscription",
-    "body": "An extraordinary meeting of the Chhota Nagra Club is convened over a proposal to raise the billiards subscription by four annas. Mrs. Fortescue-Vane is <i>for</i>. Major Prewitt is violently <i>against</i>. Both look to you, the new Magistrate, to settle a question that has already ended two friendships.",
+    "body": "Four annas on the billiards subscription, and the Chhota Nagra Club is convened in extraordinary session. Mrs. Fortescue-Vane is <i>for</i>. Major Prewitt is against, and says so twice. &lsquo;It is the principle of the thing,&rsquo; says the Major, going purple. Both look to the new Magistrate to settle what has already ended two friendships.",
     "choices": [
       {
         "label": "Side with <b>Mrs. Fortescue-Vane</b>. One does not cross her.",
@@ -57,7 +57,7 @@
           "contentment": -1,
           "health": -3
         },
-        "outcome": "You are now, invisibly and permanently, Mrs. Fortescue-Vane's man. This is worth more than a knighthood and costs roughly the same in dignity."
+        "outcome": "You are now, invisibly and for ever, Mrs. Fortescue-Vane's man. In a station this size that is worth more than a knighthood, and she collects the interest at every dinner."
       },
       {
         "label": "Side with <b>Major Prewitt</b> and the principle of the thing.",
@@ -65,7 +65,7 @@
           "prestige": -4,
           "health": 1
         },
-        "outcome": "The Major shakes your hand as though you have relieved Mafeking. Mrs. Fortescue-Vane says nothing at all, which is how you know."
+        "outcome": "The Major wrings your hand as though you had relieved Mafeking. Mrs. Fortescue-Vane says nothing at all. You will learn what that silence costs by Christmas."
       },
       {
         "label": "Propose a <b>sub-committee</b> to study the matter.",
@@ -73,7 +73,7 @@
           "prestige": 1,
           "health": -2
         },
-        "outcome": "You have discovered the single most powerful instrument of British administration: the postponement of a decision until everyone has forgotten why they cared."
+        "outcome": "The sub-committee meets twice, quarrels once, and lapses. By the rains nobody remembers who was for and who against, and the billiards table wants new cloth in any case."
       }
     ]
   },
@@ -86,7 +86,7 @@
     "kind": "desk",
     "once": false,
     "title": "The Revenue Is Short",
-    "body": "A telegram from Commissioner Blyth-Curram, who communicates exclusively in telegrams and disappointment: REVENUE RETURNS CHHOTA NAGRA UNSATISFACTORY STOP EXPECT IMPROVEMENT STOP NO EXCUSES REGARDING RAINFALL WILL BE ENTERTAINED STOP. The rains, it should be said, have failed.",
+    "body": "A telegram from Commissioner Blyth-Curram, who communicates in telegrams and disappointment: REVENUE RETURNS CHHOTA NAGRA UNSATISFACTORY STOP EXPECT IMPROVEMENT STOP NO EXCUSES REGARDING RAINFALL WILL BE ENTERTAINED STOP. The rains have failed. Every man in the district knows it except, officially, the Commissioner.",
     "choices": [
       {
         "label": "<b>Press the collection</b> hard. Simla wants numbers.",
@@ -95,7 +95,7 @@
           "contentment": -9,
           "order": -4
         },
-        "outcome": "The numbers improve. So does the queue outside Lala Hukum Chand's door, as cultivators borrow at ruinous interest to pay a revenue the fields did not grow."
+        "outcome": "The returns improve, and the queue at Lala Hukum Chand's door lengthens with them. &lsquo;The sahib's hukm,&rsquo; says the Lala, lending at his own rates. &lsquo;Who am I to refuse?&rsquo;"
       },
       {
         "label": "Quietly grant <b>remissions</b> and massage the paperwork.",
@@ -104,7 +104,7 @@
           "contentment": 7,
           "prestige": -3
         },
-        "outcome": "You have committed the administrator's original sin: mercy off the books. If it is never discovered you are a good officer. If it is, you are a bad one. The difference is entirely a matter of discovery."
+        "outcome": "Mercy off the books &mdash; the one sin the Service does not confess. The tahsildar enters the remissions in a hand rather smaller than usual and asks no questions. If Simla never looks, you are a sound officer. Simla mostly never looks."
       },
       {
         "label": "Send Simla a <b>magnificent report</b> explaining the rainfall.",
@@ -112,7 +112,7 @@
           "prestige": -5,
           "health": 3
         },
-        "outcome": "Blyth-Curram replies: RAINFALL NOTED STOP REVENUE STILL SHORT STOP. You have learned that a telegram is not a conversation."
+        "outcome": "Blyth-Curram replies by return dak: RAINFALL NOTED STOP REVENUE STILL SHORT STOP. There is no third telegram."
       }
     ]
   },
@@ -125,7 +125,7 @@
     "kind": "tour",
     "once": false,
     "title": "The Tiger of Rampur",
-    "body": "Villagers from Rampur report a tiger that has taken two goats and a good deal of sleep. They ask the Magistrate-sahib, as tradition demands, to shoot it. You have fired a rifle four times in your life, twice by accident. The whole district is, however, watching to see whether the new sahib is a <i>shikari</i> or a clerk.",
+    "body": "Villagers from Rampur report a tiger that has taken two goats and a good deal of sleep. They ask the Magistrate-sahib, as dastur demands, to come and shoot it. &lsquo;The Collector before you shot three,&rsquo; says the headman, helpfully. You have fired a rifle four times in your life, twice by accident, and the district waits to learn whether the new sahib is a <i>shikari</i> or a clerk.",
     "choices": [
       {
         "label": "<b>Go out and shoot it</b> yourself. It is expected.",
@@ -140,7 +140,7 @@
             "contentment": 5,
             "health": -6
           },
-          "outcome": "By a miracle compounded of luck and a very close range, the tiger falls. You are, from this fortnight, a <i>pukka</i> sahib in the fullest sense. You are also never going to do that again."
+          "outcome": "Luck, and a range of eleven paces, and the tiger is down. Rampur skins him on the spot, and the tale is in three tehsils by Friday. Your hands do not stop shaking until dinner."
         },
         "ifFalse": {
           "effects": {
@@ -148,7 +148,7 @@
             "order": -3,
             "health": -8
           },
-          "outcome": "Your nerves, already frayed, betray you. The tiger escapes; the story does not. A magistrate who cannot shoot straight is a magistrate the district has quietly stopped fearing."
+          "outcome": "Your hand shakes and the shot goes wide into the khud. The tiger escapes; the story does not. In Rampur they are very polite about it, and that is worse than laughter."
         }
       },
       {
@@ -158,7 +158,7 @@
           "contentment": 2,
           "prestige": -4
         },
-        "outcome": "The tiger is dealt with, efficiently and by somebody else. Rampur is grateful and faintly disappointed. A sahib who sends for help is a useful sort of man, but not a legend."
+        "outcome": "The shikari arrives with a Martini rifle and no conversation, and settles the matter in a night. Rampur is grateful, and faintly disappointed. The skin goes home with him."
       },
       {
         "label": "Declare it a matter for the <b>Forest Department</b>.",
@@ -181,7 +181,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The Rains Have Failed",
-    "body": "There is no rain, and there will be no rain, and the district knows what that word means better than any word in the revenue code. Grain prices climb; the first families sell their cooking pots; a relief works could be opened, but relief works cost money the treasury does not have and Simla did not budget for.",
+    "body": "There is no rain. There will be no rain, and the district knows what that means better than any word in the revenue code. Grain is up two seers to the rupee and climbing; the first families have sold their cooking-pots; a relief works could open to-morrow &mdash; if there were money, and Simla budgeted none.",
     "choices": [
       {
         "label": "<b>Open relief works</b> at once and account for it later.",
@@ -191,7 +191,7 @@
           "order": 4,
           "health": -4
         },
-        "outcome": "Grain-for-labour on the roads and tanks. People do not starve, which no one will thank you for, because averted disasters leave no monument. The treasury, however, remembers.",
+        "outcome": "Grain-for-labour on the roads and the Sonpur tank. They come in their thousands, thin but walking, and nobody starves. The treasury will want its accounting in April.",
         "setFlags": [
           "relief"
         ],
@@ -207,7 +207,7 @@
           "prestige": 2,
           "health": -6
         },
-        "outcome": "You follow procedure exactly. Sanction arrives in six weeks, which is four weeks after it would have mattered. The files are impeccable. The district is not."
+        "outcome": "You wait, as the code directs. Sanction comes up by dak in six weeks &mdash; four weeks after the first deaths on the Rampur road. The file is faultless from first page to last."
       },
       {
         "label": "Lean on <b>Lala Hukum Chand</b> to release grain on credit.",
@@ -217,7 +217,7 @@
           "prestige": -3,
           "order": 2
         },
-        "outcome": "The grain flows, at the Lala's interest and on the Lala's terms, and the district's debt to him deepens by a generation. You have solved this famine with a promise the next one will have to keep.",
+        "outcome": "&lsquo;For the sahib &mdash; anything,&rsquo; says Lala Hukum Chand, and names a rate that would make a Calcutta bank blush. The grain moves that night. The district will be paying for this famine long after it has forgotten the hunger.",
         "setFlags": [
           "indebted"
         ],
@@ -236,7 +236,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Commissioner Inspects",
-    "body": "Commissioner Blyth-Curram descends upon Chhota Nagra in person, walrus-moustached and radiating grievance, to inspect the district, the treasury, the lock-up, and you. He will form an opinion in the first ten minutes and spend the visit confirming it. The whole station has been whitewashed, including, it is rumoured, several things that were not walls.",
+    "body": "Commissioner Blyth-Curram descends upon Chhota Nagra in person, walrus-moustached and breathing grievance, to inspect the district, the treasury, the lock-up, and you. He will form his opinion in the first ten minutes and spend three days confirming it. The station has been whitewashed for the occasion &mdash; including, it is whispered, several things that were not walls.",
     "choices": [
       {
         "label": "Show him a <b>flawless, rehearsed</b> district.",
@@ -245,7 +245,7 @@
           "health": -6,
           "contentment": -2
         },
-        "outcome": "Every ledger balances, every prisoner is suspiciously cheerful, every road has been mended along precisely the stretch he will drive. He leaves satisfied. The performance has cost you a fortnight and a small piece of your soul, both of which the Service considers a fair price."
+        "outcome": "Every ledger balances, every prisoner is suspiciously cheerful, and the road is mended along the one stretch he will drive. He leaves satisfied. The performance has cost you a fortnight and a small piece of your soul, and the Service counts that cheap."
       },
       {
         "label": "Show him the <b>real district</b>, warts and all.",
@@ -255,7 +255,7 @@
           "health": 2,
           "revenue": 2
         },
-        "outcome": "You show him the flooded quarter, the short revenue, the honest mess of the thing. He is appalled by your candour and, in a corner of his walrus heart he will never admit to, faintly impressed. It will not help your career. It may help you sleep."
+        "outcome": "You show him the flooded quarter, the short revenue, the honest mess of the thing. He is appalled by your candour and, under the moustache, not altogether displeased. &lsquo;You are frank, at any rate,&rsquo; he says at parting, and does not say it unkindly. None of it goes into the report."
       },
       {
         "label": "Ply him with the Club's <b>best brandy</b> and change the subject.",
@@ -265,7 +265,7 @@
           "revenue": -2,
           "order": -1
         },
-        "outcome": "By the second brandy he is telling you about his own first district; by the third, the inspection is effectively over. You have learned that the Empire, at its highest levels, runs substantially on the avoidance of awkwardness."
+        "outcome": "By the second brandy he is telling you about his own first district; by the third the inspection is over, though neither of you says so. His report, when it comes, runs to two lines, both civil."
       }
     ]
   },
@@ -278,7 +278,7 @@
     "kind": "crisis",
     "once": true,
     "title": "Fever in the Bazaar",
-    "body": "A fever &mdash; the Civil Surgeon says cholera, the bazaar says worse &mdash; appears in the crowded lanes behind the grain market. The Surgeon wants the quarter cordoned and the wells closed. The traders want the market open. The pilgrims want to keep moving. Everyone wants you to choose, so that there will be someone to blame.",
+    "body": "Fever in the lanes behind the grain market &mdash; the Civil Surgeon says cholera; the bazaar says worse. &lsquo;Cordon the quarter and close the wells to-day,&rsquo; says the Surgeon, &lsquo;or count graves for me next week.&rsquo; The traders want the market open, the pilgrims want the road, and every man of them wants the choosing to be yours.",
     "choices": [
       {
         "label": "<b>Cordon the quarter</b> and close the wells. Public health first.",
@@ -288,7 +288,7 @@
           "health": -3,
           "prestige": 3
         },
-        "outcome": "The fever is contained; the trade is throttled; the traders write to Simla about the high-handed young Magistrate. You saved lives and made enemies, and only one of those two things generates correspondence."
+        "outcome": "The fever is penned into forty houses and burns itself out there. The traders' memorial to Simla runs to nine pages, with signatures. The Surgeon says nothing, being busy."
       },
       {
         "label": "<b>Keep the market open</b> and hope the Surgeon is exaggerating.",
@@ -298,7 +298,7 @@
           "order": -8,
           "health": -6
         },
-        "outcome": "The market thrives for eleven days. On the twelfth, the Surgeon is proved right in the way that surgeons are proved right, and the cordon you refused to order becomes a cordon you cannot make wide enough."
+        "outcome": "The market thrives for eleven days. On the twelfth the Surgeon is proved right in the way surgeons are proved right, and the cordon you refused at one street must now take in six."
       },
       {
         "label": "Split the difference: <b>cordon quietly</b>, keep up appearances.",
@@ -308,7 +308,7 @@
           "health": -4,
           "prestige": 1
         },
-        "outcome": "You do half of what the Surgeon asked and claim to have done all of it and none of it, depending on the audience. The fever, indifferent to your positioning, does slightly less than its worst."
+        "outcome": "You do half of what the Surgeon asked and let each audience believe what suits it. The fever does rather less than its worst. The Surgeon, meeting you in the Mall thereafter, crosses the road."
       }
     ]
   },
@@ -321,7 +321,7 @@
     "kind": "club",
     "once": false,
     "title": "A Question of Precedence",
-    "body": "At the Club's cold-weather ball, a furious dispute erupts over the order of precedence at dinner &mdash; specifically, whether the Executive Engineer's wife outranks the Forest Officer's wife. It is, everyone agrees, a trivial matter. It is also, everyone understands, a matter that could poison the entire station for a season.",
+    "body": "At the Club's cold-weather ball a dispute breaks out over precedence at dinner &mdash; whether the Executive Engineer's wife goes in before the Forest Officer's wife. A trifle, all agree; and a trifle of the kind that has poisoned stations from Peshawar to Madras for a full season together.",
     "choices": [
       {
         "label": "Rule <b>strictly by the Warrant of Precedence</b>.",
@@ -329,7 +329,7 @@
           "prestige": 3,
           "health": -1
         },
-        "outcome": "You produce the actual Warrant of Precedence, an object roughly as sacred here as scripture, and settle the matter by the book. Both wives are furious, but at the book, which cannot be invited to dinner or snubbed at it."
+        "outcome": "You produce the actual Warrant of Precedence, an object roughly as sacred here as scripture, and settle the matter by the book. Both wives are furious &mdash; but at the book, which cannot be invited to dinner or snubbed at it."
       },
       {
         "label": "<b>Seat them apart</b> and pretend it was always so.",
@@ -338,7 +338,7 @@
           "health": -3,
           "contentment": 1
         },
-        "outcome": "A little diplomatic fiction, gracefully deployed. The ball proceeds. You have discovered that the skills of a District Magistrate and the skills of a nervous head waiter are, at the Club, precisely identical."
+        "outcome": "A little fiction, gracefully served. The ball goes forward. You spend the cotillion by the dining-room door, sweating like a head waiter, and nobody thanks you."
       },
       {
         "label": "Declare you <b>will not adjudicate</b> the seating of a dinner.",
@@ -346,7 +346,7 @@
           "prestige": -4,
           "health": 3
         },
-        "outcome": "Principled, and a grave misreading of the room. At a frontier station the seating of a dinner <i>is</i> the government. By declining to rule, you have not risen above the station's politics; you have merely lost them."
+        "outcome": "Principled, and a grave misreading of the station. Up-country, the seating of a dinner <i>is</i> the government. Both ladies now agree upon one point only, and the point is you."
       }
     ]
   },
@@ -359,7 +359,7 @@
     "kind": "desk",
     "once": false,
     "title": "The Case of the Stolen Buffalo",
-    "body": "A cultivator stands accused of stealing his neighbour's buffalo. The evidence is a tangle of perjury on both sides, the village is split, and the truth &mdash; that the buffalo wandered and both men are lying about the rest &mdash; is not available in any form the law can use. Both families are watching your face for the verdict.",
+    "body": "A cultivator stands charged with stealing his neighbour's buffalo. Nine witnesses swear one way, nine the other, and all eighteen are perjured. The truth &mdash; that the beast strayed and both men are lying about the rest &mdash; is not to be had in any shape the law can use. Both families watch your face for the verdict.",
     "choices": [
       {
         "label": "Convict on the <b>letter of the evidence</b>.",
@@ -368,7 +368,7 @@
           "contentment": -4,
           "health": -2
         },
-        "outcome": "You convict the man the paperwork points to, who is probably guilty of something, if not this. The law is served. Justice files no return and is not consulted."
+        "outcome": "You convict the man the paper points at, who is guilty of something, if not of this. The law is satisfied. Justice was not called as a witness."
       },
       {
         "label": "<b>Acquit</b> for reasonable doubt and return the buffalo.",
@@ -377,7 +377,7 @@
           "order": -2,
           "health": 1
         },
-        "outcome": "You cut the knot: doubt to the accused, buffalo to its likely owner, a small homily to both families. Nobody is fully satisfied, which in a village dispute is the surest sign of a fair result."
+        "outcome": "Doubt to the accused, the buffalo to its likeliest owner, and a short homily to both families, who hear it with their eyes on the beast. They go out abusing each other and, mildly, you. The buffalo eats a court flowerbed on the way home."
       },
       {
         "label": "<b>Bind both parties over</b> and make them share the beast.",
@@ -387,7 +387,7 @@
           "health": -1,
           "order": 1
         },
-        "outcome": "Solomon in a solar topi. The two families are bound to joint custody of one bad-tempered buffalo, an arrangement so mutually inconvenient that they are reconciled by the shared grievance within the year."
+        "outcome": "Solomon in a solar topi. The two families are bound to joint custody of one bad-tempered buffalo, an arrangement so inconvenient to both that the shared grievance reconciles them within the year."
       }
     ]
   },
@@ -401,7 +401,7 @@
     "kind": "tour",
     "once": false,
     "title": "The Camp at Rampur",
-    "body": "Your tents are pitched under a mango tope outside Rampur; the <i>patwari</i>’s land-records are spread on the camp table, the headman is anxious, and a queue of cultivators has formed to lay grievances before the sahib in person. This is the district as it actually is, not as the files describe it.",
+    "body": "Your tents are pitched in the mango tope outside Rampur. Dung-smoke, a creaking well-wheel, the <i>patwari</i>&rsquo;s cloth-bound registers on the camp table; and by sunrise a line of cultivators along the bund, come to lay their griefs before the sahib himself. This is the district as it is, and not as the files have it.",
     "choices": [
       {
         "label": "Go through the <b>land records</b> line by line with the patwari.",
@@ -410,16 +410,16 @@
           "order": 2,
           "health": -3
         },
-        "outcome": "You find three fields recorded to men who died in the last famine and one to a man who never existed. The patwari is either a rogue or an artist; either way the records are truer tonight than they were this morning."
+        "outcome": "Three fields stand recorded to men who died in the last famine, and one to a man who never lived at all. &lsquo;Clerical error,&rsquo; says the patwari, of each. By lamplight the register is truer than it was at noon."
       },
       {
-        "label": "Hear the <b>cultivators’ grievances</b> under the mango tree.",
+        "label": "Hear the <b>cultivators&rsquo; grievances</b> under the mango tree.",
         "effects": {
           "contentment": 6,
           "health": -2,
           "prestige": -1
         },
-        "outcome": "You sit until dark hearing of a bad well, a hard landlord, a boundary that has walked in the night. You can mend perhaps one grievance in five, but being heard by the sahib is itself a kind of remedy, and the village knows it."
+        "outcome": "You sit till the lamps are lit, hearing of a bad well, a hard landlord, a boundary-stone that walks by night. You can mend perhaps one grief in five. The rest go home slower than they came, but they go home talking."
       },
       {
         "label": "Keep it brief &mdash; <b>show the flag</b> and move on.",
@@ -428,7 +428,7 @@
           "contentment": -2,
           "health": 1
         },
-        "outcome": "You are seen, saluted, and gone by noon. The tour register records a village inspected. What the village records is that the sahib did not stay to listen."
+        "outcome": "You are seen, saluted, and gone by noon. The tour diary records a village inspected. The village records that the sahib did not get down from his horse."
       }
     ]
   },
@@ -441,7 +441,7 @@
     "kind": "crisis",
     "once": true,
     "title": "The River Comes Up",
-    "body": "Three days of rain and the river is over its banks; the low villages are islands, the rail embankment is the only high ground for miles, and a crowd of the flooded-out is gathering on it with their cattle and their cooking pots. Boats are few, the night is coming on, and the water is still rising.",
+    "body": "Three days of rain and the river is over its banks. The low villages are islands; the rail embankment is the only high ground for miles, and along it the flooded-out are gathering with their cattle and their cooking-pots. Boats are few, the light is going, and the water is still rising.",
     "choices": [
       {
         "label": "Take <b>personal charge</b> of the rescue from a boat.",
@@ -451,7 +451,7 @@
           "health": -6,
           "prestige": 2
         },
-        "outcome": "You spend two nights on the water pulling families off rooftops, soaked and sleepless and more use than you have felt in months. The district will long remember that the sahib came himself. So, unfortunately, will your constitution.",
+        "outcome": "Two nights on the water, hauling families off roof-trees by lantern-light, soaked through and of more use than you have felt in months. The district will tell for twenty years that the sahib came himself. You cough for a month.",
         "econ": {
           "treasury": -30000
         }
@@ -464,7 +464,7 @@
           "revenue": -4,
           "health": -3
         },
-        "outcome": "You set up the relief camp, commandeer the grain, and keep a frightened crowd from becoming a mob. Unglamorous, competent, and precisely the job. Nobody drowns who can be reached; some cannot be reached.",
+        "outcome": "You make the embankment a camp &mdash; grain, a rope-line, fires, a count kept of the living &mdash; and a frightened crowd does not become a mob. Nobody within reach of a boat is lost. Beyond the boats, the water keeps its own count.",
         "econ": {
           "treasury": -80000
         }
@@ -477,7 +477,7 @@
           "contentment": -4,
           "health": -2
         },
-        "outcome": "The sappers arrive with boats on the second day and do the work you could not. It is the sensible call, and the district notes that in its worst hour the sahib sent a telegram and waited. Sense is rarely forgiven."
+        "outcome": "The sappers come up on the second day with pontoons and do the work handsomely. It was the sensible call. What the embankment saw was the sahib standing dry, waiting, and that is the picture that keeps."
       }
     ]
   },
@@ -490,7 +490,7 @@
     "kind": "desk",
     "once": false,
     "title": "The Procession and the Mosque",
-    "body": "The great autumn procession of one community is due to pass, as it has for a century, down the lane that runs past the other community's chief mosque at the hour of prayer. Both parties have come to your cutcherry &mdash; one citing custom, one citing insult &mdash; and both have brought enough young men to make plain that this is no longer only a question of a route.",
+    "body": "The great autumn procession of the one community goes, as it has gone a hundred years, down the lane past the other community&rsquo;s chief mosque at the hour of prayer. Both parties are in your cutcherry by noon &mdash; the one pleading dastur, the other insult &mdash; and both have brought young men enough to show that the question is no longer the route.",
     "choices": [
       {
         "label": "Order the procession to <b>keep its ancient route</b>.",
@@ -499,7 +499,7 @@
           "contentment": -3,
           "prestige": 2
         },
-        "outcome": "You uphold custom and brace for it. The procession passes; there is shoving, a thrown brick, a lathi-charge that stops just short of a headline. Custom is preserved, and everyone is now quite certain that next year will be worse."
+        "outcome": "The procession passes under double police. A brick, some shoving, one lathi-charge that stops a yard short of a headline. Dastur is upheld. Next year is already forming in the lane."
       },
       {
         "label": "<b>Divert the procession</b> by a longer, quieter road.",
@@ -508,7 +508,7 @@
           "contentment": -4,
           "health": -2
         },
-        "outcome": "You reroute it in the name of peace. One community mutters that the sahib has broken a hundred years of right; the other says nothing, and remembers that the sahib can be moved. You have bought the peace of this year with the authority of the next."
+        "outcome": "You turn it down the longer road in the name of peace. One side mutters that a hundred years of right is broken; the other says nothing, and puts the precedent away carefully, as a man puts away a knife. The year stays quiet."
       },
       {
         "label": "Summon both sides and <b>broker a compromise</b> yourself.",
@@ -518,7 +518,7 @@
           "prestige": -1,
           "order": 1
         },
-        "outcome": "You spend three exhausting days hammering out a route, a timing, and a face-saving fiction for each side. It holds. It is the hardest and least visible work there is, and the only kind that leaves a district quieter than you found it."
+        "outcome": "Three days of tea, flattery, and threat in about equal parts, and there is a route, a timing, and a face-saving fiction apiece. It holds. No line of it will ever appear in any report."
       }
     ]
   },
@@ -531,7 +531,7 @@
     "kind": "tour",
     "once": false,
     "title": "The Dacoits of the Ravines",
-    "body": "A gang has come up out of the ravine country &mdash; three villages robbed, a moneylender's house burned, and a growing suspicion among the cultivators that the sahib's writ stops where the good roads do. The Superintendent wants a sweep; the villages want protection; the dacoits, by all accounts, want to become a legend.",
+    "body": "A gang has come up out of the ravine country &mdash; three villages robbed, a moneylender's house burned, and a growing suspicion among the cultivators that the sahib's writ stops where the metalled road does. The Superintendent wants a sweep; the villages want protection; the dacoits, by all accounts, want to become a legend.",
     "choices": [
       {
         "label": "Lead an <b>armed sweep</b> of the ravines in person.",
@@ -541,7 +541,7 @@
           "contentment": 2,
           "prestige": 2
         },
-        "outcome": "You spend a fortnight in the saddle in bad country and the gang scatters &mdash; two taken, one shot, the rest gone across the border. The ravines are quiet, your constitution less so, and the legend, annoyingly, only grows."
+        "outcome": "A fortnight in the saddle in bad country, and the gang breaks &mdash; two taken, one shot, the rest over the border. The ravines go quiet. Within the month the ballad-singers have the story wrong, in your favour."
       },
       {
         "label": "Work quietly through <b>informers and moneylenders</b>.",
@@ -551,7 +551,7 @@
           "prestige": -1,
           "health": -2
         },
-        "outcome": "Money changes hands in the dark and, in time, so does information. The gang is broken from within &mdash; cheaper and cleverer than a sweep, and winning no one any medals, least of all you."
+        "outcome": "Money goes out in the dark and word comes back the same way. The gang is sold from inside by its own cook. There is no medal for this kind of work, and no report of it either."
       },
       {
         "label": "Post a <b>reward</b> and leave it to the police.",
@@ -560,7 +560,7 @@
           "contentment": -4,
           "health": 1
         },
-        "outcome": "You do the correct, distant thing. The poster is much admired; the dacoits are not caught; the ravine villages draw the obvious conclusion about how far the sahib will actually ride for them."
+        "outcome": "The poster is much admired in three bazaars. The dacoits are not caught. In the ravine villages the doors go up an hour earlier at dusk, and nobody sends word of anything to anyone."
       }
     ]
   },
@@ -573,7 +573,7 @@
     "kind": "desk",
     "once": true,
     "title": "The District Budget",
-    "body": "The annual estimates are due at the Secretariat, and the district's slender purse must be divided between the things that keep people alive, the things that keep people quiet, and the things that keep Simla content. Ram Autar lays three drafts before you, each balanced, each a small betrayal of the other two.",
+    "body": "The annual estimates are due at the Secretariat, and the district's slender purse must be divided between what keeps people alive, what keeps people quiet, and what keeps Simla content. Ram Autar lays three drafts on the table, each balanced, each a small betrayal of the other two. &lsquo;All are correct,&rsquo; he says, which is not the same as saying all are good.",
     "choices": [
       {
         "label": "Fund <b>public works</b> &mdash; wells, roads, a dispensary.",
@@ -584,7 +584,7 @@
         "econ": {
           "treasury": -40000
         },
-        "outcome": "You spend on the unglamorous things a district actually needs. The wells get dug, the people are quietly better off, and the Secretariat notes that your establishment charges creep above the provincial average. One of these facts will follow you; guess which."
+        "outcome": "You spend on the unglamorous things a district actually needs. The wells get dug, the people are quietly better off, and the Secretariat notes that your establishment charges run above the provincial average. One of these facts will follow you. Guess which."
       },
       {
         "label": "<b>Economise</b> and return a surplus to the province.",
@@ -596,7 +596,7 @@
         "econ": {
           "treasury": 30000
         },
-        "outcome": "You hand Simla a tidy surplus and your district a leaking tank and a shut dispensary. The Financial Secretary is delighted. Delight, in the Finance Department, is the highest form of life."
+        "outcome": "You send Simla a tidy surplus, and your district a leaking tank and a shut dispensary. The Financial Secretary writes that he is delighted. It is the only letter of praise you will get this year."
       },
       {
         "label": "Quietly <b>strengthen the police</b> lines.",
@@ -608,7 +608,7 @@
         "econ": {
           "treasury": -20000
         },
-        "outcome": "You put the money where it buys quiet rather than gratitude. The lock-up is mended, the constables paid on time, and the district grows a little safer and a little more watched. You tell yourself these are the same thing."
+        "outcome": "The money goes where it buys quiet rather than gratitude. The lock-up is mended, the constables paid on the first of the month, and the district grows a little safer and a little more watched. You tell yourself those are the same thing."
       }
     ]
   },
@@ -621,7 +621,7 @@
     "kind": "desk",
     "once": false,
     "title": "The Zamindar and the Tenants",
-    "body": "The zamindar of Pipariya has enhanced his tenants' rents to a figure the land cannot bear, and the tenants &mdash; forty families, and the record on their side for once &mdash; have brought it to your court. The zamindar has brought his pleader, his account books, and a pointed reminder that men of property are the natural friends of Government.",
+    "body": "The zamindar of Pipariya has raised his tenants' rents to a figure the land cannot bear, and the tenants &mdash; forty families, with the record on their side for once &mdash; have brought it to your court. The zamindar has brought his pleader, his account books, and a reminder, delivered smiling, that men of property are the natural friends of Government.",
     "choices": [
       {
         "label": "Rule <b>for the tenants</b> and roll back the rents.",
@@ -631,7 +631,7 @@
           "order": -1,
           "revenue": -2
         },
-        "outcome": "You cut the rents to what the fields will yield. Forty families bless the sahib; the zamindar writes to the Commissioner about the dangerous radicalism of the young magistrate, and encloses, he regrets, a list of his loyal services to the Crown."
+        "outcome": "You cut the rents to what the fields will yield. Forty families bless the sahib; the zamindar writes to the Commissioner on the dangerous radicalism of the young magistrate, and encloses, with regret, a list of his loyal services to the Crown."
       },
       {
         "label": "Rule <b>for the zamindar</b> &mdash; a contract is a contract.",
@@ -641,7 +641,7 @@
           "contentment": -7,
           "health": -1
         },
-        "outcome": "You uphold the letter of the lease. The revenue is secured, the men of property reassured, and forty families learn exactly where they stand in the order of the sahib's concerns. Some will remember it at the next Congress meeting."
+        "outcome": "You uphold the letter of the lease. The revenue is secured, the men of property reassured, and forty families learn where they stand in the order of the sahib's cares. The Congress lecturer has their names within the month."
       },
       {
         "label": "Send it to <b>arbitration</b> and split the difference.",
@@ -650,7 +650,7 @@
           "prestige": 1,
           "health": -2
         },
-        "outcome": "You appoint arbitrators and land on a rent that pinches everyone equally. Neither side is happy, the record is muddied past appeal, and the essential business of the Raj &mdash; the postponement of a reckoning &mdash; is once more served."
+        "outcome": "The arbitrators find a rent that pinches all parties alike. Neither side thanks you, the record is muddied past appeal, and the reckoning goes over to some other magistrate in some other year."
       }
     ]
   },
@@ -663,7 +663,7 @@
     "kind": "tour",
     "once": false,
     "title": "A School for Sonpur",
-    "body": "On tour you are met at Sonpur by villagers who have, astonishingly, built a schoolhouse with their own hands and their own rupees, and now ask only that Government supply a master and his salary. It is precisely the self-help the annual report always praises, and precisely the recurring charge the Finance Department exists to prevent.",
+    "body": "On tour you are met at Sonpur by villagers who have built a schoolhouse with their own hands and their own rupees, and ask of Government one thing only: a master and his pay. It is the self-help the annual report praises on one page, and the recurring charge the Finance Department strangles on the next.",
     "choices": [
       {
         "label": "<b>Sanction the master</b> and the salary at once.",
@@ -675,7 +675,7 @@
         "econ": {
           "treasury": -15000
         },
-        "outcome": "You sign the sanction on the spot, to the frank astonishment of the deputation, who had budgeted a year of petitions for it. Sonpur gets its school. It is the rarest official pleasure: a small good done quickly, before anyone can explain why it can't be."
+        "outcome": "You sign the sanction on the camp table, to the open astonishment of the deputation, who had budgeted a year of petitioning. &lsquo;To-day, sahib?&rsquo; says the headman. &lsquo;To-day.&rsquo; Sonpur gets its school, and you get the rarest pleasure the Service allows: a small good done quickly."
       },
       {
         "label": "<b>Forward it through channels</b> with a warm note.",
@@ -683,7 +683,7 @@
           "contentment": 1,
           "prestige": 1
         },
-        "outcome": "You do it properly, which is to say slowly. The file begins its long pilgrimage through the Education Department. The schoolhouse waits, empty and swept, a small monument to the distance between a village and the Secretariat."
+        "outcome": "You do it properly, which is to say slowly. The file begins its long pilgrimage through the Education Department. The schoolhouse waits, swept and empty, a small monument to the distance between a village and the Secretariat."
       },
       {
         "label": "Praise their spirit and <b>make no promises</b>.",
@@ -692,7 +692,7 @@
           "contentment": -4,
           "health": -1
         },
-        "outcome": "You give them a handsome speech about self-reliance and no master. They built a school on the strength of the sahib's justice; they will draw their own conclusions about the strength of the sahib's word."
+        "outcome": "You give them a handsome speech on self-reliance, and no master with it. The schoolhouse stands swept and empty through the rains, and the children go back to minding goats."
       }
     ]
   },
@@ -705,7 +705,7 @@
     "kind": "desk",
     "once": false,
     "title": "The Boycott of Foreign Cloth",
-    "body": "Bonfires of Manchester cloth are being lit in the bazaar, and the mill-agents and box-wallahs &mdash; loyal men, taxpayers, the backbone of the revenue &mdash; demand that you stop this seditious burning of perfectly good imported goods. The cloth is, inconveniently, the burners' own property.",
+    "body": "They are burning Manchester cloth in the bazaar &mdash; the swadeshi men, singing while it burns &mdash; and the mill-agents and box-wallahs, loyal men and taxpayers all, demand that you put a stop to this seditious destruction of perfectly good imported goods. The cloth, inconveniently, is the burners' own property.",
     "choices": [
       {
         "label": "<b>Ban the bonfires</b> as a breach of the peace.",
@@ -715,7 +715,7 @@
           "prestige": 2,
           "health": -2
         },
-        "outcome": "You forbid the burnings and thereby confirm, for anyone who doubted it, that the Government of India regards the burning of a man's own shirt as a threat to the Empire. The box-wallahs are grateful. The nationalist press could not have scripted you better."
+        "outcome": "You forbid the burnings, and thereby proclaim that Government fears the loss of a man's own shirt. The box-wallahs send round their thanks and a case of whisky. The Congress paper prints your order in full, without one word of comment."
       },
       {
         "label": "<b>Permit it</b> &mdash; a man may burn his own cloth.",
@@ -724,7 +724,7 @@
           "prestige": -3,
           "order": -1
         },
-        "outcome": "You decline to defend Manchester from the citizens of Chhota Nagra. The bonfires burn out on their own, as bonfires do, and the mill-agents write to the Chamber of Commerce about the alarming sympathies of the local magistrate."
+        "outcome": "You decline to defend Manchester from the citizens of Chhota Nagra. The bonfires burn out in a week, as bonfires do, and the mill-agents write to the Chamber of Commerce about the alarming sympathies of the local magistrate."
       },
       {
         "label": "Look the other way and <b>buy some khadi</b> yourself.",
@@ -736,7 +736,7 @@
         "setFlags": [
           "gone_soft"
         ],
-        "outcome": "You have a homespun coat quietly made and wear it on tour. It is comfortable, it is a small treason, and Ram Autar's face when he sees it is the nearest thing to open emotion he has shown all year."
+        "outcome": "You have a coat of homespun quietly made up and wear it on tour. It is comfortable, and it is a small treason. Ram Autar looks at it once, and looks away, and is silent for the length of the morning."
       }
     ]
   },
@@ -749,7 +749,7 @@
     "kind": "club",
     "once": false,
     "title": "A Scandal at the Club",
-    "body": "In the dead of the hot weather, with tempers and thermometers both past bearing, young Pemberton of the Police has been discovered in a compromising arrangement involving another man's wife, a great deal of the Club's whisky, and a challenge shouted across the billiard room. As the senior civil officer present, the mess of it lands, inevitably, on you.",
+    "body": "In the dead of the hot weather, with tempers and thermometers both past bearing, young Pemberton of the Police has been discovered in a compromising arrangement involving another man's wife, a great deal of the Club's whisky, and a challenge shouted across the billiard-room. As senior civil officer present, you inherit the mess entire.",
     "choices": [
       {
         "label": "<b>Hush it up</b> and send Pemberton on sudden leave.",
@@ -758,7 +758,7 @@
           "health": -3,
           "order": -1
         },
-        "outcome": "You engineer a discreet transfer and a story about his health, and the station agrees, as stations do, to have seen nothing. The appearances are saved. Somewhere under them, everyone knows exactly what happened, which is the ordinary condition of station life."
+        "outcome": "A transfer on medical certificate, a story about his liver, and the station agrees, as stations do, to have seen nothing. Pemberton is gone by Thursday's train. His bar chits are settled anonymously."
       },
       {
         "label": "<b>Report it</b> properly up the chain.",
@@ -767,7 +767,7 @@
           "order": 1,
           "health": -2
         },
-        "outcome": "You do the honest thing and put it on paper. Pemberton's career ends; the wronged husband is not mollified; and the station marks you down as a man who cannot be trusted to keep a thing quiet &mdash; the one unforgivable sin at a small mess."
+        "outcome": "You do the honest thing and put it on paper. Pemberton is broken; the wronged husband is not comforted; and the station marks you down as a man who cannot keep a thing quiet. At a small mess there is no blacker mark."
       },
       {
         "label": "Bang heads together and <b>settle it over brandy</b>.",
@@ -776,7 +776,7 @@
           "prestige": 1,
           "contentment": 1
         },
-        "outcome": "You lock the three of them in the card-room and do not let them out until there is an apology, a handshake, and a shared understanding that the alternative is you. It works, at some cost to your evening and to your faith in the ruling race."
+        "outcome": "You lock the three of them in the card-room with a decanter and stand at the door until there is an apology, a handshake, and a common understanding that the alternative is you. It answers. Your faith in the ruling race does not come out of that room with them."
       }
     ]
   },
@@ -789,7 +789,7 @@
     "kind": "desk",
     "once": true,
     "title": "The Commissioner's Durbar",
-    "body": "A grand <i>durbar</i> is to be held &mdash; the Commissioner presiding, the district's notables assembled by rank, robes of honour distributed, loyalty affirmed, and the whole elaborate theatre of the Raj staged for an afternoon in the maidan. Your task is the seating: a chair too high or too low, a name called out of order, and a feud is born that will outlive you.",
+    "body": "A grand <i>durbar</i> is to be held &mdash; the Commissioner presiding, the district's notables ranked on the maidan, robes of honour given out, loyalty affirmed, the whole theatre of the Raj staged for an afternoon. Yours is the seating. A chair an inch too low, a name called out of turn, and a feud is born that will outlive you and your successor both.",
     "choices": [
       {
         "label": "Stage it <b>flawlessly</b> by the Warrant and the old lists.",
@@ -798,7 +798,7 @@
           "contentment": 1,
           "health": -4
         },
-        "outcome": "Every notable is seated to the inch of his dignity, every robe bestowed on cue, and the durbar unfolds like clockwork wound by a nervous man. The Commissioner is pleased; the notables placated; you have spent a week of your life on a seating plan and would, appallingly, do it again."
+        "outcome": "Every notable is seated to the inch of his izzat, every robe bestowed on cue, and the durbar goes like clockwork wound by a nervous man. The Commissioner is pleased; the notables are placated; you have spent a week of your life on a seating plan and would, appallingly, do it again."
       },
       {
         "label": "Use the seating to <b>reward the loyal</b>, cool the awkward.",
@@ -808,7 +808,7 @@
           "contentment": -3,
           "health": -3
         },
-        "outcome": "You quietly promote the friends of Government up the rows and let the difficult men feel the draught from the back. It is deftly done and widely understood, and you have turned an afternoon of pageantry into a small, sharp instrument of rule. The Pandit, uninvited, is said to have laughed."
+        "outcome": "You move the friends of Government quietly up the rows and let the difficult men feel the draught at the back. It is deftly done and widely understood: an afternoon of pageantry made into a small sharp instrument. The Pandit, who was not invited, is said to have laughed."
       },
       {
         "label": "Keep it <b>plain</b> and spend the saving on the district.",
@@ -820,7 +820,7 @@
         "econ": {
           "treasury": -10000
         },
-        "outcome": "You stage a modest durbar and divert the saved expense to a relief fund. The notables are faintly insulted to be honoured on a budget; the district notices that the sahib would rather feed it than flatter it. Only one of those constituencies writes the confidential reports."
+        "outcome": "You stage a modest durbar and put the difference into a relief fund. The notables are faintly insulted to be honoured on a budget; the district notices that the sahib would rather feed it than flatter it. Only one of those parties writes the confidential reports."
       }
     ]
   }
