@@ -58,6 +58,7 @@ var comm = {
   events: []
     .concat(load("comm/events-division.json"))
     .concat(load("comm/events-division-2.json"))
+    .concat(load("comm/events-division-3.json"))
     .concat(load("comm/events-carried.json"))
     .concat(load("comm/warnings.json")),
   occasions: load("comm/occasions.json"),

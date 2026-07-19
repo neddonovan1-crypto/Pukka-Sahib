@@ -1,88 +1,174 @@
 [
   {
-    "requires": { "flag": "stood_by_dass" },
+    "requires": {
+      "flag": "stood_by_dass"
+    },
     "head": "The sentence with no adjectives",
     "text": "&lsquo;I dine where my Collectors dine.&rsquo; Seven words, and the Silchar Club door swung on them, and a settlement officer&rsquo;s sons will walk through it all their lives. Of everything the year built in stone and paper, the thing most likely to outlast the Empire is a sentence."
   },
   {
-    "requires": { "flag": "listed_dass" },
+    "requires": {
+      "flag": "listed_dass"
+    },
     "head": "Two lines, correctly spent",
     "text": "The honours circular allowed two names and you spent them where the work was. Somewhere up the hill a committee blinked, and passed it, and the List that year said something true. Nobody will ever know it was difficult, which is the definition of the job done."
   },
   {
-    "requires": { "flag": "backed_ormsby" },
+    "requires": {
+      "flag": "backed_ormsby"
+    },
     "head": "The wire he can publish",
     "text": "<i>The Commissioner concurs and will answer for it.</i> Ormsby kept the form of that telegram, they say, in his despatch-box through three districts. A young Collector backed once in the dark at midnight is an officer made for twenty years &mdash; and he will govern, someday, exactly as he was governed."
   },
   {
-    "requires": { "flag": "superseded_petherick" },
+    "requires": {
+      "flag": "superseded_petherick"
+    },
     "head": "The paragraph that ended a career",
     "text": "Forty villages came out of the water dry, and the order that dried them was one paragraph long, and it retired a man of twenty-six years&rsquo; service as surely as any court-martial. The Service has forgiven you the result. The manner it has merely recorded."
   },
   {
-    "requires": { "flag": "declared_early" },
+    "requires": {
+      "flag": "declared_early"
+    },
     "head": "The file number you keep by heart",
     "text": "The famine that did not happen has no monument; prevention never does. There is only a file with His Honour&rsquo;s initials and one line &mdash; <i>this is what the reserve is for</i> &mdash; and, in Marwan, several thousand people who will never know they were the subject of the year&rsquo;s best decision."
   },
   {
-    "requires": { "flag": "famine_late" },
+    "requires": {
+      "flag": "famine_late"
+    },
     "head": "The three weeks",
     "text": "The Code was satisfied, and the Code was late, and the difference is counted in a column no return prints. Petherick&rsquo;s one word &mdash; <i>wait</i> &mdash; carries your concurrence beneath it forever. You have learned what the Code is for: it is for sharing out the blame that foresight would have made unnecessary."
   },
   {
-    "requires": { "flag": "mercy_kurmi" },
+    "requires": {
+      "flag": "mercy_kurmi"
+    },
     "head": "The scale-beam",
     "text": "One commutation, argued in full, against the whole weight of the law&rsquo;s convenience. The Kurmi breaks stone in the Andamans and is alive, and a dozen ledgers in the Division grew more careful the month the order came down. Dass&rsquo;s forwarding sentence is in your desk. You have never needed to reread it."
   },
   {
-    "requires": { "flag": "went_to_kotra" },
+    "requires": {
+      "flag": "went_to_kotra"
+    },
     "head": "Two days and a horse",
     "text": "A confidential report wintered in a drawer, and a boy at Kotra found his feet never knowing why the Commissioner came. The Service&rsquo;s oldest ledger carries one more entry payable forward &mdash; the same entry, in fact, that was once made out to you, now countersigned."
   },
   {
-    "requires": { "flag": "kotra_pilgrimage" },
+    "requires": {
+      "flag": "kotra_pilgrimage"
+    },
     "head": "The tin box",
     "text": "He kept a boundary decision in a young sahib&rsquo;s uncertain hand for fourteen years, against the day the hand came back. The marigolds, the tea, the grandson presented at the salute: whatever the Gazette decides this year, that hour in the old man&rsquo;s courtyard was the inspection that mattered, and the marks were kind."
   },
   {
-    "requires": { "flag": "memsahib_reigns" },
+    "requires": {
+      "flag": "memsahib_reigns"
+    },
     "head": "The other Commissioner",
     "text": "The Division was governed twice over this year &mdash; once from the office, once from the drawing-room, and the second administration ran the smoother. Her card on a hall table did what your warrant could not. The Service pays her nothing and could not function a fortnight without her kind, and both of you know which of its two officers Sonepore will remember."
   },
   {
-    "requires": { "flag": "cleared_lala_at_last" },
+    "requires": {
+      "flag": "cleared_lala_at_last"
+    },
     "head": "The cut string",
     "text": "Twenty years of paper &mdash; Kotra, the district, the Division, patient as ivy &mdash; ended in one draft and a bow. The Lala keeps the cancelled account, they say, in the steel almirah still: not as a debt now, but as a curiosity. A client who got away is the rarest item in his collection."
   },
   {
-    "requires": { "flag": "confessed_old_sin" },
+    "requires": {
+      "flag": "confessed_old_sin"
+    },
     "head": "The graveyard series",
     "text": "The oilcloth bundle lies in Government House under His Honour&rsquo;s own key, in the series where careers are buried alive. You put it there yourself, which is the only reason you are still at your desk. <i>Contrive not to be a fool twice.</i> You have the sentence by heart. It is the cheapest knighthood-price never paid."
   },
   {
-    "requires": { "flag": "fed_the_keeper" },
+    "requires": {
+      "flag": "fed_the_keeper"
+    },
     "head": "The second fair copy",
     "text": "A clerkship, a well, four minutes of fire &mdash; and somewhere, existing or not, a second copy the exact size and shape of the rest of your career. The old man salaamed and went. You have caught yourself, twice this cold weather, reading the <i>New Dawn</i> first for a paragraph that is never in it. Yet."
   },
   {
-    "requires": { "flag": "storm_passage" },
+    "requires": {
+      "flag": "storm_passage"
+    },
     "head": "What the river charged",
     "text": "The steamer&rsquo;s stove paddle-box was rebuilt in a month; the cough the storm passage left has kept its own calendar since. The Surgeon&rsquo;s report used the word &lsquo;reckless&rsquo; inside a citation, which is the Service&rsquo;s way of saying it would prefer its heroes insurable. Silchar remembers the arrival. Your chest remembers the fare."
   },
   {
-    "requires": { "flag": "retiring_the_debt" },
+    "requires": {
+      "flag": "retiring_the_debt"
+    },
     "head": "Good for it",
     "text": "The greys went, the table plainened, the instalments marched &mdash; and in the Bank&rsquo;s Calcutta ledgers, against your name, stands the annotation that outvalues a paragraph in the Gazette: <i>good for it.</i> The Agent has never once said the words aloud. He merely renews, now, without reading the file, which is a banker&rsquo;s love letter."
   },
   {
-    "requires": { "flag": "lala_still_holds" },
-    "endings": ["kcie", "kcsi"],
+    "requires": {
+      "flag": "lala_still_holds"
+    },
+    "endings": [
+      "kcie",
+      "kcsi"
+    ],
     "head": "The figure in the almirah",
     "text": "The knighthood came &mdash; and in the steel almirah at Chhota Nagra your paper ages on, patient, compounding, asking for nothing. Sir is a fine word. The Lala&rsquo;s ledger has a column for it now, and the column, like all his columns, is merely waiting."
   },
   {
-    "requires": { "flag": "backed_petherick_wrong" },
+    "requires": {
+      "flag": "backed_petherick_wrong"
+    },
     "head": "The tab you will never see",
     "text": "The High Court&rsquo;s language went into the Secretariat&rsquo;s file on you under a tab of its own: the Commissioner who upheld an order he knew was bad, for the sake of a policy. The policy was real. So is the tab. Files at altitude forget nothing; they merely wait to be relevant."
+  },
+  {
+    "requires": {
+      "flag": "educated_pagett"
+    },
+    "head": "The member who saw Sonepore",
+    "text": "Three weeks of the real Division, and two years later a voice on the Select Committee keeps saying &lsquo;that is not what I saw in Sonepore.&rsquo; You will never be able to prove what the education was worth. Neither will the men who drafted around it."
+  },
+  {
+    "requires": {
+      "flag": "backed_sen"
+    },
+    "head": "The durbar in the hill dialect",
+    "text": "One rehearsed sentence, the flag beside the new man&rsquo;s chair, and a fortnight of your cold weather spent where the Secretariat could not see it. Sen holds the tracts still. The men who financed the deputation against him hold their peace, which in the tracts is the same as holding nothing."
+  },
+  {
+    "requires": {
+      "flag": "blocked_sen"
+    },
+    "head": "The letter on the list",
+    "text": "The tracts stayed quiet and the greying man was sound, and your letter sits on the Secretariat&rsquo;s list where such letters sit &mdash; citable, for a generation, by men whose reasons will be worse than yours. Quiet was purchased. The currency is still appreciating."
+  },
+  {
+    "requires": {
+      "flag": "royal_silence"
+    },
+    "head": "The photograph of the empty street",
+    "text": "Two pages in the London illustrated papers: bunting, bayonets, and no one at all. Nobody blamed you in writing; the tour&rsquo;s history gave your three hours one sentence in the passive voice. You have read the sentence. You are its subject."
+  },
+  {
+    "requires": {
+      "flag": "talked_to_congress"
+    },
+    "head": "The interview that is in no file",
+    "text": "Two hours, no clerks, three practical things settled, and the town&rsquo;s hartals peaceable year after year for reasons no despatch records. The pleader-president keeps your measure as you keep his. Somewhere far above you both, men who have never met describe each other in proclamations."
+  },
+  {
+    "requires": {
+      "flag": "fought_clause_nine"
+    },
+    "head": "The laugh at the well-curb",
+    "text": "Thirty depositions, one bazaar price-list that should not have existed, and a clause pulled back from the brink in a file no one will ever read. The occupancy tenants of the Division do not know your name. That is what it cost to keep things as they are, which is sometimes the whole victory."
+  },
+  {
+    "requires": {
+      "flag": "planted_the_coops"
+    },
+    "head": "Eight points off the harvest rate",
+    "text": "A third of the societies failed, as the Registrar&rsquo;s own arithmetic promised. The rest did the quiet revolutionary thing: the bazaar&rsquo;s rate dropped eight points to compete, across every village in the Division, including the ones with no society at all. Reform, when it finally works, sends no wire."
   }
 ]
