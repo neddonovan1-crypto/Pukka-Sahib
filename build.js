@@ -121,9 +121,9 @@ function build() {
   // Page-weight budget: the single-file build is what the Artifact loads in one
   // go, so growth is a decision, not a drift. Raise these only deliberately
   // (and re-optimize first — scripts/optimize-art.js).
-  // Page budget raised 3000 → 3200 KB with Chapter III (the Division's whole
-  // bundle is ~230 KB of content); art budget unchanged.
-  var ART_BUDGET_KB = 2100, PAGE_BUDGET_KB = 3200;
+  // Page budget raised 3000 → 3200 KB with Chapter III, → 3400 KB with
+  // Chapter IV (each chapter bundle is ~200 KB of content); art unchanged.
+  var ART_BUDGET_KB = 2100, PAGE_BUDGET_KB = 3400;
   if (artKb > ART_BUDGET_KB) throw new Error("art budget blown: " + artKb.toFixed(0) + " KB embedded > " + ART_BUDGET_KB + " KB");
   if (out.length / 1024 > PAGE_BUDGET_KB) throw new Error("page budget blown: " + (out.length / 1024).toFixed(0) + " KB > " + PAGE_BUDGET_KB + " KB");
   return out;

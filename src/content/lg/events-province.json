@@ -1,0 +1,565 @@
+[
+  {
+    "id": "lg-pick-ministers",
+    "tag": "MOST SECRET",
+    "season": [
+      "cold"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Choice of Ministers",
+    "body": "The elections are counted and the constitution requires of you its strangest act: the appointment of two Ministers, Indian, responsible to the Council, to govern the transferred half of your own province. The arithmetic offers three shapes. Rao Bahadur Krishnaswami, the ablest parliamentarian in the House &mdash; and the least manageable. The Nawabzada, safe, amiable, guaranteed to lose his seat next election and the transferred departments meanwhile. Or the balanced ticket the Chief Secretary urges &mdash; one from each community, both second-rate, offensive to neither and useful to nothing. Whom you make Minister, the province learns what the reforms are FOR.",
+    "choices": [
+      {
+        "label": "The ablest men, manageability be hanged: Krishnaswami, and the best man opposite him.",
+        "effects": {
+          "contentment": 4,
+          "prestige": 1,
+          "order": -1,
+          "health": -1
+        },
+        "setFlags": [
+          "able_ministers"
+        ],
+        "outcome": "Krishnaswami takes Local Self-Government like a man taking a city, and his opposite number takes Education the same way, and within two sessions you are governing beside two Ministers who fight you weekly, win monthly, and make the transferred half of the province visibly move. It is exhausting, quotable, and real: the reforms working as their drafters dreamed and their enemies feared. The Viceroy's private secretary asks how you manage them. You reply, truthfully, that you don't, and the reply travels all the way Home in somebody's despatch."
+      },
+      {
+        "label": "The safe pair: government must be workable before it is brilliant.",
+        "effects": {
+          "prestige": 1,
+          "order": 1,
+          "contentment": -3
+        },
+        "outcome": "The Nawabzada and a colleague of equal upholstery are sworn in, and the transferred departments settle into a gentle administrative doze, punctuated by speeches of loyal generality. Nothing is risked and nothing moves, and the Council draws the conclusion opposition benches always draw from tame ministries: that the reforms are furniture and the furniture was chosen to match. Krishnaswami, passed over, becomes the most formidable critic of Government in the province's history, which he would never have had time for in office. You gave him the time."
+      },
+      {
+        "label": "The balanced ticket; at this altitude, arithmetic is statesmanship.",
+        "effects": {
+          "order": 1,
+          "contentment": -1
+        },
+        "outcome": "One from each community, weighed to the grain, and the appointment is received as balanced appointments are received: each community counts the other's Minister and discounts its own. The ministry is adequate; the precedent is permanent. You have taught the province that office is distributed by census, and the province is an excellent pupil &mdash; every board, committee and municipality re-learns its own arithmetic within the year, and the communal ledger, once opened at the top, is never afterwards closed anywhere."
+      }
+    ]
+  },
+  {
+    "id": "lg-question-hour",
+    "tag": "COUNCIL",
+    "season": [
+      "hot"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Question About Piprala",
+    "body": "The session&rsquo;s first great storm is about something that happened before your term: the Piprala firing &mdash; a crowd, a panicked sub-inspector, seven dead, and an enquiry your predecessor kept departmental and unpublished. Now the Council has the scent: forty questions on the paper, the press gallery full, and the opposition&rsquo;s best voice demanding the enquiry&rsquo;s publication in a speech that quotes Burke accurately. The file is in your box. It is worse than the Council suspects &mdash; not in the firing, which was panic, but in the enquiry, which was cosmetic. You may defend a dead colleague&rsquo;s whitewash, or unbury it.",
+    "choices": [
+      {
+        "label": "Publish the enquiry entire, with a new one gazetted under a High Court judge.",
+        "effects": {
+          "contentment": 4,
+          "prestige": -2,
+          "order": 1
+        },
+        "setFlags": [
+          "published_piprala"
+        ],
+        "outcome": "The House is silenced by the one manoeuvre it never rehearses against: candour at full strength. The old enquiry is published looking exactly as cosmetic as it is; the new one sits a season, finds the firing panicked and the concealment indefensible, and pensions the sub-inspector out with a censure that lands mostly on men now retired or dead. The Services grumble that you fed a colleague's memory to the Council. The Council, having been fed the truth once, believes your answers for the rest of the term &mdash; an asset no whitewash ever bought any Government."
+      },
+      {
+        "label": "Defend the file: the Services must know their dead are safe with you.",
+        "effects": {
+          "prestige": 1,
+          "order": 1,
+          "contentment": -4
+        },
+        "outcome": "You answer the forty questions in an afternoon of flat, correct, unyielding replies, and the Services' galleries — there are such galleries, in every club in the province — toast the new Lieutenant-Governor who holds the line. The Council reads the same afternoon as confession by stonewall, and Piprala becomes a word: shorthand, for the rest of the term, for everything your answers are presumed to hide. Three sessions later you will need the House to believe you about a famine figure, and it will remember Piprala, and it will not."
+      },
+      {
+        "label": "Offer the House a select committee, papers reserved; drown it in procedure.",
+        "effects": {
+          "prestige": 1,
+          "health": -1,
+          "contentment": -2
+        },
+        "outcome": "The committee is granted, constituted, and starved — papers reserved on grounds of discipline, witnesses retired, terms of reference drawn like a noose around nothing. It reports in eleven months, split on party lines, and the storm expires of exhaustion, which was the design. The design is also legible: every member of that committee is a teacher now on the subject of Government's committees, with a syllabus of one word. Procedure won. Procedure, you begin to notice at this rank, always wins, and pays for its victories from your account."
+      }
+    ]
+  },
+  {
+    "id": "lg-budget-certify",
+    "tag": "COUNCIL",
+    "season": [
+      "hot"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Council Throws Out the Police Budget",
+    "body": "The division bell rings on the year&rsquo;s great vote and the Council does the thing the reforms permit it: rejects the police budget demand entire &mdash; not on the merits, as every member privately concedes, but as the one refusal that makes the constitution&rsquo;s point. The law provides your answer: certification, the Lieutenant-Governor restoring the grant over the Council&rsquo;s head, lawful, final, and precisely what the opposition wants you to do, in public, in session, so the certificate can tour the province as proof the reforms are paper. The police must be paid. The question is what else the paying is made to mean.",
+    "choices": [
+      {
+        "label": "Certify at once, briefly, without apology; the constitution cuts both ways.",
+        "effects": {
+          "order": 2,
+          "prestige": 2,
+          "contentment": -3
+        },
+        "outcome": "One paragraph, read to the House standing: the demand is restored, the responsibility is yours, and the constitution that allows their refusal allows your certificate — the same document, read whole. It is clean, quick, and quotable, and the opposition gets its grievance at full strength: THE CERTIFICATE tours the province on every platform for a year. But the machine is paid, the precedent is exact, and the Council learns the one lesson worth its taxes: refusal has a price and Government will pay it in the open, over a signature, and answer for it."
+      },
+      {
+        "label": "Adjourn the House three days and buy the vote back, item by item, in the lobbies.",
+        "effects": {
+          "contentment": 2,
+          "prestige": -1,
+          "health": -2
+        },
+        "econ": {
+          "debt": 30000
+        },
+        "outcome": "Three days of Government House dinners and lobby arithmetic: a bridge here, a school grant there, two nominated seats' worth of patronage delicately re-aimed — and the demand passes on re-presentation by nine votes, uncertified. The constitutionalists call it the reforms working; the purists on both sides call it what it also is. The police are paid by a House that voted the money itself, which matters. The price-list of the province's votes is now established and filed, on both sides of the table, which will matter longer."
+      },
+      {
+        "label": "Let the rejection stand a season: the province may see what an unpaid police looks like.",
+        "effects": {
+          "order": -5,
+          "prestige": -2,
+          "contentment": 1
+        },
+        "outcome": "The gamble of the hard school: no certificate, allowances frozen, recruitment stopped, and the consequences allowed to arrive on schedule — thinner pickets at the festivals, slower escorts, a dacoity gang working two districts with unusual leisure. The Council hears about all of it, in detail, from you, weekly. It votes the money back in the autumn session, chastened — and the interval's bill was paid in villages that had no vote in the matter, a fact the opposition uses better than you used the lesson. Constitutions, it turns out, teach expensively in the vernacular."
+      }
+    ]
+  },
+  {
+    "id": "lg-clemency-conspiracy",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Barhampur Conspiracy Case",
+    "body": "The great conspiracy trial ends and the papers reach Government House: three young men condemned for the Motijhil dacoity &mdash; a revolutionary cell&rsquo;s fund-raising, a guard shot dead, the law exact. Two fired; one, aged nineteen, held the horses. The province has adopted them as sons: petitions with a hundred thousand names, the Council in emotion, the moderate press pleading, the Services and the European association demanding the law take its course &mdash; their man is the dead guard. Your predecessor commuted nobody in seven years. The prerogative is yours alone, and whatever you do will be a proclamation.",
+    "choices": [
+      {
+        "label": "Commute the boy who held the horses; confirm the two who fired.",
+        "effects": {
+          "contentment": 3,
+          "order": 1,
+          "prestige": -1
+        },
+        "setFlags": [
+          "measured_mercy"
+        ],
+        "outcome": "The distinction is drawn where the evidence draws it — the hand and the trigger — and published with your reasons at length, which is the novelty: a prerogative explained. The two die at Barhampur gaol; the boy goes to the Andamans, and his mother's telegram of thanks is printed, to the fury of both extremes. Neither camp is satisfied, which was foreseeable; both understand the ruling, which was the point. In the revolutionary pamphlets thereafter you are 'the hangman who counts' — a title whose second word, your Chief Secretary observes, no predecessor earned."
+      },
+      {
+        "label": "Confirm all three; a guard was murdered and the law is the law.",
+        "effects": {
+          "prestige": 2,
+          "order": -2,
+          "contentment": -4
+        },
+        "outcome": "The law takes its course on a Tuesday at dawn, and the province observes the hartal it had ready. The European association's address of appreciation arrives by noon, which does not help. Three photographs begin their career on the walls of a thousand student lodgings; the nineteen-year-old's is the one that lasts, because martyrologies are edited by age. Order is asserted and the assertion holds. What it recruits, over the following decade, is not counted in any return you will sign — but it is counted."
+      },
+      {
+        "label": "Commute all three to transportation; the province is owed a gesture of magnanimity.",
+        "effects": {
+          "contentment": 4,
+          "prestige": -3,
+          "order": -2
+        },
+        "outcome": "The gesture is grand and lands as grandly: rejoicing in the bazaars, garlands on your gates, and, in the European clubs of the province, a cold fury that reaches Home by the next mail — a guard murdered, his murderers spared for popularity. The Secretary of State asks for your reasons 'for record.' The revolutionaries read the mercy exactly as the clubs feared: as weakness, price-listed. Eighteen months later another guard, another gang, and the file crosses your table again, quoting you."
+      }
+    ]
+  },
+  {
+    "id": "lg-detenus",
+    "tag": "MOST SECRET",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Detenus of Fort Barhampur",
+    "body": "You inherited them with the furniture: thirty-one men held without trial under the emergency ordinance of the troubles &mdash; suspects the CID calls the revolutionary network&rsquo;s spine, against whom there is intelligence in abundance and evidence for court in almost none. Three years now, some of them. The Council demands their release or trial at every session; the CID answers, in its locked annexures, that six of the thirty-one would have the bombs moving again in a month &mdash; and names them, with its reasons. The ordinance lapses at the year&rsquo;s end unless you certify its renewal. Thirty-one men, and the file knows six of them by heart.",
+    "choices": [
+      {
+        "label": "Release the twenty-five, hold the six, and publish the principle if not the evidence.",
+        "effects": {
+          "contentment": 3,
+          "order": -1,
+          "prestige": 1
+        },
+        "setFlags": [
+          "thinned_the_fort"
+        ],
+        "outcome": "The gates open for twenty-five — met at the fort's gate by garlands and made much of for a month, then reabsorbed by the province as released men are — and the six remain, named to the Council only as a number, with your statement that you have read every annexure yourself and will answer for each retention personally, annually, in the House. The formula satisfies nobody in principle; in practice the annual answering becomes an institution, and the number six becomes five, then three, as the CID's certainties are made to re-earn themselves under your questioning each year. It is not justice. It is custody of the gap where justice cannot reach, held to account. At this rank that is some days the whole of the work."
+      },
+      {
+        "label": "Release them all; three years without trial is its own verdict.",
+        "effects": {
+          "contentment": 5,
+          "prestige": -2
+        },
+        "risk": {
+          "chance": 0.25,
+          "effects": {
+            "order": -12,
+            "prestige": -6,
+            "contentment": -3
+          },
+          "setFlags": [
+            "fort_emptied_wrong"
+          ],
+          "outcome": "Eleven months later the Motijhil armoury is raided by a cell the CID traces, in a fortnight of grim completeness, to two of the released six: the network's spine, re-articulated exactly as the annexures promised. A constable and a raider dead, the province's politics set back a decade, and the Council — which demanded the releases in forty divisions — asks in its supplementaries why Government failed to anticipate. The CID says nothing at all to you, ever, which is its most eloquent register. The principle was sound. The six were the six. Both things are true, and you signed."
+        },
+        "outcome": "The fort empties on one gazetted morning and the province takes the point entire: the new regime will govern by law or not at all. The CID's forebodings, this time, do not mature — the six scatter, watched, into politics, journalism, and in one case a successful cloth business, the movement having in truth moved past the bomb while the annexures aged. The gesture buys the term a fund of trust no ordinance ever purchased. You were right, and you know precisely how much of being right was luck, which is the beginning of wisdom at this rank."
+      },
+      {
+        "label": "Certify the renewal; the CID's spine theory has kept the bombs quiet three years.",
+        "effects": {
+          "order": 2,
+          "prestige": 1,
+          "contentment": -4
+        },
+        "outcome": "The ordinance renews, the fort holds its thirty-one, and the bombs stay quiet, which is the argument and remains it: prevention's proof is always a silence. The Council's annual motion becomes a ritual; the detenus become a cause with its own press fund; and each year the held men grow — in the province's imagination, which is the only court hearing their case — a little more innocent, a little more emblematic. Detention without trial keeps the peace and manufactures, in instalments, the constituency that will one day end far more than the ordinance. Both columns are real, and you have chosen which to feed."
+      }
+    ]
+  },
+  {
+    "id": "lg-services-memorial",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Services' Memorial",
+    "body": "It arrives with two hundred signatures, correct through every channel: a memorial from the European officers of the province &mdash; your own Service, the police, the engineers &mdash; on pay eaten by the exchange, pensions clouded by the reforms, authority questioned in Councils and courts, and the steady departure of the best juniors Home while recruitment from England runs dry. Under the officialese is a plain sentence: the men who work your machine no longer believe the machine believes in them. You remember believing at Kotra that the Service was a rock. You are now the rock. The rock is asked to answer.",
+    "choices": [
+      {
+        "label": "Answer it in person: gather the signatories and speak as one of them.",
+        "effects": {
+          "prestige": 2,
+          "contentment": 1,
+          "health": -1
+        },
+        "setFlags": [
+          "steadied_the_services"
+        ],
+        "outcome": "Two hundred officers in the Government House ballroom, no press, no text issued, and you give them forty minutes from Kotra forward: what the Service was, what the reforms are, and what you will fight for at Simla by name — the exchange compensation, the pension guarantee — and what you will not pretend about, which is the direction of history. It is the speech of a man who has done every rank in the room, and it lands as only that speech can. Resignations in the province halve for two years. Nothing structural changed. Somebody credible said the true thing aloud, which was the actual petition under the memorial."
+      },
+      {
+        "label": "Forward it Home with your strong endorsement, and fight it as a paper campaign.",
+        "effects": {
+          "prestige": 1,
+          "health": -1
+        },
+        "outcome": "The memorial goes up wearing your covering minute like armour, and the campaign is fought where such campaigns are fought — in committee, over two years, at the pace of Whitehall — and yields, eventually, half: the exchange compensation granted, the pension question 'reserved for the larger enquiry.' A real half, honestly won. But paper thanks nobody; the juniors kept resigning while the file travelled, and the memorialists remember only that they petitioned their chief and received, in season, a Gazette notification. The half-victory is yours. The half-defeat, somehow, is also yours. Rank is a ratchet of that kind."
+      },
+      {
+        "label": "Receive it coldly; the Services do not memorialise, they serve.",
+        "effects": {
+          "prestige": -2,
+          "order": -1,
+          "contentment": -1
+        },
+        "outcome": "The reply is one paragraph of impeccable constitutional frost — Government does not treat with its own officers as with a deputation — and it is technically unanswerable and totally heard. The signatures came from men holding your districts through the hardest decade of the Service's life; what they learn is that the top of their own tree reads them as a trade union. The resignation curve resumes its climb with a new steepness the Chief Secretary graphs but does not annotate. The machine still works. It has merely stopped believing anyone is listening, and machines in that condition work to rule."
+      }
+    ]
+  },
+  {
+    "id": "lg-failing-commissioner",
+    "tag": "MOST SECRET",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Commissioner Who Is Failing",
+    "body": "Five Commissioners hold your province, and one of them is failing: Braithwaite of the northern Division &mdash; twenty-eight years, a famine medal, a name the older villages still bless &mdash; and now the reports assemble themselves into the shape every senior officer learns to read: decisions deferred, tours abandoned, a hand that shakes at durbar, and the decanter&rsquo;s tide-line rising through the accounts of everyone who dines with him. His Division is drifting. He has three years to pension. You knew him when you were a Collector and he was the coming man of the province. The coming man is going, and the question is only whether he goes with a name.",
+    "choices": [
+      {
+        "label": "Go north yourself, alone, and put it to him as one Kotra man to another.",
+        "effects": {
+          "contentment": 2,
+          "prestige": 1,
+          "health": -2
+        },
+        "setFlags": [
+          "braithwaite_pension"
+        ],
+        "outcome": "No secretary, no programme: two days at his residence, and on the second evening you put the reports on the table between the glasses and say what chiefs almost never say — that you have read them, that they are true, and that he will retire in the spring at full pension with the Division's thanks in the Gazette, or be retired by autumn without them. He is silent a long time. Then, being what he was, he chooses the spring, and works his last cold weather dry and well — his best season in five years, as if the sentence had lifted a siege. The Gazette paragraph, when it comes, is warm and true. What it cost him only you saw, and what it cost you only he guessed."
+      },
+      {
+        "label": "The formal machinery: a medical board, and the findings to govern.",
+        "effects": {
+          "order": 1,
+          "prestige": -1,
+          "contentment": -2
+        },
+        "outcome": "The board sits, as boards sit, with the whole province watching through the keyhole; the findings are what the reports were, in Latin; and Braithwaite is invalided out on the certificate, correct, pensioned, and publicly diagnosed. It is defensible in every particular and it breaks him faster than the decanter was managing: a man of famine-medal pride, retired by procedure in front of forty million people. He does not come to Government House to say goodbye. The Service notes that the new regime handles its failing men by the book. The Service has a long memory for which book."
+      },
+      {
+        "label": "Carry him to pension: shore the Division quietly with a strong Secretary.",
+        "effects": {
+          "health": -1,
+          "order": -2,
+          "prestige": -1
+        },
+        "outcome": "The kind option, and its arithmetic: a first-class Divisional Secretary posted north to be the actual government, the files routed discreetly, the durbars stage-managed — and for two years it nearly works, at the price of a Division run by a subordinate and a fiction maintained by everyone above a certain rank. The rains of the second year find the gap: a relief decision only a Commissioner could take, taken late, by nobody. The cost lands on villages, as such costs do. Braithwaite reaches his pension with his name whole. The name was purchased. You know the currency, and so, uneasily, does the strong Secretary."
+      }
+    ]
+  },
+  {
+    "id": "lg-electorates",
+    "tag": "COUNCIL",
+    "season": [
+      "hot"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Municipal Electorates Bill",
+    "body": "The session&rsquo;s hardest Bill is three lines in a municipal amendment: whether the province&rsquo;s town councils are to be elected by separate communal electorates &mdash; each community voting only for its own &mdash; or by general rolls with reserved seats. The minority community&rsquo;s members are unanimous: without separate electorates they will be voted out of municipal existence, and they quote figures that are true. The majority&rsquo;s members are equally unanimous: separate electorates make every civic question a communal census forever, and they quote the last ten years, which are also true. Government holds the deciding bloc of votes. Both futures are in the lobby, waiting to be walked into.",
+    "choices": [
+      {
+        "label": "General electorates with reserved seats, and Government's whole strength behind it.",
+        "effects": {
+          "contentment": 2,
+          "order": -2,
+          "prestige": 1
+        },
+        "outcome": "The Bill passes on Government's votes with reservation of seats by population — the compromise that asks candidates to seek votes across the line to win them, which is the whole civic wager. The minority's press calls it extinction on the instalment plan and is not entirely wrong about particular towns; the first elections under it produce, in about equal numbers, communal slates as feared and — in a dozen municipalities — the cross-line coalitions the wager hoped for. Ten years will judge it. You have bet the towns on the possibility of a civic public, knowing the bet, which is more than the last three Governments did in either direction."
+      },
+      {
+        "label": "Separate electorates; the minority's fear is present and the theory's harvest is distant.",
+        "effects": {
+          "order": 2,
+          "contentment": -2
+        },
+        "outcome": "The Bill passes amended, each community to its own roll, and the minority's gratitude is real and lasting — a settled fear is no small grant. The price arrives on the schedule the majority predicted: municipal politics reorganises by census, the cross-line candidate becomes extinct in one electoral generation, and every drain, school and octroi in the province acquires a communal arithmetic it never afterwards loses. Order, in the short ledger, improves; the long ledger opens a page that will still be totalling long after the Empire's own account is closed. You ruled for the present tense. The present, at least, was grateful."
+      },
+      {
+        "label": "Withdraw the clause and appoint a boundary-and-franchise committee; some fires want starving.",
+        "effects": {
+          "prestige": -1,
+          "health": 1,
+          "contentment": -1
+        },
+        "outcome": "The three lines are withdrawn for 'further examination,' and the committee is constituted with a chairman chosen for immovability. It examines for the rest of your term, unhurried as geology, and the towns meanwhile elect on the old imperfect rolls, grumbling but un-detonated. It is postponement raised to statecraft, and you know its true name. So does the province: both communities' papers agree — their first agreement in years — that Government has no policy. They are exactly right. Against certain questions in certain decades, no policy IS the policy, and it holds precisely until it doesn't, on somebody else's term."
+      }
+    ]
+  },
+  {
+    "id": "lg-university-strike",
+    "tag": "URGENT",
+    "season": [
+      "hot"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The University Comes Out",
+    "body": "It begins with a rusticated student and a doggerel verse about the Vice-Chancellor, and within a fortnight Barhampur University is out entire: four thousand students boycotting examinations, picketing the convocation, and burning their English textbooks on the college maidan with the movement&rsquo;s flags flying over the fire. The Vice-Chancellor &mdash; your appointee, elderly, admirable, and entirely bewildered &mdash; wants police in the quadrangles. The students&rsquo; committee, with the impudence of the age, has written to YOU directly: they will call it off for the rusticated boy&rsquo;s reinstatement and &lsquo;a hearing.&rsquo; The colleges empty a little further every day the letter sits.",
+    "choices": [
+      {
+        "label": "Give them the hearing yourself: two hours at Government House, gates open.",
+        "effects": {
+          "contentment": 4,
+          "prestige": -2,
+          "order": 1
+        },
+        "setFlags": [
+          "heard_the_students"
+        ],
+        "outcome": "Five of the committee, scrubbed and terrified and brave, across the long table from His Honour in person — and the interview confounds every prophecy by being useful: the rustication was in fact vindictive (you reverse it), the fee grievance under the politics was in fact real (you refer it, funded), and the politics itself is heard out for one hour and answered for another, hard, as men are answered. The strike ends without a lathi lifted. The clubs are appalled — His Honour receiving strike committees — and the province's students acquire the one conviction most dangerous to the movement's recruiters: that somewhere at the top of the machine, arguments are heard."
+      },
+      {
+        "label": "Back the Vice-Chancellor entirely: police at the gates, examinations held under guard.",
+        "effects": {
+          "order": 2,
+          "prestige": 1,
+          "contentment": -5
+        },
+        "outcome": "The quadrangles are held and the examinations sat — by a third of the roll, under constables, in an atmosphere the invigilators describe with unacademic frankness. Authority is upheld; the university year is technically saved; and a generation of the province's educated youth completes its political education in one term, at Government's expense. The rusticated boy matriculates instead into the movement, where his doggerel improves. Every subsequent agitation in the province for a decade is officered by men who remember the constables at the gate — an alumni network, the Chief Secretary observes, that Government funded itself."
+      },
+      {
+        "label": "Close the university for the term; let four thousand explain the lost year at home.",
+        "effects": {
+          "order": 1,
+          "health": 1,
+          "contentment": -3
+        },
+        "outcome": "Sine die: the hostels emptied, the term cancelled, four thousand agitators converted by gazette notification into four thousand sons at home explaining a lost year to fathers who paid the fees. The dispersal works as dispersals work — the strike cannot survive the strikers' scattering — and the university reopens in the cold weather, subdued. The lost term is paid by the innocent along with the ardent, fee-receipts and careers alike; and in four thousand family ledgers across the province, Government is entered as the party that closed the college. The movement could not have purchased the entry at any price."
+      }
+    ]
+  },
+  {
+    "id": "lg-temple-road",
+    "tag": "PETITION",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Road Past the Temple",
+    "body": "The petition comes up from the southern Division with a riot behind it and a century ahead of it: the untouchable community of Mallipur claims the public road that passes the great temple &mdash; closed to them by custom so old it is mistaken for law &mdash; and has begun walking it, in silent, orderly, hymn-singing procession. The orthodox have answered with lathis once already. The road is public by every test the law knows; the custom is enforced by every sanction the village knows. Your law member says the case is unanswerable. Your political department says so is the other side&rsquo;s. Both are correct, and the processions resume on Monday.",
+    "choices": [
+      {
+        "label": "Declare the road open to all, and hold it open with police for as long as it takes.",
+        "effects": {
+          "contentment": 2,
+          "order": -3,
+          "prestige": 1
+        },
+        "setFlags": [
+          "opened_the_road"
+        ],
+        "outcome": "The declaration is one sentence — a public road is public — and the holding of it is eighteen months: pickets at the temple corner, three ugly evenings, prosecutions pressed evenhandedly, and a slow, sullen, historic subsidence into fact. The orthodox associations enter you in their books permanently. The Mallipur processions walk the road, then walk it unescorted, then simply use it, which is the victory: the extraordinary decaying into the ordinary under guard. Forty years on, a Minister of the province will mention in his memoirs the morning his grandfather first walked past the temple gate upright. Files do not record what that is worth. Memoirs do."
+      },
+      {
+        "label": "Broker the compromise: the road open, the processions voluntarily silent past the gate.",
+        "effects": {
+          "order": 2,
+          "contentment": 1
+        },
+        "outcome": "Three weeks of patient brokerage through the one Brahmin pleader both sides trust, and the settlement holds: the road open to all comers, the hymns suspended for two hundred yards, honour preserved at the precise price of principle that compromises charge. It works — the lathis stay down, the processions pass — and it teaches the province that rights at Government's hands come fitted with mufflers. Both sides sign; neither forgets. The next such road, in the next such town, begins its case from your precedent, hymns and all, and the brokerage must be done again, forever, which is perhaps what governing such questions is."
+      },
+      {
+        "label": "It is a religious question; Government holds the peace and rules on nothing.",
+        "effects": {
+          "order": -1,
+          "contentment": -3,
+          "prestige": -1
+        },
+        "outcome": "Neutrality, declared and enforced: the processions and the custom left to contest the road under a magistrate's eye, Government committed only against broken heads. The contest runs for years at low fever — prosecutions, counter-petitions, one bad night each spring — and neutrality reveals its working face: the custom holds the road, custom being the incumbent, and the law's plain words wait on Government's pleasure indefinitely. The Mallipur community draws the conclusion drawn by every petitioner shown procedure instead of principle, and takes its cause to the movement, which accepts it gladly, road, hymns, grievance and all. The question did not stay out of politics. It merely left yours."
+      }
+    ]
+  },
+  {
+    "id": "lg-canal-colony",
+    "tag": "SETTLEMENT",
+    "season": [
+      "cold"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Allotment of the New Colony",
+    "body": "The great canal is finished at last and the water is running, and behind the water comes the oldest gift a government of India can bestow: two hundred thousand acres of new-irrigated colony land, to be allotted by rules you must now sign. The military board wants it for pensioned soldiers &mdash; loyalty watered and planted in rows. The revenue members want auction &mdash; the exchequer&rsquo;s answer, and the moneylenders&rsquo; charter. The settlement school wants peasant grants &mdash; smallholdings for the crowded eastern tahsils, the province&rsquo;s hunger actually fed. Every acre can be given once. Every rule you sign is a portrait of what Government is for.",
+    "choices": [
+      {
+        "label": "Peasant grants first: smallholdings for the crowded tahsils, soldiers second, auction last.",
+        "effects": {
+          "contentment": 5,
+          "revenue": -2,
+          "prestige": -1
+        },
+        "setFlags": [
+          "colony_for_peasants"
+        ],
+        "outcome": "The rules go out with the settlement school's heart in them: fifteen-acre grants, residence and cultivation conditions, transfer barred to non-agriculturists for a generation — the moneylender locked out of the colony by its founding deed. The migration from the eastern tahsils begins that cold weather: bullock-carts on the new roads, whole village-lineages replanted, the province visibly decompressing. The exchequer's column mourns the auction receipts annually. Thirty years on, the colony's second generation will be the steadiest countryside in northern India, and its foundation legend — told to children — will be the year the sirkar gave the land to the men who plough."
+      },
+      {
+        "label": "Auction the best blocks; the canal cost two crores and the budget is owed its return.",
+        "effects": {
+          "revenue": 4,
+          "prestige": 1,
+          "contentment": -3
+        },
+        "outcome": "The auctions are a triumph of the kind auditors love: the upset prices doubled, the canal's capital account visibly redeeming, the Finance member almost warm. The buyers are who auction buyers are — the moneylending houses, the pleaders' syndicates, the men with liquid lakhs — and the colony plants itself as an estate economy from birth: absentee proprietors, tenant cultivators, rents set at what new water bears. The exchequer is righted. The chance — governments get perhaps one such chance a century — to plant a peasant province from seed was sold at the upset price, and the price was paid, and entered, and that column closed."
+      },
+      {
+        "label": "The soldiers' colony: the pensioned regiments settled in loyal blocks along the canal.",
+        "effects": {
+          "order": 2,
+          "prestige": 2,
+          "contentment": -1
+        },
+        "outcome": "The military board's dream, signed: block after block to pensioned sowars and sepoys, village sites named for the regiments, the colony a garden of loyalty visible from the railway. It prospers — soldiers farm as they soldier, in lines — and the recruiting grounds of the province acquire a stake in the Raj that pamphlets cannot argue with, which was the design and is honestly achieved. The crowded eastern tahsils, who dug no trenches, stay crowded; their claim had no board behind it. The colony is loyal, orderly, productive, and allotted — as the movement's press observes in its best-read leader of the year — to the men who held the country, from the men who work it."
+      }
+    ]
+  },
+  {
+    "id": "lg-usury-act",
+    "tag": "SETTLEMENT",
+    "season": [
+      "any"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The Moneylenders' Bill",
+    "body": "Thirty years of famine reports have begged for it and your Council will finally bear it: a provincial Bill to regulate the moneylender &mdash; accounts to be kept and furnished, interest capped by category, the courts empowered to reopen unconscionable bargains. The banking members fight it clause by clause as the death of rural credit; the agrarian members would double every penalty; and from five Divisions the district officers&rsquo; opinions come up divided between those who have watched the bania eat villages and those who have watched him carry them through famines the sirkar&rsquo;s treasury never reached. You have owed that trade money yourself, and been carried by it, and been owned by it. The pen is yours.",
+    "choices": [
+      {
+        "label": "Drive the Bill through whole: caps, accounts, and the reopening of old bargains.",
+        "effects": {
+          "contentment": 4,
+          "revenue": -2,
+          "order": 1
+        },
+        "setFlags": [
+          "usury_act_whole"
+        ],
+        "outcome": "Government's votes carry it entire, and the province's credit machinery shudders, adjusts, and — the banking members' funeral orations notwithstanding — survives: rates fall toward the caps, the worst bargains come into court blinking, and the trade's respectable houses discover that regulation ruins chiefly their disreputable competitors. Rural credit contracts for two hard years, as warned, then re-expands on the new terms. In the villages the Act acquires a nickname — 'the bania's bridle' — and men who will never read a clause of it know that the sirkar, this once, legislated about the thing that actually governs their lives."
+      },
+      {
+        "label": "Pass the accounts and courts clauses; drop the rate caps as a bridge too far.",
+        "effects": {
+          "contentment": 2,
+          "revenue": 1
+        },
+        "outcome": "The compromise Bill: sunlight and remedy without price control — every loan documented, every bargain reopenable, the rate left to the market the caps would have driven underground. It is the economists' version and it works as economists' versions work: genuinely, slowly, for those with the standing to use it. The documented account becomes the village's new battlefield, and the pleaders prosper, and over a decade the worst of the trade is pruned while its trunk thickens. Half a reform, honestly delivered. The famine reports of the next generation will beg, in the same paragraph as always, for the other half."
+      },
+      {
+        "label": "Withdraw the Bill; credit is the one machine in the province Government cannot rebuild if it breaks.",
+        "effects": {
+          "revenue": 2,
+          "prestige": -1,
+          "contentment": -3
+        },
+        "outcome": "The withdrawal is announced in a speech about prudence that you write yourself and deliver well, and the banking benches' relief is audible from the press gallery. The trade resumes its immemorial terms; the agrarian members cross, permanently, into opposition; and the movement's organisers in the countryside are handed the one argument that needs no pamphlet: the sirkar, asked to choose between the cultivator and the bania, chose. You know the choice's serious case — you made it honestly. The province is not interested in the serious case. It is interested in who the Government belongs to, and it files your speech under the answer."
+      }
+    ]
+  },
+  {
+    "id": "lg-prince-misrule",
+    "tag": "MOST SECRET",
+    "season": [
+      "cold"
+    ],
+    "kind": "desk",
+    "once": true,
+    "title": "The State of Bhairongarh",
+    "body": "Wedged into your province&rsquo;s map like a knot in timber is the State of Bhairongarh &mdash; eleven guns, four hundred square miles, and a young Raja who has run through his treasury, his ministers, and the patience of three Political Agents: the peasantry taxed at rack rates for a palace garage of motor-cars, the succession of scandals now including one dead dancing-girl too many. The Political Department&rsquo;s file has reached the size at which files become verdicts. As the provincial head you must recommend: administer the State through a Dewan, depose him outright &mdash; or look away, princes being the Crown&rsquo;s allies and their misrule being, constitutionally, their own.",
+    "choices": [
+      {
+        "label": "Recommend administration: a Dewan of your choosing, the Raja's powers suspended.",
+        "effects": {
+          "contentment": 3,
+          "order": 2,
+          "prestige": -1
+        },
+        "setFlags": [
+          "bhairongarh_dewan"
+        ],
+        "outcome": "The recommendation goes up braced with the file's worst hundred pages, and the Crown acts: powers suspended, a Dewan installed — you send them the best provincial officer on the Lee list, which makes its own point — and the State's revenues redirected from the garage to the villages with a speed that makes the reform legible in one harvest. The princes' chamber protests the precedent in a memorial to the Viceroy; the Raja retires to Monte Carlo, where his talents lie. In Bhairongarh's bazaars the sirkar's stock rises to a premium it never commands in your own districts — the eternal irony of the Political line, which you decline to examine too closely."
+      },
+      {
+        "label": "A private ultimatum at the durbar: reform to a schedule, or the file goes to the Viceroy.",
+        "effects": {
+          "prestige": 1,
+          "order": 1,
+          "health": -1
+        },
+        "outcome": "You go to Bhairongarh for the winter durbar and give him, between ceremonies, twenty minutes and a schedule: the taxes to settlement rates by spring, a Dewan of joint choosing by summer, the garage sold — or the file, which you place on the table and leave there, unopened, which is how such instruments are served. He is not a fool, merely unfathered and flattered since birth; the fright takes. Half the schedule is honoured, which in the princely line counts as transformation, and the State subsides to ordinary mediocrity. The file returns to Government House, fattened by one entry: the ultimatum, dated, in case. Princes are governed by in-case. It is their constitution."
+      },
+      {
+        "label": "The States are the Crown's affair; note the file and hold the border districts steady.",
+        "effects": {
+          "revenue": 1,
+          "order": -2,
+          "contentment": -2
+        },
+        "outcome": "Constitutionally impeccable: the Political Department minds its treaties, and your writ ends at the border pillars. What crosses the pillars is what always crosses: the State's peasants, voting with their bullock-carts into your crowded tahsils; the State's grievances, arriving as your agitations; and at last the State's crisis — a bazaar rising against the grain monopoly — which the treaties oblige you to help suppress, lending your police to hold up the very misrule the file described. The movement's press writes the leader itself: the sirkar's lathis guard the Raja's motor-cars. Neutrality, at this altitude, always ends by choosing, and it chooses late, and badly, and in public."
+      }
+    ]
+  }
+]

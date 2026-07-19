@@ -1,0 +1,113 @@
+[
+  {
+    "id": "lg-viceregal-week",
+    "turn": 6,
+    "tag": "PROGRAMME",
+    "title": "The Viceregal Visit",
+    "body": "The Viceroy&rsquo;s cold-weather tour gives Barhampur four days &mdash; the longest provincial halt of the season, which is read everywhere as a mark of interest, in both senses. A state arrival, a durbar of the whole province, a Council address, two inspections, a state ball: the apparatus entire, and the bills of it are the host Government&rsquo;s &mdash; which at the margin means yours, the entertainment scale of Lieutenant-Governors being one of the Empire&rsquo;s celebrated fictions. Your predecessor did a Viceregal week &lsquo;in the grand manner&rsquo; and retired to a villa in Cheltenham described as small. The Military Secretary lays the estimates before you without comment, in three columns, like a menu of futures.",
+    "choices": [
+      {
+        "label": "The grand manner: the week the province will describe for twenty years.",
+        "effects": {
+          "prestige": 4,
+          "contentment": 2,
+          "health": -2
+        },
+        "econ": {
+          "debt": 500000
+        },
+        "outcome": "It is done as the great weeks were done: the state entry under triple arches, the durbar blazing, the ball at which the whole province dances under the new electric chandeliers hired from Calcutta with their own engineers — four days of theatre so complete that even the movement's press describes before it denounces. The Viceroy, who has seen every province's best, is visibly impressed and says so Home. The bills arrive across the following quarter with the thoroughness the champagne obscured, and the Bank's figures acquire a new chapter. It was magnificent. It was also, as the Military Secretary's third column foretold, war."
+      },
+      {
+        "label": "Correct and complete: the full programme at the sane scale.",
+        "effects": {
+          "prestige": 1,
+          "health": -1
+        },
+        "econ": {
+          "treasury": -40000
+        },
+        "outcome": "Every element present, every element pruned: one arch, the durbar full-dress but the ball by invitation within the means, the inspections genuinely inspecting — a week that answers every requirement of the apparatus and enters no legends. The Viceroy is comfortable, informed, and privately grateful; Viceroys see the grand manner monthly and pay its conversational price. The province notes the measure of it. The Bank notes nothing at all, which is the entry you were writing. Between the futures on the Military Secretary's menu, you chose solvency garnished, and it reads, in the long run, as character."
+      },
+      {
+        "label": "Ask Delhi to shorten the halt to a working two days; the rains left the province poorer than its pride.",
+        "effects": {
+          "prestige": -2,
+          "contentment": 2
+        },
+        "econ": {
+          "treasury": -15000
+        },
+        "outcome": "The request is unprecedented and grounded — the flood Divisions are still rebuilding, and the wire says so plainly — and Delhi, after a silence in which you can hear the precedent books being consulted, concedes: two days, working dress, the ball replaced by a garden party at which the Viceroy asks to meet flood-relief officers rather than notables. The province's press, all wings of it, prints the reason with something close to respect. The durbar world is scandalised into its third season of the term. At Home, where the running notes are kept, the entry is brief and unexpectedly warm: <i>put his province before his week.</i>"
+      }
+    ]
+  },
+  {
+    "id": "lg-hills-session",
+    "turn": 14,
+    "tag": "COUNCIL",
+    "title": "The Move to the Hills",
+    "body": "May, and the constitutional migration: Government, Council, Secretariat and files ascend seven thousand feet to govern the baking plains from the deodars, and the annual question ascends with them &mdash; what the Lieutenant-Governor&rsquo;s summer is to be. The session sits till September; the province sits below, in the heat, being governed by correspondence. Every summer of your service you have watched this arrangement from underneath. Now the arrangement is yours to inhabit, or to bend: the precedent book records two Lieutenant-Governors who kept the plains through a session, one canonised, one invalided.",
+    "choices": [
+      {
+        "label": "Keep the capital: govern from the plains and go up only when the House divides.",
+        "effects": {
+          "contentment": 3,
+          "prestige": -1,
+          "health": -3
+        },
+        "outcome": "The word runs the province in a week: Government House is staying down. The session manages — you go up for the budget divisions and the great debates, four journeys, each a day and a night each way — and the plains' ledger opens the entry the two precedents earned: through the worst of June, the flag flew at Barhampur. The Secretariat finds the arrangement barbarous and says so in memoirs decades later. The villages of five Divisions never say anything at all; they merely notice, in the way the governed notice everything, that this Honour sweats the same months they do. It is worth committees of goodwill. The Surgeon-General prices it differently, in the locked book."
+      },
+      {
+        "label": "The full season up: the session governed from the summer capital, as the constitution intends.",
+        "effects": {
+          "prestige": 2,
+          "health": 4,
+          "contentment": -3
+        },
+        "outcome": "The orthodox summer: the session managed at close quarters, the divisions marshalled over bridge and dinners, the Delhi men cultivated on their own verandahs — real work, done where the constitution put it, in air a man can think in. The machine below runs on delegation and wires. What the hills cost is what they have always cost, and you knew it when you watched from underneath: the province files its Government under absentee for one hundred and forty days, and the movement's cartoonists draw the deodars annually, with the plains a brown smoke underneath, and they never need a caption."
+      },
+      {
+        "label": "Split the season: the Council's great weeks up, the province's hard weeks down.",
+        "effects": {
+          "prestige": 1,
+          "health": -1
+        },
+        "outcome": "The amphibious summer at the grandest scale: up for the budget and the marquee debates, down for the heat's crises, the household divided and the red boxes travelling four hundred miles by rail twice a month. It is honest work at both altitudes and neither constituency's ledger records it — the Secretariat marks the absences from the hill dinners, the plains mark the absences from the plains, and the arrangement's true cost travels in the tin boxes with you: motion itself, at five-and-forty, in June. The Surgeon-General counts the journeys in the locked book. You have stopped asking what he writes."
+      }
+    ]
+  },
+  {
+    "id": "lg-prorogation",
+    "turn": 22,
+    "tag": "CEREMONIAL",
+    "title": "The Prorogation",
+    "body": "The last session of your term ends, and the constitution gives you its final ceremony: the prorogation address &mdash; the Lieutenant-Governor&rsquo;s closing words to the Council he opened, quarrelled with, certified over, and governed beside for the term entire. The Chief Secretary&rsquo;s draft reviews the legislation gracefully and says nothing. The opposition benches will attend in force; even the swaraj bloc has announced it will be present &mdash; &lsquo;to hear the account rendered,&rsquo; their notice says, which is insolence, and is also, you reflect, drafting the speech at midnight, precisely what a prorogation is.",
+    "choices": [
+      {
+        "label": "Render the account: the term reviewed plainly, failures included, futures named.",
+        "effects": {
+          "prestige": 3,
+          "contentment": 3
+        },
+        "outcome": "You put aside the graceful draft and give the House forty minutes of the actual term: what was attempted and what it cost, the two failures owned by name, the three things unfinished commended by name to the House's next incarnation — and one closing passage on the constitution itself, which has been served this term, you tell them, by every man who fought inside its rules, on whichever bench. The swaraj bloc, present to score, listens instead. The speech is printed entire in every paper in the province, and pirated in three others; the phrase 'fought inside the rules' enters the language of the reform debates and outlives every party in the chamber. Accounts, rendered whole, compound."
+      },
+      {
+        "label": "The graceful draft; a departing Governor's opinions are a gift to nobody.",
+        "effects": {
+          "prestige": 1,
+          "health": 1
+        },
+        "outcome": "The Chief Secretary's hour of polished nothing, delivered with the polish it deserves: the legislation reviewed, the thanks distributed, the future left decorously unmortgaged. It is correct — departing opinions bind successors and arm oppositions, and the manual is right about both — and the House receives it as what it is, a ceremony completing itself. The bloc's benches empty at the halfway mark, gently, without demonstration, which is somehow worse than the walkout: nothing here, their leaving says, requires witness. The term ends tidily. Tidiness, the vernacular press observes next morning, was perhaps the theme."
+      },
+      {
+        "label": "Speak past the chamber to the province: the address as a farewell to forty million.",
+        "effects": {
+          "contentment": 4,
+          "prestige": -1
+        },
+        "outcome": "The constitutional form observed for ten minutes, and then you do the unprecedented thing: turn the address outward, over the benches' heads, to the province itself — the cultivators, the boarded-out orphans, the boy who holds Kotra, the men of five Divisions who will never read Hansard — in sentences built for the vernacular translations you know will carry them. The chamber is nonplussed; the constitutionalists call it irregular, correctly. The translations run within the week in every district, read aloud at wells and chaupals as such things are read, and fragments of the address pass into the province's stock of sayings, unattributed, which is the only immortality the country has ever offered its governors, and the only one worth having."
+      }
+    ]
+  }
+]

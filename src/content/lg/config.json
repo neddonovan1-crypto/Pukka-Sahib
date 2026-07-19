@@ -1,0 +1,391 @@
+{
+  "config": {
+    "maxTurns": 24,
+    "seasonFloor": 6,
+    "start": {
+      "revenue": 54,
+      "order": 55,
+      "prestige": 55,
+      "contentment": 45,
+      "health": 52
+    },
+    "chapter": {
+      "key": "lg",
+      "rank": "Lieutenant-Governor",
+      "posting": "Government House, Barhampur",
+      "plays": "the Grand Commanders &mdash; the G.C.I.E., and the G.C.S.I. if the term makes history",
+      "promotionTiers": [
+        "gcsi",
+        "gcie"
+      ],
+      "promotesTo": null,
+      "carriesIn": [
+        "carry_star",
+        "carry_wife",
+        "carry_alone",
+        "carry_dass_risen",
+        "carry_congress_channel",
+        "carry_debts",
+        "carry_lala_paper"
+      ],
+      "tagline": "You are five-and-forty, and His Honour: Lieutenant-Governor of Barhampur &mdash; forty million souls, five Divisions, an elected Council that can refuse you money, a press that can refuse you peace, and above you only the Viceroy, Parliament, and history. There is no next rank worth having. There is only how this is done, and what the Gazette says when it is over. You have a year of the term left, and the Grand Commanders are given for years like the one you are about to have &mdash; one way or the other."
+    },
+    "honours": {
+      "lead": "Honours List &mdash; ",
+      "desc": "The List blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment. The Grand Commanders are settled between the Viceroy and the King&rsquo;s private secretary, and they are settled on whole terms, not seasons: the G.C.S.I. has gone to perhaps one Lieutenant-Governor in a generation.",
+      "weights": {
+        "prestige": 0.45,
+        "revenue": 0.2,
+        "order": 0.2,
+        "contentment": 0.15
+      },
+      "ladder": [
+        {
+          "key": "gcsi",
+          "name": "the G.C.S.I.",
+          "score": 78,
+          "prestige": 85,
+          "barredByDebt": true,
+          "reach": "the <b>Grand Cross of the Star</b> itself is whispered &mdash; the Viceroy has written Home about the term"
+        },
+        {
+          "key": "gcie",
+          "name": "the G.C.I.E.",
+          "score": 64,
+          "prestige": 70,
+          "barredByDebt": true,
+          "reach": "a <b>Grand Commandership</b> is within reach &mdash; the term reads well at the Viceroy's table"
+        }
+      ]
+    },
+    "meters": [
+      {
+        "key": "revenue",
+        "name": "Revenue",
+        "desc": "The provincial budget entire: land revenue, excise, stamps &mdash; and a Council that votes on half of it and grumbles at all of it. Read annually in Parliament."
+      },
+      {
+        "key": "order",
+        "name": "Order",
+        "desc": "The peace of forty million: communal, agrarian, political. A district riots; a Division burns; a PROVINCE, if it goes, takes its Lieutenant-Governor with it."
+      },
+      {
+        "key": "prestige",
+        "name": "Prestige",
+        "desc": "Your standing with the Viceroy, and through him with Whitehall and the King. Grand Commanders are minted from this column, and nothing else mints them."
+      },
+      {
+        "key": "contentment",
+        "name": "Contentment",
+        "desc": "The temper of the province: its Council, its press, its princes, its bazaars, its villages. At this scale it is history's own column, and it keeps its own files on you."
+      },
+      {
+        "key": "health",
+        "name": "Health",
+        "desc": "Five-and-forty, and twenty-two Indian years drawn down. The last constitution: what remains is what you brought from Home, less everything since Kotra."
+      }
+    ],
+    "calendar": {
+      "months": [
+        "November",
+        "December",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October"
+      ],
+      "seasons": [
+        {
+          "key": "cold",
+          "name": "Cold weather",
+          "tagline": "the season of progresses",
+          "glyph": "❄",
+          "from": 1,
+          "to": 8,
+          "intros": [
+            "The season of progresses: five Divisions expect their Lieutenant-Governor, and the order in which you visit them is read as policy in all five.",
+            "Camp at last &mdash; a camp the size of a village now, with a cypher office under canvas &mdash; and beneath the establishment, faintly, the old cold-weather feeling: the country, seen plain.",
+            "The Council is up, the files are down, and the province is at its most governable &mdash; which is to say, this is the season in which next year's troubles are quietly seeded.",
+            "Your Commissioners send up their cold-weather programmes. You read them as the Collector once read yours at Kotra, and mark, without writing it, what each is arranged to keep you from."
+          ]
+        },
+        {
+          "key": "hot",
+          "name": "Hot weather",
+          "tagline": "the session season",
+          "glyph": "☀",
+          "from": 9,
+          "to": 16,
+          "intros": [
+            "Government moves to the hills and the Council moves with it: the session season, when the province is governed by speeches and answered questions, eight thousand feet above the men the answers describe.",
+            "The plains bake and the Council sits, and every morning's question paper is a small raid on the year's remaining patience.",
+            "Session weather: the ministers anxious, the opposition rehearsed, the press gallery full, and the real province a haze below the deodars, wiring up its actual troubles.",
+            "At five-and-forty the heat is no longer the enemy. The enemy is the red box that refills by night, and the heart keeps its own division list."
+          ]
+        },
+        {
+          "key": "monsoon",
+          "name": "The rains",
+          "tagline": "the answering season",
+          "glyph": "☔",
+          "from": 17,
+          "to": 24,
+          "intros": [
+            "The rains break over five Divisions at once, and every wire in the province ends, eventually, at Government House. The session's speeches are over. Now the year answers for itself.",
+            "River weather, province-wide: somewhere among forty million people the year's real examination has already begun, and the first question is whether your Commissioners are the men you judged them to be.",
+            "The relief files come up from five Divisions in five hands, and you read them the way the List will read your term: for what was foreseen.",
+            "The Viceroy wires weekly through the rains. The wires are short, and kind, and keep a copy."
+          ]
+        }
+      ]
+    },
+    "postures": {
+      "tour": {
+        "base": {
+          "contentment": 1,
+          "order": 1,
+          "revenue": -1,
+          "prestige": -1,
+          "health": -1
+        },
+        "season": {
+          "cold": {
+            "prestige": 1
+          },
+          "hot": {
+            "health": -5
+          },
+          "monsoon": {
+            "health": -1,
+            "order": -1
+          }
+        },
+        "labels": {
+          "cold": "Go out on progress through the Divisions",
+          "hot": "Go down to the plains mid-session",
+          "monsoon": "Tour the flooded Divisions"
+        },
+        "notes": {
+          "cold": [
+            "The province likes to see its Lieutenant-Governor, and a progress steadies three Divisions at the price of the files at Government House.",
+            "Durbars, addresses, foundation stones &mdash; and between them, if you insist on it, the country itself, seen from a horse like an honest man.",
+            "Every mile of progress is policy: where you stop, whom you receive, which Commissioner rides beside you."
+          ],
+          "hot": [
+            "Leaving the session for the plains is read two ways: devotion below, desertion above. Both readings are filed.",
+            "The plains in the session season: the real province, at the cost of the Council watching your empty chair."
+          ],
+          "monsoon": [
+            "A Lieutenant-Governor at a breach is worth a proclamation &mdash; and the capital, meanwhile, governs itself, which it should never be encouraged to notice.",
+            "Out along the rivers where the term is being decided: the fever is real at five-and-forty, and so is the difference you make."
+          ]
+        }
+      },
+      "desk": {
+        "base": {
+          "prestige": 1,
+          "revenue": 1,
+          "contentment": -1,
+          "order": -1,
+          "health": 1
+        },
+        "season": {
+          "cold": {
+            "prestige": -1,
+            "contentment": -1,
+            "health": 1
+          },
+          "hot": {
+            "health": -2
+          },
+          "monsoon": {
+            "order": 1,
+            "health": -1
+          }
+        },
+        "labels": {
+          "cold": "Govern from Government House",
+          "hot": "Sit the session in the hills",
+          "monsoon": "Direct the rains from the capital"
+        },
+        "notes": {
+          "cold": [
+            "The files mastered, the Council prepared, the Secretariat governed &mdash; and five Divisions inspected by nobody but their own Commissioners.",
+            "Government House in the cold weather: the machine at your hand, the province at your correspondence, and the difference between them growing by one fortnight per fortnight.",
+            "A Lieutenant-Governor at his desk is read up the line as sound and down the line as distant. Both lines are right."
+          ],
+          "hot": [
+            "The session is where the term is defended: question hour, the budget, the divisions. The province is where it is earned. The chair is in the session.",
+            "Eight thousand feet of governing by paper and speech &mdash; cool, correct, and exactly as far from the plains as the plains believe."
+          ],
+          "monsoon": [
+            "The wires end at your table: relief sanctioned by the lakh, Commissioners held to their hour, the province commanded from the centre &mdash; if your five men are good.",
+            "The capital in the rains is the right place for a Lieutenant-Governor who trusts his Commissioners, and the wrong one for a Lieutenant-Governor who is merely dry."
+          ]
+        }
+      }
+    },
+    "retreats": {
+      "cold": {
+        "key": "lg-retreat-cold",
+        "flag": "lg_leave_cold",
+        "tag": "PRIVATE",
+        "label": "A week's shooting as the Nawab's guest",
+        "note": "The old cure at the new scale: a princely camp, real jungle, and no red box &mdash; the province can spare its Honour a week, or say it cannot.",
+        "title": "The Week at Tikri",
+        "body": "The Nawab of Tikri &mdash; older now, vast, and one of the few men in India who treats you exactly as he treated the young Commissioner of Sonepore &mdash; has asked for years, and this year you go: a week in his jungles with one aide, no cypher clerk, and a standing order that only the Viceroy's own wire may follow you in. Tiger are seen and spared; sand-grouse are seen and not; and on the last evening the Nawab observes, over billiards, that of all the sahibs he has collected, the ones who lasted were the ones who occasionally disappeared. You come back four pounds heavier and ten years younger. The red box has bred in your absence, and it was worth it.",
+        "effects": {
+          "health": 7,
+          "contentment": 2,
+          "prestige": -2,
+          "revenue": -2,
+          "order": -1
+        }
+      },
+      "hot": {
+        "key": "lg-retreat-hot",
+        "flag": "lg_leave_hot",
+        "tag": "MEDICAL",
+        "label": "A fortnight's rest at the hill residence",
+        "note": "The Surgeon-General has begun writing his notes on you in a locked book. A fortnight of enforced idleness would unlock nothing and quiet him considerably.",
+        "title": "The Fortnight at Craigside",
+        "body": "The Surgeon-General puts it with the bluntness that is the privilege of his rank and yours: the machine is running on its rims, and a Lieutenant-Governor who breaks mid-session makes more history than one who rests a fortnight. So: Craigside, the small residence above the town, with the boxes rationed to one a day and the telephone removed on medical certificate. You sleep, walk among deodars, and re-read novels you last opened on the voyage out, twenty-two years ago. The Council notes your absence with concern so courteous it is almost sincere. The heart, consulted nightly, withdraws its division bell.",
+        "effects": {
+          "health": 9,
+          "prestige": -2,
+          "contentment": -3,
+          "order": -1
+        }
+      },
+      "monsoon": {
+        "key": "lg-retreat-monsoon",
+        "flag": "lg_leave_monsoon",
+        "tag": "PRIVATE",
+        "label": "A week on the river yacht, between inspections",
+        "note": "The Government yacht exists, the ghats can be inspected from it, and the rain on the awning is the oldest medicine the province keeps.",
+        "title": "The Week Aboard the 'Barhampur'",
+        "body": "The Government yacht is a modest old paddler with a grand name, kept nominally for inspections, and you inspect: seven ghats, two ferries, and four hundred miles of brown river sliding past the awning at the pace of convalescence. The rain drums all day. The cook rises to greatness. Your private secretary, forbidden the red box after noon, is discovered teaching the crew whist. At Sonepore &mdash; the flag goes up as you pass, and the whole ghat turns out, and somebody who was a boy when you were Commissioner calls the old salute across the water &mdash; you do not stop. The term has taught you that much. You wave, and are carried on.",
+        "effects": {
+          "health": 8,
+          "prestige": -3,
+          "revenue": -1,
+          "order": -1
+        }
+      }
+    },
+    "economy": {
+      "startTreasury": 800000,
+      "settlementTurns": [
+        4,
+        19
+      ],
+      "settlementBase": 850000,
+      "interestRate": 0.2,
+      "debtCeiling": 700000,
+      "debtWarn": 580000,
+      "creditor": "the Bank",
+      "desc": "The provincial funds at Government House&rsquo;s discretion &mdash; and your own establishment&rsquo;s, which at this scale are audited together. Overspend and the Bank carries it: interest (20%) falls due at every change of season, and each half-year settlement repays up to half its take. Debt past &#8377;5,80,000 bars both Grand Commanders; past &#8377;7,00,000 the question is asked in the House, and the Service retires you over it."
+    },
+    "interludeChance": 0.16,
+    "review": {
+      "from": "The Viceroy&rsquo;s private line, deciphered: <b>",
+      "close": "</b>",
+      "weakBelow": 35,
+      "bands": [
+        {
+          "min": 66,
+          "text": "THE TERM IS SPOKEN OF AT HOME STOP GO ON"
+        },
+        {
+          "min": 54,
+          "text": "STEADY STOP GO ON"
+        },
+        {
+          "min": 42,
+          "text": "I AM ASKED ABOUT BARHAMPUR STOP COME AND SEE ME"
+        },
+        {
+          "min": 0,
+          "text": "THE SECRETARY OF STATE HAS TELEGRAPHED STOP SIMLA IMMEDIATELY"
+        }
+      ],
+      "weak": {
+        "prestige": "HOME DOES NOT KNOW YOUR NAME STOP",
+        "order": "YOUR PROVINCE READS UNQUIET STOP",
+        "revenue": "YOUR BUDGET READS SHORT STOP",
+        "contentment": "YOUR COUNCIL AND YOUR PRESS ARE AGAINST YOU STOP",
+        "health": "YOU LOOKED WORN AT COUNCIL STOP"
+      }
+    },
+    "audio": {
+      "tonic": 165.0,
+      "master": 0.16,
+      "ragas": {
+        "cold": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          8,
+          11
+        ],
+        "hot": [
+          0,
+          2,
+          5,
+          7,
+          10
+        ],
+        "monsoon": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          10
+        ]
+      }
+    }
+  },
+  "endings": {
+    "gcsi": {
+      "title": "Knight Grand Commander of the Star of India",
+      "text": "It comes as such things come at the top of the tree: not gazetted first but <i>written</i> first, in the King&rsquo;s private secretary&rsquo;s hand, on paper you will keep till you die. The <b>Grand Cross of the Star of India</b> &mdash; the collar, the mantle, the eight-pointed blaze that Lieutenant-Governors see across durbar rooms all their lives on other, older men. Perhaps one term in a generation ends this way, and yours is the term: the province governed, the storm ridden, the thing done whole. At the investiture the Viceroy says quietly, out of the ceremony&rsquo;s hearing: &lsquo;They will offer you a Governorship now, or the Council of India. Take neither until they have begged.&rsquo; You are five-and-forty, and a boy on a horse at Kotra is watching you from twenty-two years away, and you find you can meet his eye."
+    },
+    "gcie": {
+      "title": "Knight Grand Commander of the Indian Empire",
+      "text": "The Gazette gives the term its verdict: <b>G.C.I.E.</b> &mdash; the Grand Cross, the mantle and collar, the style that ends every argument in every room you will enter for the rest of your life. It is the great working honour of the proconsuls: the Empire&rsquo;s way of recording that a province was held, a Council managed, a hard year governed to its close by a hand it trusted. At the durbar the princes&rsquo; congratulations have, for once, no arithmetic in them; the Council adjourns with a resolution of compliment that even the opposition benches decline to oppose, abstaining with ostentatious warmth. Somewhere behind the telegrams the question of a Presidency Governorship opens its file. You have learned, by now, to let such files ripen."
+    },
+    "transfer": {
+      "title": "A Term, Served",
+      "text": "The term ends as most terms end: completely, quietly, and without the Grand Cross. The farewells are genuine &mdash; the province has liked you better than it liked most &mdash; and the Gazette records the retirement of a Lieutenant-Governor &lsquo;whose services will be long remembered,&rsquo; which is the Service&rsquo;s way of saying they are already being filed. The K.C.S.I. you brought to Government House goes Home with you, un-promoted. At Marseilles, waiting for the boat train, you read the announcement of your successor and discover, with a small shock that lasts the rest of your life, that the province has continued."
+    },
+    "scandal": {
+      "title": "Recalled",
+      "text": "It is done at the level where such things are done: a telegram from the Secretary of State that the Viceroy hands you personally, face composed, at the end of an interview about other matters. The word used is &lsquo;relinquishment&rsquo;; the words not used fill the room. A Lieutenant-Governor is not dismissed &mdash; he is allowed to prefer, on grounds of health, an earlier departure; and the House is told as much, and the House, which has been asking questions about Barhampur for two sessions, understands perfectly. The P&amp;O berth is first-class and the pension intact and the silence, on the voyage Home, absolute. Twenty-two years, ended by cypher."
+    },
+    "breakdown": {
+      "title": "The Last Constitution",
+      "text": "It happens at the Council table, between an answered question and the next on the paper: the fist inside the chest again, and this time it does not open. The House adjourns in confusion; the Surgeon-General&rsquo;s bulletin that evening is composed with the care given to state documents, and the second bulletin is shorter, and there is no third. They bury you at Barhampur with the full apparatus &mdash; minute guns, the bodyguard with arms reversed, five Commissioners walking behind the carriage &mdash; and the province, which fought you all term, closes its bazaars unasked. The Gazette&rsquo;s memorial notice runs to a column. The King confers the G.C.I.E. on the memory, which is the Empire&rsquo;s way of admitting it was owed."
+    },
+    "riot": {
+      "title": "The Province in Flames",
+      "text": "It begins in one Division and is in three by the week&rsquo;s end, and then it is not a provincial matter at all: the Army out in four cities, questions in the House by the dozen, a Royal Commission gazetted before the fires are cold. The Commission sits for a year and is scrupulous: the local officers are praised, the disposition of the reserves examined, and the disposition&rsquo;s author &mdash; there is only ever one author at your rank &mdash; described across five hundred pages with a thoroughness no censure could match. You relinquish at the term&rsquo;s end, un-honoured, and the histories of the period give you a footnote each. They are accurate footnotes. That is the worst of them."
+    },
+    "bankrupt": {
+      "title": "The Question in the House",
+      "text": "It is asked on a Thursday, by a Member you have never met, from figures assembled by hands you could name: whether the Secretary of State&rsquo;s attention has been drawn to the personal liabilities of a certain high official in India, and whether such liabilities are compatible with the impartial administration of a province. The answer is that enquiries are being made. The enquiries take eleven days, the retirement &lsquo;on grounds of health&rsquo; is gazetted before the month is out, and the Bank &mdash; whose patience constructed the question&rsquo;s every figure &mdash; is repaid from the pension by an arrangement whose correctness everyone admires. The Lala of Chhota Nagra, hearing the news in his counting-house, is said to have observed that he had always offered better terms."
+    },
+    "gonenative": {
+      "title": "The Proconsul Who Crossed Over",
+      "text": "The province loved you, and you let it show, and at Government House level that is a policy: too warm with the Council, too patient with the movement, too fond of the durbar and the vernacular and the long grave courtesies of the country &mdash; until Whitehall, reading your despatches, began to ask in the margins WHOSE case the Lieutenant-Governor was putting. The term is allowed to complete. The Grand Cross is not offered, and a paragraph is inserted in the Secretary of State&rsquo;s valedictory letter praising your &lsquo;deep sympathy with Indian aspirations&rsquo; &mdash; each word placed like a wreath. You go Home, write the book they all feared, and it is reviewed everywhere, and quoted in the House by the other side. India reads it too. India, which knew you first as a boy at Kotra, forgives you the title of it, and keeps your name."
+    }
+  }
+}

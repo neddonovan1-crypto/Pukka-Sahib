@@ -34,6 +34,11 @@ var CHAPTER_BANDS = {
     spamFail: { keys: ["breakdown", "gonenative", "transfer", "scandal"], min: 0.40, label: "tour-only should mostly fail the Division (want ≥40% invalided/shelved/superseded/retired)" },
     pooledReachable: ["breakdown", "scandal", "transfer", "gonenative"],
     probes: { riot: true, bankrupt: true, burnout: false }
+  },
+  lg: {
+    spamFail: { keys: ["breakdown", "gonenative", "transfer", "scandal"], min: 0.40, label: "tour-only should mostly fail the province (want ≥40% invalided/crossed-over/term-served/recalled)" },
+    pooledReachable: ["breakdown", "scandal", "transfer", "gonenative"],
+    probes: { riot: true, bankrupt: true, burnout: false }
   }
 };
 
@@ -276,10 +281,13 @@ function simulateChapter(chapterKey, content) {
       Object.keys(d.meters || {}).forEach(function (k) { CARRY.meters[k] = (CARRY.meters[k] || 0) + d.meters[k]; });
     });
   });
-  var CARRIED = ["skilledCarried", "randomCarried"];
+  var CARRIED = ["skilledCarried", "randomCarried", "paragonCarried"];
   if (CARRY) {
     R.skilledCarried = runBatch("skilled", N, 909091, CARRY);
     R.randomCarried = runBatch("random", N, 606061, CARRY);
+    // The pinnacle probe also runs carried: at the top of the ladder the
+    // highest rung may fairly require the whole career's inheritance.
+    R.paragonCarried = runBatch("paragon", 200, 313131, CARRY);
   }
 
   console.log("\n=== [" + chapterKey + "] Balance report (n=" + N + " per policy; probes 200) ===");
@@ -317,8 +325,10 @@ function simulateChapter(chapterKey, content) {
   if (bands.probes.riot) assert((R.wrecker.dist.riot || 0) > 0, "riot unreachable — wrecker policy never triggered it");
   if (bands.probes.bankrupt) assert((R.reckless.dist.bankrupt || 0) > 0, "bankrupt unreachable — reckless policy never triggered it");
   if (bands.probes.burnout) assert((R.burnout.dist.breakdown || 0) > 0, "breakdown unreachable — burnout policy never triggered it");
-  // and the top rung must be winnable by play engineered for it
-  assert((R.paragon.dist[TOP] || 0) > 0, "'" + TOP + "' unreachable — paragon policy never earned it");
+  // and the top rung must be winnable by play engineered for it — fresh, or
+  // arriving with the previous rank's full inheritance
+  var topWins = (R.paragon.dist[TOP] || 0) + (R.paragonCarried ? (R.paragonCarried.dist[TOP] || 0) : 0);
+  assert(topWins > 0, "'" + TOP + "' unreachable — paragon policy never earned it, fresh or carried");
 
   // Carried-play bands: the inheritance must not break the chapter (skill
   // still earns honours), and the carry-gated content must partition cleanly —

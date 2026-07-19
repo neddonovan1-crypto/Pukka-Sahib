@@ -65,13 +65,24 @@ var comm = {
   codas: load("comm/codas.json")
 };
 
+/* ---- Chapter IV: Lieutenant-Governor, Government House, Barhampur ---- */
+var lgBase = load("lg/config.json"); // { config, endings }
+var lg = {
+  key: "lg",
+  config: lgBase.config,
+  endings: lgBase.endings,
+  events: []
+    .concat(load("lg/events-province.json"))
+    .concat(load("lg/events-province-2.json"))
+    .concat(load("lg/events-carried.json"))
+    .concat(load("lg/warnings.json")),
+  occasions: load("lg/occasions.json"),
+  codas: load("lg/codas.json")
+};
+
 // The career ladder, in playing order: the probation, the district, the
-// Division. Chapter IV (the province) joins when written; `planned` lets the
-// start screen show the whole ladder before it exists.
+// Division, the province. The ladder is complete.
 module.exports = {
-  chapters: { ac: ac, dm: dm, comm: comm },
-  order: ["ac", "dm", "comm"],
-  planned: [
-    { rank: "Lieutenant-Governor", plays: "the Grand Commanders" }
-  ]
+  chapters: { ac: ac, dm: dm, comm: comm, lg: lg },
+  order: ["ac", "dm", "comm", "lg"]
 };

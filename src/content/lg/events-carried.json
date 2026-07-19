@@ -1,0 +1,179 @@
+[
+  {
+    "id": "lg-first-lady",
+    "tag": "PRIVATE",
+    "season": ["cold"],
+    "kind": "personal",
+    "once": true,
+    "requires": { "flag": "carry_wife" },
+    "title": "Her Excellency in All but Name",
+    "body": "Government House has a chatelaine again, and the province noticed before the province was told: the purdah ladies&rsquo; garden party revived within the month, the hospital fund doubled by a bazaar fete of military organisation, and the Season&rsquo;s invitations issuing from a hand that has run a district bungalow, a Divisional flag-house, and now runs this &mdash; forty servants, three ADCs, and you &mdash; with the same unhurried completeness. She sits at the far end of the longest table in the province now, the girl from the Christmas camp, and catches your eye down it at the moments you most need catching. The Vicereine, they say, has begun asking her advice by post.",
+    "choices": [
+      {
+        "label": "Give her the Season entire, and the purdah parties, and a free hand with both.",
+        "effects": { "contentment": 4, "prestige": 2, "health": 1 },
+        "setFlags": ["first_lady_reigns"],
+        "outcome": "The Season under her hand becomes the instrument the province did not know Government House kept: the purdah parties gather the wives of men the CID files under three different headings, and what is spoken there — women's talk, meaning everything that matters, unattributed — reaches you a season before any despatch. The hospital rises a wing. Half the province's diplomacy, you come to understand, is now conducted at occasions you do not attend, by the member of the administration Whitehall has never heard of. The Vicereine's letters grow frequent. You govern the reserved half of the province. The transferred half transferred itself years ago, at a paper-chase."
+      },
+      {
+        "label": "Keep her clear of anything political; the gates of that world are not hers to hold.",
+        "effects": { "prestige": 1, "contentment": -2, "health": -1 },
+        "outcome": "The line is drawn where the manuals would draw it, and she keeps it flawlessly — the Season brilliant, the fete grander than ever, and not one purdah party, not one conversation that could be minuted. What is lost is invisible and constant, like a window painted over: the province's other half of news simply stops arriving, and you learn of two troubles this year at despatch speed that Government House once knew at tea speed. She never once refers to the ruling. Only, arranging the table for the Council dinner, she seats you where you can see everything and reach nothing, and lets you spend the evening there, and you take the point."
+      },
+      {
+        "label": "The quiet year: her health has paid for three postings, and the Season can carry itself.",
+        "effects": { "health": 2, "contentment": -1, "prestige": -1 },
+        "outcome": "It is true, and overdue: three ranks of open house have been paid for out of one constitution, and this year the doctors' advice is finally taken. The Season runs at half-scale under the Military Secretary; she winters quietly, gardens, and is visibly restored by March — a private victory that the province, which measures Government House by its lights and its lists, reads as retrenchment or disfavour according to taste. You decline to correct the readings. Twenty years of the Service has taught you at last which ledger the important entries go in, and this one is entered, in her colour of ink, as the year he chose right."
+      }
+    ]
+  },
+  {
+    "id": "lg-alone-at-gh",
+    "tag": "PRIVATE",
+    "season": ["monsoon"],
+    "kind": "personal",
+    "once": true,
+    "requires": { "flag": "carry_alone" },
+    "title": "The Largest House in the Province",
+    "body": "Government House was built for a court: ballroom, banquet hall, seventeen guest suites, a dinner service for two hundred. You occupy the study, the small dining-room, and a bedroom chosen because it is nearest the office wing, and the rains have shut you in with the establishment&rsquo;s full echo. The Military Secretary petitions gently for a Season of proper scale; the province, he does not quite say, reads a dark Government House as a verdict on itself. Twenty-two years ago you chose the Service over a household in a hot-weather letter you could still recite. The choice has compounded, rank by rank, into this: the biggest house in the province, and the emptiest, and a rains season eight fortnights long.",
+    "choices": [
+      {
+        "label": "Fill it by main force: standing guest nights, the young Service through the suites in relays.",
+        "effects": { "contentment": 3, "prestige": 1, "health": 1 },
+        "econ": { "treasury": -10000 },
+        "outcome": "You institute at province scale what the flag bungalow taught: the standing table, the open suites — any officer, any service, passing through the capital dines and sleeps at Government House on his way. The house wakes properly for the first time in your tenure: assistant surgeons argue with settlement officers down the long table, a forest man's dog has puppies in the Wellesley suite, the ADCs preside over billiards like croupiers. It is not a family; it is what the Service issues instead, taken at the full ration at last. The juniors who dined there will run provinces, and the story they will tell is that the big house at Barhampur was warm."
+      },
+      {
+        "label": "Let the house be what it is: the office with bedrooms, run at working scale.",
+        "effects": { "prestige": -1, "revenue": 1, "health": -2 },
+        "outcome": "The honest answer: the state rooms sheeted, the Season minimal, the establishment cut to what one working man requires, and the savings entered where savings are entered. The house goes fully quiet, and the quiet does what it has done since Kotra, only in a larger acoustic: the rains, the boxes, the single lamp in the study wing visible across the park — an image the capital finds first melancholy, then emblematic. The work does not suffer; the work has never suffered; that was always the trouble with the arrangement, that it runs. The bearer, very old now, has stopped moving your things to smaller rooms. There are none."
+      },
+      {
+        "label": "Ask your sister out from Surrey for the cold weather, to keep the house's other half.",
+        "effects": { "contentment": 2, "health": 2, "prestige": -1 },
+        "setFlags": ["sister_at_gh"],
+        "outcome": "She comes — the sister whose letters have crossed yours since the first cold weather at Kotra, widowed now, game as ever — and takes the chatelaine's wing like a fortress relieved: the Season managed with Surrey common sense, the ADCs mothered, the purdah parties revived on the strength of a directness that delights the begums. The province, which had filed you under its long list of solitary Honours, revises the entry. On the last evening of her stay she says, apropos of the garden: 'You built all this out of those letters, you know. I kept them.' You knew she kept them. It is why you could build it."
+      }
+    ]
+  },
+  {
+    "id": "lg-dass-commissioner",
+    "tag": "MOST SECRET",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "requires": { "flag": "carry_dass_risen" },
+    "title": "Commissioner Dass",
+    "body": "The file that crosses your table this morning is one you began writing years ago without knowing it: Dass &mdash; Sir Dass now, C.I.E., the best settlement mind of his generation, the man you dined with at Silchar when the Club would not &mdash; is due a Division, and yours has the vacancy: the northern Division, biggest, hardest, whitest in its planting interests and its club rolls. The Chief Secretary&rsquo;s note is a masterpiece of the deniable: <i>the northern Division presents certain social difficulties; the eastern vacancy, arising shortly, might be thought more suitable.</i> More suitable. You have read that phrase in other files, about another man, and you know exactly how long its arm is.",
+    "choices": [
+      {
+        "label": "The northern Division, at once, with your reasons recorded in full.",
+        "effects": { "contentment": 3, "prestige": 1, "order": -1 },
+        "setFlags": ["dass_north"],
+        "outcome": "The appointment gazettes with a minute that forecloses the murmurs — <i>the senior vacancy goes to the senior fit officer; Government has no other rule to offer</i> — and the northern Division receives its first Indian Commissioner with every temperature the Chief Secretary predicted. The planting interest calls; you receive them warmly and change nothing. Within two cold weathers the murmur has met the man: the settlement revised ahead of schedule, the clubs' dire prophecies unemployed, and the Division run, as Silchar was run, better than its neighbours. The rule you offered — no other rule — is cited at the next such file, in another province, by men who never heard of Silchar. That is how the door stays open: one appointment at a time, minuted."
+      },
+      {
+        "label": "The eastern Division when it falls due; spare him the north's poison and the Service the scene.",
+        "effects": { "order": 1, "prestige": -1, "contentment": -2 },
+        "outcome": "The 'more suitable' vacancy, taken: the eastern Division, easier country, and Dass — who reads files better than any man alive, including the ones about himself — accepts with a courtesy that has a sealed compartment in it. He runs the east admirably, as everyone always knew he would run anything. The north goes to a sound man two years his junior, and the precedent files itself: at the last fence, with the big Division open, Government consulted the social difficulties. It is the Club list again, at the top of the tree, in your hand this time. He never mentions it. Neither do you. It is mentioned anyway, permanently, in the only ledger the two of you have ever kept."
+      },
+      {
+        "label": "Put the question to him plainly and let him choose his own ground.",
+        "effects": { "contentment": 2, "prestige": 1, "health": -1 },
+        "outcome": "Two hours at Government House, the Chief Secretary's note on the table between you, face up — the courtesy of the whole truth, which is the only coin he has ever asked to be paid in. He reads it once, and smiles the small smile you first saw at Silchar, and chooses the north — 'the difficulties, Your Honour, are the posting' — and takes it, and holds it, knowing to the last anna what it costs and charging it, publicly, to nobody. It was his choice to make; you were perhaps the one chief in India who would have made it his. The province notices only a Gazette line. The Service's other ledger, the one the two of you write in, closes its longest account marked paid."
+      }
+    ]
+  },
+  {
+    "id": "lg-old-channel",
+    "tag": "MOST SECRET",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": { "flag": "carry_congress_channel" },
+    "title": "The Pleader, Risen",
+    "body": "The provincial movement has a new president, and the name in the CID summary stops your pen: the Sonepore pleader &mdash; the committee president who once talked hartals across your table for two unrecorded hours, and kept the bargain to the letter. He is older, greyer, imprisoned twice since (which made him), and now commands the province&rsquo;s agitation entire. Within the week, through a channel so indirect it is almost courtly &mdash; a retired munsiff, a garden party, a remark addressed to a rose bush &mdash; comes the message: <i>the president remembers Sonepore, and supposes His Honour does not.</i> It is an opening bid. Every instinct of the Service says such channels are traps. Every year of your service says they are the only bridges left.",
+    "choices": [
+      {
+        "label": "Reopen the channel: irregular, unrecorded, and alive.",
+        "effects": { "contentment": 3, "order": 2, "prestige": -1 },
+        "setFlags": ["channel_reopened"],
+        "outcome": "The reply travels back by the same rose bush, and the old arrangement resumes at province scale: no negotiations, no concessions — an exchange of weather reports between men who each command a storm. Through a bad year it earns its keep three times: a hartal steered clear of the festival date that would have burned a city, a false rumour killed in a night by word passed both ways, and once — the entry you will never be able to explain to Whitehall — his young men picketing beside your police to hold a communal corner neither side could hold alone. The CID knows and does not minute it. Delhi never knows. The province is governed, some fortnights, by two hours at Sonepore neither party ever admits occurred."
+      },
+      {
+        "label": "Decline through the same rose bush, with regret; His Honour cannot deal privately with sedition.",
+        "effects": { "prestige": 1, "contentment": -2 },
+        "outcome": "The refusal goes back courteously by the courtly route, and is received, you are given to understand, with a nod and no surprise: he tested whether the man had survived the rank, and has his answer, and respects it as one respects a fortification. The year's agitations proceed by proclamation and counter-proclamation, formal as chess by post, and cost both sides the standard rates. Twice you watch a misunderstanding burn for a week that the rose bush would have extinguished in an evening. The channel, once closed at this level, does not reopen; such things have their season. You governed correctly. The correct, you write in no minute, is what remains when the possible has been declined."
+      },
+      {
+        "label": "Formalise it instead: invite him to Government House, publicly, as the Council opposition is invited.",
+        "effects": { "contentment": 2, "prestige": -2, "order": 1 },
+        "outcome": "The invitation gazettes — His Honour receives the president of the provincial movement, openly, as constitutional furniture — and the gesture detonates in both camps at once: Delhi wires for an explanation, his own left wing accuses him of dining with the Satan of Barhampur, and the interview itself, conducted under forty watching eyes, yields precisely the nothing that public interviews yield. The private channel, exposed to daylight, dies of it. Yet something survives the wreckage: the precedent. Ten years on, when his successor and yours must talk or watch the province burn, there is a form on file for the talking, with your two names on it. Posterity may thank you. The present, on the whole, does not."
+      }
+    ]
+  },
+  {
+    "id": "lg-lala-ghost",
+    "tag": "PRIVATE",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": { "flag": "carry_lala_paper" },
+    "title": "The House of the Lala Petitions",
+    "body": "The Lala of Chhota Nagra is dead &mdash; full of years, honours of the bazaar&rsquo;s own kind, and paper: the obituary in the vernacular press runs longer than a Commissioner&rsquo;s would. His grandson now heads the house, Cambridge-polished, and his first act of state is a petition to Government House: the family firm &mdash; &lsquo;bankers, benefactors of hospitals, holders of Government paper through three generations&rsquo; &mdash; seeks the title of Rai Bahadur for its head, and encloses, with its compliments, a memorial of the house&rsquo;s services. Among the services, unlisted but present in the room like the dead man himself, is a steel almirah in which your own paper aged for twenty years. The grandson&rsquo;s covering letter hopes His Honour will remember the house&rsquo;s <i>long connection with his own distinguished career.</i> He means it, you judge, with perfect courtesy. That is what makes it the Lala&rsquo;s sentence: it reads identically as homage and as invoice.",
+    "choices": [
+      {
+        "label": "Judge the petition on the record and grant it; the hospitals are real, and so is the history.",
+        "effects": { "contentment": 2, "prestige": -1 },
+        "setFlags": ["rai_bahadur_lala"],
+        "outcome": "The title gazettes on the merits, which genuinely exist — the hospitals, the famine subscriptions, the three generations of Government paper held through every panic — and the investiture is attended by half the bazaars of two Divisions. The grandson's bow, receiving the sanad, is his grandfather's exactly: the deep one, kept for the best security. Nothing was asked improperly and nothing improper was given; the old connection merely stood in the room, as it has stood in every room of your career, patient as compound interest. Rai Bahadur. The old man would have enjoyed the title less than the fact that you were the one who signed it."
+      },
+      {
+        "label": "Grant it &mdash; and settle first, publicly, every anna your name ever owed the house.",
+        "effects": { "prestige": 2, "contentment": 1 },
+        "econ": { "treasury": -15000 },
+        "setFlags": ["cleared_the_ghost"],
+        "outcome": "Your private secretary spends a fortnight with old pass-books establishing what, if anything, remains of the ancient account — the answer is a few thousands of courtesy balances, kept alive by the house for sentiment or strategy — and it is paid to the last anna, by cheque, with a covering letter thanking the house for services rendered to a young officer long ago, copy to file. THEN the title gazettes. The sequence is everything and the bazaar reads sequences: the sahib paid, and then he signed. The grandson, Cambridge and all, is heard to say his grandfather would have called it the only account the house ever lost money on with satisfaction."
+      },
+      {
+        "label": "Refuse the petition; the CID file on the house's election lending is thin, but it exists.",
+        "effects": { "prestige": 1, "contentment": -2, "order": -1 },
+        "outcome": "The refusal is drafted on the file's thin pages — the house's discreet financing of certain candidacies, noted twice, proven never — and it is lawful, defensible, and read in the bazaars of five Divisions in the only light the bazaars keep for such news: the sahib the house carried for twenty years refused them the ribbon. The grandson's acknowledgment is two lines of Cambridge frost. The house's Government paper begins, quietly, to rotate into other securities; its election lending, formerly discreet, acquires conviction. You have made an enemy with a long ledger and longer patience, in the one quarter of the province where your own history is kept in the original hand."
+      }
+    ]
+  },
+  {
+    "id": "lg-agent-final",
+    "tag": "PRIVATE",
+    "season": ["any"],
+    "kind": "desk",
+    "once": true,
+    "priority": true,
+    "requires": { "flag": "carry_debts" },
+    "title": "The Bank at Government House",
+    "body": "The Agent who calls at Government House is not the spare Scot of Sonepore &mdash; he is the Calcutta manager himself, come up personally, which is the Bank&rsquo;s way of bowing before it speaks. The account that has followed you up three ranks now stands against the name of a Lieutenant-Governor, and the Bank&rsquo;s position, put with velvet precision, is this: such an account, at such an altitude, is no longer a banking matter but a constitutional one. Members ask questions in two Parliaments about lesser things. The Bank proposes &lsquo;regularisation before the honours season&rsquo; &mdash; their phrase, chosen to show they know exactly what is barred and when. He leaves a single sheet. The figure at the bottom has your whole career&rsquo;s interest in it, in both senses.",
+    "choices": [
+      {
+        "label": "Liquidate everything liquidatable and clear it whole, this quarter, whatever it strips.",
+        "effects": { "prestige": 2, "contentment": -2 },
+        "econ": { "treasury": -60000, "debt": -200000 },
+        "setFlags": ["cleared_at_the_top"],
+        "outcome": "It takes the quarter and most of what twenty-two years accumulated: the Home securities sold at the bottom of the market, the insurance surrendered, the stable cut to ceremonial minimum, and a private economy at Government House that the Military Secretary executes without ever being told its reason. The account closes. The Calcutta manager's acknowledgment is one sentence, and the Bank's Calcutta ledger writes against your name the annotation that cannot be purchased, only earned at ruinous rates: <i>closed at par, at his own instance.</i> Whatever the honours season brings, no man in India holds paper on the Lieutenant-Governor of Barhampur. You are five-and-forty, nearly poor, and unowned, and you sleep."
+      },
+      {
+        "label": "A retirement schedule against the pension, signed at Government House.",
+        "effects": { "prestige": 1, "health": -1 },
+        "econ": { "debt": -80000 },
+        "outcome": "The Sonepore instrument at the final scale: quarterly instalments against pay and pension, executed before witnesses, lodged with the Bank's board — an Honour's signature on a debtor's schedule, which the Bank receives with the reverence it keeps for its rarest paper: the great man who documents. The instalments march; the figure falls below the constitutional and toward the merely personal; the honours-season bar recedes quarter by quarter like a tide going out on a timetable. It is dignity of the working kind — no strip-sale, no drama, a debt governed the way you govern everything now. The manager, departing, observes that the Bank has held the accounts of eleven Lieutenant-Governors. He does not say where yours ranks. His bow does."
+      },
+      {
+        "label": "The account has waited twenty years; it can wait out one honours season more.",
+        "effects": { "health": 1, "contentment": 1 },
+        "econ": { "debt": 30000 },
+        "outcome": "The manager receives the decision with a stillness that is its own minute, and departs, and the account resumes its immemorial life — fed, never fattened, compounding gently against the one deadline that now matters. The Bank does nothing; the Bank at this altitude never does anything; it merely exists, knowledgeably, adjacent to every List. You have made the wager of your whole financial life one more time: that the term will outrun the paper. The odds are as they have always been. So is the stake, which is no longer money, and has not been money since Kotra."
+      }
+    ]
+  }
+]

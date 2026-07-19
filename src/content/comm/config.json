@@ -18,7 +18,45 @@
         "kcsi",
         "kcie"
       ],
-      "promotesTo": null,
+      "promotesTo": "lg",
+      "repeatNote": "The province is not offered. The Division must be held again &mdash; and held so that Government House cannot look away.",
+      "carryOut": [
+        {
+          "ending": "kcsi",
+          "as": "carry_star",
+          "meters": {
+            "prestige": 3
+          }
+        },
+        {
+          "flag": "carry_wife",
+          "as": "carry_wife"
+        },
+        {
+          "flag": "carry_alone",
+          "as": "carry_alone"
+        },
+        {
+          "flag": "stood_by_dass",
+          "as": "carry_dass_risen"
+        },
+        {
+          "flag": "talked_to_congress",
+          "as": "carry_congress_channel"
+        },
+        {
+          "debt": true,
+          "as": "carry_debts"
+        },
+        {
+          "flag": "carry_lala_paper",
+          "as": "carry_lala_paper"
+        },
+        {
+          "flag": "lala_still_holds",
+          "as": "carry_lala_paper"
+        }
+      ],
       "carriesIn": [
         "carry_marked",
         "carry_wife",
