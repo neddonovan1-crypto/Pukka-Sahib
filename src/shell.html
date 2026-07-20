@@ -190,12 +190,33 @@
   .body{font-size:1.02rem; margin-bottom:18px}
   .choices{display:flex; flex-direction:column; gap:10px}
   button.choice{
+    position:relative; overflow:hidden;
     text-align:left; font-family:inherit; font-size:.98rem; color:var(--ink);
     background:var(--surface2); border:1px solid var(--line); border-radius:4px;
     padding:12px 14px; cursor:pointer; transition:.15s; line-height:1.45;
   }
   button.choice:hover{border-color:var(--seal); transform:translateX(3px)}
   button.choice:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
+  button.choice.stamped{border-color:var(--stamp)}
+  /* The verdict stamped across the chosen option: the decision as an act of
+     government, slammed down and slightly askew, in the oxblood office ink. */
+  .choice .verdict-stamp{
+    position:absolute; top:50%; right:16px; transform:translateY(-50%) rotate(-9deg);
+    font-family:"Courier New",Courier,monospace; font-weight:700; font-size:1.05rem;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--stamp);
+    border:2.5px solid var(--stamp); border-radius:4px; padding:2px 9px;
+    opacity:.9; pointer-events:none; animation:stampSlam .28s cubic-bezier(.2,1.4,.5,1) both;
+  }
+  @keyframes stampSlam{
+    0%{transform:translateY(-50%) rotate(-9deg) scale(2.5); opacity:0}
+    55%{opacity:.95} 100%{transform:translateY(-50%) rotate(-9deg) scale(1); opacity:.9}
+  }
+  @keyframes slidein{from{opacity:0; transform:translateY(9px)} to{opacity:1; transform:none}}
+  .outcome.slidein{animation:slidein .32s ease-out both}
+  @media (prefers-reduced-motion:reduce){
+    .choice .verdict-stamp{animation:none}
+    .outcome.slidein{animation:none}
+  }
   .choice .cue{display:block; margin-top:4px; font-size:.82rem; font-style:italic; color:var(--ink-soft)}
   /* Forecast chips on posture buttons: the fortnight's net swing, shown before
      committing. Same chip language as outcomes, slightly quieter. */

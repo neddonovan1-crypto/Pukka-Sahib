@@ -330,6 +330,11 @@ function validateChapter(content, chapterKey) {
     (list || []).forEach(function (ch, i) {
       var cw = w + ".choice[" + i + "]";
       check(ch.label && ch.label.length > 0, cw + ": label missing");
+      if (ch.stampWord !== undefined) {
+        check(typeof ch.stampWord === "string" && ch.stampWord.length > 0 && ch.stampWord.length <= 16,
+          cw + ": stampWord must be a short string (<=16 chars)");
+        if (ch.stampWord) scanText(ch.stampWord, cw);
+      }
       (ch.setFlags || []).forEach(function (f) { flagsProduced[f] = true; });
       if (ch.condition) {
         checkCondition(ch.condition, cw);

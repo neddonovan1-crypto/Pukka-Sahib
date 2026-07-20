@@ -244,10 +244,16 @@
       var b = document.createElement("button");
       b.className = "choice";
       b.innerHTML = ch.label;
-      b.onclick = function () { audio.stamp(); paint(game.chooseOption(i)); };
+      b.onclick = function () {
+        chosenIdx = i; chosenStamp = ch.stampWord || "Ordered"; // the verdict stamped on the file
+        audio.stamp(); paint(game.chooseOption(i));
+      };
       box.appendChild(b);
     });
   }
+  // Which option was just chosen, and the word stamped across it (set at click,
+  // read when the resolved card paints — the snapshot has no event by then).
+  var chosenIdx = null, chosenStamp = "Ordered";
 
   // The consult affordance: before consulting, a quiet "Ask …" control; after,
   // the adviser's opinion as a marginal note with any small cost it carried.
@@ -273,11 +279,20 @@
   function renderResolved(s) {
     var c = el("card");
     c.innerHTML +=
-      '<div class="outcome">' + s.result.outcome + "</div>" +
+      '<div class="outcome slidein">' + s.result.outcome + "</div>" +
       '<div class="deltas">' + deltaChips(s.result.effects, s.result.econ) + "</div>" +
       '<div class="next"><button class="primary" id="cont">Continue &rarr;</button></div>';
     var btns = c.querySelectorAll(".choice");
     for (var i = 0; i < btns.length; i++) { btns[i].disabled = true; btns[i].style.opacity = 0.5; btns[i].onclick = null; }
+    // Stamp the chosen option with its inked verdict — the decision made an act
+    // of government, not a button press.
+    if (chosenIdx != null && btns[chosenIdx]) {
+      btns[chosenIdx].style.opacity = 1;
+      var st = document.createElement("span");
+      st.className = "verdict-stamp"; st.textContent = chosenStamp;
+      btns[chosenIdx].appendChild(st);
+      btns[chosenIdx].classList.add("stamped");
+    }
     var ask = c.querySelector(".consult-ask"); // the fortnight is decided; no asking now
     if (ask) { ask.disabled = true; ask.onclick = null; }
     el("cont").onclick = function () { audio.stamp(); paint(game.next()); };

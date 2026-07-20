@@ -453,6 +453,8 @@ async function consultSession(browser, viewport) {
   await page.click("#card .choice:not([disabled])");
   await page.waitForSelector("#cont, #again", { timeout: 5000 });
   assert(await page.$(".outcome"), label + ": no outcome after choosing post-consult");
+  // the chosen option carries its inked verdict stamp
+  assert(await page.$(".choice.stamped .verdict-stamp"), label + ": the chosen option was not stamped");
   assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
   await ctx.close();
   return { errors: errors.length };
