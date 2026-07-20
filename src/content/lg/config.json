@@ -376,6 +376,55 @@
           "note": "listed at last, and grateful"
         }
       }
+    ],
+    "projects": [
+      {
+        "id": "lg-proj-college",
+        "cost": 300000,
+        "matures": 8,
+        "tag": "COUNCIL",
+        "label": "Found a provincial agricultural college (₹3,00,000)",
+        "note": "the next generation&rsquo;s crops, at this generation&rsquo;s cost",
+        "commission": {
+          "title": "The College is Endowed",
+          "body": "You spend a great sum of the province&rsquo;s money on a thing no ministry will see the end of: an agricultural college, with model farms and a seed-testing station and scholarships for cultivators&rsquo; sons, aimed at a harvest twenty years off. The Finance Member calls it mortgaging the present to the future. You call it governing. It will be the better part of a year in the building, and its verdict is the province&rsquo;s to write, not yours."
+        },
+        "title": "The College Takes Its First Class",
+        "thrived": {
+          "requires": {
+            "allOf": [
+              {
+                "meter": "order",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "meter": "contentment",
+                "op": ">=",
+                "value": 48
+              }
+            ]
+          },
+          "body": "The college opens into a province settled enough to trust it, and the trust arrives in the shape of applicants: cultivators&rsquo; sons in from four divisions, a chair of agriculture filled from Home, and within a year a drought-hardy seed going out from the testing station into fields that badly want it. It is the kind of foundation that outlives the founder and takes his name off the building, which is the only immortality worth the vote.",
+          "effects": {
+            "prestige": 6,
+            "contentment": 5
+          },
+          "setFlags": [
+            "lg_college_thrived"
+          ]
+        },
+        "languished": {
+          "body": "The college opens into a province with no attention to spare for it, and it shows: the chair unfilled, the model farm a scandal of leased-out land, the scholarships going to the sons of men who did not need them. Three hundred thousand rupees stand in stucco as a monument to a Governor who built for a future the present would not fund, and the Council, which warned him, says so at length.",
+          "effects": {
+            "prestige": -5,
+            "contentment": -2
+          },
+          "setFlags": [
+            "lg_college_languished"
+          ]
+        }
+      }
     ]
   },
   "endings": {

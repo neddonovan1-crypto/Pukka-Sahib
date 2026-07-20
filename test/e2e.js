@@ -605,6 +605,73 @@ async function twoStepSession(browser, viewport) {
   return { errors: errors.length };
 }
 
+// District works: commissioning one spends the fortnight and the money and
+// queues it; it matures fortnights later into a payoff read from the district.
+async function projectSession(browser, viewport) {
+  var label = "project";
+  var errors = [];
+  var dmCareer = { v: 1, completions: { ac: 1 }, honours: [], history: [{ chapter: "ac", ending: "confirmed", title: "Confirmed", promoted: true }], carries: {} };
+
+  // A — commission: a healthy treasury offers the works; taking it spends the
+  // fortnight on a "works founded" interlude and draws the cost down.
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  var save = { v: 2, chapter: "dm", data: {
+    S: { flags: {}, posture: null, turn: 3, treasury: 60000, debt: 0, log: [], projects: [],
+         revenue: 58, order: 60, prestige: 55, contentment: 55, health: 55 },
+    phase: "posture", currentId: null, lastResult: null, recent: [], notice: null, lastEventId: null, endedKey: null } };
+  await ctx.addInitScript(function (seed) {
+    window.localStorage.setItem("pukka-sahib-career", JSON.stringify(seed.career));
+    window.localStorage.setItem("pukka-sahib-save-dm", JSON.stringify(seed.save));
+  }, { career: dmCareer, save: save });
+  await page.goto(INDEX, { waitUntil: "load" });
+  await page.click("#resume");
+  await page.waitForSelector("#card .choice", { timeout: 5000 });
+  var works = await page.$(".choice--works");
+  assert(works, label + ": a healthy treasury offered no public works");
+  var treasuryBefore = (await page.textContent("#economy")) || "";
+  if (works) {
+    await works.click();
+    await page.waitForSelector("#cont", { timeout: 5000 });
+    var founded = (await page.textContent("#card .cardtitle")) || "";
+    assert(/Founded|Works/.test(founded), label + ": commissioning did not open the works (\"" + founded.trim() + "\")");
+    var treasuryAfter = (await page.textContent("#economy")) || "";
+    assert(treasuryBefore !== treasuryAfter, label + ": commissioning did not draw down the treasury");
+  }
+  await ctx.close();
+
+  // B — maturation: a work due next fortnight, in a well-kept district, comes
+  // good. Seed it one Continue from maturation and assert the payoff.
+  var ctx2 = await browser.newContext({ viewport: viewport });
+  var page2 = await ctx2.newPage();
+  page2.on("pageerror", function (e) { errors.push("pageerror(mat): " + e.message); });
+  var save2 = { v: 2, chapter: "dm", data: {
+    S: { flags: { "dm-proj-school": true }, posture: "desk", turn: 7, treasury: 40000, debt: 0, log: [],
+         projects: [{ id: "dm-proj-school", due: 8 }],
+         revenue: 58, order: 60, prestige: 55, contentment: 55, health: 55 },
+    phase: "resolved", currentId: "dm-canal-tail",
+    lastResult: { outcome: "The fortnight closes.", effects: {}, econ: null },
+    recent: [], notice: null, lastEventId: "dm-canal-tail", endedKey: null } };
+  await ctx2.addInitScript(function (seed) {
+    window.localStorage.setItem("pukka-sahib-career", JSON.stringify(seed.career));
+    window.localStorage.setItem("pukka-sahib-save-dm", JSON.stringify(seed.save));
+  }, { career: dmCareer, save: save2 });
+  await page2.goto(INDEX, { waitUntil: "load" });
+  await page2.click("#resume");
+  await page2.waitForSelector("#cont", { timeout: 5000 });
+  await page2.click("#cont"); // advance into fortnight 8 — the works mature
+  await page2.waitForSelector("#card .cardtitle", { timeout: 5000 });
+  var matured = (await page2.textContent("#card .cardtitle")) || "";
+  assert(/School/.test(matured), label + ": the works did not mature on their due fortnight (\"" + matured.trim() + "\")");
+  var body = (await page2.textContent("#card")) || "";
+  assert(/waiting-list|first morning|calm enough/.test(body), label + ": a well-kept district did not make the works thrive");
+  await ctx2.close();
+
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  return { errors: errors.length };
+}
+
 (async function () {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
@@ -649,6 +716,8 @@ async function twoStepSession(browser, viewport) {
     console.log("doc:    ", JSON.stringify(dt));
     var ts = await twoStepSession(browser, { width: 1120, height: 920 });
     console.log("2step:  ", JSON.stringify(ts));
+    var pj = await projectSession(browser, { width: 1120, height: 920 });
+    console.log("project:", JSON.stringify(pj));
   } finally {
     await browser.close();
   }

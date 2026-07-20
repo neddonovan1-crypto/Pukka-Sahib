@@ -259,8 +259,8 @@
     var box = c.querySelector(".choices");
     game.postureOptions().forEach(function (o) {
       var b = document.createElement("button");
-      b.className = "choice";
-      var chips = deltaChips(o.effects, null);
+      b.className = "choice" + (o.project ? " choice--works" : "");
+      var chips = deltaChips(o.effects, o.econ); // works carry a cost chip, not meter chips
       b.innerHTML = o.label + '<span class="cue">' + o.note + "</span>" +
         (chips ? '<span class="fore">' + chips + "</span>" : "");
       b.onclick = function () { audio.stamp(); paint(game.choosePosture(o.kind)); };

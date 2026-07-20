@@ -458,6 +458,38 @@ function validateChapter(content, chapterKey) {
     }
   });
 
+  /* ---- district works (config.projects) ---- */
+  // Each spends the treasury now and matures into an interlude whose fate is
+  // read from the district. The commission flag is the project id; both
+  // maturation branches may set flags.
+  var projectIds = {};
+  (cfg.projects || []).forEach(function (p, i) {
+    var w = "config.projects[" + i + "]";
+    check(typeof p.id === "string" && p.id.length > 0 && !projectIds[p.id], w + ": duplicate or missing id");
+    projectIds[p.id] = true;
+    check(!ids[p.id], w + ": id collides with an event/occasion id");
+    flagsProduced[p.id] = true; // the commission flag
+    check(typeof p.cost === "number" && p.cost > 0, w + ": cost must be a positive number");
+    check(typeof p.matures === "number" && p.matures >= 1 && p.matures <= cfg.maxTurns, w + ": matures must be 1.." + cfg.maxTurns);
+    check(p.tag && p.label && p.note && p.title, w + ": needs tag/label/note/title");
+    if (p.label) scanText(p.label + " " + p.note + " " + p.title, w);
+    var cm = p.commission || {};
+    check(typeof cm.title === "string" && cm.title.length > 0 && typeof cm.body === "string" && cm.body.length > 0, w + ": commission needs title and body");
+    if (cm.title) scanText(cm.title + " " + cm.body + " " + (cm.outcome || ""), w + ".commission");
+    ["thrived", "languished"].forEach(function (side) {
+      var o = p[side], sw = w + "." + side;
+      check(o && typeof o === "object", sw + ": missing");
+      if (!o || typeof o !== "object") return;
+      check(typeof o.body === "string" && o.body.length > 0, sw + ": body missing");
+      if (o.body) scanText(o.body + " " + (o.outcome || ""), sw);
+      check(o.effects && Object.keys(o.effects).length > 0, sw + ": needs effects");
+      checkEffects(o.effects, sw);
+      checkEcon(o.econ, sw);
+      (o.setFlags || []).forEach(function (f) { flagsProduced[f] = true; });
+    });
+    if (p.thrived && p.thrived.requires) checkCondition(p.thrived.requires, w + ".thrived.requires");
+  });
+
   /* ---- codas: arc-conditional sentences appended to the verdict ---- */
   (content.codas || []).forEach(function (cd, i) {
     var w = "coda[" + i + "]";

@@ -417,6 +417,55 @@
           "note": "keeps faith with you"
         }
       }
+    ],
+    "projects": [
+      {
+        "id": "dm-proj-school",
+        "cost": 25000,
+        "matures": 6,
+        "tag": "P.W.D.",
+        "label": "Endow a district high school (₹25,000)",
+        "note": "a building now; clerks, pleaders, and trouble in ten years",
+        "commission": {
+          "title": "The School is Founded",
+          "body": "You vote the money from a good year&rsquo;s surplus and lay the stone yourself, in a marquee, before the assembled respectability of the district and a photographer from the divisional paper. The Rai Bahadur gives an acre; the missionary gives advice; the boys, for whom the thing is nominally built, give three cheers and go back to minding goats. It will be six months building. What comes out of it is not yours to say."
+        },
+        "title": "The School Opens Its Doors",
+        "thrived": {
+          "requires": {
+            "allOf": [
+              {
+                "meter": "order",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "meter": "contentment",
+                "op": ">=",
+                "value": 48
+              }
+            ]
+          },
+          "body": "The school opens into a district calm enough to want it: forty boys on the first morning, a headmaster poached from Patna, and a waiting-list by the second term. The men who send their sons remember who built it, and say so where it counts. A district that educates its own is a district a Government likes to name in a despatch.",
+          "effects": {
+            "prestige": 5,
+            "contentment": 4
+          },
+          "setFlags": [
+            "dm_school_thrived"
+          ]
+        },
+        "languished": {
+          "body": "The school opens into a district with other things on its mind, and the things show in the building: half the desks empty, the headmaster gone back to Patna unpaid, the roof already a subscription nobody will get up. It stands, a good intention in brick, and the vernacular press has found the phrase it likes &mdash; <i>the Collector&rsquo;s folly</i> &mdash; and will not now put it down.",
+          "effects": {
+            "prestige": -3,
+            "contentment": -2
+          },
+          "setFlags": [
+            "dm_school_languished"
+          ]
+        }
+      }
     ]
   },
   "endings": {

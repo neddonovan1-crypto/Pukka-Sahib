@@ -205,6 +205,25 @@ var POLICIES = {
   }
 };
 
+// District-works probes: commission whatever work is on offer, then either
+// keep the district well (builder → the works thrive) or neglect it (careless →
+// the works languish). Proves projects can be commissioned and both fates fire.
+POLICIES.builder = {
+  posture: function (s, rng) { return (s.works && s.works.length) ? s.works[0].kind : POLICIES.skilled.posture(s, rng); },
+  option: function (s, g, rng) { return POLICIES.skilled.option(s, g, rng); }
+};
+POLICIES.builderCareless = {
+  posture: function (s) { return (s.works && s.works.length) ? s.works[0].kind : "desk"; },
+  option: function (s) {
+    var bi = 0, worst = 1e9;
+    s.event.choices.forEach(function (ch, i) {
+      var e = ch.effects || {}; var v = (e.order || 0) + (e.contentment || 0);
+      if (v < worst) { worst = v; bi = i; }
+    });
+    return bi;
+  }
+};
+
 function pct(dist, keys, n) {
   var c = 0; keys.forEach(function (k) { c += dist[k] || 0; }); return c / n;
 }
@@ -301,6 +320,11 @@ function simulateChapter(chapterKey, content) {
       Object.keys(d.meters || {}).forEach(function (k) { CARRY.meters[k] = (CARRY.meters[k] || 0) + d.meters[k]; });
     });
   });
+  var HAS_PROJECTS = (content.config.projects || []).length > 0;
+  if (HAS_PROJECTS) {
+    R.builder = runBatch("builder", 200, 848401);
+    R.builderCareless = runBatch("builderCareless", 200, 929201);
+  }
   var CARRIED = ["skilledCarried", "randomCarried", "paragonCarried"];
   if (CARRY) {
     R.skilledCarried = runBatch("skilled", N, 909091, CARRY);
@@ -363,6 +387,19 @@ function simulateChapter(chapterKey, content) {
         "cast '" + m.id + "' " + side + " standing ('" + m[side].flag + "') never reached in any policy");
     });
   });
+
+  // District works: each must be commissionable, and both its fates — thriving
+  // in a well-kept district, languishing in a neglected one — reachable in play.
+  if (HAS_PROJECTS) {
+    var worksFlags = {};
+    [R.builder, R.builderCareless].forEach(function (b) { Object.keys(b.flagsSeen).forEach(function (f) { worksFlags[f] = true; }); });
+    (content.config.projects).forEach(function (p) {
+      assert(R.builder.flagsSeen[p.id], "project '" + p.id + "' was never commissioned by the builder probe");
+      var th = (p.thrived.setFlags || [])[0], la = (p.languished.setFlags || [])[0];
+      if (th) assert(worksFlags[th], "project '" + p.id + "' thrived outcome never reached");
+      if (la) assert(worksFlags[la], "project '" + p.id + "' languished outcome never reached");
+    });
+  }
 
   // and the top rung must be winnable by play engineered for it — fresh, or
   // arriving with the previous rank's full inheritance

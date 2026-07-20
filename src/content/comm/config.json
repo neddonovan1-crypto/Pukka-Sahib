@@ -417,6 +417,55 @@
           "note": "superseded, and it was public"
         }
       }
+    ],
+    "projects": [
+      {
+        "id": "comm-proj-dispensaries",
+        "cost": 90000,
+        "matures": 6,
+        "tag": "MEDICAL",
+        "label": "Fund a chain of rural dispensaries (₹90,000)",
+        "note": "medicine at the village door, across five districts",
+        "commission": {
+          "title": "The Dispensaries are Sanctioned",
+          "body": "You put a division&rsquo;s surplus into the thing every Collector in it has asked for and no Collector could afford alone: a chain of rural dispensaries, a sub-assistant surgeon and a cold-box of quinine within a day&rsquo;s bullock-cart of every large village in five districts. It is unglamorous and enormous, and it will be half a year before the first door opens."
+        },
+        "title": "The Dispensaries Open",
+        "thrived": {
+          "requires": {
+            "allOf": [
+              {
+                "meter": "order",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "meter": "contentment",
+                "op": ">=",
+                "value": 48
+              }
+            ]
+          },
+          "body": "The dispensaries open into a Division ordered enough to staff and stock them, and they do the quiet arithmetic that never makes a durbar: fevers caught early, a cholera season broken before it runs, a hundred small mercies a week that the people credit, rightly, to the sirkar. The Surgeon-General writes of it warmly to Calcutta. It is the sort of work knighthoods are quietly built on.",
+          "effects": {
+            "prestige": 5,
+            "contentment": 5
+          },
+          "setFlags": [
+            "comm_dispensaries_thrived"
+          ]
+        },
+        "languished": {
+          "body": "The dispensaries open into a Division too disordered to keep them: the quinine walks, the sub-assistant surgeons are absent or worse, and by the second season half the doors are shut and the other half are a byword. The money is spent and the mercy is not delivered, and both facts are in the audit. A great charity, badly run, is remembered as the waste and not the charity.",
+          "effects": {
+            "prestige": -4,
+            "contentment": -2
+          },
+          "setFlags": [
+            "comm_dispensaries_languished"
+          ]
+        }
+      }
     ]
   },
   "endings": {

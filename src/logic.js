@@ -46,6 +46,7 @@
     var ECON = CFG.economy;
     var MAX_TURNS = CFG.maxTurns;
     var CREDITOR = ECON.creditor || "the Lala"; // who holds the district's paper
+    var PROJECTS = CFG.projects || []; // district works you may commission (see below)
     // Meter keys come from the chapter's config so a rank can re-skin its five
     // columns; the default list keeps older bundles working.
     var METERS = (CFG.meters && CFG.meters.length)
@@ -85,10 +86,54 @@
       return null;
     }
 
-    // Open a fortnight: an occasion (the fixed calendar of the year) claims the
-    // whole fortnight — no posture choice. With choices it plays as an event;
-    // without, it is a fait accompli that resolves like an interlude.
+    // District works (config.projects): a slow, deliberate use for a healthy
+    // treasury. Commissioning one spends the fortnight and its cost and queues
+    // it to mature some fortnights on into an interlude whose quality turns on
+    // how the district was kept meanwhile — money as an expression of intent.
+    function projectById(id) {
+      for (var i = 0; i < PROJECTS.length; i++) if (PROJECTS[i].id === id) return PROJECTS[i];
+      return null;
+    }
+    function projectQueued(id) { return (S.projects || []).some(function (p) { return p.id === id; }); }
+    // On offer when the cost is in hand, and it is neither built (its flag) nor
+    // already building (in the queue).
+    function projectOffered(p) { return S.treasury >= p.cost && !S.flags[p.id] && !projectQueued(p.id); }
+    function worksOnOffer() {
+      return PROJECTS.filter(projectOffered).map(function (p) {
+        return { kind: p.id, label: p.label, note: p.note, project: true, cost: p.cost, econ: { treasury: -p.cost } };
+      });
+    }
+    // A work maturing this fortnight claims it (like an occasion). Its fate is
+    // read, not chosen: a well-kept district (thrived.requires) makes the works
+    // good; a neglected one leaves a white elephant.
+    function matureProject() {
+      if (occasionFor(S.turn)) return null; // an occasion owns this fortnight; the works wait
+      for (var i = 0; i < (S.projects || []).length; i++) {
+        if (S.projects[i].due <= S.turn) {
+          var p = projectById(S.projects[i].id);
+          S.projects.splice(i, 1);
+          if (!p) return { pulsed: [] };
+          var out = evalCondition(p.thrived.requires) ? p.thrived : p.languished;
+          var eff = out.effects || {};
+          var pulsed = applyMeters(eff);
+          (out.setFlags || []).forEach(function (f) { S.flags[f] = true; });
+          applyEcon(out.econ);
+          current = { id: p.id + "#matured", tag: p.tag, title: p.title, body: out.body, interlude: true };
+          lastResult = { outcome: out.outcome || "", effects: eff, econ: out.econ || null };
+          logDecision(p.title, "the works come to term", out.outcome, eff, out.econ, (out.setFlags || []).length);
+          ended = collapseCheck();
+          return { pulsed: pulsed };
+        }
+      }
+      return null;
+    }
+
+    // Open a fortnight: a maturing work, then an occasion (the fixed calendar of
+    // the year) claim the whole fortnight — no posture choice. With choices an
+    // occasion plays as an event; without, it is a fait accompli like an interlude.
     function beginFortnight() {
+      var mat = matureProject();
+      if (mat) { phase = ended ? "ended" : "interlude"; return mat.pulsed; }
       var occ = occasionFor(S.turn);
       if (!occ) { phase = "posture"; return []; }
       S.posture = null; // the fortnight is spoken for; banner falls back to season
@@ -312,7 +357,7 @@
     // {k: delta} }. Carried flags gate this chapter's echo events and codas;
     // carried meter deltas (a despatch's dowry) adjust the start.
     function init(carry) {
-      S = { flags: {}, posture: null, turn: 1, treasury: ECON.startTreasury, debt: 0, log: [] };
+      S = { flags: {}, posture: null, turn: 1, treasury: ECON.startTreasury, debt: 0, log: [], projects: [] };
       METERS.forEach(function (k) { S[k] = CFG.start[k]; });
       if (carry) {
         (carry.flags || []).forEach(function (f) { S.flags[f] = true; });
@@ -354,11 +399,28 @@
       });
       var rdef = retreatFor(sk);
       if (rdef) opts.push({ kind: rdef.key, label: rdef.label, note: rdef.note, retreat: true, effects: rdef.effects || {} });
+      worksOnOffer().forEach(function (w) { opts.push(w); });
       return opts;
     }
 
     function choosePosture(kind) {
       if (phase !== "posture") return snapshot();
+      // Commission a district work: spend the fortnight and the money, queue the
+      // maturation, and resolve to a "works begin" interlude.
+      var pdef = projectById(kind);
+      if (pdef) {
+        if (!projectOffered(pdef)) return snapshot(); // not on offer (unaffordable/built/building)
+        S.flags[pdef.id] = true;
+        S.projects.push({ id: pdef.id, due: S.turn + pdef.matures });
+        applyEcon({ treasury: -pdef.cost });
+        var cm = pdef.commission || {};
+        logDecision(cm.title || pdef.title, pdef.label, cm.outcome || "", {}, { treasury: -pdef.cost }, 1);
+        current = { id: pdef.id + "#works", tag: pdef.tag, title: cm.title || pdef.title, body: cm.body || "", interlude: true };
+        lastResult = { outcome: cm.outcome || "", effects: {}, econ: { treasury: -pdef.cost } };
+        ended = collapseCheck();
+        phase = ended ? "ended" : "interlude";
+        return snapshot({ pulsed: [] });
+      }
       // A seasonal retreat: consumes the fortnight as a no-choice recovery, sets
       // its once-per-season flag, and resolves straight to Continue (no event).
       var rdef = retreatByKey(kind);
@@ -494,6 +556,8 @@
         meters: meters, deltas: deltas, treasury: S.treasury, debt: S.debt,
         posture: S.posture, notice: notice,
         retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,
+        works: phase === "posture" ? worksOnOffer() : [],
+        pendingWorks: (S.projects || []).length,
         event: (phase === "event" || phase === "interlude") ? current : null,
         step: (phase === "event" && current && current.thenSynthetic) || false,
         stepLead: (phase === "event" && current && current.thenSynthetic && lastResult) ? lastResult.outcome : null,
