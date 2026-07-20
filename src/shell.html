@@ -154,6 +154,25 @@
   .standing .st{font-family:"Courier New",Courier,monospace; font-size:.68rem; letter-spacing:.03em}
   .standing.won .st{color:var(--good)}
   .standing.wronged .st{color:var(--bad)}
+  /* The year strip: the whole posting as a calendar above the card. A tick per
+     fortnight, tinted by season; the current one raised; occasions ahead as
+     oxblood seals, past ones faded. Purely a read of the calendar. */
+  .yearstrip{margin:2px 0 14px; padding-top:9px}
+  .yr-track{display:flex; gap:2px; align-items:flex-end; height:20px}
+  .yr-tick{
+    position:relative; flex:1 1 0; height:7px; border-radius:1px;
+    background:var(--line-soft); opacity:.75; transition:height .2s, opacity .2s;
+  }
+  .yr-tick.season-cold{background:rgba(120,150,190,.75)}
+  .yr-tick.season-hot{background:rgba(200,160,80,.8)}
+  .yr-tick.season-monsoon{background:rgba(105,140,115,.8)}
+  .yr-tick.past{opacity:.32}
+  .yr-tick.now{height:17px; opacity:1; box-shadow:0 0 0 1.5px var(--ink)}
+  .yr-seal{
+    position:absolute; left:50%; top:-8px; transform:translateX(-50%);
+    width:6px; height:6px; border-radius:50%; background:var(--seal); border:1px solid var(--bg);
+  }
+  .yr-seal.past{background:var(--ink-soft); opacity:.5}
   .notice{
     font-family:"Courier New",Courier,monospace; font-size:.72rem; line-height:1.5;
     color:var(--ink); background:var(--surface2); border:1px solid var(--line);
@@ -409,6 +428,7 @@
       <div class="standings" id="standings" hidden></div>
     </div>
     <div class="col col-right">
+      <div class="yearstrip" id="yearstrip" hidden></div>
       <div class="notice" id="notice" hidden></div>
       <div class="card" id="card"></div>
     </div>

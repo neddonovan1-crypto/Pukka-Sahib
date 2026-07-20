@@ -150,6 +150,23 @@
   .standing .st{font-family:"Courier New",Courier,monospace; font-size:.68rem; letter-spacing:.03em}
   .standing.won .st{color:var(--good)}
   .standing.wronged .st{color:var(--bad)}
+  
+  .yearstrip{margin:2px 0 14px; padding-top:9px}
+  .yr-track{display:flex; gap:2px; align-items:flex-end; height:20px}
+  .yr-tick{
+    position:relative; flex:1 1 0; height:7px; border-radius:1px;
+    background:var(--line-soft); opacity:.75; transition:height .2s, opacity .2s;
+  }
+  .yr-tick.season-cold{background:rgba(120,150,190,.75)}
+  .yr-tick.season-hot{background:rgba(200,160,80,.8)}
+  .yr-tick.season-monsoon{background:rgba(105,140,115,.8)}
+  .yr-tick.past{opacity:.32}
+  .yr-tick.now{height:17px; opacity:1; box-shadow:0 0 0 1.5px var(--ink)}
+  .yr-seal{
+    position:absolute; left:50%; top:-8px; transform:translateX(-50%);
+    width:6px; height:6px; border-radius:50%; background:var(--seal); border:1px solid var(--bg);
+  }
+  .yr-seal.past{background:var(--ink-soft); opacity:.5}
   .notice{
     font-family:"Courier New",Courier,monospace; font-size:.72rem; line-height:1.5;
     color:var(--ink); background:var(--surface2); border:1px solid var(--line);
@@ -396,6 +413,7 @@
       <div class="standings" id="standings" hidden></div>
     </div>
     <div class="col col-right">
+      <div class="yearstrip" id="yearstrip" hidden></div>
       <div class="notice" id="notice" hidden></div>
       <div class="card" id="card"></div>
     </div>
@@ -1421,6 +1439,28 @@
       }).join("");
   }
 
+  var CAL_SEASONS = (content.config.calendar && content.config.calendar.seasons) || [];
+  function seasonAt(t) {
+    for (var i = 0; i < CAL_SEASONS.length; i++) if (t >= CAL_SEASONS[i].from && t <= CAL_SEASONS[i].to) return CAL_SEASONS[i];
+    return CAL_SEASONS[CAL_SEASONS.length - 1] || { key: "cold" };
+  }
+  var OCC_BY_TURN = {};
+  (content.occasions || []).forEach(function (o) { OCC_BY_TURN[o.turn] = o; });
+  function renderYearStrip(s) {
+    var box = el("yearstrip"); if (!box) return;
+    if (!CAL_SEASONS.length || s.phase === "ended") { box.hidden = true; return; }
+    var ticks = [];
+    for (var t = 1; t <= s.maxTurns; t++) {
+      var se = seasonAt(t) || {};
+      var o = OCC_BY_TURN[t];
+      var cls = "yr-tick season-" + (se.key || "cold") + (t < s.turn ? " past" : "") + (t === s.turn ? " now" : "");
+      var seal = o ? '<span class="yr-seal' + (t < s.turn ? " past" : "") + '" title="' + decode(stripTags(o.title)) + ' (' + o.tag + ')"></span>' : "";
+      ticks.push('<span class="' + cls + '">' + seal + "</span>");
+    }
+    box.innerHTML = '<div class="yr-track">' + ticks.join("") + "</div>";
+    box.hidden = false;
+  }
+
   function renderNotice(s) {
     var n = el("notice");
     if (s.notice) { n.innerHTML = s.notice; n.hidden = false; }
@@ -1660,6 +1700,7 @@
     renderMeters(s.meters, s.pulsed, s.deltas);
     renderStatus(s);
     renderStandings(s);
+    renderYearStrip(s);
     renderNotice(s);
     if (s.phase === "posture") renderPosture(s);
     else if (s.phase === "event") renderEvent(s);

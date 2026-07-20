@@ -186,6 +186,32 @@
       }).join("");
   }
 
+  // The year strip: the whole posting laid out as a calendar above the card —
+  // a tick per fortnight washed in its season's colour, the cursor on the
+  // current fortnight, and the fixed occasions ahead as little seals. Read from
+  // the chapter's calendar and occasions; only the cursor comes from the run.
+  var CAL_SEASONS = (content.config.calendar && content.config.calendar.seasons) || [];
+  function seasonAt(t) {
+    for (var i = 0; i < CAL_SEASONS.length; i++) if (t >= CAL_SEASONS[i].from && t <= CAL_SEASONS[i].to) return CAL_SEASONS[i];
+    return CAL_SEASONS[CAL_SEASONS.length - 1] || { key: "cold" };
+  }
+  var OCC_BY_TURN = {};
+  (content.occasions || []).forEach(function (o) { OCC_BY_TURN[o.turn] = o; });
+  function renderYearStrip(s) {
+    var box = el("yearstrip"); if (!box) return;
+    if (!CAL_SEASONS.length || s.phase === "ended") { box.hidden = true; return; }
+    var ticks = [];
+    for (var t = 1; t <= s.maxTurns; t++) {
+      var se = seasonAt(t) || {};
+      var o = OCC_BY_TURN[t];
+      var cls = "yr-tick season-" + (se.key || "cold") + (t < s.turn ? " past" : "") + (t === s.turn ? " now" : "");
+      var seal = o ? '<span class="yr-seal' + (t < s.turn ? " past" : "") + '" title="' + decode(stripTags(o.title)) + ' (' + o.tag + ')"></span>' : "";
+      ticks.push('<span class="' + cls + '">' + seal + "</span>");
+    }
+    box.innerHTML = '<div class="yr-track">' + ticks.join("") + "</div>";
+    box.hidden = false;
+  }
+
   function renderNotice(s) {
     var n = el("notice");
     if (s.notice) { n.innerHTML = s.notice; n.hidden = false; }
@@ -449,6 +475,7 @@
     renderMeters(s.meters, s.pulsed, s.deltas);
     renderStatus(s);
     renderStandings(s);
+    renderYearStrip(s);
     renderNotice(s);
     if (s.phase === "posture") renderPosture(s);
     else if (s.phase === "event") renderEvent(s);

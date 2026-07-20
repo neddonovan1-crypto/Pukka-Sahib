@@ -54,6 +54,18 @@ async function playSession(browser, label, viewport, opts) {
   assert(/₹/.test(econ), label + ": economy line missing rupee figure (\"" + econ.trim() + "\")");
   var startEcon = econ.trim(); // whatever the chapter starts with — restart must return here
 
+  // The year strip: a tick per fortnight of the posting, the current one marked,
+  // and at least one occasion seal ahead. On desktop (12 ticks) and mobile (24).
+  var fnLine = (await page.textContent("#card .fortnight")) || "";
+  var ofM = /of (\d+)/.exec(fnLine);
+  if (ofM) {
+    var wantTicks = parseInt(ofM[1], 10);
+    var tickCount = await page.$$eval("#yearstrip .yr-tick", function (ns) { return ns.length; });
+    assert(tickCount === wantTicks, label + ": year strip has " + tickCount + " ticks, want " + wantTicks);
+    assert(await page.$("#yearstrip .yr-tick.now"), label + ": year strip has no current-fortnight cursor");
+    assert(await page.$("#yearstrip .yr-seal"), label + ": year strip shows no occasion seal");
+  }
+
   // Career continuity: a seeded carry must show its meter dowry on first paint
   // (e.g. the despatch's +3 prestige over the chapter's printed start).
   if (opts && opts.expectMeter) {
