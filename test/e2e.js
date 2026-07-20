@@ -66,6 +66,17 @@ async function playSession(browser, label, viewport, opts) {
     assert(await page.$("#yearstrip .yr-seal"), label + ": year strip shows no occasion seal");
   }
 
+  // The sticky meter strip: shown on the phone (five compact cells), hidden on
+  // the desktop where the full meter panel is always in view.
+  var stripVisible = await page.$eval("#meterstrip", function (n) { return getComputedStyle(n).display !== "none"; }).catch(function () { return false; });
+  if (viewport.width < 960) {
+    assert(stripVisible, label + ": no sticky meter strip on the mobile viewport");
+    var cells = await page.$$eval("#meterstrip .ms-cell", function (ns) { return ns.length; });
+    assert(cells === 5, label + ": mobile meter strip should have 5 cells, got " + cells);
+  } else {
+    assert(!stripVisible, label + ": the meter strip should be hidden on desktop");
+  }
+
   // Career continuity: a seeded carry must show its meter dowry on first paint
   // (e.g. the despatch's +3 prestige over the chapter's printed start).
   if (opts && opts.expectMeter) {

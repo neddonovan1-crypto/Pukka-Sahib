@@ -123,6 +123,20 @@
     });
   }
 
+  // The sticky mobile strip: the five meters in compact form (danger-aware),
+  // pinned at the top of the phone view while the full panel scrolls away.
+  function renderMeterStrip(meters) {
+    var box = el("meterstrip"); if (!box) return;
+    box.innerHTML = METERS.map(function (m) {
+      var v = meters[m.key];
+      var floor = METER_FLOORS[m.key];
+      var danger = (typeof floor === "number") && v <= floor;
+      return '<div class="ms-cell' + (danger ? " danger" : "") + '">' +
+        '<div class="ms-name">' + m.name.slice(0, 3) + "</div>" +
+        '<div class="ms-val">' + v + "</div></div>";
+    }).join("");
+  }
+
   // The legend: a tap/keyboard-reachable panel glossing the five meters — and
   // the money, whose rules (interest, the settlement, the honours bar, the
   // ceiling) are otherwise invisible until they bite. Built once from content.
@@ -473,6 +487,7 @@
     if (s.season && s.season.key) audio.season(s.season.key);
     renderScene(s);
     renderMeters(s.meters, s.pulsed, s.deltas);
+    renderMeterStrip(s.meters);
     renderStatus(s);
     renderStandings(s);
     renderYearStrip(s);

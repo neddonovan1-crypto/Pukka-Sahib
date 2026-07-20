@@ -383,6 +383,21 @@
     .col-left .economy{border-bottom:none; padding-bottom:0; margin-bottom:0}
     .start{max-width:660px; margin-left:auto; margin-right:auto}
   }
+  /* The sticky meter strip: on the phone the full meters scroll away with the
+     left column, so a slim compact strip of the five values pins to the top
+     while you read the card. Desktop hides it (the meters sit in view there). */
+  .meterstrip{display:none}
+  @media (max-width:959px){
+    .meterstrip{
+      display:flex; position:sticky; top:0; z-index:20; gap:5px;
+      background:var(--bg); border-bottom:1px solid var(--line);
+      padding:6px 4px; margin:0 0 12px;
+    }
+    .ms-cell{flex:1 1 0; min-width:0; text-align:center}
+    .ms-name{font-family:"Courier New",Courier,monospace; font-size:.5rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft)}
+    .ms-val{font-size:.92rem; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.2}
+    .ms-cell.danger .ms-val{color:var(--bad)}
+  }
   @media (max-width:440px){ .meter .name{font-size:.5rem} .card{padding:18px 16px} }
   @media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} button.choice:hover{transform:none} }
 </style>
@@ -417,6 +432,7 @@
   <div class="start" id="start" hidden></div>
 
   <div id="game" hidden>
+    <div class="meterstrip" id="meterstrip" aria-hidden="true"></div>
     <div class="col col-left">
       <img class="scene" id="scene" decoding="async" alt="" hidden>
       <div class="seasonband" id="seasonband"></div>
