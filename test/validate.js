@@ -318,6 +318,32 @@ function validateChapter(content, chapterKey) {
     });
   }
 
+  // Consultation: an optional in-voice opinion offered before the choice. It
+  // never gates a choice, so it is pure enrichment — but its nudge is small
+  // (an adviser tilts you; he does not swing the year), and it can set a flag
+  // (the Club remembers being asked).
+  var CONSULT_MAX = 6;
+  function checkConsult(co, w) {
+    if (co === undefined) return;
+    check(co && typeof co === "object" && !Array.isArray(co), w + ".consult must be an object");
+    if (!co || typeof co !== "object" || Array.isArray(co)) return;
+    check(typeof co.who === "string" && co.who.length > 0, w + ".consult.who missing (the adviser)");
+    if (co.who) scanText(co.who, w + ".consult.who");
+    if (co.tag !== undefined) check(typeof co.tag === "string" && co.tag.length > 0, w + ".consult.tag must be non-empty when present");
+    check(typeof co.opinion === "string" && co.opinion.length > 0, w + ".consult.opinion missing");
+    if (co.opinion) {
+      scanText(co.opinion, w + ".consult.opinion");
+      check(co.opinion.length <= 420, w + ".consult.opinion too long (a note in the ear, not an essay: <=420 chars)");
+    }
+    Object.keys(co.effects || {}).forEach(function (k) {
+      check(METERS.indexOf(k) !== -1, w + ".consult: effect key not a meter: " + k);
+      check(typeof co.effects[k] === "number" && co.effects[k] !== 0, w + ".consult: effect " + k + " must be non-zero");
+      check(Math.abs(co.effects[k]) <= CONSULT_MAX, w + ".consult: effect " + k + "=" + co.effects[k] + " exceeds ±" + CONSULT_MAX + " (a nudge, not a swing)");
+    });
+    checkEcon(co.econ, w + ".consult");
+    (co.setFlags || []).forEach(function (f) { check(typeof f === "string" && f.length > 0, w + ".consult.setFlags bad entry"); flagsProduced[f] = true; });
+  }
+
   content.events.forEach(function (e) {
     var w = "event[" + e.id + "]";
     check(e.id && !ids[e.id], w + ": duplicate or missing id");
@@ -344,6 +370,7 @@ function validateChapter(content, chapterKey) {
       // A no-choice occurrence: no choices, optional event-level effect/econ/outcome.
       check(e.kind === "interlude", w + ": interlude events must have kind 'interlude'");
       check(!e.choices || e.choices.length === 0, w + ": interlude must have no choices");
+      check(!e.consult, w + ": interludes cannot carry a consult (there is no choice to weigh)");
       checkEffects(e.effects, w);
       checkEcon(e.econ, w);
       if (e.outcome) scanText(e.outcome, w);
@@ -351,6 +378,7 @@ function validateChapter(content, chapterKey) {
     }
     check(e.kind !== "interlude", w + ": kind 'interlude' requires interlude:true");
     checkChoices(e.choices, w);
+    checkConsult(e.consult, w);
   });
 
   /* ---- occasions: the fixed calendar of the year ---- */
@@ -371,6 +399,7 @@ function validateChapter(content, chapterKey) {
     if (o.art !== undefined) check(typeof o.art === "string" && o.art.length > 0, w + ": art must be a non-empty banner key");
     if (o.choices && o.choices.length) {
       checkChoices(o.choices, w);
+      checkConsult(o.consult, w);
     } else {
       checkEffects(o.effects, w);
       checkEcon(o.econ, w);

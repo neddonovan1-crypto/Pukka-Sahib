@@ -75,7 +75,15 @@
         },
         "outcome": "The sub-committee meets twice, quarrels once, and lapses. By the rains nobody remembers who was for and who against, and the billiards table wants new cloth in any case."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Club Secretary",
+      "tag": "OVER A PEG",
+      "opinion": "He pours you one before you have asked. &lsquo;Subscribe, of course. Forty rupees and the goodwill of every man who dines here. A District Officer who is stingy at the Club is a District Officer whose transfers are discussed at it.&rsquo; He is not wrong about the goodwill. He is quite silent about the forty rupees you have not got.",
+      "effects": {
+        "contentment": 1
+      }
+    }
   },
   {
     "id": "revenue-settle",
@@ -114,7 +122,12 @@
         },
         "outcome": "Blyth-Curram replies by return dak: RAINFALL NOTED STOP REVENUE STILL SHORT STOP. There is no third telegram."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Ram Autar, the tahsildar",
+      "tag": "IN YOUR EAR",
+      "opinion": "&lsquo;Huzoor, the revenue is short because the year was short, not because the ryot is idle.&rsquo; He spreads the abstract with a patience meant to slow you. &lsquo;Press hard now and you will get it, and a bad name in forty villages that outlasts the sum. Suspend a little, and the same money comes in next year, thanking you.&rsquo; He must live in those villages after you are posted away."
+    }
   },
   {
     "id": "tiger",
@@ -520,7 +533,12 @@
         },
         "outcome": "Three days of tea, flattery, and threat in about equal parts, and there is a route, a timing, and a face-saving fiction apiece. It holds. No line of it will ever appear in any report."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Superintendent of Police",
+      "tag": "IN YOUR EAR",
+      "opinion": "The Superintendent wants the procession routed clear of the mosque, and wants it in writing. &lsquo;Sir, I can hold the town with a firm order and forty men. I cannot hold it with a compromise nobody respects.&rsquo; He believes force is the only thing a crowd reads. Sometimes it is. Sometimes it is the spark itself &mdash; and he is not the man who answers for that."
+    }
   },
   {
     "id": "dacoits",
@@ -610,7 +628,12 @@
         },
         "outcome": "The money goes where it buys quiet rather than gratitude. The lock-up is mended, the constables paid on the first of the month, and the district grows a little safer and a little more watched. You tell yourself those are the same thing."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Treasury Officer",
+      "tag": "IN YOUR EAR",
+      "opinion": "The Treasury Officer lays it out without colour. &lsquo;There is enough for the works or for the reserve, sir, and not for both. Those who spent the reserve are remembered warmly by the district and coldly by the Accountant-General.&rsquo; He is telling you the truth. He is also telling you which of the two he answers to."
+    }
   },
   {
     "id": "landrecord",

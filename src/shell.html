@@ -186,6 +186,24 @@
   .delta{font-family:"Courier New",Courier,monospace; font-size:.72rem; padding:2px 8px; border-radius:2px; background:var(--surface2); font-variant-numeric:tabular-nums}
   .delta.up{color:var(--good); border:1px solid var(--good)}
   .delta.down{color:var(--bad); border:1px solid var(--bad)}
+  /* Consultation: a word in your ear before you decide. The ask is a quiet
+     dotted control; the answer a pencilled marginal note pinned above the choices. */
+  .consult{margin:0 0 15px}
+  button.consult-ask{
+    font-family:inherit; font-size:.86rem; font-style:italic; color:var(--indigo);
+    background:none; border:none; border-bottom:1px dotted var(--indigo);
+    padding:0 0 1px; cursor:pointer;
+  }
+  button.consult-ask:hover{color:var(--ink); border-bottom-color:var(--ink)}
+  button.consult-ask:focus-visible{outline:2px solid var(--indigo); outline-offset:3px}
+  button.consult-ask[disabled]{opacity:.5; cursor:default}
+  .consult-note{border-left:2px solid var(--line); padding:2px 0 2px 12px; margin:2px 0 2px 3px}
+  .consult-who{
+    font-family:"Courier New",Courier,monospace; font-size:.62rem; letter-spacing:.07em;
+    text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px;
+  }
+  .consult-op{font-style:italic; font-size:.95rem; color:var(--ink-soft)}
+  .consult-note .deltas{margin-top:8px}
   .next{margin-top:16px; text-align:right}
   button.primary{
     font-family:"Courier New",Courier,monospace; font-size:.82rem; letter-spacing:.06em;

@@ -229,7 +229,7 @@ function simulateChapter(chapterKey, content) {
   var ONCE_IDS = {};
   content.events.forEach(function (e) { if (e.once) ONCE_IDS[e.id] = true; });
 
-  function play(policy, seed, carry) {
+  function play(policy, seed, carry, consultAlways) {
     var rng = L.seededRng(seed);
     var game = L.createGame(content, rng);
     var s = game.init(carry);
@@ -237,6 +237,9 @@ function simulateChapter(chapterKey, content) {
     while (s.phase !== "ended" && guard++ < 1000) {
       if (s.phase === "posture") s = game.choosePosture(policy.posture(s, rng));
       else if (s.phase === "event") {
+        // Ask first when the probe demands it — consulting must not alter
+        // termination and must leave the honours rate essentially unmoved.
+        if (consultAlways && s.consult && s.consult.available) s = game.consult();
         if (prev === s.event.id) backToBack = true;
         prev = s.event.id; events.push(s.event.id);
         s = game.chooseOption(policy.option(s, game, rng));
@@ -256,11 +259,11 @@ function simulateChapter(chapterKey, content) {
     return { key: titleToKey[s.ended.title], events: events, backToBack: backToBack, onceRepeat: onceRepeat, turn: s.turn, debt: s.debt };
   }
 
-  function runBatch(name, n, seedBase, carry) {
+  function runBatch(name, n, seedBase, carry, consultAlways) {
     var dist = {}, bb = 0, onceRep = 0, errs = 0, seen = {};
     for (var i = 0; i < n; i++) {
       try {
-        var r = play(POLICIES[name], seedBase + i * 7919 + 1, carry);
+        var r = play(POLICIES[name], seedBase + i * 7919 + 1, carry, consultAlways);
         dist[r.key] = (dist[r.key] || 0) + 1;
         if (r.backToBack) bb++;
         if (r.onceRepeat) onceRep++;
@@ -273,6 +276,10 @@ function simulateChapter(chapterKey, content) {
   var N = 500;
   var R = {};
   ["random", "tourOnly", "deskOnly", "skilled"].forEach(function (p) { R[p] = runBatch(p, N, p.length * 100003); });
+  // Skilled play that consults on every offer, same seeds as `skilled` so the
+  // only difference is the asking: proves consultation never breaks a run and
+  // never becomes a cheat or a trap (assertion below).
+  R.skilledConsult = runBatch("skilled", N, "skilled".length * 100003, null, true);
   // smaller engineered batches for tail- and pinnacle-reachability
   R.paragon = runBatch("paragon", 200, 777001);
   if (bands.probes.riot) R.wrecker = runBatch("wrecker", 200, 424242);
@@ -325,6 +332,11 @@ function simulateChapter(chapterKey, content) {
 
   // skill is rewarded; careless play mostly fails but isn't impossible
   assert(pct(R.skilled.dist, LADDER, N) >= 0.50, "skilled play should earn honours ≥50% (" + (pct(R.skilled.dist, LADDER, N) * 100).toFixed(0) + "%)");
+  // consultation is enrichment, not a lever: asking on every offer must leave
+  // the honours rate essentially where skilled play left it (a nudge, not a
+  // swing), and must never break a run (errs/termination covered above).
+  var consultSwing = Math.abs(pct(R.skilledConsult.dist, LADDER, N) - pct(R.skilled.dist, LADDER, N));
+  assert(consultSwing <= 0.12, "consulting swings the honours rate too far (" + (consultSwing * 100).toFixed(0) + " points; want ≤12)");
   var rnd = pct(R.random.dist, LADDER, N);
   assert(rnd >= 0.02 && rnd <= 0.50, "random honour-rate out of band [2%,50%]: " + (rnd * 100).toFixed(0) + "%");
 

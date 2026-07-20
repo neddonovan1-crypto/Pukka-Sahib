@@ -40,7 +40,12 @@
         },
         "outcome": "One from each community, weighed to the grain, and the appointment is received as such appointments are: each community counts the other&rsquo;s Minister and discounts its own. The ministry is adequate. The precedent is permanent. You have taught the province that office goes by census, and the province learns fast &mdash; within the year every board, committee and municipality has done its own arithmetic, and the communal ledger, once opened at the top, is not afterwards closed anywhere."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Chief Secretary",
+      "tag": "IN YOUR EAR",
+      "opinion": "&lsquo;The balanced ticket, Your Honour. One from each community, neither of the first rank, both grateful.&rsquo; He presents it as prudence, and it is. &lsquo;Able men make able trouble; grateful men make none.&rsquo; It is the whole philosophy of the Secretariat in a sentence &mdash; and it has governed provinces quietly into the ground."
+    }
   },
   {
     "id": "lg-question-hour",
@@ -126,7 +131,12 @@
         },
         "outcome": "The gamble of the hard school: no certificate, allowances frozen, recruitment stopped, and the consequences allowed to arrive on their own schedule &mdash; thinner pickets at the festivals, slower escorts, a dacoity gang working two districts at its leisure. The Council hears of it all, in detail, from you, weekly, and votes the money back in the autumn session, chastened. But the interval&rsquo;s bill was paid in villages that had no vote in the matter, and the opposition uses that fact better than you used the lesson."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Finance Member",
+      "tag": "IN YOUR EAR",
+      "opinion": "The Finance Member is unmoved by the Council&rsquo;s heroics. &lsquo;They threw out the police vote to be seen throwing it out, Your Honour. Certify it over their heads and you are the tyrant of one news-cycle. Leave it, and you are the Governor who left the province unpoliced to be popular. I keep the accounts; I know which is forgotten sooner.&rsquo;"
+    }
   },
   {
     "id": "lg-clemency-conspiracy",
@@ -223,7 +233,12 @@
         },
         "outcome": "The ordinance renews, the fort keeps its thirty-one, and the bombs stay quiet &mdash; which is the argument, and remains it, prevention&rsquo;s only proof being a silence. The Council&rsquo;s annual motion becomes a ritual; the detenus become a cause with a press fund of its own; and year by year the held men grow, in the province&rsquo;s imagination, which is the only court hearing their case, a little more innocent and a little more emblematic. Detention without trial keeps the peace, and manufactures by instalments the constituency that will one day end a great deal more than the ordinance. You have chosen which column to feed."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Inspector-General of Police",
+      "tag": "MOST SECRET",
+      "opinion": "&lsquo;Hold them, Your Honour. Every man on that list is on it for a reason my department can show you.&rsquo; He means it, and the files are real. He does not mention that a man held without trial is worth more to the other side than a man at liberty &mdash; because that arithmetic is not kept in his department."
+    }
   },
   {
     "id": "lg-services-memorial",
@@ -517,7 +532,12 @@
         },
         "outcome": "The withdrawal is announced in a speech about prudence which you write yourself and deliver well, and the relief on the banking benches is audible in the press gallery. The trade resumes its immemorial terms; the agrarian members cross the floor for good; and the organisers of the movement for self-rule in the countryside are handed the one argument that needs no pamphlet: the sirkar, asked to choose between the cultivator and the bania, chose. There was a serious case for the choice, and you made it honestly. The province does not care for the serious case. It cares who the Government belongs to, and it files your speech under the answer."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Revenue Member",
+      "tag": "IN YOUR EAR",
+      "opinion": "The Revenue Member speaks for the ryot, which is his department and his conviction. &lsquo;The moneylender says the Bill ruins credit. He is right. It ruins the credit that has been ruining the cultivator these forty years. Pass it, and take the howl for the sound of the thing working.&rsquo; He may be right. He has never had to raise a season&rsquo;s loan himself."
+    }
   },
   {
     "id": "lg-prince-misrule",

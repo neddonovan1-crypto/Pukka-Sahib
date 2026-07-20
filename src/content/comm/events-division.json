@@ -144,7 +144,12 @@
         ],
         "outcome": "Your initials go under his totals, and the Division&rsquo;s column reads handsome at Government House. The truth surfaces where buried truths surface: at settlement, eighteen months on, when Marwan&rsquo;s arrears prove twice the record and the correspondence you both dodged arrives with interest &mdash; addressed, this time, to the officer who initialled. Petherick will be retired by then. The initials will not. The Accountant-General&rsquo;s office is careful about initials."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Petherick",
+      "tag": "AT THE RESIDENCY",
+      "opinion": "Petherick reads the figures at a glance and hands them back. &lsquo;Marwan is burying a bad year in a good ledger, and every Collector in this Division has done it, including the one who taught you. Break him and you are correct, and short one man who knows his district. A quiet word and a corrected return is my advice. But then, I am old.&rsquo;"
+    }
   },
   {
     "id": "comm-dass-club",
@@ -184,7 +189,12 @@
         },
         "outcome": "Constitutionally the ground is firm: the Club is private, the list is theirs, the Service is neutral. The doctrine holds all the way down &mdash; the committee cites it, the station shelters under it, and the Dass household, which has heard it before in three provinces, files it where they file such rulings. His work stays excellent, his letters correct. Something that might have been given to you, and to the Service through you, is quietly put away instead."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Silchar Club committee",
+      "tag": "IN YOUR EAR",
+      "opinion": "The committee&rsquo;s view reaches you before you ask for it. &lsquo;It has never been done, Commissioner, and the day it is, half the members resign and the other half stop dining. A club is a club because of whom it keeps out.&rsquo; It is candid, and it is the authentic voice of the station &mdash; and it has been on the losing side of every argument the century has settled."
+    }
   },
   {
     "id": "comm-famine-test",
@@ -452,7 +462,12 @@
         },
         "outcome": "The scrupulous minute weighs everything and lifts nothing, and the Board, denied a Divisional preference, decides on grounds visible from Calcutta: the alignment that serves a director&rsquo;s jute interest two districts north. Nobody in Sonepore gets the line they wanted; everybody gets the lesson &mdash; a Commissioner who will not choose has chosen to be overruled. Three Collectors file your circulated minute without comment. The comment is the filing."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Bank Agent",
+      "tag": "A WORD ON &rsquo;CHANGE",
+      "opinion": "The Agent is precise and unhurried. &lsquo;A brainch line pays the district it serves and naebody else, Commissioner. Route it for the revenue and it earns; route it for the durbar and it is a monument ye&rsquo;ll be paying for when the Nawab&rsquo;s grandson has forgot the why of it.&rsquo; He is instructed to think of money &mdash; a cleaner counsellor than most."
+    }
   },
   {
     "id": "comm-durbar-princes",
@@ -528,7 +543,12 @@
         },
         "outcome": "It is asking a great deal, and you ask it face to face. Dass considers for a long moment, and writes the reply: two columns, Mill quoted back with the page numbers right, the Club affair handled with a dryness that draws blood, signed with his own name and his own service. The <i>New Dawn</i> prints it entire &mdash; honour of the debating chamber &mdash; with a rejoinder half as good. Nothing is settled. But the argument now has two sides in print instead of a statute and a cell, and His Honour, sent the cuttings, wires one word: <i>MORE.</i>"
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Superintendent, C.I.D.",
+      "tag": "MOST SECRET",
+      "opinion": "&lsquo;Proscribe it now, sir, while it sells four hundred copies, and it is done. Wait, and you proscribe it at four thousand and make the editor a leader.&rsquo; He has the figures and the certainty. What he has not, in twenty years of proscriptions, is one instance of an idea killed by being banned."
+    }
   },
   {
     "id": "comm-cyclone-silchar",

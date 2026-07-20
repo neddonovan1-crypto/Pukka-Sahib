@@ -38,7 +38,12 @@
         },
         "outcome": "Caution is a virtue, and like most virtues it is billed for. The parties walk home forty miles and walk back again. &lsquo;The sahib is wise,&rsquo; says Bishan Lal, bowing over the papers &mdash; by which he means slow, and biddable."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Bishan Lal, court reader",
+      "tag": "IN YOUR EAR",
+      "opinion": "&lsquo;Sahib will forgive me; the reader has seen forty of these boys.&rsquo; He drops to the pitch kept for advice not asked twice. &lsquo;Convict on the affray and the district calls you firm. Be merciful on the cattle and it calls you wise. Do both today and you need do nothing clever for a month.&rsquo; He protects the office before he protects you, and he is very often right."
+    }
   },
   {
     "id": "ac-tahsildar-test",
@@ -219,7 +224,12 @@
         },
         "outcome": "Six hundred rupees you can ill spare turn a gift into a sale, an obligation into a receipt. The Thakur signs it with the face of a chess player whose gambit has been declined correctly. The mare, indifferent to jurisprudence, turns out a bargain."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Bishan Lal, court reader",
+      "tag": "IN YOUR EAR",
+      "opinion": "&lsquo;A horse is not a bribe, Huzoor. A horse is a horse.&rsquo; He says it with the face he keeps for things he would not put in writing. &lsquo;Refuse it and you make an enemy of the first man in the tehsil, for a principle no one will remember. Accept it, ride it gently, let the sais talk.&rsquo; It is the wisdom of forty years. It has also broken careers."
+    }
   },
   {
     "id": "ac-eager-order",
@@ -278,7 +288,12 @@
         ],
         "outcome": "Bishan Lal, given a free hand, discovers that your order can shelter under a scarcity clause if nobody reads the clause closely. The order stands; the dealers grumble; and the reader now holds the paper on which your rescue is written. He puts it away in the third drawer of his desk, the one he keeps locked."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Bishan Lal, court reader",
+      "tag": "IN YOUR EAR",
+      "opinion": "&lsquo;It is a good order, Sahib. It is also, I think, one a Sub-Divisional Officer may not pass.&rsquo; He lets that sit. &lsquo;The Collector will not mind that you were wrong. He will mind that you did not know you were wrong. Pass what you may, refer the rest up. It is slower. It is also how one lives to be a Collector.&rsquo;"
+    }
   },
   {
     "id": "ac-boundary",
@@ -383,7 +398,15 @@
         },
         "outcome": "Time is granted with perfect courtesy, and by six o&rsquo;clock the bar knows, and by Sunday the Collector&rsquo;s lady knows. Nobody thinks the worse of a boy in debt &mdash; half the Service was reared on it &mdash; but the district has learned your balance before it has learned your work."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Hon. Secretary",
+      "tag": "OVER A PEG",
+      "opinion": "The Secretary is delighted to be asked and answers before you finish. &lsquo;My dear fellow. A man who quibbles over his Club dues in his first cold weather earns a word from the station, and it is not a kind one. Pay, and pay cheerfully. Your reputation is written at the bar, not in the cutcherry.&rsquo; The Club always counsels the Club &mdash; which does not make it wrong about the station.",
+      "setFlags": [
+        "asked_the_club"
+      ]
+    }
   },
   {
     "id": "ac-collector-camp",

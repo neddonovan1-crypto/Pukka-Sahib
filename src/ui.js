@@ -212,7 +212,9 @@
       turnline(s, '<span class="' + stampCls + '">' + tag + "</span>") +
       '<h3 class="cardtitle">' + e.title + "</h3>" +
       '<div class="body">' + e.body + "</div>" +
+      (s.consult ? '<div class="consult" id="consult"></div>' : "") +
       '<div class="choices"></div>';
+    if (s.consult) renderConsult(s.consult);
     var box = c.querySelector(".choices");
     e.choices.forEach(function (ch, i) {
       var b = document.createElement("button");
@@ -223,6 +225,27 @@
     });
   }
 
+  // The consult affordance: before consulting, a quiet "Ask …" control; after,
+  // the adviser's opinion as a marginal note with any small cost it carried.
+  function renderConsult(co) {
+    var box = el("consult"); if (!box) return;
+    if (co.available) {
+      var b = document.createElement("button");
+      b.className = "consult-ask"; b.type = "button";
+      b.innerHTML = "Ask " + co.who + "&hellip;";
+      b.onclick = function () { audio.stamp(); paint(game.consult()); };
+      box.appendChild(b);
+    } else {
+      var chips = deltaChips(co.effects, co.econ);
+      box.innerHTML =
+        '<div class="consult-note">' +
+        '<div class="consult-who">' + co.who + (co.tag ? " &middot; " + co.tag : "") + "</div>" +
+        '<div class="consult-op">' + co.opinion + "</div>" +
+        (chips ? '<div class="deltas">' + chips + "</div>" : "") +
+        "</div>";
+    }
+  }
+
   function renderResolved(s) {
     var c = el("card");
     c.innerHTML +=
@@ -231,6 +254,8 @@
       '<div class="next"><button class="primary" id="cont">Continue &rarr;</button></div>';
     var btns = c.querySelectorAll(".choice");
     for (var i = 0; i < btns.length; i++) { btns[i].disabled = true; btns[i].style.opacity = 0.5; btns[i].onclick = null; }
+    var ask = c.querySelector(".consult-ask"); // the fortnight is decided; no asking now
+    if (ask) { ask.disabled = true; ask.onclick = null; }
     el("cont").onclick = function () { audio.stamp(); paint(game.next()); };
   }
 
@@ -444,6 +469,11 @@
     if (ev.target && ev.target.tagName === "SUMMARY") return;
     var cont = el("cont") || el("again");
     if (cont && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); cont.click(); return; }
+    if (ev.key === "0") { // 0 asks the adviser, when one is on offer
+      var ask = card.querySelector(".consult-ask:not([disabled])");
+      if (ask) { ev.preventDefault(); ask.click(); }
+      return;
+    }
     if (/^[1-9]$/.test(ev.key)) {
       var choices = card.querySelectorAll(".choice:not([disabled])");
       var idx = parseInt(ev.key, 10) - 1;

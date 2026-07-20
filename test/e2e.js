@@ -397,6 +397,51 @@ async function chapterPickSession(browser, viewport) {
   return { errors: errors.length };
 }
 
+// Consultation, deterministically: seed a save sitting on an event that carries
+// a consult, resume onto it, and drive the affordance — the "Ask …" control is
+// offered, reveals an opinion, disappears, and the choices still resolve.
+async function consultSession(browser, viewport) {
+  var label = "consult";
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  var errors = [];
+  page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  var save = {
+    v: 2, chapter: "ac",
+    data: {
+      S: { flags: {}, posture: "desk", turn: 4, treasury: 5000, debt: 0, log: [], consulted: false,
+           revenue: 50, order: 52, prestige: 48, contentment: 48, health: 55 },
+      phase: "event", currentId: "ac-first-sitting",
+      lastResult: null, recent: [], notice: null, lastEventId: "ac-first-sitting", endedKey: null
+    }
+  };
+  await ctx.addInitScript(function (s) { window.localStorage.setItem("pukka-sahib-save-ac", JSON.stringify(s)); }, save);
+  await page.goto(INDEX, { waitUntil: "load" });
+  var resume = await page.$("#resume");
+  assert(resume, label + ": no resume for the seeded consult event");
+  if (resume) await resume.click();
+  await page.waitForSelector("#card .choice", { timeout: 5000 });
+
+  var ask = await page.$(".consult-ask");
+  assert(ask, label + ": an event carrying a consult offered no 'Ask …' control");
+  assert(!(await page.$(".consult-note")), label + ": the opinion was shown before asking");
+  if (ask) {
+    await ask.click();
+    await page.waitForSelector(".consult-note", { timeout: 3000 });
+    var note = ((await page.textContent(".consult-note")) || "").trim();
+    assert(note.length > 0, label + ": the consulted opinion is empty");
+    assert(!(await page.$(".consult-ask")), label + ": the 'Ask …' control remained after asking");
+  }
+  // The fortnight is still undecided: choosing must still resolve to an outcome.
+  await page.click("#card .choice:not([disabled])");
+  await page.waitForSelector("#cont, #again", { timeout: 5000 });
+  assert(await page.$(".outcome"), label + ": no outcome after choosing post-consult");
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  await ctx.close();
+  return { errors: errors.length };
+}
+
 (async function () {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
@@ -433,6 +478,8 @@ async function chapterPickSession(browser, viewport) {
     console.log("promo3: ", JSON.stringify(p3));
     var pk = await chapterPickSession(browser, { width: 1120, height: 920 });
     console.log("pick:   ", JSON.stringify(pk));
+    var cs = await consultSession(browser, { width: 1120, height: 920 });
+    console.log("consult:", JSON.stringify(cs));
   } finally {
     await browser.close();
   }

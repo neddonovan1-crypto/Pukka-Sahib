@@ -274,7 +274,12 @@
         },
         "outcome": "They settle it as neighbours: at the next full moon, with lathis, seven broken heads, and a case that fills your file for a month and the pleaders' pockets for two. The sub-inspector's report does not say &lsquo;the sahib was told,&rsquo; because sub-inspectors do not write such sentences. The tahsildar's silence says it fluently."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Tahsildar",
+      "tag": "IN YOUR EAR",
+      "opinion": "The Tahsildar has an opinion and no hesitation. &lsquo;The record is the record, Huzoor. Divide the well against it to please two villages and every man with a grievance and a cousin in the office will want his own case reopened before the rains.&rsquo; He is thinking of his collections, which is his work &mdash; and which, this once, is also the law."
+    }
   },
   {
     "id": "ac-vaccinator",

@@ -150,6 +150,7 @@
     // interest, then any settlement.
     function enterTurn() {
       notice = null;
+      S.consulted = false; // a fresh fortnight; any advice must be asked afresh
       var parts = [];
       var boundary = S.turn > 1 && seasonOf(S.turn).key !== seasonOf(S.turn - 1).key;
       if (boundary && CFG.review) {
@@ -420,6 +421,23 @@
       return snapshot({ pulsed: pulsed });
     }
 
+    // Ask the man who would know before you decide. Optional per event: reveals
+    // an in-voice opinion (with the adviser's own bias, and sometimes wrong),
+    // and may cost a small meter/econ nudge — never required, never a gate, and
+    // it does not spend the fortnight. Consulting consumes no rng, so the
+    // deterministic sim is unaffected; the advice is authored, not rolled.
+    function consult() {
+      if (phase !== "event" || !current || !current.consult || S.consulted) return snapshot();
+      var co = current.consult;
+      S.consulted = true;
+      var pulsed = applyMeters(co.effects || {});
+      (co.setFlags || []).forEach(function (f) { S.flags[f] = true; });
+      applyEcon(co.econ);
+      // Deliberation cannot itself end the year: any meter it moves is settled
+      // by the choice you go on to make (which runs the collapse check).
+      return snapshot({ pulsed: pulsed });
+    }
+
     function next() {
       if (phase !== "resolved" && phase !== "interlude") return snapshot();
       S.turn += 1;
@@ -443,6 +461,14 @@
         posture: S.posture, notice: notice,
         retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,
         event: (phase === "event" || phase === "interlude") ? current : null,
+        consult: (phase === "event" && current && current.consult) ? {
+          who: current.consult.who,
+          tag: current.consult.tag || null,
+          available: !S.consulted,
+          opinion: S.consulted ? current.consult.opinion : null,
+          effects: S.consulted ? (current.consult.effects || null) : null,
+          econ: S.consulted ? (current.consult.econ || null) : null
+        } : null,
         result: (phase === "resolved" || phase === "ended" || phase === "interlude") ? lastResult : null,
         ended: ended, endedKey: (phase === "ended" && ended) ? endKeyOf(ended) : null,
         promoted: (phase === "ended" && ended && CFG.chapter)
@@ -573,7 +599,7 @@
 
     return {
       init: init, postureOptions: postureOptions, choosePosture: choosePosture,
-      chooseOption: chooseOption, next: next,
+      chooseOption: chooseOption, consult: consult, next: next,
       snapshot: function () { return snapshot(); },
       serialize: serialize, restore: restore, carryOut: carryOut,
       seasonOf: seasonOf, monthOf: monthOf,
