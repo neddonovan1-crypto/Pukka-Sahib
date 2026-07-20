@@ -389,7 +389,35 @@
           10
         ]
       }
-    }
+    },
+    "cast": [
+      {
+        "id": "dass",
+        "name": "Mr Dass",
+        "who": "your ablest Collector",
+        "won": {
+          "flag": "stood_by_dass",
+          "note": "you stood by him, and he knows it"
+        },
+        "wronged": {
+          "flag": "listed_dass",
+          "note": "passed over on the list"
+        }
+      },
+      {
+        "id": "petherick",
+        "name": "Petherick",
+        "who": "the old Collector",
+        "won": {
+          "flag": "backed_petherick_wrong",
+          "note": "backed, right or wrong"
+        },
+        "wronged": {
+          "flag": "superseded_petherick",
+          "note": "superseded, and it was public"
+        }
+      }
+    ]
   },
   "endings": {
     "kcsi": {

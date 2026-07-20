@@ -474,6 +474,7 @@
         promoted: (phase === "ended" && ended && CFG.chapter)
           ? (CFG.chapter.promotionTiers || []).indexOf(endKeyOf(ended)) !== -1 : false,
         chapter: CFG.chapter || null,
+        standings: standings(),
         honours: honoursStanding(),
         codas: (phase === "ended" && ended) ? endingCodas(ended) : null,
         record: (phase === "ended") ? serviceRecord(5) : null
@@ -520,6 +521,23 @@
       var key = null;
       Object.keys(ENDINGS).forEach(function (k) { if (ENDINGS[k] === obj) key = k; });
       return key;
+    }
+
+    // Where the player stands with the chapter's recurring people (config.cast).
+    // A relationship is a pair of flags earlier choices set — Ram Autar trusts
+    // you or is broken and gone; the Lala holds your paper or has your defiance.
+    // Enmity dominates a doubled standing. Pure read of flags — no new state.
+    function standings() {
+      var cast = CFG.cast || [];
+      var out = [];
+      cast.forEach(function (m) {
+        var st = null, note = null;
+        if (m.wronged && S.flags[m.wronged.flag]) { st = "wronged"; note = m.wronged.note; }
+        else if (m.won && S.flags[m.won.flag]) { st = "won"; note = m.won.note; }
+        if (st) out.push({ id: m.id, name: m.name, who: m.who, state: st,
+          note: note || (st === "won" ? "in your good books" : "crossed") });
+      });
+      return out;
     }
 
     // Arc codas: data-driven sentences appended to the verdict when their

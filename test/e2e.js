@@ -407,10 +407,12 @@ async function consultSession(browser, viewport) {
   var errors = [];
   page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
   page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  // The save also carries a made relationship (the Thakur obliged), so the same
+  // resume exercises the standing strip.
   var save = {
     v: 2, chapter: "ac",
     data: {
-      S: { flags: {}, posture: "desk", turn: 4, treasury: 5000, debt: 0, log: [], consulted: false,
+      S: { flags: { thakur_obliged: true }, posture: "desk", turn: 4, treasury: 5000, debt: 0, log: [], consulted: false,
            revenue: 50, order: 52, prestige: 48, contentment: 48, health: 55 },
       phase: "event", currentId: "ac-first-sitting",
       lastResult: null, recent: [], notice: null, lastEventId: "ac-first-sitting", endedKey: null
@@ -422,6 +424,10 @@ async function consultSession(browser, viewport) {
   assert(resume, label + ": no resume for the seeded consult event");
   if (resume) await resume.click();
   await page.waitForSelector("#card .choice", { timeout: 5000 });
+
+  // the standing strip shows the made relationship
+  var standingsShown = await page.$eval("#standings", function (n) { return !n.hidden && /Thakur/.test(n.textContent); }).catch(function () { return false; });
+  assert(standingsShown, label + ": the standing strip did not surface a made relationship (the Thakur)");
 
   var ask = await page.$(".consult-ask");
   assert(ask, label + ": an event carrying a consult offered no 'Ask …' control");

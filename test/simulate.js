@@ -256,11 +256,12 @@ function simulateChapter(chapterKey, content) {
       counts[id] = (counts[id] || 0) + 1;
       if (ONCE_IDS[id] && counts[id] > 1) onceRepeat = true;
     });
-    return { key: titleToKey[s.ended.title], events: events, backToBack: backToBack, onceRepeat: onceRepeat, turn: s.turn, debt: s.debt };
+    return { key: titleToKey[s.ended.title], events: events, backToBack: backToBack, onceRepeat: onceRepeat,
+      flags: Object.keys(game.raw.flags || {}), turn: s.turn, debt: s.debt };
   }
 
   function runBatch(name, n, seedBase, carry, consultAlways) {
-    var dist = {}, bb = 0, onceRep = 0, errs = 0, seen = {};
+    var dist = {}, bb = 0, onceRep = 0, errs = 0, seen = {}, flagsSeen = {};
     for (var i = 0; i < n; i++) {
       try {
         var r = play(POLICIES[name], seedBase + i * 7919 + 1, carry, consultAlways);
@@ -268,9 +269,10 @@ function simulateChapter(chapterKey, content) {
         if (r.backToBack) bb++;
         if (r.onceRepeat) onceRep++;
         r.events.forEach(function (id) { seen[id] = (seen[id] || 0) + 1; });
+        r.flags.forEach(function (f) { flagsSeen[f] = true; });
       } catch (e) { errs++; if (errs < 4) console.error("  ERR[" + chapterKey + "/" + name + "]", e.message); }
     }
-    return { dist: dist, bb: bb, onceRep: onceRep, errs: errs, n: n, seen: seen };
+    return { dist: dist, bb: bb, onceRep: onceRep, errs: errs, n: n, seen: seen, flagsSeen: flagsSeen };
   }
 
   var N = 500;
@@ -350,6 +352,18 @@ function simulateChapter(chapterKey, content) {
   if (bands.probes.riot) assert((R.wrecker.dist.riot || 0) > 0, "riot unreachable — wrecker policy never triggered it");
   if (bands.probes.bankrupt) assert((R.reckless.dist.bankrupt || 0) > 0, "bankrupt unreachable — reckless policy never triggered it");
   if (bands.probes.burnout) assert((R.burnout.dist.breakdown || 0) > 0, "breakdown unreachable — burnout policy never triggered it");
+  // Every declared cast standing must be a live relationship: both sides of
+  // each figure's bond reachable across the policies, so the standing strip is
+  // never a promise the game can't keep.
+  var flagsEverSeen = {};
+  Object.keys(R).forEach(function (p) { Object.keys(R[p].flagsSeen).forEach(function (f) { flagsEverSeen[f] = true; }); });
+  (content.config.cast || []).forEach(function (m) {
+    ["won", "wronged"].forEach(function (side) {
+      if (m[side]) assert(flagsEverSeen[m[side].flag],
+        "cast '" + m.id + "' " + side + " standing ('" + m[side].flag + "') never reached in any policy");
+    });
+  });
+
   // and the top rung must be winnable by play engineered for it — fresh, or
   // arriving with the previous rank's full inheritance
   var topWins = (R.paragon.dist[TOP] || 0) + (R.paragonCarried ? (R.paragonCarried.dist[TOP] || 0) : 0);

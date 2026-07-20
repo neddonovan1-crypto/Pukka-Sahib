@@ -162,6 +162,22 @@
       '<span class="glyph">' + se.glyph + "</span> <b>" + se.name + "</b> &middot; " + s.month + " &mdash; " + se.tagline;
   }
 
+  // Where you stand with the chapter's recurring people. Hidden until at least
+  // one relationship is made; each figure reads green (won) or oxblood (crossed).
+  function renderStandings(s) {
+    var box = el("standings"); if (!box) return;
+    var list = s.standings || [];
+    if (!list.length) { box.hidden = true; box.innerHTML = ""; return; }
+    box.hidden = false;
+    box.innerHTML = '<div class="standings-head">The district remembers</div>' +
+      list.map(function (m) {
+        return '<div class="standing ' + m.state + '">' +
+          '<span class="nm">' + m.name + "</span> " +
+          '<span class="who">' + m.who + "</span> &mdash; " +
+          '<span class="st">' + m.note + "</span></div>";
+      }).join("");
+  }
+
   function renderNotice(s) {
     var n = el("notice");
     if (s.notice) { n.innerHTML = s.notice; n.hidden = false; }
@@ -403,6 +419,7 @@
     renderScene(s);
     renderMeters(s.meters, s.pulsed);
     renderStatus(s);
+    renderStandings(s);
     renderNotice(s);
     if (s.phase === "posture") renderPosture(s);
     else if (s.phase === "event") renderEvent(s);

@@ -311,7 +311,27 @@
           10
         ]
       }
-    }
+    },
+    "cast": [
+      {
+        "id": "tahsildar",
+        "name": "The Tahsildar",
+        "who": "of your sub-division",
+        "won": {
+          "flag": "tahsildar_respect",
+          "note": "has taken your measure, and approves"
+        }
+      },
+      {
+        "id": "thakur",
+        "name": "The Thakur",
+        "who": "of the estate",
+        "won": {
+          "flag": "thakur_obliged",
+          "note": "his house counts you a friend"
+        }
+      }
+    ]
   },
   "endings": {
     "distinction": {

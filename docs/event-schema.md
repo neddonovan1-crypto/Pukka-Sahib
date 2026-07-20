@@ -26,6 +26,30 @@ honours, history) persists in localStorage separately from the run save; the
 "Begin as a seasoned Collector" quick-start unlocks once the apprentice year
 has been completed at least once.
 
+## The cast (recurring people)
+
+`config.cast` (optional) names the chapter's recurring figures and turns the
+relationship flags choices already set into a visible **standing**. Each member
+is `{ id, name, who, won?, wronged? }`, where `won`/`wronged` are
+`{ flag, note }` — the flag an earlier choice sets, and the one-line standing
+shown when it holds. At least one side is required; enmity wins a doubled
+standing. Example:
+
+```json
+"cast": [
+  { "id": "ramautar", "name": "Ram Autar", "who": "the tahsildar",
+    "won":     { "flag": "ramautar_trust", "note": "trusts you, and covers for you" },
+    "wronged": { "flag": "ramautar_gone",  "note": "reported, broken, and gone" } }
+]
+```
+
+The standing strip under the money shows only the relationships actually made
+(green = won, oxblood = crossed). It is a **pure read of flags** — no new game
+state, nothing to save. The validator requires every declared standing flag to
+be both *produced* by some choice and *paid off* somewhere (a gated event or a
+coda), so the strip can never promise a bond the content never earns or uses;
+the simulator asserts both sides of every bond are reachable in play.
+
 All game content lives as **JSON** inside `index.html`, in
 `<script type="application/json" id="game-data">`. The engine (`<script>` below
 it) is logic only and interprets this data. To add or change content you edit

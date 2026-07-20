@@ -352,7 +352,31 @@
           10
         ]
       }
-    }
+    },
+    "cast": [
+      {
+        "id": "saint",
+        "name": "The Wandering Saint",
+        "who": "the people's holy man",
+        "won": {
+          "flag": "met_the_saint",
+          "note": "you received him at your gate"
+        },
+        "wronged": {
+          "flag": "arrested_the_saint",
+          "note": "taken at the border"
+        }
+      },
+      {
+        "id": "surgeon",
+        "name": "The Surgeon-General",
+        "who": "of the province",
+        "won": {
+          "flag": "listed_the_surgeon",
+          "note": "listed at last, and grateful"
+        }
+      }
+    ]
   },
   "endings": {
     "gcsi": {

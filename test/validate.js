@@ -76,6 +76,32 @@ function validateChapter(content, chapterKey) {
     }
   }
 
+  // The recurring cast: the chapter's people, each a relationship expressed as
+  // won/wronged flags earlier choices set. A declared standing must be a real
+  // relationship — produced by some choice AND paid off somewhere (requires or
+  // coda) — so the display can never promise a bond the content never uses.
+  var standingFlags = [];
+  if (cfg.cast !== undefined) {
+    check(Array.isArray(cfg.cast) && cfg.cast.length > 0, "config.cast must be a non-empty array when present");
+    var castIds = {};
+    (cfg.cast || []).forEach(function (m, i) {
+      var w = "config.cast[" + i + "]";
+      check(typeof m.id === "string" && m.id.length > 0 && !castIds[m.id], w + ": duplicate or missing id");
+      castIds[m.id] = true;
+      check(typeof m.name === "string" && m.name.length > 0 && typeof m.who === "string" && m.who.length > 0, w + ": needs name and who");
+      if (m.name) scanText(m.name + " " + m.who, w);
+      var sides = ["won", "wronged"].filter(function (k) { return m[k] !== undefined; });
+      check(sides.length >= 1, w + ": needs at least one of won/wronged");
+      sides.forEach(function (side) {
+        var s = m[side], sw = w + "." + side;
+        check(s && typeof s.flag === "string" && s.flag.length > 0, sw + ": needs a flag");
+        check(typeof s.note === "string" && s.note.length > 0, sw + ": needs a note (the standing line)");
+        if (s.note) scanText(s.note, sw);
+        if (s && s.flag) standingFlags.push({ flag: s.flag, where: sw });
+      });
+    });
+  }
+
   // Honours ladder: blend weights over public meters + ordered tiers.
   check(cfg.honours && cfg.honours.weights && Array.isArray(cfg.honours.ladder) && cfg.honours.ladder.length >= 1,
     "config.honours must carry weights and a non-empty ladder");
@@ -431,6 +457,23 @@ function validateChapter(content, chapterKey) {
   });
   flagsRequired.forEach(function (r) {
     check(flagsProduced[r.flag], r.where + ": requires flag '" + r.flag + "' that nothing sets");
+  });
+
+  // A declared cast standing must be a live relationship: some choice sets its
+  // flag, and something later reads it (a gated event or a coda) — no figure on
+  // the standing strip whose bond the game never earns or never pays off.
+  var flagsConsumed = {};
+  flagsRequired.forEach(function (r) { flagsConsumed[r.flag] = true; });
+  (content.codas || []).forEach(function (cd) {
+    (function walk(c) {
+      if (!c) return;
+      if ("flag" in c) flagsConsumed[c.flag] = true;
+      (c.allOf || []).forEach(walk); (c.anyOf || []).forEach(walk); if (c.not) walk(c.not);
+    })(cd.requires);
+  });
+  standingFlags.forEach(function (sf) {
+    check(flagsProduced[sf.flag], sf.where + ": standing flag '" + sf.flag + "' that no choice sets");
+    check(flagsConsumed[sf.flag], sf.where + ": standing flag '" + sf.flag + "' is never paid off (no event/coda reads it)");
   });
 
   /* ---- the whole year must be servable without repeats ---- */

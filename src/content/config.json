@@ -380,7 +380,44 @@
           "name": "the C.I.E."
         }
       ]
-    }
+    },
+    "cast": [
+      {
+        "id": "ramautar",
+        "name": "Ram Autar",
+        "who": "the tahsildar",
+        "won": {
+          "flag": "ramautar_trust",
+          "note": "trusts you, and covers for you"
+        },
+        "wronged": {
+          "flag": "ramautar_gone",
+          "note": "reported, broken, and gone"
+        }
+      },
+      {
+        "id": "lala",
+        "name": "Lala Hukum Chand",
+        "who": "the moneylender",
+        "won": {
+          "flag": "lala_owned",
+          "note": "holds your paper, and your favour"
+        },
+        "wronged": {
+          "flag": "lala_defied",
+          "note": "defied &mdash; and he does not forget"
+        }
+      },
+      {
+        "id": "strickland",
+        "name": "Strickland",
+        "who": "of the Police",
+        "won": {
+          "flag": "strickland_kept",
+          "note": "keeps faith with you"
+        }
+      }
+    ]
   },
   "endings": {
     "cie": {

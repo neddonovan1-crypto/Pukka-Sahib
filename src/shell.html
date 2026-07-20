@@ -134,6 +134,19 @@
     font-variant-numeric:tabular-nums;
   }
   .economy .debt{color:var(--bad)}
+  /* Where you stand with the district's people: shown only once a relationship
+     is made. Won reads green, crossed reads oxblood — the standing at a glance. */
+  .standings{margin:0 0 16px}
+  .standings-head{
+    font-family:"Courier New",Courier,monospace; font-size:.6rem; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--ink-soft); text-align:center; margin-bottom:7px;
+  }
+  .standing{font-size:.8rem; text-align:center; line-height:1.55}
+  .standing .nm{color:var(--ink); font-weight:600}
+  .standing .who{color:var(--ink-soft); font-style:italic}
+  .standing .st{font-family:"Courier New",Courier,monospace; font-size:.68rem; letter-spacing:.03em}
+  .standing.won .st{color:var(--good)}
+  .standing.wronged .st{color:var(--bad)}
   .notice{
     font-family:"Courier New",Courier,monospace; font-size:.72rem; line-height:1.5;
     color:var(--ink); background:var(--surface2); border:1px solid var(--line);
@@ -343,6 +356,7 @@
       <ul class="legend" id="legend" hidden></ul>
       <div class="honours" id="honours"></div>
       <div class="economy" id="economy"></div>
+      <div class="standings" id="standings" hidden></div>
     </div>
     <div class="col col-right">
       <div class="notice" id="notice" hidden></div>
