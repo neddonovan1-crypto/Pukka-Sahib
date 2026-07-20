@@ -48,10 +48,22 @@ function build() {
   }
   function artKey(f) { return f.replace(/\.(jpe?g|png)$/i, ""); }
   function artMime(f) { return /\.png$/i.test(f) ? "image/png" : "image/jpeg"; }
-  var embeddedArt = {}, artKb = 0;
+  // The single-file build embeds art as base64 data URIs, so it carries a
+  // page-weight budget; the dist/ build (what adventuresahib.com serves) uses
+  // external files with no such limit. So the single-file embeds only the
+  // essential chrome — cover, seal, season banners, medals — and leaves the
+  // heavier station scenes (and any event art we add) to dist. That keeps the
+  // portable build light while the live site can carry as much imagery as it
+  // likes; a missing scene key just falls back to the season banner.
+  function isEssentialArt(key) {
+    return key === "cover" || key === "seal" || key.indexOf("season-") === 0 || key.indexOf("medal-") === 0;
+  }
+  var embeddedArt = {}, artKb = 0, artExternalOnly = 0;
   artNames().forEach(function (f) {
+    var key = artKey(f);
+    if (!isEssentialArt(key)) { artExternalOnly++; return; } // dist-only, not embedded
     var buf = fs.readFileSync(path.join(artWeb, f));
-    embeddedArt[artKey(f)] = "data:" + artMime(f) + ";base64," + buf.toString("base64");
+    embeddedArt[key] = "data:" + artMime(f) + ";base64," + buf.toString("base64");
     artKb += buf.length / 1024;
   });
   var artBlockSingle = "<script>window.PUKKA_ART=" + JSON.stringify(embeddedArt) + ";</script>";
@@ -114,16 +126,17 @@ function build() {
   var copied = artNames().length;
 
   console.log("Built index.html:", (out.length / 1024).toFixed(0) + " KB (single-file / Artifact)");
-  console.log("  logic:", logic.length, "b · ui:", ui.length, "b · content:", content.length, "b · art embedded:", artKb.toFixed(0) + " KB (" + Object.keys(embeddedArt).length + ")");
+  console.log("  logic:", logic.length, "b · ui:", ui.length, "b · content:", content.length, "b · art embedded:", artKb.toFixed(0) + " KB (" + Object.keys(embeddedArt).length + " essential; " + artExternalOnly + " scene/other art external in dist/ only)");
   console.log("Built dist/ for Pages:", "index.html + logic.js + audio.js + ui.js" + (copied ? " + " + copied + " asset(s)" : "") +
     (Object.keys(distAudio).length ? " + ambience recordings (" + Object.keys(distAudio).join(", ") + ")" : " (ambience: synthesised — no audio/ recordings)"));
 
-  // Page-weight budget: the single-file build is what the Artifact loads in one
-  // go, so growth is a decision, not a drift. Raise these only deliberately
-  // (and re-optimize first — scripts/optimize-art.js).
-  // Page budget raised 3000 → 3200 KB with Chapter III, → 3400 KB with
-  // Chapter IV (each chapter bundle is ~200 KB of content); art unchanged.
-  var ART_BUDGET_KB = 2100, PAGE_BUDGET_KB = 3400;
+  // Page-weight budget: the single-file build is what loads in one go, so
+  // growth is a decision, not a drift. Raise these only deliberately (and
+  // re-optimize first — scripts/optimize-art.js). Since the station scenes and
+  // event art now live in dist/ only, the single-file's art is capped at the
+  // essential chrome and the budgets tightened to guard content drift: page
+  // 3400 → 2600 KB, embedded art 2100 → 1400 KB (was 3330/1875 before the split).
+  var ART_BUDGET_KB = 1400, PAGE_BUDGET_KB = 2600;
   if (artKb > ART_BUDGET_KB) throw new Error("art budget blown: " + artKb.toFixed(0) + " KB embedded > " + ART_BUDGET_KB + " KB");
   if (out.length / 1024 > PAGE_BUDGET_KB) throw new Error("page budget blown: " + (out.length / 1024).toFixed(0) + " KB > " + PAGE_BUDGET_KB + " KB");
   return out;
