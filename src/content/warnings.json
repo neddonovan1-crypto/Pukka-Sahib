@@ -342,5 +342,57 @@
         "outcome": "It is true, and he does not dispute it; he only looks at you the way seniors look at juniors who have just chosen their ceiling. The report goes up saying <i>adequate</i>, and the List, which has never once read a district, reads the report. Chhota Nagra, being governed, thanks you in its own currency. The Gazette pays in another."
       }
     ]
+  },
+  {
+    "id": "dm-debt-called",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "meter": "debt",
+      "op": ">",
+      "value": 150000
+    },
+    "title": "The Accounts Are Called For",
+    "body": "It is not the Lala this time; it is Calcutta. A demi-official from the Accountant-General, courteous as a drawn sword, observes that the district&rsquo;s borrowing has passed the figure at which the Local Government likes to be reassured, and requests &mdash; the word is <i>requests</i> &mdash; a statement of how it is to be brought down. A query answered badly becomes an inspection; an inspection becomes a career.",
+    "choices": [
+      {
+        "label": "Retrench: submit a plan of savings and pay the worst of it down.",
+        "effects": {
+          "contentment": -4,
+          "order": -1
+        },
+        "econ": {
+          "treasury": -40000,
+          "debt": -40000
+        },
+        "outcome": "You do the unlovely, unavoidable thing: a retrenchment circular, works postponed, establishments pruned, and a hard payment made against the principal. The district feels every economy and says so; the Accountant-General, for once, does not. The figure comes back inside the danger line, and the file is closed with the two words a Government most likes to write: <i>no further action.</i>"
+      },
+      {
+        "label": "Defend the borrowing as productive, and buy another season.",
+        "effects": {
+          "prestige": -2
+        },
+        "econ": {
+          "debt": 8000
+        },
+        "outcome": "You answer the query with a memorandum of some brilliance, arguing that every rupee is productive borrowing against a future the province will thank you for. It is not untrue, and it buys a season&rsquo;s grace &mdash; at a season&rsquo;s interest, which is the price of grace. The debt is not smaller. The correspondence is merely longer, and now on record."
+      },
+      {
+        "label": "Meet it with a special cess, and let the district pay for the district.",
+        "effects": {
+          "contentment": -6,
+          "prestige": 1
+        },
+        "econ": {
+          "debt": -35000
+        },
+        "outcome": "You raise a special cess and clear a good slice of the paper with other people&rsquo;s money, which is sound finance and rotten politics. The books improve smartly; the mood does not. Every cultivator now knows to the anna what the Sahib&rsquo;s borrowing cost him, and the agitator, who could not have invented a better grievance, does not have to."
+      }
+    ]
   }
 ]

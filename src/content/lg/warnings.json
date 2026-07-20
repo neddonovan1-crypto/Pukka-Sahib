@@ -239,5 +239,57 @@
         "outcome": "There is a version of this that is serenity and a version that is surrender, and at five-and-forty, in the rains, with the locked book&rsquo;s contents unknown, you have given up pretending to know at every hour which is which. The last third is governed honestly at the term&rsquo;s own pace, and the running note goes to the honours season saying what it drafted: <i>competent.</i> The List, when it comes, is the List of that word. The province, which never saw the note, keeps its own &mdash; in bazaar ledgers and village memories and the case-lists of pleaders&rsquo; sons &mdash; and it does not use the word competent, and it is the one you will re-read, some evenings, for the rest of your life."
       }
     ]
+  },
+  {
+    "id": "lg-debt-called",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "meter": "debt",
+      "op": ">",
+      "value": 640000
+    },
+    "title": "The Accounts Are Called For",
+    "body": "The query comes from the highest quarter a Governor answers to short of the Viceroy: the Finance Department of the Government of India, observing that the province&rsquo;s borrowing has reached a figure the Government of India would prefer it had not, and inviting Your Honour&rsquo;s early observations. An invitation from Delhi is an order in a good coat, and the province&rsquo;s credit &mdash; and yours &mdash; now waits on the answer.",
+    "choices": [
+      {
+        "label": "Retrench: submit a plan of savings and pay the worst of it down.",
+        "effects": {
+          "contentment": -4,
+          "order": -1
+        },
+        "econ": {
+          "treasury": -200000,
+          "debt": -200000
+        },
+        "outcome": "You do the unlovely, unavoidable thing: a retrenchment circular, works postponed, establishments pruned, and a hard payment made against the principal. The district feels every economy and says so; the Accountant-General, for once, does not. The figure comes back inside the danger line, and the file is closed with the two words a Government most likes to write: <i>no further action.</i>"
+      },
+      {
+        "label": "Defend the borrowing as productive, and buy another season.",
+        "effects": {
+          "prestige": -2
+        },
+        "econ": {
+          "debt": 40000
+        },
+        "outcome": "You answer the query with a memorandum of some brilliance, arguing that every rupee is productive borrowing against a future the province will thank you for. It is not untrue, and it buys a season&rsquo;s grace &mdash; at a season&rsquo;s interest, which is the price of grace. The debt is not smaller. The correspondence is merely longer, and now on record."
+      },
+      {
+        "label": "Meet it with a special cess, and let the district pay for the district.",
+        "effects": {
+          "contentment": -6,
+          "prestige": 1
+        },
+        "econ": {
+          "debt": -180000
+        },
+        "outcome": "You raise a special cess and clear a good slice of the paper with other people&rsquo;s money, which is sound finance and rotten politics. The books improve smartly; the mood does not. Every cultivator now knows to the anna what the Sahib&rsquo;s borrowing cost him, and the agitator, who could not have invented a better grievance, does not have to."
+      }
+    ]
   }
 ]

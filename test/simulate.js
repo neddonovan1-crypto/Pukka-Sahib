@@ -375,6 +375,12 @@ function simulateChapter(chapterKey, content) {
   // the chapter's tail collapses must be reachable via their dedicated probes
   if (bands.probes.riot) assert((R.wrecker.dist.riot || 0) > 0, "riot unreachable — wrecker policy never triggered it");
   if (bands.probes.bankrupt) assert((R.reckless.dist.bankrupt || 0) > 0, "bankrupt unreachable — reckless policy never triggered it");
+  // Debt with teeth: the deeper escalation (the Government querying the accounts)
+  // must actually fire in borrow-heavy play, not only bite at the verdict.
+  content.events.filter(function (e) { return e.id.indexOf("-debt-called") !== -1; }).forEach(function (e) {
+    var seen = Object.keys(R).some(function (p) { return R[p].seen[e.id]; });
+    assert(seen, "deep-debt event '" + e.id + "' never fired in any policy");
+  });
   if (bands.probes.burnout) assert((R.burnout.dist.breakdown || 0) > 0, "breakdown unreachable — burnout policy never triggered it");
   // Every declared cast standing must be a live relationship: both sides of
   // each figure's bond reachable across the policies, so the standing strip is

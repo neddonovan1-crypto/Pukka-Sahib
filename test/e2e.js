@@ -672,6 +672,44 @@ async function projectSession(browser, viewport) {
   return { errors: errors.length };
 }
 
+// Debt with teeth: past the deeper band the Government itself calls for the
+// accounts — a priority event with real choices, not just a verdict penalty.
+async function debtTeethSession(browser, viewport) {
+  var label = "debt";
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  var errors = [];
+  page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  var career = { v: 1, completions: { ac: 1 }, honours: [], history: [{ chapter: "ac", ending: "confirmed", title: "Confirmed", promoted: true }], carries: {} };
+  // Debt well past the deeper band, with the first creditor call already spent
+  // (its once-flag set), so the deeper escalation is the one that must draw.
+  var save = { v: 2, chapter: "dm", data: {
+    S: { flags: { "warn-debt": true }, posture: null, turn: 6, treasury: 20000, debt: 160000, log: [], projects: [],
+         revenue: 55, order: 55, prestige: 55, contentment: 52, health: 55 },
+    phase: "posture", currentId: null, lastResult: null, recent: [], notice: null, lastEventId: null, endedKey: null } };
+  await ctx.addInitScript(function (seed) {
+    window.localStorage.setItem("pukka-sahib-career", JSON.stringify(seed.career));
+    window.localStorage.setItem("pukka-sahib-save-dm", JSON.stringify(seed.save));
+  }, { career: career, save: save });
+  await page.goto(INDEX, { waitUntil: "load" });
+  await page.click("#resume");
+  await page.waitForSelector("#card .choice", { timeout: 5000 });
+  // choose a posture; the deep-debt priority event must preempt the draw
+  await page.click(".choices .choice");
+  await page.waitForSelector("#card .cardtitle", { timeout: 5000 });
+  var t = (await page.textContent("#card .cardtitle")) || "";
+  assert(/Accounts Are Called For/.test(t), label + ": deep debt did not summon the Government's query (\"" + t.trim() + "\")");
+  var choices = await page.$$("#card .choices .choice:not([disabled])");
+  assert(choices.length >= 2, label + ": the debt call offered no real choices");
+  await choices[0].click(); // retrench — pay it down
+  await page.waitForSelector("#cont, #again", { timeout: 5000 });
+  assert(await page.$(".outcome"), label + ": the debt call did not resolve");
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  await ctx.close();
+  return { errors: errors.length };
+}
+
 (async function () {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
@@ -718,6 +756,8 @@ async function projectSession(browser, viewport) {
     console.log("2step:  ", JSON.stringify(ts));
     var pj = await projectSession(browser, { width: 1120, height: 920 });
     console.log("project:", JSON.stringify(pj));
+    var db = await debtTeethSession(browser, { width: 1120, height: 920 });
+    console.log("debt:   ", JSON.stringify(db));
   } finally {
     await browser.close();
   }

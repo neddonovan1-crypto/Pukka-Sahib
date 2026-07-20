@@ -2,27 +2,41 @@
   {
     "id": "comm-warn-health",
     "tag": "MEDICAL",
-    "season": ["any"],
+    "season": [
+      "any"
+    ],
     "kind": "personal",
     "once": true,
     "priority": true,
-    "requires": { "meter": "health", "op": "<", "value": 30 },
+    "requires": {
+      "meter": "health",
+      "op": "<",
+      "value": 30
+    },
     "title": "The Surgeon Uses the Word",
     "body": "The Civil Surgeon has attended Commissioners for twenty years and buried three, and he examines you tonight without small talk, twice through, before he sits back and uses the word the profession keeps for altitude: <i>strain.</i> &lsquo;Not fever, not liver &mdash; strain. The machine is running on the reserve tank, and at your rank nobody orders you to stop, so I am telling you what I told Commissioner Layard in this room in &rsquo;09.&rsquo; He pauses with intent. &lsquo;Layard is the one whose grave I attend.&rsquo;",
     "choices": [
       {
         "label": "Obey him wholly: a month's regimen, delegated files, early nights enforced.",
-        "effects": { "health": 8, "prestige": -2 },
+        "effects": {
+          "health": 8,
+          "prestige": -2
+        },
         "outcome": "You surrender like a sensible garrison. The Reader triages the dak; two Collectors discover delegated powers they use rather well; dinner is at eight and the lamp is out at eleven, and within the month the hand holding the pen has stopped being interesting to watch. The Division runs a fraction slower and perfectly well &mdash; the discovery, mildly humiliating and deeply useful, being that it can. The Surgeon, at the follow-up, grunts the grunt he keeps for patients who intend to be pallbearers rather than principals."
       },
       {
         "label": "Half-terms: the regimen accepted, the despatch-box retained.",
-        "effects": { "health": 4 },
+        "effects": {
+          "health": 4
+        },
         "outcome": "You negotiate, as men at altitude negotiate everything, and he takes what he can get: the tonic, the ride at dawn, meat at midday, and the box &mdash; the box stays. It is half a cure and it does half the work; the reserve tank refills to half. He watches you across the station thereafter with the particular patience of a man keeping a file open, and once, passing at the Club, taps his own chest twice &mdash; a private telegraph, one word, sent collect."
       },
       {
         "label": "Thank him; Layard's grave can wait on the rains at least.",
-        "effects": { "prestige": 1, "health": -4 },
+        "effects": {
+          "prestige": 1,
+          "health": -4
+        },
         "outcome": "There is always a reason the stopping cannot start &mdash; the rains, the settlement, the honours season &mdash; and you give him this year's with the fluency of long practice. He writes nothing, orders nothing, and stands to go with a courtesy worse than argument. At the door: &lsquo;Layard said the rains too.&rsquo; The season takes the interview's advice in the only direction seasons take advice, and the reserve tank keeps its own counsel, which is shorter than yours."
       }
     ]
@@ -30,29 +44,49 @@
   {
     "id": "comm-warn-order",
     "tag": "URGENT",
-    "season": ["any"],
+    "season": [
+      "any"
+    ],
     "kind": "desk",
     "once": true,
     "priority": true,
-    "requires": { "meter": "order", "op": "<", "value": 35 },
+    "requires": {
+      "meter": "order",
+      "op": "<",
+      "value": 35
+    },
     "title": "The D.I.G. Asks for an Hour",
     "body": "The Deputy Inspector-General of Police for the range asks for an hour unaccompanied, which from him is a signal rocket: twenty-two years, and he has never asked for ten minutes. His summary is a professional&rsquo;s: the pattern behind three districts&rsquo; bad returns &mdash; the same lathis at two fairs eighty miles apart, the same three names moving by third-class rail just ahead of trouble, informers going quiet in a belt that follows the grand trunk road. &lsquo;Singly, sir, my Superintendents can hold their districts. What is moving now does not respect districts. It wants Divisional handling, and it wants it before the festivals.&rsquo;",
     "choices": [
       {
         "label": "Give him Divisional handling: a combined operation under your own warrant.",
-        "effects": { "order": 7, "prestige": 1, "health": -2 },
-        "econ": { "treasury": -12000 },
+        "effects": {
+          "order": 7,
+          "prestige": 1,
+          "health": -2
+        },
+        "econ": {
+          "treasury": -12000
+        },
         "outcome": "You sign the warrant that makes the range one jurisdiction for a month, and the D.I.G. runs it like the campaign he has been rehearsing in his head for years: watchers on the third-class carriages, the informer belt re-paid and re-heartened, the three travelling names taken quietly at a river crossing with their correspondence intact. The festivals pass flat and blessed. The correspondence, decoded, goes up to His Honour under a covering note in which you give the credit where it lives. The D.I.G.'s next annual report calls the Division's machinery &lsquo;the best I have served&rsquo; &mdash; a sentence Superintendents frame."
       },
       {
         "label": "Half-measures: reinforce the festival towns and watch the rail.",
-        "effects": { "order": 4, "contentment": -2 },
-        "econ": { "treasury": -6000 },
+        "effects": {
+          "order": 4,
+          "contentment": -2
+        },
+        "econ": {
+          "treasury": -6000
+        },
         "outcome": "The visible precautions visibly work: the festivals pass with lathi-charges nowhere and extra pickets everywhere, at a cost in goodwill the towns will invoice later. The pattern beneath, unhunted, dissolves and reforms further down the trunk road, patient as water &mdash; next season's file, growing quietly in transit. The D.I.G. executes the half-order with entire correctness and files his fuller appreciation &lsquo;for record.&rsquo; For record, at his rank, means: for the enquiry, should there ever be one."
       },
       {
         "label": "Districts hold their own peace; strengthen the Superintendents and decline the theory.",
-        "effects": { "order": -4, "prestige": -1 },
+        "effects": {
+          "order": -4,
+          "prestige": -1
+        },
         "outcome": "It is orthodox &mdash; the district is the unit, the Superintendent the instrument &mdash; and each Superintendent, reinforced, holds his own ground while the thing that does not respect districts moves in the seams between them. The fair at Marwan's border goes wrong in the exact pattern predicted, contained at a cost that would have funded the D.I.G.'s operation four times over. His report on it does not say &lsquo;I warned the Commissioner.&rsquo; It appends, without comment, the minute in which he did."
       }
     ]
@@ -60,28 +94,46 @@
   {
     "id": "comm-warn-prestige",
     "tag": "D.O.",
-    "season": ["any"],
+    "season": [
+      "any"
+    ],
     "kind": "personal",
     "once": true,
     "priority": true,
-    "requires": { "meter": "prestige", "op": "<", "value": 32 },
+    "requires": {
+      "meter": "prestige",
+      "op": "<",
+      "value": 32
+    },
     "title": "Dinner for One, at Government House",
     "body": "The invitation is for dinner, alone &mdash; no Lady, no aides &mdash; which at Government House is not hospitality but surgery. His Honour carves, pours, and operates between courses: the Division&rsquo;s work he can defend; the Division&rsquo;s Commissioner has become hard to defend, in a Council that asks questions with smiles in them. &lsquo;You have stopped being VISIBLE, man. Half of governing at your rank is theatre, and you have let the theatre go dark. I did not put you into Sonepore to be right in private.&rsquo; The savoury arrives. So, evidently, is the moment for an answer.",
     "choices": [
       {
         "label": "Take the instruction whole: a cold-weather progress, durbars, the theatre relit.",
-        "effects": { "prestige": 7, "health": -3 },
-        "econ": { "treasury": -8000 },
+        "effects": {
+          "prestige": 7,
+          "health": -3
+        },
+        "econ": {
+          "treasury": -8000
+        },
         "outcome": "You had forgotten &mdash; had let yourself forget &mdash; that the flag is an instrument of government. The progress goes out in the old style: elephants where elephants answer, durbars in three districts, the Commissioner seen, garlanded, quoted. It is exhausting, faintly absurd, and it answers: the Division's notables re-anchor, Council's questions lose their smiles, and His Honour, receiving the cuttings, initials one word to his secretary: <i>better.</i> Theatre, you re-learn at seven-and-thirty, is merely substance performed where the audience can audit it."
       },
       {
         "label": "Answer with the ledgers: ask him to judge the year on its figures.",
-        "effects": { "prestige": 2, "contentment": 1, "health": -1 },
+        "effects": {
+          "prestige": 2,
+          "contentment": 1,
+          "health": -1
+        },
         "outcome": "You make the unfashionable case over the port &mdash; the arrears down, the appeals current, the embankments sound &mdash; and he hears it through because it is true and because he is fair. &lsquo;The figures are yours,&rsquo; he concedes at the door. &lsquo;The impression, Commissioner, is MINE to manage, and you have been spending my capital to save yours.&rsquo; It is accurate to the anna, and it is the sentence that finally teaches you the trade you are now in: at altitude, substance is banked jointly. He backs the figures this season. The account is flagged."
       },
       {
         "label": "Say that if Council wants theatre, Council may find another actor.",
-        "effects": { "contentment": 1, "prestige": -3 },
+        "effects": {
+          "contentment": 1,
+          "prestige": -3
+        },
         "outcome": "It is said with dignity and heard in silence, and the silence has furniture in it. He does not argue; Lieutenant-Governors do not argue after dinner. He rings, instead, for your carriage a quarter-hour earlier than the invitation implied, and the cold weather proceeds without any visit of His Honour to Sonepore &mdash; an omission read fluently by every Political officer, prince, and pleader in the Division. You kept your integrity intact and unphotographed. The Division, which can only follow what it can see, follows the visible men."
       }
     ]
@@ -89,30 +141,52 @@
   {
     "id": "comm-warn-debt",
     "tag": "PRIVATE",
-    "season": ["any"],
+    "season": [
+      "any"
+    ],
     "kind": "personal",
     "once": true,
     "priority": true,
-    "requires": { "meter": "debt", "op": ">", "value": 260000 },
+    "requires": {
+      "meter": "debt",
+      "op": ">",
+      "value": 260000
+    },
     "title": "The Agent Is Instructed to Have an Opinion",
     "body": "The Bank&rsquo;s Agent calls without an appointment, which from him is a state occasion, and lays on your table not the account but a letter from his Calcutta board: the Sonepore agency&rsquo;s exposure to &lsquo;a certain official account&rsquo; has been remarked at inspection, and the Agent is instructed &mdash; his mouth handles the word like a fishbone &mdash; to <i>regularise</i> it. &lsquo;Past a certain figure, Commissioner, your paper stops being your affair and starts being the Bank&rsquo;s, and the Bank&rsquo;s affairs are inspected. I can hold Calcutta a quarter. I cannae hold them a year.&rsquo;",
     "choices": [
       {
         "label": "Liquidate hard: the stable, the second carriage, the plate &mdash; a public economy.",
-        "effects": { "prestige": -2, "contentment": -1 },
-        "econ": { "treasury": -20000, "debt": -80000 },
+        "effects": {
+          "prestige": -2,
+          "contentment": -1
+        },
+        "econ": {
+          "treasury": -20000,
+          "debt": -80000
+        },
         "outcome": "The sale is conducted by the Division's best auctioneer and attended by everyone, which is the price: a Commissioner's greys under the hammer are a season's conversation. But the figure comes down past the Bank's line in one quarter, Calcutta's inspection note is answered with arithmetic, and the Agent's relief expresses itself in the only dialect he permits &mdash; renewed terms of an almost tender severity. The station talks for a month. The bazaar, which keeps truer books, marks you UP: a sahib who sells his horses to hold his name is, in its oldest reckoning, good paper at last."
       },
       {
         "label": "Go up and tell His Honour yourself, before Calcutta's letter can travel.",
-        "effects": { "prestige": 1, "health": -2 },
-        "econ": { "debt": -40000 },
+        "effects": {
+          "prestige": 1,
+          "health": -2
+        },
+        "econ": {
+          "debt": -40000
+        },
         "outcome": "The Kotra walk again, twenty years on and eight ranks up, and it has not grown shorter: the figure on a slip of paper, no excuses offered. His Honour looks at it, and at you, for a geological moment &mdash; then writes two lines to the Bank's board, of which you never learn the wording, and one to you, of which you keep the original: <i>a debt that walks in the front door is an embarrassment; only the kind that is discovered is a career.</i> An advance against pension is arranged at Government House rates. The subject is never raised again, which is the whole of what was purchased."
       },
       {
         "label": "A quarter is time; the settlement season may yet mend it.",
-        "effects": { "health": 1, "contentment": 1 },
-        "econ": { "debt": 20000 },
+        "effects": {
+          "health": 1,
+          "contentment": 1
+        },
+        "econ": {
+          "debt": 20000
+        },
         "outcome": "The quarter passes as quarters at altitude pass &mdash; at the gallop, spending &mdash; and the settlement mends what settlements mend, which is never the principal. The Agent renews once more on his own authority, against his instructions and knowing you know it, out of the private sympathy of one servant of a hard master for another. It is the last renewal his signature can carry. The next conversation, both of you understand across the unvisited tea, will not be with him; it will be with Calcutta, in writing, copied &mdash; and Calcutta does not call without an appointment. It writes to Government."
       }
     ]
@@ -120,31 +194,106 @@
   {
     "id": "comm-warn-report",
     "tag": "CONFIDENTIAL",
-    "season": ["any"],
+    "season": [
+      "any"
+    ],
     "kind": "desk",
     "once": true,
     "priority": true,
-    "requires": { "allOf": [
-      { "meter": "turn", "op": ">=", "value": 16 },
-      { "meter": "showing", "op": "<", "value": 60 }
-    ] },
+    "requires": {
+      "allOf": [
+        {
+          "meter": "turn",
+          "op": ">=",
+          "value": 16
+        },
+        {
+          "meter": "showing",
+          "op": "<",
+          "value": 60
+        }
+      ]
+    },
     "title": "The Word at the Half-Year",
     "body": "His Honour&rsquo;s half-yearly minute on his Commissioners is the province&rsquo;s most private document, and his private secretary &mdash; passing through Sonepore on tour, wholly off the record, over whisky he barely touches &mdash; commits the indiscretion he was plainly sent to commit: &lsquo;the Sonepore paragraph drafts <i>sound</i>.&rsquo; He lets the word sit. In the vocabulary of half-yearly minutes, <i>sound</i> is what a Division is called when nothing in it compels a better adjective; knighthoods are not made of it. &lsquo;There is a third of the year left,&rsquo; the secretary observes to his glass. &lsquo;His Honour rewrites his drafts. He has been known to enjoy having to.&rsquo;",
     "choices": [
       {
         "label": "Give him the compelling adjective: one great work driven home before the year closes.",
-        "effects": { "prestige": 4, "revenue": 3, "health": -5 },
+        "effects": {
+          "prestige": 4,
+          "revenue": 3,
+          "health": -5
+        },
         "outcome": "You choose the Division's oldest running sore &mdash; the revenue equalisation stalled since your predecessor's predecessor &mdash; and drive it through the last third of the year like a military railway: conferences, camps, three Collectors harnessed abreast, the Secretariat managed by weekly instalments. It closes in October, complete, a generation's grievance retired in a season. The cost is entered where your costs are entered now. The half-year draft, the secretary lets you know by the same channel, no longer says <i>sound.</i> It says a thing he was not at liberty to repeat, which is how you know it will do."
       },
       {
         "label": "Ask, through the same channel, what precisely would compel.",
-        "effects": { "prestige": 2, "health": -1 },
+        "effects": {
+          "prestige": 2,
+          "health": -1
+        },
         "outcome": "The question travels back the way the indiscretion came, and the answer returns in kind, unsigned, one line: <i>H.H. counts three things &mdash; what you finished, what you foresaw, and whom you made.</i> It is the syllabus, from the examiner, and the last third of the year is spent to it deliberately: one work finished, one famine memorandum filed early enough to be foresight, one Dass and one Ormsby pushed forward in plain view. Calculated? To the anna. But the syllabus, you notice, is simply the Service's whole duty in nine words, and a man could do worse than govern to it for the rest of his career."
       },
       {
         "label": "The year is what it is; His Honour may draft what he finds.",
-        "effects": { "health": 2, "contentment": 1, "prestige": -2 },
+        "effects": {
+          "health": 2,
+          "contentment": 1,
+          "prestige": -2
+        },
         "outcome": "There is a version of this that is integrity and a version that is fatigue, and at seven-and-thirty, in September, the two are not always distinguishable from inside. The last third of the year is worked honestly at the year's own pace, and the minute goes up saying what it drafted: <i>sound.</i> His Honour signs it, you learn afterwards, with a pause &mdash; the pause of a man who ordered the good sherry once and remembers it. Sound is not nothing; pensions are built of it. It is only that the other thing, this particular year, was six weeks' hard riding away, and you knew the road."
+      }
+    ]
+  },
+  {
+    "id": "comm-debt-called",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "priority": true,
+    "requires": {
+      "meter": "debt",
+      "op": ">",
+      "value": 290000
+    },
+    "title": "The Accounts Are Called For",
+    "body": "The Bank is one thing; the Government is another, and it is the Government that writes now. The Accountant-General, Bengal, notes with regret that the Division&rsquo;s debt has crossed the line at which explanations are called for, and calls for one. Behind the courtesy stands the machinery every Commissioner has watched grind a colleague: the query, the inspection, the note on the file that follows a man to his pension.",
+    "choices": [
+      {
+        "label": "Retrench: submit a plan of savings and pay the worst of it down.",
+        "effects": {
+          "contentment": -4,
+          "order": -1
+        },
+        "econ": {
+          "treasury": -90000,
+          "debt": -90000
+        },
+        "outcome": "You do the unlovely, unavoidable thing: a retrenchment circular, works postponed, establishments pruned, and a hard payment made against the principal. The district feels every economy and says so; the Accountant-General, for once, does not. The figure comes back inside the danger line, and the file is closed with the two words a Government most likes to write: <i>no further action.</i>"
+      },
+      {
+        "label": "Defend the borrowing as productive, and buy another season.",
+        "effects": {
+          "prestige": -2
+        },
+        "econ": {
+          "debt": 18000
+        },
+        "outcome": "You answer the query with a memorandum of some brilliance, arguing that every rupee is productive borrowing against a future the province will thank you for. It is not untrue, and it buys a season&rsquo;s grace &mdash; at a season&rsquo;s interest, which is the price of grace. The debt is not smaller. The correspondence is merely longer, and now on record."
+      },
+      {
+        "label": "Meet it with a special cess, and let the district pay for the district.",
+        "effects": {
+          "contentment": -6,
+          "prestige": 1
+        },
+        "econ": {
+          "debt": -80000
+        },
+        "outcome": "You raise a special cess and clear a good slice of the paper with other people&rsquo;s money, which is sound finance and rotten politics. The books improve smartly; the mood does not. Every cultivator now knows to the anna what the Sahib&rsquo;s borrowing cost him, and the agitator, who could not have invented a better grievance, does not have to."
       }
     ]
   }
