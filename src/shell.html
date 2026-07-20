@@ -303,6 +303,28 @@
   button.ghost:hover{border-color:var(--seal); color:var(--seal)}
   button.ghost:focus-visible{outline:2px solid var(--indigo); outline-offset:2px}
 
+  /* The Gazette: the career's collection, read from the persistent record. */
+  .gazette{max-width:60ch; margin:0 auto; text-align:left}
+  .gz-masthead{text-align:center; margin-bottom:18px; padding-bottom:12px; border-bottom:2px solid var(--line)}
+  .gz-strap{font-style:italic; font-size:.86rem; color:var(--ink-soft); margin-top:2px}
+  .gz-empty{font-style:italic; color:var(--ink-soft); text-align:center; margin-bottom:18px; text-wrap:balance}
+  .gz-rank{margin-bottom:20px; padding-bottom:14px; border-bottom:1px dotted var(--line)}
+  .gz-rank-head{font-weight:700; font-size:1.05rem; color:var(--ink); margin-bottom:6px}
+  .gz-cabinet{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px}
+  .gz-medal{
+    font-family:"Courier New",Courier,monospace; font-size:.72rem; letter-spacing:.03em;
+    color:var(--seal-ink); border:1px solid var(--seal); border-radius:2px; padding:2px 8px;
+  }
+  .gz-none{font-style:italic; font-size:.82rem; color:var(--ink-soft)}
+  .gz-sub{
+    font-family:"Courier New",Courier,monospace; font-size:.6rem; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--ink-soft); margin:10px 0 5px;
+  }
+  .gz-fates{list-style:none; padding:0; margin:0}
+  .gz-fates li{font-size:.9rem; color:var(--ink); padding:1px 0}
+  .gz-fates li.gz-none{color:var(--ink-soft)}
+  .gz-blank{height:0; border-bottom:1px dotted var(--line-soft); margin:9px 18px 9px 0; opacity:.6}
+
   footer{text-align:center; font-family:"Courier New",Courier,monospace; font-size:.64rem; letter-spacing:.08em; color:var(--ink-soft); text-transform:uppercase; margin-top:24px}
   /* Wide screens: two columns — the situation (scene + stats) on the left, the
      decision on the right — so a fortnight reads without scrolling. Below the

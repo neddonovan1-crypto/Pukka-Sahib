@@ -10,7 +10,7 @@
   /* ---------- the career record (versioned localStorage) ---------- */
   var CAREER_KEY = "pukka-sahib-career";
   function loadCareer() {
-    var blank = { v: 1, completions: {}, honours: [], history: [], carries: {} };
+    var blank = { v: 1, completions: {}, honours: [], history: [], carries: {}, codasSeen: {} };
     try {
       var raw = window.localStorage.getItem(CAREER_KEY);
       var c = raw ? JSON.parse(raw) : null;
@@ -19,6 +19,7 @@
       // Migrate the single carry slot to per-target carries, so replaying an
       // earlier rank can never clobber a later chapter's inheritance.
       if (!c.carries) c.carries = {};
+      if (!c.codasSeen) c.codasSeen = {}; // the Gazette's coda ledger (added later)
       if (c.carry && c.carry.into) {
         if (!c.carries[c.carry.into]) c.carries[c.carry.into] = { flags: c.carry.flags || [], meters: c.carry.meters || {} };
         delete c.carry;
@@ -283,6 +284,12 @@
     var ladder = (content.config.honours && content.config.honours.ladder) || [];
     if (ladder.some(function (t) { return t.key === s.endedKey; }))
       career.honours.push({ chapter: chapterKey, key: s.endedKey, title: s.ended.title });
+    // The Gazette's coda ledger: every arc-sentence this year turned up is
+    // recorded (by its headline) so the collection persists across postings.
+    if (s.codas && s.codas.length) {
+      if (!career.codasSeen[chapterKey]) career.codasSeen[chapterKey] = {};
+      s.codas.forEach(function (c) { career.codasSeen[chapterKey][c.head] = true; });
+    }
     // A promoting run hands its carries to the next rank (the logic computes
     // them from config.chapter.carryOut); a re-promotion overwrites that
     // target's set and no other's.
@@ -565,6 +572,64 @@
     }
   }
 
+  // The Gazette: the career's collection — honours won, fates witnessed, and
+  // the codas discovered — read from the persistent career record. A pure view;
+  // no game state. Undiscovered codas show as ruled blanks: the sheet to fill.
+  function gazetteHtml() {
+    var romans = ["I", "II", "III", "IV", "V"];
+    var anySeen = (career.history || []).length > 0;
+    var sections = registry.order.map(function (k, i) {
+      var ch = registry.chapters[k];
+      var meta = ch.config.chapter || {};
+      var endings = ch.endings || {};
+      var totalFates = Object.keys(endings).length;
+      var seenFates = {};
+      (career.history || []).forEach(function (h) {
+        if (h.chapter === k && h.ending && endings[h.ending]) seenFates[h.ending] = endings[h.ending].title;
+      });
+      var honours = (career.honours || []).filter(function (h) { return h.chapter === k; });
+      var allCodas = ch.codas || [];
+      var seenC = (career.codasSeen && career.codasSeen[k]) || {};
+      var nCodas = allCodas.filter(function (c) { return seenC[c.head]; }).length;
+
+      var honHtml = honours.length
+        ? honours.map(function (h) { return '<span class="gz-medal">' + h.title + "</span>"; }).join("")
+        : '<span class="gz-none">no honours yet gazetted</span>';
+      var fateKeys = Object.keys(seenFates);
+      var fatesHtml = fateKeys.length
+        ? fateKeys.map(function (ek) { return "<li>" + seenFates[ek] + "</li>"; }).join("")
+        : '<li class="gz-none">no fate yet recorded</li>';
+      var codaHtml = allCodas.map(function (c) {
+        return seenC[c.head]
+          ? '<details class="rec"><summary><span class="rec-what">' + c.head + "</span></summary>" +
+            '<div class="rec-body"><div class="rec-out">' + c.text + "</div></div></details>"
+          : '<div class="gz-blank" aria-hidden="true"></div>';
+      }).join("");
+
+      return '<section class="gz-rank">' +
+        '<div class="gz-rank-head">' + romans[i] + ". " + (meta.rank || k) + "</div>" +
+        '<div class="gz-cabinet">' + honHtml + "</div>" +
+        '<div class="gz-sub">Fates witnessed &mdash; ' + fateKeys.length + " of " + totalFates + "</div>" +
+        '<ul class="gz-fates">' + fatesHtml + "</ul>" +
+        '<div class="gz-sub">The year remembered &mdash; ' + nCodas + " of " + allCodas.length + " recorded</div>" +
+        '<div class="gz-codas">' + codaHtml + "</div>" +
+        "</section>";
+    });
+    return '<div class="gazette">' +
+      '<div class="gz-masthead"><div class="record-head">The Gazette of India</div>' +
+      '<div class="gz-strap">Honours, fates, and the years remembered</div></div>' +
+      (anySeen ? "" : '<div class="gz-empty">The sheet is blank. Serve a posting to its close, and the Gazette begins to fill.</div>') +
+      sections.join("") +
+      '<div class="start-actions"><button class="ghost" id="gz-back">&larr; Back</button></div></div>';
+  }
+  function showGazette(saved) {
+    el("game").hidden = true;
+    var st = el("start"); st.hidden = false;
+    st.innerHTML = gazetteHtml();
+    var back = el("gz-back");
+    if (back) back.onclick = function () { showStart(saved); };
+  }
+
   function showStart(saved) {
     el("game").hidden = true;
     var st = el("start"); st.hidden = false;
@@ -582,13 +647,16 @@
       '<div class="tagline">' + tagline + "</div>" +
       careerLadderHtml() +
       serviceRecordHtml() +
-      '<div class="start-actions">' + resumeBtn + "</div>";
+      '<div class="start-actions">' + resumeBtn +
+      '<button class="ghost" id="gazette-open">The Gazette &rarr;</button></div>';
     if (saved) {
       el("resume").onclick = function () { showGame(); paint(game.restore(saved)); };
       el("fresh").onclick = function () { clearSave(); showGame(); paint(newRun()); };
     } else {
       el("begin").onclick = function () { showGame(); paint(newRun()); };
     }
+    var gz = el("gazette-open");
+    if (gz) gz.onclick = function () { showGazette(saved); };
     wireLadderPicker(st);
   }
 

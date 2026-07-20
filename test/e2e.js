@@ -448,6 +448,51 @@ async function consultSession(browser, viewport) {
   return { errors: errors.length };
 }
 
+// The Gazette: a seeded career must render its collection — the honour won, the
+// fates witnessed, and a discovered coda — and a blank career its empty state.
+async function gazetteSession(browser, viewport) {
+  var label = "gazette";
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  var errors = [];
+  page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  var career = {
+    v: 1, completions: { ac: 1, dm: 1 },
+    honours: [{ chapter: "dm", key: "cie", title: "The C.I.E." }],
+    history: [
+      { chapter: "ac", ending: "confirmed", title: "Confirmed in the Service", promoted: true },
+      { chapter: "dm", ending: "cie", title: "The C.I.E.", promoted: true }
+    ],
+    carries: {}, codasSeen: { dm: { "The entry the ribbon does not cover": true } }
+  };
+  await ctx.addInitScript(function (c) { window.localStorage.setItem("pukka-sahib-career", JSON.stringify(c)); }, career);
+  await page.goto(INDEX, { waitUntil: "load" });
+  await page.waitForSelector("#gazette-open", { timeout: 8000 });
+  await page.click("#gazette-open");
+  await page.waitForSelector(".gazette", { timeout: 5000 });
+  var gz = (await page.textContent(".gazette")) || "";
+  assert(/The C\.I\.E\./.test(gz), label + ": Gazette does not show the earned honour");
+  assert(/Fates witnessed/.test(gz), label + ": Gazette missing the fates line");
+  assert(/ribbon does not cover/.test(gz), label + ": Gazette did not surface the discovered coda");
+  await page.click("#gz-back");
+  await page.waitForSelector("#gazette-open", { timeout: 5000 });
+
+  // A blank career shows the empty-state Gazette.
+  var ctx2 = await browser.newContext({ viewport: viewport });
+  var page2 = await ctx2.newPage();
+  page2.on("pageerror", function (e) { errors.push("pageerror(empty): " + e.message); });
+  await page2.goto(INDEX, { waitUntil: "load" });
+  await page2.waitForSelector("#gazette-open", { timeout: 8000 });
+  await page2.click("#gazette-open");
+  await page2.waitForSelector(".gz-empty", { timeout: 5000 });
+  await ctx2.close();
+
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  await ctx.close();
+  return { errors: errors.length };
+}
+
 (async function () {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
@@ -486,6 +531,8 @@ async function consultSession(browser, viewport) {
     console.log("pick:   ", JSON.stringify(pk));
     var cs = await consultSession(browser, { width: 1120, height: 920 });
     console.log("consult:", JSON.stringify(cs));
+    var gz = await gazetteSession(browser, { width: 1120, height: 920 });
+    console.log("gazette:", JSON.stringify(gz));
   } finally {
     await browser.close();
   }
