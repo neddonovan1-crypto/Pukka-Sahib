@@ -382,10 +382,23 @@
     .ms-cell.danger .ms-val{color:var(--bad)}
   }
   @media (max-width:440px){ .meter .name{font-size:.5rem} .card{padding:18px 16px} }
-  @media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} button.choice:hover{transform:none} }
+  
+  .seasonwash{position:fixed; inset:0; pointer-events:none; z-index:0; transition:background-color 1s ease; background-color:transparent}
+  .frame{position:relative; z-index:1}
+  [data-season="cold"] .seasonwash{background-color:rgba(120,150,195,.05)}
+  [data-season="hot"] .seasonwash{background-color:rgba(214,158,66,.07)}
+  [data-season="monsoon"] .seasonwash{background-color:rgba(58,78,70,.11)}
+  [data-season="monsoon"] .seasonwash::after{
+    content:""; position:absolute; inset:-25% 0;
+    background:repeating-linear-gradient(103deg, transparent 0 21px, rgba(180,198,210,.05) 21px 22px);
+    animation:rain .7s linear infinite;
+  }
+  @keyframes rain{from{transform:translateY(-44px)} to{transform:translateY(44px)}}
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} button.choice:hover{transform:none} [data-season="monsoon"] .seasonwash::after{display:none} }
 </style>
 </head>
 <body>
+<div class="seasonwash" id="seasonwash" aria-hidden="true"></div>
 <div class="frame">
   <header class="masthead">
     <div class="cover-stamp" aria-hidden="true">Most Secret</div>
@@ -1721,7 +1734,10 @@
   }
 
   function paint(s) {
-    if (s.season && s.season.key) audio.season(s.season.key);
+    if (s.season && s.season.key) {
+      audio.season(s.season.key);
+      try { document.documentElement.setAttribute("data-season", s.season.key); } catch (e) {} // the season washes the whole page
+    }
     renderScene(s);
     renderMeters(s.meters, s.pulsed, s.deltas);
     renderMeterStrip(s.meters);

@@ -98,7 +98,7 @@ async function playSession(browser, label, viewport, opts) {
       label + ": first drawn event should be \"" + opts.expectFirstEvent + "\", got \"" + t0.trim() + "\"");
   }
 
-  var maxOverflow = 0;
+  var maxOverflow = 0, seasonsSeen = {};
   var ended = false, midShotTaken = false;
   for (var step = 0; step < 200; step++) {
     // widest-content check: the page body must never scroll sideways
@@ -106,6 +106,9 @@ async function playSession(browser, label, viewport, opts) {
       return document.documentElement.scrollWidth - document.documentElement.clientWidth;
     });
     if (of > maxOverflow) maxOverflow = of;
+    // the season washes the page: record which seasons the run passed through
+    var ds = await page.evaluate(function () { return document.documentElement.getAttribute("data-season"); });
+    if (ds) seasonsSeen[ds] = true;
 
     if (await page.$("#again")) { ended = true; break; }
     if (!midShotTaken && step === 3) {
@@ -123,6 +126,10 @@ async function playSession(browser, label, viewport, opts) {
   }
 
   assert(ended, label + ": session did not reach an ending within 200 steps");
+  // the season theming is live and the posting passed through more than one
+  assert(Object.keys(seasonsSeen).every(function (k) { return ["cold", "hot", "monsoon"].indexOf(k) !== -1; }),
+    label + ": data-season held an unknown value (" + Object.keys(seasonsSeen).join(",") + ")");
+  assert(Object.keys(seasonsSeen).length >= 2, label + ": the run never changed season (" + Object.keys(seasonsSeen).join(",") + ")");
   if (ended) {
     await page.screenshot({ path: path.join(SHOT_DIR, "e2e-" + label + "-ending.png") });
     // Restart flow. A promoting verdict reloads into the NEXT chapter's start

@@ -484,7 +484,10 @@
   }
 
   function paint(s) {
-    if (s.season && s.season.key) audio.season(s.season.key);
+    if (s.season && s.season.key) {
+      audio.season(s.season.key);
+      try { document.documentElement.setAttribute("data-season", s.season.key); } catch (e) {} // the season washes the whole page
+    }
     renderScene(s);
     renderMeters(s.meters, s.pulsed, s.deltas);
     renderMeterStrip(s.meters);
