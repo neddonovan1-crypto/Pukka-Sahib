@@ -47,6 +47,7 @@
     var MAX_TURNS = CFG.maxTurns;
     var CREDITOR = ECON.creditor || "the Lala"; // who holds the district's paper
     var PROJECTS = CFG.projects || []; // district works you may commission (see below)
+    var TOURPRESS = CFG.tourPress || null; // push-your-luck touring (see choosePosture)
     // Meter keys come from the chapter's config so a rank can re-skin its five
     // columns; the default list keeps older bundles working.
     var METERS = (CFG.meters && CFG.meters.length)
@@ -440,11 +441,26 @@
       var pulsed = applyMeters(postureEffects(kind)); // same net the preview showed
       ended = collapseCheck();
       if (ended) { phase = "ended"; return snapshot({ pulsed: pulsed }); }
+      // Push-your-luck touring: on tour you may press on into worse country for
+      // more, at rising risk the tour turns. Offered as its own sub-decision
+      // (the "press" phase) before the fortnight's ordinary business.
+      // Offered in the cold weather — the marching season — only, so the choice
+      // stays special and (a deterministic season gate, no rng) the rest of the
+      // seeded stream is untouched: making camp at once is the old tour exactly.
+      if (kind === "tour" && TOURPRESS && seasonOf(S.turn).key === "cold") {
+        S.pressCount = 0;
+        phase = "press";
+        return snapshot({ pulsed: pulsed });
+      }
+      return presentDraw(pulsed);
+    }
+
+    // Draw the fortnight's ordinary business and present it: an interlude
+    // resolves here (once-flag spent, small effect applied); anything else
+    // becomes the event to choose. Shared by desk, camp, and making camp.
+    function presentDraw(pulsed) {
       drawEvent();
       if (current.interlude) {
-        // A no-choice occurrence: apply its own small effect and offer only Continue.
-        // Interludes resolve here rather than through chooseOption, so their
-        // once-flag must be spent here too — or a once interlude repeats.
         if (current.once) S.flags[current.id] = true;
         var ieff = current.effects || {};
         var ipulsed = applyMeters(ieff);
@@ -452,10 +468,64 @@
         lastResult = { outcome: current.outcome || "", effects: ieff, econ: current.econ || null };
         ended = collapseCheck();
         phase = ended ? "ended" : "interlude";
-        return snapshot({ pulsed: pulsed.concat(ipulsed) });
+        return snapshot({ pulsed: (pulsed || []).concat(ipulsed) });
       }
       phase = "event";
+      return snapshot({ pulsed: pulsed || [] });
+    }
+
+    // The chance the tour turns on the next push — rising with each village
+    // already taken, capped so it is never a certainty.
+    function pressChance() {
+      if (!TOURPRESS) return 0;
+      var c = TOURPRESS.chanceBase + TOURPRESS.chanceRamp * (S.pressCount || 0);
+      return Math.min(TOURPRESS.chanceCap != null ? TOURPRESS.chanceCap : 0.6, c);
+    }
+
+    // Press on to one more village: bank the reward, then roll for the turn. A
+    // bad roll ends the tour on a loss (resolved as an interlude); a good roll
+    // offers the choice again, until the country runs out (max presses).
+    function pressOn() {
+      if (phase !== "press" || !TOURPRESS || S.pressCount >= TOURPRESS.max) return snapshot();
+      var chance = pressChance();
+      S.pressCount += 1;
+      var gain = TOURPRESS.press.effects || {};
+      var pulsed = applyMeters(gain);
+      applyEcon(TOURPRESS.press.econ);
+      if (rng() < chance) {
+        var rk = TOURPRESS.risk;
+        var reff = rk.effects || {};
+        var rpulsed = applyMeters(reff);
+        applyEcon(rk.econ);
+        (rk.setFlags || []).forEach(function (f) { S.flags[f] = true; });
+        logDecision(rk.title || "The tour turns", "pressed the luck", rk.outcome, reff, rk.econ, (rk.setFlags || []).length);
+        current = { id: "tour-press#lost", tag: TOURPRESS.tag, title: rk.title, body: rk.body, interlude: true };
+        lastResult = { outcome: rk.outcome || "", effects: reff, econ: rk.econ || null };
+        ended = collapseCheck();
+        phase = ended ? "ended" : "interlude";
+        return snapshot({ pulsed: pulsed.concat(rpulsed) });
+      }
+      if (S.pressCount >= TOURPRESS.max) return bankTour(pulsed); // the country runs out
+      phase = "press";
       return snapshot({ pulsed: pulsed });
+    }
+
+    // Make camp: stop the tour and take what it has earned. With no village yet
+    // pressed, it is an ordinary tour fortnight (draw the business); after a
+    // press or more, the banked tour resolves as its own interlude.
+    function makeCamp() {
+      if (phase !== "press") return snapshot();
+      if ((S.pressCount || 0) === 0) return presentDraw(applyMeters({})); // ordinary tour: the fortnight's business
+      return bankTour([]);
+    }
+    function bankTour(pulsed) {
+      var bk = TOURPRESS.bank || {};
+      logDecision(bk.title || "The tour comes in", "made camp with the country behind you", bk.outcome, {}, null, 0);
+      current = { id: "tour-press#camp", tag: TOURPRESS.tag, title: bk.title, body: bk.body, interlude: true };
+      lastResult = { outcome: bk.outcome || "", effects: {}, econ: null };
+      ended = collapseCheck();
+      phase = ended ? "ended" : "interlude";
+      return snapshot({ pulsed: pulsed || [] });
     }
 
     function applyMeters(eff) {
@@ -558,6 +628,15 @@
         retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,
         works: phase === "posture" ? worksOnOffer() : [],
         pendingWorks: (S.projects || []).length,
+        press: (phase === "press" && TOURPRESS) ? {
+          count: S.pressCount || 0,
+          canPress: (S.pressCount || 0) < TOURPRESS.max,
+          chance: pressChance(),
+          gain: TOURPRESS.press.effects || {},
+          intro: TOURPRESS.intro || "",
+          label: TOURPRESS.label, note: TOURPRESS.note,
+          campLabel: TOURPRESS.campLabel, campNote: TOURPRESS.campNote
+        } : null,
         event: (phase === "event" || phase === "interlude") ? current : null,
         step: (phase === "event" && current && current.thenSynthetic) || false,
         stepLead: (phase === "event" && current && current.thenSynthetic && lastResult) ? lastResult.outcome : null,
@@ -721,6 +800,7 @@
     return {
       init: init, postureOptions: postureOptions, choosePosture: choosePosture,
       chooseOption: chooseOption, consult: consult, next: next,
+      pressOn: pressOn, makeCamp: makeCamp,
       snapshot: function () { return snapshot(); },
       serialize: serialize, restore: restore, carryOut: carryOut,
       seasonOf: seasonOf, monthOf: monthOf,

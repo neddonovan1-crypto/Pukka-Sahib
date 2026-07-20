@@ -490,6 +490,34 @@ function validateChapter(content, chapterKey) {
     if (p.thrived && p.thrived.requires) checkCondition(p.thrived.requires, w + ".thrived.requires");
   });
 
+  /* ---- push-your-luck touring (config.tourPress) ---- */
+  if (cfg.tourPress !== undefined) {
+    var tpc = cfg.tourPress, tw = "config.tourPress";
+    check(tpc && typeof tpc === "object" && !Array.isArray(tpc), tw + ": must be an object");
+    if (tpc && typeof tpc === "object" && !Array.isArray(tpc)) {
+      check(typeof tpc.max === "number" && tpc.max >= 1, tw + ": max must be >= 1");
+      check(typeof tpc.chanceBase === "number" && tpc.chanceBase >= 0 && tpc.chanceBase < 1, tw + ": chanceBase in [0,1)");
+      check(typeof tpc.chanceRamp === "number" && tpc.chanceRamp >= 0, tw + ": chanceRamp must be >= 0 (the risk only rises)");
+      if (tpc.chanceCap !== undefined) check(typeof tpc.chanceCap === "number" && tpc.chanceCap > tpc.chanceBase && tpc.chanceCap <= 1, tw + ": chanceCap in (chanceBase, 1]");
+      ["tag", "intro", "label", "note", "campLabel", "campNote"].forEach(function (k) {
+        check(typeof tpc[k] === "string" && tpc[k].length > 0, tw + "." + k + " missing");
+        if (tpc[k]) scanText(tpc[k], tw + "." + k);
+      });
+      check(tpc.press && tpc.press.effects && Object.keys(tpc.press.effects).length > 0, tw + ".press.effects missing");
+      checkEffects(tpc.press && tpc.press.effects, tw + ".press");
+      checkEcon(tpc.press && tpc.press.econ, tw + ".press");
+      var rk = tpc.risk || {};
+      check(typeof rk.title === "string" && rk.title.length > 0 && typeof rk.body === "string" && rk.body.length > 0 && typeof rk.outcome === "string" && rk.outcome.length > 0, tw + ".risk needs title/body/outcome");
+      if (rk.title) scanText(rk.title + " " + rk.body + " " + (rk.outcome || ""), tw + ".risk");
+      check(rk.effects && Object.keys(rk.effects).length > 0, tw + ".risk.effects missing");
+      checkEffects(rk.effects, tw + ".risk"); checkEcon(rk.econ, tw + ".risk");
+      (rk.setFlags || []).forEach(function (fl) { flagsProduced[fl] = true; });
+      var bk = tpc.bank || {};
+      check(typeof bk.title === "string" && bk.title.length > 0 && typeof bk.body === "string" && bk.body.length > 0, tw + ".bank needs title/body");
+      if (bk.title) scanText(bk.title + " " + bk.body + " " + (bk.outcome || ""), tw + ".bank");
+    }
+  }
+
   /* ---- codas: arc-conditional sentences appended to the verdict ---- */
   (content.codas || []).forEach(function (cd, i) {
     var w = "coda[" + i + "]";

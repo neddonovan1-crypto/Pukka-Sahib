@@ -224,6 +224,14 @@ POLICIES.builderCareless = {
   }
 };
 
+// Greedy tourer: tours the cold weather and presses the luck to the hilt every
+// time — proves the tour can turn (the loss tail) and terminates cleanly.
+POLICIES.greedyTourer = {
+  posture: function (s) { return s.season.key === "cold" ? "tour" : "desk"; },
+  press: function (s) { return !!(s.press && s.press.canPress); },
+  option: function (s, g, rng) { return Math.floor(rng() * s.event.choices.length); }
+};
+
 function pct(dist, keys, n) {
   var c = 0; keys.forEach(function (k) { c += dist[k] || 0; }); return c / n;
 }
@@ -262,6 +270,10 @@ function simulateChapter(chapterKey, content) {
         if (prev === s.event.id) backToBack = true;
         prev = s.event.id; events.push(s.event.id);
         s = game.chooseOption(policy.option(s, game, rng));
+      } else if (s.phase === "press") {
+        // Default is to make camp (rng-identical to the old tour); a probe with
+        // a press() policy pushes the luck instead.
+        s = (policy.press && policy.press(s, rng)) ? game.pressOn() : game.makeCamp();
       } else if (s.phase === "interlude") {
         if (s.event) events.push(s.event.id); // interludes count as seen content
         s = game.next();
@@ -325,6 +337,8 @@ function simulateChapter(chapterKey, content) {
     R.builder = runBatch("builder", 200, 848401);
     R.builderCareless = runBatch("builderCareless", 200, 929201);
   }
+  var HAS_PRESS = !!content.config.tourPress;
+  if (HAS_PRESS) R.greedyTourer = runBatch("greedyTourer", 200, 616101);
   var CARRIED = ["skilledCarried", "randomCarried", "paragonCarried"];
   if (CARRY) {
     R.skilledCarried = runBatch("skilled", N, 909091, CARRY);
@@ -406,6 +420,11 @@ function simulateChapter(chapterKey, content) {
       if (la) assert(worksFlags[la], "project '" + p.id + "' languished outcome never reached");
     });
   }
+
+  // Push-your-luck touring: pressing to the hilt must sometimes turn the tour
+  // (the loss is real, not cosmetic), and never break the deterministic run.
+  if (HAS_PRESS) assert(R.greedyTourer.flagsSeen["tour_broke_down"],
+    "the tour never turned even for the greedy tourer — the gamble has no downside");
 
   // and the top rung must be winnable by play engineered for it — fresh, or
   // arriving with the previous rank's full inheritance

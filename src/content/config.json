@@ -466,7 +466,44 @@
           ]
         }
       }
-    ]
+    ],
+    "tourPress": {
+      "tag": "ON TOUR",
+      "max": 3,
+      "chanceBase": 0.12,
+      "chanceRamp": 0.12,
+      "chanceCap": 0.58,
+      "intro": "The camp is struck, the circle ridden, the day&rsquo;s work signed and done &mdash; and the light holds, and the ponies are fresh enough, and beyond the next nullah lies a village that has not seen a Sahib in three years and does not expect one now.",
+      "label": "Press on to the next village.",
+      "note": "another march into harder country, for what it brings in",
+      "campLabel": "Make camp, and take the tour you have.",
+      "campNote": "pitch for the night and let the district&rsquo;s ordinary business come to you",
+      "press": {
+        "effects": {
+          "order": 2,
+          "revenue": 2,
+          "health": -3
+        }
+      },
+      "risk": {
+        "title": "The Tour Turns",
+        "body": "You have pushed the country one march too far, and the country pushes back the way it always does &mdash; a ford deeper than the guide swore, a fever off the jheel, a pony down a hidden ravine in the dusk. There is no doctor for a day&rsquo;s ride and no comfort at all, and the tour that was going so well is suddenly a thing to be survived.",
+        "effects": {
+          "health": -12,
+          "order": -4,
+          "contentment": -3
+        },
+        "setFlags": [
+          "tour_broke_down"
+        ],
+        "outcome": "You come in off the tour days later than you meant, shaken and short a pony and burning with a low fever that will sit in your bones for a month. The villages you did reach remember a Sahib who came and then vanished, which is worse for the district&rsquo;s confidence than never coming at all. The bold thing did not come off, and everyone from the camp servants to the Commissioner now knows exactly how bold it was."
+      },
+      "bank": {
+        "title": "The Tour Comes In",
+        "body": "You make camp with the hard country behind you and the good of it banked: villages seen that no map-officer visits, headmen met on their own ground, a reputation carried home on a dozen tongues that a man rode to them when he need not have. The tour has cost you sleep and a stone of weight, and paid for both.",
+        "outcome": "You come in lean and saddle-sore and ahead of the game: the sub-division ridden to its corners, the revenue prospects seen with your own eyes, and the quiet, disproportionate credit the country gives an officer who wears out his own boots on it."
+      }
+    }
   },
   "endings": {
     "cie": {

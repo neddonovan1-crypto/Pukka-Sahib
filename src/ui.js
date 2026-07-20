@@ -279,6 +279,34 @@
     return "";
   }
 
+  // Push-your-luck touring: press on to one more village for more, at a rising
+  // chance the tour turns; or make camp and take what it has earned.
+  function renderPress(s) {
+    var c = el("card"); c.className = "card";
+    var p = s.press, risk = Math.round(p.chance * 100);
+    var gainChips = deltaChips(p.gain, null);
+    c.innerHTML =
+      turnline(s, '<span class="seasontag">' + s.season.glyph + " " + s.season.name + "</span>") +
+      '<h3 class="cardtitle">On Tour</h3>' +
+      '<div class="body">' + p.intro +
+      (p.count ? ' <i>(' + p.count + " village" + (p.count === 1 ? "" : "s") + " taken so far.)</i>" : "") + "</div>" +
+      '<div class="choices"></div>';
+    var box = c.querySelector(".choices");
+    if (p.canPress) {
+      var b = document.createElement("button");
+      b.className = "choice choice--press";
+      b.innerHTML = p.label + '<span class="cue">' + p.note + " &mdash; " + risk + "% the tour turns</span>" +
+        (gainChips ? '<span class="fore">' + gainChips + "</span>" : "");
+      b.onclick = function () { audio.stamp(); paint(game.pressOn()); };
+      box.appendChild(b);
+    }
+    var camp = document.createElement("button");
+    camp.className = "choice";
+    camp.innerHTML = p.campLabel + '<span class="cue">' + p.campNote + "</span>";
+    camp.onclick = function () { audio.stamp(); paint(game.makeCamp()); };
+    box.appendChild(camp);
+  }
+
   function renderEvent(s) {
     var e = s.event, c = el("card"); c.className = "card" + docClass(e.tag);
     var tag = e.tag || "District business";
@@ -508,6 +536,7 @@
     renderYearStrip(s);
     renderNotice(s);
     if (s.phase === "posture") renderPosture(s);
+    else if (s.phase === "press") renderPress(s);
     else if (s.phase === "event") renderEvent(s);
     else if (s.phase === "interlude") renderInterlude(s);
     else if (s.phase === "resolved") renderResolved(s);

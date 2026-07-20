@@ -91,7 +91,9 @@ async function playSession(browser, label, viewport, opts) {
   // And a carried Kotra debt must surface its priority event at the first
   // drawn fortnight: choose a posture, expect the Lala's call.
   if (opts && opts.expectFirstEvent) {
-    await page.click(".choices .choice");
+    // Desk (index 1), not tour — a cold tour opens the press phase; desk draws
+    // the fortnight's business, where the carried priority event preempts.
+    await (await page.$$(".choices .choice"))[1].click();
     await page.waitForSelector("#card .cardtitle", { timeout: 5000 });
     var t0 = (await page.textContent("#card .cardtitle")) || "";
     assert(t0.indexOf(opts.expectFirstEvent) !== -1,
@@ -118,7 +120,10 @@ async function playSession(browser, label, viewport, opts) {
     var cont = await page.$("#cont");
     if (cont) { await cont.click(); }
     else {
-      var choice = await page.$(".choices .choice:not([disabled])");
+      // Prefer a non-gamble option (make camp over pressing the luck) so the
+      // representative run doesn't hinge on tour-press rolls.
+      var choice = await page.$(".choices .choice:not(.choice--press):not([disabled])") ||
+        await page.$(".choices .choice:not([disabled])");
       if (choice) await choice.click();
       else { assert(false, label + ": stuck with no actionable control at step " + step); break; }
     }
@@ -685,7 +690,7 @@ async function debtTeethSession(browser, viewport) {
   // Debt well past the deeper band, with the first creditor call already spent
   // (its once-flag set), so the deeper escalation is the one that must draw.
   var save = { v: 2, chapter: "dm", data: {
-    S: { flags: { "warn-debt": true }, posture: null, turn: 6, treasury: 20000, debt: 160000, log: [], projects: [],
+    S: { flags: { "warn-debt": true, "pers-seed": true }, posture: null, turn: 6, treasury: 20000, debt: 160000, log: [], projects: [],
          revenue: 55, order: 55, prestige: 55, contentment: 52, health: 55 },
     phase: "posture", currentId: null, lastResult: null, recent: [], notice: null, lastEventId: null, endedKey: null } };
   await ctx.addInitScript(function (seed) {
@@ -695,8 +700,9 @@ async function debtTeethSession(browser, viewport) {
   await page.goto(INDEX, { waitUntil: "load" });
   await page.click("#resume");
   await page.waitForSelector("#card .choice", { timeout: 5000 });
-  // choose a posture; the deep-debt priority event must preempt the draw
-  await page.click(".choices .choice");
+  // choose desk (index 1) — a cold tour would open the press phase; desk draws
+  // the fortnight's business, where the deep-debt priority event preempts.
+  await (await page.$$("#card .choices .choice"))[1].click();
   await page.waitForSelector("#card .cardtitle", { timeout: 5000 });
   var t = (await page.textContent("#card .cardtitle")) || "";
   assert(/Accounts Are Called For/.test(t), label + ": deep debt did not summon the Government's query (\"" + t.trim() + "\")");
@@ -705,6 +711,44 @@ async function debtTeethSession(browser, viewport) {
   await choices[0].click(); // retrench — pay it down
   await page.waitForSelector("#cont, #again", { timeout: 5000 });
   assert(await page.$(".outcome"), label + ": the debt call did not resolve");
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  await ctx.close();
+  return { errors: errors.length };
+}
+
+// Push-your-luck touring: a cold-weather tour offers the press decision; you can
+// press on for more (a gamble) or make camp and take what you have.
+async function tourPressSession(browser, viewport) {
+  var label = "tour";
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  var errors = [];
+  page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  // Fresh probation (cold weather at fortnight 2), so choosing tour offers the press.
+  var save = { v: 2, chapter: "ac", data: {
+    S: { flags: {}, posture: null, turn: 2, treasury: 5000, debt: 0, log: [], projects: [],
+         revenue: 52, order: 52, prestige: 50, contentment: 50, health: 60 },
+    phase: "posture", currentId: null, lastResult: null, recent: [], notice: null, lastEventId: null, endedKey: null } };
+  await ctx.addInitScript(function (s) { window.localStorage.setItem("pukka-sahib-save-ac", JSON.stringify(s)); }, save);
+  await page.goto(INDEX, { waitUntil: "load" });
+  await page.click("#resume");
+  await page.waitForSelector("#card .choice", { timeout: 5000 });
+  // choose the tour posture (the first option) — a cold tour opens the press phase
+  await (await page.$$("#card .choices .choice"))[0].click();
+  await page.waitForSelector(".choice--press", { timeout: 4000 });
+  var title = (await page.textContent("#card .cardtitle")) || "";
+  assert(/On Tour/.test(title), label + ": the cold tour did not open the press decision (\"" + title.trim() + "\")");
+  var pressBtn = await page.$(".choice--press");
+  assert(/the tour turns/.test((await pressBtn.textContent()) || ""), label + ": the press option did not show its risk");
+  // press on once (a gamble), then make camp
+  await pressBtn.click();
+  await page.waitForSelector("#card .choice, #cont", { timeout: 4000 });
+  // whether it turned (interlude → #cont) or offered again (a fresh press card),
+  // there is always a way forward; take camp/continue to resolve the fortnight
+  var camp = await page.$(".choices .choice:not(.choice--press)");
+  if (camp) { await camp.click(); }
+  await page.waitForSelector("#cont, #again, #card .choice", { timeout: 5000 });
   assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
   await ctx.close();
   return { errors: errors.length };
@@ -758,6 +802,8 @@ async function debtTeethSession(browser, viewport) {
     console.log("project:", JSON.stringify(pj));
     var db = await debtTeethSession(browser, { width: 1120, height: 920 });
     console.log("debt:   ", JSON.stringify(db));
+    var tp = await tourPressSession(browser, { width: 1120, height: 920 });
+    console.log("tour:   ", JSON.stringify(tp));
   } finally {
     await browser.close();
   }
