@@ -277,7 +277,12 @@
         },
         "outcome": "Your reply is a small masterpiece of costed defiance and it achieves what such masterpieces achieve: admiration, circulation, and defeat. The Secretariat, denied your fingerprints, makes the cuts itself, from the hill station, by category &mdash; the school grants and the Bhil establishment both, trimmed evenly, blindly, in the worst proportions available. The Division learns its Commissioner fought; that is worth something real. The cuts land where local knowledge would never have put them; that costs something realer."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Government House",
+      "tag": "D.O.",
+      "opinion": "His Honour&rsquo;s private secretary conveys the hint the circular could not. &lsquo;The school grants. Recurring, sizeable, and a grant is not an establishment &mdash; no pension is touched, no one writes to the papers.&rsquo; He is wrong about the papers: the vernacular schools have found them this decade, and the young men who read them count a lost grant as their fathers counted a failed rain."
+    }
   },
   {
     "id": "comm-minister-tour",
@@ -446,7 +451,15 @@
         },
         "outcome": "You say it as kindly as it can be said &mdash; that the Service her husband served is trying to become a thing appointments cannot bend, and that the trying has costs, and that this is one of them, sitting in your drawing-room in grey. She receives it with the composure of twenty years of hill stations, thanks you for the tea, and goes. The boy sits again the next year, unhelped, and fails by three. The rules held. You dine out on none of this, and the file it belongs to &mdash; the ledger the rules do not keep &mdash; carries the entry against the Service, not against you. Each year that distinction comforts less."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Mr Dass",
+      "tag": "IN YOUR EAR",
+      "opinion": "Dass takes a long moment answering. &lsquo;Nominate the boy, by all means. The Service has always found a Provincial berth for the sons of its own.&rsquo; The dryness is level and impersonal, and only on the drive home do you place it: no Commissioner ever bent that door for a Dass, who came through the examination by the front, at full marks, because for him it opened no other way.",
+      "effects": {
+        "contentment": -2
+      }
+    }
   },
   {
     "id": "comm-viceregal-fad",

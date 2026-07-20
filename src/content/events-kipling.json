@@ -254,7 +254,12 @@
         ],
         "outcome": "You file what he brings against a rainy day, using none of it yet, letting it sit in your head like a loaded thing in a drawer. A man cannot keep clean hands and a full magazine together, and you have contrived, for the present, to hold neither."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Ram Autar the tahsildar",
+      "tag": "A QUIET WORD",
+      "opinion": "Ram Autar folds his hands. &lsquo;The police-sahib lives as a groom and comes back with a list,&rsquo; he says, tasting the word. &lsquo;A list is a dangerous friend, Huzoor. To-day it names the badmash; to-morrow, in another hand, it names the man who paid his taxes and prayed at the wrong mosque.&rsquo; He does not mention that three of the names on it drink tea in his own courtyard. He does not need to."
+    }
   },
   {
     "id": "hauksbee",
@@ -296,7 +301,15 @@
         },
         "outcome": "You send her, now and then, a funny and indiscreet account of district life, asking nothing. She adores it, repeats it beautifully, and does you small unseen kindnesses for the pleasure of the correspondence. &lsquo;My magistrate,&rsquo; she is heard to say, &lsquo;is the only man in India who has never asked me for anything.&rsquo;"
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Club Secretary",
+      "tag": "AT THE CLUB",
+      "opinion": "&lsquo;Cultivate her, dear boy, and do it thoroughly,&rsquo; the Club Secretary murmurs, who knows to the rupee what a Simla word is worth. &lsquo;Half the Commissioners on that list were made in her drawing-room over tea. Files carry a man to forty; she carries him past the men above him.&rsquo; He tells it from the wrong end: his own name never travelled, and he has been Club Secretary these eleven years.",
+      "effects": {
+        "prestige": 1
+      }
+    }
   },
   {
     "id": "uriah",

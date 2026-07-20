@@ -169,9 +169,10 @@ var POLICIES = {
     }
   },
   reckless: {
-    // Desk keeps prestige off the floor while the borrowing does its work;
-    // the leaves are taken too (each costs revenue and standing).
-    posture: function (s) { return s.retreat ? s.retreat.key : "desk"; },
+    // Desk keeps prestige off the floor while the borrowing does its work. No
+    // hill-leave — a seasonal retreat heals the run off the road to ruin, which
+    // is the opposite of the point (it was masking bankrupt reachability).
+    posture: function (s) { return "desk"; },
     option: function (s) {
       // Deepest spend/borrow on offer (branch econ counts); failing that, the
       // most Revenue-negative choice — both roads lead to the empty treasury.

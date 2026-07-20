@@ -186,7 +186,12 @@
         },
         "outcome": "Ten rupees, paid with a bow of infinite gratitude &mdash; you have made him, for the price of a dinner, the martyr of the district bar. Three pleaders reproduce the performance within the month, fines and all, the fee for the advertisement being now established. The bench holds firm and the bar dines out on it."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Bishan Lal, court reader",
+      "tag": "IN YOUR EAR",
+      "opinion": "Bishan Lal murmurs behind the register. &lsquo;Fine him, Huzoor. Ten rupees, and the district sees the bench has teeth; the younger pleaders will think twice.&rsquo; He guards the Court&rsquo;s dignity as if it were his own, which it is. But Brindaban has paid larger fines for smaller advertisements, and wears each one to the next young magistrate like a campaign medal."
+    }
   },
   {
     "id": "ac-dak-robbery",
@@ -588,7 +593,12 @@
         },
         "outcome": "It is the purest reading of the rules, and the Thakur receives your regrets with a courtesy that drops the local temperature two degrees for a season. Half his suits are before your file, so the scruple is real; the pargana merely notes that the new sahib holds himself apart, and deals with you thereafter at arm's length, papers first. Clean hands, cold company. It is a trade, like everything out here."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Club Secretary",
+      "tag": "OVER A PEG",
+      "opinion": "The Secretary sets down his peg. &lsquo;My dear fellow, dine, toast, and come away before the singers. The Padre&rsquo;s sister keeps a list, and a young man&rsquo;s name once entered on it stays entered. Lucknow nautch-girls will not confirm you; the station will.&rsquo; Half the Thakur&rsquo;s suits are on your file, and the Thakur remembers a tonga that left early."
+    }
   },
   {
     "id": "ac-dying-clerk",
@@ -749,6 +759,170 @@
           "prestige": -2
         },
         "outcome": "You wait, which is not nothing &mdash; a crowd is a fire, and fires go out &mdash; but you wait behind a locked door, and the town notes the door. By evening the lane is empty, the shutters are up, and the weights are exactly as crooked as they were. You have kept the peace by declining to govern, which is a thing a man may do once."
+      }
+    ]
+  },
+  {
+    "id": "ac-dacoit-khairi",
+    "tag": "URGENT",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Gang at Khairi",
+    "body": "The sub-inspector rides in before breakfast with news three days old and a face that has been hoarding it: Bhikan Singh&rsquo;s gang &mdash; four dacoities and a spearing since the rains &mdash; is lying up at Khairi, fed by half the village and married into the other half. He wants an order to go in and take them, and he wants it in writing, and he wants it now, before word of his own arrival outruns the word he has brought.",
+    "choices": [
+      {
+        "label": "<b>Send the police in tonight</b> to ring the village and take them.",
+        "effects": {
+          "order": 2,
+          "health": -2,
+          "contentment": -1
+        },
+        "outcome": "You give the order and the sub-inspector goes off gladdened. By the time the cordon closes at midnight the village has known for two hours &mdash; a boy on a fast pony, a fire lit on a roof &mdash; and Bhikan Singh is away into the standing cane behind the houses with his men and his notice served. A constable comes back at dawn to report the lane barred with carts and the headman deaf to all summons.",
+        "then": {
+          "tag": "IMMEDIATE",
+          "title": "The Lane Is Barred",
+          "body": "You ride out to Khairi in the grey light. The lane is stopped with two bullock-carts and forty men behind them, sullen and unarmed and immovable; the gang is long into the cane and everyone knows it; and the sub-inspector, cheated of his dacoits, has fixed on the headman as the next best thing and wants him taken for harbouring. The whole village waits to see whether the sahib has come for justice or for a face to carry home.",
+          "choices": [
+            {
+              "label": "Arrest the headman for harbouring, and be seen to do something.",
+              "effects": {
+                "order": 1,
+                "prestige": -2,
+                "contentment": -3,
+                "health": -1
+              },
+              "outcome": "He comes quietly, which is worse than if he had fought: a grey old man walked out of his own lane past his own people for a crime the whole village shares and he chiefly did not. The case wilts in your court inside the month, every witness gone conveniently deaf. Khairi remembers the arrest long after it has forgotten the gang, and the next dacoit finds the village readier to hide him, not less."
+            },
+            {
+              "label": "Leave the headman his liberty, and put a price on Bhikan Singh instead.",
+              "effects": {
+                "order": 2,
+                "prestige": 1,
+                "contentment": 1
+              },
+              "econ": {
+                "treasury": -300
+              },
+              "outcome": "You let the old man keep his lane and post on Bhikan Singh a reward larger than his gang&rsquo;s loyalty and payable in a coin the cane cannot spend. It takes six weeks. He is given up in the end by his own cousin, quietly, for the money and an old grudge. Four dacoities out of five end so, whatever the sub-inspector believes of his cordons."
+            },
+            {
+              "label": "Send the constables back and sit down in the lane to talk.",
+              "effects": {
+                "contentment": 3,
+                "order": 1,
+                "health": -2
+              },
+              "outcome": "You wave the police off a hundred paces, sit on a cart-shaft, and ask the front rank without a notebook why a decent village shelters a spearman. It is a long morning, and the answer when it comes is a land quarrel, a marriage, and a fear of the gang worse than any fear of you. The headman rolls back a cart himself. Bhikan Singh you take later; Khairi you keep for good."
+            }
+          ]
+        }
+      },
+      {
+        "label": "<b>Work the informer first</b>; take them on the road, not in the village.",
+        "effects": {
+          "order": 1,
+          "prestige": 1,
+          "health": -1
+        },
+        "outcome": "You hold the sub-inspector back and set his informer to earn his retainer, and a fortnight on the gang is taken on the Pipalgaon road with the loot still in the cart, undramatically and well clear of anyone&rsquo;s cousins. Khairi is never entered at all, and never forgets that it was spared."
+      },
+      {
+        "label": "<b>Refer it up</b> to the district superintendent; a standing gang is his affair.",
+        "effects": {
+          "prestige": -2,
+          "order": -1
+        },
+        "outcome": "It is correct, and it is slow. The superintendent arrives in ten days with a plan and a camp, by which time Bhikan Singh has moved two tahsils on, and the file records that Kotra declined to act on its own information. The sub-inspector says nothing. His diary says it for him, in the passive voice."
+      }
+    ]
+  },
+  {
+    "id": "ac-forged-bond",
+    "tag": "CUTCHERRY",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Bond That Was Never Signed",
+    "body": "Girdhari, a cultivator of Bhagwanpura with the face of a man who has not slept, lays a bond before you: his thumb-mark, his father&rsquo;s land pledged against a debt he swears he never took, held by Lala Ram Sahai, the biggest money in three villages. The seal is good, the witnesses respectable, the stamp regular. Only Girdhari says the sum was four hundred and the paper reads four thousand, and that he set his thumb to a blank. It is the commonest fraud in the district and the hardest to prove, and Ram Sahai has never once been made to prove anything.",
+    "choices": [
+      {
+        "label": "<b>Take the case up yourself</b> and summon Ram Sahai to answer.",
+        "effects": {
+          "order": 1,
+          "contentment": 1,
+          "health": -1
+        },
+        "outcome": "You issue the summons over your own signature, a thing that has not happened to Ram Sahai in the memory of his gumashta. He comes, unhurried, with a pleader and two respectable witnesses and an air of wounded patience. And on the second hearing Girdhari&rsquo;s own brother-in-law, who was to swear to the blank thumb-mark, sends word that he remembers nothing and is unwell.",
+        "then": {
+          "tag": "CUTCHERRY",
+          "title": "The Witness Falls Ill",
+          "body": "The case is coming apart in the accustomed way: the one honest witness gone deaf and feverish overnight, the bond standing unshaken, Girdhari&rsquo;s courage draining as he watches the machinery he set going swing round to face him. Ram Sahai&rsquo;s pleader, all silk, lets fall in the corridor that his client, from pure benevolence, would take the four hundred and tear the paper &mdash; were the case withdrawn today, before the Court is troubled further.",
+          "choices": [
+            {
+              "label": "Send the bond to Calcutta for a handwriting and stamp examination.",
+              "effects": {
+                "order": 2,
+                "prestige": 2,
+                "health": -2
+              },
+              "econ": {
+                "treasury": -200
+              },
+              "risk": {
+                "chance": 0.3,
+                "effects": {
+                  "prestige": -3,
+                  "order": -1,
+                  "contentment": -2
+                },
+                "outcome": "The examiner reports what examiners report when the forgery is a good one: the stamp genuine, the seal genuine, the thumb-mark Girdhari&rsquo;s beyond dispute. That was never the question, and it settles nothing. The case dies for want of the one thing paper cannot show. Ram Sahai withdraws his benevolence and the four hundred with it, and forecloses at leisure; Girdhari&rsquo;s land changes hands in the spring."
+              },
+              "outcome": "The Calcutta expert takes six weeks and finds it: the body of the bond laid down in a later ink than the signature line, over a thumb-mark set to a blank, exactly as Girdhari swore. Ram Sahai&rsquo;s respectable witnesses discover pressing business elsewhere. The prosecution does not quite convict him &mdash; such men are not quite convicted &mdash; but the bond is void, the land is safe, and the biggest money in three villages has been made, once, to answer for a paper."
+            },
+            {
+              "label": "Take the settlement: four hundred paid, the bond torn, the case withdrawn.",
+              "effects": {
+                "contentment": 2,
+                "order": -1,
+                "prestige": -1
+              },
+              "outcome": "You call both men in and the thing is done in ten minutes: the four thousand shrinks to four hundred, the paper is torn across before your eyes, and Girdhari keeps his land and a gratitude that is painful to sit through. Ram Sahai bows himself out uncharged and uncontrite, having bought a magistrate&rsquo;s court off for the price of his own first loan. He will cut the next blank bond a shade more carefully."
+            },
+            {
+              "label": "Press on to judgment on Girdhari&rsquo;s word alone, witness or none.",
+              "effects": {
+                "order": -2,
+                "prestige": -3,
+                "contentment": -2,
+                "health": -1
+              },
+              "outcome": "You believe Girdhari, and you are right to, and belief is not evidence. Without the brother-in-law the bond stands unrebutted, and a magistrate who decrees against a registered instrument on a debtor&rsquo;s bare oath is a magistrate whose decree will not outlive the first appeal. It does not. The district reverses you, the land goes to Ram Sahai with costs, and being right is charged to Girdhari&rsquo;s account, not to yours."
+            }
+          ]
+        }
+      },
+      {
+        "label": "<b>Refer him to a civil suit</b>; a disputed bond is matter for the civil court.",
+        "effects": {
+          "prestige": -1,
+          "contentment": -2,
+          "order": 1
+        },
+        "outcome": "It is the correct pigeon-hole and you place him in it: a civil suit, court fees he cannot raise, two years he does not have, against a man who breakfasts on litigation. Girdhari folds his hands and goes, and the land is Ram Sahai&rsquo;s by the next harvest, wholly in order and wholly according to law. Your file is clean. So, now, is the Lala&rsquo;s title."
+      },
+      {
+        "label": "<b>Warn Ram Sahai off</b> quietly, without a case at all.",
+        "effects": {
+          "order": -1,
+          "contentment": 1,
+          "prestige": -1
+        },
+        "outcome": "You send for the Lala and mention, over no record whatever, that the bond has been noticed and would not bear a close reading. He hears you out with perfect deference and alters nothing that can be seen; the foreclosure merely turns slow and considerate, and arrives at the same door by a gentler road. A word off the record binds a man who fears the record. Ram Sahai fears nothing that is not written down."
       }
     ]
   }

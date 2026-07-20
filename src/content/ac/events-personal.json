@@ -81,7 +81,15 @@
         },
         "outcome": "Moonlight, the band, six days of it behind you, and you make the speech a man should make after six months, not six days. She is kinder about it than you deserve, and the story is round the station by the following tiffin, told gently, at your expense. &lsquo;They are all the same, out from Home,&rsquo; says the Collector&rsquo;s wife &mdash; and for once the verandah does not argue with her."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Collector",
+      "tag": "OVER A PEG",
+      "opinion": "The Collector, mellow over the second peg, is nearly human. &lsquo;Write to her, boy. A probationer with someone at Home writes fewer fool letters and drinks fewer pegs &mdash; I know, I was one.&rsquo; He does not add the rest: that March to March is a long post, and that half the understandings struck in Christmas Week do not last out the first hot weather. He has watched a good many girls sail.",
+      "effects": {
+        "contentment": 1
+      }
+    }
   },
   {
     "id": "ac-parcel-home",

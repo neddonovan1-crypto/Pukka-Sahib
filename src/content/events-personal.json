@@ -42,7 +42,12 @@
         },
         "outcome": "The sight of the Magistrate in the front row throws the Pandit clean off his stride, and the speech turns courteous on the wing. &lsquo;We are honoured,&rsquo; he says afterwards, and means at least half of it. Each of you goes home certain the evening was his."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Superintendent of Police",
+      "tag": "MOST SECRET",
+      "opinion": "&lsquo;Stop it under 144, and stop it to-night,&rsquo; says the Superintendent, who scents the non-co-operation movement in any gathering above four. &lsquo;Talk is how the swaraj men build a district into a crowd. Ban the meeting and there is nothing to report.&rsquo; He holds that a thing prevented is a thing that never lived. The Pandit, banned, will send you a note of thanks in his best court-hand."
+    }
   },
   {
     "id": "moneylender",
@@ -90,7 +95,12 @@
           "debt": 50000
         }
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Treasury Officer",
+      "tag": "IN YOUR EAR",
+      "opinion": "&lsquo;Eat the mangoes and thank him warmly &mdash; refuse them and you make an enemy who holds half the district&rsquo;s paper,&rsquo; says the Treasury Officer, tallying as he talks. &lsquo;But his word in your court is another article. Hukum Chand does not lend; he invests. Whatever you sign for him this season he will present again next, at compound interest.&rsquo; He has watched two magistrates learn the rate."
+    }
   },
   {
     "id": "mukherjee",
@@ -131,7 +141,12 @@
         },
         "outcome": "The rains prove Mukherjee right to the inch. The weavers' quarter goes under a foot of grey water, and you stand on the bund at dawn watching the charpoys float out of doorways."
       }
-    ]
+    ],
+    "consult": {
+      "who": "An old hand at the Club",
+      "tag": "OVER A PEG",
+      "opinion": "&lsquo;Take a Bengali baboo&rsquo;s correction, before the office?&rsquo; The old hand sets down his peg, scandalised. &lsquo;My dear fellow, no. Prestige holds a district &mdash; let the deputy put you right once and you may as well hand him your seals. Change the drain if you must, but take the credit.&rsquo; His bungalow stands on high ground; he has never watched the weavers&rsquo; quarter take the water."
+    }
   },
   {
     "id": "whisky",
@@ -169,7 +184,15 @@
         },
         "outcome": "You lie under the dead punkah and listen to the brain-fever bird going up the scale till two. At six you are at your desk, sober and hollow-eyed, and the office calls it devotion to duty."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Civil Surgeon",
+      "tag": "IN CONFIDENCE",
+      "opinion": "&lsquo;I have signed the certificates,&rsquo; says the Civil Surgeon, not unkindly. &lsquo;The liver, or the revolver, or the slow way &mdash; and the slow way starts here, with the peg that keeps the silence off.&rsquo; He will not preach abstinence; he is too old a hand. &lsquo;Take a small one and put the bottle across the room. It is the reaching that ruins a man, not the drink.&rsquo;",
+      "effects": {
+        "contentment": 2
+      }
+    }
   },
   {
     "id": "telegram2",

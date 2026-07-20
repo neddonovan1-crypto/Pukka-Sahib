@@ -692,7 +692,15 @@
         ],
         "outcome": "Nothing happens. The mangoes are excellent, the notes are spent, the Thursday judgment is &mdash; you would swear it &mdash; the one you would have given anyhow. The bazaar enters one small figure in its oldest ledger. The next basket, when it comes, will not bother with mangoes."
       }
-    ]
+    ],
+    "consult": {
+      "who": "Bishan Lal, court reader",
+      "tag": "MOST SECRET",
+      "opinion": "Bishan Lal lowers his voice though the room is empty. &lsquo;Send it all back and the Seth is shamed before his own gumashta; keep it all and you are his man in the bazaar by nightfall. There is an older way, Huzoor.&rsquo; He mimes the lifting of a cloth. &lsquo;The fruit is the season&rsquo;s courtesy. The notes go home in the servant&rsquo;s own hands, before the servant&rsquo;s own eyes.&rsquo;",
+      "setFlags": [
+        "basket_noticed"
+      ]
+    }
   },
   {
     "id": "ac-cholera-fair",
@@ -752,7 +760,12 @@
         },
         "outcome": "You choose the fight you can certainly win over the one you might lose, and the camp holds: the count climbs for four days, hangs, and breaks. Perhaps closing would have halved it; perhaps doubled it in the panic; no report can say. The Sitala priests give the credit to the goddess. Headquarters, reading the figures, is privately of the same school."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Superintendent of Police",
+      "tag": "IN YOUR EAR",
+      "opinion": "The Superintendent is blunt as a lathi. &lsquo;Close it. Picket the wells, fence the tank, and march them home before the panic does the marching for you. Thirty thousand pilgrims with cholera in them are my affair, not the priests&rsquo;.&rsquo; He would empty the fair with sixty constables and call the sum sound. It has broken an outbreak before. It has also filled a burning-ghat for a week."
+    }
   },
   {
     "id": "ac-empty-station",
@@ -874,7 +887,12 @@
         },
         "outcome": "A full day at the gate in the sun with the register, the two headmen, and every argument since the canal was cut, ending in a roster both seals accept because both watched it made. It will hold about three seasons, which for water on this channel is immortality. The Canal Department, informed in October, replies that the arrangement is irregular, and keeps it."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Tahsildar",
+      "tag": "ON TOUR",
+      "opinion": "The Tahsildar folds his hands over the register. &lsquo;The night water is Barwa&rsquo;s by the record, Huzoor, and a tahsil where the record does not hold is a tahsil where no man pays his kist.&rsquo; He is thinking of his collections, which is his work. &lsquo;Ride to the cut yourself. A chaprassi at a sluice is only a man the water learns to walk around.&rsquo; He has watched it walk around three of them."
+    }
   },
   {
     "id": "ac-office-box",

@@ -168,7 +168,7 @@
             "fever_of_the_flood"
           ],
           "outcome": "The week does what the Surgeon-General&rsquo;s locked book foretold: the fever takes you at the Rampur camps, and the last three days are commanded from a cot in a rest-house, rain loud on the roof, your aide taking orders at dictation between doses. The relief holds &mdash; your being there held it &mdash; and the province gets the story of an Honour carried out of the flood country on a police launch, half-conscious under the awning. The story is worth a great deal. The convalescence is six weeks of the term, and the locked book gains a page that will be quoted at you, gently, at every medical board hereafter."
-          },
+        },
         "outcome": "A week in the water country: causeway to causeway by launch and elephant, the northern Commissioner steadied by your being there as you were once steadied at a bund at midnight, the relief camps inspected at the pace of a man who has run them and cannot be shown a painted one. The machine, watched by its head from inside it, finds a gear it did not know it kept. The photograph somebody takes at the Rampur breach &mdash; His Honour in it to the knees, pointing, hatless &mdash; does more for the term than a whole session&rsquo;s Hansard. The heart holds. The Surgeon-General, told afterwards, writes one word in the locked book, and you never learn what it was."
       },
       {
@@ -192,7 +192,15 @@
         },
         "outcome": "The constitutional position is real &mdash; the budget in committee, the Council in session, the transferred half of Government unable to move without the House &mdash; and you hold to it: mornings in the chamber, evenings on the wires, the flood governed in the margins of a legislature&rsquo;s timetable. The margins are not enough. The northern Division&rsquo;s relief runs ten days late at its worst point, and the ten days are counted where such days are counted. The session finishes its business punctually. Among the business, in the autumn, is a motion of censure on the flood administration, and the House you would not leave carries it."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Surgeon-General",
+      "tag": "MOST SECRET",
+      "opinion": "The Surgeon-General comes himself, which he does for no ordinary file. &lsquo;Command it from the map room, Your Honour. A week of causeways and fever in that country, with your heart, and I write the next entry in the locked book, not you.&rsquo; He means every word, and the book is real. He sets a phial on the desk as he goes, and does not say what is in it.",
+      "effects": {
+        "health": -1
+      }
+    }
   },
   {
     "id": "lg-assassination-watch",
@@ -554,5 +562,181 @@
     "effects": {
       "health": 2
     }
+  },
+  {
+    "id": "lg-viceroy-tour",
+    "tag": "MOST SECRET",
+    "season": [
+      "cold"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Viceroy Will Visit",
+    "body": "The wire from Delhi is gracious and immovable: His Excellency will honour the province with a State visit in the cold weather &mdash; a durbar at the capital, a run up the new canal in the Viceregal saloon, a night under your roof. It is the compliment a province receives once in a decade, and the bill in money and nerves that comes folded inside it. The swaraj movement has read the same newspapers. The Chief Secretary wants the whole thing declared and grand; the Inspector-General wants it cut to an armoured minimum; and the carpenters must begin this week, so the answer is wanted now.",
+    "choices": [
+      {
+        "label": "Declare it grand: the full durbar, the canal tour, the province on parade.",
+        "effects": {
+          "prestige": 2,
+          "order": 1,
+          "contentment": -1,
+          "health": -1
+        },
+        "outcome": "The programme goes out complete, and the carpenters and the CID begin their opposite labours in the same hour. Within the fortnight the movement answers your gazette with one of its own: a hartal for the durbar day, black flags promised along the whole line of route, and a deputation of three lawyers asking, with great courtesy, to be received before the saloon leaves Delhi.",
+        "then": {
+          "tag": "URGENT",
+          "title": "The Black Flags on the Route",
+          "body": "The visit is a week off and the route is the whole difficulty: forty miles of it, and the movement has undertaken to line every yard with black flags and silent men &mdash; lawful, disciplined, and ruinous to the one thing the durbar exists to display. The Inspector-General wants the route cleared and held by dawn of the day. Delhi&rsquo;s staff want a triumph with no shadow in the newsreel. The deputation still waits in the ante-room, and the Viceregal saloon leaves Delhi on Thursday.",
+          "choices": [
+            {
+              "label": "Receive the deputation and buy the ground: flags furled past the dais, in return for Government time on the detenus.",
+              "effects": {
+                "contentment": 3,
+                "order": 1,
+                "prestige": -1
+              },
+              "outcome": "Two hours with the three lawyers, and a bargain struck in the grey country between sedition and civics: the black flags kept back from the durbar ground and the review, flown as freely as they please everywhere else, against Government time for their detenus motion in the spring session. The Viceroy sees a province plainly orderly and plainly not adoring, which his staff mark down as your failure and he, being cleverer than his staff, does not. The movement keeps its dignity and its word together."
+            },
+            {
+              "label": "Clear the route and hold it: the flags down, the men moved back, the newsreel clean.",
+              "effects": {
+                "order": 1,
+                "prestige": 1,
+                "contentment": -4
+              },
+              "risk": {
+                "chance": 0.25,
+                "effects": {
+                  "order": -12,
+                  "prestige": -6,
+                  "contentment": -5
+                },
+                "setFlags": [
+                  "durbar_lathi"
+                ],
+                "outcome": "It goes wrong at the third mile, where a constable takes a flag from a boy&rsquo;s hand and the boy will not let go: a scuffle, a lathi, a photograph, and by evening the whole route is a battlefield in miniature with the saloon halted two stations back on urgent advice. The durbar is held to a cowed and half-empty city. The clean newsreel Delhi wanted exists; so does the other one, and the other one goes round the world by the next mail. His Excellency&rsquo;s farewell is one degree cooler than his arrival, which at that altitude is a paragraph in your confidential report."
+              },
+              "outcome": "The route is cleared by main administrative force &mdash; the flags confiscated as obstructions, the men moved a lawful distance back, forty miles held by police who earn a hard week&rsquo;s pay in a day. The newsreel is spotless: bunting, crowds, a Viceroy bowing from an open car through a province that appears to adore him. It photographs as a triumph and is filed in Delhi as one. In the province&rsquo;s own memory it files under the cost of the bunting, which the wards along the route go on paying in temper long after the saloon has gone north."
+            },
+            {
+              "label": "Let the flags fly: wire Delhi the forecast, and show the Viceroy the province as it is.",
+              "effects": {
+                "prestige": -2,
+                "contentment": 2,
+                "order": 1
+              },
+              "outcome": "You send Delhi the plain forecast &mdash; black flags along the route, no incident intended or expected, Government House advising that His Excellency see them &mdash; and to the horror of his staff the Viceroy agrees. The open car runs the forty miles between walls of silent black, and the man in it does the one thing that disarms a hartal: he looks at it, steadily, the whole way. Nothing is thrown and nothing conceded. That night he calls it the most instructive drive of his tour, and you believe him, and his staff do not forgive you for a year."
+            }
+          ]
+        }
+      },
+      {
+        "label": "Cut it to the armoured minimum: a short durbar, no tour, the risk held down.",
+        "effects": {
+          "order": 2,
+          "prestige": 1,
+          "health": 1
+        },
+        "outcome": "The programme shrinks to a single morning: durbar, address, departure, the canal run struck out and the route mileage halved. Delhi&rsquo;s staff are wounded in their professional pride; the Inspector-General sleeps for the first night in a fortnight. The province reads the small programme exactly as Government reads it &mdash; a Raj that no longer trusts its own streets to hold a Viceroy &mdash; and the movement, cheated of its grand black backdrop, claims the shrinkage for a victory and is not altogether wrong to."
+      },
+      {
+        "label": "Plead the province's condition and ask Delhi to postpone the visit a year.",
+        "effects": {
+          "prestige": -1,
+          "order": 1,
+          "contentment": 1
+        },
+        "outcome": "The request goes up wrapped in every courtesy &mdash; the harvest, the temper of the year, the wish to show His Excellency a province at its best &mdash; and Delhi grants it with a coolness that outlives the courtesy. The visit slides a year, and the crisis slides with it onto a later page of your term. You have bought this season&rsquo;s quiet at the price of a mark in the one book where marks compound, and both you and the private secretary drafting the reply know to the anna what you have done."
+      }
+    ]
+  },
+  {
+    "id": "lg-plague-return",
+    "tag": "URGENT",
+    "season": [
+      "hot"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Plague Returns to the Capital",
+    "body": "The Civil Surgeon&rsquo;s message is the one a dry hot weather dreads: plague, confirmed, in the Machhli Bazaar wards of the capital &mdash; the rats dying first, as they do, then the people. Sixty cases in a week and the curve climbing. The Sanitary Commissioner has the old apparatus ready to his hand: house-to-house inspection, segregation camps outside the walls, the infected quarters evacuated and lime-washed. It saved thousands in the last visitation. It also, last time, very nearly raised the city, for the apparatus goes through a Hindu household like a plough through a graveyard. The medical case is unanswerable. So is the memory.",
+    "choices": [
+      {
+        "label": "Order the full apparatus: inspection, segregation camps, the wards evacuated.",
+        "effects": {
+          "order": 1,
+          "health": 1,
+          "contentment": -3
+        },
+        "outcome": "The machinery rolls out within the day &mdash; inspecting parties ward by ward, the camps pitched on the maidan, the first families carried out under lime and protest. The curve bends inside the week, exactly as the textbook promises. So does the city&rsquo;s temper: by the third day a rumour runs the bazaars faster than any rat &mdash; that the parties enter the zenana, that a woman of the Machhli quarter was shamed before strangers &mdash; and a crowd is gathering at the segregation camp gates.",
+        "then": {
+          "tag": "URGENT",
+          "title": "The Crowd at the Camp Gates",
+          "body": "The rumour has done its work: two thousand at the camp gates by noon, the inspecting parties stoned out of the Machhli wards, and a delegation of the bazaar&rsquo;s elders at Government House swearing the people will die of the plague sooner than of dishonour. The Civil Surgeon says another week of inspection breaks the epidemic&rsquo;s back. The Inspector-General says another day of it breaks the city&rsquo;s. Both are telling you the truth, and the camp gates will not hold past this evening.",
+          "choices": [
+            {
+              "label": "Suspend inspection and fight the plague through the bazaar's own men: elders, hakims, voluntary camps.",
+              "effects": {
+                "contentment": 4,
+                "order": 1,
+                "health": -1,
+                "prestige": -1
+              },
+              "outcome": "You call the elders in, drop the house-to-house entirely, and hand them the fight: their own volunteers to find the sick, their own hakims paired with your civil surgeons, a segregation camp run by a committee of the quarter with Government paying the bills and keeping its inspectors out of sight. It is slower than the plough, and it costs a fortnight and lives the apparatus might have saved. But the city fights the plague now instead of Government, the curve turns in the end, and the method enters the sanitary manual as the Barhampur system, to the Sanitary Commissioner&rsquo;s lasting disgust."
+            },
+            {
+              "label": "Press on under guard: the inspecting parties escorted, the camps held by police.",
+              "effects": {
+                "order": 1,
+                "health": 1,
+                "prestige": -1,
+                "contentment": -4
+              },
+              "risk": {
+                "chance": 0.3,
+                "effects": {
+                  "order": -14,
+                  "contentment": -6,
+                  "health": -4
+                },
+                "setFlags": [
+                  "plague_riot"
+                ],
+                "outcome": "The escorted parties go back into the Machhli wards and the wards rise: a police guard cut off in a lane, a camp&rsquo;s bamboo fence fired, the fire-engine stoned as it comes. Before the Army clears the streets there are nine dead of the riot to set beside the plague&rsquo;s own count, and the distinction is lost on a city that buries both together and blames one hand for all of it. The epidemic is beaten in the end, under something near martial law. Nobody in the Machhli wards thanks the medicine for it."
+              },
+              "outcome": "The parties go back in behind a police screen and the camps are held by force, and the apparatus, protected, finishes its work: the curve broken inside the fortnight, the wards lime-washed, the visitation over at a mortality the medical returns call a triumph. The city submits, sullen and unpersuaded, certain to its bones that it was handled and not helped. The plague is beaten. The next time a Government cart enters the Machhli wards on any errand whatever it is met at the corner, and the corner remembers this fortnight to the day."
+            },
+            {
+              "label": "Go into the Machhli wards yourself, without escort, and be seen in them.",
+              "effects": {
+                "contentment": 3,
+                "prestige": 1,
+                "health": -3
+              },
+              "outcome": "Against every entry in the locked book you go down into the infected quarter on foot &mdash; the Civil Surgeon at one shoulder, the senior elder at the other, no police within a street &mdash; and walk it: into a segregation camp, into a lane where the carts have been, into the very house the rumour was about, to see for yourself and be seen seeing. The gesture is medically absurd and politically decisive. The stoning stops where you have walked. It buys the inspection its week on trust rather than truck, and the fever you carry home for it is entered, later, in the book you do not keep."
+            }
+          ]
+        }
+      },
+      {
+        "label": "Inspection by consent only: publish the danger, open voluntary camps, hold the compulsion in reserve.",
+        "effects": {
+          "contentment": 2,
+          "health": -1,
+          "order": -1,
+          "prestige": 1
+        },
+        "outcome": "You take the slower road from the first hour: the outbreak gazetted plainly, camps opened for any who will come, the bazaar&rsquo;s elders enlisted before a single door is forced. Fewer come than the plague requires, and the curve climbs a fortnight longer than the plough would have allowed &mdash; a fortnight counted at the burning-ghats. But the city never rises, the inspecting parties never need a guard, and the compulsion stays in reserve, undrawn, its threat doing the quiet work the deed would have undone."
+      },
+      {
+        "label": "Cordon the wards and wait: the infected quarters sealed, the rest of the city spared the apparatus.",
+        "effects": {
+          "order": 2,
+          "contentment": -2,
+          "health": -1
+        },
+        "outcome": "The Machhli wards are ringed and held &mdash; nobody in, nobody out, supplies passed across the line &mdash; and the rest of the capital goes about its business behind the cordon, grateful and untouched. Inside the ring the plague is left to burn through a sealed population at its own speed, which is the cordon&rsquo;s whole arithmetic: the many spared by the few enclosed. It works, in the narrow sense that the epidemic does not spread. The quarter remembers for a generation which side of the rope Government put it on, and the rope outlasts the plague in the telling."
+      }
+    ]
   }
 ]

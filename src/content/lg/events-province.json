@@ -88,7 +88,12 @@
         },
         "outcome": "The committee is granted, constituted, and starved: papers reserved on grounds of discipline, witnesses retired, terms of reference drawn like a noose round nothing. It reports in eleven months, split on party lines, and the storm dies of exhaustion, as designed. The design was also legible. Every member of that committee goes home a teacher on the subject of Government&rsquo;s committees, with a syllabus of one word, and the word is Piprala."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Viceroy&rsquo;s private secretary",
+      "tag": "FROM DELHI",
+      "opinion": "He catches you in the corridor before the sitting. &lsquo;Delhi would take it kindly if Piprala stayed departmental, Your Honour. Publish, and every province with a firing in its cupboard must answer for its own in Council the week after.&rsquo; He speaks for the comfort of the whole of India, and not a syllable for Barhampur. The dead are still seven, whatever grade the file is stamped."
+    }
   },
   {
     "id": "lg-budget-certify",
@@ -280,7 +285,12 @@
         },
         "outcome": "The reply is one paragraph of constitutional frost &mdash; Government does not treat with its own officers as with a deputation &mdash; and it is unanswerable, and it is heard. The signatures came from men who held your districts through the hardest decade the Service has known; what they learn is that the top of their own tree reads them as a trade union. The resignation curve resumes its climb with a steepness the Chief Secretary graphs and does not annotate. The machine still works. It has stopped believing anyone listens, and machines in that state work to rule."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Chief Secretary",
+      "tag": "IN YOUR EAR",
+      "opinion": "&lsquo;Answer it &mdash; on paper, and cool,&rsquo; the Chief Secretary advises. &lsquo;Gather two hundred officers in the ballroom and you have made a deputation of the Service; next year the police memorialise you too. Endorse it Home and let Simla wear the villainy.&rsquo; It is the Secretariat&rsquo;s oldest reflex: never be seen to feel. The juniors resigning this season were not asking for a covering minute."
+    }
   },
   {
     "id": "lg-failing-commissioner",
@@ -405,7 +415,12 @@
         },
         "outcome": "Sine die: the hostels emptied, the term cancelled, four thousand agitators converted by gazette notification into four thousand sons at home, explaining a lost year to fathers who paid the fees. The dispersal works as dispersals work &mdash; the strike cannot outlive the strikers&rsquo; scattering &mdash; and the university reopens in the cold weather, subdued. The lost term falls on the innocent along with the ardent, fee-receipts and careers together; and in four thousand family ledgers across the province, Government is entered as the party that shut the college. The movement could not have bought that entry at any price."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Inspector-General of Police",
+      "tag": "MOST SECRET",
+      "opinion": "&lsquo;Clear the quadrangles, Your Honour, before it is thought a college can shut Government out of one.&rsquo; The Inspector-General has the lathi-parties standing by and the map marked. &lsquo;Receive their committee and every school writes you the same letter next term.&rsquo; He is right about the letters. He has never sat across a table from a frightened boy of nineteen and found the grievance real."
+    }
   },
   {
     "id": "lg-temple-road",
@@ -447,7 +462,12 @@
         },
         "outcome": "Neutrality, declared and enforced: procession and custom left to contest the road under a magistrate&rsquo;s eye, Government committed against nothing but broken heads. The contest runs for years at low fever &mdash; prosecutions, counter-petitions, one bad night each spring &mdash; and neutrality shows its working face: the custom keeps the road, custom being the sitting tenant, while the law&rsquo;s plain words wait on Government&rsquo;s pleasure. The Mallipur men draw the conclusion of every petitioner shown procedure instead of principle, and carry their cause to the Congress movement, which receives it gladly, road, hymns, grievance and all. The question did not stay out of politics. It only left yours."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Revenue Member",
+      "tag": "IN YOUR EAR",
+      "opinion": "The Revenue Member is plain. &lsquo;The road is public, Your Honour. It was public when their grandfathers were kept off it, and it is public now. Open it, hold it open, let custom argue with the law &mdash; the law wins that suit whenever pressed.&rsquo; He is right on the law. He says nothing of the eighteen months of pickets that pressing it costs, for that bill falls on the police, not his department."
+    }
   },
   {
     "id": "lg-canal-colony",
@@ -490,7 +510,15 @@
         },
         "outcome": "The military board&rsquo;s dream, signed: block after block to pensioned sowars and sepoys, village sites named for the regiments, the colony a garden of loyalty visible from the railway. It prospers &mdash; soldiers farm as they soldier, in lines &mdash; and the recruiting grounds of the province acquire a stake in the Raj that no pamphlet can argue with, which was the design, and honestly achieved. The crowded eastern tahsils, who dug no trenches, stay crowded; their claim had no board behind it. The colony is loyal, orderly and productive, and it went &mdash; as the swaraj movement&rsquo;s press observes in its best-read leader of the year &mdash; to the men who held the country, from the men who work it."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Finance Member",
+      "tag": "IN YOUR EAR",
+      "opinion": "The Finance Member has costed every acre before you reach the file. &lsquo;Auction the best blocks, Your Honour. The canal cost two crores, and sentiment will not service the loan. Give the land to peasants and you hand the moneylender his mortgages a decade early.&rsquo; The last is even true. He has never watched a crowded tahsil breathe out when the water reaches it, and prices nothing he has not seen.",
+      "setFlags": [
+        "finance_pressed_auction"
+      ]
+    }
   },
   {
     "id": "lg-usury-act",

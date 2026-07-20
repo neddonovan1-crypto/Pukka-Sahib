@@ -52,7 +52,15 @@
         },
         "outcome": "The Nawab's grey takes the Cup by a head in the last fifty yards, and the roar can be heard, they swear, at the river. The winnings are trivial; the wager was the gesture, and it pays across two ledgers at once &mdash; the Nawab's durbar warmth all season, and the Division's delight at a Commissioner with blood in him. &lsquo;I bred her, sahib,&rsquo; the Nawab says, four times, to four different circles. Even the beaten planters stand the drinks."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Nawab of Tikri",
+      "tag": "IN YOUR EAR",
+      "opinion": "The Nawab finds your elbow before the Cup. &lsquo;Back my grey, Commissioner, and back her at the rails, where the Division may see the sirkar&rsquo;s money on my horse. I bred her from an Arab mare I would not sell the Aga Khan himself. She cannot lose.&rsquo; He believes every word, which is the whole of his persuasion; the planters&rsquo; champion has taken this Cup two years running.",
+      "setFlags": [
+        "nawab_talked_up_his_grey"
+      ]
+    }
   },
   {
     "id": "comm-workshops-strike",
@@ -311,7 +319,12 @@
         },
         "outcome": "The boats swing at quarantine moorings for three weeks, the watch is kept, and the ghat's single grave stays single: no second case. The trade grumbles at the moorings and prospers regardless. It was, on the strict figures, the proportionate course &mdash; and you notice what the proportionate course was made of: one Port Officer's vigilance, one season's luck with the rats, and a wager you did not fully price at the time. The Regulations' authors buried that wager's losers by the ten thousand. This year, the coin came down heads."
       }
-    ]
+    ],
+    "consult": {
+      "who": "The Sanitary Commissioner",
+      "tag": "MEDICAL",
+      "opinion": "The Sanitary Commissioner wires the doctrine. &lsquo;One case is never one case. Cordon the ward, search house to house, segregate the contacts. The Regulations were written in Bombay&rsquo;s corpses, and half-measures with plague only hold the funeral later and larger.&rsquo; He has the Bombay figures by heart. He has not counted what the search-gangs there drove down the grain-pits."
+    }
   },
   {
     "id": "comm-theatricals",
@@ -348,6 +361,204 @@
           "contentment": 1
         },
         "outcome": "The diagonal solution: Mrs. Dass, who played the part at Poona to notices the society's secretary is made to read aloud at committee, is invited as guest of the patron &mdash; unanswerable on merit, unattackable on precedence, and carrying its second cargo quietly under the first. She is, it turns out, superb; the house calls her twice; and the Silchar Club question, already settling, settles a little further under cover of the applause. Two rivals are disappointed evenly, and can live with it. The season's talk is the performance, and everyone can live with that."
+      }
+    ]
+  },
+  {
+    "id": "comm-planter-assault",
+    "tag": "CONFIDENTIAL",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Planter and the Coolie",
+    "body": "A manager at the Silchar tea factory &mdash; Maitland, twelve years on the estate &mdash; has thrashed a coolie who was dead by morning, and the factory has entered it in the books as a fall from a loaded cart. The Civil Surgeon&rsquo;s second look says otherwise: a ruptured spleen, the commonest verdict in these cases and the hardest on which to hang a white man. Dass wants a prosecution. The Planters&rsquo; Association wants a quiet inquest. The European station, over its evening pegs, has already reached the conclusion that a white man cannot get a fair trial in this country &mdash; meaning, by it, the wrong thing entirely.",
+    "choices": [
+      {
+        "label": "Direct Dass to prosecute for culpable homicide, on the Surgeon&rsquo;s evidence.",
+        "effects": {
+          "order": 2,
+          "contentment": 2,
+          "prestige": -1
+        },
+        "setFlags": [
+          "prosecuted_maitland"
+        ],
+        "outcome": "The charge is laid, and the district&rsquo;s planting interest closes like a fist. A barrister comes down from Calcutta by the night mail; the spleen-defence is oiled and waiting; and the European community subscribes his fee openly, as a point of race, before the committal is heard. What began as one dead coolie is now a cause, and the cause has retained counsel.",
+        "then": {
+          "tag": "AT THE SESSIONS",
+          "title": "The Jury of His Own Race",
+          "body": "The trial reaches the sessions, and the law produces its oldest trap: the accused, being European, may claim a jury of his own race, and the panel that assembles at Silchar holds three planters and a factory agent. The Calcutta man has done this arithmetic before you. A spleen is unprovable to twelve men who do not wish it proved, and an acquittal now would be worse than no trial at all &mdash; a white man cleared, in open court and the next day&rsquo;s papers, of killing an Indian. The Advocate-General, wired for guidance, replies only that the jury is lawful.",
+          "choices": [
+            {
+              "label": "Move the case to a court of session with assessors, under a judge you have weighed.",
+              "effects": {
+                "order": 2,
+                "prestige": 1,
+                "contentment": 1
+              },
+              "outcome": "You transfer the trial out of the jury&rsquo;s reach on grounds of local prejudice &mdash; the record of subscriptions makes the ground for you &mdash; and it goes before a Sessions Judge who reads medical evidence for what it says. The verdict is culpable homicide not amounting to murder: two years, and a European station that will not dine with you until the cold weather. Dass says nothing, and forwards the next factory complaint the following week without waiting to be asked."
+            },
+            {
+              "label": "Let the jury sit, and build the record so complete that the acquittal tries the jurors.",
+              "effects": {
+                "contentment": 2,
+                "prestige": -1,
+                "order": -1
+              },
+              "risk": {
+                "chance": 0.25,
+                "effects": {
+                  "order": -8,
+                  "contentment": -6,
+                  "prestige": -5
+                },
+                "setFlags": [
+                  "maitland_walked"
+                ],
+                "outcome": "The jury acquits in forty minutes, as juries of that composition do, and the acquittal is exactly the public document you feared: printed, cited, and read in every coolie-line and every debating society in the province as the plain price of an Indian life. The record you built so carefully is admired by lawyers and answers nobody. Maitland dines at the Club that night. The next factory death, when it comes, is entered as a fall from a cart and stays entered."
+              },
+              "outcome": "You put the full medical case before the jury knowing they may not want it, and let the acquittal, if it comes, wear their names. This time it does not come to that: two of the panel decline to be party to a whitewash their own foremen are watching, and the compromise is a conviction on the lesser count. The margin was one man&rsquo;s conscience, and you spent a fortnight&rsquo;s sleep not knowing which way it would fall."
+            },
+            {
+              "label": "Accept a plea to grievous hurt: a certain conviction, a lenient sentence.",
+              "effects": {
+                "order": 1,
+                "prestige": 1,
+                "contentment": -1
+              },
+              "outcome": "The Calcutta barrister, offered a conviction his client can survive, takes it before his jury can gift him better: grievous hurt, eighteen months, the spleen unmentioned. It is a conviction of a European for an assault on an Indian, entered and recorded, which the province has not often seen. The coolie-lines count the months and find them few. Dass counts the fact of the entry and finds it, on the whole, more than he expected. Both counts are correct."
+            }
+          ]
+        }
+      },
+      {
+        "label": "Hold a magisterial enquiry first; a charge this heavy is not laid on one surgeon&rsquo;s word.",
+        "effects": {
+          "order": 1,
+          "prestige": 1,
+          "contentment": -2
+        },
+        "outcome": "The enquiry is correct, deliberate, and slow, and in its deliberation the factory does its own tidying: the two coolies who saw the thing are paid off and gone to their villages by the second week, and the cart is produced, and mended, and photographed. The Surgeon&rsquo;s evidence, uncorroborated now, will hang no one. The station calls your caution wisdom. Dass calls it nothing at all, which is louder."
+      },
+      {
+        "label": "Refer it up as a European-community matter and let Government carry the odium.",
+        "effects": {
+          "prestige": -2,
+          "contentment": -1
+        },
+        "outcome": "You send the file to the Secretariat with a covering note of scrupulous neutrality, and Government does with it what Government does with hot iron handed upward: holds it at arm&rsquo;s length until it cools. Six months on, the direction comes back to prosecute &mdash; by which time the witnesses have scattered and the estate has closed its ranks and its books. The prosecution fails as everyone now intends it to. Your neutrality is on the file, above the failure, dated first."
+      }
+    ]
+  },
+  {
+    "id": "comm-grain-corner",
+    "tag": "URGENT",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Corner in Grain",
+    "body": "A scarcity is shaping in the Marwan grain-country, and the price is not the sky&rsquo;s work alone. The big grain houses, reading the same rain-gauges you read, have begun to hold: stock that should be moving to the bazaars sits in sealed godowns against a hungrier month, and the retail price has climbed a third in three weeks while the wholesale figure sits unmoved. It is no offence to be patient with grain. It is merely, past a certain price and a certain fortnight, fatal &mdash; and the fortnight is on you.",
+    "choices": [
+      {
+        "label": "Open the Government reserve at a fixed public rate, and break the hold.",
+        "effects": {
+          "contentment": 3,
+          "order": 1,
+          "revenue": -1
+        },
+        "econ": {
+          "treasury": -20000
+        },
+        "setFlags": [
+          "opened_the_reserve"
+        ],
+        "outcome": "The Government granaries open at a posted price, and for a week the corner cracks &mdash; the bazaars fill, the retail eases, the flag bungalow is blessed in three tahsils. Then the houses do the sum you had half-feared: they stop selling their own grain entirely, and begin, through a hundred small unremarkable hands, to buy your cheap reserve back across the counter.",
+        "then": {
+          "tag": "MOST SECRET",
+          "title": "The Ring Buys It Back",
+          "body": "Your reserve is emptying, and not into hungry mouths. The C.I.D. brings the pattern: men are hired to stand in the relief queue at the controlled price, and the bags they carry off go straight to the same sealed godowns, one gunny at a time, to be held for the price your reserve was opened to prevent. Three houses are named. You can armour the reserve with ration-cards and a means test &mdash; slowing the honest queue to starve the resale &mdash; or go at the godowns directly, which the scarcity powers barely permit, or let the reserve run and stake the season on the rain-gauge over the C.I.D.",
+          "choices": [
+            {
+              "label": "Ration by card and household; slow the queue to stop the resale.",
+              "effects": {
+                "order": 2,
+                "contentment": -1
+              },
+              "econ": {
+                "treasury": -8000
+              },
+              "outcome": "Cards, a household roll, a means test, and a clerk at every granary door: the resale is throttled, because a hired man cannot draw a card twice, and the reserve at last reaches the mouths it was meant for. The honest cultivator waits longer in a longer line and grumbles, justly, at the machinery. It is slow, costly, and it holds. The houses, their tap turned off, sell their own grain in the end because holding it now earns nothing. The bazaar calls you a hard Commissioner. The scarcity does not become a famine."
+            },
+            {
+              "label": "Requisition the ring&rsquo;s sealed godowns under the scarcity powers.",
+              "effects": {
+                "contentment": 3,
+                "order": 2,
+                "prestige": 1
+              },
+              "risk": {
+                "chance": 0.2,
+                "effects": {
+                  "order": -12,
+                  "prestige": -6,
+                  "contentment": -3
+                },
+                "setFlags": [
+                  "requisition_overturned"
+                ],
+                "outcome": "The powers are thinner than your temper, and the houses have a barrister on a retainer older than your commission. The requisition is challenged, stayed by the High Court within the week, and returned to you with a judgment on the limits of executive seizure that the vernacular press prints in full and the Secretariat prints in a minute about you. The grain comes out of the godowns eventually &mdash; at the ring&rsquo;s price, on the ring&rsquo;s terms, a fortnight too late &mdash; and the fortnight is counted where fortnights are counted."
+              },
+              "outcome": "You seize the sealed godowns under the Commissioner&rsquo;s hand, magistrates attached, and the grain is flowing to the bazaars by nightfall at the controlled rate. The houses, caught holding against a declared scarcity, elect not to test the seizure in a court that would have to rule in a famine season with the papers watching. They take their compensation and their grievance and go quiet. The corner is broken for good, and the Division has learned that its Commissioner will reach into a locked godown when the price of not reaching in is measured in people."
+            },
+            {
+              "label": "Let the reserve run, and trust the rain-gauge over the C.I.D.",
+              "effects": {
+                "revenue": 1,
+                "prestige": -2,
+                "contentment": -2
+              },
+              "risk": {
+                "chance": 0.3,
+                "effects": {
+                  "contentment": -10,
+                  "order": -6,
+                  "prestige": -5,
+                  "health": -2
+                },
+                "econ": {
+                  "treasury": -30000
+                },
+                "setFlags": [
+                  "corner_won"
+                ],
+                "outcome": "The rains break three weeks late, and three weeks is the whole of it. The reserve is dry before the sky pays, bought out from under the queue by the ring you declined to touch; the retail price stands at the figure the houses set for it; and the hungry month arrives on schedule with nothing standing between it and the Marwan poor. The relief that follows is famine relief now, costlier in every column, chasing the calamity the reserve was opened to forestall. The C.I.D.&rsquo;s file, with your marginal note declining to act, is complete."
+              },
+              "outcome": "You gamble that the monsoon beats the ring, and this year it does, barely: the rains come while a fortnight&rsquo;s grain still sits in the granaries, the price breaks of its own weight, and the houses are left holding stock into a falling market that serves them right. It was the correct call on the odds and it felt like none, and you kept, through the waiting, a private count of the days the reserve had left. Four. You do not put the number in the report."
+            }
+          ]
+        }
+      },
+      {
+        "label": "Prosecute the houses for hoarding, and make the law do the work.",
+        "effects": {
+          "order": -1,
+          "prestige": -1,
+          "contentment": 1
+        },
+        "outcome": "The hoarding sections are on the statute-book and off it in the same breath: holding grain is lawful, cornering it is a matter of proving intent, and intent lives in ledgers you cannot see and conversations no one records. The prosecutions grind and fail, one by one, and each failure teaches the houses precisely where the law&rsquo;s edge lies and how far short of them it stops. The scarcity climbs while the cases crawl. You bought time in the wrong currency."
+      },
+      {
+        "label": "Summon the houses&rsquo; heads and settle a ceiling price privately, quid pro quo.",
+        "effects": {
+          "revenue": 1,
+          "contentment": 2,
+          "prestige": -1
+        },
+        "outcome": "You have them to the flag bungalow and make the bargain the old Service always made: a ceiling price they will hold to, in exchange for no requisition, no prosecution, and a quiet word for their loyalty when the honours lists are drawn. They keep it &mdash; such men keep such bargains, the bargain being their whole capital &mdash; and the bazaars are fed at a price the poor can nearly meet. It works, and it costs only the thing you did not quite notice spending: a Commissioner who has, once, been the grain ring&rsquo;s partner is known to be so, and the knowledge keeps."
       }
     ]
   }

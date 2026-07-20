@@ -791,5 +791,183 @@
         "outcome": "You remind the manager, with some pleasure, that his press is his own freehold and its gate his own affair, and that the police are not a private security service for planters who dock wages on saints&rsquo; days. He rings off to complain of you. The dispute settles itself in a week, as most do. You have made an enemy at the Club and a quiet friend in the bazaar, and both will keep."
       }
     ]
+  },
+  {
+    "id": "dm-procession-route",
+    "tag": "IMMEDIATE",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "Music Before the Mosque",
+    "body": "The Ram Lila procession has gone down the Chowk with its drums and cymbals for thirty years, and for thirty of them the Chowk had no mosque worth the name. Now it has one &mdash; subscribed, plastered, and proud &mdash; and the mullah has given notice that drums past his door at the hour of prayer will be understood as they are meant. The Hindu committee cites custom, immemorial and loud. Both deputations stand on your verandah, and the procession forms in two days.",
+    "choices": [
+      {
+        "label": "Confirm the customary route, and post the whole reserve along the Chowk.",
+        "effects": {
+          "order": 2,
+          "prestige": 1,
+          "health": -1
+        },
+        "outcome": "You rule for custom against the calendar and set every constable you have down the Chowk to see custom kept quietly. The procession comes on drumming; at the mosque door the drums &mdash; by arrangement or by blood &mdash; redouble; and a brick comes out of the packed crowd.",
+        "then": {
+          "tag": "IMMEDIATE",
+          "title": "The Brick at the Mosque Door",
+          "body": "One brick, and then the answer to it off the mosque steps, and the head of the procession is jammed drum-to-worshipper in a lane too narrow to turn a cart in. Your reserve is fifty. The Chowk holds four thousand. The thing is a riot in ten minutes unless it is made something else in five, and every face in the lane is turned now to see what the sahib will do.",
+          "choices": [
+            {
+              "label": "Walk in on foot between the crowds, bareheaded, and stop the drums with your own hand.",
+              "effects": {
+                "prestige": 4,
+                "order": 3,
+                "contentment": 2,
+                "health": -2
+              },
+              "risk": {
+                "chance": 0.2,
+                "effects": {
+                  "health": -18,
+                  "prestige": 3
+                },
+                "setFlags": [
+                  "mosque_hurt"
+                ],
+                "outcome": "You are ten feet in when the brick meant for the other side finds you instead, and the Chowk sees its Collector go down in the dust between the faiths. That, oddly, is what stops it: both crowds recoil from what they have done, and the reserve carries you out over their heads. The riot dies of shame. You keep your bed a month, and the Chowk keeps the story a good deal longer."
+              },
+              "outcome": "You go into the gap with no hat and no stick, take the lead drummer&rsquo;s wrist, and hold it. The drum stops. In the silence the thing that wanted to be a riot cannot find its first blow, and neither crowd will strike across a magistrate standing bareheaded between them. They pull back sullen and whole. It is the most frightened you have been in the district, and the most use you have been."
+            },
+            {
+              "label": "Order the reserve to clear the lane with lathis, at once.",
+              "effects": {
+                "order": 3,
+                "contentment": -6,
+                "prestige": -2,
+                "health": -1
+              },
+              "outcome": "Fifty lathis go in where four thousand are wedged, and the lane clears the only way it can &mdash; over the heads and shins of whoever stood nearest, worshipper and drummer alike. The riot is stopped before it forms, at the price of thirty broken heads that belonged to no ringleader and a Chowk that will remember the sirkar chose the stick. Both committees petition against you. Both are right."
+            },
+            {
+              "label": "Halt the drums, turn the procession back, and clear the mosque by the side lanes.",
+              "effects": {
+                "order": 1,
+                "contentment": -4,
+                "prestige": -3
+              },
+              "outcome": "You silence the drums by main authority and unpick the jam strand by strand, procession up one lane and congregation down another, until the Chowk stands empty and grumbling. No blood, and no glory: the Hindu committee has been turned back from its immemorial road, and by evening the whole city knows the procession was stopped &mdash; the one outcome both faiths can agree to lay at your door."
+            }
+          ]
+        }
+      },
+      {
+        "label": "Reroute the procession this year down the Nakhas, well clear of the mosque.",
+        "effects": {
+          "order": 1,
+          "contentment": -3,
+          "prestige": -2
+        },
+        "outcome": "You send the drums round by the cattle-market, away from the new mosque, and buy the day&rsquo;s peace with a precedent. The Hindu committee walks the diversion under loud protest and enters it in the ledger of grievances these towns keep forever; next year&rsquo;s file is open before this year&rsquo;s dust has settled. But no brick is thrown, and no man is carried home."
+      },
+      {
+        "label": "Bind both committees over to keep the peace: drums muffled past the mosque, and no further concession.",
+        "effects": {
+          "order": 2,
+          "contentment": 1,
+          "prestige": 2,
+          "health": -1
+        },
+        "outcome": "Two days of shuttling between deputations, and a bargain neither loves and both can bear: the drums fall silent for the hundred yards of the mosque and take up again beyond it, and each committee signs a bond to hold its own hotheads. The procession passes muffled and whole. Both sides grumble that they gave more than they got, which is the surest sign the thing will hold."
+      }
+    ]
+  },
+  {
+    "id": "dm-dacoit-surrender",
+    "tag": "SECRET",
+    "season": [
+      "cold"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Surrender of Bhola",
+    "body": "Bhola Singh has held the ravine country six years &mdash; eleven dacoities, two murders, a standing reward, and a name the villages speak half in terror and half in ballad. Now a note comes up by a grass-cutter, in a hired scribe&rsquo;s careful hand: Bhola will lay his gun at the Collector&rsquo;s feet and no other man&rsquo;s, at the Kali shrine below Rampur, at dusk, if the Collector will come to him alone. The Superintendent of Police reads it once and calls for a hundred men and a cordon.",
+    "choices": [
+      {
+        "label": "Ride down to the shrine alone, as he asks, and take his surrender.",
+        "effects": {
+          "prestige": 3,
+          "order": 1,
+          "health": -1
+        },
+        "outcome": "You ride to the Kali shrine at dusk with no gun and no escort, against every standing order and the Superintendent&rsquo;s open fury, and Bhola Singh is there &mdash; kneeling on the step, his gun laid across it. And then, out of the broken ground behind him, unhurried, rise seven more men who were nowhere in the note.",
+        "then": {
+          "tag": "SECRET",
+          "title": "The Seven Who Were Not in the Note",
+          "body": "Bhola&rsquo;s gang come out of the ravine to a man and stand at his back, weapons neither raised nor grounded. Bhola looks up at you from the step. &lsquo;They will come in with me, sahib, on your word alone,&rsquo; he says. &lsquo;Or they go back into the ravine, and I with them, and it all begins again in the spring.&rsquo; There is no police within call, and no paper in the world out here but your word.",
+          "choices": [
+            {
+              "label": "Give your word: come in, all eight, and I will see you fairly tried.",
+              "effects": {
+                "prestige": 4,
+                "order": 4,
+                "contentment": 3,
+                "health": -1
+              },
+              "setFlags": [
+                "dacoit_word"
+              ],
+              "outcome": "You give it, and eight armed men walk out of the ravine behind you in the dark, their guns on a bullock-cart, to a district that had learned to bar its doors at dusk. The ravine country goes quiet for a generation. You spend the next year fighting the Sessions Judge to keep a promise he never made &mdash; half-winning &mdash; and learning what it costs to have pledged the sirkar&rsquo;s faith on your own head."
+            },
+            {
+              "label": "Take Bhola only; the others carry blood you cannot bargain away.",
+              "effects": {
+                "order": 2,
+                "prestige": 1,
+                "contentment": -2,
+                "health": -1
+              },
+              "outcome": "You will treat for the man who wrote the note and no other. Bhola looks at you a long moment, then rises and comes; the seven melt back into the ravine without a word. You have a famous prisoner and a half-finished war &mdash; the raids begin again by the hot weather under a new name, and the villages, who wanted it ended whole, do not quite forgive you the half."
+            },
+            {
+              "label": "Refuse to treat with armed men; order the gang to ground their weapons first.",
+              "effects": {
+                "order": -1,
+                "prestige": -1,
+                "health": -2
+              },
+              "risk": {
+                "chance": 0.2,
+                "effects": {
+                  "health": -20,
+                  "order": -4
+                },
+                "setFlags": [
+                  "shrine_blood"
+                ],
+                "outcome": "You give an order a man in your position has no force to back, and Bhola cannot hold them to it. A nervous hand somewhere in the dark decides the matter; the shrine is the last thing you see clearly for a fortnight. They carry you out more dead than alive, and the ravine keeps every gun it came with. The Superintendent&rsquo;s cordon, arriving too late, at least brings a doctor."
+              },
+              "outcome": "You stand on the rule &mdash; no parley with armed men &mdash; and for one long breath the ravine could go either way. Then Bhola, tired past pretence, lays his gun down again and talks three of the seven into doing the same; the rest fade into the dark. Four come in, four do not. It is not the miracle the villages prayed for, and it is more than the cordon would ever have got."
+            }
+          ]
+        }
+      },
+      {
+        "label": "Let the Superintendent have his cordon and take Bhola by the book.",
+        "effects": {
+          "order": 2,
+          "prestige": -1,
+          "contentment": -2
+        },
+        "outcome": "You do the sound thing and the safe thing: a hundred men move up in the night to ring the Kali shrine. Bhola, who has lived six years by smelling exactly this, is gone before the ring closes &mdash; and two constables lie dead in the ravine by morning. The surrender that was freely offered becomes a feud freshly earned, and the ballad grows a verse about a sahib who would not come alone."
+      },
+      {
+        "label": "Send Ram Autar the tahsildar to bring him in, and keep the Collector out of the ravines.",
+        "effects": {
+          "prestige": -2,
+          "order": 1,
+          "contentment": 1
+        },
+        "outcome": "Ram Autar goes down to the ravine country unarmed, with tea and time and guarantees he is careful never to set on paper, and over a week he walks Bhola in by the hand. The peace is real and the credit is a tahsildar&rsquo;s, correctly. The district notes only that the outlaw asked for the sahib by name, and the sahib sent another man to the shrine."
+      }
+    ]
   }
 ]
