@@ -401,8 +401,11 @@
       var opts = [postureOpt("tour")];
       // Pressing the luck is a posture in its own right — offered beside the
       // quiet tour in the cold weather (the marching season), not sprung after it.
+      // The push-your-luck tour: the reward is not fixed (it depends how far you
+      // press), so it carries no effect-chip preview — showing the base tour
+      // chips made it read as identical to the quiet tour. `press` flags it.
       if (TOURPRESS && sk === "cold")
-        opts.push({ kind: "tourpress", label: TOURPRESS.postureLabel, note: TOURPRESS.postureNote, effects: postureEffects("tour") });
+        opts.push({ kind: "tourpress", label: TOURPRESS.postureLabel, note: TOURPRESS.postureNote, press: true });
       opts.push(postureOpt("desk"));
       var rdef = retreatFor(sk);
       if (rdef) opts.push({ kind: rdef.key, label: rdef.label, note: rdef.note, retreat: true, effects: rdef.effects || {} });
