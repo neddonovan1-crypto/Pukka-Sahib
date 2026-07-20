@@ -99,9 +99,15 @@
   .meters{display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:0 0 14px}
   .meter{background:var(--surface2); border:1px solid var(--line); border-radius:3px; padding:8px 5px 7px; text-align:center}
   .meter .name{font-family:"Courier New",Courier,monospace; font-size:.58rem; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-soft)}
-  .meter .bar{height:6px; background:rgba(120,95,45,.22); border-radius:2px; margin:7px 0 5px; overflow:hidden}
+  .meter .bar{position:relative; height:6px; background:rgba(120,95,45,.22); border-radius:2px; margin:7px 0 5px; overflow:hidden}
   .meter .fill{height:100%; width:50%; background:var(--warn); transition:width .45s ease, background .45s ease}
+  
+  .meter .floor{position:absolute; top:0; bottom:0; width:2px; margin-left:-1px; background:var(--bad); opacity:.55; z-index:1}
   .meter .val{font-size:.9rem; font-weight:700; font-variant-numeric:tabular-nums}
+  
+  .meter .trend{font-family:"Courier New",Courier,monospace; font-size:.56rem; font-weight:600; letter-spacing:0; margin-left:3px; color:var(--ink-soft); vertical-align:1px}
+  .meter.danger .val{color:var(--bad)}
+  .meter.danger{border-color:var(--bad)}
   .meter.pulse{animation:pulse .5s}
   @keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.07)}100%{transform:scale(1)}}
 
@@ -388,6 +394,8 @@
 
   var VERDICT = { floor: 40, nativeContentment: 65, nativePrestige: 50 };
 
+  var METER_FLOORS = { prestige: VERDICT.floor, order: VERDICT.floor, health: 25, revenue: 25 };
+
   function clamp(v) { return Math.max(0, Math.min(100, Math.round(v))); }
 
   function seededRng(seed) {
@@ -507,6 +515,9 @@
     function enterTurn() {
       notice = null;
       S.consulted = false; // a fresh fortnight; any advice must be asked afresh
+
+      S.turnStart = {};
+      METERS.forEach(function (k) { S.turnStart[k] = S[k]; });
       var parts = [];
       var boundary = S.turn > 1 && seasonOf(S.turn).key !== seasonOf(S.turn - 1).key;
       if (boundary && CFG.review) {
@@ -767,14 +778,17 @@
     }
 
     function snapshot(extra) {
-      var meters = {};
-      METERS.forEach(function (k) { meters[k] = S[k]; });
+      var meters = {}, deltas = {};
+      METERS.forEach(function (k) {
+        meters[k] = S[k];
+        deltas[k] = (S.turnStart && typeof S.turnStart[k] === "number") ? S[k] - S.turnStart[k] : 0;
+      });
       var season = seasonOf(S.turn);
       var snap = {
         phase: phase, turn: S.turn, maxTurns: MAX_TURNS,
         season: season, month: monthOf(S.turn),
         seasonIntro: variantOf(season.intros) || season.intro || "",
-        meters: meters, treasury: S.treasury, debt: S.debt,
+        meters: meters, deltas: deltas, treasury: S.treasury, debt: S.debt,
         posture: S.posture, notice: notice,
         retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,
         event: (phase === "event" || phase === "interlude") ? current : null,
@@ -940,7 +954,7 @@
 
   var SECRECY_TAGS = ["MOST SECRET", "SECRET", "CONFIDENTIAL", "CYPHER"];
   var API = {
-    createGame: createGame, seededRng: seededRng, rupees: rupees, VERDICT: VERDICT,
+    createGame: createGame, seededRng: seededRng, rupees: rupees, VERDICT: VERDICT, METER_FLOORS: METER_FLOORS,
     isSecrecyTag: function (t) { return SECRECY_TAGS.indexOf((t || "").toUpperCase()) !== -1; }
   };
   if (typeof module !== "undefined" && module.exports) module.exports = API;
@@ -1302,6 +1316,7 @@
   var el = function (id) { return document.getElementById(id); };
 
   function meterColour(v) { return v < 25 ? "var(--bad)" : v > 70 ? "var(--good)" : "var(--warn)"; }
+  var METER_FLOORS = L.METER_FLOORS || {};
 
   function stripTags(s) { return (s || "").replace(/<[^>]*>/g, ""); }
   function decode(s) {
@@ -1309,17 +1324,23 @@
     var t = document.createElement("textarea"); t.innerHTML = s || ""; return t.value;
   }
 
-  function renderMeters(meters, pulse) {
+  function renderMeters(meters, pulse, deltas) {
     var box = el("meters"); box.innerHTML = "";
     METERS.forEach(function (m) {
       var v = meters[m.key];
+      var floor = METER_FLOORS[m.key];
+      var hasFloor = typeof floor === "number";
+      var danger = hasFloor && v <= floor;
+      var dl = deltas ? (deltas[m.key] || 0) : 0;
       var d = document.createElement("div");
-      d.className = "meter" + (pulse && pulse.indexOf(m.key) !== -1 ? " pulse" : "");
+      d.className = "meter" + (pulse && pulse.indexOf(m.key) !== -1 ? " pulse" : "") + (danger ? " danger" : "");
       if (m.desc) d.title = m.name + " — " + decode(stripTags(m.desc)); // desktop hover
+      var floorMark = hasFloor ? '<div class="floor" style="left:' + floor + '%"></div>' : "";
+      var trend = dl ? '<span class="trend">' + (dl > 0 ? "▲" : "▼") + Math.abs(dl) + "</span>" : "";
       d.innerHTML =
         '<div class="name">' + m.name + '</div>' +
-        '<div class="bar"><div class="fill" style="width:' + v + '%;background:' + meterColour(v) + '"></div></div>' +
-        '<div class="val">' + v + '</div>';
+        '<div class="bar">' + floorMark + '<div class="fill" style="width:' + v + '%;background:' + (danger ? "var(--bad)" : meterColour(v)) + '"></div></div>' +
+        '<div class="val">' + v + trend + '</div>';
       box.appendChild(d);
     });
   }
@@ -1603,7 +1624,7 @@
   function paint(s) {
     if (s.season && s.season.key) audio.season(s.season.key);
     renderScene(s);
-    renderMeters(s.meters, s.pulsed);
+    renderMeters(s.meters, s.pulsed, s.deltas);
     renderStatus(s);
     renderStandings(s);
     renderNotice(s);

@@ -413,7 +413,8 @@ async function consultSession(browser, viewport) {
     v: 2, chapter: "ac",
     data: {
       S: { flags: { thakur_obliged: true }, posture: "desk", turn: 4, treasury: 5000, debt: 0, log: [], consulted: false,
-           revenue: 50, order: 52, prestige: 48, contentment: 48, health: 55 },
+           revenue: 50, order: 35, prestige: 48, contentment: 48, health: 55,
+           turnStart: { revenue: 50, order: 45, prestige: 48, contentment: 48, health: 55 } },
       phase: "event", currentId: "ac-first-sitting",
       lastResult: null, recent: [], notice: null, lastEventId: "ac-first-sitting", endedKey: null
     }
@@ -428,6 +429,15 @@ async function consultSession(browser, viewport) {
   // the standing strip shows the made relationship
   var standingsShown = await page.$eval("#standings", function (n) { return !n.hidden && /Thakur/.test(n.textContent); }).catch(function () { return false; });
   assert(standingsShown, label + ": the standing strip did not surface a made relationship (the Thakur)");
+
+  // danger-aware meters: the floor hairline is drawn, Order (35, below its 40
+  // scandal floor) reads as in peril, and its −10 move shows a trend arrow.
+  var floorDrawn = await page.$(".meter .floor");
+  assert(floorDrawn, label + ": no danger-floor hairline on the meters");
+  var dangerMeter = await page.$(".meter.danger");
+  assert(dangerMeter, label + ": a meter below its floor did not render in the danger style");
+  var trendShown = await page.$eval("#meters", function (n) { return /▼10/.test(n.textContent); }).catch(function () { return false; });
+  assert(trendShown, label + ": the fortnight's meter move did not show a trend arrow");
 
   var ask = await page.$(".consult-ask");
   assert(ask, label + ": an event carrying a consult offered no 'Ask …' control");

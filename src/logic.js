@@ -16,6 +16,12 @@
   // Prestige under `nativePrestige` reads as gone native.
   var VERDICT = { floor: 40, nativeContentment: 65, nativePrestige: 50 };
 
+  // Danger floors the meter bars draw a hairline at: below the scandal floor
+  // prestige/order fail the year's verdict; health/revenue approaching the
+  // collapse at 0 are in the warning band. Contentment has no low-side danger
+  // (its trap is the high side, gone native), so it draws no floor.
+  var METER_FLOORS = { prestige: VERDICT.floor, order: VERDICT.floor, health: 25, revenue: 25 };
+
   function clamp(v) { return Math.max(0, Math.min(100, Math.round(v))); }
 
   // mulberry32 — small seeded PRNG for deterministic simulation.
@@ -151,6 +157,10 @@
     function enterTurn() {
       notice = null;
       S.consulted = false; // a fresh fortnight; any advice must be asked afresh
+      // Remember the fortnight's opening meters, so the bars can show the net
+      // move each fortnight made (the trend arrows).
+      S.turnStart = {};
+      METERS.forEach(function (k) { S.turnStart[k] = S[k]; });
       var parts = [];
       var boundary = S.turn > 1 && seasonOf(S.turn).key !== seasonOf(S.turn - 1).key;
       if (boundary && CFG.review) {
@@ -450,14 +460,17 @@
     }
 
     function snapshot(extra) {
-      var meters = {};
-      METERS.forEach(function (k) { meters[k] = S[k]; });
+      var meters = {}, deltas = {};
+      METERS.forEach(function (k) {
+        meters[k] = S[k];
+        deltas[k] = (S.turnStart && typeof S.turnStart[k] === "number") ? S[k] - S.turnStart[k] : 0;
+      });
       var season = seasonOf(S.turn);
       var snap = {
         phase: phase, turn: S.turn, maxTurns: MAX_TURNS,
         season: season, month: monthOf(S.turn),
         seasonIntro: variantOf(season.intros) || season.intro || "",
-        meters: meters, treasury: S.treasury, debt: S.debt,
+        meters: meters, deltas: deltas, treasury: S.treasury, debt: S.debt,
         posture: S.posture, notice: notice,
         retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,
         event: (phase === "event" || phase === "interlude") ? current : null,
@@ -641,7 +654,7 @@
 
   var SECRECY_TAGS = ["MOST SECRET", "SECRET", "CONFIDENTIAL", "CYPHER"];
   var API = {
-    createGame: createGame, seededRng: seededRng, rupees: rupees, VERDICT: VERDICT,
+    createGame: createGame, seededRng: seededRng, rupees: rupees, VERDICT: VERDICT, METER_FLOORS: METER_FLOORS,
     isSecrecyTag: function (t) { return SECRECY_TAGS.indexOf((t || "").toUpperCase()) !== -1; }
   };
   if (typeof module !== "undefined" && module.exports) module.exports = API;

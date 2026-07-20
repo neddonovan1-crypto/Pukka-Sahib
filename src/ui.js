@@ -94,6 +94,7 @@
   var el = function (id) { return document.getElementById(id); };
 
   function meterColour(v) { return v < 25 ? "var(--bad)" : v > 70 ? "var(--good)" : "var(--warn)"; }
+  var METER_FLOORS = L.METER_FLOORS || {};
 
   function stripTags(s) { return (s || "").replace(/<[^>]*>/g, ""); }
   function decode(s) {
@@ -101,17 +102,23 @@
     var t = document.createElement("textarea"); t.innerHTML = s || ""; return t.value;
   }
 
-  function renderMeters(meters, pulse) {
+  function renderMeters(meters, pulse, deltas) {
     var box = el("meters"); box.innerHTML = "";
     METERS.forEach(function (m) {
       var v = meters[m.key];
+      var floor = METER_FLOORS[m.key];
+      var hasFloor = typeof floor === "number";
+      var danger = hasFloor && v <= floor;
+      var dl = deltas ? (deltas[m.key] || 0) : 0;
       var d = document.createElement("div");
-      d.className = "meter" + (pulse && pulse.indexOf(m.key) !== -1 ? " pulse" : "");
+      d.className = "meter" + (pulse && pulse.indexOf(m.key) !== -1 ? " pulse" : "") + (danger ? " danger" : "");
       if (m.desc) d.title = m.name + " — " + decode(stripTags(m.desc)); // desktop hover
+      var floorMark = hasFloor ? '<div class="floor" style="left:' + floor + '%"></div>' : "";
+      var trend = dl ? '<span class="trend">' + (dl > 0 ? "▲" : "▼") + Math.abs(dl) + "</span>" : "";
       d.innerHTML =
         '<div class="name">' + m.name + '</div>' +
-        '<div class="bar"><div class="fill" style="width:' + v + '%;background:' + meterColour(v) + '"></div></div>' +
-        '<div class="val">' + v + '</div>';
+        '<div class="bar">' + floorMark + '<div class="fill" style="width:' + v + '%;background:' + (danger ? "var(--bad)" : meterColour(v)) + '"></div></div>' +
+        '<div class="val">' + v + trend + '</div>';
       box.appendChild(d);
     });
   }
@@ -424,7 +431,7 @@
   function paint(s) {
     if (s.season && s.season.key) audio.season(s.season.key);
     renderScene(s);
-    renderMeters(s.meters, s.pulsed);
+    renderMeters(s.meters, s.pulsed, s.deltas);
     renderStatus(s);
     renderStandings(s);
     renderNotice(s);

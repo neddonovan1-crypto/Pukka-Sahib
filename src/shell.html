@@ -101,9 +101,16 @@
   .meters{display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:0 0 14px}
   .meter{background:var(--surface2); border:1px solid var(--line); border-radius:3px; padding:8px 5px 7px; text-align:center}
   .meter .name{font-family:"Courier New",Courier,monospace; font-size:.58rem; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-soft)}
-  .meter .bar{height:6px; background:rgba(120,95,45,.22); border-radius:2px; margin:7px 0 5px; overflow:hidden}
+  .meter .bar{position:relative; height:6px; background:rgba(120,95,45,.22); border-radius:2px; margin:7px 0 5px; overflow:hidden}
   .meter .fill{height:100%; width:50%; background:var(--warn); transition:width .45s ease, background .45s ease}
+  /* The danger floor: a hairline where the meter falls into peril (scandal for
+     prestige/order, the warning band near collapse for health/revenue). */
+  .meter .floor{position:absolute; top:0; bottom:0; width:2px; margin-left:-1px; background:var(--bad); opacity:.55; z-index:1}
   .meter .val{font-size:.9rem; font-weight:700; font-variant-numeric:tabular-nums}
+  /* Trend since the fortnight opened, and the red ink of a meter in peril. */
+  .meter .trend{font-family:"Courier New",Courier,monospace; font-size:.56rem; font-weight:600; letter-spacing:0; margin-left:3px; color:var(--ink-soft); vertical-align:1px}
+  .meter.danger .val{color:var(--bad)}
+  .meter.danger{border-color:var(--bad)}
   .meter.pulse{animation:pulse .5s}
   @keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.07)}100%{transform:scale(1)}}
 
