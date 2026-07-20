@@ -286,6 +286,7 @@
     c.innerHTML =
       turnline(s, '<span class="' + stampCls + '">' + tag + "</span>") +
       '<h3 class="cardtitle">' + e.title + "</h3>" +
+      (s.step && s.stepLead ? '<div class="steplead">' + s.stepLead + "</div>" : "") +
       '<div class="body">' + e.body + "</div>" +
       (s.consult ? '<div class="consult" id="consult"></div>' : "") +
       '<div class="choices"></div>';

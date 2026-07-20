@@ -711,5 +711,85 @@
     "effects": {
       "health": 2
     }
+  },
+  {
+    "id": "dm-press-strike",
+    "tag": "URGENT",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Hands Come Out at the Press",
+    "body": "The coolies at Hukumchand&rsquo;s jute press have thrown down the bales over a wage docked for a festival day, and the European manager is on the telephone to you and not to reason. &lsquo;It is intimidation, Collector, plain and simple. Send me the police and I&rsquo;ll have them back at the frames by noon.&rsquo; The town, which does not love the press, is watching to see whose Collector you are.",
+    "choices": [
+      {
+        "label": "Send the police to open the press and put the hands back to work.",
+        "effects": {
+          "order": 2,
+          "prestige": 1
+        },
+        "outcome": "The constables march down to the press &mdash; and the bazaar, which has been waiting for exactly this, answers by pulling down its shutters street by street in sympathy. By afternoon it is no longer a wage dispute at one press. It is the town, shut, and looking at you.",
+        "then": {
+          "tag": "IMMEDIATE",
+          "title": "The Bazaar Shuts",
+          "body": "A closed bazaar is a slow bomb: no violence yet, only shutters and silence and a hartal spreading by the hour. The manager wants his frames running; the Superintendent wants a free hand; and somewhere behind it now is a Congress man with a notebook, writing the day up for a paper you will read in a week.",
+          "choices": [
+            {
+              "label": "Break the hartal: prosecute the ringleaders and open the shops by order.",
+              "effects": {
+                "order": 5,
+                "contentment": -8,
+                "prestige": -4
+              },
+              "outcome": "You treat the closed shutter as the offence it technically is, and the machinery of the law does the rest: three arrests, a great deal of intimidation of the timid by the resolute on both sides, and the shops open on the fourth day, sullenly. Order is restored. So is the memory of how, and the Congress man has his headline: <i>Sirkar opens shops at the point of the law.</i>",
+              "setFlags": [
+                "broke_the_hartal"
+              ]
+            },
+            {
+              "label": "Sit both sides down yourself and settle the wage.",
+              "effects": {
+                "contentment": 6,
+                "prestige": 2,
+                "order": 1,
+                "health": -2
+              },
+              "outcome": "You do the thing neither the manager nor the Superintendent wants, which is the work: two days in a hot room with the manager, the coolies&rsquo; men, and the docked half-day between them, until a figure is found that lets everyone claim they did not lose. The bazaar opens because the reason to shut it is gone. The manager complains to Calcutta that you sided with his coolies. His coolies believe you sided with him. It is, on the whole, a settlement.",
+              "setFlags": [
+                "settled_the_press"
+              ]
+            },
+            {
+              "label": "Withdraw the police and let the press and the town settle it between them.",
+              "effects": {
+                "order": -4,
+                "prestige": -3,
+                "contentment": 2
+              },
+              "outcome": "You take the Government out of a quarrel it was invited into for a purpose, and pull the constables back to their lines. It works, slowly and without credit: hunger and boredom do in a week what the law would have done in a day and remembered for a year. The manager never forgives the week. The town never quite noticed the Government was there, which is either failure or the whole art, depending on who writes it up."
+            }
+          ]
+        }
+      },
+      {
+        "label": "Summon the manager and the coolies&rsquo; headmen to arbitrate before anyone moves.",
+        "effects": {
+          "contentment": 4,
+          "prestige": 2,
+          "order": -1
+        },
+        "outcome": "You decline to send police to a quarrel until you have seen the quarrel, and call both sides to the cutcherry instead. The manager comes furious and leaves merely aggrieved, the docked day half-restored; the hands go back with something to show. You have spent an afternoon and no police, and kept a wage dispute from becoming a cause."
+      },
+      {
+        "label": "Tell the manager it is a private matter for his own gate, and stand back.",
+        "effects": {
+          "order": -2,
+          "prestige": -1,
+          "contentment": 1
+        },
+        "outcome": "You remind the manager, with some pleasure, that his press is his own freehold and its gate his own affair, and that the police are not a private security service for planters who dock wages on saints&rsquo; days. He rings off to complain of you. The dispute settles itself in a week, as most do. You have made an enemy at the Club and a quiet friend in the bazaar, and both will keep."
+      }
+    ]
   }
 ]

@@ -662,5 +662,94 @@
       "health": -1,
       "contentment": 1
     }
+  },
+  {
+    "id": "ac-bazaar-crowd",
+    "tag": "URGENT",
+    "season": [
+      "any"
+    ],
+    "kind": "crisis",
+    "once": true,
+    "title": "The Crowd in the Grain-Market",
+    "body": "A rumour of short weights, a shopkeeper&rsquo;s shutter down, and now three hundred men in the lane between the thana and the temple, in a temper the Sub-Inspector cannot read. &lsquo;An order, Huzoor,&rsquo; he keeps saying, as if the word itself were a plan. You have twenty constables and no Collector within forty miles.",
+    "choices": [
+      {
+        "label": "Clear the lane with the reserve, at once.",
+        "effects": {
+          "order": 2,
+          "health": -1
+        },
+        "outcome": "The constables go in with lathis up &mdash; and the lane does not clear. It folds back on itself and hardens, and a brick comes over the wall and takes a man beside you across the ear. The temper has found its shape now, and the shape is facing you.",
+        "then": {
+          "tag": "IMMEDIATE",
+          "title": "The Lane Will Not Clear",
+          "body": "Twenty men against three hundred in a street a bullock-cart would block. Behind you the thana; ahead, the thing you have made. The Sub-Inspector has his hand on his revolver and his eyes on you, waiting to be told something he can put in a report.",
+          "choices": [
+            {
+              "label": "Order the charge home and take the street.",
+              "effects": {
+                "order": 5,
+                "prestige": -3,
+                "contentment": -6,
+                "health": -3
+              },
+              "outcome": "It is done as it is always done: the line goes in hard, the street clears in bloody minutes, and by dark the town is silent and sullen and yours. Three men are in hospital and one will not leave it. The report writes itself; the reading of it, at the durbar and in the vernacular press, will take a year.",
+              "setFlags": [
+                "cleared_by_force"
+              ]
+            },
+            {
+              "label": "Pull the police back inside and hold the thana.",
+              "effects": {
+                "order": -5,
+                "prestige": -3,
+                "contentment": 3
+              },
+              "outcome": "You give up the street rather than pay for it, and the crowd has its afternoon of ownership &mdash; a shutter or two broken, a great deal of shouting, and by evening the tide goes out of its own accord, as tides do. Nobody is in hospital. Everybody, from the Sub-Inspector to the Commissioner, has noted that the Sahib blinked."
+            },
+            {
+              "label": "Go out in front of them, alone, and ask what they want.",
+              "effects": {
+                "prestige": 3,
+                "order": 2,
+                "contentment": 3
+              },
+              "outcome": "You walk out past the last constable into the open lane, alone, and the sheer unexpectedness of it buys the thirty seconds in which a crowd decides what it is. You ask the front rank, by name where you know them, what the trouble is; and it is, of course, the weights. You promise the scales checked by morning, and mean it, and the thing comes apart into three hundred men going home to their dinner.",
+              "risk": {
+                "chance": 0.28,
+                "effects": {
+                  "health": -18,
+                  "prestige": -8,
+                  "order": -6
+                },
+                "setFlags": [
+                  "bazaar_mauled"
+                ],
+                "outcome": "You walk out alone, and the crowd does not pause to be charmed. A press, a surge, a stick you never see &mdash; and the constables drag you back through the thana door with your puggree gone and your arm hanging wrong. It is a fortnight in bed and a great deal longer in the telling: the boy who mistook a mob for a deputation."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "label": "Send for the headmen and the aggrieved shopkeeper both; hold the lane with talk.",
+        "effects": {
+          "contentment": 4,
+          "prestige": 1,
+          "order": -1
+        },
+        "outcome": "You do the slow thing: the headmen fetched, the shopkeeper produced, the offending scales sent for and weighed in front of the front rank. It takes two hours and a deal of standing about in the sun, and it works, which the quick thing might not have. The Sub-Inspector is disappointed. He had wanted an order."
+      },
+      {
+        "label": "Bolt the thana and wait the temper out.",
+        "effects": {
+          "order": -2,
+          "contentment": -1,
+          "prestige": -2
+        },
+        "outcome": "You wait, which is not nothing &mdash; a crowd is a fire, and fires go out &mdash; but you wait behind a locked door, and the town notes the door. By evening the lane is empty, the shutters are up, and the weights are exactly as crooked as they were. You have kept the peace by declining to govern, which is a thing a man may do once."
+      }
+    ]
   }
 ]

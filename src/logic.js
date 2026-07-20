@@ -416,10 +416,22 @@
       S.log.push({ turn: S.turn, month: monthOf(S.turn), title: title, label: label, outcome: outcome || "", weight: w });
     }
 
+    // Build the follow-up card of a two-step choice from its `then`: a synthetic
+    // event carrying the escalation and the real decision. Never itself two-step
+    // (the validator forbids nesting), so it resolves like an ordinary event.
+    function buildThen(parent, thenDef, idx) {
+      return {
+        id: parent.id + "#then" + idx, tag: thenDef.tag || parent.tag,
+        title: thenDef.title || parent.title, body: thenDef.body,
+        choices: thenDef.choices, once: false, thenSynthetic: true,
+        art: thenDef.art || parent.art
+      };
+    }
+
     function chooseOption(i) {
       if (phase !== "event") return snapshot();
       var ch = current.choices[i];
-      if (current.once) S.flags[current.id] = true;
+      if (current.once && !current.thenSynthetic) S.flags[current.id] = true;
       var r = resolveChoice(ch);
       var pulsed = applyMeters(r.effects);
       r.setFlags.forEach(function (f) { S.flags[f] = true; });
@@ -427,6 +439,15 @@
       logDecision(current.title, ch.label, r.outcome, r.effects, r.econ, r.setFlags.length);
       lastResult = { outcome: r.outcome, effects: r.effects, econ: r.econ };
       ended = collapseCheck();
+      // Two-step: a top-level choice may open a follow-up decision instead of
+      // resolving. Its own effects apply as the setup (and can still collapse
+      // the run); if they don't, the escalation's card is presented, its lead
+      // the setup outcome. A synthetic follow-up never branches again.
+      if (!ended && ch.then && !current.thenSynthetic) {
+        current = buildThen(current, ch.then, i);
+        phase = "event";
+        return snapshot({ pulsed: pulsed });
+      }
       phase = ended ? "ended" : "resolved";
       return snapshot({ pulsed: pulsed });
     }
@@ -474,6 +495,8 @@
         posture: S.posture, notice: notice,
         retreat: phase === "posture" ? retreatFor(seasonOf(S.turn).key) : null,
         event: (phase === "event" || phase === "interlude") ? current : null,
+        step: (phase === "event" && current && current.thenSynthetic) || false,
+        stepLead: (phase === "event" && current && current.thenSynthetic && lastResult) ? lastResult.outcome : null,
         consult: (phase === "event" && current && current.consult) ? {
           who: current.consult.who,
           tag: current.consult.tag || null,
@@ -610,6 +633,9 @@
       return {
         S: JSON.parse(JSON.stringify(S)),
         phase: phase, currentId: current ? current.id : null,
+        // A follow-up card is synthetic (not in the deck), so store it whole to
+        // resume mid two-step.
+        currentThen: (current && current.thenSynthetic) ? JSON.parse(JSON.stringify(current)) : null,
         lastResult: lastResult ? JSON.parse(JSON.stringify(lastResult)) : null,
         recent: recent.slice(), notice: notice, lastEventId: lastEventId,
         endedKey: endKeyOf(ended)
@@ -624,7 +650,7 @@
       lastEventId = data.lastEventId || null;
       lastResult = data.lastResult || null;
       ended = data.endedKey ? ENDINGS[data.endedKey] : null;
-      current = resolveCurrent(data.currentId);
+      current = data.currentThen ? data.currentThen : resolveCurrent(data.currentId);
       return snapshot();
     }
 

@@ -325,7 +325,8 @@ function validateChapter(content, chapterKey) {
     }
   }
 
-  function checkChoices(list, w) {
+  function checkChoices(list, w, allowThen) {
+    if (allowThen === undefined) allowThen = true;
     check(Array.isArray(list) && list.length >= 2 && list.length <= 4, w + ": needs 2–4 choices");
     (list || []).forEach(function (ch, i) {
       var cw = w + ".choice[" + i + "]";
@@ -345,6 +346,25 @@ function validateChapter(content, chapterKey) {
         (ch.ifFalse && ch.ifFalse.setFlags || []).forEach(function (f) { flagsProduced[f] = true; });
       } else {
         checkBranch(ch, cw);
+      }
+      // Two-step: a choice may open a follow-up decision. The setup is a plain
+      // choice (its outcome the follow-up's lead), so it may not also branch or
+      // gamble, and follow-ups never nest another step.
+      if (ch.then !== undefined) {
+        var tw = cw + ".then";
+        check(allowThen, cw + ": two-step events do not nest (a follow-up choice cannot open another)");
+        check(!ch.condition, cw + ": a two-step setup choice cannot also branch on a condition");
+        check(!ch.risk, cw + ": a two-step setup choice cannot also be a gamble");
+        check(typeof ch.outcome === "string" && ch.outcome.length > 0, cw + ": a two-step setup needs an outcome (the follow-up's lead)");
+        check(ch.then && typeof ch.then === "object" && !Array.isArray(ch.then), tw + ": must be an object");
+        if (ch.then && typeof ch.then === "object") {
+          check(typeof ch.then.body === "string" && ch.then.body.length > 0, tw + ": body missing");
+          if (ch.then.body) scanText(ch.then.body, tw);
+          if (ch.then.tag !== undefined) check(typeof ch.then.tag === "string" && ch.then.tag.length > 0, tw + ": tag must be non-empty when present");
+          if (ch.then.title !== undefined) { check(typeof ch.then.title === "string" && ch.then.title.length > 0, tw + ": title must be non-empty when present"); if (ch.then.title) scanText(ch.then.title, tw); }
+          if (ch.then.art !== undefined) check(typeof ch.then.art === "string" && ch.then.art.length > 0, tw + ": art must be a non-empty key");
+          checkChoices(ch.then.choices, tw, false); // one level only
+        }
       }
     });
   }

@@ -569,6 +569,42 @@ async function docTheatreSession(browser, viewport) {
   return { errors: errors.length };
 }
 
+// Two-step events: a setup choice opens a follow-up decision rather than
+// resolving; the follow-up carries the escalation and resolves normally.
+async function twoStepSession(browser, viewport) {
+  var label = "twostep";
+  var ctx = await browser.newContext({ viewport: viewport });
+  var page = await ctx.newPage();
+  var errors = [];
+  page.on("console", function (m) { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+  var save = { v: 2, chapter: "ac", data: {
+    S: { flags: {}, posture: "desk", turn: 5, treasury: 5000, debt: 0, log: [], consulted: false,
+         revenue: 52, order: 54, prestige: 50, contentment: 50, health: 55 },
+    phase: "event", currentId: "ac-bazaar-crowd", lastResult: null, recent: [], notice: null, lastEventId: "ac-bazaar-crowd", endedKey: null } };
+  await ctx.addInitScript(function (s) { window.localStorage.setItem("pukka-sahib-save-ac", JSON.stringify(s)); }, save);
+  await page.goto(INDEX, { waitUntil: "load" });
+  await page.click("#resume");
+  await page.waitForSelector("#card .choice", { timeout: 5000 });
+  var title0 = (await page.textContent("#card .cardtitle")) || "";
+  assert(/Grain-Market/.test(title0), label + ": seeded two-step event did not open (\"" + title0.trim() + "\")");
+  // take the setup choice (the first) — it should open a follow-up, not resolve
+  await (await page.$$("#card .choices .choice"))[0].click();
+  await page.waitForSelector("#card .steplead", { timeout: 4000 });
+  var title1 = (await page.textContent("#card .cardtitle")) || "";
+  assert(/Lane Will Not Clear/.test(title1), label + ": the follow-up card did not arrive (\"" + title1.trim() + "\")");
+  assert(!(await page.$("#cont")), label + ": the setup resolved instead of opening the follow-up");
+  var followChoices = await page.$$("#card .choices .choice:not([disabled])");
+  assert(followChoices.length >= 2, label + ": the follow-up offered no fresh choices");
+  // resolve the follow-up with a non-gamble option (pull the police back)
+  await followChoices[1].click();
+  await page.waitForSelector("#cont, #again", { timeout: 5000 });
+  assert(await page.$(".outcome"), label + ": the follow-up did not resolve to an outcome");
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  await ctx.close();
+  return { errors: errors.length };
+}
+
 (async function () {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
@@ -611,6 +647,8 @@ async function docTheatreSession(browser, viewport) {
     console.log("gazette:", JSON.stringify(gz));
     var dt = await docTheatreSession(browser, { width: 1120, height: 920 });
     console.log("doc:    ", JSON.stringify(dt));
+    var ts = await twoStepSession(browser, { width: 1120, height: 920 });
+    console.log("2step:  ", JSON.stringify(ts));
   } finally {
     await browser.close();
   }

@@ -232,6 +232,33 @@ Lala *and* short of composure:
                          { "meter": "composure", "op": "<", "value": 45 } ] }
 ```
 
+## Two-step choices (`then`)
+
+A top-level choice may, instead of resolving, open a **follow-up decision**.
+Give the choice a `then` object; its own `effects`/`econ`/`setFlags` apply as the
+setup, its `outcome` becomes the follow-up card's lead, and then the follow-up
+is presented:
+
+```json
+{ "label": "Clear the lane with the reserve, at once.",
+  "effects": { "order": 2, "health": -1 },
+  "outcome": "The constables go in — and the lane does not clear…",
+  "then": {
+    "tag": "IMMEDIATE", "title": "The Lane Will Not Clear",
+    "body": "Twenty men against three hundred…",
+    "choices": [ /* 2–4 ordinary choices — these resolve normally */ ]
+  } }
+```
+
+`then` carries a required `body`, an optional `tag`/`title`/`art` (defaulting to
+the parent's), and 2–4 `choices`. House rules (enforced): **one level only** — a
+follow-up choice may not carry its own `then`; a two-step setup choice may not
+also `condition`-branch or carry a `risk` gamble (keep the setup deterministic),
+and it must have an `outcome`. Follow-up choices are ordinary — they may branch
+and gamble. If the setup's own effects collapse the run, the follow-up never
+arrives (the setup is the ending). The mid-step state is saved, so a run resumes
+between the two beats.
+
 ## Endings
 
 Keyed objects with `title` and `text`. Which ending fires is engine logic
