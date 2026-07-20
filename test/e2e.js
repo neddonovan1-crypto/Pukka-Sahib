@@ -91,9 +91,7 @@ async function playSession(browser, label, viewport, opts) {
   // And a carried Kotra debt must surface its priority event at the first
   // drawn fortnight: choose a posture, expect the Lala's call.
   if (opts && opts.expectFirstEvent) {
-    // Desk (index 1), not tour — a cold tour opens the press phase; desk draws
-    // the fortnight's business, where the carried priority event preempts.
-    await (await page.$$(".choices .choice"))[1].click();
+    await page.click(".choices .choice"); // any posture draws the fortnight's business, where the priority preempts
     await page.waitForSelector("#card .cardtitle", { timeout: 5000 });
     var t0 = (await page.textContent("#card .cardtitle")) || "";
     assert(t0.indexOf(opts.expectFirstEvent) !== -1,
@@ -207,8 +205,8 @@ async function resumeSession(browser, viewport) {
   assert(key, label + ": no meter legend toggle");
   if (key) {
     await key.click();
-    var legendVisible = await page.$eval("#legend", function (n) { return !n.hasAttribute("hidden") && n.children.length === 7; });
-    assert(legendVisible, label + ": legend did not open with 7 glosses (five meters + treasury & debt + honours)");
+    var legendVisible = await page.$eval("#legend", function (n) { return !n.hasAttribute("hidden") && n.children.length === 8; });
+    assert(legendVisible, label + ": legend did not open with 8 glosses (five meters + the bars + treasury & debt + honours)");
     await key.click();
   }
 
@@ -467,8 +465,8 @@ async function consultSession(browser, viewport) {
 
   // danger-aware meters: the floor hairline is drawn, Order (35, below its 40
   // scandal floor) reads as in peril, and its −10 move shows a trend arrow.
-  var floorDrawn = await page.$(".meter .floor");
-  assert(floorDrawn, label + ": no danger-floor hairline on the meters");
+  var floorDrawn = await page.$(".meter .dangerzone");
+  assert(floorDrawn, label + ": no danger zone on the meters");
   var dangerMeter = await page.$(".meter.danger");
   assert(dangerMeter, label + ": a meter below its floor did not render in the danger style");
   var trendShown = await page.$eval("#meters", function (n) { return /▼10/.test(n.textContent); }).catch(function () { return false; });
@@ -700,9 +698,8 @@ async function debtTeethSession(browser, viewport) {
   await page.goto(INDEX, { waitUntil: "load" });
   await page.click("#resume");
   await page.waitForSelector("#card .choice", { timeout: 5000 });
-  // choose desk (index 1) — a cold tour would open the press phase; desk draws
-  // the fortnight's business, where the deep-debt priority event preempts.
-  await (await page.$$("#card .choices .choice"))[1].click();
+  // any posture draws the fortnight's business, where the deep-debt priority preempts
+  await page.click("#card .choices .choice");
   await page.waitForSelector("#card .cardtitle", { timeout: 5000 });
   var t = (await page.textContent("#card .cardtitle")) || "";
   assert(/Accounts Are Called For/.test(t), label + ": deep debt did not summon the Government's query (\"" + t.trim() + "\")");
@@ -734,8 +731,15 @@ async function tourPressSession(browser, viewport) {
   await page.goto(INDEX, { waitUntil: "load" });
   await page.click("#resume");
   await page.waitForSelector("#card .choice", { timeout: 5000 });
-  // choose the tour posture (the first option) — a cold tour opens the press phase
-  await (await page.$$("#card .choices .choice"))[0].click();
+  // choose the push-your-luck posture (offered beside the quiet tour) — it opens
+  // the press loop.
+  var buttons = await page.$$("#card .choices .choice");
+  var pushBtn = null;
+  for (var bi = 0; bi < buttons.length; bi++) {
+    if (/back-country/.test((await buttons[bi].textContent()) || "")) { pushBtn = buttons[bi]; break; }
+  }
+  assert(pushBtn, label + ": no push-your-luck posture offered in the cold weather");
+  if (pushBtn) await pushBtn.click();
   await page.waitForSelector(".choice--press", { timeout: 4000 });
   var title = (await page.textContent("#card .cardtitle")) || "";
   assert(/On Tour/.test(title), label + ": the cold tour did not open the press decision (\"" + title.trim() + "\")");

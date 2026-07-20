@@ -353,7 +353,8 @@
         "carry_vernacular",
         "carry_kotra_debt",
         "carry_despatch"
-      ]
+      ],
+      "premise": "A district of your own: Magistrate and Collector of Chhota Nagra, a million people across a year of seasons — keep the peace, bring in the revenue, and whatever else is lost, keep up appearances."
     },
     "honours": {
       "desc": "The List blends the four public columns into a single <i>showing</i> &mdash; Prestige counting most, then Revenue and Order, then Contentment.",
@@ -502,7 +503,9 @@
         "title": "The Tour Comes In",
         "body": "You make camp with the hard country behind you and the good of it banked: villages seen that no map-officer visits, headmen met on their own ground, a reputation carried home on a dozen tongues that a man rode to them when he need not have. The tour has cost you sleep and a stone of weight, and paid for both.",
         "outcome": "You come in lean and saddle-sore and ahead of the game: the sub-division ridden to its corners, the revenue prospects seen with your own eyes, and the quiet, disproportionate credit the country gives an officer who wears out his own boots on it."
-      }
+      },
+      "postureLabel": "Push on into the back-country.",
+      "postureNote": "ride hard for the far villages &mdash; for what they bring in, and what they cost"
     }
   },
   "endings": {

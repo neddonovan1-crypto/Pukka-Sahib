@@ -45,7 +45,8 @@
           }
         }
       ],
-      "tagline": "You are three-and-twenty, five months out from Home, and Assistant Commissioner of Kotra on probation. Learn the work. Mind the Collector. Survive your first hot weather. In six months the Service decides whether you are to be trusted with a district."
+      "tagline": "You are three-and-twenty, five months out from Home, and Assistant Commissioner of Kotra on probation. Learn the work. Mind the Collector. Survive your first hot weather. In six months the Service decides whether you are to be trusted with a district.",
+      "premise": "Your first posting: junior magistrate of the Kotra sub-division, a scrubby tract of a quarter-million souls, learning the work on probation while the Collector decides whether you will do."
     },
     "honours": {
       "lead": "Probation &mdash; ",
@@ -367,7 +368,9 @@
         "title": "The Tour Comes In",
         "body": "You make camp with the hard country behind you and the good of it banked: villages seen that no map-officer visits, headmen met on their own ground, a reputation carried home on a dozen tongues that a man rode to them when he need not have. The tour has cost you sleep and a stone of weight, and paid for both.",
         "outcome": "You come in lean and saddle-sore and ahead of the game: the sub-division ridden to its corners, the revenue prospects seen with your own eyes, and the quiet, disproportionate credit the country gives an officer who wears out his own boots on it."
-      }
+      },
+      "postureLabel": "Push on into the back-country.",
+      "postureNote": "ride hard for the far villages &mdash; for what they bring in, and what they cost"
     }
   },
   "endings": {

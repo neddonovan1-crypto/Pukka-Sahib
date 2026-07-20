@@ -392,12 +392,18 @@
 
     function postureOptions() {
       var sk = seasonOf(S.turn).key;
-      var opts = ["tour", "desk"].map(function (kind) {
+      function postureOpt(kind) {
         var p = POSTURES[kind];
         var note = p.notes ? variantOf(p.notes[sk]) : (p.note || "");
         var label = p.labels ? p.labels[sk] : p.label; // labels are seasonal: the action reads like the season
         return { kind: kind, label: label, note: note, effects: postureEffects(kind) };
-      });
+      }
+      var opts = [postureOpt("tour")];
+      // Pressing the luck is a posture in its own right — offered beside the
+      // quiet tour in the cold weather (the marching season), not sprung after it.
+      if (TOURPRESS && sk === "cold")
+        opts.push({ kind: "tourpress", label: TOURPRESS.postureLabel, note: TOURPRESS.postureNote, effects: postureEffects("tour") });
+      opts.push(postureOpt("desk"));
       var rdef = retreatFor(sk);
       if (rdef) opts.push({ kind: rdef.key, label: rdef.label, note: rdef.note, retreat: true, effects: rdef.effects || {} });
       worksOnOffer().forEach(function (w) { opts.push(w); });
@@ -437,21 +443,24 @@
         phase = ended ? "ended" : "interlude";
         return snapshot({ pulsed: rpulsed });
       }
+      // Push-your-luck touring is its own posture (offered beside the quiet
+      // tour in the cold weather). It takes the tour's effects, then opens the
+      // press loop — press on for more at rising risk, or make camp. Plain
+      // "tour" never enters it, so the seeded sim stream is exactly as before.
+      if (kind === "tourpress") {
+        if (!TOURPRESS || seasonOf(S.turn).key !== "cold") return snapshot(); // not on offer
+        S.posture = "tour"; // it is a tour, for the banner and the art
+        var tpPulsed = applyMeters(postureEffects("tour"));
+        ended = collapseCheck();
+        if (ended) { phase = "ended"; return snapshot({ pulsed: tpPulsed }); }
+        S.pressCount = 0;
+        phase = "press";
+        return snapshot({ pulsed: tpPulsed });
+      }
       S.posture = kind;
       var pulsed = applyMeters(postureEffects(kind)); // same net the preview showed
       ended = collapseCheck();
       if (ended) { phase = "ended"; return snapshot({ pulsed: pulsed }); }
-      // Push-your-luck touring: on tour you may press on into worse country for
-      // more, at rising risk the tour turns. Offered as its own sub-decision
-      // (the "press" phase) before the fortnight's ordinary business.
-      // Offered in the cold weather — the marching season — only, so the choice
-      // stays special and (a deterministic season gate, no rng) the rest of the
-      // seeded stream is untouched: making camp at once is the old tour exactly.
-      if (kind === "tour" && TOURPRESS && seasonOf(S.turn).key === "cold") {
-        S.pressCount = 0;
-        phase = "press";
-        return snapshot({ pulsed: pulsed });
-      }
       return presentDraw(pulsed);
     }
 

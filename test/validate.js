@@ -36,6 +36,9 @@ function validateChapter(content, chapterKey) {
     // The start screen's career ladder speaks each rank's stake.
     check(typeof cfg.chapter.plays === "string" && cfg.chapter.plays.length > 0, "config.chapter.plays missing (what the rank plays for)");
     if (cfg.chapter.plays) scanText(cfg.chapter.plays, "chapter.plays");
+    // The start-screen ladder shows each rung's premise — the posting, in a line.
+    check(typeof cfg.chapter.premise === "string" && cfg.chapter.premise.length > 0, "config.chapter.premise missing (the one-line mission description)");
+    if (cfg.chapter.premise) scanText(cfg.chapter.premise, "chapter.premise");
     // A rank that promotes must also say what a failed year means (the ending
     // card's disposition strip) — no verdict may leave the next step ambiguous.
     if (cfg.chapter.promotesTo) {
@@ -499,7 +502,7 @@ function validateChapter(content, chapterKey) {
       check(typeof tpc.chanceBase === "number" && tpc.chanceBase >= 0 && tpc.chanceBase < 1, tw + ": chanceBase in [0,1)");
       check(typeof tpc.chanceRamp === "number" && tpc.chanceRamp >= 0, tw + ": chanceRamp must be >= 0 (the risk only rises)");
       if (tpc.chanceCap !== undefined) check(typeof tpc.chanceCap === "number" && tpc.chanceCap > tpc.chanceBase && tpc.chanceCap <= 1, tw + ": chanceCap in (chanceBase, 1]");
-      ["tag", "intro", "label", "note", "campLabel", "campNote"].forEach(function (k) {
+      ["tag", "intro", "label", "note", "campLabel", "campNote", "postureLabel", "postureNote"].forEach(function (k) {
         check(typeof tpc[k] === "string" && tpc[k].length > 0, tw + "." + k + " missing");
         if (tpc[k]) scanText(tpc[k], tw + "." + k);
       });

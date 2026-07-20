@@ -93,7 +93,10 @@
   .seasonband .glyph{font-size:.95rem; opacity:.85}
   .seasonband b{color:var(--ink); font-weight:700}
 
-  .scene{display:block; width:100%; height:auto; border-radius:5px; border:1px solid var(--line); margin:0 0 14px; box-shadow:0 6px 18px -14px var(--shadow)}
+  .scene{display:block; width:100%; height:auto; border-radius:5px; border:1px solid var(--line); margin:0 0 14px; box-shadow:0 6px 18px -14px var(--shadow); opacity:1; transition:opacity .32s ease}
+  /* A gentle entrance for each fresh card, so a turn arrives rather than jumps. */
+  @keyframes cardEnter{from{opacity:.35; transform:translateY(5px)} to{opacity:1; transform:none}}
+  .card.enter{animation:cardEnter .3s ease}
   .start{text-align:center}
   .start img{width:100%; height:auto; border-radius:6px; border:1px solid var(--line); box-shadow:0 8px 26px -16px var(--shadow); margin-bottom:18px}
   .start .tagline{font-style:italic; color:var(--ink-soft); margin:0 auto 20px; max-width:54ch; font-size:1.04rem}
@@ -102,10 +105,11 @@
   .meter{background:var(--surface2); border:1px solid var(--line); border-radius:3px; padding:8px 5px 7px; text-align:center}
   .meter .name{font-family:"Courier New",Courier,monospace; font-size:.58rem; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-soft)}
   .meter .bar{position:relative; height:6px; background:rgba(120,95,45,.22); border-radius:2px; margin:7px 0 5px; overflow:hidden}
-  .meter .fill{height:100%; width:50%; background:var(--warn); transition:width .45s ease, background .45s ease}
-  /* The danger floor: a hairline where the meter falls into peril (scandal for
-     prestige/order, the warning band near collapse for health/revenue). */
-  .meter .floor{position:absolute; top:0; bottom:0; width:2px; margin-left:-1px; background:var(--bad); opacity:.55; z-index:1}
+  .meter .fill{position:relative; z-index:1; height:100%; width:50%; background:var(--warn); transition:width .45s ease, background .45s ease}
+  /* The danger zone: the region below the meter's peril line (scandal for
+     Prestige/Order, near-collapse for Health/Revenue). The fill hides it while
+     the meter is healthy, so red appears only as the meter falls into danger. */
+  .meter .dangerzone{position:absolute; left:0; top:0; bottom:0; background:var(--bad); opacity:.28; z-index:0}
   .meter .val{font-size:.9rem; font-weight:700; font-variant-numeric:tabular-nums}
   /* Trend since the fortnight opened, and the red ink of a meter in peril. */
   .meter .trend{font-family:"Courier New",Courier,monospace; font-size:.56rem; font-weight:600; letter-spacing:0; margin-left:3px; color:var(--ink-soft); vertical-align:1px}

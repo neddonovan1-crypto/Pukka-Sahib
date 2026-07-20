@@ -113,11 +113,14 @@
       var d = document.createElement("div");
       d.className = "meter" + (pulse && pulse.indexOf(m.key) !== -1 ? " pulse" : "") + (danger ? " danger" : "");
       if (m.desc) d.title = m.name + " — " + decode(stripTags(m.desc)); // desktop hover
-      var floorMark = hasFloor ? '<div class="floor" style="left:' + floor + '%"></div>' : "";
+      // The danger zone: a red region at the foot of the bar up to the meter's
+      // floor. The fill covers it when the meter is healthy, so red shows only
+      // as the meter falls toward peril — no always-on mark to puzzle over.
+      var zone = hasFloor ? '<div class="dangerzone" style="width:' + floor + '%"></div>' : "";
       var trend = dl ? '<span class="trend">' + (dl > 0 ? "▲" : "▼") + Math.abs(dl) + "</span>" : "";
       d.innerHTML =
         '<div class="name">' + m.name + '</div>' +
-        '<div class="bar">' + floorMark + '<div class="fill" style="width:' + v + '%;background:' + (danger ? "var(--bad)" : meterColour(v)) + '"></div></div>' +
+        '<div class="bar">' + zone + '<div class="fill" style="width:' + v + '%;background:' + (danger ? "var(--bad)" : meterColour(v)) + '"></div></div>' +
         '<div class="val">' + v + trend + '</div>';
       box.appendChild(d);
     });
@@ -146,6 +149,8 @@
     panel.innerHTML = METERS.map(function (m) {
       return '<li><b>' + m.name + '</b> &mdash; ' + (m.desc || "") + '</li>';
     }).join("");
+    // Explain the bar furniture: the danger zone and the trend arrow.
+    panel.innerHTML += '<li><b>The bars</b> &mdash; the red at the foot of a bar is the danger line: let Prestige or Order fall into it and the year ends in a scandal; let Health or Revenue fall into it and you are near collapse. A small &#9650;/&#9660; beside the figure shows the move the fortnight made.</li>';
     var ec = content.config.economy;
     if (ec && ec.desc) panel.innerHTML += '<li><b>Treasury &amp; debt</b> &mdash; ' + ec.desc + "</li>";
     // The honours gloss states the exact bars, generated from the ladder data
@@ -499,12 +504,18 @@
     if (!img) return;
     var key = bannerKey(s);
     var src = ART[key];
-    if (src) {
-      if (img.getAttribute("data-key") !== key) { img.src = src; img.setAttribute("data-key", key); }
-      img.hidden = false;
-    } else {
-      img.hidden = true;
-    }
+    if (!src) { img.hidden = true; return; }
+    if (img.getAttribute("data-key") === key) { img.hidden = false; return; } // unchanged
+    var swap = function () {
+      img.src = src; img.setAttribute("data-key", key); img.hidden = false;
+      requestAnimationFrame(function () { img.style.opacity = "1"; });
+    };
+    if (img.hidden || !img.getAttribute("data-key")) { img.style.opacity = "0"; swap(); return; } // first show
+    // Crossfade: fade the current scene down, then bring the (preloaded) new one up.
+    var pre = new Image();
+    pre.onload = function () { img.style.opacity = "0"; setTimeout(swap, 190); };
+    pre.onerror = swap;
+    pre.src = src;
   }
 
   // A no-choice occurrence: flavour, any small effect already applied, and Continue.
@@ -523,6 +534,17 @@
     el("cont").onclick = function () { audio.stamp(); paint(game.next()); };
   }
 
+  // A fresh card fades in rather than snapping; a new fortnight glides the page
+  // back to the top instead of the browser slamming it there.
+  function animateCard() {
+    var c = el("card"); if (!c) return;
+    c.classList.remove("enter"); void c.offsetWidth; c.classList.add("enter");
+  }
+  function toTop() {
+    try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) { window.scrollTo(0, 0); }
+  }
+
+  var lastPaintedTurn = null;
   function paint(s) {
     if (s.season && s.season.key) {
       audio.season(s.season.key);
@@ -541,6 +563,12 @@
     else if (s.phase === "interlude") renderInterlude(s);
     else if (s.phase === "resolved") renderResolved(s);
     else if (s.phase === "ended") renderEnding(s);
+    if (s.phase !== "resolved") animateCard(); // resolved appends to the card; the rest are fresh
+    // A new fortnight glides the page back to the top (when tall content had it
+    // scrolled) instead of the browser snapping it there. Not within a fortnight.
+    var freshCard = s.phase === "posture" || s.phase === "event" || s.phase === "interlude" || s.phase === "press";
+    if (freshCard && s.turn !== lastPaintedTurn && (window.scrollY || window.pageYOffset || 0) > 8) toTop();
+    if (s.phase !== "ended") lastPaintedTurn = s.turn;
     // Persist at clean, fully-repaintable phases; a finished run clears its save.
     // "resolved" is skipped (it appends to the event card and can't stand alone
     // on a cold load), so a save there keeps the pre-choice event to resume to.
@@ -653,7 +681,11 @@
       return '<div class="rung rung--' + state + (pickable ? " rung--pick" : "") + '"' +
         (pickable ? ' data-go="' + k + '" role="button" tabindex="0"' : "") + ">" +
         '<span class="rung-rank">' + roman[i] + ". " + (meta.rank || k) + "</span>" +
-        (meta.plays ? '<span class="rung-plays">plays for ' + meta.plays + mark + "</span>" : "") +
+        // The rung's subtitle is the posting itself — what the mission is —
+        // rather than the honour it plays for (the honours live in the legend).
+        (meta.premise
+          ? '<span class="rung-plays">' + meta.premise + mark + "</span>"
+          : (meta.plays ? '<span class="rung-plays">plays for ' + meta.plays + mark + "</span>" : "")) +
         "</div>";
     });
     (registry.planned || []).forEach(function (pl, j) {
@@ -672,7 +704,10 @@
       (function (node) {
         function go() {
           try { window.localStorage.setItem("pukka-sahib-quickstart", node.getAttribute("data-go")); } catch (e) {}
-          location.reload();
+          // Switching missions reloads (the module re-derives its chapter on
+          // boot); fade the ambience down first so it doesn't cut off dead.
+          if (audio && audio.enabled) { try { audio.setEnabled(false); } catch (e) {} setTimeout(function () { location.reload(); }, 380); }
+          else location.reload();
         }
         node.onclick = go;
         node.onkeydown = function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); go(); } };

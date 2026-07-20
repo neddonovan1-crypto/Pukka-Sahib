@@ -227,7 +227,7 @@ POLICIES.builderCareless = {
 // Greedy tourer: tours the cold weather and presses the luck to the hilt every
 // time — proves the tour can turn (the loss tail) and terminates cleanly.
 POLICIES.greedyTourer = {
-  posture: function (s) { return s.season.key === "cold" ? "tour" : "desk"; },
+  posture: function (s) { return s.season.key === "cold" ? "tourpress" : "desk"; },
   press: function (s) { return !!(s.press && s.press.canPress); },
   option: function (s, g, rng) { return Math.floor(rng() * s.event.choices.length); }
 };
