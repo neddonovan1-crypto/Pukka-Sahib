@@ -180,6 +180,19 @@
   }
 
   .card{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:5px; padding:22px 22px 18px; box-shadow:0 1px 0 var(--line), 0 6px 18px -12px var(--shadow)}
+  /* Document theatre: the card dressed as the paper it is. */
+  .card--telegram{border-style:double; border-width:3px}
+  .card--telegram::before{
+    content:"\27F6  BY TELEGRAPH  \27F5"; display:block;
+    font-family:"Courier New",Courier,monospace; font-size:.58rem; letter-spacing:.2em;
+    text-align:center; color:var(--ink-soft); border-bottom:1px dashed var(--line);
+    padding-bottom:9px; margin:0 0 13px;
+  }
+  .card--secret{border-color:var(--stamp)}
+  .card--secret::before{
+    content:""; display:block; height:3px; margin:-22px -22px 16px; border-radius:5px 5px 0 0;
+    background:repeating-linear-gradient(90deg, var(--stamp) 0 11px, transparent 11px 17px); opacity:.6;
+  }
   .turnline{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px}
   .fortnight{font-family:"Courier New",Courier,monospace; font-size:.68rem; letter-spacing:.06em; color:var(--ink-soft); text-transform:uppercase; padding-top:4px}
   .stamp{

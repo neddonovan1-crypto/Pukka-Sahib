@@ -535,6 +535,40 @@ async function gazetteSession(browser, viewport) {
   return { errors: errors.length };
 }
 
+// Document theatre: a telegram-tagged event wears the telegraph treatment, a
+// secrecy-tagged one the confidential-file treatment.
+async function docTheatreSession(browser, viewport) {
+  var label = "doc";
+  var errors = [];
+  async function classAt(chapter, career, currentId, saveKey) {
+    var ctx = await browser.newContext({ viewport: viewport });
+    var page = await ctx.newPage();
+    page.on("pageerror", function (e) { errors.push("pageerror: " + e.message); });
+    var save = { v: 2, chapter: chapter, data: {
+      S: { flags: {}, posture: "desk", turn: 6, treasury: 40000, debt: 0, log: [], consulted: false,
+           revenue: 52, order: 54, prestige: 52, contentment: 50, health: 52 },
+      phase: "event", currentId: currentId, lastResult: null, recent: [], notice: null, lastEventId: currentId, endedKey: null } };
+    await ctx.addInitScript(function (seed) {
+      if (seed.career) window.localStorage.setItem("pukka-sahib-career", JSON.stringify(seed.career));
+      window.localStorage.setItem(seed.key, JSON.stringify(seed.save));
+    }, { career: career, save: save, key: saveKey });
+    await page.goto(INDEX, { waitUntil: "load" });
+    await page.click("#resume");
+    await page.waitForSelector("#card .choice", { timeout: 5000 });
+    var cls = await page.getAttribute("#card", "class");
+    await ctx.close();
+    return cls || "";
+  }
+  var acCareer = null;
+  var dmCareer = { v: 1, completions: { ac: 1 }, honours: [], history: [{ chapter: "ac", ending: "confirmed", title: "Confirmed", promoted: true }], carries: {} };
+  var telCls = await classAt("ac", acCareer, "ac-collector-camp", "pukka-sahib-save-ac");
+  assert(/card--telegram/.test(telCls), label + ": a TELEGRAM event did not get the telegraph treatment (\"" + telCls + "\")");
+  var secCls = await classAt("dm", dmCareer, "inspection", "pukka-sahib-save-dm");
+  assert(/card--secret/.test(secCls), label + ": a CONFIDENTIAL event did not get the confidential treatment (\"" + secCls + "\")");
+  assert(errors.length === 0, label + ": " + errors.length + " console error(s): " + errors.slice(0, 3).join(" | "));
+  return { errors: errors.length };
+}
+
 (async function () {
   var exe = findChrome();
   var browser = await chromium.launch({ executablePath: exe, headless: true });
@@ -575,6 +609,8 @@ async function gazetteSession(browser, viewport) {
     console.log("consult:", JSON.stringify(cs));
     var gz = await gazetteSession(browser, { width: 1120, height: 920 });
     console.log("gazette:", JSON.stringify(gz));
+    var dt = await docTheatreSession(browser, { width: 1120, height: 920 });
+    console.log("doc:    ", JSON.stringify(dt));
   } finally {
     await browser.close();
   }

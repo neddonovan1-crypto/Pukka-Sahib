@@ -268,8 +268,19 @@
     });
   }
 
+  // Document theatre: dress the card as the paper it is. Secrecy tags get the
+  // confidential-file treatment (the stamp already reads); wires get the
+  // telegraph form. Unknown tags keep the plain despatch card.
+  var TELEGRAM_TAGS = { "TELEGRAM": 1, "IMMEDIATE": 1, "URGENT": 1 };
+  function docClass(tag) {
+    var t = (tag || "").toUpperCase();
+    if (L.isSecrecyTag(t)) return " card--secret";
+    if (TELEGRAM_TAGS[t]) return " card--telegram";
+    return "";
+  }
+
   function renderEvent(s) {
-    var e = s.event, c = el("card"); c.className = "card";
+    var e = s.event, c = el("card"); c.className = "card" + docClass(e.tag);
     var tag = e.tag || "District business";
     var stampCls = "stamp" + (L.isSecrecyTag(tag) ? " stamp--secret" : "");
     c.innerHTML =
@@ -469,7 +480,7 @@
 
   // A no-choice occurrence: flavour, any small effect already applied, and Continue.
   function renderInterlude(s) {
-    var e = s.event, c = el("card"); c.className = "card";
+    var e = s.event, c = el("card"); c.className = "card" + docClass(e.tag);
     var tag = e.tag || "District business";
     var stampCls = "stamp" + (L.isSecrecyTag(tag) ? " stamp--secret" : "");
     var deltas = deltaChips(s.result.effects, s.result.econ);
