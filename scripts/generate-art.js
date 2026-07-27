@@ -92,14 +92,27 @@ async function generate(model, prompt, aspect) {
     return Buffer.from(b64, "base64");
   }
 
-  var res2 = await req(API + "/models/" + model.name + ":generateContent", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
-      generationConfig: { responseModalities: ["TEXT", "IMAGE"] }
-    })
-  });
+  // generateContent takes aspect through imageConfig on newer models and
+  // rejects it on older ones. Ask for it, and fall back rather than fail —
+  // the prompt also states the shape in words, so a fallback still lands
+  // near the right proportions.
+  async function attempt(withImageConfig) {
+    var cfg = { responseModalities: ["TEXT", "IMAGE"] };
+    if (withImageConfig && aspect) cfg.imageConfig = { aspectRatio: aspect };
+    return req(API + "/models/" + model.name + ":generateContent", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        generationConfig: cfg
+      })
+    });
+  }
+  var res2 = await attempt(true);
+  if (!res2.ok && res2.status === 400 && aspect) {
+    console.log("(imageConfig rejected, retrying without) ");
+    res2 = await attempt(false);
+  }
   if (!res2.ok) throw new Error("generateContent " + res2.status + ": " + (await res2.text()).slice(0, 500));
   var j2 = await res2.json();
   var parts = (((j2.candidates || [])[0] || {}).content || {}).parts || [];

@@ -11,44 +11,57 @@ decision to admit colour and a second visual tradition.
 
 ---
 
-## 1. The argument
+## 1. Two traditions, one desk
 
-The player never meets the district. They meet **representations** of it.
-
-That is the game's whole mechanism, and the art carries it. So the visual system
-divides in two:
+The player never meets the district. They meet **paper** about it. That is the
+game's mechanism, and the art follows from it:
 
 - **The paper is real.** You hold it. Fibre, perforations, ribbon fade, ink that
   sat too long on the pad. Realism here means *you are actually at this desk*.
 - **The picture is always someone's rendering.** Never the event — an account of
-  the event, made by somebody, in their own tradition, for their own reasons.
+  it, made by somebody, in the tradition they worked in.
 
-And there is more than one tradition in the room.
+And in 1920s India there was more than one tradition working, so the game uses
+several, with equal relish. This is not a case being argued. It is a room with
+several kinds of picture in it.
 
-**Engraving is the Government's way of seeing.** Line, monochrome, single-point
-perspective, documentary neutrality. It says: *this is objective fact.* It is
-the language of the survey sheet, the district manual, the Illustrated London
-News.
+**Engraving** — what the Government itself printed. Line, monochrome,
+perspective, the documentary manner of the survey sheet, the district manual and
+the Illustrated London News. Precise, patient, and rather beautiful.
 
-**Painting is the district's way of seeing.** Flat ground, high viewpoint,
-opaque colour, profile figures, hierarchical scale, a ruled border. It says:
-*this is what mattered.*
+**Painting** — the miniature tradition, then in the middle of a brilliant
+revival. Flat ground, high viewpoint, opaque colour, profile figures, a ruled
+border. Where the life of the district is shown.
 
-**Kalighat is the bazaar's way of seeing.** Four colours, no background, a brush
-moving fast, and a joke at the sahib's expense.
+**Kalighat** — the bazaar's fast, funny, cheap print. Four colours, no
+background, and a joke at the expense of whoever is taking himself most
+seriously. Often that is the player.
 
-Only one of the three is admissible as evidence in your file. That is the
-tragedy, drawn rather than narrated.
+### What the game is actually about
 
-### It is historically true
+An officer with a district of a million people, a fortnight at a time, and far
+more arriving than any one man can attend to. The interest is in **the work** —
+its scale, its seriousness, and the real curiosity many of these men had about
+the place. He rode out on tour for months of the year. He learnt the language
+well enough to hear a case in it. He knew which village was quarrelling with
+which, and why. That competence is a pleasure to depict and the game should
+enjoy it.
 
-The 1920s is precisely when Indian artists were reclaiming the miniature
-tradition as an explicitly nationalist project — Abanindranath Tagore, Nandalal
-Bose and the Bengal School, setting Mughal and Ajanta idioms against Royal
-Academy naturalism. A petition illustrated in that register, arriving on a
-magistrate's desk in 1925, is not an invention. The argument this art system
-makes was being made at the time, by real painters, as politics. Name the
-tradition in the prose the way the game names swaraj and non-co-operation.
+The comedy is in **the machinery** — the forms, the endorsements, the grave
+official language wrapped around a dispute over a goat. The difficulty is in the
+scale: famine, distance, disease, and an in-tray no one could clear.
+
+So the art is affectionate about the man and irreverent about the apparatus. It
+shows a hard job done seriously, and finds it funny more often than not.
+
+### The traditions are period-exact
+
+The 1920s is when Indian artists were reviving the miniature idiom — Abanindranath
+Tagore, Nandalal Bose, the Bengal School — while Kalighat pats were still being
+painted for sale in Calcutta and the Government was still printing engraved
+plates. All three registers were genuinely in the air at once. Name them in the
+prose, as specifically as the game names swaraj and non-co-operation: they are
+distinct schools, not local colour.
 
 ---
 
@@ -239,16 +252,21 @@ goes through it and stops looking generated.
 
 ## 12. Rules of the house
 
-1. **Never make the Raj charming.** The paper is handsome; what is recorded on
-   it is not. The whole point is that atrocity arrives as a well-set form with a
-   tidy endorsement column. Never soften the second to enjoy the first.
+1. **The charm is real, and so are the difficulties.** This is an affectionate
+   portrait, not a case for the prosecution. The officer went out on tour, spoke
+   the language, and knew his district — draw him doing it, and draw it well.
+   The paper is handsome, the ritual is delightful, and the craft of the job is
+   worth admiring. The hard parts are equally real — famine, distance, disease,
+   and a workload no one man could finish — and they go in without flinching or
+   sermonising. The comedy is affectionate and aimed at the machinery, never at
+   the people caught in it.
 2. **Name the tradition, don't blend it.** Mughal, Pahari, Company School,
-   Bengal School and Kalighat are distinct traditions with distinct politics.
-   Treating them as one generic "Indian style" is both bad art direction and
-   disrespectful. Briefs specify which.
-3. **The district's way of seeing is not decoration.** It carries as much
-   authority as the engraving; the game's argument is that only one of them
-   counts as evidence, not that only one is true.
+   Bengal School and Kalighat are distinct schools with distinct techniques.
+   Collapsing them into one generic "Indian style" is bad art direction. Briefs
+   specify which.
+3. **Every register is treated with equal seriousness.** The painting is not
+   decoration around the engraving, and the engraving is not a foil for the
+   painting. Each is the best example of its kind that we can make.
 4. **No number without a source and a date.** Every figure the player sees is on
    a document, attributable and possibly wrong.
 5. **No full-bleed art.** Everything is an object on a desk.
