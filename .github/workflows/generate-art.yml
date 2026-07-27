@@ -1,0 +1,66 @@
+name: Generate art
+
+# Hand-invoked only. Art generation is a build-time authoring step: the images
+# are produced once, committed, and shipped as ordinary files. The game itself
+# never calls an image API and carries no key.
+#
+# The key lives as a repository secret and is only ever present on this runner —
+# never in the cloud environment (whose variables are readable by anyone using
+# it) and never in a session transcript.
+
+on:
+  workflow_dispatch:
+    inputs:
+      briefs:
+        description: "Comma-separated brief ids (blank = all)"
+        required: false
+        default: ""
+      model:
+        description: "Force a specific model id (blank = auto-select)"
+        required: false
+        default: ""
+      dry_run:
+        description: "List models and resolved prompts without generating"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-art
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Generate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          BRIEFS: ${{ inputs.briefs }}
+          MODEL: ${{ inputs.model }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node scripts/generate-art.js
+
+      - name: Commit results
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add art/gen art/CREDITS.md
+          if git diff --staged --quiet; then
+            echo "nothing new to commit"
+          else
+            git commit -m "Generated art from briefs${{ inputs.briefs && format(': {0}', inputs.briefs) || '' }}"
+            git pull --rebase origin ${{ github.ref_name }}
+            git push origin HEAD:${{ github.ref_name }}
+          fi

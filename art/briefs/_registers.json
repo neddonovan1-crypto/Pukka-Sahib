@@ -1,0 +1,14 @@
+{
+  "painting": {
+    "style": "A painting in the Bengal School manner of the 1920s, in the lineage of Abanindranath Tagore and Nandalal Bose, drawing on Mughal and Pahari miniature convention. Flat opaque colour with no cast shadows and no chiaroscuro. High or absent horizon; no single-point perspective. Figures in profile or three-quarter view, drawn with a fine brush; hierarchical scale, with the important figure larger. Architecture shown in plan and elevation at once. Modelling by fine brush stipple rather than blending. A ruled decorative border framing the composition. Palette of lapis and ultramarine, vermilion, orpiment yellow, malachite green, white lead and gold leaf, laid flat and unmixed. Subject:",
+    "constraints": "Painted on paper, matte, slightly aged. No photographic realism, no photograph, no 3D render, no digital airbrush, no lens blur, no depth of field, no dramatic lighting. No text, no lettering, no calligraphy, no signature, no watermark, no border captions."
+  },
+  "kalighat": {
+    "style": "A Kalighat pat from Calcutta, about 1920: watercolour on plain paper, painted fast for sale to pilgrims. Bold sweeping contour drawn in one confident brush stroke, swelling and tapering. Absolutely no background — the bare paper surrounds the figure. Three or four flat colours only: earth red, yellow ochre, blue-grey and black. One or two figures filling the whole sheet, drawn with gentle caricature and a satirical edge, the pose exaggerated for comedy. Rounded simplified forms, minimal detail, a shaded wash along one edge of each form. Subject:",
+    "constraints": "Watercolour on plain paper. No background, no scenery, no border, no frame. No photographic realism, no 3D render, no digital shading, no cross-hatching. No text, no lettering, no signature, no watermark."
+  },
+  "engraving": {
+    "style": "A nineteenth-century steel-plate line engraving, monochrome, warm black ink on buff paper, in the manner of the Daniells' Oriental Scenery and the Illustrated London News. Tone made entirely of fine ruled hatching and cross-hatching, with stipple for soft texture; no washes and no solid grey. Confident thin burin lines that swell slightly through the middle. Figures small and at middle distance. Subject:",
+    "constraints": "Monochrome line engraving only. No colour whatsoever. No photograph, no 3D render, no digital shading, no airbrush. No text, no lettering, no signature, no watermark."
+  }
+}

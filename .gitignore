@@ -5,3 +5,7 @@ art/*.png
 *.log
 .DS_Store
 art/*-src.*
+
+# secrets never belong in the repo
+.env
+.env.*
