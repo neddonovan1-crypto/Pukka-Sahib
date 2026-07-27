@@ -61,7 +61,13 @@ function pickModel(models, prefer) {
     if (exact) return exact;
     console.log("preferred model '" + prefer + "' not available; falling back");
   }
-  var order = [/gemini-[\d.]+-flash-image/i, /gemini.*image/i, /imagen-\d/i, /imagen/i];
+  // Best first, and released before preview. Art is authored once and lives a
+  // long time, so quality beats speed and cost here.
+  var order = [
+    /^gemini-[\d.]+-pro-image$/i, /^gemini-[\d.]+-flash-image$/i,
+    /^imagen-[\d.]+-ultra-generate/i, /^imagen-[\d.]+-generate/i,
+    /gemini.*image/i, /imagen/i
+  ];
   for (var i = 0; i < order.length; i++) {
     var hit = models.filter(function (m) { return order[i].test(m.name); })[0];
     if (hit) return hit;
@@ -107,7 +113,8 @@ function loadBriefs() {
   var wanted = (process.argv[2] || process.env.BRIEFS || "").split(",")
     .map(function (s) { return s.trim(); }).filter(Boolean);
   var briefs = fs.readdirSync(BRIEF_DIR)
-    .filter(function (f) { return /\.json$/.test(f); })
+    // files beginning with _ are shared definitions, not subjects
+    .filter(function (f) { return /\.json$/.test(f) && f.charAt(0) !== "_"; })
     .map(function (f) {
       var b = JSON.parse(fs.readFileSync(path.join(BRIEF_DIR, f), "utf8"));
       b.id = b.id || f.replace(/\.json$/, "");
