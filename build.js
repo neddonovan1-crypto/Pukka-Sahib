@@ -116,10 +116,29 @@ function build() {
   fs.writeFileSync(path.join(dist, "logic.js"), logic);
   fs.writeFileSync(path.join(dist, "audio.js"), audio);
   fs.writeFileSync(path.join(dist, "ui.js"), ui);
+  // The prototype rides along at /proto/ so it can actually be played, without
+  // touching the game at all: separate directory, separate page, and the
+  // single-file build never sees it. Art paths are rewritten from the repo
+  // layout to dist's.
+  var protoSrc = path.join(ROOT, "proto", "desk");
+  var protoOut = path.join(dist, "proto");
+  var protoFiles = 0;
+  if (fs.existsSync(protoSrc)) {
+    fs.mkdirSync(protoOut, { recursive: true });
+    fs.readdirSync(protoSrc).filter(function (f) { return /\.(html|js|css)$/.test(f); })
+      .forEach(function (f) {
+        if (f === "shot.js") return;                 // the screenshot harness is not shipped
+        var txt = read(path.join(protoSrc, f)).split("../../art/web/").join("../assets/");
+        fs.writeFileSync(path.join(protoOut, f), txt);
+        protoFiles++;
+      });
+  }
+
   var copied = artNames().length;
 
   console.log("Built index.html:", (out.length / 1024).toFixed(0) + " KB (portable single-file)");
   console.log("  logic:", logic.length, "b · ui:", ui.length, "b · content:", content.length, "b · art embedded:", artKb.toFixed(0) + " KB (" + Object.keys(embeddedArt).length + " essential; " + artExternalOnly + " scene/other art external in dist/ only)");
+  if (protoFiles) console.log("Built dist/proto/:", protoFiles, "file(s) — the desk prototype, playable at /proto/");
   console.log("Built dist/ for hosting:", "index.html + logic.js + audio.js + ui.js" + (copied ? " + " + copied + " asset(s)" : "") +
     (Object.keys(distAudio).length ? " + ambience recordings (" + Object.keys(distAudio).join(", ") + ")" : " (ambience: synthesised — no audio/ recordings)"));
 
