@@ -456,6 +456,36 @@
 
   /* ——— the blotter ————————————————————————————————————————————————— */
 
+  /* Pebble grain: each cell a shallow irregular dome, its crown catching the
+     lamp and its far lip in shadow. Elliptical and unequal, so it never reads
+     as a field of circles. */
+  function pebble(ctx, R, x, y, w, h, cellR, lift, toward, per, strength) {
+    var i, n = Math.round((w * h) / per);
+    ctx.lineCap = "butt";
+    for (i = 0; i < n; i++) {
+      var px = x + R() * w, py = y + R() * h;
+      var rx = cellR * (0.5 + R() * 1.15);
+      var ry = rx * (0.55 + R() * 0.7);
+      var rot = R() * TAU;
+      var jt = (R() - 0.5) * 1.15;
+      var span = 0.65 + R() * 0.95;
+      var a = toward + jt;
+      ctx.strokeStyle = rgba(lift, (0.020 + R() * 0.038) * strength);
+      ctx.lineWidth = 0.4 + R() * 0.6;
+      ctx.beginPath();
+      ctx.ellipse(px, py, rx, ry, rot, a - span, a + span);
+      ctx.stroke();
+      ctx.strokeStyle = "rgba(0,0,0," +
+        ((0.050 + R() * 0.090) * strength).toFixed(3) + ")";
+      ctx.lineWidth = 0.45 + R() * 0.8;
+      ctx.beginPath();
+      ctx.ellipse(px, py, rx * (1 + R() * 0.14), ry * (1 + R() * 0.14), rot,
+                  a + Math.PI - span * 1.1, a + Math.PI + span * 1.1);
+      ctx.stroke();
+    }
+    ctx.lineCap = "round";
+  }
+
   function drawBlotter(ctx, W, H, R, b, lamp) {
     var i, j;
     var cx = b.x + b.w / 2, cy = b.y + b.h / 2;
@@ -525,36 +555,12 @@
        the lamp side and shadowed away from it. Then a fine tooth over the top.
        Both at very low contrast — hide reads as texture, never as confetti. */
     var toward = Math.atan2(-vy, -vx);         /* angle back toward the lamp */
-    var away = toward + Math.PI;
-    var cells = Math.round((b.w * b.h) / 105);
-    var cellR = clamp(Math.min(b.w, b.h) * 0.0062, 1.5, 3.4);
-    ctx.lineCap = "butt";
-    for (i = 0; i < cells; i++) {
-      var px = b.x + R() * b.w, py = b.y + R() * b.h;
-      var pr = cellR * (0.55 + R() * 0.95);
-      var jt = (R() - 0.5) * 0.8;
-      ctx.strokeStyle = rgba(padLift, 0.040 + R() * 0.055);
-      ctx.lineWidth = 0.45 + R() * 0.65;
-      ctx.beginPath();
-      ctx.arc(px, py, pr, toward + jt - 1.0, toward + jt + 1.0);
-      ctx.stroke();
-      ctx.strokeStyle = "rgba(0,0,0," + (0.045 + R() * 0.075).toFixed(3) + ")";
-      ctx.lineWidth = 0.5 + R() * 0.8;
-      ctx.beginPath();
-      ctx.arc(px, py, pr * (1.0 + R() * 0.12), away + jt - 1.1, away + jt + 1.1);
-      ctx.stroke();
-    }
-    ctx.lineCap = "round";
-    /* the tooth between the pebbles */
-    var n = Math.round((b.w * b.h) / 90);
-    for (i = 0; i < n; i++) {
-      var qx2 = b.x + R() * b.w, qy2 = b.y + R() * b.h;
-      var qs = 0.6 + R() * 1.1;
-      ctx.fillStyle = R() < 0.45
-        ? rgba(padLift, 0.020 + R() * 0.035)
-        : "rgba(0,0,0," + (0.020 + R() * 0.050).toFixed(3) + ")";
-      ctx.fillRect(qx2, qy2, qs, qs * (0.6 + R() * 0.8));
-    }
+    /* The field is huge, so its grain is rasterised once at single density and
+       laid back down — leather wants to be a shade soft anyway. */
+    var cellR = clamp(Math.min(b.w, b.h) * 0.0055, 1.3, 3.0);
+    var PB = off(b.w, b.h, 1);
+    pebble(PB.g, R, 0, 0, b.w, b.h, cellR, padLift, toward, 58, 1.25);
+    ctx.drawImage(PB.c, b.x, b.y, b.w, b.h);
     /* creases pressed in by years of elbows */
     for (i = 0; i < 14; i++) {
       var kx = b.x + R() * b.w, ky = b.y + R() * b.h;
@@ -681,12 +687,18 @@
       ctx.fillStyle = cg;
       ctx.fillRect(Math.min(ox, ax, bx) - 4, Math.min(oy, ay, by) - 4,
                    cs * 2 + 8, cs * 2 + 8);
-      for (j = 0; j < Math.round(cs * 2.6); j++) {
-        var qx = ox + sxg * R() * s1, qy = oy + syg * R() * s2;
-        ctx.fillStyle = R() < 0.5
-          ? "rgba(170,180,160," + (0.01 + R() * 0.03).toFixed(3) + ")"
-          : "rgba(0,0,0," + (0.02 + R() * 0.06).toFixed(3) + ")";
-        ctx.beginPath(); ctx.arc(qx, qy, 0.5 + R() * 1.4, 0, TAU); ctx.fill();
+      pebble(ctx, R, Math.min(ox, ax), Math.min(oy, by),
+             s1, s2, cellR * 0.9, padLift, toward, 90, 0.85);
+      /* the strap is a heavier hide, and creases across the corner */
+      for (j = 0; j < 5; j++) {
+        var wx = lerp(ox, ax, 0.15 + R() * 0.7);
+        var wy = lerp(oy, by, 0.15 + R() * 0.7);
+        ctx.strokeStyle = "rgba(0,0,0," + (0.05 + R() * 0.10).toFixed(3) + ")";
+        ctx.lineWidth = 0.7 + R() * 1.3;
+        ctx.beginPath();
+        ctx.moveTo(wx - sxg * cs * 0.3, wy + syg * cs * 0.3);
+        ctx.quadraticCurveTo(wx, wy, wx + sxg * cs * 0.3, wy - syg * cs * 0.3);
+        ctx.stroke();
       }
       ctx.restore();
 
