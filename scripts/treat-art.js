@@ -35,8 +35,11 @@ var PROCESS = {
 // The ink set a cheap chromolithograph could actually hold. Posterising to
 // these is what stops a generated image reading as a photograph of a painting.
 var INKS = [
-  [26, 22, 18], [122, 42, 32], [188, 96, 46], [214, 168, 74],
-  [70, 96, 74], [44, 62, 96], [232, 219, 188], [252, 248, 236]
+  [26, 22, 18],                          // key
+  [150, 46, 34], [186, 78, 44],          // earth red, and its lighter pull
+  [206, 150, 60], [226, 190, 110],       // ochre, and its tint
+  [64, 92, 72], [46, 64, 100],           // malachite, indigo
+  [232, 219, 188], [250, 244, 228]       // paper, and the highlight
 ];
 
 var PAPER = { r: 226, g: 213, b: 180 };
@@ -53,7 +56,7 @@ function nearestInk(r, g, b) {
   var best = 0, bestD = Infinity;
   for (var i = 0; i < INKS.length; i++) {
     var dr = r - INKS[i][0], dg = g - INKS[i][1], db = b - INKS[i][2];
-    var d = dr * dr * 0.3 + dg * dg * 0.59 + db * db * 0.11;
+    var d = dr * dr + dg * dg + db * db;
     if (d < bestD) { bestD = d; best = i; }
   }
   return INKS[best];
@@ -68,10 +71,9 @@ async function chromo(buf, w, h) {
   var raw = await img.raw().toBuffer({ resolveWithObject: true });
   var d = raw.data, W = raw.info.width, H = raw.info.height, C = raw.info.channels;
 
-  var flat = Buffer.alloc(W * H * 3);
+  var rgb = Buffer.alloc(W * H * 3);
   for (var i = 0, j = 0; i < d.length; i += C, j += 3) {
-    var ink = nearestInk(d[i], d[i + 1], d[i + 2]);
-    flat[j] = ink[0]; flat[j + 1] = ink[1]; flat[j + 2] = ink[2];
+    rgb[j] = d[i]; rgb[j + 1] = d[i + 1]; rgb[j + 2] = d[i + 2];
   }
 
   // Misregistration: nudge two of the three separations a pixel apart. Done on
@@ -85,9 +87,15 @@ async function chromo(buf, w, h) {
       for (var c = 0; c < 3; c++) {
         var sx = x - shifts[c][0]; if (sx < 0) sx = 0; else if (sx >= W) sx = W - 1;
         var sy = y - shifts[c][1]; if (sy < 0) sy = 0; else if (sy >= H) sy = H - 1;
-        mis[(y * W + x) * 3 + c] = flat[(sy * W + sx) * 3 + c];
+        mis[(y * W + x) * 3 + c] = rgb[(sy * W + sx) * 3 + c];
       }
     }
+  }
+  // Posterise last: the stones were shot from the artwork, not the other way
+  // round, so the ink set quantises an already-misregistered image.
+  for (var q = 0; q < mis.length; q += 3) {
+    var ink = nearestInk(mis[q], mis[q + 1], mis[q + 2]);
+    mis[q] = ink[0]; mis[q + 1] = ink[1]; mis[q + 2] = ink[2];
   }
   var joined = await sharp(mis, { raw: { width: W, height: H, channels: 3 } }).png().toBuffer();
 
