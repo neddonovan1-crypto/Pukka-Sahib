@@ -34,7 +34,8 @@ numbers have to fix, and everything below follows from it.
 ## 2. The day economy
 
 A "day" is not literally a day at the desk. It is a unit of the officer's
-attention: what he can properly attend to. Fourteen of them a fortnight.
+attention: what he can properly attend to. **How many he has is his health**
+(§10) — fourteen when he is well, eleven when he is not.
 
 ### Costs
 
@@ -42,13 +43,17 @@ attention: what he can properly attend to. Fourteen of them a fortnight.
 |---|---|---|
 | Dispose of a paper with a stamp | **1** | the floor: any paper, any stamp |
 | Hear a case, receive a deputation | **2** | offered by some papers |
-| Sit with the accounts, do the work | **2** | the papers that want real work (§8) |
+| Sit with the accounts, do the work | **2** | the papers that want real work (§9) |
 | Ride out to a village | **4** | once a fortnight only |
 | Close a file unread | **1** | you still have to find it and bin it |
 | Delegate a stack | **0** | costs control, not time |
 | Tour, planned on the map | **6–11** | as routed |
 
 ### Supply
+
+**Many cheap papers, not few expensive ones.** The pressure is volume: you
+cannot touch them all, and choosing what to ignore is the decision. It also
+keeps every paper short and the tape readable at a glance.
 
 **Papers per fortnight: 11 ± 2**, weighted by season:
 
@@ -69,8 +74,17 @@ Monsoon, 14 papers: **14 days for 14 papers with nothing left over**, and no
 road to take. The season decides the shape of the squeeze.
 
 > **The rule the numbers must satisfy:** the cheapest possible clearance of the
-> tape should cost **70–100 % of the budget** in the cold weather and **95–115 %
-> in the monsoon**. Anything below 70 % and the game is a to-do list.
+> tape should cost **70–100 % of the available days** in the cold weather and
+> **95–115 % in the monsoon**. Anything below 70 % and the game is a to-do list.
+
+Note "available", not fourteen. A worn officer has eleven, and the same tape
+becomes unclearable — which is the intended shape, and also the compounding
+risk named in §10.
+
+### The clock
+
+The fortnight ends **automatically when the days run out**. There is no closing
+it early: the calendar is simply true, and the last day is spent on something.
 
 **Everything in this section is an assertion until the simulation proves it.**
 
@@ -87,14 +101,17 @@ A paper left on the tape ages at the close of the fortnight.
 | 2 | curled | penalty doubles; the paper's outcomes worsen |
 | 3 | rusted | it **escalates** and leaves the tape |
 
-**Escalation** is the point. At age 3 the paper is removed and replaced by a new
-one from the same thread, of a heavier form and from a higher authority: the
-Sirsa petition becomes a deputation at the gate; the revenue return becomes an
-audit from the Division; the anonymous letter becomes a formal complaint. The
-new paper is **worse to answer and more expensive**, and it names the delay.
+**Escalation** is the point. At age 3 the paper leaves the tape and comes back
+as an **interrupting telegram** (§8): the Division has noticed. It takes the
+blotter mid-fortnight, cannot be put back, and names the delay — the Sirsa
+petition becomes a deputation already at the gate; the revenue return becomes an
+audit ordered; the anonymous letter becomes a formal complaint referred down for
+explanation.
 
-That is what makes deferral a decision rather than a punishment: the player can
-trace the chain and see it was his.
+Bad news arriving suddenly and from above is how bad news actually arrives, and
+it means neglect cannot simply be deferred a second time. The player can trace
+the chain back and see that it was his — which is the difference between a
+consequence and a punishment.
 
 **Ceiling.** The tape holds **18**. Beyond that, arriving papers displace the
 oldest, which escalate immediately. The pile cannot grow without limit, and
@@ -104,8 +121,11 @@ falling behind has a floor as well as a cost.
 
 ## 4. Delegation
 
-Costs nothing in days. Hands three papers to a named subordinate; what comes
-back depends on standing.
+Costs nothing in days. **You choose which three papers go**, and to whom.
+
+That pairing is the whole of it: handing the Deoganj papers to the man from
+Deoganj is a different act from handing him the Club's letter. You are deciding
+what is safe to lose sight of, and in whose hands.
 
 | Standing | Disposal | Truth of what you are told |
 |---|---|---|
@@ -149,7 +169,22 @@ fortnights.
 
 ---
 
-## 6. The meters are Simla's opinion
+## 6. Money — the district fund
+
+A real balance, refilled each season. Sanctioning draws on it.
+
+Without it `SANCTIONED` costs a day like anything else and is strictly better
+than refusing, which makes half the rack a dominant strategy and the well at
+Sirsa free. With it, approving the well is a choice against the road that also
+needs metalling.
+
+- The fund is **stated on the paper** that asks for money, so the price is
+  known before the stamp comes down.
+- It does **not** carry between seasons: an unspent fund is a district that went
+  without, and the Division notices that too.
+- Running it dry does not end the chapter; it removes an option, which is worse.
+
+## 7. The meters are Simla's opinion
 
 They are **derived, not awarded**. At the close of each fortnight:
 
@@ -171,7 +206,7 @@ contentment 0.15`) and the endings carry over from `src/content.js` unchanged.
 
 ---
 
-## 7. Interrupts
+## 8. Interrupts
 
 Telegrams do not hang on the tape.
 
@@ -186,7 +221,7 @@ Telegrams do not hang on the tape.
 
 ---
 
-## 8. Papers that want work
+## 9. Papers that want work
 
 Perhaps one in eight. A column that will not add, an account with a sum hidden
 in it, two reports of the same night that cannot both be true. Costs 2 days.
@@ -199,7 +234,54 @@ will not tell you. It buys a better guess, never an answer.
 
 ---
 
-## 9. Endings
+## 10. Health, and the days it buys
+
+Health is not a threshold. **It is how many days you get.**
+
+| Health | Days a fortnight |
+|---|---|
+| Sound | 14 |
+| Worn | 13 |
+| Poor | 12 |
+| Bad | 11 |
+
+Riding out, touring, the hot weather and the monsoon wear it down. The hill
+station, a quiet fortnight and the cold weather restore it.
+
+This makes it the resource behind the resource, and the breakdown ending arrives
+as a slow squeeze rather than a line crossed. It also creates the **compounding
+risk the simulation must watch**: poor health gives fewer days, fewer days mean
+more decay, more decay means more interrupts and less time still. The `dugOut`
+probe has to be run against a *worn* officer, not a sound one, or it proves
+nothing.
+
+## 11. The reckoning: the despatch you sent
+
+At the fortnight's close the player reads **the fortnightly return as Simla
+receives it** — collections reported, order reported, the district as his own
+paperwork describes it. The meters move from that and from nothing else.
+
+He is reading his own account of himself. Where it differs from what he saw on
+tour, he is the only man who knows.
+
+No summary of what was left hanging, and no scoring of his choices: the
+consequences arrive as papers, and the ledger is opinion rather than a verdict.
+
+## 12. Belief, pencilled on the map
+
+The officer's belief about each tehsil is written on his own map: a figure, a
+date, and a hand that fades. Where he has been recently it is firm; where he has
+not, it greys and the date recedes.
+
+Belief is set by what the papers report, and **replaced by the truth for any
+tehsil he tours**. It then decays back toward the reported figures over the
+following fortnights.
+
+This is the fog of war made legible: the player can see which corner of his
+district he is guessing about, which is what makes the decision to ride out
+concrete rather than abstract.
+
+## 13. Endings
 
 Unchanged in kind. At the chapter's close the ladder is scored from the meters
 and the honour follows. The collapse endings — scandal, breakdown, riot,
@@ -216,7 +298,7 @@ authored thresholds:
 
 ---
 
-## 10. What the simulation must prove
+## 14. What the simulation must prove
 
 None of the above is settled until the harness says so. Before any more
 interface, build the loop headless and assert:
@@ -243,15 +325,14 @@ anything else.**
 
 ---
 
-## 11. Still to decide
+## 15. Still to decide
 
-- **Money.** The old chapter had a treasury and a debt ceiling; this model has
-  works being sanctioned with no stated fund. Either the district fund comes
-  back as a real constraint, or sanctioning is limited some other way.
-- **Whether belief is shown.** The officer's *belief* about a tehsil is modelled
-  (§5). Is it ever displayed — as annotations on the map, going stale — or is it
-  only ever implicit in what the papers say?
-- **How the fortnight ends.** Automatically at day fourteen, or when the player
-  declares it done and forfeits the rest?
 - **Carry between chapters.** What a Commissioner inherits from his district
-  year beyond the honour.
+  year beyond the honour — standing with particular men, a reputation for
+  touring, the state he left the district in.
+- **How many tehsils.** Four in the prototype, six on the engraved plate. Six
+  gives the map more to say and the hidden model more to do; four is easier to
+  hold in the head.
+- **Whether the fund is one number or several heads.** A single district fund is
+  legible; separate heads for works, relief and establishment are period-exact
+  and turn allocation into its own decision.
