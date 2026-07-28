@@ -26,8 +26,8 @@ const { chromium } = require("/home/user/Pukka-Sahib/node_modules/playwright");
 
   await p.locator("#toRoad").click();
   await p.waitForTimeout(450);
-  await p.locator('.stophit').nth(0).click();
-  await p.locator('.stophit').nth(1).click();
+  await p.locator('.pin').nth(0).click();
+  await p.locator('.pin').nth(2).click();
   await p.waitForTimeout(300);
   await p.screenshot({ path: "05-road.png" });
 

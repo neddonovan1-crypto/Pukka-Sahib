@@ -202,7 +202,8 @@ function paintDesk() {
   root.innerHTML =
     '<div class="room">' +
       '<img class="roomart" src="../../art/web/desk-' + F.season + '.jpg" alt="">' +
-      '<div class="onwall" style="' + box(SC.frame) + '"><canvas id="minimap"></canvas>' +
+      '<div class="onwall" style="' + box(SC.frame) + '">' +
+        '<img class="wallmap" src="../../art/web/map-district.jpg" alt="">' +
         '<button class="wallbtn" id="toRoad" title="The road"></button></div>' +
       '<div class="onblotter" style="' + box(SC.blotter) + '"><div class="hand" id="hand"></div></div>' +
       '<div class="onrack' + (S.held ? " up" : "") + '" style="' + box(SC.rack || SC.blotter) + '">' +
@@ -263,21 +264,6 @@ function paintDesk() {
   });
   out.appendChild(pileEl);
   out.appendChild(el("span", "ocount", S.done.length ? S.done.length + " dispatched" : "empty"));
-
-  var mini = $("#minimap");
-  if (mini) {
-    var fr = mini.parentNode.getBoundingClientRect();
-    var mw = Math.max(80, Math.round(fr.width)), mh = Math.max(60, Math.round(fr.height));
-    mini.width = mw * 2; mini.height = mh * 2;
-    mini.style.width = mw + "px"; mini.style.height = mh + "px";
-    window.drawDistrict(mini, {
-      seed: 20251115, compact: true,
-      tehsils: F.road.stops.map(function (s) {
-        return { id: s.id, name: s.name, days: s.days, x: s.mx, y: s.my, cond: s.cond };
-      }),
-      selected: []
-    });
-  }
 
   // the paper in hand
   var hand = $("#hand"), rack = $("#rack");
@@ -347,30 +333,37 @@ function paintRoad() {
       '</div>' +
     '</div>';
 
+  // The plate is the ground; the game's own marks go over it. Names are set in
+  // type because the sheet was generated with every panel deliberately blank.
   var m = $("#mapbig");
-  var cv = document.createElement("canvas");
-  var wpx = Math.min(760, window.innerWidth - 60), hpx = Math.round(wpx * 0.60);
-  cv.width = wpx * 2; cv.height = hpx * 2;
-  cv.style.width = wpx + "px"; cv.style.height = hpx + "px";
-  m.appendChild(cv);
-  var marks = window.drawDistrict(cv, {
-    seed: 20251115,
-    tehsils: F.road.stops.map(function (s) {
-      return { id: s.id, name: s.name, days: s.days, x: s.mx, y: s.my, cond: s.cond };
-    }),
-    selected: S.route,
-    title: "CHHOTA NAGRA DISTRICT",
-    sub: "SONEPORE DIVISION"
+  m.innerHTML = '<img class="plate" src="../../art/web/map-district.jpg" alt="">';
+  var marks = [];
+  F.road.stops.forEach(function (s) {
+    var on = S.route.indexOf(s.id) !== -1;
+    var pin = el("button", "pin" + (on ? " on" : ""));
+    pin.style.left = (s.mx * 100) + "%";
+    pin.style.top = (s.my * 100) + "%";
+    pin.innerHTML = '<i class="hq"></i><span class="pname">' + s.name + '</span>' +
+      '<span class="pdays">' + s.days + ' days</span>' +
+      (on ? '<span class="pord">' + (S.route.indexOf(s.id) + 1) + '</span>' : "");
+    pin.onclick = function () { toggleStop(s.id); };
+    m.appendChild(pin);
+    marks.push([s.mx, s.my, on]);
   });
-  // hit targets over the plate, placed from the same coordinates it drew at
-  marks.forEach(function (mk) {
-    var b = document.createElement("button");
-    b.className = "stophit" + (S.route.indexOf(mk.id) !== -1 ? " on" : "");
-    b.style.left = mk.x + "px"; b.style.top = mk.y + "px";
-    b.title = mk.id;
-    b.onclick = function () { toggleStop(mk.id); };
-    m.appendChild(b);
-  });
+  // the route, drawn between the stops in the order they were chosen
+  if (S.route.length > 1) {
+    var svg = '<svg class="routeline" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="';
+    S.route.forEach(function (id, i) {
+      var st = null;
+      F.road.stops.forEach(function (s) { if (s.id === id) st = s; });
+      svg += (i ? " L " : "M ") + (st.mx * 100) + " " + (st.my * 100);
+    });
+    svg += '"/></svg>';
+    m.insertAdjacentHTML("beforeend", svg);
+  }
+  var cart = el("div", "cartouche");
+  cart.innerHTML = '<b>Chhota Nagra District</b><span>Sonepore Division</span>';
+  m.appendChild(cart);
 
   $("#setout").onclick = setOut;
   $("#backdesk").onclick = function () { S.scene = "desk"; paint(); };

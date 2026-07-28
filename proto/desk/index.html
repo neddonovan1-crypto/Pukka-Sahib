@@ -43,8 +43,9 @@ button:disabled{opacity:.34; cursor:default}
 .roomart{position:absolute; inset:0; width:100%; height:100%; display:block}
 .onwall,.onblotter,.onrack{position:absolute}
 .onwall{display:flex; align-items:center; justify-content:center; padding:9% 8%}
-.onwall canvas{width:100%; height:100%; display:block;
-  box-shadow:inset 0 0 18px rgba(60,40,15,.35), 0 1px 4px rgba(0,0,0,.55)}
+.wallmap{width:100%; height:100%; display:block; object-fit:cover;
+  mix-blend-mode:multiply;
+  box-shadow:inset 0 0 18px rgba(60,40,15,.4), 0 1px 4px rgba(0,0,0,.5)}
 .wallbtn{position:absolute; inset:0; background:none; border:0}
 .wallbtn:hover{background:rgba(255,238,190,.14); box-shadow:inset 0 0 0 2px rgba(143,47,34,.5)}
 .onblotter{display:flex; align-items:center; justify-content:center}
@@ -335,7 +336,30 @@ button:disabled{opacity:.34; cursor:default}
 .roadhead span{color:#e3d5b2; margin-top:2px; text-shadow:0 1px 6px rgba(0,0,0,.9)}
 .mapbig{position:relative; display:inline-block; border:1px solid var(--hair); margin:16px 0 12px;
   box-shadow:0 16px 30px -20px rgba(0,0,0,.6)}
-.mapbig canvas{display:block}
+.mapbig{position:relative; display:inline-block; line-height:0}
+.mapbig .plate{width:100%; height:auto; display:block}
+.routeline{position:absolute; inset:0; width:100%; height:100%; pointer-events:none}
+.routeline path{fill:none; stroke:#8f2f22; stroke-width:.7; stroke-dasharray:2.4 1.8;
+  vector-effect:non-scaling-stroke; opacity:.85}
+.pin{position:absolute; transform:translate(-50%,-50%); background:none; border:0;
+  padding:14px; line-height:1; text-align:center; white-space:nowrap}
+.pin .hq{display:block; width:11px; height:11px; margin:0 auto; border-radius:50%;
+  background:#efe7ce; border:2px solid #2a2317; box-shadow:0 1px 3px rgba(0,0,0,.5)}
+.pin .pname{display:block; margin-top:5px; font-family:"Iowan Old Style",Palatino,Georgia,serif;
+  font-weight:600; font-size:.78rem; letter-spacing:.09em; color:#2a2317;
+  paint-order:stroke; -webkit-text-stroke:3.5px #efe7ce; text-shadow:0 0 4px #efe7ce}
+.pin .pdays{display:block; font-family:"Courier New",monospace; font-size:.54rem;
+  letter-spacing:.1em; text-transform:uppercase; color:#6a5f45; text-shadow:0 0 4px #efe7ce}
+.pin.on .hq{background:#8f2f22; border-color:#8f2f22; box-shadow:0 0 0 4px rgba(143,47,34,.22)}
+.pin.on .pname{color:#8f2f22}
+.pin .pord{position:absolute; left:50%; top:-2px; margin-left:8px;
+  font-family:"Courier New",monospace; font-size:.5rem; font-weight:700; color:#8f2f22}
+.pin:hover .hq{border-color:#8f2f22}
+.cartouche{position:absolute; right:3.5%; bottom:5%; background:rgba(239,231,206,.92);
+  border:1.4px solid #2a2317; padding:7px 14px 6px; text-align:center; line-height:1.25}
+.cartouche b{display:block; font-size:.86rem; letter-spacing:.06em}
+.cartouche span{display:block; font-family:"Courier New",monospace; font-size:.5rem;
+  letter-spacing:.2em; text-transform:uppercase; color:#6a5f45; margin-top:2px}
 .stophit{position:absolute; width:46px; height:46px; margin:-23px 0 0 -23px;
   border-radius:50%; background:none; border:1px solid transparent; padding:0}
 .stophit:hover{border-color:rgba(143,47,34,.45); background:rgba(143,47,34,.07)}
