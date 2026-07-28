@@ -177,7 +177,54 @@ likely to land, so use it.
 
 ---
 
-## 7. Choosing a register
+## 7. Register V — the room *(locked)*
+
+**This is settled. Do not redesign it; match it.**
+
+The place the player is sitting in, painted in **gouache and watercolour in the
+manner of a 1920s period plate**. Confident solid forms; colour laid in flat
+modelled planes rather than blended; visible brushwork; a warm limited palette;
+atmosphere carried by light and shape rather than by fine detail. Painterly and
+stylised — **never photographic**. An earlier photoreal attempt was wrong twice
+over: it fought the engravings and chromolithographs beside it, and it made the
+room the only thing in the game that was not a depiction.
+
+**Composition.** A wide view of the office from where the officer sits. The desk
+runs across the lower third; the leather blotter in the middle of it is left
+**bare** for papers. Behind, the room: the plastered wall, an **empty picture
+frame** for the survey plate to hang in, a shelf of files tied with red tape, the
+punkah's fringe across the top. To one side a wide arch onto the compound, where
+the season does its work.
+
+**One room, four lights.** Cold weather: low gold light, kites, the flame tree, a
+bullock cart on the red road. Hot weather: glaring white, bleached almost to
+bone, a khus screen, a pariah dog asleep in the dust. Monsoon: green-grey and
+dim, the lamp lit at midday, rain in sheets and the road a river of red mud.
+Night: one small warm circle, the compound in moonlight, one lamp far off in the
+town. The camp on tour is the same treatment, seen out through the flaps of a
+ridge tent.
+
+**Why the documents don't look silly on it.** Because of the rule the room
+establishes: **the room is depicted, the paper is the real thing in your hands.**
+A crisp sheet laid on a painted desk is not a mismatch — it is the game's premise
+stated in the art. Never paint the paper, and never photograph the room.
+
+**Registration.** Because the room is authored, the interface registers to *it*:
+the blotter and the frame are recorded as fractions of the plate, and the sheet
+and the map are laid into them. The painting is always shown whole and never
+cropped, so what the painter placed is where the player finds it.
+
+**Motion.** The rooms are still plates today and should not stay that way. In the
+finished game they are **lightly animated and atmospheric**: the punkah turning,
+a cart and figures crossing the road beyond the arch, rain falling and water
+running off the eaves, the lamp flame breathing, dust moving in the light. Small
+and slow — the room is alive, not busy. Built by generating the plate in layers
+(sky, middle distance, room, foreground) and moving those, rather than by
+animating a flat image. `prefers-reduced-motion` stills all of it.
+
+---
+
+## 8. Choosing a register
 
 **Register follows subject, and is authored per event** — a `register` field on
 the content, not a rule derived from the document's source. Conventions:
@@ -192,7 +239,7 @@ engraving register is the one the player already has too much of.
 
 ---
 
-## 8. Colour
+## 9. Colour
 
 Colour is **frequent but contained**. The discipline is not scarcity; it is
 never letting pigment loose in the interface.
@@ -208,7 +255,7 @@ rhyme at the join rather than clash.
 
 ---
 
-## 9. Reproduction processes
+## 10. Reproduction processes
 
 Three treatments, applied to unify everything regardless of origin:
 
@@ -224,7 +271,7 @@ goes through it and stops looking generated.
 
 ---
 
-## 10. Typography
+## 11. Typography
 
 - **Prose:** an old-style serif of the kind Government of India printing
   actually used — Caslon or Baskerville by preference.
@@ -239,7 +286,7 @@ goes through it and stops looking generated.
 
 ---
 
-## 11. Framing
+## 12. Framing
 
 - Engravings carry a **plate mark** — the impression of the copper in damp paper.
 - Paintings carry a **ruled border**, which the composition may break.
@@ -250,7 +297,7 @@ goes through it and stops looking generated.
 
 ---
 
-## 12. Rules of the house
+## 13. Rules of the house
 
 1. **The charm is real, and so are the difficulties.** This is an affectionate
    portrait, not a case for the prosecution. The officer went out on tour, spoke
@@ -275,7 +322,7 @@ goes through it and stops looking generated.
 
 ---
 
-## 13. Production
+## 14. Production
 
 | Register | How made | Needs generation? |
 |---|---|---|
@@ -295,7 +342,7 @@ reproducible. Provenance — model, prompt, date — is recorded per asset in
 
 ---
 
-## 14. Open
+## 15. Open
 
 - The **portrait problem**: procedural engraving could not do faces. The profile
   conventions of the painting register should solve it, since character is

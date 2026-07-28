@@ -144,17 +144,70 @@ saved.
 
 ## 9. The desk
 
-Fixed workspace. Nothing scrolls; documents arrive, are stamped, and leave.
-Besides the paper in hand, four things are always present:
+The room is a painting and the interface must not bury it. Everything the player
+is not using should be **out of the way or out of sight**. An early build put a
+rail of panels down one side, a row of tabs across the ceiling and a permanent
+rack of stamps along the front edge, and the room disappeared behind its own
+chrome.
 
-- **The in-tray** — what you have not touched, as a pile.
-- **The days remaining** — the fortnight burning down.
-- **The ledger** — the five meters ruled along the desk edge.
-- **The map, small, at your elbow** — your own annotated survey sheet, going
-  stale where you have not been. Keeps the district present on desk-only
-  fortnights and makes the decision to tour feel like yours.
+### The papers hang from tape
 
-(No out-tray in the first version.)
+The fortnight's papers hang on a length of **red tape** across the top of the
+screen — the way a file was actually strung. Each hangs by its title, so you can
+read the whole fortnight at a glance without opening anything.
+
+- **Take one down** and it is untied and comes to the blotter.
+- **Put it back** and it goes onto the tape again, unread and unspent.
+- **Dispose of it** and it goes to the **out-tray**, which fills through the
+  fortnight. A full tray is the only reward the game gives for a good one.
+
+The tape is the pile. It shrinks as you work and it is still hanging there at the
+end of the fortnight, which is what makes what you left legible.
+
+### The stamps stay put away
+
+The rack is **not on the desk** until it is needed. A paper comes down on the
+blotter, the stamps come forward under your hand; the paper leaves, they go back.
+The rack should feel picked up rather than displayed.
+
+### Some papers arrive without warning
+
+Most business hangs on the tape and waits its turn. A **telegram does not**. It
+arrives mid-fortnight, interrupts whatever is on the blotter, and will not go
+back on the tape — it is answered now, on what you know now. That is the form's
+whole character: it is the one document that costs you the initiative.
+
+Used sparingly, one or two a fortnight, this is where the pressure lives.
+
+### Some papers want actual work
+
+Not every paper is a judgement. A few ask the officer to *do* something:
+
+- a column of figures that does not add up, and the error to be found;
+- an account of expenditure with a sum quietly hidden in it;
+- two reports of the same night that cannot both be true.
+
+**The guard rails matter here** (§13, rule 1). The work must be genuine — real
+arithmetic, a real inconsistency — but finding it must never *settle* the
+question. You find the error; whether it is fraud, incompetence, or a clerk
+copying badly is still yours to judge, and the paper will not tell you. Find the
+discrepancy, and you have earned a better guess, not an answer. That is the line
+between this game and a verification puzzle, and it is thin enough to be worth
+restating in every brief.
+
+### What is always visible
+
+Only what every decision is weighed against, and quietly:
+
+- **The days remaining**, as the fortnight burning down.
+- **The tape**, with the papers still on it.
+- **The out-tray**, filling.
+- **The map**, hanging in its frame on the wall — which is also how you take the
+  road.
+
+The **ledger of five meters** is *not* always visible. They are Simla's opinion,
+which arrives by post and not by the minute; read them when the fortnight closes,
+or on demand. Watching them tick is a spreadsheet, not a desk.
 
 ## 10. Content
 
