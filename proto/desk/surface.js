@@ -130,11 +130,11 @@
         y0: y0, y1: y1, tone: tone,
         base: mix(mix(TEAK_DARK, TEAK_BODY, 0.55 + tone * 0.45),
                   TEAK_PALE, tone * 0.34),
-        tilt: (R() - 0.5) * 0.035,
-        A0: 5 + R() * 11, f0: TAU * (0.25 + R() * 0.3) / W, p0: R() * TAU,
-        A1: 3 + R() * 7, f1: TAU * (0.7 + R() * 1.0) / W,
+        tilt: (R() - 0.5) * 0.026,
+        A0: 3 + R() * 6.5, f0: TAU * (0.25 + R() * 0.3) / W, p0: R() * TAU,
+        A1: 1.6 + R() * 4.0, f1: TAU * (0.7 + R() * 1.0) / W,
         g1: 0.0022 + R() * 0.004, p1: R() * TAU,
-        A2: 0.7 + R() * 2.1, f2: TAU * (2.6 + R() * 3.4) / W,
+        A2: 0.5 + R() * 1.5, f2: TAU * (2.6 + R() * 3.4) / W,
         g2: 0.004 + R() * 0.007, p2: R() * TAU,
         bandF: 0.020 + R() * 0.035, bandP: R() * TAU,
         knots: []
@@ -222,7 +222,7 @@
       var yy = bd2.y0 - 6;
       while (yy < bd2.y1 + 6) {
         var band = 0.5 + 0.5 * Math.sin(yy * bd2.bandF + bd2.bandP);
-        var step = 0.85 + band * 2.7 + R() * 1.0;
+        var step = 0.62 + band * 2.0 + R() * 0.85;
         yy += step;
 
         var kind = R();
@@ -445,8 +445,8 @@
       ctx.rotate(R() * TAU);
       ctx.scale(1, 0.5 + R() * 0.7);
       var ig = ctx.createRadialGradient(0, 0, 0, 0, 0, sr * 1.6);
-      ig.addColorStop(0, rgba(ink, 0.30 + R() * 0.34));
-      ig.addColorStop(0.6, rgba(ink, 0.14 + R() * 0.14));
+      ig.addColorStop(0, rgba(ink, 0.48 + R() * 0.40));
+      ig.addColorStop(0.55, rgba(ink, 0.26 + R() * 0.24));
       ig.addColorStop(1, rgba(ink, 0));
       ctx.fillStyle = ig;
       ctx.beginPath(); ctx.arc(0, 0, sr * 1.6, 0, TAU); ctx.fill();
@@ -469,9 +469,10 @@
     var wob = 1.1 + R() * 0.9;
 
     var oxblood = R() < 0.35;
-    var padDark = oxblood ? [42, 15, 14] : [20, 30, 22];
-    var padMid = oxblood ? [82, 31, 27] : [40, 55, 41];
-    var padEdge = oxblood ? [22, 8, 8] : [10, 16, 11];
+    var padDark = oxblood ? [40, 15, 13] : [16, 23, 17];
+    var padMid = oxblood ? [78, 30, 25] : [33, 45, 33];
+    var padEdge = oxblood ? [21, 8, 7] : [9, 13, 9];
+    var padLift = oxblood ? [186, 138, 112] : [150, 160, 128];
 
     /* contact shadow, thrown away from the lamp */
     ctx.save();
@@ -512,32 +513,47 @@
     for (i = 0; i < 24; i++) {
       var mx = b.x + R() * b.w, my = b.y + R() * b.h;
       var mr = Math.min(b.w, b.h) * (0.08 + R() * 0.30);
-      var mc = R() < 0.5 ? padDark : mix(padMid, [120, 130, 110], 0.25);
+      var mc = R() < 0.5 ? padDark : mix(padMid, padLift, 0.30);
       var mg = ctx.createRadialGradient(mx, my, 0, mx, my, mr);
-      mg.addColorStop(0, rgba(mc, 0.05 + R() * 0.07));
+      mg.addColorStop(0, rgba(mc, 0.08 + R() * 0.13));
       mg.addColorStop(1, rgba(mc, 0));
       ctx.fillStyle = mg;
       ctx.fillRect(mx - mr, my - mr, mr * 2, mr * 2);
     }
 
-    /* pebble grain — fine, dense, low contrast */
-    var n = Math.round((b.w * b.h) / 130);
-    for (i = 0; i < n; i++) {
+    /* pebble grain, two scales. The cells first: each a shallow dome, lit from
+       the lamp side and shadowed away from it. Then a fine tooth over the top.
+       Both at very low contrast — hide reads as texture, never as confetti. */
+    var toward = Math.atan2(-vy, -vx);         /* angle back toward the lamp */
+    var away = toward + Math.PI;
+    var cells = Math.round((b.w * b.h) / 105);
+    var cellR = clamp(Math.min(b.w, b.h) * 0.0062, 1.5, 3.4);
+    ctx.lineCap = "butt";
+    for (i = 0; i < cells; i++) {
       var px = b.x + R() * b.w, py = b.y + R() * b.h;
-      var pr = 0.5 + R() * 1.7;
-      var up = R() < 0.5;
-      ctx.fillStyle = up
-        ? "rgba(198,206,186," + (0.03 + R() * 0.08).toFixed(3) + ")"
-        : "rgba(0,0,0," + (0.05 + R() * 0.14).toFixed(3) + ")";
+      var pr = cellR * (0.55 + R() * 0.95);
+      var jt = (R() - 0.5) * 0.8;
+      ctx.strokeStyle = rgba(padLift, 0.040 + R() * 0.055);
+      ctx.lineWidth = 0.45 + R() * 0.65;
       ctx.beginPath();
-      ctx.arc(px, py, pr, 0, TAU);
-      ctx.fill();
-      if (up) {                       /* each pebble sits in its own dimple */
-        ctx.fillStyle = "rgba(0,0,0," + (0.03 + R() * 0.08).toFixed(3) + ")";
-        ctx.beginPath();
-        ctx.arc(px + pr * 0.7, py + pr * 0.8, pr * 0.85, 0, TAU);
-        ctx.fill();
-      }
+      ctx.arc(px, py, pr, toward + jt - 1.0, toward + jt + 1.0);
+      ctx.stroke();
+      ctx.strokeStyle = "rgba(0,0,0," + (0.045 + R() * 0.075).toFixed(3) + ")";
+      ctx.lineWidth = 0.5 + R() * 0.8;
+      ctx.beginPath();
+      ctx.arc(px, py, pr * (1.0 + R() * 0.12), away + jt - 1.1, away + jt + 1.1);
+      ctx.stroke();
+    }
+    ctx.lineCap = "round";
+    /* the tooth between the pebbles */
+    var n = Math.round((b.w * b.h) / 90);
+    for (i = 0; i < n; i++) {
+      var qx2 = b.x + R() * b.w, qy2 = b.y + R() * b.h;
+      var qs = 0.6 + R() * 1.1;
+      ctx.fillStyle = R() < 0.45
+        ? rgba(padLift, 0.020 + R() * 0.035)
+        : "rgba(0,0,0," + (0.020 + R() * 0.050).toFixed(3) + ")";
+      ctx.fillRect(qx2, qy2, qs, qs * (0.6 + R() * 0.8));
     }
     /* creases pressed in by years of elbows */
     for (i = 0; i < 14; i++) {
@@ -571,8 +587,9 @@
     var lg = ctx.createLinearGradient(
       cx - vx * b.w * 0.7, cy - vy * b.h * 0.7,
       cx + vx * b.w * 0.7, cy + vy * b.h * 0.7);
-    lg.addColorStop(0, "rgba(255,226,178,0.10)");
-    lg.addColorStop(0.4, "rgba(255,214,164,0.03)");
+    lg.addColorStop(0, "rgba(255,226,178,0.16)");
+    lg.addColorStop(0.28, "rgba(255,218,170,0.07)");
+    lg.addColorStop(0.62, "rgba(255,206,156,0.015)");
     lg.addColorStop(1, "rgba(255,200,150,0)");
     ctx.fillStyle = lg;
     ctx.fillRect(b.x - 8, b.y - 8, b.w + 16, b.h + 16);
@@ -681,9 +698,14 @@
         (ax + bx) / 2 + sxg * cs * 0.06, (ay + by) / 2 + syg * cs * 0.06,
         bx + sxg * 1.0, by);
       var lit = (sxg * -vx + syg * -vy) > 0;
-      ctx.strokeStyle = lit ? "rgba(214,200,168,0.20)" : "rgba(0,0,0,0.42)";
-      ctx.lineWidth = 1.3;
+      ctx.strokeStyle = lit ? "rgba(206,192,162,0.10)" : "rgba(0,0,0,0.40)";
+      ctx.lineWidth = lit ? 2.4 : 1.3;
       ctx.stroke();
+      if (lit) {
+        ctx.strokeStyle = "rgba(216,202,172,0.10)";
+        ctx.lineWidth = 1.0;
+        ctx.stroke();
+      }
       ctx.strokeStyle = "rgba(0,0,0,0.30)";
       ctx.lineWidth = 2.6;
       ctx.translate(-sxg * 1.8, -syg * 1.8);
@@ -704,9 +726,15 @@
         var dxn = (hx1 - hx0), dyn = (hy1 - hy0);
         var dn = Math.hypot(dxn, dyn) || 1;
         dxn /= dn; dyn /= dn;
-        var sl = 2.4 + R() * 1.6;
-        ctx.strokeStyle = "rgba(206,190,152," + (0.16 + R() * 0.22).toFixed(3) + ")";
-        ctx.lineWidth = 0.9 + R() * 0.5;
+        var sl = 2.6 + R() * 1.8;
+        ctx.strokeStyle = "rgba(0,0,0,0.34)";
+        ctx.lineWidth = 1.9 + R() * 0.6;
+        ctx.beginPath();
+        ctx.moveTo(mx2 - dxn * sl, my2 - dyn * sl + 0.9);
+        ctx.lineTo(mx2 + dxn * sl, my2 + dyn * sl + 0.9);
+        ctx.stroke();
+        ctx.strokeStyle = "rgba(214,196,154," + (0.34 + R() * 0.30).toFixed(3) + ")";
+        ctx.lineWidth = 0.9 + R() * 0.6;
         ctx.beginPath();
         ctx.moveTo(mx2 - dxn * sl, my2 - dyn * sl);
         ctx.lineTo(mx2 + dxn * sl, my2 + dyn * sl);
@@ -729,13 +757,13 @@
     ctx.save();
     ctx.globalCompositeOperation = "multiply";
     var g = ctx.createRadialGradient(lamp.x, lamp.y, R0 * 0.02, lamp.x, lamp.y, R0);
-    g.addColorStop(0.00, "rgb(255,246,231)");
-    g.addColorStop(0.15, "rgb(252,232,206)");
-    g.addColorStop(0.32, "rgb(232,200,164)");
-    g.addColorStop(0.52, "rgb(196,158,122)");
-    g.addColorStop(0.72, "rgb(150,114,82)");
-    g.addColorStop(0.88, "rgb(108,76,52)");
-    g.addColorStop(1.00, "rgb(76,50,32)");
+    g.addColorStop(0.00, "rgb(255,244,226)");
+    g.addColorStop(0.15, "rgb(248,228,200)");
+    g.addColorStop(0.32, "rgb(224,196,164)");
+    g.addColorStop(0.52, "rgb(186,154,124)");
+    g.addColorStop(0.72, "rgb(140,110,84)");
+    g.addColorStop(0.88, "rgb(100,74,54)");
+    g.addColorStop(1.00, "rgb(70,48,32)");
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
     ctx.restore();
@@ -785,11 +813,11 @@
         sy = clamp(sy, 4, H - 4);
       }
       var d = Math.hypot(sx - lamp.x, sy - lamp.y) / far;
-      var lit = clamp(1.15 - d * 1.5, 0.06, 1);
+      var lit = clamp(1.25 - d * 1.35, 0.08, 1);
       var len = Math.min(W, H) * (0.03 + R() * 0.11);
       var ang = (R() - 0.5) * 0.9 + (R() < 0.35 ? Math.PI / 2 : 0);
       ctx.save();
-      ctx.strokeStyle = "rgba(255,236,204," + (0.05 + lit * 0.20).toFixed(3) + ")";
+      ctx.strokeStyle = "rgba(255,236,204," + (0.07 + lit * 0.34).toFixed(3) + ")";
       ctx.lineWidth = 0.35 + R() * 0.6;
       ctx.beginPath();
       var bow = (R() - 0.5) * len * 0.14;

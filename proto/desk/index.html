@@ -30,112 +30,112 @@ button{font-family:inherit; cursor:pointer}
 button:disabled{opacity:.34; cursor:default}
 
 /* ——————————————————————————————————————————————————————————— THE DESK —— */
+/* The room is a photograph now, not a gradient: teak, a green leather blotter
+   with gilt tooling, the lamp, the stamps in their rack. The interface lays
+   itself over that, and the paper in hand lands on the actual blotter. */
 .scene-desk{
-  display:grid; grid-template-columns:264px 1fr; gap:0;
-  background:var(--timber);
-  background-image:
-    repeating-linear-gradient(93deg, rgba(0,0,0,.20) 0 3px, rgba(255,255,255,.022) 3px 9px),
-    radial-gradient(85% 70% at 62% 8%, rgba(255,214,140,.20), rgba(0,0,0,.62) 78%);
+  position:relative; background:#241c12 center 62% / cover no-repeat;
 }
-/* the lamp, low and warm, and the punkah's slow shadow across the desk */
+.scene-desk.season-cold   { background-image:url(../../art/web/desk-cold.jpg) }
+.scene-desk.season-hot    { background-image:url(../../art/web/desk-hot.jpg) }
+.scene-desk.season-monsoon{ background-image:url(../../art/web/desk-monsoon.jpg) }
+/* the punkah, still turning over the room */
 .scene-desk::after{
   content:""; position:absolute; inset:0; pointer-events:none;
-  background:linear-gradient(101deg, transparent 34%, rgba(0,0,0,.16) 46%, transparent 58%);
+  background:linear-gradient(101deg, transparent 34%, rgba(0,0,0,.13) 46%, transparent 58%);
   animation:punkah 7.5s ease-in-out infinite alternate;
 }
 @keyframes punkah{ from{transform:translateX(-4%)} to{transform:translateX(4%)} }
 @media (prefers-reduced-motion:reduce){ .scene-desk::after{animation:none} }
 
 .deskrail{
-  position:relative; z-index:2; padding:16px 14px; overflow:hidden;
-  background:rgba(20,16,10,.34); border-right:1px solid rgba(0,0,0,.5);
-  display:flex; flex-direction:column; gap:14px;
+  position:absolute; left:0; top:0; bottom:0; width:218px; z-index:3;
+  padding:14px 12px; display:flex; flex-direction:column; gap:12px; overflow:hidden;
+  background:linear-gradient(90deg, rgba(14,10,6,.82), rgba(14,10,6,.55) 78%, transparent);
 }
-.whoami{color:#e6d9b6}
-.whoami b{display:block; font-size:1.14rem; letter-spacing:.01em}
-.whoami span{display:block; font-family:"Courier New",monospace; font-size:.56rem;
-  letter-spacing:.14em; text-transform:uppercase; color:#b7a681; margin-top:2px}
-.whoami .szn{margin-top:6px; color:#8f8straight}
-.whoami .szn{color:#95886a}
+.whoami{color:#efe1bd; text-shadow:0 1px 3px rgba(0,0,0,.9)}
+.whoami b{display:block; font-size:1.08rem}
+.whoami span{display:block; font-family:"Courier New",monospace; font-size:.53rem;
+  letter-spacing:.13em; text-transform:uppercase; color:#c2b18a; margin-top:2px}
+.whoami .szn{margin-top:5px; color:#a2957a}
 
-.daybox{border:1px solid rgba(185,163,115,.35); padding:8px 10px 9px; background:rgba(0,0,0,.22)}
-.dlabel{font-family:"Courier New",monospace; font-size:.54rem; letter-spacing:.16em;
-  text-transform:uppercase; color:#a8987a}
-.dmarks{display:flex; gap:3px; margin:7px 0 5px}
-.dmarks i{flex:1 1 0; height:14px; background:#d8c9a2; border-radius:1px}
-.dmarks i.spent{background:rgba(216,201,162,.16)}
-.dnum{font-size:1.5rem; color:#e6d9b6; font-variant-numeric:tabular-nums}
-.dnum span{font-size:.66rem; color:#8e8266; font-family:"Courier New",monospace}
-
-.ledger{border:1px solid rgba(185,163,115,.3); padding:8px 10px; background:rgba(0,0,0,.18)}
-.gauge{display:flex; align-items:center; gap:7px; margin:4px 0}
-.gname{flex:0 0 76px; font-family:"Courier New",monospace; font-size:.53rem;
-  letter-spacing:.1em; text-transform:uppercase; color:#a8987a}
-.gbar{flex:1 1 auto; height:5px; background:rgba(216,201,162,.16); position:relative}
-.gbar i{position:absolute; left:0; top:0; bottom:0; background:#c9b482; transition:width .5s ease}
-.gval{flex:0 0 22px; text-align:right; font-size:.76rem; color:#e6d9b6; font-variant-numeric:tabular-nums}
+.daybox,.ledger{border:1px solid rgba(201,180,130,.28); background:rgba(8,6,3,.5); padding:8px 10px}
+.dlabel{font-family:"Courier New",monospace; font-size:.52rem; letter-spacing:.15em;
+  text-transform:uppercase; color:#b3a punkt}
+.dlabel{color:#b3a display}
+.dlabel{color:#b3a483}
+.dmarks{display:flex; gap:2.5px; margin:6px 0 4px}
+.dmarks i{flex:1 1 0; height:12px; background:#dcccA0; border-radius:1px}
+.dmarks i{background:#dccca0}
+.dmarks i.spent{background:rgba(220,204,160,.14)}
+.dnum{font-size:1.4rem; color:#efe1bd; font-variant-numeric:tabular-nums}
+.dnum span{font-size:.62rem; color:#9c8f72; font-family:"Courier New",monospace}
+.gauge{display:flex; align-items:center; gap:6px; margin:3px 0}
+.gname{flex:0 0 70px; font-family:"Courier New",monospace; font-size:.5rem;
+  letter-spacing:.09em; text-transform:uppercase; color:#b3a483}
+.gbar{flex:1 1 auto; height:4px; background:rgba(220,204,160,.15); position:relative}
+.gbar i{position:absolute; inset:0 auto 0 0; background:#cbb684; transition:width .5s ease}
+.gval{flex:0 0 20px; text-align:right; font-size:.72rem; color:#efe1bd; font-variant-numeric:tabular-nums}
 
 .mapbtn{
-  margin-top:auto; background:rgba(233,223,196,.93); border:1px solid var(--hair);
-  padding:9px 10px 7px; text-align:left; position:relative;
+  margin-top:auto; background:rgba(239,231,206,.94); border:1px solid rgba(60,48,28,.7);
+  padding:7px 8px 5px; text-align:left; position:relative;
+  box-shadow:0 8px 18px -10px rgba(0,0,0,.9);
 }
-.mapbtn canvas{width:100%; height:auto; display:block; margin:5px 0 2px}
-.mapbtn .dist{fill:rgba(120,95,45,.10)}
-.mlbl{font-family:"Courier New",monospace; font-size:.6rem; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--soft)}
-.mnote{position:absolute; right:9px; top:8px; font-family:"Courier New",monospace;
-  font-size:.52rem; letter-spacing:.12em; text-transform:uppercase; color:var(--seal)}
+.mapbtn canvas{width:100%; height:auto; display:block; margin:4px 0 2px}
+.mlbl{font-family:"Courier New",monospace; font-size:.56rem; letter-spacing:.15em;
+  text-transform:uppercase; color:#5f5540}
+.mnote{position:absolute; right:8px; top:7px; font-family:"Courier New",monospace;
+  font-size:.5rem; letter-spacing:.11em; text-transform:uppercase; color:var(--seal)}
 
-.deskmain{position:relative; z-index:1; display:grid; grid-template-rows:auto 1fr auto;
-  padding:16px 20px 14px; gap:12px; overflow:hidden}
+.deskmain{position:absolute; inset:0; z-index:2}
 
-/* the in-tray, as a pile of edges */
-.intray{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.traylbl{font-family:"Courier New",monospace; font-size:.55rem; letter-spacing:.15em;
-  text-transform:uppercase; color:#bdae8c}
+/* the in-tray: papers waiting, over the wire tray at the back of the desk */
+.intray{position:absolute; left:236px; right:18px; top:12px; display:flex;
+  align-items:center; gap:9px; flex-wrap:wrap}
+.traylbl{font-family:"Courier New",monospace; font-size:.53rem; letter-spacing:.14em;
+  text-transform:uppercase; color:#e2d3ae; text-shadow:0 1px 3px rgba(0,0,0,.95)}
 .stack{display:flex; flex:1 1 auto; flex-wrap:wrap; padding-left:6px}
 .edge{
-  border:1px solid var(--hair); border-bottom-width:3px; background:var(--paper);
-  padding:5px 10px; font-size:.7rem; color:var(--soft); max-width:150px;
+  border:1px solid rgba(92,80,58,.6); border-bottom-width:3px; background:var(--paper);
+  padding:4px 9px; font-size:.68rem; color:var(--soft); max-width:142px;
   overflow:hidden; text-overflow:ellipsis; white-space:nowrap; position:relative;
-  box-shadow:-3px 3px 7px -4px rgba(0,0,0,.85); margin-left:-6px;
+  box-shadow:-3px 4px 9px -4px rgba(0,0,0,.95); margin-left:-6px;
 }
-.edge:hover{z-index:5; margin-right:6px}
-.edge--telegram{background:var(--flimsy)}
-.edge--petition{background:#e8dcc0}
-.edge.picked{border-color:var(--seal); color:var(--ink); transform:translateY(-3px)!important}
+.edge:hover{z-index:5; margin-right:6px; transform:translateY(-2px)}
+.edge--telegram{background:var(--flimsy)} .edge--petition{background:#e8dcc0}
+.edge.picked{border-color:var(--seal); color:var(--ink); transform:translateY(-4px)!important}
 .edge .dot{position:absolute; right:3px; top:3px; width:5px; height:5px; border-radius:50%; background:var(--seal)}
-.trayempty{font-family:"Courier New",monospace; font-size:.6rem; letter-spacing:.14em;
-  text-transform:uppercase; color:#8b7f63}
+.trayempty{font-family:"Courier New",monospace; font-size:.58rem; letter-spacing:.13em;
+  text-transform:uppercase; color:#c6b795; text-shadow:0 1px 3px rgba(0,0,0,.9)}
 .delegate,.endfn{
-  font-family:"Courier New",monospace; font-size:.56rem; letter-spacing:.13em;
-  text-transform:uppercase; background:none; border:1px solid rgba(185,163,115,.5);
-  color:#cbbd9d; padding:6px 9px;
+  font-family:"Courier New",monospace; font-size:.54rem; letter-spacing:.12em;
+  text-transform:uppercase; background:rgba(8,6,3,.55); border:1px solid rgba(201,180,130,.45);
+  color:#dfd0ab; padding:6px 9px;
 }
-.endfn{border-color:rgba(143,47,34,.7); color:#d98d7d}
+.endfn{border-color:rgba(190,90,70,.7); color:#e6a493}
+
+/* the paper in hand — laid on the blotter, which is where the blotter is */
+.hand{position:absolute; left:0; right:0; top:48%; bottom:7%;
+  display:flex; align-items:center; justify-content:center; pointer-events:none}
+.hand > *{pointer-events:auto}
+.nothing{font-family:"Courier New",monospace; font-size:.6rem; letter-spacing:.13em;
+  text-transform:uppercase; color:#cbbb96; text-shadow:0 1px 4px rgba(0,0,0,.95)}
+
+/* the rack, along the front edge of the desk */
+.rack{position:absolute; left:236px; right:18px; bottom:12px;
+  display:flex; gap:7px; justify-content:center; flex-wrap:wrap}
 
 /* the paper in hand */
 .hand{display:flex; align-items:center; justify-content:center; overflow:hidden;
   min-height:0; position:relative}
-/* the blotter: a desk is not a void, and the paper needs something to sit on */
-.hand::before{
-  content:""; position:absolute; left:50%; top:50%;
-  transform:translate(-50%,-50%) rotate(.5deg);
-  width:min(780px,96%); height:min(600px,96%);
-  background:#33402f; background-image:
-    radial-gradient(rgba(255,255,255,.05) 1px, transparent 1.6px),
-    linear-gradient(160deg, rgba(255,255,255,.06), rgba(0,0,0,.28));
-  background-size:5px 5px, auto;
-  border:7px solid #241d13; border-radius:2px;
-  box-shadow:0 18px 40px -18px rgba(0,0,0,.9), inset 0 0 60px rgba(0,0,0,.45);
-}
 .paper{z-index:1}
 .nothing{z-index:1}
 .nothing{font-family:"Courier New",monospace; font-size:.62rem; letter-spacing:.14em;
   text-transform:uppercase; color:#8b7f63; align-self:center}
 .paper{
-  width:min(620px,100%); background:var(--paper); position:relative;
-  padding:20px 26px 24px; box-shadow:0 22px 40px -22px rgba(0,0,0,.9);
+  width:min(560px,66%); background:var(--paper); position:relative;
+  padding:18px 24px 22px; box-shadow:0 10px 24px -10px rgba(0,0,0,.95), 0 2px 3px rgba(0,0,0,.5);
   background-image:radial-gradient(rgba(120,95,45,.09) 1px,transparent 1.4px);
   background-size:4px 4px; transform:rotate(-.3deg);
   animation:land .34s cubic-bezier(.2,.9,.3,1);
@@ -144,8 +144,8 @@ button:disabled{opacity:.34; cursor:default}
 @keyframes land{from{opacity:0; transform:translateY(-16px) rotate(1.6deg)} to{opacity:1; transform:rotate(-.3deg)}}
 .paper--telegram{background:var(--flimsy)}
 .paper--petition{background:#e8dcc0}
-.paper::before{content:""; position:absolute; left:11px; top:34px; width:9px; height:9px;
-  border-radius:50%; background:var(--timber); box-shadow:0 96px 0 var(--timber)}
+.paper::before{content:""; position:absolute; left:11px; top:30px; width:8px; height:8px;
+  border-radius:50%; background:#2b3327; box-shadow:0 84px 0 #2b3327, inset 0 1px 2px rgba(0,0,0,.7)}
 .phead{display:flex; justify-content:space-between; gap:14px; border-bottom:1px solid var(--rule);
   padding-bottom:6px; margin-bottom:12px; font-family:"Courier New",monospace;
   font-size:.56rem; letter-spacing:.13em; text-transform:uppercase; color:var(--soft)}
@@ -169,10 +169,11 @@ button:disabled{opacity:.34; cursor:default}
 /* the rack */
 .rack{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding-top:2px}
 .stamp{
-  font-family:"Courier New",monospace; font-size:.64rem; font-weight:700;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--seal);
-  border:2.4px solid var(--seal); background:rgba(233,223,196,.9);
-  padding:9px 13px 8px; position:relative; transition:transform .1s;
+  font-family:"Courier New",monospace; font-size:.62rem; font-weight:700;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--seal);
+  border:2.2px solid var(--seal); background:rgba(238,229,203,.94);
+  padding:8px 12px 7px; position:relative; transition:transform .1s;
+  box-shadow:0 6px 14px -6px rgba(0,0,0,.9);
 }
 .stamp:nth-child(2){transform:rotate(-1.4deg)} .stamp:nth-child(4){transform:rotate(1.1deg)}
 .stamp:not(:disabled):active{transform:scale(.93) rotate(-2deg)}

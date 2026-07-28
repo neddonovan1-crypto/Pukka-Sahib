@@ -171,9 +171,14 @@ async function scene(buf, w, h) {
   var grainPng = await sharp(grain, { raw: { width: W, height: H, channels: 1 } }).png().toBuffer();
   return sharp(buf)
     .resize({ width: W, height: H, fit: "inside" })
-    .modulate({ saturation: 0.93, brightness: 0.98 })
-    .tint({ r: 255, g: 246, b: 228 })
-    .composite([{ input: grainPng, blend: "soft-light" }])
+    .modulate({ saturation: 0.96, brightness: 0.99 })
+    .composite([
+      { input: grainPng, blend: "soft-light" },
+      // a breath of lamplight over the whole room, laid on rather than tinted:
+      // .tint() greyscales first and takes the teak with it
+      { input: { create: { width: W, height: H, channels: 3, background: { r: 255, g: 226, b: 176 } } },
+        blend: "soft-light", opacity: 0.18 }
+    ])
     .jpeg({ quality: 82, chromaSubsampling: "4:4:4" })
     .toBuffer();
 }
