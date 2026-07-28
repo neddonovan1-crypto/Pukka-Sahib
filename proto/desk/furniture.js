@@ -192,8 +192,9 @@
       rg("kr" + u, 86, 30, 15, [
         [0, WD_LIT], [0.2, WD_HI], [0.46, WD], [0.72, WD_SH], [0.92, "#150d05"], [1, "#7a5433"]
       ], 81, 26) +
-      lg("hd" + u, 14, 8, 70, 26, [
-        [0, "#7d5c34"], [0.14, "#5e4327"], [0.5, "#38271a"], [0.78, "#191009"], [1, "#4e3823"]
+      lg("hd" + u, 20, 12, 62, 30, [
+        [0, "#c08a5a"], [0.1, "#8d5c38"], [0.34, "#5a3320"], [0.62, "#2e1810"],
+        [0.86, "#120a06"], [1, "#4e2c1c"]
       ]) +
       brassBar("fe" + u, 66, 10, 80, 24) +
       lg("nb" + u, 78, 12, 98, 26, [
@@ -203,8 +204,8 @@
     var b =
       '<ellipse cx="54" cy="50" rx="47" ry="7" fill="url(#sh' + u + ')"/>' +
       /* the cradle bar — stout, running between the two turned ends */
-      '<path d="M17 33 L83 33 L81 46 Q50 51.6 19 46 Z" fill="url(#bo' + u + ')"/>' +
-      '<path d="M17 33 Q50 26.6 83 33 Q50 39.4 17 33 Z" fill="url(#tp' + u + ')"/>' +
+      '<path d="M17 33 L83 33 L82 45 Q50 48.6 18 45 Z" fill="url(#bo' + u + ')"/>' +
+      '<path d="M17 33 Q50 28.6 83 33 Q50 37.6 17 33 Z" fill="url(#tp' + u + ')"/>' +
       '<path d="M23 31.4 Q36 28.6 50 28.2" stroke="#f0c48c" stroke-width="1.5" ' +
         'fill="none" stroke-linecap="round" opacity=".8"/>' +
       /* two grooves cut across the top to take a pen */
@@ -217,11 +218,11 @@
       '<path d="M58.6 30.6 Q63 34.2 67.4 31" stroke="#c1935e" stroke-width="0.9" ' +
         'fill="none" opacity=".4"/>' +
       /* grain and the shaded underside */
-      '<path d="M22 37.4 Q50 34.4 78 37" stroke="#8f6740" stroke-width="0.8" ' +
+      '<path d="M22 36.6 Q50 34.4 78 36.4" stroke="#8f6740" stroke-width="0.8" ' +
         'fill="none" opacity=".5"/>' +
-      '<path d="M21 41.6 Q50 45.4 80 41.4" stroke="#8f6740" stroke-width="0.7" ' +
+      '<path d="M21 41 Q50 43.8 80 40.8" stroke="#8f6740" stroke-width="0.7" ' +
         'fill="none" opacity=".35"/>' +
-      '<path d="M20 45.2 Q50 51 80 45" stroke="' + WD_DEEP + '" stroke-width="2" ' +
+      '<path d="M19.6 44.4 Q50 48.2 80.4 44.2" stroke="' + WD_DEEP + '" stroke-width="2" ' +
         'fill="none" opacity=".6"/>' +
       /* the ends throw a little shade back along the bar */
       '<path d="M17 32 Q23 39 17 46" fill="#1c1207" opacity=".28"/>' +
@@ -255,8 +256,10 @@
       '<g transform="rotate(-6 50 24) translate(0 5.6)">' +
         '<path d="M22 20.6 Q23.6 16.6 28 16.8 L60 18.6 L60 26 L28 27.4 Q23.6 27.6 22 23.8 Z" ' +
           'fill="url(#hd' + u + ')"/>' +
-        '<path d="M28 18.8 L57 20.2" stroke="#b8874f" stroke-width="1.8" ' +
-          'fill="none" stroke-linecap="round" opacity=".8"/>' +
+        '<path d="M28 18.6 L57 20" stroke="#e6b077" stroke-width="1.9" ' +
+          'fill="none" stroke-linecap="round" opacity=".9"/>' +
+        '<path d="M28 21 L57 22.2" stroke="#a06840" stroke-width="1" ' +
+          'fill="none" stroke-linecap="round" opacity=".5"/>' +
         '<path d="M29 26.2 L57 25.4" stroke="#0d0805" stroke-width="1.4" fill="none" opacity=".7"/>' +
         '<path d="M59 18.6 L69 19.4 L69 25.8 L59 26 Z" fill="url(#fe' + u + ')"/>' +
         '<path d="M60 19.6 L68 20.2" stroke="' + BR_SPEC + '" stroke-width="1.4" ' +
@@ -321,10 +324,10 @@
       '<ellipse cx="52" cy="44.6" rx="18.5" ry="7.4" fill="#2a1e07" opacity=".5"/>' +
       '<path d="M33.6 43.6 C35.6 29.6 68.4 27.4 70.4 41 C70.4 47.8 33.6 50.2 33.6 43.6 Z" ' +
         'fill="url(#bs' + u + ')"/>' +
-      '<path d="M38.4 41.6 C41 33.4 49.6 30.8 56.6 31" stroke="' + BR_SPEC + '" ' +
-        'stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".95"/>' +
-      '<path d="M44 40.2 C46 35.4 51 33.4 55.4 33.4" stroke="#ffffff" ' +
-        'stroke-width="1" fill="none" stroke-linecap="round" opacity=".45"/>' +
+      '<path d="M38.4 41.4 C40.6 33.6 48.6 31 55 31.2" stroke="' + BR_SPEC + '" ' +
+        'stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".8"/>' +
+      '<ellipse cx="45" cy="35.6" rx="7" ry="2.6" fill="#ffffff" opacity=".28" ' +
+        'transform="rotate(-16 45 35.6)"/>' +
       '<path d="M66 34.6 C70 38 70.2 42 69.6 44.6" stroke="#1e1504" ' +
         'stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>' +
       '<path d="M37.6 46.6 Q52 51.6 66.6 46" stroke="' + BR_BNC + '" stroke-width="1.2" ' +
@@ -348,8 +351,9 @@
 
     var b =
       '<ellipse cx="55" cy="92" rx="43" ry="8.5" fill="url(#sh' + u + ')"/>' +
-      /* base plate: a low turned plinth, a hand's breadth wider than the dome */
-      '<path d="M16 79 Q50 90.6 84 79 L84 86 Q50 97.6 16 86 Z" fill="#241a05"/>' +
+      /* base plate: a low turned plinth, a hand\'s breadth wider than the dome */
+      '<ellipse cx="50" cy="85" rx="34" ry="10.4" fill="#241a05"/>' +
+      '<ellipse cx="50" cy="83" rx="34" ry="10.4" fill="#4c380f"/>' +
       '<ellipse cx="50" cy="79" rx="34" ry="10.4" fill="url(#bp' + u + ')"/>' +
       '<path d="M19.6 76.4 Q31 70.4 45 69.6" stroke="' + BR_SPEC + '" stroke-width="1.8" ' +
         'fill="none" stroke-linecap="round" opacity=".9"/>' +
@@ -364,17 +368,17 @@
       '<ellipse cx="50" cy="74" rx="25" ry="6.6" fill="#3a2a0b" opacity=".55"/>' +
       /* dome, standing clear inside the rim of the plate */
       '<path d="M23 72 C23 28 77 28 77 72 Q50 84 23 72 Z" fill="url(#dm' + u + ')"/>' +
-      '<path d="M64 45 C71 52.4 74.4 61.6 74.8 71" stroke="#1c1403" stroke-width="3.4" ' +
-        'fill="none" stroke-linecap="round" opacity=".55"/>' +
+      '<path d="M61 46 C67.4 53.4 70.6 61.6 71.4 70" stroke="#1c1403" stroke-width="3.2" ' +
+        'fill="none" stroke-linecap="round" opacity=".45"/>' +
       '<path d="M28 76 Q50 84.6 72 75.6" stroke="' + BR_BNC + '" stroke-width="2" ' +
         'fill="none" stroke-linecap="round" opacity=".65"/>' +
-      /* specular: a soft raked streak, with a small hot core inside it */
-      '<ellipse cx="33" cy="53" rx="6.4" ry="17" fill="url(#sp' + u + ')" opacity=".72" ' +
+      /* specular: a soft raked streak, with a slim hot core inside it */
+      '<ellipse cx="33" cy="53" rx="7.4" ry="18" fill="url(#sp' + u + ')" opacity=".55" ' +
         'transform="rotate(-13 33 53)"/>' +
-      '<ellipse cx="32.5" cy="50" rx="2.4" ry="8.4" fill="#ffffff" opacity=".72" ' +
+      '<ellipse cx="32.5" cy="50" rx="2" ry="8.6" fill="url(#sp' + u + ')" opacity=".85" ' +
         'transform="rotate(-13 32.5 50)"/>' +
-      '<ellipse cx="62" cy="46" rx="5.4" ry="2.8" fill="url(#sp' + u + ')" opacity=".4" ' +
-        'transform="rotate(-32 62 46)"/>' +
+      '<ellipse cx="61" cy="45" rx="5.4" ry="2.6" fill="url(#sp' + u + ')" opacity=".34" ' +
+        'transform="rotate(-32 61 45)"/>' +
       /* one turned band round the skirt */
       '<path d="M23.4 69.6 Q50 80.8 76.6 69.6" stroke="#2a1e07" stroke-width="1" ' +
         'fill="none" opacity=".4"/>' +
@@ -417,12 +421,14 @@
       '<ellipse cx="33" cy="44" rx="27" ry="5.5" fill="url(#sh' + u + ')"/>' +
       '<ellipse cx="76" cy="43" rx="25" ry="5" fill="url(#sh' + u + ')"/>' +
       /* the arms, folded back and lying under the rims */
-      '<path d="M8 30 Q40 44 82 34 Q90 32 95 27" fill="none" stroke="' + BR_DEEP + '" ' +
-        'stroke-width="2.8" stroke-linecap="round" opacity=".9"/>' +
-      '<path d="M8.6 29 Q40 42.6 82 32.6 Q90 30.6 94.6 26" fill="none" stroke="' + BR_MID +
-        '" stroke-width="1.1" stroke-linecap="round" opacity=".8"/>' +
-      '<path d="M12 34 Q42 46.6 78 37" fill="none" stroke="' + BR_SH + '" ' +
-        'stroke-width="2.2" stroke-linecap="round" opacity=".7"/>' +
+      '<path d="M92.6 22.6 Q95.6 27.6 90 31.4 Q78 37.6 60 36" fill="none" ' +
+        'stroke="' + BR_DEEP + '" stroke-width="2.8" stroke-linecap="round" opacity=".9"/>' +
+      '<path d="M92 22.2 Q94.8 26.8 89.4 30.4 Q78 36.4 60 34.8" fill="none" ' +
+        'stroke="' + BR_MID + '" stroke-width="1" stroke-linecap="round" opacity=".75"/>' +
+      '<path d="M6.4 23.4 Q3.6 28.6 9 32 Q18 37 30 37" fill="none" stroke="' + BR_SH + '" ' +
+        'stroke-width="2.4" stroke-linecap="round" opacity=".8"/>' +
+      '<path d="M6 23 Q3.2 28 8.4 31.2" fill="none" stroke="' + BR_HI + '" ' +
+        'stroke-width="0.9" stroke-linecap="round" opacity=".7"/>' +
       /* lenses */
       '<ellipse cx="28" cy="22" rx="22" ry="17" fill="url(#le' + u + ')"/>' +
       '<ellipse cx="72" cy="21" rx="20.5" ry="15.5" fill="url(#re' + u + ')"/>' +
@@ -658,9 +664,9 @@
         [0, "#fffcf3"], [0.09, "#faf3e0"], [0.4, PAPER], [0.68, "#ddd0ae"],
         [0.86, PAPER_S], [1, "#e6dabb"]
       ]) +
-      lg("ds" + u, 6, 82, 94, 104, [
-        [0, "#d6a468"], [0.1, "#b4854f"], [0.4, "#835b35"], [0.72, "#48311d"],
-        [0.9, "#241708"], [1, "#7d5836"]
+      lg("ds" + u, 6, 76, 94, 100, [
+        [0, "#e0b078"], [0.08, "#b4854f"], [0.34, "#8a6038"], [0.58, "#6b4a2f"],
+        [0.78, "#3d2917"], [0.92, "#1c1207"], [1, "#7d5836"]
       ]) +
       lg("rb" + u, 8, 98, 92, 120, [
         [0, "#6d6459"], [0.14, "#494238"], [0.42, "#2b261f"], [0.74, "#171310"],

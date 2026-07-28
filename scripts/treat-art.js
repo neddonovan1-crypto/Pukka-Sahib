@@ -244,7 +244,6 @@ async function cutout(buf, w, h) {
     }
   }
   var TOLR = clampNum(n ? (spread / n) * 3.2 : 24, 22, 78), TOL = TOLR * TOLR;
-  var TOL2 = (TOLR * 1.9) * (TOLR * 1.9);            // for the second, looser pass
   var seen = new Uint8Array(W * H);
   var stack = [];
   for (var x = 0; x < W; x++) { stack.push(x); stack.push((H - 1) * W + x); }
@@ -266,24 +265,6 @@ async function cutout(buf, w, h) {
   }
   flood(TOL);
 
-  // Aged paper is mottled, and a single tolerance stops at every foxed patch,
-  // leaving islands of sheet stranded round the object. So run it again from
-  // the boundary already cut, at nearly twice the tolerance: connectivity still
-  // protects the blank panels inside the design, which no cut edge touches.
-  for (var q2 = 0; q2 < W * H; q2++) {
-    if (!seen[q2]) continue;
-    var qx = q2 % W, qy = (q2 - qx) / W;
-    if (qx > 0) stack.push(q2 - 1);
-    if (qx < W - 1) stack.push(q2 + 1);
-    if (qy > 0) stack.push(q2 - W);
-    if (qy < H - 1) stack.push(q2 + W);
-  }
-  flood(TOL2);
-
-  // Leak guard. On line art the flood walks through every gap in the engraving
-  // and eats the design from the inside — the ground and the white *within* the
-  // drawing are one connected region. If the fill took most of the sheet it has
-  // leaked, so refuse the cutout rather than ship a ghost.
   // Two ways this goes wrong, and they are opposite. On line art the flood
   // walks through every gap in the engraving and eats the design from the
   // inside. On a small object photographed on a big sheet, keying most of the
@@ -291,7 +272,8 @@ async function cutout(buf, w, h) {
   var keyed = 0;
   for (var k = 0; k < W * H; k++) if (seen[k]) keyed++;
   var left = 1 - keyed / (W * H);
-  if (left < 0.035) return null;                      // the design went with it
+  if (left < 0.08) return null;                       // the design went with it
+  if (left > 0.94) return null;                       // nothing was keyed at all
 
   // Soften the key so the cut edge is not a jagged one-pixel step.
   var alpha = Buffer.alloc(W * H);

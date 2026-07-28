@@ -59,6 +59,10 @@
   --tilt:    -0.55deg;
   --lift:    32px;      /* how much of the near corner has come away */
   --pin:     26px 15px; /* where the sheet was pinned, and where it rusted */
+  /* where the lamp catches the sheet. It has to stay a *catch*: let it cover
+     the whole sheet and the stock's own colour never gets a look in, which is
+     how a warm buff turns into a white card. */
+  --lamp:    108% 76% at 82% 0%;
   --furniture: ;        /* per-form printed matter; see the forms below */
 
   /* Irregular by default. A guillotined rectangle is the one thing that reads
@@ -116,7 +120,7 @@
     radial-gradient(rgb(var(--fibre) / .020) .6px, transparent 1.1px) 2px 1px / 7px 7px,
     repeating-linear-gradient(97deg,
       rgb(var(--fibre) / .018) 0 1px, transparent 1px 4px),
-    radial-gradient(130% 95% at 80% 2%, var(--sheet3) 0%, transparent 60%),
+    radial-gradient(var(--lamp), var(--sheet3) 0%, transparent 62%),
     linear-gradient(163deg, var(--sheet) 0%, var(--sheet) 42%, var(--sheet2) 100%);
 }
 
@@ -229,10 +233,20 @@
 /* A stamped sheet was stamped in the space below the heading, so the typing
    starts lower down. Chained siblings because desk.js emits the stamps as
    .pbody's preceding siblings — this keeps ink off the words without needing
-   to know in advance which sheets get stamped. */
+   to know in advance which sheets are going to be stamped.
+
+   The amounts come from properties rather than from per-form selectors so
+   that the narrow layout, which moves the stamps to the foot, can undo the
+   lot in one place instead of out-specifying eight rules. */
 .urgent ~ .pbody,
-.secret ~ .pbody{ padding-top: 28px; }
-.urgent ~ .secret ~ .pbody{ padding-top: 66px; }
+.secret ~ .pbody{
+  padding-top: var(--stamp-push, 28px);
+  padding-bottom: var(--stamp-foot, 0px);
+}
+.urgent ~ .secret ~ .pbody{
+  padding-top: var(--stamp-push2, 66px);
+  padding-bottom: var(--stamp-foot2, 0px);
+}
 
 
 /* ————————————————————————————————————————————————— I. BUFF FOOLSCAP —— */
@@ -307,13 +321,14 @@
    is the whole point — this is the form that means trouble. */
 
 .paper--telegram{
-  --sheet:  #ded0ca;
-  --sheet2: #c9b6b2;
-  --sheet3: #ece0d8;
+  --sheet:  #dcc7b9;
+  --sheet2: #c3a99a;
+  --sheet3: #ebd8c7;
+  --lamp:   74% 52% at 86% 0%;
   --ink:    #3b2d45;                 /* teleprinter purple, never black */
-  --ink2:   #5c4b5d;
-  --rule:   #9c8790;
-  --fibre:  112 84 88;
+  --ink2:   #5e4a4c;
+  --rule:   #9c8478;
+  --fibre:  116 84 62;
   --tilt:   1.3deg;
   --lift:   22px;
   --pin:    18px 74px;
@@ -335,7 +350,7 @@
   border-top: 3px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   box-shadow: 0 2px 0 rgba(156,135,144,.4);
-  background: linear-gradient(180deg, rgba(120,92,104,.11), rgba(120,92,104,.02));
+  background: linear-gradient(180deg, rgba(112,78,62,.13), rgba(112,78,62,.03));
   font-size: .52rem;
 }
 .paper--telegram .phead::before{
@@ -392,10 +407,11 @@
     83% 0%, 100% 0.6%,
     99.6% 38%, 100% 71%, 100% calc(100% - 20px),
     calc(100% - var(--lift)) 100%,
-    71% 99.4%, 43% 100%, 17% 99.6%, 10px 99.5%,
-    4px 96%, 11px 90%, 6px 83%, 13px 79%, 3px 72%,
-    9px 64%, 15px 59%, 5px 51%, 10px 44%, 2px 38%,
-    12px 31%, 7px 24%, 14px 18%, 4px 11%, 9px 5%, 3px 0.6%,
+    71% 99.4%, 43% 100%, 17% 99.6%, 8px 99.5%,
+    3px 96%, 8px 92%, 4px 88%, 10px 85%, 2px 81%, 7px 76%,
+    3px 72%, 9px 68%, 5px 63%, 2px 59%, 8px 55%, 4px 50%,
+    10px 46%, 3px 42%, 6px 37%, 2px 33%, 9px 29%, 4px 25%,
+    7px 20%, 2px 16%, 8px 12%, 3px 8%, 6px 4%, 2px 0.6%,
     28% 0.4%, 56% 0%
   );
 }
@@ -552,9 +568,9 @@
    to answer, and it should feel like a relief to pick up. */
 
 .paper--note{
-  --sheet:  #f1e6c8;
-  --sheet2: #e2d3a8;
-  --sheet3: #fdf6e2;
+  --sheet:  #eee0bd;
+  --sheet2: #ddcb9c;
+  --sheet3: #faf1da;
   --ink:    #2c3352;                 /* private ink, and not the office's */
   --ink2:   #6b6146;
   --rule:   #c3ad81;
@@ -562,6 +578,7 @@
   --tilt:   2deg;
   --lift:   22px;
   --pin:    20px 14px;
+  --lamp:   80% 58% at 84% 0%;
   width: min(400px, 100%);
   min-height: 198px;
   padding: 26px 32px 34px;
@@ -604,7 +621,8 @@
    and a badge, and there are no badges in 1925. */
 
 .urgent, .secret{
-  position: absolute; right: 30px; top: 44px; z-index: 3;
+  position: absolute; z-index: 3;
+  inset: var(--stamp-1, 44px 30px auto auto);
   font-family: "Courier New", monospace;
   font-size: .58rem; font-weight: 700; letter-spacing: .18em;
   text-transform: uppercase;
@@ -642,35 +660,23 @@
 }
 /* when a sheet is both immediate and confidential, the second hand paid no
    attention whatever to where the first had stamped */
-.urgent ~ .secret{ top: 86px; right: 20px; }
+.urgent ~ .secret{ inset: var(--stamp-2, 86px 20px auto auto); }
 
 /* Where a stamp can land depends on what the form has already spoken for —
-   a docket box, a printed band, a fee stamp — so the placements live here,
-   after the rule above, rather than up in each form where the cascade would
-   quietly undo them. The prose steps down to match. */
-.paper--file .urgent,
-.paper--file .secret          { top: 96px;  right: 132px; }
-.paper--file .urgent ~ .secret{ top: 100px; right: 292px; }
-.paper--file .urgent ~ .pbody,
-.paper--file .secret ~ .pbody,
-.paper--file .urgent ~ .secret ~ .pbody{ padding-top: 76px; }
-
-.paper--telegram .urgent,
-.paper--telegram .secret          { top: 70px; }
-.paper--telegram .urgent ~ .secret{ top: 112px; right: 24px; }
-.paper--telegram .urgent ~ .pbody,
-.paper--telegram .secret ~ .pbody { padding-top: 34px; }
-
-.paper--report .urgent,
-.paper--report .secret{ right: 46px; }
-
-/* the petition's top right is the fee stamp's, so ink goes below it */
-.paper--petition .urgent,
-.paper--petition .secret          { top: 152px; right: 36px; }
-.paper--petition .urgent ~ .secret{ top: 194px; right: 48px; }
-.paper--petition .urgent ~ .pbody,
-.paper--petition .secret ~ .pbody,
-.paper--petition .urgent ~ .secret ~ .pbody{ padding-top: 0; }
+   a docket box, a printed band, a fee stamp — so each form states it, in
+   top/right/bottom/left order, and the prose steps down to match. */
+.paper--file    { --stamp-1: 96px 132px auto auto;
+                  --stamp-2: 100px 292px auto auto;
+                  --stamp-push: 76px; --stamp-push2: 76px; }
+.paper--telegram{ --stamp-1: 70px 30px auto auto;
+                  --stamp-2: 112px 24px auto auto;
+                  --stamp-push: 34px; --stamp-push2: 76px; }
+.paper--report  { --stamp-1: 44px 46px auto auto; }
+/* the petition's top right belongs to the fee stamp, so ink goes below it and
+   the prose, which is already inset for the stamp, does not move at all */
+.paper--petition{ --stamp-1: 152px 36px auto auto;
+                  --stamp-2: 194px 48px auto auto;
+                  --stamp-push: 0px; --stamp-push2: 0px; }
 
 
 /* ————————————————————————————————————————————— THE COURT-FEE STAMP —— */
@@ -781,18 +787,14 @@
   .paper--telegram .phead::after{ display: none; }
   .paper--order{ padding: 28px 26px 34px; }
   .paper--order .phead::after{ display: none; }   /* no room above the rule */
-  /* Narrow heads wrap, so a stamp pinned below them lands on the docket box.
-     Down at the foot there is always clear paper, and the prose makes room. */
-  .urgent, .secret{ top: auto; right: auto; bottom: 16px; left: 18px; }
-  .urgent ~ .secret{ bottom: 54px; left: 34px; }
-  .paper--file .urgent, .paper--file .secret,
-  .paper--report .urgent, .paper--report .secret,
-  .paper--petition .urgent, .paper--petition .secret,
-  .paper--telegram .urgent, .paper--telegram .secret{
-    top: auto; right: auto; bottom: 16px; left: 18px;
+  /* Narrow heads wrap, so a stamp pinned below one lands on the docket box.
+     Down at the foot there is always clear paper, whatever the head did. */
+  .paper{
+    --stamp-1: auto auto 16px 18px;
+    --stamp-2: auto auto 54px 34px;
+    --stamp-push: 0px;  --stamp-push2: 0px;
+    --stamp-foot: 40px; --stamp-foot2: 78px;
   }
-  .urgent ~ .pbody, .secret ~ .pbody{ padding-top: 0; padding-bottom: 40px; }
-  .urgent ~ .secret ~ .pbody{ padding-top: 0; padding-bottom: 78px; }
   /* the foot furniture would sit under the stamps, so it goes */
   .paper--file .pref::after,
   .paper--report .pref::after{ display: none; }
