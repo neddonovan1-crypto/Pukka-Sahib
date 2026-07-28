@@ -141,8 +141,13 @@ button:disabled{opacity:.34; cursor:default}
 .hung .dot{position:absolute; right:4px; top:4px; width:5px; height:5px;
   border-radius:50%; background:var(--seal)}
 .hung:hover{margin-left:calc(var(--drop) + 6px); transform:rotate(0deg)}
+ /* Taken down: the paper is on the blotter, so the tape shows the gap it left
+    — the tie still knotted, and nothing hanging on it but a name. */
 .hung.down{margin-left:calc(var(--drop) + 12px); transform:rotate(0deg);
-  box-shadow:0 12px 20px -8px rgba(0,0,0,.95), 0 0 0 1.5px var(--seal)}
+  background:rgba(30,22,12,.28); box-shadow:none;
+  border:1px dashed rgba(214,196,152,.5); border-right-width:1px}
+.hung.down .ttl{color:#d6c498; font-style:italic}
+.hung.down .tie{opacity:.6}
 .trayempty{font-family:"Courier New",monospace; font-size:.58rem; letter-spacing:.13em;
   text-transform:uppercase; color:#cbbb96; text-shadow:0 1px 4px rgba(0,0,0,.9);
   padding-top:14px}
@@ -174,7 +179,16 @@ button:disabled{opacity:.34; cursor:default}
   box-shadow:0 2px 5px -2px rgba(0,0,0,.8);
   animation:drop .3s ease}
 .osheet--telegram{background:var(--flimsy)} .osheet--petition{background:#e8dcc0}
-@keyframes drop{from{transform:translateY(-22px) rotate(6deg); opacity:0}}
+ /* Only the sheet that has just arrived is seen to arrive; the rest of the
+    pile is not re-dealt every time the desk repaints. */
+.osheet.fresh{animation:settle .34s cubic-bezier(.24,1.3,.4,1) both}
+@keyframes settle{
+  0%{transform:translateY(-26px) rotate(7deg) scale(1.07); opacity:.25}
+  100%{transform:rotate(calc((var(--i) - 4) * .5deg)); opacity:1}
+}
+ /* and the pile takes it — the stack gives, very slightly, under the weight */
+.opile.taking{animation:take .3s cubic-bezier(.3,0,.3,1); transform-origin:50% 100%}
+@keyframes take{34%{transform:translateY(1.5px) scaleY(.955)}}
 
 /* the paper in hand */
 .hand{position:absolute; inset:-46% -3% 26%;
@@ -193,6 +207,9 @@ button:disabled{opacity:.34; cursor:default}
   box-shadow:0 10px 22px -10px rgba(0,0,0,.9), 0 2px 3px rgba(0,0,0,.45);
   animation:land .34s cubic-bezier(.2,.9,.3,1);
 }
+ /* When the sheet's arrival or departure is being flown by motion.js, the CSS
+    land must stand down — two things cannot own one transform. */
+.hand .paper.flown{animation:none!important}
 @keyframes land{from{opacity:0; transform:translateY(-14px) rotate(1.4deg)} to{opacity:1; transform:rotate(-.4deg)}}
 .hand .paper--telegram{background-color:var(--flimsy)}
 .hand .paper--petition{background-color:#e8dcc0}
@@ -288,26 +305,43 @@ button:disabled{opacity:.34; cursor:default}
 @keyframes flicker{0%{opacity:.55} 40%{opacity:.9} 60%{opacity:.7} 100%{opacity:1}}
 @media (prefers-reduced-motion:reduce){ .weather i{animation:none!important} }
 
-/* the mark the die leaves */
+/* the mark the die leaves.
+   It is appended at the instant of contact, not before, so it has no travel of
+   its own — only the bloom of ink spreading out from under the rubber. */
 .struckmark{
-  position:absolute; left:50%; top:52%; transform:translate(-50%,-50%) rotate(var(--turn)) scale(2.4);
+  position:absolute; left:50%; top:52%; transform:translate(-50%,-50%) rotate(var(--turn)) scale(1);
   font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:700;
-  font-size:1.05rem; letter-spacing:.16em; text-transform:uppercase;
-  color:rgba(143,47,34,.9); border:2.6px solid rgba(143,47,34,.85);
-  padding:5px 12px; opacity:0; pointer-events:none;
-  animation:strike .42s cubic-bezier(.25,1.6,.4,1) forwards;
+  font-size:.84rem; letter-spacing:.11em; text-transform:uppercase;
+  color:rgba(143,47,34,.9); border:2.4px solid rgba(143,47,34,.85);
+  padding:4px 9px; opacity:0; pointer-events:none;
+  animation:strike .2s cubic-bezier(.2,.9,.3,1) forwards;
 }
 @keyframes strike{
-  0%{opacity:0; transform:translate(-50%,-50%) rotate(var(--turn)) scale(2.4)}
-  55%{opacity:1; transform:translate(-50%,-50%) rotate(var(--turn)) scale(.98)}
+  0%{opacity:.15; transform:translate(-50%,-50%) rotate(var(--turn)) scale(1.14)}
+  40%{opacity:1; transform:translate(-50%,-50%) rotate(var(--turn)) scale(.995)}
   100%{opacity:.88; transform:translate(-50%,-50%) rotate(var(--turn)) scale(1)}
 }
-.paper.struck{animation:jolt .18s ease}
-@keyframes jolt{40%{transform:rotate(-.4deg) translateY(3px) scale(.995)}}
-.paper.dispatch{animation:toTray .26s ease forwards}
-@keyframes toTray{to{opacity:0; transform:translate(38%, 26%) rotate(5deg) scale(.72)}}
+
+/* ——— things in transit ————————————————————————————————————————————
+   A copy of the object, laid over the room and flown by motion.js, so the
+   room underneath can be repainted mid-journey without the player seeing a
+   cut. The copy never takes a click and never outlives its flight. */
+.flier{position:fixed; z-index:20; pointer-events:none; will-change:transform,opacity}
+.flier > *{margin:0!important; transform:none!important; width:100%!important;
+  transition:none!important; animation:none!important; box-shadow:none}
+.flier.tab > *{box-shadow:0 14px 24px -10px rgba(0,0,0,.95)}
+.flier.sheet > *{box-shadow:0 16px 30px -12px rgba(0,0,0,.95)}
+.flier.die{transform-origin:50% 94%}
+.flier.die > *{filter:none}
+/* the pad, if the art for it exists at all */
+.inkpad{position:absolute; z-index:1; display:block; pointer-events:none;
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))}
+
 @media (prefers-reduced-motion:reduce){
-  .struckmark,.paper.struck,.paper.dispatch{animation:none; opacity:1}
+  /* the whole choreography is skipped; only the end state arrives */
+  .struckmark{animation:none; opacity:.88;
+    transform:translate(-50%,-50%) rotate(var(--turn)) scale(1)}
+  .hand .paper,.osheet.fresh,.opile.taking{animation:none}
 }
 
 /* the paper in hand */
@@ -349,6 +383,7 @@ button:disabled{opacity:.34; cursor:default}
 .stamp{
   position:relative; width:96px; padding:0 0 16px; background:none; border:0;
   filter:drop-shadow(0 8px 10px rgba(0,0,0,.75));
+  transform:rotate(var(--lean,0deg));
   transition:transform .12s cubic-bezier(.3,1.4,.5,1);
 }
 .stamp svg{width:100%; height:auto; display:block}
@@ -357,9 +392,10 @@ button:disabled{opacity:.34; cursor:default}
   font-family:"Courier New",monospace; font-size:.5rem; letter-spacing:.1em;
   color:#e2d3ae; text-shadow:0 1px 3px rgba(0,0,0,.95); text-align:center;
 }
-.stamp:nth-child(2){transform:rotate(-2deg)} .stamp:nth-child(4){transform:rotate(1.6deg)}
-.stamp:not(:disabled):hover{transform:translateY(-7px) rotate(0deg)}
-.stamp:not(:disabled):active{transform:translateY(3px) scale(.96)}
+ /* Hovering brings a die half upright in its rack; the flight out starts from
+    whatever lean it is standing at, so the lean is never thrown away. */
+.stamp:not(:disabled):hover{transform:translateY(-7px) rotate(calc(var(--lean,0deg) * .35))}
+.stamp:not(:disabled):active{transform:translateY(3px) scale(.96) rotate(var(--lean,0deg))}
 .stamp--act .band{color:#243a5c}
 .stamp--close .band{color:#5f5540}
 .rack{align-items:flex-end}
@@ -502,6 +538,7 @@ button:disabled{opacity:.34; cursor:default}
 <script src="content.js"></script>
 <script src="mapdraw.js"></script>
 <script src="furniture.js"></script>
+<script src="motion.js"></script>
 <script src="desk.js"></script>
 </body>
 </html>

@@ -49,42 +49,63 @@ function applyDeltas(d) {
 
 /* ——— disposal ————————————————————————————————————————————————————— */
 
-// Pressing a stamp is the act, so it has to land: the die comes down, the sheet
-// takes the impression, and only then does it go to the tray.
-function dispose(id, stampId, cost, label) {
+// Pressing a stamp is the act, so it has to land: the die comes out of the
+// rack, comes down, the sheet takes the impression, and only then does it go
+// to the tray. S.stamping holds the whole act — nothing else on the desk may
+// be touched until the die is back in its place.
+function dispose(id, stampId, cost, label, btn) {
+  if (S.stamping) return;
   var d = doc(id), out = d.outcomes[stampId];
-  var sheet = document.querySelector("#hand .paper");
-  if (sheet && label && !S.stamping) {
-    S.stamping = true;
-    var mark = el("span", "struckmark", label);
-    mark.style.setProperty("--turn", (((id.length * 7) % 9) - 4) + "deg");
-    sheet.appendChild(mark);
-    sheet.classList.add("struck");
-    setTimeout(function () {
-      sheet.classList.add("dispatch");
-      setTimeout(function () { S.stamping = false; finish(); }, 260);
-    }, 420);
-  } else { finish(); }
 
   function finish() {
+    S.stamping = false;
     spend(cost);
     applyDeltas(out.d);
     S.done.push({ id: id, stamp: stampId, line: out.line, form: d.form, from: d.from });
     S.inTray = S.inTray.filter(function (x) { return x !== id; });
     S.held = null;
+    fresh = true;
     paint();
   }
+
+  var sheet = document.querySelector("#hand .paper");
+  if (!sheet || !label || !btn) { finish(); return; }
+  S.stamping = true;
+  window.MOTION.strike({
+    sheet: sheet,
+    die: btn,
+    pile: document.querySelector(".opile"),
+    pad: document.getElementById("inkpad"),
+    label: label,
+    turn: (((id.length * 7) % 9) - 4) + "deg"
+  }, finish);
 }
 
 function closeFile(id) {
+  if (S.stamping) return;
   var d = doc(id);
-  spend(1);
-  applyDeltas({ contentment: -3 });
-  S.done.push({ id: id, stamp: "closed", line: "Closed unread. Whatever it was, it is now settled.", form: d.form, from: d.from });
-  S.inTray = S.inTray.filter(function (x) { return x !== id; });
-  S.held = null;
-  paint();
+
+  function finish() {
+    S.stamping = false;
+    spend(1);
+    applyDeltas({ contentment: -3 });
+    S.done.push({ id: id, stamp: "closed", line: "Closed unread. Whatever it was, it is now settled.", form: d.form, from: d.from });
+    S.inTray = S.inTray.filter(function (x) { return x !== id; });
+    S.held = null;
+    fresh = true;
+    paint();
+  }
+
+  // unread, but it still has to travel: it goes to the same tray
+  var sheet = document.querySelector("#hand .paper");
+  if (!sheet) { finish(); return; }
+  S.stamping = true;
+  window.MOTION.toTray(sheet, document.querySelector(".opile"), finish);
 }
+
+// The sheet that has just landed in the tray, so the pile can be seen to take
+// it rather than simply have it. Consumed by the next paint.
+var fresh = false;
 
 // Delegation costs no days at all. What it costs instead is control: the man
 // you hand it to decides what comes back, and his standing decides how much of
@@ -211,6 +232,7 @@ function paintDesk() {
       '<div class="onblotter" style="' + box(SC.blotter) + '"><div class="hand" id="hand"></div></div>' +
       '<div class="onrack' + (S.held ? " up" : "") + '" style="' + box(SC.rack || SC.blotter) + '">' +
         '<div class="rack" id="rack"></div></div>' +
+      window.MOTION.padArt(SC.rack) +
     '</div>' +
     '<div class="deskrail">' +
       '<div class="whoami"><b>' + F.station + '</b><span>' + F.rank + '</span>' +
@@ -238,10 +260,17 @@ function paintDesk() {
     t.style.setProperty("--drop", (6 + ((i * 53) % 5) * 3) + "px");
     var age = d.age || 0;                      // fortnights it has hung there
     if (age) t.classList.add("aged", "aged--" + Math.min(3, age));
+    t.setAttribute("data-id", id);
     t.innerHTML = '<i class="tie"></i><span class="ttl">' + d.from + '</span>' +
       (d.urgent ? '<i class="dot" title="Immediate"></i>' : "") +
       (age ? '<i class="age">' + age + '</i>' : "");
-    t.onclick = function () { S.held = (S.held === id ? null : id); paint(); };
+    // Taking one down and putting it back are the same journey either way, so
+    // both are FLIPped: measure here, repaint, measure there, fly between.
+    t.onclick = function () {
+      if (S.stamping) return;
+      if (S.held === id) putBack(id);
+      else takeDown(id, t);
+    };
     hang.appendChild(t);
   });
   if (!S.inTray.length) hang.appendChild(el("div", "trayempty", "The tape is empty."));
@@ -249,23 +278,26 @@ function paintDesk() {
   var acts = el("div", "trayacts");
   var delg = el("button", "delegate", "Delegate a stack");
   delg.disabled = !S.inTray.length;
-  delg.onclick = function () { S.delegating = true; paint(); };
+  delg.onclick = function () { if (S.stamping) return; S.delegating = true; paint(); };
   acts.appendChild(delg);
   var fin = el("button", "endfn", S.days > 0 ? "Close the fortnight" : "The fortnight is out");
-  fin.onclick = endFortnight;
+  fin.onclick = function () { if (!S.stamping) endFortnight(); };
   acts.appendChild(fin);
   $("#tapewrap").appendChild(acts);
 
   // the out-tray, filling
   var out = $("#outtray");
   out.innerHTML = '<span class="olbl">Out-tray</span>';
-  var pileEl = el("div", "opile");
-  S.done.slice(-9).forEach(function (e, i) {
-    var sh = el("div", "osheet osheet--" + e.form);
+  var pileEl = el("div", "opile" + (fresh ? " taking" : ""));
+  var shown = S.done.slice(-9);
+  shown.forEach(function (e, i) {
+    var sh = el("div", "osheet osheet--" + e.form +
+      (fresh && i === shown.length - 1 ? " fresh" : ""));
     sh.style.setProperty("--i", i);
     sh.title = e.from + " — " + e.stamp;
     pileEl.appendChild(sh);
   });
+  fresh = false;         // only the sheet that just arrived is seen to arrive
   out.appendChild(pileEl);
   out.appendChild(el("span", "ocount", S.done.length ? S.done.length + " dispatched" : "empty"));
 
@@ -286,10 +318,15 @@ function paintDesk() {
       b.onmouseleave = b.onblur = function () { showGloss(null); };
     }
     var colour = cls === "stamp--act" ? "#2a3550" : cls === "stamp--close" ? "#5f5540" : "#8f2f22";
+    // Dies stand in a rack, so they lean; the lean is declared rather than
+    // inferred, because the flight out of the rack has to start from it.
+    var lean = (rack.children.length % 2 ? 3.2 : -3.6);
+    b.setAttribute("data-lean", lean);
+    b.style.setProperty("--lean", lean + "deg");
     b.innerHTML = window.FURNITURE.stamp({ w: 92, label: label, colour: colour }) +
       '<em>' + days + 'd</em>';
     b.disabled = S.days < days || off;
-    b.onclick = fn;
+    b.onclick = function () { fn(b); };
     rack.appendChild(b);
   }
   function showGloss(label, means, days) {
@@ -302,7 +339,7 @@ function paintDesk() {
   }
   F.stamps.forEach(function (st) {
     if (!d.outcomes[st.id]) return;
-    stampBtn(st.label, st.days, "", function () { dispose(d.id, st.id, st.days, st.label); }, st.means);
+    stampBtn(st.label, st.days, "", function (b) { dispose(d.id, st.id, st.days, st.label, b); }, st.means);
   });
   ["ride", "hear"].forEach(function (k) {
     if (!d[k]) return;
@@ -310,16 +347,39 @@ function paintDesk() {
     var means = k === "ride"
       ? (spent ? F.rideNote + " You have already been out." : "You go and see for yourself. " + F.rideNote)
       : "You hear it yourself, and the parties know you did.";
-    stampBtn(d[k].label, d[k].days, "stamp--act", function () {
+    stampBtn(d[k].label, d[k].days, "stamp--act", function (b) {
       if (k === "ride") S.rodeOut = true;
-      dispose(d.id, k, d[k].days, d[k].label);
+      dispose(d.id, k, d[k].days, d[k].label, b);
     }, means, spent);
   });
   stampBtn("Close unread", 1, "stamp--close", function () { closeFile(d.id); },
     "Binned without being read. A known small loss instead of an unknown larger one.");
   var back = el("button", "putback", "Put it back on the tape");
-  back.onclick = function () { S.held = null; paint(); };
+  back.onclick = function () { if (!S.stamping) putBack(d.id); };
   rack.appendChild(back);
+}
+
+/* ——— the two journeys of a sheet ————————————————————————————————————
+   The state change and paint() are handed to MOTION as a callback so the
+   repaint still happens exactly where it always did — between the two
+   measurements — and paint() remains the only thing that renders. */
+
+function takeDown(id, hungEl) {
+  window.MOTION.toBlotter(hungEl, function () {
+    S.held = id;
+    paint();
+    return document.querySelector("#hand .paper");
+  });
+}
+
+function putBack(id) {
+  var sheet = document.querySelector("#hand .paper");
+  if (!sheet) { S.held = null; paint(); return; }
+  window.MOTION.toTape(sheet, function () {
+    S.held = null;
+    paint();
+    return document.querySelector('.hung[data-id="' + id + '"]');
+  });
 }
 
 function paintDelegating() {
@@ -446,7 +506,10 @@ function paint() {
   else if (S.scene === "road-diary") paintDiary();
   else paintReckoning();
   var b = document.getElementById("toRoad");
-  if (b) b.onclick = function () { S.scene = "road"; paint(); };
+  if (b) b.onclick = function () { if (S.stamping) return; S.scene = "road"; paint(); };
 }
+
+// The pad arrives after the first paint, if it arrives at all.
+window.MOTION.padReady(function () { if (S.scene === "desk" && !S.stamping) paint(); });
 
 paint();
