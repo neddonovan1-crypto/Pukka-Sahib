@@ -9,3 +9,5 @@ art/*-src.*
 # secrets never belong in the repo
 .env
 .env.*
+
+proto/desk/*.png
