@@ -49,6 +49,10 @@ function applyDeltas(d) {
 
 /* ——— disposal ————————————————————————————————————————————————————— */
 
+// Set when a sheet has just landed in the out-tray, so the pile can be seen to
+// take it rather than simply have it. Consumed by the next paint.
+var fresh = false;
+
 // Pressing a stamp is the act, so it has to land: the die comes out of the
 // rack, comes down, the sheet takes the impression, and only then does it go
 // to the tray. S.stamping holds the whole act — nothing else on the desk may
@@ -102,10 +106,6 @@ function closeFile(id) {
   S.stamping = true;
   window.MOTION.toTray(sheet, document.querySelector(".opile"), finish);
 }
-
-// The sheet that has just landed in the tray, so the pile can be seen to take
-// it rather than simply have it. Consumed by the next paint.
-var fresh = false;
 
 // Delegation costs no days at all. What it costs instead is control: the man
 // you hand it to decides what comes back, and his standing decides how much of
@@ -232,6 +232,8 @@ function paintDesk() {
       '<div class="onblotter" style="' + box(SC.blotter) + '"><div class="hand" id="hand"></div></div>' +
       '<div class="onrack' + (S.held ? " up" : "") + '" style="' + box(SC.rack || SC.blotter) + '">' +
         '<div class="rack" id="rack"></div></div>' +
+      '<div class="ontray" style="' + box(SC.tray || SC.rack || SC.blotter) + '">' +
+        '<div class="outtray" id="outtray"></div></div>' +
       window.MOTION.padArt(SC.rack) +
     '</div>' +
     '<div class="deskrail">' +
@@ -246,7 +248,7 @@ function paintDesk() {
     '<div class="deskmain">' +
       '<div class="tapewrap" id="tapewrap"><div class="tape"></div>' +
         '<div class="hangers" id="hangers"></div></div>' +
-      '<div class="outtray" id="outtray"></div>' +
+
       '<div class="gloss" id="gloss"></div>' +
     '</div>';
 
@@ -311,7 +313,7 @@ function paintDesk() {
   hand.appendChild(docCard(d, true));
 
   // the rack: stamps, plus the acts this particular paper allows
-  function stampBtn(label, days, cls, fn, means, off) {
+  function stampBtn(label, days, cls, fn, means, off, die) {
     var b = el("button", "stamp " + (cls || "") + (off ? " spent" : ""));
     if (means) {
       b.onmouseenter = b.onfocus = function () { showGloss(label, means, days); };
@@ -353,7 +355,8 @@ function paintDesk() {
     }, means, spent);
   });
   stampBtn("Close unread", 1, "stamp--close", function () { closeFile(d.id); },
-    "Binned without being read. A known small loss instead of an unknown larger one.");
+    "Binned without being read. A known small loss instead of an unknown larger one.",
+    false, "Closed");
   var back = el("button", "putback", "Put it back on the tape");
   back.onclick = function () { if (!S.stamping) putBack(d.id); };
   rack.appendChild(back);

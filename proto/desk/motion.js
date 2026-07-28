@@ -14,13 +14,12 @@
 "use strict";
 window.MOTION = (function () {
 
-  /* The pad is art that has not been drawn yet. A file:// page cannot be asked
-     whether a plate exists without logging a failed request, so the plate is
-     named here and only fetched once it is actually on disk — put the path
-     back the day obj-inkpad.png lands, and everything below wakes up. The load
-     is still verified: a named but missing plate disables the pad and the
+  /* The pad is optional art. A file:// page cannot be asked whether a plate
+     exists without logging a failed request, so the plate is named here rather
+     than guessed at — blank the path if it is ever withdrawn. The load is
+     verified either way: a named but missing plate disables the pad, and the
      detour with it, in silence. */
-  var PAD_SRC = window.DESK_INKPAD || "";   /* "../../art/web/obj-inkpad.png" */
+  var PAD_SRC = window.DESK_INKPAD || "../../art/web/obj-inkpad.png";
   var padOk = false, padWait = null;
   if (PAD_SRC) {
     var im = new Image();
@@ -31,7 +30,8 @@ window.MOTION = (function () {
     im.onerror = function () { padOk = false; };
     im.src = PAD_SRC;
   }
-  function padReady(cb) { padWait = cb; }
+  // called back once the plate is on screen-ready, or at once if it already is
+  function padReady(cb) { padWait = cb; if (padOk) cb(); }
 
   var mq = window.matchMedia
     ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
@@ -172,8 +172,9 @@ window.MOTION = (function () {
 
   /* ——— the sheet leaving for the out-tray ————————————————————————— */
   function toTray(paper, pile, done) {
-    var from = rect(paper), to = rect(pile);
-    if (reduced() || !from || !from.width) { done(); return; }
+    var from = rect(paper), to = rect(pile), fired = false;
+    function once() { if (!fired) { fired = true; done(); } }
+    if (reduced() || !from || !from.width) { once(); return; }
     var dx, dy, s;
     if (to && to.width) {
       dx = (to.left + to.width / 2) - (from.left + from.width / 2);
@@ -193,8 +194,8 @@ window.MOTION = (function () {
       { offset: 1, opacity: 0,
         transform: "translate(" + dx + "px," + dy + "px) rotate(-3.4deg) scale(" + s + ")" }
     ], { duration: 330, fill: "forwards" });
-    a.onfinish = done;
-    a.oncancel = done;
+    a.onfinish = once;
+    a.oncancel = once;
   }
 
   var strikes = 0;
@@ -223,7 +224,7 @@ window.MOTION = (function () {
        foot of the drawing, and it is the face — not the box — that must land
        on the paper and stay put under rotation and scale. */
     var dr = rect(die);
-    var art = die.querySelector("svg");
+    var art = die.querySelector("svg, img");
     var ar = art ? rect(art) : dr;
     var fx = ar.left + ar.width / 2 - dr.left;
     var fy = ar.top + ar.height * .94 - dr.top;
@@ -259,7 +260,9 @@ window.MOTION = (function () {
     k.push([0, T(rest.x, rest.y, lean, 1), sh(3, 4, .55), LIFT]);
     k.push([150, T(rest.x, rest.y - 44, lean * .2, UP), sh(19, 14, .45), CARRY]);
     if (charge) {
-      var px = padr.left + padr.width * .5, py = padr.top + padr.height * .46;
+      // the ink itself, not the middle of the plate: the case is open and its
+      // lid stands up behind, so the wet surface is low in the picture
+      var px = padr.left + padr.width * .52, py = padr.top + padr.height * .72;
       k.push([275, T(px, py - 40, -2, 2.3), sh(22, 16, .4), FALL]);
       k.push([330, T(px, py, 0, 2.3), sh(5, 6, .6), STOP]);
       k.push([356, T(px, py + 3, 0, 2.3, 2.24), sh(4, 5, .62), AWAY]);
@@ -326,8 +329,8 @@ window.MOTION = (function () {
   function padArt(r) {
     if (!padOk || !r) return "";
     return '<img id="inkpad" class="inkpad" src="' + PAD_SRC + '" alt="" style="' +
-      'left:' + ((r.x + r.w * 0.45) * 100) + '%; top:' + ((r.y + r.h + 0.05) * 100) + '%; ' +
-      'width:' + (0.085 * 100) + '%">';
+      'left:' + ((r.x + r.w * 0.47) * 100) + '%; top:' + ((r.y + r.h + 0.028) * 100) + '%; ' +
+      'width:' + (0.075 * 100) + '%">';
   }
 
   return {

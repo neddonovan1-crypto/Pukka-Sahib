@@ -41,7 +41,7 @@ button:disabled{opacity:.34; cursor:default}
 .room{position:relative; width:100%; max-width:calc(100vh * 16 / 9);
   aspect-ratio:16/9; box-shadow:0 0 90px rgba(0,0,0,.75)}
 .roomart{position:absolute; inset:0; width:100%; height:100%; display:block}
-.onwall,.onblotter,.onrack{position:absolute}
+.onwall,.onblotter,.onrack,.ontray{position:absolute}
 .onwall{overflow:hidden}
 .wallmap{position:absolute; left:8%; top:9%; width:84%; height:82%; display:block;
   object-fit:cover; object-position:50% 50%; mix-blend-mode:multiply;
@@ -168,12 +168,14 @@ button:disabled{opacity:.34; cursor:default}
 .putback{align-self:center; border-color:rgba(201,180,130,.3)}
 
 /* ——— the out-tray, filling ——— */
-.outtray{position:absolute; right:16px; bottom:14px; width:150px; text-align:center}
-.olbl,.ocount{display:block; font-family:"Courier New",monospace; font-size:.5rem;
-  letter-spacing:.14em; text-transform:uppercase; color:#d8c8a2;
-  text-shadow:0 1px 4px rgba(0,0,0,.95)}
-.opile{position:relative; height:52px; margin:5px 0 3px}
-.osheet{position:absolute; left:8%; right:8%; height:9px; bottom:calc(var(--i) * 5px);
+.ontray{display:flex; align-items:flex-end; justify-content:center; pointer-events:none}
+.outtray{width:100%; text-align:center; padding-bottom:6%}
+.olbl{display:none}
+.ocount{display:block; font-family:"Courier New",monospace; font-size:.44rem;
+  letter-spacing:.13em; text-transform:uppercase; color:#6a5c40;
+  text-shadow:0 1px 2px rgba(255,246,222,.5)}
+.opile{position:relative; height:34px; margin:2px 0}
+.osheet{position:absolute; left:10%; right:10%; height:6px; bottom:calc(var(--i) * 3.2px);
   background:var(--paper); border-bottom:1px solid rgba(92,80,58,.5);
   transform:rotate(calc((var(--i) - 4) * .5deg));
   box-shadow:0 2px 5px -2px rgba(0,0,0,.8);
@@ -244,7 +246,7 @@ button:disabled{opacity:.34; cursor:default}
   transform:translateY(34%) scale(.7); opacity:0; transform-origin:50% 100%;
   transition:transform .3s cubic-bezier(.3,1.25,.5,1), opacity .2s}
 .onrack.up .rack{transform:none; opacity:1}
-.rack .stamp{width:54px; margin:0 -7px}
+.rack .stamp{width:46px; margin:0 1px}
 .rack .stamp:hover{z-index:4}
 .putback{position:absolute; left:50%; bottom:-30px; transform:translateX(-50%); white-space:nowrap}
 @media (prefers-reduced-motion:reduce){ .rack{transition:none} }
@@ -386,7 +388,15 @@ button:disabled{opacity:.34; cursor:default}
   transform:rotate(var(--lean,0deg));
   transition:transform .12s cubic-bezier(.3,1.4,.5,1);
 }
-.stamp svg{width:100%; height:auto; display:block}
+.stamp img{width:100%; height:auto; display:block}
+ /* the label set into the blank band the painter left on the shaft */
+.stamp .band{
+  position:absolute; left:6%; right:6%; top:40.5%; height:12%;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:600;
+  font-size:.3rem; letter-spacing:.02em; text-transform:uppercase;
+  line-height:1.05; pointer-events:none; overflow:hidden;
+}
 .stamp em{
   position:absolute; left:0; right:0; bottom:0; font-style:normal;
   font-family:"Courier New",monospace; font-size:.5rem; letter-spacing:.1em;

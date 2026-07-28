@@ -18,7 +18,13 @@ window.SCENES = {
       "w": 0.31,
       "h": 0.175
     },
-    "measured": true
+    "measured": true,
+    "tray": {
+      "x": 0.79,
+      "y": 0.7,
+      "w": 0.185,
+      "h": 0.15
+    }
   },
   "desk-monsoon": {
     "blotter": {
@@ -39,7 +45,13 @@ window.SCENES = {
       "w": 0.3,
       "h": 0.17
     },
-    "measured": true
+    "measured": true,
+    "tray": {
+      "x": 0.815,
+      "y": 0.69,
+      "w": 0.17,
+      "h": 0.145
+    }
   },
   "desk-hot": {
     "blotter": {

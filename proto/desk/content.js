@@ -28,13 +28,13 @@ window.FORTNIGHT = {
 
   // The rack. Four at this rank; a promotion adds to it.
   stamps: [
-    { id: "sanction", label: "Sanctioned", days: 1,
+    { id: "sanction", label: "Sanctioned", die: "Sanctioned", days: 1,
       means: "You approve it and it is done, on your authority and at your cost." },
-    { id: "refer",    label: "Referred",   days: 1,
+    { id: "refer",    label: "Referred",   die: "Referred", days: 1,
       means: "It goes to someone above or beside you. Off your desk, and out of your hands." },
-    { id: "none",     label: "No action",  days: 1,
+    { id: "none",     label: "No action",  die: "No action", days: 1,
       means: "Filed as it stands. Nothing follows — which is sometimes right." },
-    { id: "report",   label: "Called for report", days: 1,
+    { id: "report",   label: "Called for report", die: "Report", days: 1,
       means: "You ask to be told more. It costs you the wait, and the answer may not come." }
   ],
   // Riding out is not a stamp. There are fourteen days and one of you.
@@ -55,7 +55,7 @@ window.FORTNIGHT = {
       id: "wire-riot", form: "telegram", urgent: true,
       from: "Supdt. Police, Bhagalpur", ref: "Hd. 41",
       body: "RIOT BHAGALPUR BAZAAR 14TH NIGHT STOP TWO DEAD STOP POLICE FIRED STOP REPORT BY RETURN STOP COMMISSIONER REQUIRES EXPLANATION",
-      ride: { label: "Ride to Bhagalpur", days: 4 },
+      ride: { label: "Ride to Bhagalpur", die: "Ride out", days: 4 },
       outcomes: {
         sanction: { line: "You endorse the Superintendent's account and forward it.", d: { order: 4, prestige: -3, contentment: -6 } },
         refer:    { line: "Passed to the Commissioner. It is now his difficulty, and his opinion of you.", d: { prestige: -5, order: 2 } },
@@ -68,7 +68,7 @@ window.FORTNIGHT = {
       id: "file-revenue", form: "file", stampFee: null,
       from: "Tahsildar, Marwa", ref: "File 112–C · Kharif settlement",
       body: "Collections at 61 per cent. Attributes the shortfall to the late rains and recommends no remission. The village of Marwa is not mentioned.",
-      ride: { label: "Ride to Marwa", days: 4 },
+      ride: { label: "Ride to Marwa", die: "Ride out", days: 4 },
       outcomes: {
         sanction: { line: "The return goes up as it stands. Simla is content.", d: { revenue: 6, contentment: -7 } },
         refer:    { line: "Sent to the Collector's office for scrutiny. It will sit there.", d: { revenue: 1 } },
@@ -114,7 +114,7 @@ window.FORTNIGHT = {
       id: "file-boundary", form: "file",
       from: "Kanungo, Kotra", ref: "File 88–B · Boundary",
       body: "Two brothers at Kotra dispute a field boundary of one-third of an acre. The papers run to forty pages. Both have been to the tehsil eleven times.",
-      hear: { label: "Hear them yourself", days: 2 },
+      hear: { label: "Hear them yourself", die: "Hearing", days: 2 },
       outcomes: {
         sanction: { line: "You confirm the elder's claim. The younger will appeal.", d: { order: 1, contentment: -2 } },
         refer:    { line: "Referred to the civil court, where it will outlive all three of you.", d: { contentment: -1 } },
