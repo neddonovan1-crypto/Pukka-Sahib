@@ -57,11 +57,14 @@ button:disabled{opacity:.34; cursor:default}
 @keyframes punkah{ from{transform:translateX(-4%)} to{transform:translateX(4%)} }
 @media (prefers-reduced-motion:reduce){ .scene-desk::after{animation:none} }
 
+ /* The room is a painting; the chrome must not bury it. Only the date and the
+    days stay on screen — the ledger is Simla's opinion and arrives by post. */
 .deskrail{
-  position:absolute; left:0; top:0; bottom:0; width:218px; z-index:3;
-  padding:14px 12px; display:flex; flex-direction:column; gap:12px; overflow:hidden;
-  background:linear-gradient(90deg, rgba(14,10,6,.82), rgba(14,10,6,.55) 78%, transparent);
+  position:absolute; left:0; top:0; z-index:3; width:186px;
+  padding:12px 14px 16px; display:flex; flex-direction:column; gap:10px;
+  background:radial-gradient(120% 100% at 0% 0%, rgba(12,8,4,.8), rgba(12,8,4,0) 78%);
 }
+.ledger{display:none}
 .whoami{color:#efe1bd; text-shadow:0 1px 3px rgba(0,0,0,.9)}
 .whoami b{display:block; font-size:1.08rem}
 .whoami span{display:block; font-family:"Courier New",monospace; font-size:.53rem;
@@ -89,9 +92,7 @@ button:disabled{opacity:.34; cursor:default}
 .mapbtn{
   margin-top:auto;
 }
-.seasonnote{margin-top:auto; font-family:"Courier New",monospace; font-size:.55rem;
-  letter-spacing:.1em; text-transform:uppercase; color:#c9b98f; line-height:1.7;
-  border-top:1px solid rgba(201,180,130,.25); padding-top:9px}
+.seasonnote{display:none}
 .mapbtn canvas{width:100%; height:auto; display:block; margin:4px 0 2px}
 .mlbl{font-family:"Courier New",monospace; font-size:.56rem; letter-spacing:.15em;
   text-transform:uppercase; color:#5f5540}
@@ -101,44 +102,63 @@ button:disabled{opacity:.34; cursor:default}
 .deskmain{position:absolute; inset:0; z-index:2; pointer-events:none}
 .deskmain > *{pointer-events:auto}
 
-/* the in-tray: papers waiting, over the wire tray at the back of the desk */
-.intray{position:absolute; left:236px; right:18px; top:12px; display:flex;
-  align-items:center; gap:9px; flex-wrap:wrap}
-.traylbl{font-family:"Courier New",monospace; font-size:.53rem; letter-spacing:.14em;
-  text-transform:uppercase; color:#e2d3ae; text-shadow:0 1px 3px rgba(0,0,0,.95)}
-.stack{display:flex; flex:1 1 auto; flex-wrap:wrap; padding-left:6px}
-.edge{
-  border:1px solid rgba(92,80,58,.6); border-bottom-width:3px; background:var(--paper);
-  padding:4px 9px; font-size:.68rem; color:var(--soft); max-width:142px;
-  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; position:relative;
-  box-shadow:-3px 4px 9px -4px rgba(0,0,0,.95); margin-left:-6px;
+/* ——— the tape ————————————————————————————————————————————————————
+   The fortnight strung across the top, the way a file was actually strung.
+   Titles readable without opening anything; what is left is still hanging
+   there when the fortnight closes. */
+.tapewrap{position:absolute; left:0; right:0; top:0; padding:0 18px}
+.tape{position:absolute; left:0; right:0; top:26px; height:5px;
+  background:linear-gradient(#a8332a, #7d211a 60%, #5d1712);
+  box-shadow:0 2px 5px rgba(0,0,0,.6)}
+.hangers{position:relative; display:flex; gap:6px; justify-content:center;
+  flex-wrap:wrap; padding-top:26px}
+.hung{
+  position:relative; margin-top:var(--drop); transform:rotate(var(--lean));
+  transform-origin:50% -14px; background:var(--paper); border:0;
+  border-bottom:2px solid rgba(92,80,58,.55);
+  padding:7px 11px 6px; max-width:154px; overflow:hidden;
+  box-shadow:0 8px 16px -8px rgba(0,0,0,.9);
+  transition:transform .16s cubic-bezier(.3,1.3,.5,1), margin-top .16s;
 }
-.edge:hover{z-index:5; margin-right:6px; transform:translateY(-2px)}
-.edge--telegram{background:var(--flimsy)} .edge--petition{background:#e8dcc0}
-.edge.picked{border-color:var(--seal); color:var(--ink); transform:translateY(-4px)!important}
-.edge .dot{position:absolute; right:3px; top:3px; width:5px; height:5px; border-radius:50%; background:var(--seal)}
+.hung .tie{position:absolute; left:50%; top:calc(-1 * var(--drop) - 4px);
+  width:2px; height:calc(var(--drop) + 6px); margin-left:-1px;
+  background:linear-gradient(#8d2a22, #b03a2c)}
+.hung .ttl{display:block; font-size:.68rem; color:var(--soft);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.hung--telegram{background:var(--flimsy)} .hung--petition{background:#e8dcc0}
+.hung .dot{position:absolute; right:4px; top:4px; width:5px; height:5px;
+  border-radius:50%; background:var(--seal)}
+.hung:hover{margin-top:calc(var(--drop) + 5px); transform:rotate(0deg)}
+.hung.down{margin-top:calc(var(--drop) + 9px); transform:rotate(0deg);
+  box-shadow:0 12px 20px -8px rgba(0,0,0,.95), 0 0 0 1.5px var(--seal)}
 .trayempty{font-family:"Courier New",monospace; font-size:.58rem; letter-spacing:.13em;
-  text-transform:uppercase; color:#c6b795; text-shadow:0 1px 3px rgba(0,0,0,.9)}
-.delegate,.endfn{
+  text-transform:uppercase; color:#cbbb96; text-shadow:0 1px 4px rgba(0,0,0,.9);
+  padding-top:14px}
+.trayacts{display:flex; gap:8px; justify-content:center; margin-top:12px}
+.delegate,.endfn,.putback{
   font-family:"Courier New",monospace; font-size:.54rem; letter-spacing:.12em;
-  text-transform:uppercase; background:rgba(8,6,3,.55); border:1px solid rgba(201,180,130,.45);
-  color:#dfd0ab; padding:6px 9px;
+  text-transform:uppercase; background:rgba(10,7,4,.5);
+  border:1px solid rgba(201,180,130,.4); color:#dfd0ab; padding:6px 10px;
 }
-.endfn{border-color:rgba(190,90,70,.7); color:#e6a493}
+.endfn{border-color:rgba(190,90,70,.65); color:#e6a493}
+.putback{align-self:center; border-color:rgba(201,180,130,.3)}
 
-/* the paper in hand — laid on the blotter, which is where the blotter is */
-.hand{position:absolute; inset:-8% -3% -2%;
-  display:flex; align-items:center; justify-content:center; pointer-events:none}
-.hand > *{pointer-events:auto}
-.nothing{font-family:"Courier New",monospace; font-size:.6rem; letter-spacing:.13em;
-  text-transform:uppercase; color:#cbbb96; text-shadow:0 1px 4px rgba(0,0,0,.95)}
-
-/* the rack, along the front edge of the desk */
-.rack{position:absolute; left:236px; right:18px; bottom:6px;
-  display:flex; gap:7px; justify-content:center; flex-wrap:wrap}
+/* ——— the out-tray, filling ——— */
+.outtray{position:absolute; right:16px; bottom:14px; width:150px; text-align:center}
+.olbl,.ocount{display:block; font-family:"Courier New",monospace; font-size:.5rem;
+  letter-spacing:.14em; text-transform:uppercase; color:#d8c8a2;
+  text-shadow:0 1px 4px rgba(0,0,0,.95)}
+.opile{position:relative; height:52px; margin:5px 0 3px}
+.osheet{position:absolute; left:8%; right:8%; height:9px; bottom:calc(var(--i) * 5px);
+  background:var(--paper); border-bottom:1px solid rgba(92,80,58,.5);
+  transform:rotate(calc((var(--i) - 4) * .5deg));
+  box-shadow:0 2px 5px -2px rgba(0,0,0,.8);
+  animation:drop .3s ease}
+.osheet--telegram{background:var(--flimsy)} .osheet--petition{background:#e8dcc0}
+@keyframes drop{from{transform:translateY(-22px) rotate(6deg); opacity:0}}
 
 /* the paper in hand */
-.hand{position:absolute; inset:-8% -3% -2%;
+.hand{position:absolute; inset:-46% -3% 26%;
   display:flex; align-items:center; justify-content:center; pointer-events:none}
 .nothing{font-family:"Courier New",monospace; font-size:.6rem; letter-spacing:.13em;
   text-transform:uppercase; color:#cbbb96; text-shadow:0 1px 4px rgba(0,0,0,.95)}
@@ -179,8 +199,12 @@ button:disabled{opacity:.34; cursor:default}
 .hand .feestamp em{top:55%; font-size:.5rem}
 
 /* the rack, along the front edge of the desk */
-.rack{position:absolute; left:236px; right:18px; bottom:6px;
-  display:flex; gap:7px; justify-content:center; flex-wrap:wrap}
+.rack{position:absolute; left:180px; right:180px; bottom:2px;
+  display:flex; gap:7px; justify-content:center; flex-wrap:wrap; align-items:flex-end;
+  transform:translateY(78%); opacity:0; pointer-events:none;
+  transition:transform .28s cubic-bezier(.3,1.15,.5,1), opacity .22s}
+.rack.up{transform:none; opacity:1; pointer-events:auto}
+@media (prefers-reduced-motion:reduce){ .rack{transition:none} }
 
 /* the paper in hand */
 .hand{display:flex; align-items:center; justify-content:center; overflow:hidden;

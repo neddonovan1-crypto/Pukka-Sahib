@@ -9,13 +9,13 @@ const { chromium } = require("/home/user/Pukka-Sahib/node_modules/playwright");
   await p.waitForTimeout(600);
 
   await p.screenshot({ path: "01-desk-empty.png" });
-  await p.locator(".edge").first().click();          // pick the telegram
+  await p.locator(".hung").first().click();          // pick the telegram
   await p.waitForTimeout(500);
   await p.screenshot({ path: "02-desk-held.png" });
 
   await p.locator(".stamp").nth(3).click();           // called for report
   await p.waitForTimeout(400);
-  await p.locator(".edge").first().click();
+  await p.locator(".hung").first().click();
   await p.waitForTimeout(400);
   await p.screenshot({ path: "03-desk-after.png" });
 

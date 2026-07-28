@@ -198,33 +198,49 @@ function paintDesk() {
         : "The road is shut this season.") + '</div>' +
     '</div>' +
     '<div class="deskmain">' +
-      '<div class="intray" id="intray"></div>' +
-      '<div class="rack" id="rack"></div>' +
+      '<div class="tapewrap" id="tapewrap"><div class="tape"></div>' +
+        '<div class="hangers" id="hangers"></div></div>' +
+      '<div class="outtray" id="outtray"></div>' +
+      '<div class="rack' + (S.held ? " up" : "") + '" id="rack"></div>' +
     '</div>';
 
-  // the in-tray, as a pile of edges
-  var tray = $("#intray");
-  tray.appendChild(el("div", "traylbl", "In-tray &middot; " + S.inTray.length + " unread"));
-  var stack = el("div", "stack");
+  // The fortnight strung on red tape. Titles readable without opening anything;
+  // what is left is still hanging there when the fortnight closes.
+  var hang = $("#hangers");
   S.inTray.forEach(function (id, i) {
     var d = doc(id);
-    var edge = el("button", "edge edge--" + d.form + (S.held === id ? " picked" : ""));
-    edge.style.transform = "translateY(" + (i * -2) + "px) rotate(" + ((i % 3) - 1) * 0.5 + "deg)";
-    edge.innerHTML = '<span>' + d.from + '</span>' + (d.urgent ? '<i class="dot"></i>' : "");
-    edge.onclick = function () { S.held = id; paint(); };
-    stack.appendChild(edge);
+    var t = el("button", "hung hung--" + d.form + (S.held === id ? " down" : ""));
+    t.style.setProperty("--lean", (((i * 37) % 5) - 2) * 0.6 + "deg");
+    t.style.setProperty("--drop", (6 + ((i * 53) % 5) * 3) + "px");
+    t.innerHTML = '<i class="tie"></i><span class="ttl">' + d.from + '</span>' +
+      (d.urgent ? '<i class="dot" title="Immediate"></i>' : "");
+    t.onclick = function () { S.held = (S.held === id ? null : id); paint(); };
+    hang.appendChild(t);
   });
-  if (!S.inTray.length) stack.appendChild(el("div", "trayempty", "Cleared."));
-  tray.appendChild(stack);
+  if (!S.inTray.length) hang.appendChild(el("div", "trayempty", "The tape is empty."));
 
-  var delg = el("button", "delegate", S.inTray.length ? "Delegate a stack" : "&mdash;");
+  var acts = el("div", "trayacts");
+  var delg = el("button", "delegate", "Delegate a stack");
   delg.disabled = !S.inTray.length;
   delg.onclick = function () { S.delegating = true; paint(); };
-  tray.appendChild(delg);
-
+  acts.appendChild(delg);
   var fin = el("button", "endfn", S.days > 0 ? "Close the fortnight" : "The fortnight is out");
   fin.onclick = endFortnight;
-  tray.appendChild(fin);
+  acts.appendChild(fin);
+  $("#tapewrap").appendChild(acts);
+
+  // the out-tray, filling
+  var out = $("#outtray");
+  out.innerHTML = '<span class="olbl">Out-tray</span>';
+  var pileEl = el("div", "opile");
+  S.done.slice(-9).forEach(function (e, i) {
+    var sh = el("div", "osheet osheet--" + e.form);
+    sh.style.setProperty("--i", i);
+    sh.title = e.from + " — " + e.stamp;
+    pileEl.appendChild(sh);
+  });
+  out.appendChild(pileEl);
+  out.appendChild(el("span", "ocount", S.done.length ? S.done.length + " dispatched" : "empty"));
 
   var mini = $("#minimap");
   if (mini) {
@@ -244,7 +260,7 @@ function paintDesk() {
   // the paper in hand
   var hand = $("#hand"), rack = $("#rack");
   if (!S.held) {
-    hand.appendChild(el("div", "nothing", "Take a paper from the tray."));
+    hand.appendChild(el("div", "nothing", "Take a paper down from the tape."));
     return;
   }
   var d = doc(S.held);
@@ -269,6 +285,9 @@ function paintDesk() {
     stampBtn(d[k].label, d[k].days, "stamp--act", function () { dispose(d.id, k, d[k].days); });
   });
   stampBtn("Close unread", 1, "stamp--close", function () { closeFile(d.id); });
+  var back = el("button", "putback", "Put it back on the tape");
+  back.onclick = function () { S.held = null; paint(); };
+  rack.appendChild(back);
 }
 
 function paintDelegating() {
