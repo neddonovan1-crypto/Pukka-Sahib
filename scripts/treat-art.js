@@ -25,6 +25,7 @@ var OUT = path.join(ROOT, "art", "web");
 
 // Which process each register goes through.
 var PROCESS = {
+  environment: "scene",
   painting: "chromo",
   kalighat: "chromo",
   engraving: "plate",
@@ -43,7 +44,7 @@ var INKS = [
 ];
 
 var PAPER = { r: 226, g: 213, b: 180 };
-var MAX_EDGE = 1400;                       // dist/ has no weight limit, but a
+var MAX_EDGE = 1400, SCENE_EDGE = 2000;                       // dist/ has no weight limit, but a
                                            // 4k plate helps nobody at 680px
 
 function briefFor(id) {
@@ -156,6 +157,27 @@ async function chromo(buf, w, h) {
     .toBuffer();
 }
 
+/* ——— scene ————————————————————————————————————————————————————————
+   The room the player is sitting in. No print process at all: this is not a
+   reproduction of anything, it is the place itself, so it only wants sizing,
+   a warm grade to match the lamplight, and enough grain to sit with the
+   treated art rather than beside it.                                       */
+async function scene(buf, w, h) {
+  var img = sharp(buf).resize({ width: w, height: h, fit: "inside" });
+  var meta = await img.metadata();
+  var W = Math.min(w, meta.width), H = Math.min(h, meta.height);
+  var grain = Buffer.alloc(W * H);
+  for (var g = 0; g < grain.length; g++) grain[g] = 122 + Math.floor(Math.random() * 14);
+  var grainPng = await sharp(grain, { raw: { width: W, height: H, channels: 1 } }).png().toBuffer();
+  return sharp(buf)
+    .resize({ width: W, height: H, fit: "inside" })
+    .modulate({ saturation: 0.93, brightness: 0.98 })
+    .tint({ r: 255, g: 246, b: 228 })
+    .composite([{ input: grainPng, blend: "soft-light" }])
+    .jpeg({ quality: 82, chromaSubsampling: "4:4:4" })
+    .toBuffer();
+}
+
 /* ——— engraved plate: warm black on buff ——— */
 async function plate(buf, w, h) {
   var img = sharp(buf).resize({ width: w, height: h, fit: "inside" }).greyscale().normalise();
@@ -265,11 +287,13 @@ async function cutout(buf, w, h) {
 
     var src = fs.readFileSync(path.join(GEN, files[i]));
     var meta = await sharp(src).metadata();
-    var scale = Math.min(1, MAX_EDGE / Math.max(meta.width, meta.height));
+    var cap = (brief.treat || PROCESS[brief.register]) === "scene" ? SCENE_EDGE : MAX_EDGE;
+    var scale = Math.min(1, cap / Math.max(meta.width, meta.height));
     var w = Math.round(meta.width * scale), h = Math.round(meta.height * scale);
 
     var out, ext;
-    if (proc === "chromo") { out = await chromo(src, w, h); ext = "jpg"; }
+    if (proc === "scene") { out = await scene(src, w, h); ext = "jpg"; }
+    else if (proc === "chromo") { out = await chromo(src, w, h); ext = "jpg"; }
     else if (proc === "plate") { out = await plate(src, w, h); ext = "jpg"; }
     else if (proc === "multiply") { out = await multiply(src, w, h); ext = "jpg"; }
     else {

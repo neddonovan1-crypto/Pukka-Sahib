@@ -79,7 +79,7 @@ button:disabled{opacity:.34; cursor:default}
   margin-top:auto; background:rgba(233,223,196,.93); border:1px solid var(--hair);
   padding:9px 10px 7px; text-align:left; position:relative;
 }
-.mapbtn svg{width:100%; height:auto; display:block; margin:5px 0 2px}
+.mapbtn canvas{width:100%; height:auto; display:block; margin:5px 0 2px}
 .mapbtn .dist{fill:rgba(120,95,45,.10)}
 .mlbl{font-family:"Courier New",monospace; font-size:.6rem; letter-spacing:.16em;
   text-transform:uppercase; color:var(--soft)}
@@ -213,9 +213,13 @@ button:disabled{opacity:.34; cursor:default}
 .roadhead b{display:block; font-size:1.5rem}
 .roadhead span{display:block; font-style:italic; color:#4c4staff}
 .roadhead span{color:#4c4633; margin-top:2px}
-.mapbig{background:#efe7ce; border:1px solid var(--hair); margin:16px 0 12px;
+.mapbig{position:relative; display:inline-block; border:1px solid var(--hair); margin:16px 0 12px;
   box-shadow:0 16px 30px -20px rgba(0,0,0,.6)}
-.mapbig svg{width:100%; height:auto; display:block}
+.mapbig canvas{display:block}
+.stophit{position:absolute; width:46px; height:46px; margin:-23px 0 0 -23px;
+  border-radius:50%; background:none; border:1px solid transparent; padding:0}
+.stophit:hover{border-color:rgba(143,47,34,.45); background:rgba(143,47,34,.07)}
+.stophit.on{border-color:rgba(143,47,34,.7)}
 .mapbig .dist{fill:url(#stipple); stroke:#2a2317; stroke-width:2}
 .mapbig .bnd{fill:none; stroke:#2a2317; stroke-width:.7; stroke-dasharray:5 3 1 3; opacity:.75}
 .mapbig .riv{fill:none; stroke:#5d7b8a; stroke-width:2.2}
@@ -283,6 +287,7 @@ button:disabled{opacity:.34; cursor:default}
 <body>
 <div id="app"></div>
 <script src="content.js"></script>
+<script src="mapdraw.js"></script>
 <script src="desk.js"></script>
 </body>
 </html>

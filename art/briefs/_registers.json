@@ -18,5 +18,9 @@
   "isolated": {
     "style": "A single object or mark on a sheet of paper, photographed flat and square-on from directly above, filling most of the sheet. The paper is bare, plain and lightly aged: nothing else appears on it at all — no printing, no frame, no border, no ornament, no letterhead, no engraved device, no certificate, no caption. Just the one thing, alone on the page. Subject:",
     "constraints": "Every panel, band, slot and field within the object is completely BLANK — no text, no letters, no numerals, no dates, no monograms, no fake writing or squiggles standing in for writing. Absolutely no decorative frame, no engraved border, no guilloche, no security printing, no surrounding ornament of any kind. Matte and flat: no gloss, no specular highlight, no 3D render, no drop shadow, no perspective, no tilt, no desk, no hand, no fingers. No signature, no watermark."
+  },
+  "environment": {
+    "style": "A warm, matte, painted-photographic view of an interior or camp in British India in the 1920s, lit by a single practical light source. Deep focus, sharp throughout, seen from the point of view of a person seated at the desk looking down and a little forward. Rich material detail — polished teak, worn leather, brass, cotton, dust. Subject:",
+    "constraints": "The middle of the frame is CLEAR AND EMPTY — a bare expanse of desk or table top where papers will be laid, with nothing on it. No text, no lettering, no signage, no writing on any paper, no titles on books. No people, no hands, no faces. Nothing modern. No lens flare, no bokeh, no shallow depth of field, no heavy vignette obscuring the corners, no watermark."
   }
 }

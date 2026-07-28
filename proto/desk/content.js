@@ -137,13 +137,13 @@ window.FORTNIGHT = {
   road: {
     intro: "The cold weather. The tents go out on the 17th if they go at all.",
     stops: [
-      { id: "marwa",     name: "Marwa",     days: 3, art: "paint-fields",
+      { id: "marwa",     name: "Marwa",     days: 3, mx: 0.30, my: 0.30, cond: 0.72, art: "paint-fields",
         diary: "Marwa. Half the houses shut up. They have gone to the canal works and the Tahsildar's return says nothing of it. Collections here are a fiction." },
-      { id: "sirsa",     name: "Sirsa",     days: 2, art: "paint-tour-camp",
+      { id: "sirsa",     name: "Sirsa",     days: 2, mx: 0.22, my: 0.68, cond: 0.40, art: "paint-tour-camp",
         diary: "Sirsa. Heard eleven cases under the tree by the well — which is indeed fallen in, and worse than the petition said. Sixty households and a mile to the next water." },
-      { id: "bhagalpur", name: "Bhagalpur", days: 4, art: "paint-durbar",
+      { id: "bhagalpur", name: "Bhagalpur", days: 4, mx: 0.63, my: 0.28, cond: 0.55, art: "paint-durbar",
         diary: "Bhagalpur. The bazaar quiet, the shutters down. Two men dead on the 14th and nobody will say who fired first. The Superintendent's account is tidier than the street." },
-      { id: "deoganj",   name: "Deoganj",   days: 3, art: "paint-flood-relief",
+      { id: "deoganj",   name: "Deoganj",   days: 3, mx: 0.76, my: 0.70, cond: 0.20, art: "paint-flood-relief",
         diary: "Deoganj. Sahai met me at the boundary with a great deal of ceremony and a very clean set of books. The cultivators would not look at me." }
     ]
   }

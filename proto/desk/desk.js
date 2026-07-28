@@ -184,12 +184,7 @@ function paintDesk() {
       daysHtml() + ledgerHtml() +
       '<button class="mapbtn" id="toRoad">' +
         '<span class="mlbl">The road</span>' +
-        '<svg viewBox="0 0 100 70"><g fill="none" stroke="#2a2317" stroke-width="1.4">' +
-        '<path d="M6 34 L26 12 L54 8 L82 20 L94 44 L70 62 L34 60 Z"/>' +
-        '<path stroke-dasharray="3 3" d="M26 12 L44 38 L34 60"/>' +
-        '<path stroke-dasharray="3 3" d="M44 38 L82 20"/>' +
-        '<path stroke-width="2.2" d="M2 46 Q30 40 52 48 T98 42"/>' +
-        '</g></svg>' +
+        '<canvas id="minimap"></canvas>' +
         '<span class="mnote">' + (F.season === "cold" ? "Open" : "Shut") + '</span>' +
       '</button>' +
     '</div>' +
@@ -222,6 +217,20 @@ function paintDesk() {
   var fin = el("button", "endfn", S.days > 0 ? "Close the fortnight" : "The fortnight is out");
   fin.onclick = endFortnight;
   tray.appendChild(fin);
+
+  var mini = $("#minimap");
+  if (mini) {
+    var mw = 232, mh = 150;
+    mini.width = mw * 2; mini.height = mh * 2;
+    mini.style.width = mw + "px"; mini.style.height = mh + "px";
+    window.drawDistrict(mini, {
+      seed: 20251115, compact: true,
+      tehsils: F.road.stops.map(function (s) {
+        return { id: s.id, name: s.name, days: s.days, x: s.mx, y: s.my, cond: s.cond };
+      }),
+      selected: []
+    });
+  }
 
   // the paper in hand
   var hand = $("#hand"), rack = $("#rack");
@@ -290,32 +299,30 @@ function paintRoad() {
     '</div>';
 
   var m = $("#mapbig");
-  var svg = '<svg viewBox="0 0 300 200">' +
-    '<defs><pattern id="stipple" width="6" height="6" patternUnits="userSpaceOnUse">' +
-    '<rect width="6" height="6" fill="rgba(120,95,45,.07)"/>' +
-    '<circle cx="1.4" cy="1.4" r=".5" fill="rgba(80,64,30,.35)"/>' +
-    '<circle cx="4.2" cy="3.8" r=".45" fill="rgba(80,64,30,.28)"/></pattern></defs>' +
-    '<path class="dist" d="M18 96 L72 30 L152 18 L236 52 L282 122 L206 178 L92 172 Z"/>' +
-    '<path class="riv" d="M4 130 Q70 112 130 138 T296 120"/>' +
-    '<path class="rail" d="M24 168 L280 46"/>' +
-    '<path class="bnd" d="M152 18 L150 96 L92 172"/>' +
-    '<path class="bnd" d="M150 96 L18 96"/>' +
-    '<path class="bnd" d="M150 96 L236 52"/>' +
-    '<path class="bnd" d="M150 96 L206 178"/>';
-  var pts = { marwa: [92, 70], sirsa: [64, 132], bhagalpur: [186, 74], deoganj: [214, 138] };
-  F.road.stops.forEach(function (s) {
-    var p = pts[s.id], on = S.route.indexOf(s.id) !== -1;
-    svg += '<g class="stop' + (on ? " on" : "") + '" data-id="' + s.id + '">' +
-      '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="16" class="hit"/>' +
-      '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="4.6" class="pip"/>' +
-      '<text x="' + p[0] + '" y="' + (p[1] - 11) + '">' + s.name + '</text>' +
-      '<text x="' + p[0] + '" y="' + (p[1] + 19) + '" class="dcost">' + s.days + 'd</text></g>';
+  var cv = document.createElement("canvas");
+  var wpx = Math.min(760, window.innerWidth - 60), hpx = Math.round(wpx * 0.60);
+  cv.width = wpx * 2; cv.height = hpx * 2;
+  cv.style.width = wpx + "px"; cv.style.height = hpx + "px";
+  m.appendChild(cv);
+  var marks = window.drawDistrict(cv, {
+    seed: 20251115,
+    tehsils: F.road.stops.map(function (s) {
+      return { id: s.id, name: s.name, days: s.days, x: s.mx, y: s.my, cond: s.cond };
+    }),
+    selected: S.route,
+    title: "CHHOTA NAGRA DISTRICT",
+    sub: "SONEPORE DIVISION"
   });
-  svg += "</svg>";
-  m.innerHTML = svg;
-  Array.prototype.forEach.call(m.querySelectorAll(".stop"), function (g) {
-    g.onclick = function () { toggleStop(g.getAttribute("data-id")); };
+  // hit targets over the plate, placed from the same coordinates it drew at
+  marks.forEach(function (mk) {
+    var b = document.createElement("button");
+    b.className = "stophit" + (S.route.indexOf(mk.id) !== -1 ? " on" : "");
+    b.style.left = mk.x + "px"; b.style.top = mk.y + "px";
+    b.title = mk.id;
+    b.onclick = function () { toggleStop(mk.id); };
+    m.appendChild(b);
   });
+
   $("#setout").onclick = setOut;
   $("#backdesk").onclick = function () { S.scene = "desk"; paint(); };
 }
