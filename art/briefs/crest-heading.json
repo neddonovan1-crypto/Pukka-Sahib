@@ -1,4 +1,6 @@
 {
-  "register": "machinery", "aspect": "16:9", "use": "Letterheads and file covers",
+  "register": "security-print",
+  "aspect": "16:9",
+  "use": "Letterheads and file covers",
   "subject": "An engraved heading device for official stationery. A six-pointed star within a garter circlet, surmounted by a crown, flanked by a pair of standing lions, with a blank scrolled ribbon curling beneath where a motto would be. Fine intaglio line engraving in a single black ink, symmetrical, on white."
 }
