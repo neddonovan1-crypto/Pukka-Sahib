@@ -28,11 +28,17 @@ window.FORTNIGHT = {
 
   // The rack. Four at this rank; a promotion adds to it.
   stamps: [
-    { id: "sanction", label: "Sanctioned", days: 1 },
-    { id: "refer",    label: "Referred",   days: 1 },
-    { id: "none",     label: "No action",  days: 1 },
-    { id: "report",   label: "Called for report", days: 1 }
+    { id: "sanction", label: "Sanctioned", days: 1,
+      means: "You approve it and it is done, on your authority and at your cost." },
+    { id: "refer",    label: "Referred",   days: 1,
+      means: "It goes to someone above or beside you. Off your desk, and out of your hands." },
+    { id: "none",     label: "No action",  days: 1,
+      means: "Filed as it stands. Nothing follows — which is sometimes right." },
+    { id: "report",   label: "Called for report", days: 1,
+      means: "You ask to be told more. It costs you the wait, and the answer may not come." }
   ],
+  // Riding out is not a stamp. There are fourteen days and one of you.
+  rideNote: "You can only ride out once in a fortnight.",
 
   // Who you can push a stack onto. Standing decides what comes back.
   clerks: [

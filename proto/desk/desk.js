@@ -23,7 +23,8 @@ var S = {
   route: [],
   diary: [],
   delegating: false,
-  stamping: false
+  stamping: false,
+  rodeOut: false           // fourteen days and one of you: one ride a fortnight
 };
 
 function doc(id) {
@@ -146,6 +147,7 @@ function setOut() {
   });
   // Going and seeing corrects what you believe, and costs you in the saddle.
   applyDeltas({ contentment: 6, prestige: 3, health: -4 });
+  S.rodeOut = true;
   S.route = [];
   S.scene = "road-diary";
   paint();
@@ -202,6 +204,7 @@ function paintDesk() {
   root.innerHTML =
     '<div class="room">' +
       '<img class="roomart" src="../../art/web/desk-' + F.season + '.jpg" alt="">' +
+      '<div class="weather weather--' + F.season + '"><i></i><i></i><i></i></div>' +
       '<div class="onwall" style="' + box(SC.frame) + '">' +
         '<img class="wallmap" src="../../art/web/map-district.jpg" alt="">' +
         '<button class="wallbtn" id="toRoad" title="The road"></button></div>' +
@@ -222,6 +225,7 @@ function paintDesk() {
       '<div class="tapewrap" id="tapewrap"><div class="tape"></div>' +
         '<div class="hangers" id="hangers"></div></div>' +
       '<div class="outtray" id="outtray"></div>' +
+      '<div class="gloss" id="gloss"></div>' +
     '</div>';
 
   // The fortnight strung on red tape. Titles readable without opening anything;
@@ -275,24 +279,44 @@ function paintDesk() {
   hand.appendChild(docCard(d, true));
 
   // the rack: stamps, plus the acts this particular paper allows
-  function stampBtn(label, days, cls, fn) {
-    var b = el("button", "stamp " + (cls || ""));
+  function stampBtn(label, days, cls, fn, means, off) {
+    var b = el("button", "stamp " + (cls || "") + (off ? " spent" : ""));
+    if (means) {
+      b.onmouseenter = b.onfocus = function () { showGloss(label, means, days); };
+      b.onmouseleave = b.onblur = function () { showGloss(null); };
+    }
     var colour = cls === "stamp--act" ? "#2a3550" : cls === "stamp--close" ? "#5f5540" : "#8f2f22";
     b.innerHTML = window.FURNITURE.stamp({ w: 92, label: label, colour: colour }) +
       '<em>' + days + 'd</em>';
-    b.disabled = S.days < days;
+    b.disabled = S.days < days || off;
     b.onclick = fn;
     rack.appendChild(b);
   }
+  function showGloss(label, means, days) {
+    var g = $("#gloss");
+    if (!g) return;
+    g.innerHTML = label
+      ? '<b>' + label + '</b><em>' + days + ' day' + (days > 1 ? 's' : '') + '</em><span>' + means + '</span>'
+      : "";
+    g.className = "gloss" + (label ? " on" : "");
+  }
   F.stamps.forEach(function (st) {
     if (!d.outcomes[st.id]) return;
-    stampBtn(st.label, st.days, "", function () { dispose(d.id, st.id, st.days, st.label); });
+    stampBtn(st.label, st.days, "", function () { dispose(d.id, st.id, st.days, st.label); }, st.means);
   });
   ["ride", "hear"].forEach(function (k) {
     if (!d[k]) return;
-    stampBtn(d[k].label, d[k].days, "stamp--act", function () { dispose(d.id, k, d[k].days, d[k].label); });
+    var spent = k === "ride" && S.rodeOut;
+    var means = k === "ride"
+      ? (spent ? F.rideNote + " You have already been out." : "You go and see for yourself. " + F.rideNote)
+      : "You hear it yourself, and the parties know you did.";
+    stampBtn(d[k].label, d[k].days, "stamp--act", function () {
+      if (k === "ride") S.rodeOut = true;
+      dispose(d.id, k, d[k].days, d[k].label);
+    }, means, spent);
   });
-  stampBtn("Close unread", 1, "stamp--close", function () { closeFile(d.id); });
+  stampBtn("Close unread", 1, "stamp--close", function () { closeFile(d.id); },
+    "Binned without being read. A known small loss instead of an unknown larger one.");
   var back = el("button", "putback", "Put it back on the tape");
   back.onclick = function () { S.held = null; paint(); };
   rack.appendChild(back);
