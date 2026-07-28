@@ -76,16 +76,49 @@ and tedious for the twenty after it. Delegation and closing are the valves, and
 the sim must assert that a run behind at the end of the hot weather can still
 recover — a `dugOut` probe, alongside the existing collapse probes.
 
-## 5. Touring
+## 5. The road
 
 A separate screen. Plan a route across the tehsils, spend the days, see what
 you find. Expensive in exactly the right way: days riding are days the pile
-grows.
+grows. Touring is the **only** thing that corrects what you believe —
+everything else you know arrives on paper, written by somebody with reasons.
 
-Touring is the **only** thing that corrects what you believe. Everything else
-you know arrives on paper, written by somebody with reasons.
+**Travelling must not look like the desk.** Every register inverts:
 
-## 6. The district underneath
+| | The desk | The road |
+|---|---|---|
+| Ground | Timber and blotter; close, orthogonal, enclosed | Open country; the workspace gives way to landscape |
+| Light | Interior lamplight, the punkah's shadow | Daylight and weather, graded by season |
+| Register | Paper and print — engraving, monochrome | **Painting, in colour.** You are looking at the district, not reading about it |
+| Type | Typewriter and letterpress | Your own hand |
+| Layout | Fixed; nothing scrolls | The map, and a route advancing camp to camp |
+| Sound | Punkah, clock, the scratch of a pen | Cartwheels, birds, village noise, weather |
+
+And the inversion that matters most: **at the desk you read what other people
+wrote; on the road you write.** The tour screen is the officer's camp diary —
+dated entries in his own hand, with what he saw pasted or sketched in. It is
+the only place in the game where the player's own voice appears, which is why
+returning to the desk should feel like a door closing.
+
+## 6. The three seasons
+
+Not weather. The season decides what the game *is* that month.
+
+| Season | The district | The game |
+|---|---|---|
+| **Cold weather** | The touring season | The road is cheap and expected. Long routes, the camp diary, the map filled in. |
+| **Hot weather** | Station-bound | The desk, the courts, tempers rising. Touring costly and faintly absurd. |
+| **Monsoon** | Immobile | Crisis arrives and you cannot go to it. The pile grows fastest. |
+
+Historically exact — officers toured in the cold weather and were held at the
+station through the heat and the rains. Mechanically it gives the year a
+three-act rhythm and stops the loop from flattening: the same desk feels
+different in November and in July because the alternative to it has changed.
+
+The season governs the palette and light across the whole screen, which pool of
+documents surfaces, the cost of a day, and whether the road is open at all.
+
+## 7. The district underneath
 
 Each tehsil carries a small hidden state — **arrears, unrest, sickness,
 harvest** — never shown directly. It decides:
@@ -98,7 +131,7 @@ Small enough to balance, big enough to make the gap between the record and the
 place real. The simulation **selects and frames; it never writes.** All prose
 stays authored; the validator keeps its teeth.
 
-## 7. The meters
+## 8. The meters
 
 The five meters become **Simla's opinion of you**, not the district's
 condition. Revenue is what you remitted. Order is what the police reported.
@@ -109,7 +142,7 @@ bands all survive — and it makes the game's irony mechanical rather than
 narrated: you can be honoured for a district you ruined, and broken for one you
 saved.
 
-## 8. The desk
+## 9. The desk
 
 Fixed workspace. Nothing scrolls; documents arrive, are stamped, and leave.
 Besides the paper in hand, four things are always present:
@@ -123,7 +156,7 @@ Besides the paper in hand, four things are always present:
 
 (No out-tray in the first version.)
 
-## 9. Content
+## 10. Content
 
 The 258 events are **mined for situations, not ported.** Each is a record of
 something that can happen to a district officer; the documents are written
@@ -148,7 +181,7 @@ endings. Voice in the loop lives instead in *polyphony*: the Sub-Inspector, the
 petitioner, the Club and your own endorsement describing the same night
 differently, and in what a report omits.
 
-## 10. What survives from the current build
+## 11. What survives from the current build
 
 - **`src/logic.js`** — extended, not replaced. Turn structure, rng discipline,
   flags, serialisation and the chapter registry all hold. New: the day budget,
@@ -162,7 +195,7 @@ differently, and in what a report omits.
 - **The art pipeline** — `art/briefs/`, `scripts/generate-art.js`,
   `scripts/treat-art.js` — unchanged and already producing.
 
-## 11. Build order
+## 12. Build order
 
 1. **One fortnight, in full fidelity** — documents arriving, days spent, stamps
    struck, the pile growing. Playable and judgeable before any balance work.
@@ -172,7 +205,35 @@ differently, and in what a report omits.
 5. **The cast**, wired to delegation quality.
 6. The other three chapters as content.
 
-## 12. Open
+## 13. How this differs from Papers, Please
+
+Some resemblance is unavoidable; that game defined the form. What matters is
+the centre of gravity, and three rules protect it. They are cheap to hold now
+and expensive to retrofit once documents are being authored.
+
+1. **No findable discrepancy.** Papers, Please is a verification game: an
+   inconsistency exists in the documents and the skill is spotting it. Ours is
+   a judgement game: the document never contains enough to be sure. The moment
+   a paper hides a mismatch the player is rewarded for catching, we have built
+   the other game.
+2. **At least half the rack is never yes-or-no.** If the stamps read as
+   approve/deny we are finished. `REFERRED` and `CALLED FOR REPORT` are onward
+   moves — they pass the thing along or buy information at the cost of days.
+3. **The same stamp can be right or wrong on evidence never shown.** `NO
+   ACTION` on a quiet report is correct nine times and catastrophic the tenth,
+   decided by tehsil state the player was never given. Unfalsifiable in the
+   moment, which is the opposite of a puzzle.
+
+And one target rather than a rule: **about a third of a career spent off the
+desk.** If the desk is ninety per cent of the game we are in its shadow whatever
+else we do. The road, and the seasons that govern it, are the answer.
+
+Beyond that, the useful lineage is not that game at all: the Dennis Wheatley
+crime dossiers, where a case is a box of real documents, and the manage-a-season
+shape of a club or an institution you can never see directly and know only
+through reports from people with opinions.
+
+## 14. Open
 
 - The exact stamp added at each rank.
 - Whether the ledger is watched continuously or read once a season — the
