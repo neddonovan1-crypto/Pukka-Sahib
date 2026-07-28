@@ -176,21 +176,29 @@ function docCard(d, inHand) {
 function paintDesk() {
   var root = $("#app");
   root.className = "scene-desk season-" + F.season;
+  var SC = F.scene;
+  function box(r) {
+    return 'left:' + (r.x * 100) + '%; top:' + (r.y * 100) + '%; ' +
+           'width:' + (r.w * 100) + '%; height:' + (r.h * 100) + '%';
+  }
   root.innerHTML =
+    '<div class="room">' +
+      '<img class="roomart" src="../../art/web/desk-' + F.season + '.jpg" alt="">' +
+      '<div class="onwall" style="' + box(SC.frame) + '"><canvas id="minimap"></canvas>' +
+        '<button class="wallbtn" id="toRoad" title="The road"></button></div>' +
+      '<div class="onblotter" style="' + box(SC.blotter) + '"><div class="hand" id="hand"></div></div>' +
+    '</div>' +
     '<div class="deskrail">' +
       '<div class="whoami"><b>' + F.station + '</b><span>' + F.rank + '</span>' +
       '<span class="szn">' + F.seasonLabel + ' · Fortnight ' + F.fortnight + ' · ' +
         F.dateFrom + '–' + F.dateTo + ' ' + F.year + '</span></div>' +
       daysHtml() + ledgerHtml() +
-      '<button class="mapbtn" id="toRoad">' +
-        '<span class="mlbl">The road</span>' +
-        '<canvas id="minimap"></canvas>' +
-        '<span class="mnote">' + (F.season === "cold" ? "Open" : "Shut") + '</span>' +
-      '</button>' +
+      '<div class="seasonnote">' + (F.season === "cold"
+        ? "The road is open. The tents go out on the 17th."
+        : "The road is shut this season.") + '</div>' +
     '</div>' +
     '<div class="deskmain">' +
       '<div class="intray" id="intray"></div>' +
-      '<div class="hand" id="hand"></div>' +
       '<div class="rack" id="rack"></div>' +
     '</div>';
 
@@ -220,7 +228,8 @@ function paintDesk() {
 
   var mini = $("#minimap");
   if (mini) {
-    var mw = 232, mh = 150;
+    var fr = mini.parentNode.getBoundingClientRect();
+    var mw = Math.max(80, Math.round(fr.width)), mh = Math.max(60, Math.round(fr.height));
     mini.width = mw * 2; mini.height = mh * 2;
     mini.style.width = mw + "px"; mini.style.height = mh + "px";
     window.drawDistrict(mini, {

@@ -33,12 +33,21 @@ button:disabled{opacity:.34; cursor:default}
 /* The room is a photograph now, not a gradient: teak, a green leather blotter
    with gilt tooling, the lamp, the stamps in their rack. The interface lays
    itself over that, and the paper in hand lands on the actual blotter. */
-.scene-desk{
-  position:relative; background:#241c12 center 62% / cover no-repeat;
-}
-.scene-desk.season-cold   { background-image:url(../../art/web/desk-cold.jpg) }
-.scene-desk.season-hot    { background-image:url(../../art/web/desk-hot.jpg) }
-.scene-desk.season-monsoon{ background-image:url(../../art/web/desk-monsoon.jpg) }
+/* The painting is shown whole, not cropped, so everything laid over it —
+   the sheet on the blotter, the survey plate in the frame — lands where the
+   painter put it. */
+.scene-desk{position:relative; background:#140f09; display:flex;
+  align-items:center; justify-content:center}
+.room{position:relative; width:100%; max-width:calc(100vh * 16 / 9);
+  aspect-ratio:16/9; box-shadow:0 0 90px rgba(0,0,0,.75)}
+.roomart{position:absolute; inset:0; width:100%; height:100%; display:block}
+.onwall,.onblotter{position:absolute}
+.onwall{display:flex; align-items:center; justify-content:center; padding:9% 8%}
+.onwall canvas{width:100%; height:100%; display:block;
+  box-shadow:inset 0 0 18px rgba(60,40,15,.35), 0 1px 4px rgba(0,0,0,.55)}
+.wallbtn{position:absolute; inset:0; background:none; border:0}
+.wallbtn:hover{background:rgba(255,238,190,.14); box-shadow:inset 0 0 0 2px rgba(143,47,34,.5)}
+.onblotter{display:flex; align-items:center; justify-content:center}
 /* the punkah, still turning over the room */
 .scene-desk::after{
   content:""; position:absolute; inset:0; pointer-events:none;
@@ -78,17 +87,19 @@ button:disabled{opacity:.34; cursor:default}
 .gval{flex:0 0 20px; text-align:right; font-size:.72rem; color:#efe1bd; font-variant-numeric:tabular-nums}
 
 .mapbtn{
-  margin-top:auto; background:rgba(239,231,206,.94); border:1px solid rgba(60,48,28,.7);
-  padding:7px 8px 5px; text-align:left; position:relative;
-  box-shadow:0 8px 18px -10px rgba(0,0,0,.9);
+  margin-top:auto;
 }
+.seasonnote{margin-top:auto; font-family:"Courier New",monospace; font-size:.55rem;
+  letter-spacing:.1em; text-transform:uppercase; color:#c9b98f; line-height:1.7;
+  border-top:1px solid rgba(201,180,130,.25); padding-top:9px}
 .mapbtn canvas{width:100%; height:auto; display:block; margin:4px 0 2px}
 .mlbl{font-family:"Courier New",monospace; font-size:.56rem; letter-spacing:.15em;
   text-transform:uppercase; color:#5f5540}
 .mnote{position:absolute; right:8px; top:7px; font-family:"Courier New",monospace;
   font-size:.5rem; letter-spacing:.11em; text-transform:uppercase; color:var(--seal)}
 
-.deskmain{position:absolute; inset:0; z-index:2}
+.deskmain{position:absolute; inset:0; z-index:2; pointer-events:none}
+.deskmain > *{pointer-events:auto}
 
 /* the in-tray: papers waiting, over the wire tray at the back of the desk */
 .intray{position:absolute; left:236px; right:18px; top:12px; display:flex;
@@ -116,14 +127,14 @@ button:disabled{opacity:.34; cursor:default}
 .endfn{border-color:rgba(190,90,70,.7); color:#e6a493}
 
 /* the paper in hand — laid on the blotter, which is where the blotter is */
-.hand{position:absolute; left:0; right:0; top:48%; bottom:7%;
+.hand{position:absolute; inset:-8% -3% -2%;
   display:flex; align-items:center; justify-content:center; pointer-events:none}
 .hand > *{pointer-events:auto}
 .nothing{font-family:"Courier New",monospace; font-size:.6rem; letter-spacing:.13em;
   text-transform:uppercase; color:#cbbb96; text-shadow:0 1px 4px rgba(0,0,0,.95)}
 
 /* the rack, along the front edge of the desk */
-.rack{position:absolute; left:236px; right:18px; bottom:12px;
+.rack{position:absolute; left:236px; right:18px; bottom:6px;
   display:flex; gap:7px; justify-content:center; flex-wrap:wrap}
 
 /* the paper in hand */
@@ -134,7 +145,7 @@ button:disabled{opacity:.34; cursor:default}
 .nothing{font-family:"Courier New",monospace; font-size:.62rem; letter-spacing:.14em;
   text-transform:uppercase; color:#8b7f63; align-self:center}
 .paper{
-  width:min(560px,66%); background:var(--paper); position:relative;
+  width:92%; background:var(--paper); position:relative;
   padding:18px 24px 22px; box-shadow:0 10px 24px -10px rgba(0,0,0,.95), 0 2px 3px rgba(0,0,0,.5);
   background-image:radial-gradient(rgba(120,95,45,.09) 1px,transparent 1.4px);
   background-size:4px 4px; transform:rotate(-.3deg);

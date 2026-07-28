@@ -11,6 +11,14 @@ window.FORTNIGHT = {
   station: "Chhota Nagra",
   rank: "District Magistrate & Collector",
   season: "cold",
+  // Where things are IN THE PAINTING, as fractions of it: the bare blotter the
+  // paper comes down on, and the empty frame on the wall the survey plate hangs
+  // in. Measured off the plate, so the interface registers to the room.
+  scene: {
+    blotter: { x: 0.190, y: 0.722, w: 0.580, h: 0.238 },
+    frame:   { x: 0.142, y: 0.154, w: 0.261, h: 0.338 },
+    tray:    { x: 0.760, y: 0.700, w: 0.230, h: 0.140 }
+  },
   seasonLabel: "Cold weather",
   fortnight: 3,
   dateFrom: "15 Nov",

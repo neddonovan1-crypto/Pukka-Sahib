@@ -228,8 +228,8 @@
       '<path d="M17 32 Q23 39 17 46" fill="#1c1207" opacity=".28"/>' +
       '<path d="M83 32 Q77 39 83 46" fill="#1c1207" opacity=".42"/>' +
       /* turned bobbin ends, standing proud of the bar */
-      '<ellipse cx="14" cy="31" rx="9.6" ry="13" fill="url(#kl' + u + ')"/>' +
-      '<ellipse cx="86" cy="31" rx="9.6" ry="13" fill="url(#kr' + u + ')"/>' +
+      '<ellipse cx="13.6" cy="32" rx="8.6" ry="11.4" fill="url(#kl' + u + ')"/>' +
+      '<ellipse cx="86.4" cy="32" rx="8.6" ry="11.4" fill="url(#kr' + u + ')"/>' +
       /* the turning: a collar groove round each end */
       '<path d="M5.4 27.4 Q14 33.4 22.6 27.4" stroke="' + WD_DEEP + '" stroke-width="1.4" ' +
         'fill="none" opacity=".55"/>' +
@@ -347,7 +347,11 @@
       brassDome("dm" + u, 50, 70, 44) +
       brassBar("bp" + u, 12, 72, 88, 94) +
       brassBar("st" + u, 43, 16, 58, 28) +
-      brassDome("kb" + u, 50, 18, 13);
+      brassDome("kb" + u, 50, 18, 13) +
+      /* the dome's own outline, so nothing painted on it can spill past it */
+      '<clipPath id="cp' + u + '"><path d="M23 72 C23 28 77 28 77 72 Q50 84 23 72 Z"/>' +
+      '</clipPath>' +
+      blot("rm" + u, "#140e02", 0.85);
 
     var b =
       '<ellipse cx="55" cy="92" rx="43" ry="8.5" fill="url(#sh' + u + ')"/>' +
@@ -368,20 +372,25 @@
       '<ellipse cx="50" cy="74" rx="25" ry="6.6" fill="#3a2a0b" opacity=".55"/>' +
       /* dome, standing clear inside the rim of the plate */
       '<path d="M23 72 C23 28 77 28 77 72 Q50 84 23 72 Z" fill="url(#dm' + u + ')"/>' +
-      '<path d="M61 46 C67.4 53.4 70.6 61.6 71.4 70" stroke="#1c1403" stroke-width="3.2" ' +
-        'fill="none" stroke-linecap="round" opacity=".45"/>' +
-      '<path d="M28 76 Q50 84.6 72 75.6" stroke="' + BR_BNC + '" stroke-width="2" ' +
-        'fill="none" stroke-linecap="round" opacity=".65"/>' +
-      /* specular: a soft raked streak, with a slim hot core inside it */
-      '<ellipse cx="33" cy="53" rx="7.4" ry="18" fill="url(#sp' + u + ')" opacity=".55" ' +
-        'transform="rotate(-13 33 53)"/>' +
-      '<ellipse cx="32.5" cy="50" rx="2" ry="8.6" fill="url(#sp' + u + ')" opacity=".85" ' +
-        'transform="rotate(-13 32.5 50)"/>' +
-      '<ellipse cx="61" cy="45" rx="5.4" ry="2.6" fill="url(#sp' + u + ')" opacity=".34" ' +
-        'transform="rotate(-32 61 45)"/>' +
-      /* one turned band round the skirt */
-      '<path d="M23.4 69.6 Q50 80.8 76.6 69.6" stroke="#2a1e07" stroke-width="1" ' +
-        'fill="none" opacity=".4"/>' +
+      /* everything painted on the dome is clipped to it */
+      '<g clip-path="url(#cp' + u + ')">' +
+        /* the core shadow, turned away from the light */
+        '<ellipse cx="74" cy="56" rx="13" ry="22" fill="url(#rm' + u + ')" ' +
+          'transform="rotate(9 74 56)"/>' +
+        /* specular: a soft raked streak with a slim hot core inside it */
+        '<ellipse cx="34" cy="55" rx="7" ry="14" fill="url(#sp' + u + ')" opacity=".6" ' +
+          'transform="rotate(-14 34 55)"/>' +
+        '<ellipse cx="33.6" cy="53" rx="2.1" ry="7.6" fill="url(#sp' + u + ')" opacity=".9" ' +
+          'transform="rotate(-14 33.6 53)"/>' +
+        '<ellipse cx="59" cy="45" rx="5.4" ry="2.6" fill="url(#sp' + u + ')" opacity=".32" ' +
+          'transform="rotate(-32 59 45)"/>' +
+        /* the desk bouncing back into the far edge of the skirt */
+        '<path d="M26 77.6 Q50 86.6 74 77" stroke="' + BR_BNC + '" stroke-width="4" ' +
+          'fill="none" stroke-linecap="round" opacity=".5"/>' +
+        /* one turned band round the skirt */
+        '<path d="M23.4 69.6 Q50 80.8 76.6 69.6" stroke="#2a1e07" stroke-width="1" ' +
+          'fill="none" opacity=".4"/>' +
+      '</g>' +
       /* plunger */
       '<ellipse cx="50" cy="30.6" rx="7" ry="2.6" fill="#2a1e07" opacity=".45"/>' +
       '<path d="M43.4 30 L43.4 18 L56.6 18 L56.6 30 Q50 33.4 43.4 30 Z" fill="url(#st' + u + ')"/>' +

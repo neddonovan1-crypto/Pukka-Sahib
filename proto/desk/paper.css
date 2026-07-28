@@ -40,6 +40,11 @@
    the sheet as a whole. Only the telegram and the order position .phead, to
    hang a printed band off it, and neither uses the margins.
 
+   One thing the host layout must not do: put `overflow` on .paper. The stock
+   and the wear are absolute at inset:0, so a scroll container would leave them
+   the height of the visible box and scroll the text off a sheet that stops.
+   Let the sheet be as tall as its contents and scroll whatever holds it.
+
    Optional extra classes are listed at the foot of the file.
    ========================================================================== */
 
