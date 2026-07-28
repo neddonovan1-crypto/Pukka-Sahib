@@ -3,6 +3,14 @@
    mobile horizontal overflow, and captures screenshot evidence (animations on).
    Run: node test/e2e.js  (after build.js) */
 "use strict";
+
+// Waiting for the cover's start button is a COLD-START wait, not an
+// interaction wait: the single-file build is a couple of megabytes of inline
+// script with the essential art embedded as base64, so first paint can be slow
+// on a loaded machine. Bounding it like the 5s interaction waits produced an
+// intermittent red that meant nothing. Interaction waits stay tight — only
+// this one is generous.
+var START_TIMEOUT = 30000;
 var path = require("path");
 var fs = require("fs");
 var { chromium } = require("playwright");
@@ -144,7 +152,7 @@ async function playSession(browser, label, viewport, opts) {
       var promo = (((await page.textContent("#again")) || "").indexOf("promotion") !== -1);
       await again.click();
       if (promo) {
-        await page.waitForSelector("#begin", { timeout: 8000 });
+        await page.waitForSelector("#begin", { timeout: START_TIMEOUT });
         await page.click("#begin");
         await page.waitForSelector("#card .choice", { timeout: 5000 });
         var fnP = (await page.textContent("#card .fortnight")) || "";
@@ -304,7 +312,7 @@ async function promotionSession(browser, viewport, opts) {
     assert(career && career.carries && career.carries.dm, label + ": promotion recorded no carry for the district");
   }
   await page.click("#again");
-  await page.waitForSelector("#begin", { timeout: 8000 });
+  await page.waitForSelector("#begin", { timeout: START_TIMEOUT });
   var mast = (await page.textContent("#mastsub")) || "";
   assert(/District Magistrate/.test(mast), label + ": after promotion the masthead is not the Collector's (\"" + mast.trim() + "\")");
   var here = (await page.textContent(".rung--here")) || "";
@@ -357,7 +365,7 @@ async function promotionDmSession(browser, viewport) {
   assert(career2 && career2.carries && career2.carries.comm, label + ": promotion recorded no carry for the Division");
   assert(career2 && career2.carries && career2.carries.comm.flags.indexOf("carry_wife") !== -1, label + ": married year did not carry the wife");
   await page.click("#again");
-  await page.waitForSelector("#begin", { timeout: 8000 });
+  await page.waitForSelector("#begin", { timeout: START_TIMEOUT });
   var mast = (await page.textContent("#mastsub")) || "";
   assert(/Commissioner/.test(mast), label + ": after promotion the masthead is not the Commissioner's (\"" + mast.trim() + "\")");
   await page.click("#begin");
@@ -408,7 +416,7 @@ async function chapterPickSession(browser, viewport) {
   assert(picks.indexOf("ac") !== -1 && picks.indexOf("dm") !== -1,
     label + ": served ranks not pickable on the ladder (got " + picks.join(",") + ")");
   await page.click('.rung[data-go="ac"]');
-  await page.waitForSelector("#begin", { timeout: 8000 });
+  await page.waitForSelector("#begin", { timeout: START_TIMEOUT });
   var mast = (await page.textContent("#mastsub")) || "";
   assert(/Assistant Commissioner/.test(mast), label + ": picking rung I did not open Kotra (\"" + mast.trim() + "\")");
   await page.click("#begin");
