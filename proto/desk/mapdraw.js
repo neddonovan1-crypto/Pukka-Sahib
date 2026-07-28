@@ -305,7 +305,7 @@ function drawDistrict(cv, opts) {
 
   /* -- the district ---------------------------------------------------- */
   var cx = inner.x + inner.w / 2, cy = inner.y + inner.h * .49;
-  var rx = inner.w * .48, ry = inner.h * .47;
+  var rx = inner.w * .49, ry = inner.h * .485;
   var outline = [], a, nOut = 78;
   for (var oi = 0; oi < nOut; oi++) {
     a = oi / nOut * Math.PI * 2;
@@ -352,8 +352,18 @@ function drawDistrict(cv, opts) {
   /* -- the hills ------------------------------------------------------- */
   // A ridge system in the north-west: one spine with spurs off it, so the
   // hachures always have a flank to run down and never a cone to radiate from.
-  var hillC = [inner.x + inner.w * (.21 + rng() * .06), inner.y + inner.h * (.20 + rng() * .05)];
-  var hillR = [inner.w * (.21 + rng() * .04), inner.h * (.23 + rng() * .04)];
+  function pickCorner(cands, avoid, avoidR) {
+    var best = cands[0], bs = -1;
+    cands.forEach(function (c) {
+      var p = [inner.x + c[0] * inner.w, inner.y + c[1] * inner.h], m = 1e9;
+      avoid.forEach(function (q) { m = Math.min(m, dist(p, q)); });
+      m += (c[2] || 0) * inner.w;
+      if (m > bs) { bs = m; best = c; }
+    });
+    return [inner.x + best[0] * inner.w, inner.y + best[1] * inner.h];
+  }
+  var hillC = pickCorner([[.15, .19], [.16, .80], [.85, .19], [.84, .81], [.50, .13]], sites);
+  var hillR = [inner.w * (.23 + rng() * .04), inner.h * (.24 + rng() * .04)];
   var ridges = [];
   (function () {
     var dir = -.62 + (rng() - .5) * .5, step = hillR[0] * .34;
@@ -364,8 +374,8 @@ function drawDistrict(cv, opts) {
       sx += Math.cos(dir) * step; sy += Math.sin(dir) * step * .8;
       spine.push([sx, sy]);
     }
-    ridges.push({ pts: chaikin(spine, 2), amp: 1, w: (9 + rng() * 4) * (compact ? 1.5 : S) });
-    var nSpur = compact ? 3 : 5;
+    ridges.push({ pts: chaikin(spine, 2), amp: 1, w: (12 + rng() * 4) * (compact ? 1.4 : S) });
+    var nSpur = compact ? 3 : 7;
     for (var s = 0; s < nSpur; s++) {
       var at = 1 + Math.floor(rng() * (spine.length - 2));
       var base = spine[at], side = rng() < .5 ? 1 : -1;
@@ -377,7 +387,7 @@ function drawDistrict(cv, opts) {
         px += Math.cos(bd) * slen / 3; py += Math.sin(bd) * slen / 3 * .85;
         pts.push([px, py]);
       }
-      ridges.push({ pts: chaikin(pts, 2), amp: .62 + rng() * .26, w: (6 + rng() * 4) * (compact ? 1.5 : S) });
+      ridges.push({ pts: chaikin(pts, 2), amp: .6 + rng() * .3, w: (7.5 + rng() * 3.5) * (compact ? 1.4 : S) });
     }
   })();
   function hillMask(x, y) {
@@ -395,7 +405,7 @@ function drawDistrict(cv, opts) {
       if (h > v) v = h;
     }
     if (v < .004) return 0;
-    return v * m * (.76 + .48 * noise.fbm(x / 15 + 41, y / 15 + 13, 3));
+    return v * m * (.84 + .32 * noise.fbm(x / 30 + 41, y / 30 + 13, 3));
   }
   // sampled onto a grid once — the hachure pass then costs a lookup, not a search
   var HG = compact ? 2.4 : 2.0;
@@ -420,7 +430,7 @@ function drawDistrict(cv, opts) {
   /* -- the canal ------------------------------------------------------- */
   var canalT = .20 + rng() * .14;
   var canalHead = river[clamp(Math.round(canalT * (river.length - 1)), 0, river.length - 1)];
-  var canalEnd = [neat.x + neat.w * (.88 + rng() * .1), neat.y + neat.h * (.88 + rng() * .12)];
+  var canalEnd = [neat.x + neat.w * (.80 + rng() * .08), neat.y + neat.h * (.84 + rng() * .08)];
   var canal = resample(meander(rng, [canalHead[0], canalHead[1] + halfWidth(canalT)], canalEnd, .03, 3, 3), 4);
   var distribs = [];
   for (var di = 0; di < (compact ? 0 : 5); di++) {
@@ -428,8 +438,12 @@ function drawDistrict(cv, opts) {
     var dIdx = clamp(Math.round(dt * (canal.length - 1)), 1, canal.length - 2);
     var dp = canal[dIdx], dtan = tangentAt(canal, dIdx), sgn = di % 2 ? 1 : -1;
     var ba = Math.atan2(dtan[1], dtan[0]) + sgn * (.48 + rng() * .3);
-    var blen = inner.w * (.11 + rng() * .09);
-    var br = resample(meander(rng, dp, [dp[0] + Math.cos(ba) * blen, dp[1] + Math.sin(ba) * blen], .04, 3, 3), 4);
+    var blen = inner.w * (.10 + rng() * .08);
+    var bend = [dp[0] + Math.cos(ba) * blen, dp[1] + Math.sin(ba) * blen];
+    while (!pointInPoly(bend[0], bend[1], outline) && blen > 8) {
+      blen *= .8; bend = [dp[0] + Math.cos(ba) * blen, dp[1] + Math.sin(ba) * blen];
+    }
+    var br = resample(meander(rng, dp, bend, .04, 3, 3), 4);
     distribs.push({ pts: br, order: 1 });
     for (var sd = 0; sd < 2; sd++) {
       if (rng() < .25) continue;
@@ -463,8 +477,8 @@ function drawDistrict(cv, opts) {
   var tails = [];
   if (order.length) {
     var firstS = sites[order[0]], lastS = sites[order[order.length - 1]];
-    tails.push(resample(meander(rng, [neat.x - 8, firstS[1] + (rng() - .5) * inner.h * .2], firstS, .06, 3, 3), 4));
-    tails.push(resample(meander(rng, lastS, [neat.x + neat.w + 8, lastS[1] + (rng() - .5) * inner.h * .2], .06, 3, 3), 4));
+    tails.push(resample(meander(rng, [neat.x - 8, firstS[1] + (rng() - .5) * inner.h * .14], firstS, .03, 3, 3), 4));
+    tails.push(resample(meander(rng, lastS, [neat.x + neat.w + 8, lastS[1] + (rng() - .5) * inner.h * .14], .03, 3, 3), 4));
   }
   var metalled = tails.slice(0, 1).concat(legs, tails.slice(1));
 
@@ -474,7 +488,7 @@ function drawDistrict(cv, opts) {
     [neat.x + neat.w + 8, neat.y + neat.h * (.15 + rng() * .14)], .02, 3, 3), 4);
 
   /* -- the reserved forest --------------------------------------------- */
-  var forestC = [inner.x + inner.w * (.76 + rng() * .06), inner.y + inner.h * (.22 + rng() * .08)];
+  var forestC = pickCorner([[.78, .22], [.22, .20], [.78, .76], [.24, .78]], sites.concat([hillC]));
   var fRx = inner.w * (.13 + rng() * .04), fRy = inner.h * (.15 + rng() * .05);
   var forestPoly = [];
   for (var fj = 0; fj < 30; fj++) {
@@ -547,7 +561,7 @@ function drawDistrict(cv, opts) {
         tryVillage(path[i][0] - t[1] * off, path[i][1] + t[0] * off, rng() < .14);
       }
     });
-    for (var vs = 0; vs < Math.round(340 * S); vs++)
+    for (var vs = 0; vs < Math.round(300 * S); vs++)
       tryVillage(obounds.x + rng() * obounds.w, obounds.y + rng() * obounds.h, rng() < .06);
   }
 
@@ -564,7 +578,7 @@ function drawDistrict(cv, opts) {
         if (d < maxLen) ds.push([d, j]);
       }
       ds.sort(function (p, q) { return p[0] - q[0]; });
-      var k = 1 + (rng() < .55 ? 1 : 0) + (rng() < .18 ? 1 : 0);
+      var k = 1 + (rng() < .28 ? 1 : 0);
       for (var m = 0; m < k && m < ds.length; m++) {
         var key = Math.min(i, ds[m][1]) + ":" + Math.max(i, ds[m][1]);
         if (seen[key]) continue;
@@ -585,22 +599,22 @@ function drawDistrict(cv, opts) {
     var b = polyBounds(poly);
     ctx.save(); polyPath(ctx, poly, null, 0); ctx.clip();
     var sp = (compact ? lerp(2.6, 7.5, cond) : lerp(3.0, 9.5, cond) / S);
-    var thr = lerp(-.02, .62, cond);
+    var thr = lerp(.10, .70, cond);
     function open(x, y) {
       return !isWater(x, y) && height(x, y) < .13;
     }
     stipple(ctx, b, sp, rng, {
-      size: compact ? .48 : .52 * (1 + .3 * S), alpha: lerp(.7, .45, cond),
+      size: compact ? .46 : .48 * (1 + .25 * S), alpha: lerp(.6, .38, cond),
       cap: compact ? 2600 : 14000,
-      mask: function (x, y) { return open(x, y) && noise.fbm(x / 24 + 11, y / 24 + 5, 3) > thr; }
+      mask: function (x, y) { return open(x, y) && noise.fbm(x / 44 + 11, y / 44 + 5, 4) > thr; }
     });
     if (!compact) {
       // field blocks: the woven look of a settled plain, thinning as it fails
-      var nBlocks = Math.round(b.w * b.h / 1500 * (1 - cond * .92));
+      var nBlocks = Math.round(b.w * b.h / 900 * (1 - cond * .9));
       for (var fb2 = 0; fb2 < nBlocks; fb2++) {
         var bx5 = b.x + rng() * b.w, by5 = b.y + rng() * b.h;
         if (!open(bx5, by5)) continue;
-        if (noise.fbm(bx5 / 24 + 11, by5 / 24 + 5, 3) < thr + .04) continue;
+        if (noise.fbm(bx5 / 44 + 11, by5 / 44 + 5, 4) < thr + .03) continue;
         var ang2 = rng() * Math.PI, ln = (3.5 + rng() * 4.5) * S, gap2 = 1.1 + rng() * .7;
         var ca = Math.cos(ang2), sa2 = Math.sin(ang2);
         for (var q3 = -1; q3 <= 1; q3++) {
@@ -615,7 +629,7 @@ function drawDistrict(cv, opts) {
         for (var s2 = 0; s2 < nScrub; s2++) {
           var x2 = b.x + rng() * b.w, y2 = b.y + rng() * b.h;
           if (!open(x2, y2)) continue;
-          if (noise.fbm(x2 / 24 + 11, y2 / 24 + 5, 3) > thr) continue;
+          if (noise.fbm(x2 / 44 + 11, y2 / 44 + 5, 4) > thr) continue;
           var sa3 = rng() * .6 - .3;
           stroke(ctx, [[x2 - 1.5, y2 + 1], [x2 + Math.sin(sa3) * .6, y2 - 1.7]], .3, .5);
           stroke(ctx, [[x2 + 1.5, y2 + 1], [x2 + Math.sin(sa3) * .6, y2 - 1.7]], .3, .5);
@@ -671,8 +685,9 @@ function drawDistrict(cv, opts) {
   // between rows narrows where the ground steepens, which is what makes the
   // tone. Because every stroke is hung off a spine it can never radiate.
   (function () {
-    ctx.save(); polyPath(ctx, outline, null, 0); ctx.clip();
-    var dh = compact ? .17 : .125;                     // contour interval
+    ctx.save();
+    ctx.beginPath(); ctx.rect(neat.x, neat.y, neat.w, neat.h); ctx.clip();
+    var dh = compact ? .15 : .085;                     // contour interval
     var along = compact ? 3.2 : 2.3 / S;
     ridges.forEach(function (R, rid) {
       var spine = resample(R.pts, along);
@@ -680,16 +695,18 @@ function drawDistrict(cv, opts) {
         var p = spine[i], tan = tangentAt(spine, i);
         var mk = hillMask(p[0], p[1]);
         if (mk < .12) continue;
-        var ampS = R.amp * mk * (.72 + .56 * noise.fbm(p[0] / 26 + 61, p[1] / 26 + 17, 2));
-        if (ampS < dh * 2) continue;
+        var ampS = R.amp * mk * (.7 + .5 * noise.fbm(p[0] / 27 + 61, p[1] / 27 + 17, 2))
+          * (.82 + .34 * noise.fbm(p[0] / 9 + 5, p[1] / 9 + 29, 2));
+        if (ampS < dh * 1.6) continue;
+        var phase = rng();                             // stagger, or it combs
         // which side of a spur belongs to the spine that made it
         for (var sgn = -1; sgn <= 1; sgn += 2) {
           var wobbleA = (noise.fbm(p[0] / 19 + sgn * 7, p[1] / 19 + 3, 2) - .5) * .5;
           var ca = Math.cos(wobbleA), sa = Math.sin(wobbleA);
           var nx = (-tan[1] * ca - tan[0] * sa) * sgn, ny = (tan[0] * ca - tan[1] * sa) * sgn;
-          var prevD = 1.1 + rng() * .5, k, lvl2, d;
-          for (k = Math.floor(ampS / dh); k >= 1; k--) {
-            lvl2 = k * dh;
+          var prevD = .4 + rng() * .4, k, lvl2, d;
+          for (k = Math.floor((ampS / dh) - phase); k >= 1; k--) {
+            lvl2 = (k + phase) * dh;
             d = R.w * Math.sqrt(2 * Math.log(ampS / lvl2));
             if (d <= prevD) { prevD = d; continue; }
             var gapd = d - prevD;
@@ -703,7 +720,7 @@ function drawDistrict(cv, opts) {
               if (O.amp * Math.exp(-(od * od) / (2 * O.w * O.w)) > lvl2 * 1.04) owned = false;
             }
             if (!owned) { prevD = d; continue; }
-            if (rng() < .11) { prevD = d; continue; }   // the burin lifts
+            if (rng() < .07) { prevD = d; continue; }   // the burin lifts
             var norm = clamp(3.6 / Math.max(1.1, gapd), 0, 1);
             var len = Math.min(gapd * .82, compact ? 4.2 : 5.4 * S);
             var jx2 = (rng() - .5) * .5, jy2 = (rng() - .5) * .5;
@@ -712,7 +729,7 @@ function drawDistrict(cv, opts) {
               [p[0] + nx * s0 + jx2, p[1] + ny * s0 + jy2],
               [p[0] + nx * (s0 + len * .55) + jx2 * .4, p[1] + ny * (s0 + len * .55) + jy2 * .4],
               [p[0] + nx * (s0 + len), p[1] + ny * (s0 + len)]
-            ], lerp(.22, .62, norm) * (compact ? 1.25 : S), lerp(.45, .95, norm));
+            ], lerp(.2, .55, norm) * (compact ? 1.3 : S), lerp(.4, .88, norm));
             prevD = d;
           }
         }
@@ -761,9 +778,9 @@ function drawDistrict(cv, opts) {
     ctx.fillStyle = PAPER; ctx.fill();
     ctx.clip();
     if (!compact) {
-      [.45, .78].forEach(function (f, k) {
-        stroke(ctx, offsetPath(river, function (s) { return -halfWidth(s) * f; }), .3, .3 - k * .08);
-        stroke(ctx, offsetPath(river, function (s) { return halfWidth(s) * f; }), .3, .3 - k * .08);
+      [.52].forEach(function (f, k) {
+        stroke(ctx, offsetPath(river, function (s) { return -halfWidth(s) * f; }), .28, .24);
+        stroke(ctx, offsetPath(river, function (s) { return halfWidth(s) * f; }), .28, .24);
       });
     }
     ctx.restore();
@@ -935,7 +952,7 @@ function drawDistrict(cv, opts) {
       font: (7.4 * S).toFixed(1) + 'px ' + SERIF, track: 2.6 * S, halo: 3.2, alpha: .6, side: -7
     });
     label(ctx, HILLNAMES[Math.floor(rng() * HILLNAMES.length)] + " HILLS",
-      hillC[0], hillC[1] + hillR[1] * .95, {
+      hillC[0], hillC[1] + hillR[1] * .78, {
         font: 'italic 600 ' + (8.5 * S).toFixed(1) + 'px ' + SERIF, track: 2.8 * S, halo: 3.8, alpha: .75
       });
     label(ctx, "RESERVED FOREST", forestC[0], forestC[1], {
