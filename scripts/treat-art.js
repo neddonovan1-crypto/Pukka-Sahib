@@ -26,6 +26,7 @@ var OUT = path.join(ROOT, "art", "web");
 // Which process each register goes through.
 var PROCESS = {
   environment: "scene",
+  "painted-object": "pluck",    // painted like the room, lifted straight off the white
   painting: "chromo",
   kalighat: "chromo",
   engraving: "plate",
@@ -197,6 +198,58 @@ async function plate(buf, w, h) {
     .toBuffer();
 }
 
+/* ——— pluck ————————————————————————————————————————————————————————
+   For an object painted on near-pure white, connectivity is the wrong tool: a
+   flood has to be told where to start, it stops at any drawn line, and every
+   time it has been asked to cross a painted edge it has eaten the subject and
+   returned scanlines. Whiteness alone is enough here. Gouache never reaches
+   paper-white, so a tight ramp against pure white lifts the ground and leaves
+   even the blank paper band — which is cream — completely intact.            */
+async function pluck(buf, w, h, trim) {
+  // These plates keep drawing themselves a ruled border despite being told not
+  // to, and a pale grey line is far enough from white to survive the ramp. Crop
+  // inside it first.
+  var pre = sharp(buf);
+  if (trim) {
+    var pm = await pre.metadata();
+    var cx = Math.round(pm.width * trim), cy = Math.round(pm.height * trim);
+    pre = sharp(buf).extract({ left: cx, top: cy, width: pm.width - cx * 2, height: pm.height - cy * 2 });
+  }
+  var raw = await pre
+    .resize({ width: w, height: h, fit: "inside" })
+    .ensureAlpha()
+    .raw().toBuffer({ resolveWithObject: true });
+  var d = raw.data, W = raw.info.width, H = raw.info.height;
+  var CLEAR = 16, SOLID = 40;                 // distance from white, in RGB units
+  for (var i = 0; i < W * H; i++) {
+    var k = i * 4;
+    var dr = 255 - d[k], dg = 255 - d[k + 1], db = 255 - d[k + 2];
+    var dist = Math.sqrt(dr * dr + dg * dg + db * db);
+    var a = dist <= CLEAR ? 0
+          : dist >= SOLID ? 255
+          : Math.round(((dist - CLEAR) / (SOLID - CLEAR)) * 255);
+    d[k + 3] = a;
+  }
+  // Trim to what actually survived, so the object is not adrift in a sheet.
+  var x1 = W, y1 = H, x2 = -1, y2 = -1;
+  for (var y = 0; y < H; y++) {
+    for (var x = 0; x < W; x++) {
+      if (d[(y * W + x) * 4 + 3] > 24) {
+        if (x < x1) x1 = x; if (x > x2) x2 = x;
+        if (y < y1) y1 = y; if (y > y2) y2 = y;
+      }
+    }
+  }
+  if (x2 < 0) return null;
+  var pad = 2;
+  x1 = Math.max(0, x1 - pad); y1 = Math.max(0, y1 - pad);
+  x2 = Math.min(W - 1, x2 + pad); y2 = Math.min(H - 1, y2 + pad);
+  return sharp(d, { raw: { width: W, height: H, channels: 4 } })
+    .extract({ left: x1, top: y1, width: x2 - x1 + 1, height: y2 - y1 + 1 })
+    .png({ compressionLevel: 9, effort: 9 })
+    .toBuffer();
+}
+
 /* ——— cutout ————————————————————————————————————————————————————————
    Key the near-white ground to transparency, from the edges inwards, so a
    stamp or a seal can be gummed onto a document. Flood-filling from the border
@@ -222,8 +275,20 @@ async function multiply(buf, w, h) {
   return img.jpeg({ quality: 84, chromaSubsampling: "4:4:4" }).toBuffer();
 }
 
-async function cutout(buf, w, h) {
-  var raw = await sharp(buf)
+async function cutout(buf, w, h, trim) {
+  // Some plates come back with a ruled border drawn round them, and a drawn
+  // line is a wall the flood cannot cross — the fill keys the margin outside it
+  // and stops, leaving the whole sheet. Cropping a sliver off each edge starts
+  // the fill inside the frame instead.
+  var pre = sharp(buf);
+  if (trim) {
+    var pm = await pre.metadata();
+    var cx = Math.round(pm.width * trim), cy = Math.round(pm.height * trim);
+    pre = sharp(buf).extract({
+      left: cx, top: cy, width: pm.width - cx * 2, height: pm.height - cy * 2
+    });
+  }
+  var raw = await pre
     .resize({ width: w, height: h, fit: "inside" })
     .ensureAlpha()
     .raw().toBuffer({ resolveWithObject: true });
@@ -314,12 +379,16 @@ async function cutout(buf, w, h) {
     var w = Math.round(meta.width * scale), h = Math.round(meta.height * scale);
 
     var out, ext;
-    if (proc === "scene") { out = await scene(src, w, h); ext = "jpg"; }
+    if (proc === "pluck") {
+      out = await pluck(src, w, h, 0.055); ext = "png";
+      if (!out) { console.log(id.padEnd(22) + "nothing survived the pluck, skipped"); continue; }
+    }
+    else if (proc === "scene") { out = await scene(src, w, h); ext = "jpg"; }
     else if (proc === "chromo") { out = await chromo(src, w, h); ext = "jpg"; }
     else if (proc === "plate") { out = await plate(src, w, h); ext = "jpg"; }
     else if (proc === "multiply") { out = await multiply(src, w, h); ext = "jpg"; }
     else {
-      out = await cutout(src, w, h); ext = "png";
+      out = await cutout(src, w, h, brief.register === "painted-object" ? 0.045 : 0); ext = "png";
       if (!out) {                       // fill leaked — ship it opaque instead
         console.log(id.padEnd(22) + "cutout leaked, falling back to multiply");
         out = await multiply(src, w, h); ext = "jpg"; proc = "multiply*";

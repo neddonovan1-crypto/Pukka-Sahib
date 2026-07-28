@@ -10,13 +10,21 @@ const { chromium } = require("/home/user/Pukka-Sahib/node_modules/playwright");
 
   await p.screenshot({ path: "01-desk-empty.png" });
   await p.locator(".hung").first().click();          // pick the telegram
+  await p.waitForTimeout(150);
+  await p.screenshot({ path: "02a-takedown.png" });   // the sheet mid-air
   await p.waitForTimeout(500);
   await p.screenshot({ path: "02-desk-held.png" });
 
+  // the strike, read as a sequence: the die out of the rack, across, down,
+  // the mark, and the sheet away to the tray
   await p.locator(".stamp").nth(3).click();           // called for report
-  await p.waitForTimeout(400);
+  for (let i = 1; i <= 6; i++) {
+    await p.screenshot({ path: "02s" + i + "-strike.png" });
+    await p.waitForTimeout(60);
+  }
+  await p.waitForTimeout(900);
   await p.locator(".hung").first().click();
-  await p.waitForTimeout(400);
+  await p.waitForTimeout(500);
   await p.screenshot({ path: "03-desk-after.png" });
 
   await p.locator(".delegate").click();
