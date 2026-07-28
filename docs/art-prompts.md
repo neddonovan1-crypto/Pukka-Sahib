@@ -1,5 +1,13 @@
 # Art Prompts — Pukka Sahib
 
+> **Superseded for new work.** The house style, the registers and the
+> generation pipeline are now `docs/DESIGN-ART.md` and the briefs in
+> `art/briefs/`; art is produced by `scripts/generate-art.js` and
+> `scripts/treat-art.js`. This file is retained as the provenance record for
+> the original shipped set in `art/web/` — the duotone seal, cover, season
+> backdrops and scene plates were made to the prompts below. Do not author
+> against it.
+
 Prompts for generating game art (e.g. via ChatGPT / DALL·E). The **golden rule
 is consistency**: every image must share one house style so the set reads as a
 single game and sits against the locked dossier palette (`DESIGN.md §7`).

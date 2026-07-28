@@ -62,6 +62,47 @@ function nearestInk(r, g, b) {
   return INKS[best];
 }
 
+
+/* ——— what colour is the sheet? ————————————————————————————————————————
+   The model paints its own paper, and it is never the same cream twice. Keying
+   against a fixed white left a halo; loosening the fixed threshold until the
+   halo went ate the stamp's own blank panels. So sample the corners, and key
+   what matches THAT — the panels inside the design are a different tone and
+   are not border-connected, so they survive either way. */
+function sheetColour(d, W, H, C) {
+  var pts = [], m = 6;
+  for (var i = 0; i < m; i++) {
+    for (var j = 0; j < m; j++) {
+      pts.push([i, j], [W - 1 - i, j], [i, H - 1 - j], [W - 1 - i, H - 1 - j]);
+    }
+  }
+  var rs = [], gs = [], bs = [];
+  pts.forEach(function (pt) {
+    var k = (pt[1] * W + pt[0]) * C;
+    rs.push(d[k]); gs.push(d[k + 1]); bs.push(d[k + 2]);
+  });
+  function med(a) { a.sort(function (x, y) { return x - y; }); return a[a.length >> 1]; }
+  return [med(rs), med(gs), med(bs)];
+}
+
+/* The box the specimen actually occupies, so a panel coordinate expressed as a
+   percentage of the image means something. */
+function contentBox(d, W, H, C, bg, tol) {
+  var x1 = W, y1 = H, x2 = -1, y2 = -1, t2 = tol * tol;
+  for (var y = 0; y < H; y++) {
+    for (var x = 0; x < W; x++) {
+      var k = (y * W + x) * C;
+      var dr = d[k] - bg[0], dg = d[k + 1] - bg[1], db = d[k + 2] - bg[2];
+      if (dr * dr + dg * dg + db * db > t2) {
+        if (x < x1) x1 = x; if (x > x2) x2 = x;
+        if (y < y1) y1 = y; if (y > y2) y2 = y;
+      }
+    }
+  }
+  if (x2 < 0) return null;
+  return { left: x1, top: y1, width: x2 - x1 + 1, height: y2 - y1 + 1 };
+}
+
 /* ——— chromolithograph ————————————————————————————————————————————————
    Posterise to the ink set, then shift the separations a hair apart. Real
    stones were registered by eye and never quite met; that near-miss is most
@@ -133,10 +174,23 @@ async function plate(buf, w, h) {
    rather than thresholding globally keeps the pale panels inside the design —
    which are exactly the blank areas we asked for and intend to typeset. */
 async function multiply(buf, w, h) {
-  return sharp(buf).resize({ width: w, height: h, fit: "inside" })
+  var raw = await sharp(buf).resize({ width: w, height: h, fit: "inside" })
     .flatten({ background: { r: 255, g: 255, b: 255 } })
-    .jpeg({ quality: 84, chromaSubsampling: "4:4:4" })
-    .toBuffer();
+    .raw().toBuffer({ resolveWithObject: true });
+  var d = raw.data, W = raw.info.width, H = raw.info.height, C = raw.info.channels;
+  var bg = sheetColour(d, W, H, C);
+  var box = contentBox(d, W, H, C, bg, 34);
+  var img = sharp(d, { raw: { width: W, height: H, channels: C } });
+  if (box) {
+    var pad = Math.round(Math.min(W, H) * 0.02);
+    var L = Math.max(0, box.left - pad), T = Math.max(0, box.top - pad);
+    img = img.extract({
+      left: L, top: T,
+      width: Math.min(W - L, box.width + pad * 2),
+      height: Math.min(H - T, box.height + pad * 2)
+    });
+  }
+  return img.jpeg({ quality: 84, chromaSubsampling: "4:4:4" }).toBuffer();
 }
 
 async function cutout(buf, w, h) {
@@ -146,9 +200,13 @@ async function cutout(buf, w, h) {
     .raw().toBuffer({ resolveWithObject: true });
   var d = raw.data, W = raw.info.width, H = raw.info.height;
 
+  var bg = sheetColour(d, W, H, 4), TOL = 24 * 24;
   var seen = new Uint8Array(W * H);
   var stack = [];
-  function light(i) { return d[i * 4] > 228 && d[i * 4 + 1] > 222 && d[i * 4 + 2] > 208; }
+  function light(i) {
+    var k = i * 4, dr = d[k] - bg[0], dg = d[k + 1] - bg[1], db = d[k + 2] - bg[2];
+    return dr * dr + dg * dg + db * db <= TOL;
+  }
   for (var x = 0; x < W; x++) { stack.push(x); stack.push((H - 1) * W + x); }
   for (var y = 0; y < H; y++) { stack.push(y * W); stack.push(y * W + W - 1); }
 
@@ -184,6 +242,7 @@ async function cutout(buf, w, h) {
   // palette costs nothing visible and keeps a keyed stamp from outweighing the
   // painting it sits next to.
   return sharp(d, { raw: { width: W, height: H, channels: 4 } })
+    .trim({ threshold: 1 })
     .png({ compressionLevel: 9, palette: true, quality: 92, effort: 9 })
     .toBuffer();
 }

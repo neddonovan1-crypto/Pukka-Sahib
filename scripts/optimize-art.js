@@ -17,7 +17,6 @@ fs.mkdirSync(OUT, { recursive: true });
 var JOBS = [
   { in: "season-cold.png", out: "season-cold.jpg", w: 1200, q: 70 },
   { in: "season-cold-alt.png", out: "season-cold-2.jpg", w: 1200, q: 70 }, // second cold-season backdrop, rotated in
-  { in: "season-cold-3.png", out: "season-cold-3.jpg", w: 1200, q: 70 },    // third: inspecting an out-station
   { in: "season-hot.png", out: "season-hot.jpg", w: 1200, q: 70 },
   { in: "season-hot-2.png", out: "season-hot-2.jpg", w: 1200, q: 70 },       // second hot-season backdrop
   { in: "season-monsoon.png", out: "season-monsoon.jpg", w: 1200, q: 70 },

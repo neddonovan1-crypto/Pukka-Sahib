@@ -1,4 +1,7 @@
 {
-  "register": "isolated", "aspect": "1:1", "use": "Office datestamps struck on incoming papers",
-  "subject": "The impression of a circular rubber office datestamp, struck in violet ink. Two concentric rings with an empty band between them and an empty rectangular slot across the middle. Struck slightly askew, over-inked and blotted along the lower left edge, and starved to a broken, patchy outline along the upper right where the pad had dried."
+  "register": "isolated",
+  "aspect": "1:1",
+  "use": "Office datestamps struck on incoming papers",
+  "subject": "The impression of a circular rubber office datestamp, struck in violet ink. Two concentric rings with an empty band between them and an empty rectangular slot across the middle. Struck slightly askew, over-inked and blotted along the lower left edge, and starved to a broken, patchy outline along the upper right where the pad had dried.",
+  "treat": "multiply"
 }
