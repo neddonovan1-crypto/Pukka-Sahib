@@ -138,20 +138,56 @@ button:disabled{opacity:.34; cursor:default}
   display:flex; gap:7px; justify-content:center; flex-wrap:wrap}
 
 /* the paper in hand */
+.hand{position:absolute; inset:-8% -3% -2%;
+  display:flex; align-items:center; justify-content:center; pointer-events:none}
+.nothing{font-family:"Courier New",monospace; font-size:.6rem; letter-spacing:.13em;
+  text-transform:uppercase; color:#cbbb96; text-shadow:0 1px 4px rgba(0,0,0,.95)}
+ /* The sheet. paper.css in this directory is a far richer treatment — deckle
+    edges, punch holes threaded with tape, type impressed into the stock — but
+    it was authored against a flat harness and its layers sit below the room
+    when laid over the painting. Integrating it properly is its own pass. */
+.hand .paper{
+  width:92%; position:relative; z-index:0; isolation:isolate;
+  background:var(--paper); padding:18px 24px 22px;
+  background-image:radial-gradient(rgba(120,95,45,.09) 1px,transparent 1.4px);
+  background-size:4px 4px; transform:rotate(-.4deg);
+  box-shadow:0 10px 22px -10px rgba(0,0,0,.9), 0 2px 3px rgba(0,0,0,.45);
+  animation:land .34s cubic-bezier(.2,.9,.3,1);
+}
+@keyframes land{from{opacity:0; transform:translateY(-14px) rotate(1.4deg)} to{opacity:1; transform:rotate(-.4deg)}}
+.hand .paper--telegram{background-color:var(--flimsy)}
+.hand .paper--petition{background-color:#e8dcc0}
+.hand .paper::before{content:""; position:absolute; left:10px; top:26px; width:8px; height:8px;
+  border-radius:50%; background:#2b3327; box-shadow:0 72px 0 #2b3327, inset 0 1px 2px rgba(0,0,0,.7)}
+.hand .phead{display:flex; justify-content:space-between; gap:14px;
+  border-bottom:1px solid var(--rule); padding-bottom:6px; margin-bottom:11px;
+  font-family:"Courier New",monospace; font-size:.55rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--soft)}
+.hand .pbody{font-size:1rem; line-height:1.6; max-width:52ch}
+.hand .paper--telegram .pbody{font-family:"Courier New",monospace; font-size:.8rem;
+  line-height:1.9; letter-spacing:.03em}
+.hand .urgent,.hand .secret{
+  position:absolute; right:18px; top:44px; font-family:"Courier New",monospace;
+  font-size:.53rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--seal); border:1.8px solid var(--seal); padding:3px 7px; transform:rotate(-7deg)}
+.hand .secret{color:var(--violet); border-color:var(--violet)}
+.hand .feestamp{position:absolute; right:20px; top:84px; width:64px; text-align:center}
+.hand .feestamp img{width:100%; display:block}
+.hand .feestamp b,.hand .feestamp em{position:absolute; left:0; right:0; font-style:normal;
+  font-weight:600; text-transform:uppercase; color:#2f5d3f; letter-spacing:.09em}
+.hand .feestamp b{top:40%; font-size:.36rem}
+.hand .feestamp em{top:55%; font-size:.5rem}
+
+/* the rack, along the front edge of the desk */
+.rack{position:absolute; left:236px; right:18px; bottom:6px;
+  display:flex; gap:7px; justify-content:center; flex-wrap:wrap}
+
+/* the paper in hand */
 .hand{display:flex; align-items:center; justify-content:center; overflow:hidden;
   min-height:0; position:relative}
-.paper{z-index:1}
 .nothing{z-index:1}
 .nothing{font-family:"Courier New",monospace; font-size:.62rem; letter-spacing:.14em;
   text-transform:uppercase; color:#8b7f63; align-self:center}
-.paper{
-  width:92%; background:var(--paper); position:relative;
-  padding:18px 24px 22px; box-shadow:0 10px 24px -10px rgba(0,0,0,.95), 0 2px 3px rgba(0,0,0,.5);
-  background-image:radial-gradient(rgba(120,95,45,.09) 1px,transparent 1.4px);
-  background-size:4px 4px; transform:rotate(-.3deg);
-  animation:land .34s cubic-bezier(.2,.9,.3,1);
-  max-height:100%; overflow:auto;
-}
 @keyframes land{from{opacity:0; transform:translateY(-16px) rotate(1.6deg)} to{opacity:1; transform:rotate(-.3deg)}}
 .paper--telegram{background:var(--flimsy)}
 .paper--petition{background:#e8dcc0}
@@ -187,14 +223,7 @@ button:disabled{opacity:.34; cursor:default}
   filter:drop-shadow(0 8px 10px rgba(0,0,0,.75));
   transition:transform .12s cubic-bezier(.3,1.4,.5,1);
 }
-.stamp img{width:100%; height:auto; display:block}
-.stamp .band{
-  position:absolute; left:50%; top:39%; transform:translateX(-50%) rotate(-.6deg);
-  width:104%; text-align:center; pointer-events:none;
-  font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:600;
-  font-size:.5rem; letter-spacing:.09em; text-transform:uppercase;
-  color:#4a3a24; text-shadow:0 .5px 0 rgba(255,250,235,.5);
-}
+.stamp svg{width:100%; height:auto; display:block}
 .stamp em{
   position:absolute; left:0; right:0; bottom:0; font-style:normal;
   font-family:"Courier New",monospace; font-size:.5rem; letter-spacing:.1em;
@@ -320,6 +349,7 @@ button:disabled{opacity:.34; cursor:default}
 <div id="app"></div>
 <script src="content.js"></script>
 <script src="mapdraw.js"></script>
+<script src="furniture.js"></script>
 <script src="desk.js"></script>
 </body>
 </html>

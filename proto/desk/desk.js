@@ -253,9 +253,8 @@ function paintDesk() {
   // the rack: stamps, plus the acts this particular paper allows
   function stampBtn(label, days, cls, fn) {
     var b = el("button", "stamp " + (cls || ""));
-    b.innerHTML =
-      '<img src="../../art/web/stamp-handle.png" alt="">' +
-      '<span class="band">' + label + '</span>' +
+    var colour = cls === "stamp--act" ? "#2a3550" : cls === "stamp--close" ? "#5f5540" : "#8f2f22";
+    b.innerHTML = window.FURNITURE.stamp({ w: 92, label: label, colour: colour }) +
       '<em>' + days + 'd</em>';
     b.disabled = S.days < days;
     b.onclick = fn;
