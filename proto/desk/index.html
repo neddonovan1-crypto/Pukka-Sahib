@@ -41,7 +41,7 @@ button:disabled{opacity:.34; cursor:default}
 .room{position:relative; width:100%; max-width:calc(100vh * 16 / 9);
   aspect-ratio:16/9; box-shadow:0 0 90px rgba(0,0,0,.75)}
 .roomart{position:absolute; inset:0; width:100%; height:100%; display:block}
-.onwall,.onblotter{position:absolute}
+.onwall,.onblotter,.onrack{position:absolute}
 .onwall{display:flex; align-items:center; justify-content:center; padding:9% 8%}
 .onwall canvas{width:100%; height:100%; display:block;
   box-shadow:inset 0 0 18px rgba(60,40,15,.35), 0 1px 4px rgba(0,0,0,.55)}
@@ -59,7 +59,9 @@ button:disabled{opacity:.34; cursor:default}
 
  /* The room is a painting; the chrome must not bury it. Only the date and the
     days stay on screen — the ledger is Simla's opinion and arrives by post. */
+ /* the date and the days only, and they must not intercept the tape below */
 .deskrail{
+  pointer-events:none;
   position:absolute; left:0; top:0; z-index:3; width:186px;
   padding:12px 14px 16px; display:flex; flex-direction:column; gap:10px;
   background:radial-gradient(120% 100% at 0% 0%, rgba(12,8,4,.8), rgba(12,8,4,0) 78%);
@@ -106,35 +108,45 @@ button:disabled{opacity:.34; cursor:default}
    The fortnight strung across the top, the way a file was actually strung.
    Titles readable without opening anything; what is left is still hanging
    there when the fortnight closes. */
-.tapewrap{position:absolute; left:0; right:0; top:0; padding:0 18px}
-.tape{position:absolute; left:0; right:0; top:26px; height:5px;
-  background:linear-gradient(#a8332a, #7d211a 60%, #5d1712);
-  box-shadow:0 2px 5px rgba(0,0,0,.6)}
-.hangers{position:relative; display:flex; gap:6px; justify-content:center;
-  flex-wrap:wrap; padding-top:26px}
+ /* Strung down the left wall, where the plaster is quiet, rather than across
+    the ceiling where it cut the punkah in half. */
+.tapewrap{position:absolute; left:14px; top:170px; bottom:88px; width:216px;
+  display:flex; flex-direction:column}
+.tape{position:absolute; left:16px; top:0; bottom:34px; width:5px;
+  background:linear-gradient(90deg, #5d1712, #a8332a 45%, #7d211a);
+  box-shadow:2px 0 5px rgba(0,0,0,.6)}
+.hangers{position:relative; display:flex; flex-direction:column; gap:5px;
+  padding-left:30px; overflow-y:auto; flex:1 1 auto}
 .hung{
-  position:relative; margin-top:var(--drop); transform:rotate(var(--lean));
-  transform-origin:50% -14px; background:var(--paper); border:0;
-  border-bottom:2px solid rgba(92,80,58,.55);
-  padding:7px 11px 6px; max-width:154px; overflow:hidden;
-  box-shadow:0 8px 16px -8px rgba(0,0,0,.9);
-  transition:transform .16s cubic-bezier(.3,1.3,.5,1), margin-top .16s;
+  position:relative; margin-left:var(--drop); transform:rotate(var(--lean));
+  transform-origin:-14px 50%; background:var(--paper); border:0;
+  border-right:2px solid rgba(92,80,58,.5); text-align:left;
+  padding:6px 10px 5px; width:100%; overflow:hidden;
+  box-shadow:-2px 6px 14px -8px rgba(0,0,0,.9);
+  transition:transform .16s cubic-bezier(.3,1.3,.5,1), margin-left .16s;
 }
-.hung .tie{position:absolute; left:50%; top:calc(-1 * var(--drop) - 4px);
-  width:2px; height:calc(var(--drop) + 6px); margin-left:-1px;
-  background:linear-gradient(#8d2a22, #b03a2c)}
+.hung .tie{position:absolute; left:calc(-1 * var(--drop) - 6px); top:50%;
+  height:2px; width:calc(var(--drop) + 8px); margin-top:-1px;
+  background:linear-gradient(90deg, #8d2a22, #b03a2c)}
 .hung .ttl{display:block; font-size:.68rem; color:var(--soft);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .hung--telegram{background:var(--flimsy)} .hung--petition{background:#e8dcc0}
 .hung .dot{position:absolute; right:4px; top:4px; width:5px; height:5px;
   border-radius:50%; background:var(--seal)}
-.hung:hover{margin-top:calc(var(--drop) + 5px); transform:rotate(0deg)}
-.hung.down{margin-top:calc(var(--drop) + 9px); transform:rotate(0deg);
+.hung:hover{margin-left:calc(var(--drop) + 6px); transform:rotate(0deg)}
+.hung.down{margin-left:calc(var(--drop) + 12px); transform:rotate(0deg);
   box-shadow:0 12px 20px -8px rgba(0,0,0,.95), 0 0 0 1.5px var(--seal)}
 .trayempty{font-family:"Courier New",monospace; font-size:.58rem; letter-spacing:.13em;
   text-transform:uppercase; color:#cbbb96; text-shadow:0 1px 4px rgba(0,0,0,.9);
   padding-top:14px}
-.trayacts{display:flex; gap:8px; justify-content:center; margin-top:12px}
+.trayacts{display:flex; flex-direction:column; gap:6px; margin-top:10px; padding-left:30px}
+/* a paper left hanging yellows, then curls, then rusts at the tie */
+.hung.aged{filter:sepia(.22) saturate(.9)}
+.hung.aged--2{filter:sepia(.4) saturate(.82) brightness(.96)}
+.hung.aged--3{filter:sepia(.55) saturate(.75) brightness(.92)}
+.hung .age{position:absolute; right:4px; bottom:3px; font-style:normal;
+  font-family:"Courier New",monospace; font-size:.46rem; color:var(--seal); opacity:.8}
+.hung.aged .tie{background:linear-gradient(90deg, #6b3a1e, #8a5a2e)}
 .delegate,.endfn,.putback{
   font-family:"Courier New",monospace; font-size:.54rem; letter-spacing:.12em;
   text-transform:uppercase; background:rgba(10,7,4,.5);
@@ -187,7 +199,7 @@ button:disabled{opacity:.34; cursor:default}
 .hand .paper--telegram .pbody{font-family:"Courier New",monospace; font-size:.8rem;
   line-height:1.9; letter-spacing:.03em}
 .hand .urgent,.hand .secret{
-  position:absolute; right:18px; top:44px; font-family:"Courier New",monospace;
+  position:absolute; right:14px; top:-12px; font-family:"Courier New",monospace;
   font-size:.53rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
   color:var(--seal); border:1.8px solid var(--seal); padding:3px 7px; transform:rotate(-7deg)}
 .hand .secret{color:var(--violet); border-color:var(--violet)}
@@ -199,12 +211,40 @@ button:disabled{opacity:.34; cursor:default}
 .hand .feestamp em{top:55%; font-size:.5rem}
 
 /* the rack, along the front edge of the desk */
-.rack{position:absolute; left:180px; right:180px; bottom:2px;
-  display:flex; gap:7px; justify-content:center; flex-wrap:wrap; align-items:flex-end;
-  transform:translateY(78%); opacity:0; pointer-events:none;
-  transition:transform .28s cubic-bezier(.3,1.15,.5,1), opacity .22s}
-.rack.up{transform:none; opacity:1; pointer-events:auto}
+ /* The stamps lift out of the rack the painter put on the desk, and drop back
+    when the paper leaves. Nothing crosses the blotter. */
+.onrack{display:flex; align-items:flex-end; justify-content:center; pointer-events:none}
+.onrack.up{pointer-events:auto}
+.rack{display:flex; gap:2px; align-items:flex-end; justify-content:center;
+  transform:translateY(34%) scale(.7); opacity:0; transform-origin:50% 100%;
+  transition:transform .3s cubic-bezier(.3,1.25,.5,1), opacity .2s}
+.onrack.up .rack{transform:none; opacity:1}
+.rack .stamp{width:64px; margin:0 -10px}
+.rack .stamp:hover{z-index:4}
+.putback{position:absolute; left:50%; bottom:-30px; transform:translateX(-50%); white-space:nowrap}
 @media (prefers-reduced-motion:reduce){ .rack{transition:none} }
+
+/* the mark the die leaves */
+.struckmark{
+  position:absolute; left:50%; top:52%; transform:translate(-50%,-50%) rotate(var(--turn)) scale(2.4);
+  font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:700;
+  font-size:1.05rem; letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(143,47,34,.9); border:2.6px solid rgba(143,47,34,.85);
+  padding:5px 12px; opacity:0; pointer-events:none;
+  animation:strike .42s cubic-bezier(.25,1.6,.4,1) forwards;
+}
+@keyframes strike{
+  0%{opacity:0; transform:translate(-50%,-50%) rotate(var(--turn)) scale(2.4)}
+  55%{opacity:1; transform:translate(-50%,-50%) rotate(var(--turn)) scale(.98)}
+  100%{opacity:.88; transform:translate(-50%,-50%) rotate(var(--turn)) scale(1)}
+}
+.paper.struck{animation:jolt .18s ease}
+@keyframes jolt{40%{transform:rotate(-.4deg) translateY(3px) scale(.995)}}
+.paper.dispatch{animation:toTray .26s ease forwards}
+@keyframes toTray{to{opacity:0; transform:translate(38%, 26%) rotate(5deg) scale(.72)}}
+@media (prefers-reduced-motion:reduce){
+  .struckmark,.paper.struck,.paper.dispatch{animation:none; opacity:1}
+}
 
 /* the paper in hand */
 .hand{display:flex; align-items:center; justify-content:center; overflow:hidden;
@@ -371,6 +411,7 @@ button:disabled{opacity:.34; cursor:default}
 </head>
 <body>
 <div id="app"></div>
+<script src="scenes.js"></script>
 <script src="content.js"></script>
 <script src="mapdraw.js"></script>
 <script src="furniture.js"></script>

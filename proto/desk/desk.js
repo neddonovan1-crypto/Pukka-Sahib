@@ -22,7 +22,8 @@ var S = {
   scene: "desk",         // desk | road | reckoning
   route: [],
   diary: [],
-  delegating: false
+  delegating: false,
+  stamping: false
 };
 
 function doc(id) {
@@ -47,14 +48,31 @@ function applyDeltas(d) {
 
 /* ——— disposal ————————————————————————————————————————————————————— */
 
-function dispose(id, stampId, cost) {
+// Pressing a stamp is the act, so it has to land: the die comes down, the sheet
+// takes the impression, and only then does it go to the tray.
+function dispose(id, stampId, cost, label) {
   var d = doc(id), out = d.outcomes[stampId];
-  spend(cost);
-  applyDeltas(out.d);
-  S.done.push({ id: id, stamp: stampId, line: out.line, form: d.form, from: d.from });
-  S.inTray = S.inTray.filter(function (x) { return x !== id; });
-  S.held = null;
-  paint();
+  var sheet = document.querySelector("#hand .paper");
+  if (sheet && label && !S.stamping) {
+    S.stamping = true;
+    var mark = el("span", "struckmark", label);
+    mark.style.setProperty("--turn", (((id.length * 7) % 9) - 4) + "deg");
+    sheet.appendChild(mark);
+    sheet.classList.add("struck");
+    setTimeout(function () {
+      sheet.classList.add("dispatch");
+      setTimeout(function () { S.stamping = false; finish(); }, 260);
+    }, 420);
+  } else { finish(); }
+
+  function finish() {
+    spend(cost);
+    applyDeltas(out.d);
+    S.done.push({ id: id, stamp: stampId, line: out.line, form: d.form, from: d.from });
+    S.inTray = S.inTray.filter(function (x) { return x !== id; });
+    S.held = null;
+    paint();
+  }
 }
 
 function closeFile(id) {
@@ -176,7 +194,7 @@ function docCard(d, inHand) {
 function paintDesk() {
   var root = $("#app");
   root.className = "scene-desk season-" + F.season;
-  var SC = F.scene;
+  var SC = (window.SCENES && window.SCENES["desk-" + F.season]) || F.scene;
   function box(r) {
     return 'left:' + (r.x * 100) + '%; top:' + (r.y * 100) + '%; ' +
            'width:' + (r.w * 100) + '%; height:' + (r.h * 100) + '%';
@@ -187,6 +205,8 @@ function paintDesk() {
       '<div class="onwall" style="' + box(SC.frame) + '"><canvas id="minimap"></canvas>' +
         '<button class="wallbtn" id="toRoad" title="The road"></button></div>' +
       '<div class="onblotter" style="' + box(SC.blotter) + '"><div class="hand" id="hand"></div></div>' +
+      '<div class="onrack' + (S.held ? " up" : "") + '" style="' + box(SC.rack || SC.blotter) + '">' +
+        '<div class="rack" id="rack"></div></div>' +
     '</div>' +
     '<div class="deskrail">' +
       '<div class="whoami"><b>' + F.station + '</b><span>' + F.rank + '</span>' +
@@ -201,7 +221,6 @@ function paintDesk() {
       '<div class="tapewrap" id="tapewrap"><div class="tape"></div>' +
         '<div class="hangers" id="hangers"></div></div>' +
       '<div class="outtray" id="outtray"></div>' +
-      '<div class="rack' + (S.held ? " up" : "") + '" id="rack"></div>' +
     '</div>';
 
   // The fortnight strung on red tape. Titles readable without opening anything;
@@ -212,8 +231,11 @@ function paintDesk() {
     var t = el("button", "hung hung--" + d.form + (S.held === id ? " down" : ""));
     t.style.setProperty("--lean", (((i * 37) % 5) - 2) * 0.6 + "deg");
     t.style.setProperty("--drop", (6 + ((i * 53) % 5) * 3) + "px");
+    var age = d.age || 0;                      // fortnights it has hung there
+    if (age) t.classList.add("aged", "aged--" + Math.min(3, age));
     t.innerHTML = '<i class="tie"></i><span class="ttl">' + d.from + '</span>' +
-      (d.urgent ? '<i class="dot" title="Immediate"></i>' : "");
+      (d.urgent ? '<i class="dot" title="Immediate"></i>' : "") +
+      (age ? '<i class="age">' + age + '</i>' : "");
     t.onclick = function () { S.held = (S.held === id ? null : id); paint(); };
     hang.appendChild(t);
   });
@@ -278,11 +300,11 @@ function paintDesk() {
   }
   F.stamps.forEach(function (st) {
     if (!d.outcomes[st.id]) return;
-    stampBtn(st.label, st.days, "", function () { dispose(d.id, st.id, st.days); });
+    stampBtn(st.label, st.days, "", function () { dispose(d.id, st.id, st.days, st.label); });
   });
   ["ride", "hear"].forEach(function (k) {
     if (!d[k]) return;
-    stampBtn(d[k].label, d[k].days, "stamp--act", function () { dispose(d.id, k, d[k].days); });
+    stampBtn(d[k].label, d[k].days, "stamp--act", function () { dispose(d.id, k, d[k].days, d[k].label); });
   });
   stampBtn("Close unread", 1, "stamp--close", function () { closeFile(d.id); });
   var back = el("button", "putback", "Put it back on the tape");
