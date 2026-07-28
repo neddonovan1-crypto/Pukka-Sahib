@@ -242,25 +242,25 @@ function paintDesk() {
   hand.appendChild(docCard(d, true));
 
   // the rack: stamps, plus the acts this particular paper allows
+  function stampBtn(label, days, cls, fn) {
+    var b = el("button", "stamp " + (cls || ""));
+    b.innerHTML =
+      '<img src="../../art/web/stamp-handle.png" alt="">' +
+      '<span class="band">' + label + '</span>' +
+      '<em>' + days + 'd</em>';
+    b.disabled = S.days < days;
+    b.onclick = fn;
+    rack.appendChild(b);
+  }
   F.stamps.forEach(function (st) {
     if (!d.outcomes[st.id]) return;
-    var b = el("button", "stamp", st.label + '<em>' + st.days + 'd</em>');
-    b.disabled = S.days < st.days;
-    b.onclick = function () { dispose(d.id, st.id, st.days); };
-    rack.appendChild(b);
+    stampBtn(st.label, st.days, "", function () { dispose(d.id, st.id, st.days); });
   });
   ["ride", "hear"].forEach(function (k) {
     if (!d[k]) return;
-    var a = d[k];
-    var b = el("button", "stamp stamp--act", a.label + '<em>' + a.days + 'd</em>');
-    b.disabled = S.days < a.days;
-    b.onclick = function () { dispose(d.id, k, a.days); };
-    rack.appendChild(b);
+    stampBtn(d[k].label, d[k].days, "stamp--act", function () { dispose(d.id, k, d[k].days); });
   });
-  var c = el("button", "stamp stamp--close", 'Close unread<em>1d</em>');
-  c.disabled = S.days < 1;
-  c.onclick = function () { closeFile(d.id); };
-  rack.appendChild(c);
+  stampBtn("Close unread", 1, "stamp--close", function () { closeFile(d.id); });
 }
 
 function paintDelegating() {

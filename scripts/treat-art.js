@@ -53,6 +53,8 @@ function briefFor(id) {
   return JSON.parse(fs.readFileSync(p, "utf8"));
 }
 
+function clampNum(v, a, b) { return v < a ? a : v > b ? b : v; }
+
 function nearestInk(r, g, b) {
   var best = 0, bestD = Infinity;
   for (var i = 0; i < INKS.length; i++) {
@@ -227,36 +229,69 @@ async function cutout(buf, w, h) {
     .raw().toBuffer({ resolveWithObject: true });
   var d = raw.data, W = raw.info.width, H = raw.info.height;
 
-  var bg = sheetColour(d, W, H, 4), TOL = 24 * 24;
+  // The tolerance has to follow the sheet. A clean white ground varies by a
+  // point or two; a heavily foxed and creased one varies by thirty, and a fixed
+  // tolerance stops dead at the mottling and leaves the paper behind. So
+  // measure the ground's own spread and key to that.
+  var bg = sheetColour(d, W, H, 4);
+  var spread = 0, n = 0;
+  for (var sy = 0; sy < H; sy += 7) {
+    for (var sx = 0; sx < W; sx += 7) {
+      if (sx > W * .12 && sx < W * .88 && sy > H * .12 && sy < H * .88) continue;
+      var q = (sy * W + sx) * 4;
+      var er = d[q] - bg[0], eg = d[q + 1] - bg[1], eb = d[q + 2] - bg[2];
+      spread += Math.sqrt(er * er + eg * eg + eb * eb); n++;
+    }
+  }
+  var TOLR = clampNum(n ? (spread / n) * 3.2 : 24, 22, 78), TOL = TOLR * TOLR;
+  var TOL2 = (TOLR * 1.9) * (TOLR * 1.9);            // for the second, looser pass
   var seen = new Uint8Array(W * H);
   var stack = [];
-  function light(i) {
-    var k = i * 4, dr = d[k] - bg[0], dg = d[k + 1] - bg[1], db = d[k + 2] - bg[2];
-    return dr * dr + dg * dg + db * db <= TOL;
-  }
   for (var x = 0; x < W; x++) { stack.push(x); stack.push((H - 1) * W + x); }
   for (var y = 0; y < H; y++) { stack.push(y * W); stack.push(y * W + W - 1); }
 
-  while (stack.length) {
-    var p = stack.pop();
-    if (p < 0 || p >= W * H || seen[p]) continue;
-    if (!light(p)) continue;
-    seen[p] = 1;
-    d[p * 4 + 3] = 0;
-    var px = p % W, py = (p - px) / W;
-    if (px > 0) stack.push(p - 1);
-    if (px < W - 1) stack.push(p + 1);
-    if (py > 0) stack.push(p - W);
-    if (py < H - 1) stack.push(p + W);
+  function flood(tol) {
+    while (stack.length) {
+      var p = stack.pop();
+      if (p < 0 || p >= W * H || seen[p]) continue;
+      var k = p * 4, er = d[k] - bg[0], eg = d[k + 1] - bg[1], eb = d[k + 2] - bg[2];
+      if (er * er + eg * eg + eb * eb > tol) continue;
+      seen[p] = 1; d[k + 3] = 0;
+      var px = p % W, py = (p - px) / W;
+      if (px > 0) stack.push(p - 1);
+      if (px < W - 1) stack.push(p + 1);
+      if (py > 0) stack.push(p - W);
+      if (py < H - 1) stack.push(p + W);
+    }
   }
+  flood(TOL);
+
+  // Aged paper is mottled, and a single tolerance stops at every foxed patch,
+  // leaving islands of sheet stranded round the object. So run it again from
+  // the boundary already cut, at nearly twice the tolerance: connectivity still
+  // protects the blank panels inside the design, which no cut edge touches.
+  for (var q2 = 0; q2 < W * H; q2++) {
+    if (!seen[q2]) continue;
+    var qx = q2 % W, qy = (q2 - qx) / W;
+    if (qx > 0) stack.push(q2 - 1);
+    if (qx < W - 1) stack.push(q2 + 1);
+    if (qy > 0) stack.push(q2 - W);
+    if (qy < H - 1) stack.push(q2 + W);
+  }
+  flood(TOL2);
 
   // Leak guard. On line art the flood walks through every gap in the engraving
   // and eats the design from the inside — the ground and the white *within* the
   // drawing are one connected region. If the fill took most of the sheet it has
   // leaked, so refuse the cutout rather than ship a ghost.
+  // Two ways this goes wrong, and they are opposite. On line art the flood
+  // walks through every gap in the engraving and eats the design from the
+  // inside. On a small object photographed on a big sheet, keying most of the
+  // frame is exactly right. So judge by what SURVIVED, not by what went.
   var keyed = 0;
   for (var k = 0; k < W * H; k++) if (seen[k]) keyed++;
-  if (keyed / (W * H) > 0.62) return null;
+  var left = 1 - keyed / (W * H);
+  if (left < 0.035) return null;                      // the design went with it
 
   // Soften the key so the cut edge is not a jagged one-pixel step.
   var alpha = Buffer.alloc(W * H);
@@ -270,7 +305,7 @@ async function cutout(buf, w, h) {
   // painting it sits next to.
   return sharp(d, { raw: { width: W, height: H, channels: 4 } })
     .trim({ threshold: 1 })
-    .png({ compressionLevel: 9, palette: true, quality: 92, effort: 9 })
+    .png({ compressionLevel: 9, effort: 9 })
     .toBuffer();
 }
 

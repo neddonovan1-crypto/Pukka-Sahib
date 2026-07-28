@@ -213,9 +213,39 @@
     }
     ctx.restore();
 
-    /* 2 — the fibre, drawn offscreen so it can be laid down soft as well as sharp */
-    var O = off(W, H, dpr), g2 = O.g;
+    /* 2 — the fibre, drawn offscreen so it can be laid down soft as well as
+       sharp. Rasterised a little under device density: fibre is fine enough
+       that the softening costs nothing and the saving is large. */
+    var O = off(W, H, Math.min(dpr, 1.45)), g2 = O.g;
     g2.lineCap = "round";
+
+    /* broad figure first — the wide light and dark sweeps that follow the
+       fibre and give the board its character at arm's length */
+    for (i = 0; i < nB; i++) {
+      var bf = boards[i];
+      var nF = 4 + Math.floor(R() * 4);
+      for (j = 0; j < nF; j++) {
+        var fy2 = lerp(bf.y0 - 10, bf.y1 + 10, R());
+        var fw = (bf.y1 - bf.y0) * (0.05 + R() * 0.22) + 8;
+        var darkF = R() < 0.62;
+        var fc = darkF ? mix(TEAK_DARK, bf.base, 0.15 + R() * 0.4)
+                       : mix(TEAK_PALE, bf.base, 0.2 + R() * 0.4);
+        var fa2 = darkF ? 0.06 + R() * 0.12 : 0.04 + R() * 0.09;
+        var fgr = g2.createLinearGradient(0, 0, W, 0);
+        fgr.addColorStop(0, rgba(fc, 0));
+        fgr.addColorStop(0.12 + R() * 0.2, rgba(fc, fa2));
+        fgr.addColorStop(0.55 + R() * 0.2, rgba(fc, fa2 * (0.4 + R() * 0.8)));
+        fgr.addColorStop(1, rgba(fc, 0));
+        g2.strokeStyle = fgr;
+        g2.lineWidth = fw;
+        g2.beginPath();
+        for (x = -10; x <= W + 10; x += 10) {
+          var fyv = grainY(bf, x, fy2);
+          if (x === -10) g2.moveTo(x, fyv); else g2.lineTo(x, fyv);
+        }
+        g2.stroke();
+      }
+    }
 
     for (i = 0; i < nB; i++) {
       var bd2 = boards[i];
@@ -253,7 +283,7 @@
         g2.lineWidth = lw;
         g2.beginPath();
         var first = true;
-        for (x = x0; x <= x1; x += 3.2) {
+        for (x = x0; x <= x1; x += 4.6) {
           var py = grainY(bd2, x, yy);
           if (py < bd2.y0 - 3 || py > bd2.y1 + 3) { first = true; continue; }
           if (first) { g2.moveTo(x, py); first = false; }
@@ -306,8 +336,8 @@
     var hasFilter = typeof ctx.filter === "string";
     if (hasFilter) {
       ctx.save();
-      ctx.filter = "blur(1.3px)";
-      ctx.globalAlpha = 0.34;
+      ctx.filter = "blur(1.1px)";
+      ctx.globalAlpha = 0.30;
       ctx.drawImage(O.c, 0, 0, W, H);
       ctx.restore();
     }
@@ -506,10 +536,10 @@
 
     /* contact shadow, thrown away from the lamp */
     ctx.save();
-    ctx.shadowColor = "rgba(18,9,3,0.55)";
-    ctx.shadowBlur = 26;
-    ctx.shadowOffsetX = vx * 11;
-    ctx.shadowOffsetY = vy * 11;
+    ctx.shadowColor = "rgba(18,9,3,0.68)";
+    ctx.shadowBlur = 30;
+    ctx.shadowOffsetX = vx * 13;
+    ctx.shadowOffsetY = vy * 13;
     ctx.fillStyle = "rgba(0,0,0,1)";
     wobblePath(ctx, pts, wob, ph); ctx.fill();
     ctx.shadowBlur = 7;
@@ -532,50 +562,60 @@
     wobblePath(ctx, pts, wob, ph);
     ctx.clip();
 
-    var fg = ctx.createLinearGradient(b.x, b.y, b.x + b.w * 0.55, b.y + b.h);
-    fg.addColorStop(0, rgb(mix(padMid, padDark, 0.15)));
-    fg.addColorStop(0.5, rgb(padMid));
-    fg.addColorStop(1, rgb(mix(padDark, padMid, 0.35)));
+    var span = (Math.abs(vx) * b.w + Math.abs(vy) * b.h) * 0.62;
+    var fg = ctx.createLinearGradient(cx - vx * span, cy - vy * span,
+                                      cx + vx * span, cy + vy * span);
+    fg.addColorStop(0, rgb(mix(padMid, padLift, 0.22)));
+    fg.addColorStop(0.30, rgb(padMid));
+    fg.addColorStop(0.68, rgb(mix(padMid, padDark, 0.40)));
+    fg.addColorStop(1, rgb(mix(padDark, [0, 0, 0], 0.05)));
     ctx.fillStyle = fg;
     ctx.fillRect(b.x - 8, b.y - 8, b.w + 16, b.h + 16);
 
-    /* large-scale mottle: hide is never even */
-    for (i = 0; i < 24; i++) {
-      var mx = b.x + R() * b.w, my = b.y + R() * b.h;
-      var mr = Math.min(b.w, b.h) * (0.08 + R() * 0.30);
-      var mc = R() < 0.5 ? padDark : mix(padMid, padLift, 0.30);
-      var mg = ctx.createRadialGradient(mx, my, 0, mx, my, mr);
-      mg.addColorStop(0, rgba(mc, 0.08 + R() * 0.13));
+    /* The hide's own texture — mottle, pebble grain, creases — is rasterised
+       once at single density and laid back down. Leather wants to be a shade
+       soft anyway, and the field is far too large to stroke at full scale. */
+    var toward = Math.atan2(-vy, -vx);         /* angle back toward the lamp */
+    var cellR = clamp(Math.min(b.w, b.h) * 0.0055, 1.3, 3.0);
+    var PB = off(b.w, b.h, 1), hg = PB.g;
+
+    for (i = 0; i < 40; i++) {                 /* hide is never even in tone */
+      var mx = R() * b.w, my = R() * b.h;
+      var mr = Math.min(b.w, b.h) * (0.06 + R() * 0.30);
+      var mc = R() < 0.52 ? mix(padDark, [0, 0, 0], 0.35)
+                          : mix(padMid, padLift, 0.34);
+      var mg = hg.createRadialGradient(mx, my, 0, mx, my, mr);
+      mg.addColorStop(0, rgba(mc, 0.06 + R() * 0.11));
+      mg.addColorStop(0.5, rgba(mc, 0.025 + R() * 0.04));
       mg.addColorStop(1, rgba(mc, 0));
-      ctx.fillStyle = mg;
-      ctx.fillRect(mx - mr, my - mr, mr * 2, mr * 2);
+      hg.fillStyle = mg;
+      hg.save();
+      hg.translate(mx, my);
+      hg.rotate(R() * TAU);
+      hg.scale(1, 0.45 + R() * 0.75);
+      hg.translate(-mx, -my);
+      hg.fillRect(mx - mr, my - mr, mr * 2, mr * 2);
+      hg.restore();
     }
 
-    /* pebble grain, two scales. The cells first: each a shallow dome, lit from
-       the lamp side and shadowed away from it. Then a fine tooth over the top.
-       Both at very low contrast — hide reads as texture, never as confetti. */
-    var toward = Math.atan2(-vy, -vx);         /* angle back toward the lamp */
-    /* The field is huge, so its grain is rasterised once at single density and
-       laid back down — leather wants to be a shade soft anyway. */
-    var cellR = clamp(Math.min(b.w, b.h) * 0.0055, 1.3, 3.0);
-    var PB = off(b.w, b.h, 1);
-    pebble(PB.g, R, 0, 0, b.w, b.h, cellR, padLift, toward, 58, 1.25);
-    ctx.drawImage(PB.c, b.x, b.y, b.w, b.h);
-    /* creases pressed in by years of elbows */
-    for (i = 0; i < 14; i++) {
-      var kx = b.x + R() * b.w, ky = b.y + R() * b.h;
-      var kl = Math.min(b.w, b.h) * (0.1 + R() * 0.4);
+    pebble(hg, R, 0, 0, b.w, b.h, cellR * 1.12, padLift, toward, 62, 1.6);
+
+    for (i = 0; i < 16; i++) {          /* creases pressed in by years of elbows */
+      var kx = R() * b.w, ky = R() * b.h;
+      var kl = Math.min(b.w, b.h) * (0.1 + R() * 0.45);
       var ka = R() * TAU;
-      ctx.strokeStyle = "rgba(0,0,0," + (0.03 + R() * 0.05).toFixed(3) + ")";
-      ctx.lineWidth = 0.6 + R() * 1.6;
-      ctx.beginPath();
-      ctx.moveTo(kx, ky);
-      ctx.quadraticCurveTo(
+      hg.strokeStyle = "rgba(0,0,0," + (0.04 + R() * 0.07).toFixed(3) + ")";
+      hg.lineWidth = 0.6 + R() * 1.6;
+      hg.beginPath();
+      hg.moveTo(kx, ky);
+      hg.quadraticCurveTo(
         kx + Math.cos(ka) * kl * 0.5 + (R() - 0.5) * 20,
         ky + Math.sin(ka) * kl * 0.5 + (R() - 0.5) * 20,
         kx + Math.cos(ka) * kl, ky + Math.sin(ka) * kl);
-      ctx.stroke();
+      hg.stroke();
     }
+
+    ctx.drawImage(PB.c, b.x, b.y, b.w, b.h);
 
     /* darken toward the edges so a sheet of paper reads on it */
     ctx.save();
@@ -769,9 +809,9 @@
     ctx.save();
     ctx.globalCompositeOperation = "multiply";
     var g = ctx.createRadialGradient(lamp.x, lamp.y, R0 * 0.02, lamp.x, lamp.y, R0);
-    g.addColorStop(0.00, "rgb(255,244,226)");
-    g.addColorStop(0.15, "rgb(248,228,200)");
-    g.addColorStop(0.32, "rgb(224,196,164)");
+    g.addColorStop(0.00, "rgb(255,240,218)");
+    g.addColorStop(0.15, "rgb(242,222,192)");
+    g.addColorStop(0.32, "rgb(218,190,158)");
     g.addColorStop(0.52, "rgb(186,154,124)");
     g.addColorStop(0.72, "rgb(140,110,84)");
     g.addColorStop(0.88, "rgb(100,74,54)");
@@ -792,8 +832,8 @@
 
     var hr = Math.min(W, H) * 0.16;
     var hs = ctx.createRadialGradient(lamp.x, lamp.y, 0, lamp.x, lamp.y, hr);
-    hs.addColorStop(0, "rgba(255,228,176,0.20)");
-    hs.addColorStop(0.5, "rgba(255,202,136,0.08)");
+    hs.addColorStop(0, "rgba(255,222,166,0.15)");
+    hs.addColorStop(0.5, "rgba(255,198,130,0.06)");
     hs.addColorStop(1, "rgba(255,190,120,0)");
     ctx.fillStyle = hs;
     ctx.fillRect(0, 0, W, H);
@@ -817,17 +857,23 @@
     var i, j;
     var far = Math.hypot(W, H);
 
-    /* fine scratches in the polish */
-    for (i = 0; i < 6; i++) {
+    /* fine scratches in the polish — only where the polish is, never on the pad */
+    function onPad(x, y) {
+      return b && x > b.x - 5 && x < b.x + b.w + 5 &&
+                  y > b.y - 5 && y < b.y + b.h + 5;
+    }
+    var made = 0, tries = 0;
+    while (made < 6 && tries < 200) {
+      tries++;
       var sx = R() * W, sy = R() * H;
-      if (b && sx > b.x && sx < b.x + b.w && sy > b.y && sy < b.y + b.h) {
-        sy = R() < 0.5 ? b.y * R() : b.y + b.h + R() * Math.max(4, H - b.y - b.h);
-        sy = clamp(sy, 4, H - 4);
-      }
+      var len0 = Math.min(W, H) * (0.03 + R() * 0.11);
+      var ang0 = (R() - 0.5) * 0.9 + (R() < 0.35 ? Math.PI / 2 : 0);
+      if (onPad(sx, sy) ||
+          onPad(sx + Math.cos(ang0) * len0, sy + Math.sin(ang0) * len0)) continue;
+      made++;
       var d = Math.hypot(sx - lamp.x, sy - lamp.y) / far;
       var lit = clamp(1.25 - d * 1.35, 0.08, 1);
-      var len = Math.min(W, H) * (0.03 + R() * 0.11);
-      var ang = (R() - 0.5) * 0.9 + (R() < 0.35 ? Math.PI / 2 : 0);
+      var len = len0, ang = ang0;
       ctx.save();
       ctx.strokeStyle = "rgba(255,236,204," + (0.07 + lit * 0.34).toFixed(3) + ")";
       ctx.lineWidth = 0.35 + R() * 0.6;

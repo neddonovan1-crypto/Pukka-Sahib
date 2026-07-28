@@ -202,63 +202,72 @@
 
     var b =
       '<ellipse cx="54" cy="50" rx="47" ry="7" fill="url(#sh' + u + ')"/>' +
-      /* the cradle bar */
-      '<path d="M14 36 L86 36 L84 45 Q50 51 16 45 Z" fill="url(#bo' + u + ')"/>' +
-      '<path d="M14 36 Q50 30 86 36 Q50 42 14 36 Z" fill="url(#tp' + u + ')"/>' +
-      '<path d="M18 35 Q34 31.4 50 31" stroke="#e0b078" stroke-width="1.3" ' +
-        'fill="none" stroke-linecap="round" opacity=".65"/>' +
-      /* two grooves cut across the top */
-      '<path d="M35 33.4 Q39.5 37.6 44 33.8" stroke="' + WD_DEEP + '" stroke-width="2.2" ' +
-        'fill="none" opacity=".8"/>' +
-      '<path d="M35.6 33 Q39.5 36.4 43.4 33.4" stroke="#c1935e" stroke-width="0.8" ' +
+      /* the cradle bar — stout, running between the two turned ends */
+      '<path d="M17 33 L83 33 L81 46 Q50 51.6 19 46 Z" fill="url(#bo' + u + ')"/>' +
+      '<path d="M17 33 Q50 26.6 83 33 Q50 39.4 17 33 Z" fill="url(#tp' + u + ')"/>' +
+      '<path d="M23 31.4 Q36 28.6 50 28.2" stroke="#f0c48c" stroke-width="1.5" ' +
+        'fill="none" stroke-linecap="round" opacity=".8"/>' +
+      /* two grooves cut across the top to take a pen */
+      '<path d="M33 30.6 Q38 35.4 43 31" stroke="' + WD_DEEP + '" stroke-width="2.6" ' +
+        'fill="none" opacity=".85"/>' +
+      '<path d="M33.6 30.2 Q38 33.8 42.4 30.6" stroke="#c1935e" stroke-width="0.9" ' +
         'fill="none" opacity=".45"/>' +
-      '<path d="M56 33.8 Q60.5 38 65 34.2" stroke="' + WD_DEEP + '" stroke-width="2.2" ' +
-        'fill="none" opacity=".8"/>' +
+      '<path d="M58 31 Q63 35.8 68 31.4" stroke="' + WD_DEEP + '" stroke-width="2.6" ' +
+        'fill="none" opacity=".85"/>' +
+      '<path d="M58.6 30.6 Q63 34.2 67.4 31" stroke="#c1935e" stroke-width="0.9" ' +
+        'fill="none" opacity=".4"/>' +
       /* grain and the shaded underside */
-      '<path d="M20 39.6 Q50 36.4 80 39.2" stroke="#8f6740" stroke-width="0.7" ' +
+      '<path d="M22 37.4 Q50 34.4 78 37" stroke="#8f6740" stroke-width="0.8" ' +
         'fill="none" opacity=".5"/>' +
-      '<path d="M18 44.4 Q50 50.6 84 44.2" stroke="' + WD_DEEP + '" stroke-width="1.8" ' +
-        'fill="none" opacity=".55"/>' +
-      /* turned bobbin ends, standing proud of the bar */
-      '<ellipse cx="13" cy="33" rx="10" ry="12" fill="url(#kl' + u + ')"/>' +
-      '<ellipse cx="87" cy="33" rx="10" ry="12" fill="url(#kr' + u + ')"/>' +
-      /* the turning: a collar groove round each bobbin */
-      '<path d="M4.4 30 Q13 35.6 21.6 30" stroke="' + WD_DEEP + '" stroke-width="1.4" ' +
-        'fill="none" opacity=".55"/>' +
-      '<path d="M4.6 32.4 Q13 38 21.4 32.4" stroke="#c99a63" stroke-width="1" ' +
-        'fill="none" opacity=".45"/>' +
-      '<path d="M78.4 30 Q87 35.6 95.6 30" stroke="' + WD_DEEP + '" stroke-width="1.4" ' +
+      '<path d="M21 41.6 Q50 45.4 80 41.4" stroke="#8f6740" stroke-width="0.7" ' +
+        'fill="none" opacity=".35"/>' +
+      '<path d="M20 45.2 Q50 51 80 45" stroke="' + WD_DEEP + '" stroke-width="2" ' +
         'fill="none" opacity=".6"/>' +
-      '<path d="M6 27.6 Q8.6 21.4 15 21" stroke="#eec08c" stroke-width="2.4" ' +
-        'fill="none" stroke-linecap="round" opacity=".9"/>' +
-      '<path d="M18.6 24.4 Q23.4 30.4 20.6 39" stroke="#150d05" stroke-width="1.9" ' +
-        'fill="none" stroke-linecap="round" opacity=".6"/>' +
-      '<path d="M81 25.6 Q85 21.4 90.6 23" stroke="#d1a06a" stroke-width="1.5" ' +
-        'fill="none" stroke-linecap="round" opacity=".65"/>' +
-      '<path d="M94.6 28.6 Q97.4 35.4 92.6 41.6" stroke="#120b04" stroke-width="2.4" ' +
+      /* the ends throw a little shade back along the bar */
+      '<path d="M17 32 Q23 39 17 46" fill="#1c1207" opacity=".28"/>' +
+      '<path d="M83 32 Q77 39 83 46" fill="#1c1207" opacity=".42"/>' +
+      /* turned bobbin ends, standing proud of the bar */
+      '<ellipse cx="14" cy="31" rx="9.6" ry="13" fill="url(#kl' + u + ')"/>' +
+      '<ellipse cx="86" cy="31" rx="9.6" ry="13" fill="url(#kr' + u + ')"/>' +
+      /* the turning: a collar groove round each end */
+      '<path d="M5.4 27.4 Q14 33.4 22.6 27.4" stroke="' + WD_DEEP + '" stroke-width="1.4" ' +
+        'fill="none" opacity=".55"/>' +
+      '<path d="M5.6 29.6 Q14 35.6 22.4 29.6" stroke="#c99a63" stroke-width="1" ' +
+        'fill="none" opacity=".45"/>' +
+      '<path d="M77.4 27.4 Q86 33.4 94.6 27.4" stroke="' + WD_DEEP + '" stroke-width="1.4" ' +
+        'fill="none" opacity=".6"/>' +
+      '<path d="M77.6 29.6 Q86 35.6 94.4 29.6" stroke="#8a6038" stroke-width="0.9" ' +
+        'fill="none" opacity=".4"/>' +
+      '<path d="M7 26.4 Q9.4 20.4 15.4 20" stroke="#f4c894" stroke-width="2.4" ' +
+        'fill="none" stroke-linecap="round" opacity=".95"/>' +
+      '<path d="M19.4 22.6 Q23.6 28.6 21 37.4" stroke="#150d05" stroke-width="2" ' +
+        'fill="none" stroke-linecap="round" opacity=".55"/>' +
+      '<path d="M80.4 23 Q84.4 19.4 90 20.6" stroke="#d1a06a" stroke-width="1.5" ' +
         'fill="none" stroke-linecap="round" opacity=".7"/>' +
-      '<path d="M5.4 37.6 Q10.4 44.6 18 43" stroke="#8a6038" stroke-width="1.4" ' +
+      '<path d="M93.4 26 Q96 33 91.4 40.4" stroke="#120b04" stroke-width="2.4" ' +
+        'fill="none" stroke-linecap="round" opacity=".7"/>' +
+      '<path d="M6 36 Q10.4 42.6 17.4 41.4" stroke="#8a6038" stroke-width="1.4" ' +
         'fill="none" stroke-linecap="round" opacity=".5"/>' +
       /* the pen cast onto the bar */
-      '<ellipse cx="52" cy="35" rx="29" ry="3.6" fill="url(#cs' + u + ')" ' +
-        'transform="rotate(-6 52 35)"/>' +
-      /* the pen itself */
-      '<g transform="rotate(-6 50 24) translate(0 2.5)">' +
-        '<path d="M10 21 Q11.6 17.2 16 17.4 L60 19 L60 25.6 L16 27 Q11.6 27.2 10 23.6 Z" ' +
+      '<ellipse cx="55" cy="33.6" rx="26" ry="3.4" fill="url(#cs' + u + ')" ' +
+        'transform="rotate(-6 55 33.6)"/>' +
+      /* the pen itself, lying in the grooves */
+      '<g transform="rotate(-6 50 24) translate(0 5.6)">' +
+        '<path d="M22 20.6 Q23.6 16.6 28 16.8 L60 18.6 L60 26 L28 27.4 Q23.6 27.6 22 23.8 Z" ' +
           'fill="url(#hd' + u + ')"/>' +
-        '<path d="M16 19.4 L57 20.6" stroke="#a97f4c" stroke-width="1.4" ' +
-          'fill="none" stroke-linecap="round" opacity=".7"/>' +
-        '<path d="M18 25.8 L57 25" stroke="#0d0805" stroke-width="1.2" fill="none" opacity=".6"/>' +
-        '<path d="M59 18.8 L69 19.6 L69 25.4 L59 26 Z" fill="url(#fe' + u + ')"/>' +
-        '<path d="M60 19.6 L68 20.2" stroke="' + BR_SPEC + '" stroke-width="1.2" ' +
+        '<path d="M28 18.8 L57 20.2" stroke="#b8874f" stroke-width="1.8" ' +
+          'fill="none" stroke-linecap="round" opacity=".8"/>' +
+        '<path d="M29 26.2 L57 25.4" stroke="#0d0805" stroke-width="1.4" fill="none" opacity=".7"/>' +
+        '<path d="M59 18.6 L69 19.4 L69 25.8 L59 26 Z" fill="url(#fe' + u + ')"/>' +
+        '<path d="M60 19.6 L68 20.2" stroke="' + BR_SPEC + '" stroke-width="1.4" ' +
           'fill="none" opacity=".95"/>' +
-        '<path d="M60 25.2 L68 24.8" stroke="' + BR_DEEP + '" stroke-width="1" ' +
+        '<path d="M60 25.2 L68 24.8" stroke="' + BR_DEEP + '" stroke-width="1.2" ' +
           'fill="none" opacity=".8"/>' +
-        '<path d="M68.5 20 Q84 20.8 93 22.4 Q84 24.6 68.5 25 Z" fill="url(#nb' + u + ')"/>' +
-        '<path d="M70 20.8 Q82 21.4 90.6 22.6" stroke="#b6ad9c" stroke-width="0.9" ' +
+        '<path d="M68.5 20 Q81 20.8 89 22.4 Q81 24.6 68.5 25 Z" fill="url(#nb' + u + ')"/>' +
+        '<path d="M70 20.8 Q80 21.4 87 22.6" stroke="#b6ad9c" stroke-width="0.9" ' +
           'fill="none" opacity=".75"/>' +
-        '<path d="M76 22.5 L92.4 22.5" stroke="#0d0805" stroke-width="0.9" fill="none"/>' +
-        '<ellipse cx="76" cy="22.5" rx="2.4" ry="1.6" fill="#0d0805"/>' +
+        '<path d="M75 22.5 L88.4 22.5" stroke="#0d0805" stroke-width="0.9" fill="none"/>' +
+        '<ellipse cx="75" cy="22.5" rx="2.4" ry="1.6" fill="#0d0805"/>' +
       '</g>';
     return svg(w, 100, 56, d, b);
   }
@@ -332,56 +341,56 @@
       blot("sh" + u, "#17100a", 0.58) +
       blot("cs" + u, "#241a05", 0.55) +
       blot("sp" + u, "#fff8e2", 0.95) +
-      brassDome("dm" + u, 50, 74, 46) +
-      brassBar("bp" + u, 12, 76, 88, 96) +
-      brassBar("st" + u, 43, 18, 58, 30) +
-      brassDome("kb" + u, 50, 20, 13);
+      brassDome("dm" + u, 50, 70, 44) +
+      brassBar("bp" + u, 12, 72, 88, 94) +
+      brassBar("st" + u, 43, 16, 58, 28) +
+      brassDome("kb" + u, 50, 18, 13);
 
     var b =
-      '<ellipse cx="56" cy="94" rx="47" ry="9" fill="url(#sh' + u + ')"/>' +
-      /* base plate: a low turned plinth wider than the dome */
-      '<path d="M10 82 Q50 95 90 82 L90 88 Q50 101 10 88 Z" fill="#2a1e07"/>' +
-      '<ellipse cx="50" cy="82" rx="40" ry="12" fill="url(#bp' + u + ')"/>' +
-      '<path d="M13.6 78.6 Q28 71.4 46 70.4" stroke="' + BR_SPEC + '" stroke-width="1.8" ' +
-        'fill="none" stroke-linecap="round" opacity=".85"/>' +
-      '<path d="M75 73 Q86.6 76.6 88.4 82" stroke="#1e1504" stroke-width="1.6" ' +
-        'fill="none" stroke-linecap="round" opacity=".65"/>' +
-      '<path d="M16 87.6 Q50 99.4 84 87.4" stroke="' + BR_BNC + '" stroke-width="1.4" ' +
+      '<ellipse cx="55" cy="92" rx="43" ry="8.5" fill="url(#sh' + u + ')"/>' +
+      /* base plate: a low turned plinth, a hand's breadth wider than the dome */
+      '<path d="M16 79 Q50 90.6 84 79 L84 86 Q50 97.6 16 86 Z" fill="#241a05"/>' +
+      '<ellipse cx="50" cy="79" rx="34" ry="10.4" fill="url(#bp' + u + ')"/>' +
+      '<path d="M19.6 76.4 Q31 70.4 45 69.6" stroke="' + BR_SPEC + '" stroke-width="1.8" ' +
+        'fill="none" stroke-linecap="round" opacity=".9"/>' +
+      '<path d="M70 71.4 Q80.4 74.6 82.4 79" stroke="#1e1504" stroke-width="1.6" ' +
+        'fill="none" stroke-linecap="round" opacity=".7"/>' +
+      '<ellipse cx="50" cy="79" rx="29.4" ry="8.8" fill="none" stroke="#1e1504" ' +
+        'stroke-width="0.9" opacity=".4"/>' +
+      '<path d="M20 85 Q50 95.4 80 84.8" stroke="' + BR_BNC + '" stroke-width="1.5" ' +
         'fill="none" opacity=".6"/>' +
       /* the dome sits down on the plate and shadows it to the right */
-      '<ellipse cx="55" cy="80" rx="34" ry="10" fill="url(#cs' + u + ')"/>' +
-      '<ellipse cx="50" cy="78" rx="31" ry="8.6" fill="#3a2a0b" opacity=".5"/>' +
-      /* dome */
-      '<path d="M19 77 C19 33 81 33 81 77 Q50 89 19 77 Z" fill="url(#dm' + u + ')"/>' +
-      '<path d="M74 45 C80.6 54 82.4 66 81.2 76.4" stroke="#1c1403" stroke-width="3" ' +
-        'fill="none" stroke-linecap="round" opacity=".6"/>' +
-      '<path d="M24 80.6 Q50 89.6 76 80.4" stroke="' + BR_BNC + '" stroke-width="2" ' +
+      '<ellipse cx="55" cy="76" rx="28" ry="8.5" fill="url(#cs' + u + ')"/>' +
+      '<ellipse cx="50" cy="74" rx="25" ry="6.6" fill="#3a2a0b" opacity=".55"/>' +
+      /* dome, standing clear inside the rim of the plate */
+      '<path d="M23 72 C23 28 77 28 77 72 Q50 84 23 72 Z" fill="url(#dm' + u + ')"/>' +
+      '<path d="M64 45 C71 52.4 74.4 61.6 74.8 71" stroke="#1c1403" stroke-width="3.4" ' +
+        'fill="none" stroke-linecap="round" opacity=".55"/>' +
+      '<path d="M28 76 Q50 84.6 72 75.6" stroke="' + BR_BNC + '" stroke-width="2" ' +
         'fill="none" stroke-linecap="round" opacity=".65"/>' +
       /* specular: a soft raked streak, with a small hot core inside it */
-      '<ellipse cx="31" cy="57" rx="7" ry="18" fill="url(#sp' + u + ')" opacity=".72" ' +
-        'transform="rotate(-13 31 57)"/>' +
-      '<ellipse cx="30.5" cy="54" rx="2.6" ry="9" fill="#ffffff" opacity=".7" ' +
-        'transform="rotate(-13 30.5 54)"/>' +
-      '<ellipse cx="63" cy="50" rx="6" ry="3" fill="url(#sp' + u + ')" opacity=".4" ' +
-        'transform="rotate(-32 63 50)"/>' +
-      /* the turned bands round the skirt */
-      '<path d="M20.4 71 Q50 82.4 79.6 71" stroke="#2a1e07" stroke-width="1.2" ' +
-        'fill="none" opacity=".55"/>' +
-      '<path d="M20 73.6 Q50 85.4 80 73.6" stroke="' + BR_HI + '" stroke-width="1" ' +
-        'fill="none" opacity=".45"/>' +
+      '<ellipse cx="33" cy="53" rx="6.4" ry="17" fill="url(#sp' + u + ')" opacity=".72" ' +
+        'transform="rotate(-13 33 53)"/>' +
+      '<ellipse cx="32.5" cy="50" rx="2.4" ry="8.4" fill="#ffffff" opacity=".72" ' +
+        'transform="rotate(-13 32.5 50)"/>' +
+      '<ellipse cx="62" cy="46" rx="5.4" ry="2.8" fill="url(#sp' + u + ')" opacity=".4" ' +
+        'transform="rotate(-32 62 46)"/>' +
+      /* one turned band round the skirt */
+      '<path d="M23.4 69.6 Q50 80.8 76.6 69.6" stroke="#2a1e07" stroke-width="1" ' +
+        'fill="none" opacity=".4"/>' +
       /* plunger */
-      '<ellipse cx="50" cy="34.6" rx="7" ry="2.6" fill="#2a1e07" opacity=".45"/>' +
-      '<path d="M43.4 33 L43.4 20 L56.6 20 L56.6 33 Q50 36.4 43.4 33 Z" fill="url(#st' + u + ')"/>' +
-      '<path d="M45 21 L45 32" stroke="' + BR_SPEC + '" stroke-width="1.5" fill="none" opacity=".9"/>' +
-      '<path d="M55 21 L55 32" stroke="#1e1504" stroke-width="1.3" fill="none" opacity=".7"/>' +
-      '<ellipse cx="50" cy="17.6" rx="11" ry="6" fill="url(#kb' + u + ')"/>' +
-      '<path d="M41.6 15.4 Q45.4 11.8 51.4 11.8" stroke="' + BR_SPEC + '" stroke-width="2" ' +
+      '<ellipse cx="50" cy="30.6" rx="7" ry="2.6" fill="#2a1e07" opacity=".45"/>' +
+      '<path d="M43.4 30 L43.4 18 L56.6 18 L56.6 30 Q50 33.4 43.4 30 Z" fill="url(#st' + u + ')"/>' +
+      '<path d="M45 19 L45 29" stroke="' + BR_SPEC + '" stroke-width="1.5" fill="none" opacity=".9"/>' +
+      '<path d="M55 19 L55 29" stroke="#1e1504" stroke-width="1.3" fill="none" opacity=".7"/>' +
+      '<ellipse cx="50" cy="15.6" rx="11" ry="6" fill="url(#kb' + u + ')"/>' +
+      '<path d="M41.6 13.4 Q45.4 9.8 51.4 9.8" stroke="' + BR_SPEC + '" stroke-width="2" ' +
         'fill="none" stroke-linecap="round" opacity=".95"/>' +
-      '<path d="M57.6 13.8 Q61.4 16 60.4 19.4" stroke="#1e1504" stroke-width="1.4" ' +
+      '<path d="M57.6 11.8 Q61.4 14 60.4 17.4" stroke="#1e1504" stroke-width="1.4" ' +
         'fill="none" stroke-linecap="round" opacity=".65"/>' +
-      '<path d="M41.4 20 Q50 24.4 59 19.6" stroke="' + BR_BNC + '" stroke-width="1.2" ' +
+      '<path d="M41.4 18 Q50 22.4 59 17.6" stroke="' + BR_BNC + '" stroke-width="1.2" ' +
         'fill="none" stroke-linecap="round" opacity=".65"/>';
-    return svg(w, 100, 102, d, b);
+    return svg(w, 100, 100, d, b);
   }
 
   /* ====================================================================== *
@@ -540,58 +549,81 @@
    *  STAMP RACK — shallow turned-wood rack; the stamps stand in it
    * ====================================================================== */
   function stampRack(o) {
-    var u = uid(), w = num(o && o.w, 120), i, x, holes = "", hx = [19, 39.7, 60.3, 81];
+    var u = uid(), w = num(o && o.w, 120), i, t, x, y, holes = "";
+    /* the top face, a plain rectangle in three-quarter: FL FR BR BL */
+    var FLx = 7, FLy = 33, FRx = 74, FRy = 33, BRx = 93, BRy = 21, BLx = 26, BLy = 21;
+    var dep = 11;   /* how deep the block stands */
+
     var d =
       blot("sh" + u, "#17100a", 0.52) +
-      lg("tp" + u, 6, 16, 94, 34, [
-        [0, "#d0a067"], [0.12, WD_LIT], [0.38, WD_HI], [0.68, "#825934"], [1, "#513724"]
+      lg("tp" + u, 10, 32, 92, 18, [
+        [0, "#e0b078"], [0.1, WD_LIT], [0.34, WD_HI], [0.62, "#8a6038"],
+        [0.86, WD], [1, "#513724"]
       ]) +
-      woodBar("fr" + u, 0, 26, 0, 44) +
-      lg("en" + u, 88, 24, 100, 40, [[0, "#4a3120"], [0.6, WD_DEEP], [1, "#6a4a2e"]]) +
-      lg("el" + u, 0, 24, 12, 40, [[0, WD_LIT], [0.6, WD_HI], [1, "#6b4a2f"]]) +
-      rg("ho" + u, 50, 24, 9, [[0, "#0f0904"], [0.7, "#0f0904"], [1, "#6b4a2f"]]);
+      woodBar("fr" + u, 0, 33, 0, 46) +
+      lg("en" + u, 74, 26, 96, 40, [[0, "#3a2716"], [0.55, WD_DEEP], [1, "#7d5836"]]) +
+      rg("ho" + u, 50, 27, 9, [[0, "#0d0803"], [0.66, "#0d0803"], [1, "#7d5836"]]);
 
-    for (i = 0; i < hx.length; i++) {
-      x = hx[i];
+    /* the holes march along the centre line of the top face */
+    for (i = 0; i < 4; i++) {
+      t = 0.13 + i * 0.246;
+      x = (FLx + BLx) / 2 + t * ((FRx + BRx) / 2 - (FLx + BLx) / 2);
+      y = 27;
       holes +=
-        '<ellipse cx="' + x + '" cy="24.6" rx="8.2" ry="4" fill="url(#ho' + u + ')"/>' +
-        '<path d="M' + (x - 8.2) + ' 24.6 Q' + x + ' 20.2 ' + (x + 8.2) + ' 24.6" ' +
-          'stroke="#0b0703" stroke-width="1.6" fill="none" opacity=".9"/>' +
-        '<path d="M' + (x - 7) + ' 26.2 Q' + x + ' 29.6 ' + (x + 7) + ' 26.2" ' +
-          'stroke="#a8794a" stroke-width="1.3" fill="none" opacity=".6"/>' +
-        '<path d="M' + (x - 6.4) + ' 23.2 Q' + x + ' 20.4 ' + (x + 2) + ' 20.6" ' +
-          'stroke="#c99a63" stroke-width="0.8" fill="none" opacity=".4"/>';
+        '<ellipse cx="' + x.toFixed(1) + '" cy="' + y + '" rx="8" ry="3.6" ' +
+          'fill="url(#ho' + u + ')"/>' +
+        '<path d="M' + (x - 8).toFixed(1) + ' ' + y + ' Q' + x.toFixed(1) + ' ' + (y - 4) +
+          ' ' + (x + 8).toFixed(1) + ' ' + y + '" stroke="#0a0602" stroke-width="1.5" ' +
+          'fill="none" opacity=".9"/>' +
+        '<path d="M' + (x - 6.8).toFixed(1) + ' ' + (y + 1.4) + ' Q' + x.toFixed(1) + ' ' +
+          (y + 4.4) + ' ' + (x + 6.8).toFixed(1) + ' ' + (y + 1.4) +
+          '" stroke="#a8794a" stroke-width="1.3" fill="none" opacity=".6"/>' +
+        '<path d="M' + (x - 6.4).toFixed(1) + ' ' + (y - 1.4) + ' Q' + x.toFixed(1) + ' ' +
+          (y - 3.6) + ' ' + (x + 1.6).toFixed(1) + ' ' + (y - 3.4) +
+          '" stroke="#c99a63" stroke-width="0.8" fill="none" opacity=".4"/>';
     }
 
     var b =
-      '<ellipse cx="54" cy="46" rx="48" ry="6.5" fill="url(#sh' + u + ')"/>' +
-      /* the plinth: a flat block, only lightly bowed by the view */
-      '<path d="M6 22 L6 34 Q50 40 94 34 L94 22 Z" fill="url(#fr' + u + ')"/>' +
-      '<path d="M6 22 Q50 15 94 22 Q50 29 6 22 Z" fill="url(#tp' + u + ')"/>' +
+      '<ellipse cx="52" cy="45" rx="47" ry="6.5" fill="url(#sh' + u + ')"/>' +
+      /* front face */
+      '<path d="M' + FLx + ' ' + FLy + ' L' + FRx + ' ' + FRy + ' L' + FRx + ' ' +
+        (FRy + dep) + ' L' + FLx + ' ' + (FLy + dep) + ' Z" fill="url(#fr' + u + ')"/>' +
+      /* right end face, turned away from the light */
+      '<path d="M' + FRx + ' ' + FRy + ' L' + BRx + ' ' + BRy + ' L' + BRx + ' ' +
+        (BRy + dep) + ' L' + FRx + ' ' + (FRy + dep) + ' Z" fill="url(#en' + u + ')"/>' +
+      /* top face */
+      '<path d="M' + FLx + ' ' + FLy + ' L' + BLx + ' ' + BLy + ' L' + BRx + ' ' + BRy +
+        ' L' + FRx + ' ' + FRy + ' Z" fill="url(#tp' + u + ')"/>' +
       holes +
-      /* ends, squared off */
-      '<path d="M94 22 L94 34 L91 34.4 L91 21.6 Z" fill="url(#en' + u + ')"/>' +
-      '<path d="M6 22 L6 34 L9 34.4 L9 21.6 Z" fill="url(#el' + u + ')"/>' +
-      /* mouldings on the front */
-      '<path d="M6 22 Q50 29 94 22" stroke="#d6a468" stroke-width="1" fill="none" opacity=".5"/>' +
-      '<path d="M6 26.2 Q50 33.2 94 26.2" stroke="' + WD_DEEP + '" stroke-width="1.6" ' +
-        'fill="none" opacity=".5"/>' +
-      '<path d="M6 29 Q50 36 94 29" stroke="#966c42" stroke-width="0.8" fill="none" opacity=".4"/>' +
-      '<path d="M6.6 33.4 Q50 39.6 93.4 33.4" stroke="' + WD_DEEP + '" stroke-width="1.6" ' +
-        'fill="none" opacity=".6"/>' +
-      /* lit left end, dark right end */
-      '<path d="M6.6 22.2 Q26 17.6 46 15.8" stroke="#e0b078" stroke-width="1.5" ' +
-        'fill="none" stroke-linecap="round" opacity=".75"/>' +
-      '<path d="M6.4 22.4 L6.4 33.4" stroke="#d6a468" stroke-width="1.5" fill="none" opacity=".6"/>' +
-      '<path d="M93.6 22.4 L93.6 33.6" stroke="#150d05" stroke-width="1.6" fill="none" opacity=".75"/>' +
-      '<path d="M68 17.4 Q83 19.4 93.4 22" stroke="#2a1c0f" stroke-width="1.2" ' +
-        'fill="none" opacity=".45"/>' +
-      /* turned feet */
-      '<path d="M13 34.6 Q19 41.6 25 34.2" fill="' + WD_SH + '"/>' +
-      '<path d="M75 34.2 Q81 41.6 87 33.6" fill="#241708"/>' +
-      '<path d="M13.6 35 Q17 38.6 20 38.4" stroke="#a8794a" stroke-width="1" ' +
+      /* grain running the length of the top */
+      '<path d="M11 31.6 L28 23.6 M14 33 L31 25 M52 31 L69 23" stroke="#8a6038" ' +
+        'stroke-width="0.7" fill="none" opacity=".4"/>' +
+      /* arrises: hot along the near-left, near-black on the far right */
+      '<path d="M' + FLx + ' ' + FLy + ' L' + BLx + ' ' + BLy + '" stroke="#f0c48c" ' +
+        'stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".85"/>' +
+      '<path d="M' + FLx + ' ' + FLy + ' L' + FRx + ' ' + FRy + '" stroke="#d6a468" ' +
+        'stroke-width="1.4" fill="none" opacity=".7"/>' +
+      '<path d="M' + BLx + ' ' + BLy + ' L' + BRx + ' ' + BRy + '" stroke="#2a1c0f" ' +
+        'stroke-width="1.1" fill="none" opacity=".55"/>' +
+      '<path d="M' + FRx + ' ' + FRy + ' L' + BRx + ' ' + BRy + '" stroke="#150d05" ' +
+        'stroke-width="1.5" fill="none" opacity=".7"/>' +
+      '<path d="M' + FLx + ' ' + FLy + ' L' + FLx + ' ' + (FLy + dep) + '" stroke="#d6a468" ' +
+        'stroke-width="1.5" fill="none" opacity=".65"/>' +
+      '<path d="M' + BRx + ' ' + BRy + ' L' + BRx + ' ' + (BRy + dep) + '" stroke="#150d05" ' +
+        'stroke-width="1.5" fill="none" opacity=".8"/>' +
+      /* mouldings run along the front */
+      '<path d="M' + FLx + ' ' + (FLy + 3.6) + ' L' + FRx + ' ' + (FRy + 3.6) +
+        '" stroke="' + WD_DEEP + '" stroke-width="1.5" fill="none" opacity=".5"/>' +
+      '<path d="M' + FLx + ' ' + (FLy + 5.2) + ' L' + FRx + ' ' + (FRy + 5.2) +
+        '" stroke="#a8794a" stroke-width="0.8" fill="none" opacity=".4"/>' +
+      '<path d="M' + FLx + ' ' + (FLy + dep - 0.8) + ' L' + FRx + ' ' + (FRy + dep - 0.8) +
+        '" stroke="' + WD_DEEP + '" stroke-width="1.6" fill="none" opacity=".6"/>' +
+      /* turned feet under the near corners */
+      '<path d="M13 44 Q18.6 50.6 24.2 43.6" fill="' + WD_SH + '"/>' +
+      '<path d="M57 44 Q62.6 50.6 68.2 43.6" fill="#241708"/>' +
+      '<path d="M13.6 44.4 Q16.6 47.6 19.4 47.6" stroke="#a8794a" stroke-width="1" ' +
         'fill="none" opacity=".5"/>';
-    return svg(w, 100, 50, d, b);
+    return svg(w, 100, 52, d, b);
   }
 
   /* ====================================================================== *
@@ -653,15 +685,15 @@
         /* the knob casts down the barrel */
         '<ellipse cx="55" cy="40" rx="20" ry="7" fill="url(#cs' + u + ')"/>' +
         /* barrel */
-        '<path d="M12 40 Q50 28 88 40 L90 82 Q50 94 10 82 Z" fill="url(#br' + u + ')"/>' +
+        '<path d="M12 40 Q50 28 88 40 L88 78 Q50 90 12 78 Z" fill="url(#br' + u + ')"/>' +
         '<path d="M12 40 Q50 52 88 40 Q50 28 12 40 Z" fill="url(#bt' + u + ')"/>' +
         '<path d="M15.6 39 Q32 32.4 50 31.4" stroke="#f0c48c" stroke-width="1.4" ' +
           'fill="none" stroke-linecap="round" opacity=".7"/>' +
-        '<path d="M14.6 41.6 L12.8 80" stroke="#e0b078" stroke-width="2.8" fill="none" ' +
+        '<path d="M14.6 41.6 L14.4 76" stroke="#e0b078" stroke-width="2.8" fill="none" ' +
           'stroke-linecap="round" opacity=".6"/>' +
-        '<path d="M20 43 L18.6 79" stroke="#f0c48c" stroke-width="0.9" fill="none" ' +
+        '<path d="M20 43 L19.8 76" stroke="#f0c48c" stroke-width="0.9" fill="none" ' +
           'stroke-linecap="round" opacity=".3"/>' +
-        '<path d="M85.6 42 L87.8 80" stroke="#150d05" stroke-width="3" fill="none" ' +
+        '<path d="M85.6 42 L85.8 76" stroke="#150d05" stroke-width="3" fill="none" ' +
           'stroke-linecap="round" opacity=".6"/>' +
         /* paper band wrapped round the barrel */
         '<path d="M12.6 46 Q50 58 87.4 46 L88.6 72 Q50 84 11.4 72 Z" fill="url(#pb' + u + ')"/>' +
@@ -681,24 +713,26 @@
         '<text x="50" y="66" text-anchor="middle" font-family="' + SERIF + '" ' +
           'font-size="' + fs.toFixed(2) + '" letter-spacing="' + ls + '" ' +
           'font-weight="700" fill="' + INK + '"' + fit + '>' + esc(label) + '</text>' +
-        /* base disc */
-        '<ellipse cx="54" cy="86" rx="42" ry="9" fill="url(#cs' + u + ')"/>' +
-        '<path d="M4 84 Q50 96 96 84 L96 96 Q50 108 4 96 Z" fill="url(#ds' + u + ')"/>' +
-        '<path d="M4 84 Q50 73 96 84 Q50 96 4 84 Z" fill="#9c7044"/>' +
-        '<path d="M6.6 83 Q26 75.4 48 74.4" stroke="#e8bc84" stroke-width="1.8" ' +
-          'fill="none" stroke-linecap="round" opacity=".85"/>' +
-        '<path d="M72 76.4 Q88 79.4 95 84" stroke="#241708" stroke-width="1.4" ' +
-          'fill="none" stroke-linecap="round" opacity=".55"/>' +
-        '<path d="M4 96 Q50 108 96 96" stroke="#1c1207" stroke-width="1.5" fill="none" opacity=".7"/>' +
-        /* mount board, then the rubber die */
-        '<path d="M6 95 Q50 106.6 94 95 L93 101 Q50 112.6 7 101 Z" fill="#cbb98f"/>' +
-        '<path d="M6 95 Q50 106.6 94 95" stroke="#f0e6c8" stroke-width="1" fill="none" opacity=".8"/>' +
-        '<path d="M7 100.6 Q50 112.2 93 100.6 L90 113 Q50 124 10 113 Z" fill="url(#rb' + u + ')"/>' +
-        '<path d="M9 102 Q12.6 107.6 11.4 112.6" stroke="#7d7469" stroke-width="1.8" ' +
+        /* the handle flares out into its foot — one turning, not a stack */
+        '<path d="M12 78 Q50 90 88 78 L94 92 Q50 105 6 92 Z" fill="url(#ds' + u + ')"/>' +
+        '<path d="M14.4 78.6 L8.4 91" stroke="#e8bc84" stroke-width="2.4" ' +
+          'fill="none" stroke-linecap="round" opacity=".7"/>' +
+        '<path d="M85.8 78.6 L91.6 91" stroke="#150d05" stroke-width="2.4" ' +
+          'fill="none" stroke-linecap="round" opacity=".65"/>' +
+        '<path d="M12 78 Q50 90 88 78" stroke="#3d2917" stroke-width="1" ' +
+          'fill="none" opacity=".4"/>' +
+        /* thin mount board, then the rubber die under it */
+        '<path d="M6 92 Q50 105 94 92 L93.4 97 Q50 110 6.6 97 Z" fill="#cbb98f"/>' +
+        '<path d="M6 92 Q50 105 94 92" stroke="#f2e9cd" stroke-width="1" fill="none" opacity=".85"/>' +
+        '<path d="M6.6 96.6 Q50 109.6 93.4 96.6 L90 111 Q50 123.4 10 111 Z" ' +
+          'fill="url(#rb' + u + ')"/>' +
+        '<path d="M8.6 98 Q12.6 104.6 11.4 110.6" stroke="#7d7469" stroke-width="1.8" ' +
           'fill="none" opacity=".7"/>' +
-        '<path d="M10 113 Q50 124 90 113" stroke="' + col + '" stroke-width="2" ' +
-          'fill="none" opacity=".8"/>' +
-        '<path d="M12 114.6 Q50 124.6 88 114.6" stroke="#0b0806" stroke-width="1" ' +
+        '<path d="M88.4 99 Q85.6 105.6 88.6 110.4" stroke="#050403" stroke-width="1.8" ' +
+          'fill="none" opacity=".7"/>' +
+        '<path d="M10 111 Q50 123.4 90 111" stroke="' + col + '" stroke-width="2.4" ' +
+          'fill="none" opacity=".85"/>' +
+        '<path d="M12 112.6 Q50 124 88 112.6" stroke="#0b0806" stroke-width="1" ' +
           'fill="none" opacity=".5"/>' +
       '</g>';
     return svg(w, 100, 128, d, b);
@@ -742,17 +776,21 @@
       wires +
       '<path d="M11 56 L64 56 L89 39 L36 39 Z" fill="none" stroke="' + BR_SH + '" ' +
         'stroke-width="1.6" stroke-linejoin="round" opacity=".8"/>' +
-      /* the stack of papers standing on it */
-      '<path d="M20 47 L44.6 30.4 L84 30.4 L59.4 47 Z" fill="#b5a682"/>' +
-      '<path d="M19 45.6 L43.6 29 L83 29 L58.4 45.6 Z" fill="url(#pe' + u + ')"/>' +
-      '<path d="M18 44 L42.6 27.4 L82 27.4 L57.4 44 Z" fill="url(#pa' + u + ')"/>' +
-      '<path d="M18 44 L42.6 27.4" stroke="#ffffff" stroke-width="1.3" fill="none" opacity=".8"/>' +
-      '<path d="M42.6 27.4 L82 27.4" stroke="#ffffff" stroke-width="1" fill="none" opacity=".5"/>' +
-      '<path d="M27 40 L56 34.6 M30 42 L62 35.6 M33.6 43 L66 36" stroke="' + INK + '" ' +
+      /* the stack of papers, standing on the floor wires */
+      '<path d="M16 53.6 L40 37.4 L85 37.4 L61 53.6 Z" fill="#9a8b68" opacity=".55"/>' +
+      '<path d="M15 51.6 L39 35.4 L84 35.4 L60 51.6 Z" fill="#b5a682"/>' +
+      '<path d="M14.4 49.4 L38.4 33.2 L83.4 33.2 L59.4 49.4 Z" fill="url(#pe' + u + ')"/>' +
+      '<path d="M14 47 L38 30.8 L83 30.8 L59 47 Z" fill="url(#pa' + u + ')"/>' +
+      '<path d="M14 47 L38 30.8" stroke="#ffffff" stroke-width="1.3" fill="none" opacity=".8"/>' +
+      '<path d="M38 30.8 L83 30.8" stroke="#ffffff" stroke-width="1" fill="none" opacity=".5"/>' +
+      '<path d="M24 43.4 L56 37 M27 45 L62 38 M30.6 46 L66 38.6" stroke="' + INK + '" ' +
         'stroke-width="0.7" opacity=".26"/>' +
-      '<path d="M18 44 L57.4 44 L82 27.4" fill="none" stroke="#9a8b68" stroke-width="1.2" ' +
+      '<path d="M14 47 L59 47 L83 30.8" fill="none" stroke="#9a8b68" stroke-width="1.2" ' +
         'opacity=".8"/>' +
-      '<path d="M18 44 L20 47 L59.4 47 L57.4 44 Z" fill="#a4956f"/>' +
+      '<path d="M14 47 L16 53.6 L61 53.6 L59 47 Z" fill="#a4956f"/>' +
+      '<path d="M14.6 48.6 L59.6 48.6 M15 50.6 L60 50.6 M15.4 52.4 L60.4 52.4" ' +
+        'stroke="#8a7c5c" stroke-width="0.6" opacity=".6"/>' +
+      '<path d="M59 47 L61 53.6 L84.6 37.6 L83 30.8 Z" fill="#8d7f60"/>' +
       /* the near rim, in front of the papers, with its posts */
       '<path d="M11 47 L11 56" stroke="' + BR_MID + '" stroke-width="2.6" stroke-linecap="round"/>' +
       '<path d="M64 47 L64 56" stroke="' + BR_DEEP + '" stroke-width="2.6" stroke-linecap="round"/>' +
@@ -803,12 +841,11 @@
         'stroke-linecap="round" opacity=".9"/>' +
       '<path d="M68 51.6 Q74 53 76 55.4" stroke="#ffffff" stroke-width="1" fill="none" ' +
         'stroke-linecap="round" opacity=".45"/>' +
-      /* thick cut foot */
-      '<path d="M25.4 90 Q50 99 74.6 90 L74 102 Q50 111 26 102 Z" fill="url(#bs' + u + ')"/>' +
-      '<path d="M25.4 90 Q50 99 74.6 90" stroke="#ffffff" stroke-width="1.2" fill="none" ' +
+      /* the thick cut foot: the glass gathers weight at the bottom */
+      '<path d="M25.4 92 Q50 101 74.6 92 L74 102 Q50 111 26 102 Z" fill="url(#bs' + u + ')" ' +
         'opacity=".55"/>' +
-      '<path d="M32 93.6 L31.4 104.6 M42 95.8 L42 107.4 M58 95.8 L58 107.4 M68 93.6 L68.6 104.6" ' +
-        'stroke="#ffffff" stroke-width="1.1" opacity=".34"/>' +
+      '<path d="M32 96.4 L31.6 104.4 M42 98.4 L42 107 M58 98.4 L58 107 M68 96.4 L68.4 104.4" ' +
+        'stroke="#ffffff" stroke-width="1" opacity=".22"/>' +
       /* specular: broad on the left, a narrow band of reflected light on the right */
       '<path d="M30.6 24 Q28.4 62 27.8 98 L32.6 99.6 Q33.6 62 35 25.4 Z" ' +
         'fill="#ffffff" opacity=".42"/>' +

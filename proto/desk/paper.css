@@ -1,136 +1,158 @@
 /* ==========================================================================
-   paper.css — Register I, the sheets themselves.
+   paper.css — Register I: the sheets themselves.
 
    The player never meets the district; they meet paper about it
-   (docs/DESIGN-ART.md §1). This file is therefore the highest-value surface in
-   the game, and its only test is the one the art bible sets: *if a document
+   (docs/DESIGN-ART.md §1). This file is therefore the surface the player looks
+   at most, and its only test is the one the art bible sets: *if a document
    does not look like an object you could pick up, it has failed* (§3).
 
    Six stocks, and the player must know which has arrived before reading a
-   word — a wire from the Division should not have to say so. So each form gets
-   its own tone, its own trim, its own furniture, its own angle on the desk.
+   word — a wire from the Division should not have to introduce itself. So
+   each form gets its own tone, trim, furniture, proportion and angle.
 
-   Nothing here is an image. Everything — fibre, punch holes, foxing, the
-   rubber stamp starved on one edge, the corner lifting — is drawn with
-   gradients, clip paths and pseudo-elements, so a sheet costs no page weight
-   and rescales without a raster to chase.
+   Nothing here is an image. Fibre, punch holes, deckle, foxing, the rubber
+   stamp starved on one edge, the corner that will not lie flat — all drawn
+   with gradients and clip paths, so a sheet costs no page weight, survives
+   any zoom, and cannot 404.
 
    The markup is fixed (desk.js docCard):
      .paper.paper--FORM > .phead > .pfrom + .pref
                         > .urgent? .secret? .feestamp?
                         > .pbody
-   Which leaves exactly eight pseudo-elements to build a sheet out of. Their
-   jobs are allocated once, here, so later edits do not fight over them:
+   which leaves exactly eight pseudo-elements to build a document out of.
+   Their jobs are allocated once, here, so later work does not fight over
+   them. Note which ones are *positioned* against what:
 
-     .paper::before   the sheet: tone, lighting, fibre, printed furniture
-     .paper::after    what has happened to it since: wear, and uneven inking
-     .phead::before   the printed masthead / head rule, where a form has one
-     .phead::after    a per-form extra (telegram serial, petition thumbprint)
-     .pbody::before   the shadow cast *under* the lifted corner
-     .pbody::after    the lifted corner itself
-     .pfrom, .pref pseudos — printed form labels
+     .paper::before   the stock: tone, lighting, fibre, printed furniture
+     .paper::after    what has happened to it since: wear, and patchy ink
+     .phead::before   printed masthead / head rule      (anchored to .phead)
+     .phead::after    printed sub-label                 (anchored to .phead)
+     .pfrom::before   inline printed label, or the pin   (inline / to .paper)
+     .pref::before    inline printed label               (inline)
+     .pfrom::after    furniture out in the margins       (anchored to .paper)
+     .pref::after     furniture down at the foot         (anchored to .paper)
+     .pbody::before   the shadow under the lifted corner (anchored to .paper)
+     .pbody::after    the lifted corner itself           (anchored to .paper)
 
-   Optional classes a caller may add are listed at the foot of the file.
+   .pfrom, .pref and .pbody are left static on purpose, and so is .phead by
+   default: with .paper the nearest positioned ancestor (its filter makes it a
+   containing block anyway), every one of those pseudos can be placed against
+   the sheet as a whole. Only the telegram and the order position .phead, to
+   hang a printed band off it, and neither uses the margins.
+
+   Optional extra classes are listed at the foot of the file.
    ========================================================================== */
 
 
 /* ————————————————————————————————————————————————— THE COMMON SHEET —— */
 
 .paper{
-  /* Per-form overrides below. These are the workhorse buff foolscap. */
-  --sheet:   #e4d6b0;   /* the lit face */
-  --sheet2:  #d8c797;   /* the shaded face — no sheet is evenly lit */
-  --sheet3:  #eee2c2;   /* the brightest catch, up under the lamp */
+  /* Buff foolscap: the workhorse, and the default every other stock departs
+     from. Tones are warm throughout — a grey-white sheet reads as a screen. */
+  --sheet:   #e3d4ab;   /* the lit face */
+  --sheet2:  #d3c08d;   /* the shaded face; no sheet is evenly lit */
+  --sheet3:  #efe3c1;   /* the brightest catch, up under the lamp */
   --ink:     #241c10;
-  --ink2:    #5d5136;   /* the furniture: rules, references, initials */
-  --rule:    #b09265;
-  --fibre:   120 95 45; /* the pulp's own colour, used at tiny alphas */
-  --tilt:    -0.45deg;
-  --lift:    30px;      /* how much of the near corner has come away */
+  --ink2:    #5d5136;   /* furniture: rules, references, initials */
+  --rule:    #ab8d60;
+  --fibre:   118 92 42; /* the pulp's own colour, used only at tiny alphas */
+  --tilt:    -0.55deg;
+  --lift:    32px;      /* how much of the near corner has come away */
+  --pin:     26px 15px; /* where the sheet was pinned, and where it rusted */
+  --furniture: ;        /* per-form printed matter; see the forms below */
 
-  /* Irregular by default. A guillotined edge is the one thing that reads as
-     "div" instantly, so every stock deviates from true by a pixel or three. */
+  /* Irregular by default. A guillotined rectangle is the one thing that reads
+     as "div" instantly, so every stock wanders off true by a pixel or three,
+     and the near corner is cut away for the flap that goes back on below. */
   --edge: polygon(
     0.5% 0.6%, 21% 0%, 46% 0.7%, 72% 0.1%, 100% 0.5%,
-    99.5% 21%, 100% 47%, 99.4% 73%, 100% calc(100% - 22px),
+    99.6% 21%, 100% 47%, 99.5% 73%, 100% calc(100% - 24px),
     calc(100% - var(--lift)) 100%,
-    75% 99.4%, 50% 100%, 26% 99.3%, 0.3% 99.8%,
-    0.7% 75%, 0% 50%, 0.5% 25%
+    75% 99.5%, 50% 100%, 26% 99.4%, 0.3% 99.8%,
+    0.6% 75%, 0% 50%, 0.4% 25%
   );
 
   position: relative;
-  width: min(620px, 100%);
-  min-height: 208px;
-  padding: 22px 30px 34px;
+  width: min(600px, 100%);
+  min-height: 286px;                  /* a sheet, not a strip */
+  padding: 24px 34px 40px;
   color: var(--ink);
   font-family: "Iowan Old Style", Palatino, Georgia, serif;
   transform: rotate(var(--tilt));
 
-  /* Two shadows, not one. A sheet lying on a desk is pinched dark where it
-     touches and open where it does not; a single blur reads as a floating
-     card. The lamp on this desk is high and to the right (see .scene-desk),
-     so both fall down and to the left.
+  /* Three shadows, not one. Paper on a desk is pinched almost black where it
+     touches, softer an inch out, and open at the lifted side; a single blur
+     reads as a floating card every time. The lamp on this desk is high and to
+     the right (.scene-desk), so all three fall down and to the left.
 
      drop-shadow rather than box-shadow because the sheet is clipped to an
-     irregular outline and box-shadow would trace the rectangle. It is safe on
-     the parent: the text sits on an opaque ::before, so the silhouette being
-     shadowed is the sheet, not the words. */
+     irregular outline and box-shadow would trace the rectangle underneath it.
+     It is safe on the parent even though the text is inside: the text sits on
+     an opaque ::before, so the silhouette being shadowed is the sheet. */
   filter:
-    drop-shadow(-1px 2px 1.5px rgba(24, 14, 4, .40))
-    drop-shadow(-7px 13px 16px rgba(18, 10, 2, .46));
+    drop-shadow(0 1px 0.5px rgba(20, 12, 2, .55))
+    drop-shadow(-2px 4px 3px rgba(20, 12, 2, .40))
+    drop-shadow(-9px 17px 22px rgba(14, 8, 1, .50));
 
   animation: paper-land .34s cubic-bezier(.2, .9, .3, 1);
 }
 
-/* The sheet itself. Kept off .paper's own background so that the clip which
-   roughens the edge does not also swallow the drop shadow. */
+/* The stock. Kept off .paper's own background so that the clip which
+   roughens the edge does not also swallow the drop shadow.
+
+   --furniture is substituted ahead of the stock layers, trailing comma and
+   all, so each form adds its printed matter without restating the paper. */
 .paper::before{
   content: ""; position: absolute; inset: 0; z-index: -1;
   clip-path: var(--edge);
-
-  /* Lighting first, then pulp. Three fibre layers at coprime sizes: one
-     regular dot grid is a screen-door texture and the eye finds it in about a
-     second, whereas 3/5/7px never line up inside a sheet's width. */
   background:
-    radial-gradient(rgb(var(--fibre) / .050) .5px, transparent .9px) 0 0 / 3px 3px,
-    radial-gradient(rgb(var(--fibre) / .038) .5px, transparent 1px)  1px 2px / 5px 5px,
-    radial-gradient(rgb(var(--fibre) / .028) .6px, transparent 1.1px) 2px 1px / 7px 7px,
+    var(--furniture)
+    /* Pulp. Three dot layers at coprime sizes: a single grid is a screen door
+       and the eye finds it in about a second, whereas 3/5/7px never come back
+       into phase inside a sheet's width. Alphas stay under .04 — texture that
+       competes with the words has failed at the only job that matters. */
+    radial-gradient(rgb(var(--fibre) / .032) .5px, transparent .9px) 0 0 / 3px 3px,
+    radial-gradient(rgb(var(--fibre) / .026) .5px, transparent 1px)  1px 2px / 5px 5px,
+    radial-gradient(rgb(var(--fibre) / .020) .6px, transparent 1.1px) 2px 1px / 7px 7px,
     repeating-linear-gradient(97deg,
-      rgb(var(--fibre) / .022) 0 1px, transparent 1px 4px),
-    radial-gradient(120% 90% at 78% 4%, var(--sheet3) 0%, transparent 58%),
-    linear-gradient(163deg, var(--sheet) 0%, var(--sheet) 44%, var(--sheet2) 100%);
+      rgb(var(--fibre) / .018) 0 1px, transparent 1px 4px),
+    radial-gradient(130% 95% at 80% 2%, var(--sheet3) 0%, transparent 60%),
+    linear-gradient(163deg, var(--sheet) 0%, var(--sheet) 42%, var(--sheet2) 100%);
 }
 
-/* Wear, and the ribbon. Sparse and deliberate — §3 is explicit that evenly
-   applied wear reads as noise within seconds, so this is one crease, one pin
-   hole with its rust, and two foxing spots, in fixed places.
+/* Wear, and the ribbon. Sparse and deliberate — §3 is explicit that wear
+   applied evenly reads as noise within seconds — so this is one pin hole with
+   its rust, one crease, two or three foxing spots, in fixed places.
 
-   It sits *over* the text and multiplies, which is also what gives typed
-   forms their uneven inking: a patch of type under a blotch goes heavier, the
-   way a tired ribbon actually prints. */
+   It sits *over* the text and multiplies, which is also what gives the typed
+   forms their uneven inking: type under a blotch prints heavier, the way a
+   tired ribbon actually did, and no two words come out quite alike. */
 .paper::after{
   content: ""; position: absolute; inset: 0; z-index: 2;
   clip-path: var(--edge);
   pointer-events: none;
   mix-blend-mode: multiply;
   background:
-    /* the pin hole, top left, and the rust that has crept out of it */
-    radial-gradient(circle 1.6px at 27px 15px, rgba(46,30,12,.72) 0 1.2px, transparent 1.7px),
-    radial-gradient(circle 5px   at 27px 15px, rgba(146,78,32,.30), transparent 72%),
-    /* foxing: two spots, irregular, never a pair of matching dots */
-    radial-gradient(ellipse 9px 6px  at 82% 71%, rgba(150,102,44,.22), transparent 70%),
-    radial-gradient(ellipse 5px 7px  at 86% 73%, rgba(150,102,44,.14), transparent 70%),
-    radial-gradient(ellipse 6px 4px  at 13% 88%, rgba(140,96,40,.17), transparent 72%),
-    /* the crease, from being folded once into a pocket or a file cover */
-    linear-gradient(179.4deg,
-      transparent calc(58% - 1.5px),
-      rgba(90,66,26,.13) calc(58% - .5px),
-      rgba(255,244,214,.34) 58%,
-      transparent calc(58% + 2px)),
-    /* the ribbon's patchiness, and the general dulling toward the shaded edge */
-    radial-gradient(ellipse 130px 26px at 24% 34%, rgba(66,46,18,.045), transparent 70%),
-    radial-gradient(ellipse 90px 22px at 71% 62%, rgba(66,46,18,.038), transparent 70%),
-    linear-gradient(163deg, transparent 55%, rgba(84,60,24,.06) 100%);
+    radial-gradient(circle 1.7px at var(--pin), rgba(40,26,10,.78) 0 1.2px, transparent 1.7px),
+    radial-gradient(circle 6px   at var(--pin), rgba(148,80,32,.26), transparent 74%),
+    radial-gradient(ellipse 9px 6px at 84% 66%, rgba(148,100,42,.20), transparent 70%),
+    radial-gradient(ellipse 5px 8px at 88% 69%, rgba(148,100,42,.13), transparent 70%),
+    radial-gradient(ellipse 7px 4px at 12% 86%, rgba(140,94,38,.15), transparent 72%),
+    /* the crease, from having been folded once into a file cover or a pocket:
+       a hair of shadow on one side of the fold, a hair of highlight on the
+       other, which is all a fold ever is */
+    linear-gradient(179.5deg,
+      transparent calc(56% - 1.6px),
+      rgba(88,62,22,.14) calc(56% - .5px),
+      rgba(255,246,218,.36) 56%,
+      transparent calc(56% + 2.2px)),
+    /* patchy inking — small and several, so it lands on words not paragraphs */
+    radial-gradient(ellipse 46px 11px at 21% 33%, rgba(62,42,14,.055), transparent 72%),
+    radial-gradient(ellipse 34px 9px  at 58% 45%, rgba(62,42,14,.042), transparent 72%),
+    radial-gradient(ellipse 52px 10px at 74% 57%, rgba(62,42,14,.050), transparent 72%),
+    radial-gradient(ellipse 30px 12px at 36% 66%, rgba(62,42,14,.038), transparent 72%),
+    /* and the general dulling toward the edge the lamp does not reach */
+    linear-gradient(163deg, transparent 52%, rgba(80,56,20,.075) 100%);
 }
 
 @keyframes paper-land{
@@ -144,331 +166,365 @@
 
 /* ————————————————————————————————————————————————— THE LIFTED CORNER —— */
 /* The near corner of a sheet that has been picked up once never lies flat
-   again. The outline (--edge) cuts the corner away; these two put the flap
-   back, turned over, with the desk's shadow beneath it. It is the single
-   cheapest cue that this is an object and not a rectangle of colour. */
+   again. --edge cuts the corner off; these two put it back, turned over, with
+   the desk showing beneath. It is the cheapest cue in the file that this is an
+   object and not a rectangle of colour, so it is worth two pseudo-elements. */
 
-.pbody::before{                         /* what the flap casts on the sheet */
+.pbody::before{                        /* what the flap throws on the sheet */
   content: ""; position: absolute; z-index: 3;
-  right: -2px; bottom: -2px;
-  width: calc(var(--lift) + 12px); height: calc(var(--lift) + 6px);
+  right: 2px; bottom: 2px;
+  width: calc(var(--lift) + 10px); height: calc(var(--lift) + 10px);
   clip-path: polygon(100% 0, 0 100%, 100% 100%);
-  background: linear-gradient(315deg, rgba(20,12,2,.42), rgba(20,12,2,0) 68%);
+  background: linear-gradient(315deg, rgba(28,17,3,.42), rgba(28,17,3,0) 58%);
   filter: blur(2.5px);
   pointer-events: none;
 }
-.pbody::after{                          /* the flap: the sheet's own back */
+.pbody::after{                         /* the flap: the sheet's own back */
   content: ""; position: absolute; z-index: 4;
+  /* It must fill the corner --edge cut away, or the cut reads as a hole
+     punched in the sheet rather than as paper that has come up off the desk. */
   right: -1px; bottom: -1px;
-  width: var(--lift); height: calc(var(--lift) - 4px);
+  width: calc(var(--lift) + 3px); height: calc(var(--lift) + 3px);
   clip-path: polygon(100% 0, 0 100%, 100% 100%);
-  /* The verso is duller than the face — it is turned away from the lamp — but
-     catches a bright line right at the fold. */
-  background: linear-gradient(310deg,
-    var(--sheet3) 0%, var(--sheet) 26%, var(--sheet2) 74%, rgba(120,92,44,.55) 100%);
-  transform: rotate(-2.5deg);
+  /* The verso is turned away from the lamp, so it is duller than the face —
+     but it catches a bright line right along the fold, and that line is what
+     makes the eye read "lifted" rather than "torn". */
+  background: linear-gradient(315deg,
+    #fdf7e4 0%, var(--sheet3) 14%, var(--sheet) 44%, var(--sheet2) 76%,
+    rgba(120,92,42,.55) 100%);
+  transform: rotate(-3deg);
   transform-origin: 100% 100%;
   pointer-events: none;
 }
 
 
 /* ——————————————————————————————————————————————————————— THE HEADING —— */
-/* Every official form announces its provenance before it says anything. The
-   heading is typed furniture; the body is prose. Keeping the two faces apart
-   is most of what makes a sheet look administered rather than designed. */
+/* Every official form states its provenance before it says anything at all.
+   The heading is typed furniture; the body is prose. Keeping those two faces
+   apart is most of what makes a sheet look administered rather than designed. */
 
 .phead{
-  position: relative;
-  display: flex; justify-content: space-between; align-items: flex-end; gap: 16px;
-  padding-bottom: 6px; margin-bottom: 13px;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 18px;
+  padding-bottom: 7px; margin-bottom: 15px;
   border-bottom: 1px solid var(--rule);
   font-family: "Courier New", monospace;
-  font-size: .56rem; line-height: 1.5; letter-spacing: .13em;
+  font-size: .56rem; line-height: 1.6; letter-spacing: .13em;
   text-transform: uppercase; color: var(--ink2);
 }
 .pfrom{ font-weight: 700; }
-.pref{ text-align: right; white-space: nowrap; }
+.pref{ text-align: right; max-width: 26ch; }
 
 
 /* ————————————————————————————————————————————————————————— THE PROSE —— */
 
 .pbody{
-  font-size: 1.02rem; line-height: 1.62;
+  font-size: 1.02rem; line-height: 1.66;
   max-width: 54ch;                    /* §11: running prose stays near 52–65 */
-  /* Type impressed into the sheet, not laid on it: a hairline of the paper's
-     own light catching the lower lip of the depression the key made. Kept
-     under half a pixel — anything more is emboss, and emboss is a website. */
-  text-shadow: 0 .55px .2px rgba(255, 248, 224, .46);
+  /* Type impressed *into* the sheet rather than laid on it: a hairline of the
+     paper's own light catching the lower lip of the pit the key made. Kept
+     under a pixel — any more is an emboss, and an emboss is a website. */
+  text-shadow: 0 .55px .2px rgba(255, 248, 224, .5);
 }
+
+/* A stamped sheet was stamped in the space below the heading, so the typing
+   starts lower down. Chained siblings because desk.js emits the stamps as
+   .pbody's preceding siblings — this keeps ink off the words without needing
+   to know in advance which sheets get stamped. */
+.urgent ~ .pbody,
+.secret ~ .pbody{ padding-top: 28px; }
+.urgent ~ .secret ~ .pbody{ padding-top: 66px; }
 
 
 /* ————————————————————————————————————————————————— I. BUFF FOOLSCAP —— */
-/* paper--file. The workhorse: three quarters of what reaches the desk. It
-   carries the full apparatus — punched, taped, endorsed, docketed — because
-   the joke in §1 is the machinery, and this is the machine. */
+/* paper--file. Three quarters of what reaches this desk. It carries the whole
+   apparatus — punched, taped, ruled for endorsement, docketed on receipt —
+   because the comedy in §1 is the machinery, and this is the machine. */
 
 .paper--file{
   --tilt: -0.5deg;
-  width: min(640px, 100%);
-  /* right padding leaves the endorsement column clear of the prose */
-  padding: 22px 118px 34px 46px;
+  --pin: 24px 16px;
+  width: min(620px, 100%);
+  min-height: 296px;
+  /* the right padding keeps the prose clear of the endorsement column */
+  padding: 24px 122px 40px 52px;
+  --furniture:
+    /* two punch holes down the left margin, the dark of the desk in them and
+       the sheet's own cut edge catching light around the rim */
+    radial-gradient(circle 5.2px at 20px 46px,
+      rgba(26,16,4,.9) 0 4.3px, rgba(255,247,222,.55) 4.5px 5.1px, transparent 5.2px),
+    radial-gradient(circle 5.2px at 20px 134px,
+      rgba(26,16,4,.9) 0 4.3px, rgba(255,247,222,.55) 4.5px 5.1px, transparent 5.2px),
+    /* the red tape threaded through them, faded to pink by twelve months of
+       hot weather — the hairline the file is proverbially tied up in */
+    linear-gradient(90deg,
+      transparent 0 32px, rgba(152,54,40,.44) 32px 34px,
+      rgba(152,54,40,.15) 34px 37px, transparent 37px),
+    /* the endorsement column: a printed double rule, and feint lines for the
+       initials of everyone who has so far declined to decide this */
+    linear-gradient(90deg,
+      transparent 0 1px, rgba(120,95,45,.6) 1px 2px,
+      transparent 2px 5px, rgba(120,95,45,.3) 5px 6px, transparent 6px)
+      right top / 104px 100% no-repeat,
+    repeating-linear-gradient(180deg,
+      transparent 0 26px, rgba(120,95,45,.2) 26px 27px)
+      right top / 96px 100% repeat-y,
+  ;
 }
 .paper--file .phead{
   border-bottom-width: 2px;
-  box-shadow: 0 2px 0 var(--sheet), 0 3px 0 rgba(176,146,101,.55);  /* thick-thin */
-  margin-bottom: 16px;
+  box-shadow: 0 2px 0 var(--sheet), 0 3px 0 rgba(171,141,96,.6);   /* thick-thin */
 }
+/* the docket, boxed on the form so a clerk can enter it in ink */
 .paper--file .pref{
   border: 1px solid rgba(120,95,45,.5);
-  padding: 2px 7px 1px;
-  background: rgba(255,246,220,.4);
-  white-space: normal; max-width: 20ch;
+  background: rgba(255,246,220,.45);
+  padding: 3px 8px 2px;
+  max-width: 22ch;
 }
-.paper--file::before{
-  background:
-    /* two punch holes down the left margin, the desk showing through */
-    radial-gradient(circle 5.2px at 17px 44px,
-      rgba(28,18,6,.88) 0 4.4px, rgba(255,247,222,.5) 4.6px 5.1px, transparent 5.2px),
-    radial-gradient(circle 5.2px at 17px 132px,
-      rgba(28,18,6,.88) 0 4.4px, rgba(255,247,222,.5) 4.6px 5.1px, transparent 5.2px),
-    /* the red tape, threaded through them and faded to pink by the sun */
-    linear-gradient(90deg,
-      transparent 0 28px, rgba(150,52,40,.42) 28px 30px,
-      rgba(150,52,40,.16) 30px 33px, transparent 33px),
-    /* the endorsement column: a double rule, and feint lines for the initials
-       of everyone who has already declined to decide this */
-    linear-gradient(90deg, transparent 0 1px, rgba(120,95,45,.55) 1px 2px,
-      transparent 2px 5px, rgba(120,95,45,.30) 5px 6px, transparent 6px)
-      right 104px top 0 / 106px 100% no-repeat,
-    repeating-linear-gradient(180deg,
-      transparent 0 25px, rgba(120,95,45,.22) 25px 26px)
-      right top / 100px 100% repeat-y,
-    radial-gradient(rgb(var(--fibre) / .050) .5px, transparent .9px) 0 0 / 3px 3px,
-    radial-gradient(rgb(var(--fibre) / .038) .5px, transparent 1px)  1px 2px / 5px 5px,
-    radial-gradient(rgb(var(--fibre) / .028) .6px, transparent 1.1px) 2px 1px / 7px 7px,
-    repeating-linear-gradient(97deg,
-      rgb(var(--fibre) / .022) 0 1px, transparent 1px 4px),
-    radial-gradient(120% 90% at 78% 4%, var(--sheet3) 0%, transparent 58%),
-    linear-gradient(163deg, var(--sheet) 0%, var(--sheet) 44%, var(--sheet2) 100%);
-}
-/* the column's heading, printed on the form and rarely used */
-.paper--file .phead::before{
+/* the endorsement column's printed heading, out in the right margin */
+.paper--file .pfrom::after{
   content: "Endorsement";
-  position: absolute; right: -92px; top: 0;
-  width: 90px; text-align: left;
-  font-size: .5rem; letter-spacing: .1em; color: rgba(93,81,54,.72);
-  border-bottom: 1px solid rgba(120,95,45,.4); padding-bottom: 3px;
+  position: absolute; right: 12px; top: 26px; width: 84px;
+  font-weight: 400; font-size: .5rem; letter-spacing: .1em;
+  color: rgba(93,81,54,.75);
+  border-bottom: 1px solid rgba(120,95,45,.45);
+  padding-bottom: 4px;
 }
-/* the docket number, stamped low on the sheet where the clerk enters it */
-.paper--file .phead::after{
-  content: "Recd. 17 Nov 1925";
-  position: absolute; right: -104px; bottom: -160px;
-  font-size: .48rem; letter-spacing: .09em; color: rgba(93,81,54,.6);
-  transform: rotate(-1.5deg);
+/* the receipt stamp at the foot, which is the only date anyone will trust */
+.paper--file .pref::after{
+  content: "Recd. 17 Nov 1925 · Collector's Office";
+  position: absolute; left: 52px; bottom: 16px;
+  font-size: .48rem; letter-spacing: .1em; color: rgba(93,81,54,.55);
+  transform: rotate(-1.2deg);
 }
 
 
 /* ——————————————————————————————————————————————— II. TELEGRAM FLIMSY —— */
-/* paper--telegram. Thin, small, faintly pink-grey, and printed by a machine
-   that did not care. Half its area is a form somebody rubber-stamped a
-   thousand times; the message is a strip of capitals in a purple ribbon.
-   It should be recognisable from across a room. */
+/* paper--telegram. Thin, small, faintly pink-grey, printed by a machine that
+   did not care and filled in by one that cared less. Half its area is a form
+   somebody rubber-stamped ten thousand times; the message is a strip of
+   capitals in a tired purple ribbon. Recognisable from across a room, which
+   is the whole point — this is the form that means trouble. */
 
 .paper--telegram{
-  --sheet:  #e7dcdd;
-  --sheet2: #d6c8cc;
-  --sheet3: #f2eaea;
-  --ink:    #3b2d45;                 /* teleprinter purple, not black */
-  --ink2:   #5a4a5c;
-  --rule:   #9c8794;
-  --fibre:  110 84 96;
-  --tilt:   1.2deg;
+  --sheet:  #ded0ca;
+  --sheet2: #c9b6b2;
+  --sheet3: #ece0d8;
+  --ink:    #3b2d45;                 /* teleprinter purple, never black */
+  --ink2:   #5c4b5d;
+  --rule:   #9c8790;
+  --fibre:  112 84 88;
+  --tilt:   1.3deg;
   --lift:   22px;
-  width: min(500px, 100%);
-  min-height: 190px;
-  padding: 0 26px 30px;              /* the printed band runs edge to edge */
-  /* A flimsy is thin enough to see the blotter through, and light enough that
-     it does not press a hard shadow into the desk. */
+  --pin:    18px 74px;
+  width: min(470px, 100%);
+  min-height: 226px;
+  padding: 0 26px 32px;              /* the printed band runs edge to edge */
+  /* A flimsy is thin: light enough to let a little of the blotter through,
+     and far too light to press a hard shadow into the desk. */
   opacity: .97;
   filter:
-    drop-shadow(-1px 1.5px 1px rgba(24,14,4,.34))
-    drop-shadow(-5px 9px 11px rgba(18,10,2,.36));
+    drop-shadow(0 1px 0.5px rgba(20,12,2,.42))
+    drop-shadow(-2px 3px 2px rgba(20,12,2,.3))
+    drop-shadow(-6px 11px 14px rgba(14,8,1,.42));
 }
-/* the printed form band across the head */
+/* the printed form band, and the only place on the sheet with a background */
 .paper--telegram .phead{
-  margin: 0 -26px 14px; padding: 26px 26px 5px;
+  position: relative;                /* the band carries its own printed matter */
+  margin: 0 -26px 16px; padding: 30px 26px 6px;
   border-top: 3px solid var(--rule);
   border-bottom: 1px solid var(--rule);
-  box-shadow: 0 2px 0 rgba(156,135,148,.35);
-  background: linear-gradient(180deg, rgba(122,96,110,.10), rgba(122,96,110,.02));
-  font-size: .53rem;
+  box-shadow: 0 2px 0 rgba(156,135,144,.4);
+  background: linear-gradient(180deg, rgba(120,92,104,.11), rgba(120,92,104,.02));
+  font-size: .52rem;
 }
 .paper--telegram .phead::before{
   content: "Indian Posts & Telegraphs — Received";
-  position: absolute; left: 26px; top: 8px;
-  font-size: .5rem; letter-spacing: .22em; color: rgba(90,74,92,.72);
+  position: absolute; left: 26px; top: 10px;
+  font-size: .5rem; letter-spacing: .2em; color: rgba(92,75,93,.72);
 }
 .paper--telegram .phead::after{
-  content: "No. of words · Charge · Time handed in";
-  position: absolute; right: 26px; top: 8px;
-  font-size: .44rem; letter-spacing: .1em; color: rgba(90,74,92,.44);
+  content: "Words · Charge · Time handed in";
+  position: absolute; right: 26px; top: 10px;
+  font-size: .44rem; letter-spacing: .1em; color: rgba(92,75,93,.42);
 }
-.paper--telegram .pfrom::before{ content: "From "; font-weight: 400; opacity: .6; }
-.paper--telegram .pref::before { content: "Office "; opacity: .6; }
-/* the message: capitals, monospaced, generously leaded because a teleprinter
-   ran the platen on regardless of what the words needed */
+.paper--telegram .pfrom::before{ content: "From "; font-weight: 400; opacity: .55; }
+.paper--telegram .pref::before { content: "Office "; opacity: .55; }
+/* the message: capitals, monospaced, and generously leaded because the platen
+   advanced whether or not the words needed the room */
 .paper--telegram .pbody{
   font-family: "Courier New", monospace;
-  font-size: .8rem; line-height: 2.05; letter-spacing: .045em;
+  font-size: .79rem; line-height: 2.1; letter-spacing: .045em;
   text-transform: uppercase;
-  max-width: 46ch;
-  /* the ribbon was over its life: ink haloes slightly and bites unevenly */
+  max-width: 40ch;
+  /* the ribbon was past its life: the ink haloes and bites unevenly, and the
+     halo does more for the illusion than any amount of letter-spacing */
   text-shadow:
-    .3px .25px .35px rgba(59,45,69,.34),
-   -.25px -.2px .3px rgba(59,45,69,.16);
+     .3px .25px .4px rgba(59,45,69,.36),
+    -.25px -.2px .3px rgba(59,45,69,.18);
 }
 
 
 /* —————————————————————————————————————————————————— III. HANDMADE RAG —— */
 /* paper--petition. Not Government's paper at all: bought in the bazaar,
-   written by a petition-writer, and paid for with a court-fee stamp stuck at
-   the top. Warmer, thicker, one deckle edge, and ink that has sunk in. */
+   written by a professional petition-writer, and made admissible by a
+   court-fee stamp stuck at the head. Warmer, thicker, one deckle edge, ink
+   that has sunk into the sheet, and a thumb at the foot in place of a name. */
 
 .paper--petition{
-  --sheet:  #e9d9b2;
-  --sheet2: #dcc793;
-  --sheet3: #f4e9c9;
-  --ink:    #33291a;                 /* iron-gall brown, gone rusty */
+  --sheet:  #e9d8ae;
+  --sheet2: #dac68c;
+  --sheet3: #f5eaca;
+  --ink:    #33291a;                 /* iron-gall, gone brown with the years */
   --ink2:   #6a5a38;
   --rule:   #b59a68;
   --fibre:  132 100 44;
-  --tilt:   -1.4deg;
+  --tilt:   -1.5deg;
   --lift:   26px;
-  width: min(600px, 100%);
-  padding: 24px 122px 42px 40px;     /* the stamp owns the top right corner */
-  /* A deckle is genuinely ragged, so the left edge wanders by up to 12px
-     while the other three stay near true. */
+  --pin:    30px 20px;
+  width: min(570px, 100%);
+  min-height: 286px;
+  padding: 26px 116px 46px 42px;     /* the stamp owns the top right corner */
+  /* A deckle is the untrimmed edge the mould left, so it is ragged at
+     irregular intervals and irregular depths — an even sawtooth reads as
+     decoration, which is worse than a straight cut. */
   --edge: polygon(
-    82% 0%, 100% 0.6%,
-    99.5% 38%, 100% 71%, 100% calc(100% - 20px),
+    83% 0%, 100% 0.6%,
+    99.6% 38%, 100% 71%, 100% calc(100% - 20px),
     calc(100% - var(--lift)) 100%,
-    71% 99.4%, 43% 100%, 17% 99.5%, 9px 99.6%,
-    3px 92%, 12px 85%, 4px 78%, 10px 71%, 2px 63%, 12px 56%, 5px 49%,
-    11px 42%, 2px 35%, 9px 28%, 4px 21%, 12px 14%, 3px 7%, 8px 0.5%,
-    27% 0.4%, 55% 0%
+    71% 99.4%, 43% 100%, 17% 99.6%, 10px 99.5%,
+    4px 96%, 11px 90%, 6px 83%, 13px 79%, 3px 72%,
+    9px 64%, 15px 59%, 5px 51%, 10px 44%, 2px 38%,
+    12px 31%, 7px 24%, 14px 18%, 4px 11%, 9px 5%, 3px 0.6%,
+    28% 0.4%, 56% 0%
   );
 }
 .paper--petition .phead{
   border-bottom: 1px solid rgba(181,154,104,.6);
   font-family: "Iowan Old Style", Palatino, Georgia, serif;
-  text-transform: none; letter-spacing: .01em; font-size: .82rem;
-  font-style: italic;
+  font-style: italic; font-size: .84rem;
+  text-transform: none; letter-spacing: .01em;
+  align-items: baseline;
 }
 .paper--petition .pref{
   font-family: "Courier New", monospace; font-style: normal;
   font-size: .55rem; letter-spacing: .12em; text-transform: uppercase;
 }
-/* Rag paper is absorbent: the line does not stay where the nib put it. A wide,
-   weak halo of the ink's own colour reads as feathering without smearing the
-   letterform enough to cost legibility. */
+/* Rag paper is absorbent: the line does not stay where the nib put it. A wide
+   weak halo in the ink's own colour reads as feathering without blurring the
+   letterform enough to cost anything in legibility. */
 .paper--petition .pbody{
-  font-size: 1.06rem; line-height: 1.78; max-width: 50ch;
+  font-size: 1.05rem; line-height: 1.8; max-width: 48ch;
   text-shadow:
-    0 0 1.1px rgba(51,41,26,.40),
-    .3px .4px .8px rgba(51,41,26,.22);
+    0 0 1.2px rgba(51,41,26,.42),
+    .3px .4px .9px rgba(51,41,26,.22);
 }
-/* The petitioner's thumb, pressed at the foot in lieu of a signature. Built
-   from a repeating ellipse so the ridges run, and masked to a thumb shape. */
-.paper--petition .phead::after{
+/* The petitioner's thumb at the foot, in place of the signature he could not
+   write. Ridges from a repeating ellipse, then thrown off-centre and skewed,
+   because a print taken off a real thumb is never a bullseye. */
+.paper--petition .pref::after{
   content: ""; position: absolute; z-index: 3;
-  right: 34px; bottom: -168px; width: 34px; height: 44px;
-  border-radius: 48% 48% 44% 44% / 40% 40% 60% 60%;
+  right: 46px; bottom: 24px; width: 30px; height: 40px;
+  border-radius: 48% 48% 42% 42% / 40% 40% 60% 60%;
   background:
-    repeating-radial-gradient(ellipse 12px 16px at 52% 58%,
-      rgba(66,44,22,.40) 0 1.1px, transparent 1.1px 3.4px);
-  transform: rotate(9deg);
-  opacity: .72;
+    repeating-radial-gradient(ellipse 9px 13px at 74% 118%,
+      rgba(64,42,20,.30) 0 .9px, transparent .9px 3.2px),
+    repeating-radial-gradient(ellipse 26px 46px at 32% 104%,
+      rgba(64,42,20,.44) 0 1.1px, transparent 1.1px 3.6px);
+  transform: rotate(13deg) skewX(-8deg);
+  filter: blur(.25px);
+  opacity: .55;
+  /* the edges of a thumb never print — only the pad in the middle does */
+  -webkit-mask-image: radial-gradient(ellipse 60% 62% at 46% 56%,
+    #000 34%, rgba(0,0,0,.5) 66%, transparent 92%);
+          mask-image: radial-gradient(ellipse 60% 62% at 46% 56%,
+    #000 34%, rgba(0,0,0,.5) 66%, transparent 92%);
   pointer-events: none;
 }
 
 
 /* ————————————————————————————————————————— IV. PLAIN OFFICIAL PAPER —— */
-/* paper--report. The dullest stock in the game and deliberately so: no tape,
-   no column, no crest. A police or departmental return, typed by somebody who
-   would rather not be quoted. Greyer than foolscap, and entirely typewritten
-   so that its silence looks official. */
+/* paper--report. The dullest stock in the game, deliberately: no tape, no
+   column, no crest, nothing to hold on to. A departmental or police return,
+   typed by a man who would rather not be quoted, on paper chosen to make his
+   silence look like procedure. */
 
 .paper--report{
-  --sheet:  #ded6c0;
-  --sheet2: #cec5aa;
-  --sheet3: #ece5d3;
+  --sheet:  #d9d0b6;
+  --sheet2: #c4ba9a;
+  --sheet3: #e9e1cb;
   --ink:    #2b2820;
   --ink2:   #5b5648;
   --rule:   #a09880;
   --fibre:  96 88 62;
-  --tilt:   0.7deg;
+  --tilt:   0.75deg;
   --lift:   24px;
-  width: min(600px, 100%);
-  padding: 22px 34px 34px 38px;
+  --pin:    22px 17px;
+  width: min(590px, 100%);
+  min-height: 274px;
+  padding: 24px 36px 42px 40px;
 }
-.paper--report .phead{
-  border-bottom: 1px solid rgba(160,152,128,.75);
-}
+.paper--report .phead{ border-bottom-color: rgba(160,152,128,.8); }
 .paper--report .pbody{
   font-family: "Courier New", monospace;
-  font-size: .82rem; line-height: 1.95; letter-spacing: .02em;
-  max-width: 62ch;
+  font-size: .81rem; line-height: 1.98; letter-spacing: .02em;
+  max-width: 60ch;
   text-shadow:
-    .3px .25px .3px rgba(43,40,32,.30),
-   -.2px -.15px .25px rgba(43,40,32,.14);
+     .3px .25px .3px rgba(43,40,32,.32),
+    -.2px -.15px .25px rgba(43,40,32,.14);
 }
-/* a typist's identification, bottom left, which every real return carried */
-.paper--report .phead::after{
-  content: "Typed in duplicate. One copy retained.";
-  position: absolute; left: 0; bottom: -190px;
-  font-size: .47rem; letter-spacing: .1em; color: rgba(91,86,72,.62);
+/* the typist's note every real return carried, and nobody ever read */
+.paper--report .pref::after{
+  content: "Typed in duplicate. One copy retained in this office.";
+  position: absolute; left: 40px; bottom: 18px;
+  font-family: "Courier New", monospace;
+  font-size: .47rem; letter-spacing: .1em; color: rgba(91,86,72,.6);
 }
 
 
 /* ——————————————————————————————————————————————————————— V. THE ORDER —— */
-/* paper--order. This one comes from above, and the stock says so before the
-   words do: whiter, crisper, barely creased, cut square, and headed with a
-   printed rule the district's own paper does not have. It is also the only
-   sheet that lies flat — nobody folds an order from the Commissioner into a
-   pocket. */
+/* paper--order. This comes from above and the stock says so before the words
+   do: whiter, heavier, cut square, headed with a printed rule the district's
+   own paper does not run to. It is also the only sheet on the desk that lies
+   flat — nobody folds an order from the Commissioner into his pocket. */
 
 .paper--order{
-  --sheet:  #f0e8d3;
-  --sheet2: #e2d8bd;
-  --sheet3: #fbf6e7;
+  --sheet:  #f0e7cf;
+  --sheet2: #e0d5b3;
+  --sheet3: #fdf8ea;
   --ink:    #221b10;
   --ink2:   #4f4530;
   --rule:   #8d7748;
   --fibre:  118 98 56;
-  --tilt:   -0.15deg;
-  --lift:   16px;
-  width: min(580px, 100%);
-  padding: 30px 40px 34px;
-  /* good stock, sharply guillotined: the edge deviates, but only just */
+  --tilt:   -0.2deg;
+  --lift:   14px;
+  --pin:    28px 18px;
+  width: min(540px, 100%);
+  min-height: 258px;
+  padding: 34px 42px 38px;
+  /* good stock, sharply guillotined: the edge still deviates, but only just */
   --edge: polygon(
     0.2% 0.2%, 40% 0%, 78% 0.3%, 100% 0.1%,
-    99.8% 34%, 100% 68%, 100% calc(100% - 12px),
+    99.9% 34%, 100% 68%, 100% calc(100% - 11px),
     calc(100% - var(--lift)) 100%,
-    62% 99.8%, 28% 100%, 0.1% 99.9%,
-    0.3% 66%, 0% 33%
+    62% 99.9%, 28% 100%, 0.1% 99.9%,
+    0.2% 66%, 0% 33%
   );
+  /* heavier paper stands off the desk a little further */
   filter:
-    drop-shadow(-1px 2px 1.2px rgba(24,14,4,.42))
-    drop-shadow(-8px 15px 18px rgba(18,10,2,.46));
+    drop-shadow(0 1px 0.5px rgba(20,12,2,.55))
+    drop-shadow(-2px 5px 3px rgba(20,12,2,.42))
+    drop-shadow(-11px 20px 24px rgba(14,8,1,.52));
 }
-/* the printed head rule: thick over thin, the Government's own signature move */
 .paper--order .phead{
-  border-bottom: 1px solid var(--rule);
-  padding-top: 12px; margin-bottom: 18px;
+  position: relative;                /* the head rule hangs off it */
+  padding-top: 14px; margin-bottom: 20px;
   letter-spacing: .17em;
+  border-bottom-color: var(--rule);
 }
+/* thick over thin: the Government of India's own signature move in print */
 .paper--order .phead::before{
-  content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 4px;
+  content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 4px;
   background: linear-gradient(180deg,
     var(--rule) 0 2px, transparent 2px 3px, var(--rule) 3px 4px);
 }
@@ -477,275 +533,314 @@
   position: absolute; left: 0; top: -30px;
   font-size: .46rem; letter-spacing: .3em; color: rgba(79,69,48,.6);
 }
-.paper--order .pbody{
-  font-size: 1.06rem; line-height: 1.68; max-width: 52ch;
-}
-/* an order is read, initialled and filed the same day; it has had no time to
-   acquire a history, so most of the wear comes off */
+.paper--order .pbody{ font-size: 1.06rem; line-height: 1.7; max-width: 52ch; }
+/* An order is read, initialled and filed inside the day. It has had no time to
+   acquire a history, so nearly all of the wear comes off again. */
 .paper--order::after{
   background:
-    radial-gradient(circle 1.6px at 30px 16px, rgba(46,30,12,.6) 0 1.2px, transparent 1.7px),
-    radial-gradient(circle 4px   at 30px 16px, rgba(146,78,32,.18), transparent 72%),
-    linear-gradient(163deg, transparent 60%, rgba(84,60,24,.05) 100%);
+    radial-gradient(circle 1.6px at var(--pin), rgba(44,28,10,.55) 0 1.2px, transparent 1.7px),
+    radial-gradient(circle 4px   at var(--pin), rgba(146,78,32,.16), transparent 74%),
+    linear-gradient(163deg, transparent 58%, rgba(84,60,24,.055) 100%);
 }
 
 
 /* —————————————————————————————————————————————————— VI. CREAM LAID —— */
-/* paper--note. Private paper — a Club secretary, a wife, a friend at
-   headquarters. Small, warm, no rules, no reference, no stamp, and laid lines
-   you can see against the lamp. The absence of furniture is the point: this is
-   the one sheet on the desk that nobody has to answer. */
+/* paper--note. Private paper: a Club secretary, a wife, a friend at
+   headquarters. Small, warm, no rules, no reference number, no stamp, and
+   laid lines you can see when you hold it up to the lamp. The absence of
+   furniture is the point — this is the one sheet on the desk that nobody has
+   to answer, and it should feel like a relief to pick up. */
 
 .paper--note{
-  --sheet:  #f2e9d0;
-  --sheet2: #e6d9b7;
-  --sheet3: #fdf7e6;
+  --sheet:  #f1e6c8;
+  --sheet2: #e2d3a8;
+  --sheet3: #fdf6e2;
   --ink:    #2c3352;                 /* private ink, and not the office's */
   --ink2:   #6b6146;
   --rule:   #c3ad81;
   --fibre:  124 104 58;
-  --tilt:   1.9deg;
+  --tilt:   2deg;
   --lift:   22px;
-  width: min(430px, 100%);
-  min-height: 176px;
-  padding: 24px 30px 32px;
-}
-/* Laid paper is made on a wire mould: close laid lines one way, widely spaced
-   chain lines the other. Both are faint, and both are the reason this stock
-   feels expensive. */
-.paper--note::before{
-  background:
+  --pin:    20px 14px;
+  width: min(400px, 100%);
+  min-height: 198px;
+  padding: 26px 32px 34px;
+  /* Laid paper is made on a wire mould: close laid lines one way, widely
+     spaced chain lines the other. Both barely there — visible enough to feel
+     expensive, faint enough that nobody consciously notices them. */
+  --furniture:
     repeating-linear-gradient(180deg,
-      rgba(124,104,58,.055) 0 .5px, transparent .5px 2.6px),
+      rgba(124,104,58,.030) 0 .5px, transparent .5px 2.6px),
     repeating-linear-gradient(90deg,
-      rgba(124,104,58,.075) 0 1px, transparent 1px 26px),
-    radial-gradient(rgb(var(--fibre) / .04) .5px, transparent 1px) 1px 2px / 5px 5px,
-    radial-gradient(140% 100% at 82% 2%, var(--sheet3) 0%, transparent 56%),
-    linear-gradient(163deg, var(--sheet) 0%, var(--sheet) 46%, var(--sheet2) 100%);
+      rgba(124,104,58,.038) 0 1px, transparent 1px 30px),
+  ;
 }
 .paper--note .phead{
-  border: 0; padding: 0; margin-bottom: 10px;
+  border: 0; padding: 0; margin-bottom: 12px;
   font-family: "Iowan Old Style", Palatino, Georgia, serif;
-  text-transform: none; letter-spacing: 0; font-size: .84rem;
-  font-style: italic; color: var(--ink2);
+  font-style: italic; font-size: .86rem;
+  text-transform: none; letter-spacing: 0;
+  color: var(--ink2);
   align-items: baseline;
 }
 .paper--note .pfrom{ font-weight: 400; }
 .paper--note .pref{
-  font-size: .52rem; font-family: "Courier New", monospace;
-  letter-spacing: .14em; text-transform: uppercase; font-style: normal;
+  font-family: "Courier New", monospace; font-style: normal;
+  font-size: .52rem; letter-spacing: .14em; text-transform: uppercase;
   opacity: .7;
 }
-.paper--note .pbody{
-  font-size: 1.04rem; line-height: 1.72; max-width: 44ch;
-}
+.paper--note .pbody{ font-size: 1.03rem; line-height: 1.76; max-width: 42ch; }
 
 
 /* ——————————————————————————————————————————————— THE RUBBER STAMPS —— */
 /* urgent / secret. A stamp is a pad, a hand and an angle, and it is never
    twice the same: over-inked where the hand bore down, starved where it
-   rocked off. The mask does that work — it thins the whole impression,
-   borders and letters alike, across a diagonal — and the specks on top are
-   the paper coming back through where the rubber did not meet it.
+   rocked off the pad. The mask does that work in one stroke — it thins the
+   whole impression, border and letters alike, along a diagonal — and the
+   specks on top are the sheet coming back through where the rubber never
+   quite met it.
 
-   Deliberately never crisp: a hairline blur, because a crisp red box is a
-   badge and a blurred one is ink. */
+   Never crisp. A hairline of blur is the difference between a rubber stamp
+   and a badge, and there are no badges in 1925. */
 
 .urgent, .secret{
-  position: absolute; right: 26px; top: 58px; z-index: 3;
+  position: absolute; right: 30px; top: 44px; z-index: 3;
   font-family: "Courier New", monospace;
   font-size: .58rem; font-weight: 700; letter-spacing: .18em;
   text-transform: uppercase;
-  padding: 4px 8px 3px;
+  padding: 4px 9px 3px;
   color: #8f2f22;
   border: 2px solid currentColor;
-  text-shadow: 0 0 .7px currentColor;
+  text-shadow: 0 0 .8px currentColor;
   transform: rotate(-7.5deg);
-  filter: blur(.18px);
-  /* over-inked at the top left, starved toward the bottom right */
+  filter: blur(.2px);
   -webkit-mask-image: linear-gradient(118deg,
-    rgba(0,0,0,1) 0%, rgba(0,0,0,.94) 28%, rgba(0,0,0,.48) 58%,
-    rgba(0,0,0,.82) 82%, rgba(0,0,0,.62) 100%);
+    rgba(0,0,0,1) 0%, rgba(0,0,0,.92) 26%, rgba(0,0,0,.4) 56%,
+    rgba(0,0,0,.8) 80%, rgba(0,0,0,.55) 100%);
           mask-image: linear-gradient(118deg,
-    rgba(0,0,0,1) 0%, rgba(0,0,0,.94) 28%, rgba(0,0,0,.48) 58%,
-    rgba(0,0,0,.82) 82%, rgba(0,0,0,.62) 100%);
+    rgba(0,0,0,1) 0%, rgba(0,0,0,.92) 26%, rgba(0,0,0,.4) 56%,
+    rgba(0,0,0,.8) 80%, rgba(0,0,0,.55) 100%);
 }
 .secret{
   color: #463a72;                    /* secrecy grades stamp in violet */
   transform: rotate(5.5deg);
-  top: 62px; right: 34px;
   -webkit-mask-image: linear-gradient(70deg,
-    rgba(0,0,0,.58) 0%, rgba(0,0,0,.9) 24%, rgba(0,0,0,.44) 62%, rgba(0,0,0,1) 100%);
+    rgba(0,0,0,.5) 0%, rgba(0,0,0,.9) 22%, rgba(0,0,0,.36) 60%, rgba(0,0,0,1) 100%);
           mask-image: linear-gradient(70deg,
-    rgba(0,0,0,.58) 0%, rgba(0,0,0,.9) 24%, rgba(0,0,0,.44) 62%, rgba(0,0,0,1) 100%);
+    rgba(0,0,0,.5) 0%, rgba(0,0,0,.9) 22%, rgba(0,0,0,.36) 60%, rgba(0,0,0,1) 100%);
 }
-/* the paper showing through the impression */
+/* the paper breaking back through the impression */
 .urgent::after, .secret::after{
   content: ""; position: absolute; inset: -3px;
   background:
-    radial-gradient(circle 2.5px at 14% 78%, var(--sheet) 0 1.6px, transparent 2.2px),
-    radial-gradient(circle 2px   at 62% 12%, var(--sheet) 0 1.3px, transparent 1.9px),
-    radial-gradient(circle 3px   at 88% 62%, var(--sheet) 0 1.9px, transparent 2.6px),
-    radial-gradient(ellipse 9px 2px at 40% 100%, var(--sheet) 0 60%, transparent 78%);
+    radial-gradient(circle 2.6px at 13% 76%, var(--sheet) 0 1.7px, transparent 2.3px),
+    radial-gradient(circle 2px   at 61% 10%, var(--sheet) 0 1.3px, transparent 1.9px),
+    radial-gradient(circle 3px   at 89% 60%, var(--sheet) 0 2px, transparent 2.7px),
+    radial-gradient(ellipse 11px 2px at 38% 100%, var(--sheet) 0 55%, transparent 76%),
+    radial-gradient(ellipse 2px 7px at 0% 42%, var(--sheet) 0 50%, transparent 78%);
   pointer-events: none;
 }
-/* when a sheet is both immediate and confidential, the second hand did not
-   look at where the first had stamped */
-.urgent ~ .secret{ top: 104px; right: 22px; }
-/* on a form whose top right is already spoken for, the stamps move down */
-.paper--petition .urgent, .paper--petition .secret{ top: 150px; right: 30px; }
+/* when a sheet is both immediate and confidential, the second hand paid no
+   attention whatever to where the first had stamped */
+.urgent ~ .secret{ top: 86px; right: 20px; }
+
+/* Where a stamp can land depends on what the form has already spoken for —
+   a docket box, a printed band, a fee stamp — so the placements live here,
+   after the rule above, rather than up in each form where the cascade would
+   quietly undo them. The prose steps down to match. */
+.paper--file .urgent,
+.paper--file .secret          { top: 96px;  right: 132px; }
+.paper--file .urgent ~ .secret{ top: 100px; right: 292px; }
+.paper--file .urgent ~ .pbody,
+.paper--file .secret ~ .pbody,
+.paper--file .urgent ~ .secret ~ .pbody{ padding-top: 76px; }
+
+.paper--telegram .urgent,
+.paper--telegram .secret          { top: 70px; }
+.paper--telegram .urgent ~ .secret{ top: 112px; right: 24px; }
+.paper--telegram .urgent ~ .pbody,
+.paper--telegram .secret ~ .pbody { padding-top: 34px; }
+
+.paper--report .urgent,
+.paper--report .secret{ right: 46px; }
+
+/* the petition's top right is the fee stamp's, so ink goes below it */
+.paper--petition .urgent,
+.paper--petition .secret          { top: 152px; right: 36px; }
+.paper--petition .urgent ~ .secret{ top: 194px; right: 48px; }
+.paper--petition .urgent ~ .pbody,
+.paper--petition .secret ~ .pbody,
+.paper--petition .urgent ~ .secret ~ .pbody{ padding-top: 0; }
 
 
 /* ————————————————————————————————————————————— THE COURT-FEE STAMP —— */
-/* A petition was worthless unless the fee was paid on its face, so the stamp
-   is not decoration: it is the reason the sheet is admissible.
+/* A petition was waste paper unless the fee was paid on its face, so this is
+   not decoration: it is the reason the sheet is admissible at all, and the
+   reason the petitioners mention paying it in the second line.
 
-   Drawn so that it stands up with or without the raster: the perforations,
-   the frame and the ground are CSS, and the supplied <img> — which is often
-   absent in prototypes — merely lands on top of them. */
+   Drawn entirely in CSS. desk.js points an <img> at art/web/stamp-courtfee.png
+   which is not in the repository; rather than ship a broken raster the image
+   is hidden and the stamp printed here. If that file is ever produced, delete
+   the one `display:none` below and it will drop straight in on top. */
 
 .feestamp{
-  position: absolute; right: 26px; top: 26px; z-index: 3;
-  width: 78px; min-height: 96px;
+  position: absolute; right: 28px; top: 28px; z-index: 3;
+  width: 82px; min-height: 98px;
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 6px 4px 9px;
+  padding: 12px 5px 14px;
   text-align: center;
   transform: rotate(2.5deg);
   background:
-    /* perforations, punched in the paper's colour on all four sides */
-    radial-gradient(circle 3px at 50% 0, var(--sheet) 0 2.4px, transparent 2.8px)
+    /* perforations, punched through in the sheet's own colour on all four
+       sides — the tooth of a stamp is most of what identifies it */
+    radial-gradient(circle 3px at 50% 0,   var(--sheet) 0 2.3px, transparent 2.8px)
       0 0 / 9px 6px repeat-x,
-    radial-gradient(circle 3px at 50% 100%, var(--sheet) 0 2.4px, transparent 2.8px)
+    radial-gradient(circle 3px at 50% 100%, var(--sheet) 0 2.3px, transparent 2.8px)
       0 100% / 9px 6px repeat-x,
-    radial-gradient(circle 3px at 0 50%, var(--sheet) 0 2.4px, transparent 2.8px)
+    radial-gradient(circle 3px at 0 50%,   var(--sheet) 0 2.3px, transparent 2.8px)
       0 0 / 6px 9px repeat-y,
-    radial-gradient(circle 3px at 100% 50%, var(--sheet) 0 2.4px, transparent 2.8px)
+    radial-gradient(circle 3px at 100% 50%, var(--sheet) 0 2.3px, transparent 2.8px)
       100% 0 / 6px 9px repeat-y,
-    /* the ground: a revenue green, printed a little heavy at one corner */
-    radial-gradient(120% 90% at 30% 12%, #4d7a58, transparent 62%),
-    linear-gradient(160deg, #3f6b4a, #2c5138);
-  box-shadow: -1px 2px 3px rgba(20,12,2,.34);
+    /* the ground: a revenue green, laid on heavier at the corner the plate
+       favoured, because line-engraved stamps were never evenly inked */
+    radial-gradient(120% 90% at 28% 14%, #4c7355, transparent 64%),
+    linear-gradient(160deg, #3d6446, #2b4b33);
+  box-shadow: -1px 2px 3px rgba(20,12,2,.36);
 }
-/* the printed frame inside the perforations */
+.feestamp img{ display: none; }
+/* the printed frame inside the perforations, and the engine-turned ground the
+   forgers were meant to find difficult */
 .feestamp::before{
-  content: ""; position: absolute; inset: 8px;
-  border: 1px solid rgba(214,230,206,.42);
-  box-shadow: inset 0 0 0 3px rgba(214,230,206,.13);
-}
-.feestamp img{
-  position: absolute; inset: 8px; width: calc(100% - 16px); height: calc(100% - 16px);
-  object-fit: contain; opacity: .95;
+  content: ""; position: absolute; inset: 7px;
+  border: 1px solid rgba(214,230,206,.4);
+  box-shadow: inset 0 0 0 3px rgba(214,230,206,.1);
+  background:
+    repeating-linear-gradient(42deg,
+      rgba(214,230,206,.055) 0 .5px, transparent .5px 3px),
+    repeating-linear-gradient(-42deg,
+      rgba(214,230,206,.04) 0 .5px, transparent .5px 3px);
 }
 .feestamp b, .feestamp em{
   position: relative; z-index: 1;
   display: block; font-style: normal;
   font-family: "Iowan Old Style", Palatino, Georgia, serif;
-  text-transform: uppercase; color: #e8f0e2;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  text-transform: uppercase; color: #e6eee0;
+  text-shadow: 0 1px 1px rgba(0,0,0,.45);
 }
-.feestamp b { font-size: .42rem; letter-spacing: .16em; font-weight: 600; }
-.feestamp em{ font-size: .58rem; letter-spacing: .06em; margin-top: 2px; }
-/* the cancelling strike: a stamp not defaced could be lifted and sold again */
+.feestamp b { font-size: .4rem; letter-spacing: .16em; font-weight: 600; opacity: .85; }
+.feestamp em{ font-size: .53rem; letter-spacing: .04em; margin-top: 3px; white-space: nowrap; }
+/* the cancelling strike. A stamp not defaced could be soaked off and sold
+   again, so every clerk in India ruled a pen across one the moment it landed. */
 .feestamp::after{
   content: ""; position: absolute; inset: 0; z-index: 2;
   background:
-    linear-gradient(28deg, transparent calc(50% - 1.2px),
-      rgba(26,18,8,.5) calc(50% - .6px), rgba(26,18,8,.5) calc(50% + .6px),
-      transparent calc(50% + 1.4px)),
-    linear-gradient(24deg, transparent calc(62% - 1px),
-      rgba(26,18,8,.34) calc(62% - .5px), rgba(26,18,8,.34) calc(62% + .5px),
-      transparent calc(62% + 1.2px));
+    linear-gradient(26deg, transparent calc(50% - 1.1px),
+      rgba(30,20,8,.42) calc(50% - .5px), rgba(30,20,8,.42) calc(50% + .5px),
+      transparent calc(50% + 1.3px)),
+    linear-gradient(22deg, transparent calc(63% - .9px),
+      rgba(30,20,8,.28) calc(63% - .4px), rgba(30,20,8,.28) calc(63% + .4px),
+      transparent calc(63% + 1.1px));
   pointer-events: none;
 }
 
 
 /* —————————————————————————————————————————————————————— NARROW DESKS —— */
-/* A sheet that has to be scrolled sideways is not a sheet. Below the point
-   where the endorsement column stops earning its keep, the furniture goes and
-   the paper stays: tone, edge, wear and type are what actually carry it. */
+/* A sheet that has to be scrolled sideways is not a sheet. Below the width
+   where the endorsement column stops earning its keep the furniture goes and
+   the paper stays: tone, edge, wear and type are what carry it anyway. */
 
 @media (max-width: 560px){
   .paper{
-    --tilt: -0.25deg;
-    padding: 18px 22px 30px;
+    --tilt: -0.3deg;
+    padding: 20px 24px 34px;
     min-height: 0;
   }
-  .paper--file{ padding: 18px 26px 30px 34px; }
-  /* the column and its labels do not survive the narrowing; the tape does */
-  .paper--file::before{
-    background:
-      radial-gradient(circle 4.6px at 13px 38px,
-        rgba(28,18,6,.88) 0 3.9px, rgba(255,247,222,.5) 4.1px 4.5px, transparent 4.6px),
-      radial-gradient(circle 4.6px at 13px 112px,
-        rgba(28,18,6,.88) 0 3.9px, rgba(255,247,222,.5) 4.1px 4.5px, transparent 4.6px),
-      linear-gradient(90deg, transparent 0 22px,
-        rgba(150,52,40,.42) 22px 24px, rgba(150,52,40,.16) 24px 27px, transparent 27px),
-      radial-gradient(rgb(var(--fibre) / .045) .5px, transparent 1px) 1px 2px / 5px 5px,
-      radial-gradient(120% 90% at 78% 4%, var(--sheet3) 0%, transparent 58%),
-      linear-gradient(163deg, var(--sheet) 0%, var(--sheet) 44%, var(--sheet2) 100%);
+  .paper--file{
+    padding: 20px 26px 34px 38px;
+    /* holes and tape survive the narrowing; the endorsement column does not */
+    --furniture:
+      radial-gradient(circle 4.6px at 14px 40px,
+        rgba(26,16,4,.9) 0 3.8px, rgba(255,247,222,.55) 4px 4.5px, transparent 4.6px),
+      radial-gradient(circle 4.6px at 14px 116px,
+        rgba(26,16,4,.9) 0 3.8px, rgba(255,247,222,.55) 4px 4.5px, transparent 4.6px),
+      linear-gradient(90deg, transparent 0 24px,
+        rgba(152,54,40,.44) 24px 26px, rgba(152,54,40,.15) 26px 29px, transparent 29px),
+    ;
   }
-  .paper--file .phead::before,
-  .paper--file .phead::after,
-  .paper--report .phead::after{ display: none; }
-  .paper--petition{ padding: 20px 22px 36px 26px; }
-  .paper--petition .feestamp{ position: static; margin: 0 0 10px auto; }
-  .paper--petition .urgent, .paper--petition .secret{ top: 60px; }
-  .urgent, .secret{ right: 14px; }
-  .paper--telegram{ padding: 0 20px 26px; }
+  .paper--file .pfrom::after{ display: none; }
+  .paper--file .pref::after{ left: 38px; }
+  .paper--report{ padding: 20px 24px 34px 28px; }
+  .paper--report .pref::after{ left: 28px; }
+  .paper--petition{ padding: 20px 24px 40px 28px; }
+  /* the fee stamp comes out of the margin and sits above the prose instead */
+  .paper--petition .feestamp{ position: static; margin: 0 0 12px auto; }
+  .paper--petition .urgent, .paper--petition .secret{ top: 54px; right: 16px; }
+  .paper--telegram{ padding: 0 20px 28px; }
   .paper--telegram .phead{ margin-inline: -20px; padding-inline: 20px; }
   .paper--telegram .phead::before{ left: 20px; }
   .paper--telegram .phead::after{ display: none; }
+  .paper--order{ padding: 28px 26px 34px; }
+  .paper--order .phead::after{ display: none; }   /* no room above the rule */
+  /* Narrow heads wrap, so a stamp pinned below them lands on the docket box.
+     Down at the foot there is always clear paper, and the prose makes room. */
+  .urgent, .secret{ top: auto; right: auto; bottom: 16px; left: 18px; }
+  .urgent ~ .secret{ bottom: 54px; left: 34px; }
+  .paper--file .urgent, .paper--file .secret,
+  .paper--report .urgent, .paper--report .secret,
+  .paper--petition .urgent, .paper--petition .secret,
+  .paper--telegram .urgent, .paper--telegram .secret{
+    top: auto; right: auto; bottom: 16px; left: 18px;
+  }
+  .urgent ~ .pbody, .secret ~ .pbody{ padding-top: 0; padding-bottom: 40px; }
+  .urgent ~ .secret ~ .pbody{ padding-top: 0; padding-bottom: 78px; }
+  /* the foot furniture would sit under the stamps, so it goes */
+  .paper--file .pref::after,
+  .paper--report .pref::after{ display: none; }
 }
 
 
 /* ————————————————————————————————————————————— OPTIONAL EXTRA CLASSES —— */
-/* Not emitted by desk.js today; add them to a .paper when the content wants
-   them. Each is self-contained and safe to combine.
+/* Not emitted by desk.js today. Add any of them to a .paper when the content
+   wants them; each is self-contained and safe to combine with the rest.
 
-     .paper--flat     no tilt and no lifted corner — for a sheet being read in
-                      a modal, or when several must line up
-     .paper--pinned   a pin through the top left, with its shadow
+     .paper--flat     no tilt, no lifted corner — for a sheet read inside a
+                      modal, or when several have to line up
+     .paper--pinned   a pin driven through the top left, and its shadow
      .paper--ringed   the ring a glass left on it overnight
-     .paper--carbon   a carbon copy: weaker, blue-grey, slightly doubled type
+     .paper--carbon   a carbon copy: weak, blue-grey, and doubled where the
+                      key struck hard enough to go through twice
 */
 
-.paper--flat{
-  --tilt: 0deg;
-  --lift: 0px;
-}
+.paper--flat{ --tilt: 0deg; --lift: 0px; }
 .paper--flat .pbody::before,
 .paper--flat .pbody::after{ display: none; }
 
-.paper--pinned::before{ /* keeps the stock, adds the pin's shadow beneath */
-  box-shadow: 22px 20px 5px -18px rgba(20,12,2,.5) inset;
-}
 .paper--pinned .pfrom::before{
-  content: ""; position: absolute; left: 18px; top: 10px; z-index: 5;
-  width: 9px; height: 9px; border-radius: 50%;
-  background:
-    radial-gradient(circle at 34% 30%, #cfc6b4, #7d7261 62%, #4a4236);
-  box-shadow: -1px 2px 2px rgba(20,12,2,.55);
+  content: ""; position: absolute; left: 16px; top: 12px; z-index: 5;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #d6cdbb, #7d7261 60%, #453d31);
+  box-shadow: -1px 2px 3px rgba(20,12,2,.6), 0 0 0 1px rgba(60,40,12,.25);
 }
 
 .paper--ringed::after{
   background:
-    radial-gradient(circle 34px at 74% 22%,
-      transparent 0 27px, rgba(122,84,32,.16) 28px 33px, transparent 34px),
-    radial-gradient(circle 34px at 74% 22%, rgba(122,84,32,.05) 0 27px, transparent 28px),
-    linear-gradient(163deg, transparent 55%, rgba(84,60,24,.06) 100%);
+    radial-gradient(circle 36px at 76% 24%,
+      transparent 0 28px, rgba(122,84,32,.17) 29px 35px, transparent 36px),
+    radial-gradient(circle 36px at 76% 24%, rgba(122,84,32,.05) 0 28px, transparent 29px),
+    linear-gradient(163deg, transparent 52%, rgba(80,56,20,.07) 100%);
 }
 
 .paper--carbon{
-  --sheet:  #ded9cc;
-  --sheet2: #cbc5b4;
-  --sheet3: #edeae0;
+  --sheet:  #ded8c8;
+  --sheet2: #cac3ae;
+  --sheet3: #edeade;
   --ink:    #3b4258;
   --ink2:   #6a6f7e;
 }
 .paper--carbon .pbody{
   font-family: "Courier New", monospace;
-  font-size: .8rem; line-height: 1.95;
-  opacity: .84;
-  /* a carbon prints twice: once where the key struck and once faintly beside */
+  font-size: .8rem; line-height: 1.98;
+  opacity: .82;
+  /* a carbon prints twice: once under the key, once faintly beside it */
   text-shadow: .7px .3px 0 rgba(59,66,88,.22);
 }
